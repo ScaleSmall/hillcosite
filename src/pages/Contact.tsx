@@ -214,31 +214,24 @@ const Contact = () => {
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl font-bold text-deep-900 mb-4">Contact Us</h1>
-            <p className="text-lg text-slate-600">
-              Get your free estimate or reach out with any questions about your painting project.
-            </p>
-          </div>
-        </div>
-      </section>
+          <div className="flex items-center gap-8 lg:gap-12">
+            {/* Award Badge - Left Side */}
+            <div className="hidden lg:flex flex-shrink-0">
+              <img
+                src="/1000032820.jpg"
+                alt="Winner Best of Round Rock 2025 Award"
+                className="w-48 h-48 object-contain"
+                loading="eager"
+              />
+            </div>
 
-      {/* Award Badge */}
-      <section className="py-8 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-center">
-            <img
-              src="/1000032820.jpg"
-              alt="Winner Best of Round Rock 2025 Award"
-              className="w-48 h-48 object-contain mb-4"
-              loading="eager"
-            />
-            <h2 className="text-2xl font-bold text-deep-900 mb-2">
-              Award-Winning Service
-            </h2>
-            <p className="text-slate-600 text-center max-w-2xl">
-              Proud winner of Best of Round Rock 2025. We're committed to delivering exceptional quality and customer service to every project.
-            </p>
+            {/* Content - Center/Right */}
+            <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
+              <h1 className="text-4xl font-bold text-deep-900 mb-4">Contact Us</h1>
+              <p className="text-lg text-slate-600">
+                Get your free estimate or reach out with any questions about your painting project.
+              </p>
+            </div>
           </div>
         </div>
       </section>
