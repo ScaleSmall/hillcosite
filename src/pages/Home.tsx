@@ -90,7 +90,17 @@ const Home = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         </div>
-        
+
+        {/* Best of 2025 Badge - Top Left */}
+        <div className="absolute top-8 left-8 z-20">
+          <img
+            src="/best of 2025 background removed.png"
+            alt="Best of 2025 Award"
+            className="w-36 h-auto drop-shadow-2xl"
+            loading="eager"
+          />
+        </div>
+
         {/* Color Consultation Floating Card - Bottom Right */}
         <div className="absolute bottom-8 right-8 z-20 hidden lg:block">
           <Link
