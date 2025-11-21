@@ -223,6 +223,26 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* Award Badge */}
+      <section className="py-8 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-center">
+            <img
+              src="/1000032820.jpg"
+              alt="Winner Best of Round Rock 2025 Award"
+              className="w-48 h-48 object-contain mb-4"
+              loading="eager"
+            />
+            <h2 className="text-2xl font-bold text-deep-900 mb-2">
+              Award-Winning Service
+            </h2>
+            <p className="text-slate-600 text-center max-w-2xl">
+              Proud winner of Best of Round Rock 2025. We're committed to delivering exceptional quality and customer service to every project.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Methods */}
       <SplitSection
         title="Multiple Ways to Reach Us"
