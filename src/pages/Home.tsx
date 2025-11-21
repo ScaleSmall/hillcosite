@@ -97,6 +97,10 @@ const Home = () => {
             src="/1000032820.jpg"
             alt="Winner Best of Round Rock 2025"
             className="w-32 h-32 drop-shadow-2xl"
+            style={{
+              mixBlendMode: 'multiply',
+              filter: 'brightness(1.1) contrast(1.1)'
+            }}
             loading="eager"
           />
         </div>
