@@ -1,0 +1,59 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+interface ServiceArea {
+  name: string;
+  href?: string;
+}
+
+interface ServiceAreasSectionProps {
+  title?: string;
+  subtitle?: string;
+  areas: ServiceArea[];
+}
+
+const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProps) => {
+  return (
+    <section className="section-padding bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {(title || subtitle) && (
+          <div className="text-center mb-16">
+            {title && (
+              <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+                {title}
+              </h2>
+            )}
+            {subtitle && (
+              <p className="text-xl text-slate-600">
+                {subtitle}
+              </p>
+            )}
+          </div>
+        )}
+        
+        <div className="flex flex-wrap justify-center gap-4">
+          {areas.map((area, index) => (
+            area.href ? (
+              <Link
+                key={index}
+                to={area.href}
+                className="px-6 py-3 bg-white hover:bg-deep-50 text-deep-700 hover:text-deep-800 border border-deep-200 hover:border-deep-300 rounded-full font-medium transition-all duration-200"
+              >
+                {area.name}
+              </Link>
+            ) : (
+              <span
+                key={index}
+                className="px-6 py-3 bg-white text-deep-700 border border-deep-200 rounded-full font-medium"
+              >
+                {area.name}
+              </span>
+            )
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ServiceAreasSection;

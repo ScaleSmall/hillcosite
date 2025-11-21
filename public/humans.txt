@@ -1,0 +1,18 @@
+/* TEAM */
+Hill Country Painting Team
+Site: https://hillcopaint.com
+Location: Austin, Texas
+
+/* SITE */
+Last update: 2025/01/01
+Language: English
+Standards: HTML5, CSS3, JavaScript ES6+
+Components: React, TypeScript
+IDE: Visual Studio Code
+
+/* THANKS */
+Austin community for continued trust and support
+Professional painters who deliver excellence every day
+Homeowners who choose quality craftsmanship
+
+Clean prep. Crisp lines. Reliable schedules.

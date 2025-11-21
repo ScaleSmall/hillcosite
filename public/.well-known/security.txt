@@ -1,0 +1,8 @@
+Contact: mailto:info@hillcopaint.com
+Expires: 2027-01-01T00:00:00.000Z
+Policy: https://hillcopaint.com
+
+# Security Contact Information
+# Please report security vulnerabilities responsibly
+# Response time: 48-72 hours for security issues
+# Business hours: Monday-Friday 7AM-6PM, Saturday 8AM-4PM Central Time

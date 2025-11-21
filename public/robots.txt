@@ -1,0 +1,47 @@
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# Disallow utility and search pages
+Disallow: /thank-you
+Disallow: /search
+Disallow: /?s=
+Disallow: /*?s=
+Disallow: /*?q=
+Disallow: /*?ref=
+Disallow: /*?utm_
+
+# Prevent indexing of potential future admin/utility routes
+Disallow: /admin/
+Disallow: /.well-known/
+Disallow: /api/
+
+Sitemap: https://hillcopaint.com/sitemap.xml

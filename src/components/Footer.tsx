@@ -1,0 +1,211 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Phone, Mail, MapPin, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
+
+const TikTokIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor"/>
+  </svg>
+);
+
+const XIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+  </svg>
+);
+
+const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { name: 'About Us', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Testimonials', href: '/testimonials' },
+    { name: 'Service Areas', href: '/service-areas' },
+    { name: 'Color Consultation', href: '/color-consultation' },
+    { name: 'FAQ', href: '/faq' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  const services = [
+    { name: 'Interior Painting', href: '/services/interior-painting' },
+    { name: 'Exterior Painting', href: '/services/exterior-painting' },
+    { name: 'Cabinet Painting', href: '/services/cabinet-refinishing' },
+    { name: 'Commercial Painting', href: '/services/commercial' },
+  ];
+
+  const serviceAreas = [
+    { name: 'Austin', href: '/service-areas/austin' },
+    { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
+    { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'Taylor & Hutto', href: '/service-areas/taylor-hutto' },
+    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
+  ];
+
+  const guides = [
+    { name: 'Painting Costs Guide', href: '/guides/painting-costs-round-rock' },
+    { name: 'Best Paint for Texas Heat', href: '/guides/best-paint-texas-heat' },
+    { name: 'HOA Color Tips', href: '/guides/hoa-color-tips-round-rock' },
+    { name: 'How Often to Paint', href: '/guides/how-often-paint-central-texas' },
+  ];
+
+  const socialLinks = [
+    { name: 'TikTok', href: 'https://www.tiktok.com/@hillco_painting_austin', icon: TikTokIcon, ariaLabel: 'Follow us on TikTok' },
+    { name: 'Instagram', href: 'https://www.instagram.com/hill_country_painting_austin/', icon: Instagram, ariaLabel: 'Follow us on Instagram' },
+    { name: 'YouTube', href: 'https://www.youtube.com/@HillCountryPaintingAustin', icon: Youtube, ariaLabel: 'Subscribe on YouTube' },
+    { name: 'X (Twitter)', href: 'https://x.com/Hill_Co_Paint', icon: XIcon, ariaLabel: 'Follow us on X' },
+    { name: 'Facebook', href: 'https://www.facebook.com/Hillcopaint', icon: Facebook, ariaLabel: 'Like us on Facebook' },
+    { name: 'LinkedIn', href: 'https://hillcopaint.com', icon: Linkedin, ariaLabel: 'Connect on LinkedIn' },
+  ];
+
+  return (
+    <footer className="bg-deep-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <img
+                src="/logo.png"
+                alt="Hill Country Painting Logo"
+                className="h-12 w-auto brightness-0 invert"
+                width="144"
+                height="48"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <p className="text-slate-300 text-sm">
+              Clean prep. Crisp lines. Reliable schedules.
+            </p>
+            <div className="space-y-2">
+              <a
+                href="tel:(512)240-2246"
+                className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors"
+              >
+                <Phone size={16} />
+                <span>(512) 240-2246</span>
+              </a>
+              <a
+                href="mailto:info@hillcopaint.com"
+                className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors"
+              >
+                <Mail size={16} />
+                <span>info@hillcopaint.com</span>
+              </a>
+              <div className="flex items-start space-x-2 text-slate-300">
+                <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+                <span>Austin, TX Metro Area</span>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-0.5 pt-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-300 hover:text-white transition-colors"
+                  aria-label={social.ariaLabel}
+                >
+                  <social.icon size={20} />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.href}
+                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Services</h3>
+            <ul className="space-y-2">
+              {services.map((service) => (
+                <li key={service.name}>
+                  <Link
+                    to={service.href}
+                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Service Areas */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Service Areas</h3>
+            <ul className="space-y-2">
+              {serviceAreas.map((area) => (
+                <li key={area.name}>
+                  <Link
+                    to={area.href}
+                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                  >
+                    {area.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Guides */}
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Resources</h3>
+            <ul className="space-y-2">
+              {guides.map((guide) => (
+                <li key={guide.name}>
+                  <Link
+                    to={guide.href}
+                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                  >
+                    {guide.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-deep-700 pt-8 mt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-slate-300 text-sm text-center md:text-left">
+              <div>© {currentYear} Hill Country Painting. All rights reserved.</div>
+              <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+                <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <span className="text-slate-500">•</span>
+                <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              </div>
+            </div>
+            <div className="flex space-x-4">
+              <Link to="/contact" className="btn-primary">
+                Get Free Estimate
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
