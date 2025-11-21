@@ -90,7 +90,17 @@ const Home = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         </div>
-        
+
+        {/* Best of Round Rock Badge - Top Left */}
+        <div className="absolute top-8 left-8 z-20">
+          <img
+            src="/1000032820.jpg"
+            alt="Winner Best of Round Rock 2025"
+            className="w-32 h-32 drop-shadow-2xl"
+            loading="eager"
+          />
+        </div>
+
         {/* Color Consultation Floating Card - Bottom Right */}
         <div className="absolute bottom-8 right-8 z-20 hidden lg:block">
           <Link
