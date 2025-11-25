@@ -212,7 +212,7 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-4 md:pt-24 md:pb-6 bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-gradient-to-br from-deep-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6 lg:gap-8">
             {/* Award Badge - Left Side */}
@@ -228,25 +228,10 @@ const Contact = () => {
             {/* Content - Center/Right */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
               <h1 className="text-3xl md:text-4xl font-bold text-deep-900 mb-2">Contact Us</h1>
-              <p className="text-base md:text-lg text-slate-600">
+              <p className="text-base md:text-lg text-slate-600 mb-4">
                 Get your free estimate or reach out with any questions about your painting project.
               </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Methods */}
-      <section className="py-4 md:py-6 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
-            {/* Left Column - Text Content */}
-            <div>
-              <h2 className="text-xl md:text-2xl font-bold text-deep-900 mb-2">Multiple Ways to Reach Us</h2>
-              <p className="text-sm md:text-base text-slate-600 mb-3">
-                Call, email, or fill out our contact form below for a prompt response and free estimate.
-              </p>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 text-sm">
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">
                   <span className="text-deep-600 mt-0.5">✓</span>
                   <span className="text-slate-700">Phone consultations</span>
@@ -264,16 +249,6 @@ const Contact = () => {
                   <span className="text-slate-700">Transparent pricing</span>
                 </li>
               </ul>
-            </div>
-
-            {/* Right Column - Image */}
-            <div className="hidden lg:block">
-              <img
-                src="/IMG_8018_result_result.jpg"
-                alt="Hill Country Painting team consultation Austin Texas"
-                className="rounded-lg shadow-lg w-full h-auto"
-                loading="lazy"
-              />
             </div>
           </div>
         </div>
