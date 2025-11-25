@@ -212,7 +212,7 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="pt-16 pb-8 md:pt-20 md:pb-10 lg:pt-24 lg:pb-12 bg-gradient-to-br from-deep-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-8 lg:gap-12">
             {/* Award Badge - Left Side */}
@@ -237,20 +237,55 @@ const Contact = () => {
       </section>
 
       {/* Contact Methods */}
-      <SplitSection
-        title="Multiple Ways to Reach Us"
-        description="We make it easy to get in touch. Whether you prefer to call, email, or fill out our contact form below, we'll respond promptly with answers to your questions and scheduling options for your free estimate."
-        benefits={[
-          { text: 'Phone consultations available' },
-          { text: 'Prompt email responses' },
-          { text: 'Free on-site estimates at your convenience' },
-          { text: 'Detailed project proposals and timelines' },
-          { text: 'Transparent pricing with no hidden fees' },
-          { text: 'Flexible scheduling to fit your needs' }
-        ]}
-        image="/IMG_8018_result_result.jpg"
-        imageAlt="Hill Country Painting team consultation Austin Texas"
-      />
+      <section className="py-8 md:py-10 lg:py-12 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left Column - Text Content */}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-bold text-deep-900 mb-3">Multiple Ways to Reach Us</h2>
+              <p className="text-slate-600 mb-6">
+                We make it easy to get in touch. Whether you prefer to call, email, or fill out our contact form below, we'll respond promptly with answers to your questions and scheduling options for your free estimate.
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-start gap-2">
+                  <span className="text-deep-600 mt-1">✓</span>
+                  <span className="text-slate-700">Phone consultations available</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-deep-600 mt-1">✓</span>
+                  <span className="text-slate-700">Prompt email responses</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-deep-600 mt-1">✓</span>
+                  <span className="text-slate-700">Free on-site estimates at your convenience</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-deep-600 mt-1">✓</span>
+                  <span className="text-slate-700">Detailed project proposals and timelines</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-deep-600 mt-1">✓</span>
+                  <span className="text-slate-700">Transparent pricing with no hidden fees</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-deep-600 mt-1">✓</span>
+                  <span className="text-slate-700">Flexible scheduling to fit your needs</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="hidden lg:block">
+              <img
+                src="/IMG_8018_result_result.jpg"
+                alt="Hill Country Painting team consultation Austin Texas"
+                className="rounded-lg shadow-lg w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Form & Info */}
       <section className="pt-8 pb-16 md:pb-20 lg:pb-24 bg-white">
