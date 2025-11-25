@@ -212,23 +212,23 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-16 pb-8 md:pt-20 md:pb-10 lg:pt-24 lg:pb-12 bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="pt-20 pb-4 md:pt-24 md:pb-6 bg-gradient-to-br from-deep-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-8 lg:gap-12">
+          <div className="flex items-center gap-6 lg:gap-8">
             {/* Award Badge - Left Side */}
             <div className="hidden lg:flex flex-shrink-0">
               <img
                 src="/1000032820.jpg"
                 alt="Winner Best of Round Rock 2025 Award"
-                className="w-48 h-48 object-contain"
+                className="w-40 h-40 object-contain"
                 loading="eager"
               />
             </div>
 
             {/* Content - Center/Right */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
-              <h1 className="text-4xl font-bold text-deep-900 mb-4">Contact Us</h1>
-              <p className="text-lg text-slate-600">
+              <h1 className="text-3xl md:text-4xl font-bold text-deep-900 mb-2">Contact Us</h1>
+              <p className="text-base md:text-lg text-slate-600">
                 Get your free estimate or reach out with any questions about your painting project.
               </p>
             </div>
@@ -237,39 +237,31 @@ const Contact = () => {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-8 md:py-10 lg:py-12 bg-slate-50">
+      <section className="py-4 md:py-6 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
             {/* Left Column - Text Content */}
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-deep-900 mb-3">Multiple Ways to Reach Us</h2>
-              <p className="text-slate-600 mb-6">
-                We make it easy to get in touch. Whether you prefer to call, email, or fill out our contact form below, we'll respond promptly with answers to your questions and scheduling options for your free estimate.
+              <h2 className="text-xl md:text-2xl font-bold text-deep-900 mb-2">Multiple Ways to Reach Us</h2>
+              <p className="text-sm md:text-base text-slate-600 mb-3">
+                Call, email, or fill out our contact form below for a prompt response and free estimate.
               </p>
-              <ul className="space-y-2 mb-6">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-1">✓</span>
-                  <span className="text-slate-700">Phone consultations available</span>
+                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-slate-700">Phone consultations</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-1">✓</span>
-                  <span className="text-slate-700">Prompt email responses</span>
+                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-slate-700">Prompt responses</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-1">✓</span>
-                  <span className="text-slate-700">Free on-site estimates at your convenience</span>
+                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-slate-700">Free estimates</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-1">✓</span>
-                  <span className="text-slate-700">Detailed project proposals and timelines</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-1">✓</span>
-                  <span className="text-slate-700">Transparent pricing with no hidden fees</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-1">✓</span>
-                  <span className="text-slate-700">Flexible scheduling to fit your needs</span>
+                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-slate-700">Transparent pricing</span>
                 </li>
               </ul>
             </div>
