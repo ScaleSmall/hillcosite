@@ -7,39 +7,55 @@ import SplitSection from '../../components/sections/SplitSection';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import { usePricingData } from '../../hooks/usePricingData';
 
 const PaintingCosts = () => {
+  const { data: pricingData, loading } = usePricingData('painting-costs');
+
+  const getCostFactor = (key: string, fallback: string) => {
+    if (pricingData && pricingData[key]) {
+      return pricingData[key].formatted;
+    }
+    return fallback;
+  };
+
   const costFactors = [
     {
       factor: 'Home Size',
-      interior: '$2,500 - $6,000',
-      exterior: '$4,000 - $10,000',
+      interior: getCostFactor('cost_factor_home_size_interior', '$2,500 - $6,000'),
+      exterior: getCostFactor('cost_factor_home_size_exterior', '$4,000 - $10,000'),
       details: 'Based on square footage and room count'
     },
     {
       factor: 'Paint Quality',
-      interior: '+$300 - $800',
-      exterior: '+$500 - $1,200',
+      interior: getCostFactor('cost_factor_paint_quality_interior', '+$300 - $800'),
+      exterior: getCostFactor('cost_factor_paint_quality_exterior', '+$500 - $1,200'),
       details: 'Premium paints last longer, better coverage'
     },
     {
       factor: 'Preparation Work',
-      interior: '+$200 - $600',
-      exterior: '+$800 - $2,000',
+      interior: getCostFactor('cost_factor_prep_work_interior', '+$200 - $600'),
+      exterior: getCostFactor('cost_factor_prep_work_exterior', '+$800 - $2,000'),
       details: 'Repairs, priming, surface prep requirements'
     },
     {
       factor: 'Color Changes',
-      interior: '+$150 - $400',
-      exterior: '+$300 - $800',
+      interior: getCostFactor('cost_factor_color_changes_interior', '+$150 - $400'),
+      exterior: getCostFactor('cost_factor_color_changes_exterior', '+$300 - $800'),
       details: 'Dark to light colors require additional coats'
     }
   ];
 
+  const getFAQAnswer = () => {
+    const interiorPrice = getCostFactor('faq_2000sqft_interior', '$4,000-$8,000');
+    const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$6,000-$12,000');
+    return `For a typical 2,000 sq ft Austin home, interior painting ranges from ${interiorPrice}, exterior painting from ${exteriorPrice}. Final cost depends on paint quality, prep work needed, and number of stories.`;
+  };
+
   const faqs = [
     {
       question: 'How much does it cost to paint a 2,000 sq ft house in Austin?',
-      answer: 'For a typical 2,000 sq ft Austin home, interior painting ranges from $4,000-$8,000, exterior painting from $6,000-$12,000. Final cost depends on paint quality, prep work needed, and number of stories.'
+      answer: getFAQAnswer()
     },
     {
       question: 'What factors affect painting costs in Austin?',
@@ -155,15 +171,15 @@ const PaintingCosts = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Interior:</span>
-                  <span className="font-semibold text-green-600">$3,200 - $5,800</span>
+                  <span className="font-semibold text-green-600">{getCostFactor('house_1500_interior', '$3,200 - $5,800')}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Exterior:</span>
-                  <span className="font-semibold text-blue-600">$5,200 - $8,500</span>
+                  <span className="font-semibold text-blue-600">{getCostFactor('house_1500_exterior', '$5,200 - $8,500')}</span>
                 </div>
               </div>
             </div>
-            
+
             <div className="card p-8 text-center border-2 border-deep-600">
               <Home className="w-12 h-12 text-deep-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-deep-900 mb-2">2,200 sq ft</h3>
@@ -171,18 +187,18 @@ const PaintingCosts = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Interior:</span>
-                  <span className="font-semibold text-green-600">$4,400 - $7,200</span>
+                  <span className="font-semibold text-green-600">{getCostFactor('house_2200_interior', '$4,400 - $7,200')}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Exterior:</span>
-                  <span className="font-semibold text-blue-600">$6,800 - $11,000</span>
+                  <span className="font-semibold text-blue-600">{getCostFactor('house_2200_exterior', '$6,800 - $11,000')}</span>
                 </div>
               </div>
               <div className="mt-4">
                 <span className="bg-deep-600 text-white px-3 py-1 rounded-full text-sm font-medium">Most Popular</span>
               </div>
             </div>
-            
+
             <div className="card p-8 text-center">
               <Home className="w-12 h-12 text-deep-600 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-deep-900 mb-2">3,000+ sq ft</h3>
@@ -190,11 +206,11 @@ const PaintingCosts = () => {
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Interior:</span>
-                  <span className="font-semibold text-green-600">$6,000 - $10,500</span>
+                  <span className="font-semibold text-green-600">{getCostFactor('house_3000_interior', '$6,000 - $10,500')}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Exterior:</span>
-                  <span className="font-semibold text-blue-600">$9,500 - $16,000</span>
+                  <span className="font-semibold text-blue-600">{getCostFactor('house_3000_exterior', '$9,500 - $16,000')}</span>
                 </div>
               </div>
             </div>
@@ -306,11 +322,11 @@ const PaintingCosts = () => {
       />
 
       {/* Trust Stats */}
-      <StatsAndTrust 
+      <StatsAndTrust
         stats={[
           {
             icon: <DollarSign className="w-8 h-8 text-deep-600" />,
-            value: "$6,500",
+            value: pricingData?.stat_average_project?.formatted || "$6,500",
             label: "Average Project"
           },
           {
