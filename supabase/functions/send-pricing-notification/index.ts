@@ -209,9 +209,9 @@ Deno.serve(async (req: Request) => {
       .eq('config_key', 'owner_email')
       .maybeSingle();
 
-    if (!configData?.config_value?.email) {
+    if (!configData?.config_value?.emails || !Array.isArray(configData.config_value.emails) || configData.config_value.emails.length === 0) {
       return new Response(
-        JSON.stringify({ error: 'Owner email not configured' }),
+        JSON.stringify({ error: 'Owner emails not configured' }),
         {
           status: 500,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -219,7 +219,7 @@ Deno.serve(async (req: Request) => {
       );
     }
 
-    const ownerEmail = configData.config_value.email;
+    const ownerEmails = configData.config_value.emails;
     const subject = notificationData.type === 'success'
       ? `✓ ${notificationData.year} Price Update Complete - ${notificationData.pricesUpdated} Prices Updated`
       : `⚠ ${notificationData.year} Price Update Failed`;
@@ -236,7 +236,7 @@ Deno.serve(async (req: Request) => {
       },
       body: JSON.stringify({
         from: 'Hill Country Painting <noreply@hillcopaint.com>',
-        to: [ownerEmail],
+        to: ownerEmails,
         subject,
         html: htmlContent,
       }),
@@ -253,8 +253,8 @@ Deno.serve(async (req: Request) => {
     await supabase.from('automation_logs').insert({
       log_type: 'success',
       operation: 'send-notification',
-      message: `Email sent successfully to ${ownerEmail}`,
-      metadata: { emailId: emailResult.id, notificationData }
+      message: `Email sent successfully to ${ownerEmails.join(', ')}`,
+      metadata: { emailId: emailResult.id, notificationData, recipients: ownerEmails }
     });
 
     return new Response(
