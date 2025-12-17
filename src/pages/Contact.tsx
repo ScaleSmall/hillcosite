@@ -234,7 +234,7 @@ const Contact = () => {
               <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">
                   <span className="text-deep-600 mt-0.5">✓</span>
-                  <span className="text-slate-700">Phone consultations</span>
+                  <span className="text-slate-700">Professional service</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-deep-600 mt-0.5">✓</span>
