@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import SplitSection from '../components/sections/SplitSection';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
-import TestimonialsSection from '../components/sections/TestimonialsSection';
 import CTABanner from '../components/sections/CTABanner';
 
 const About = () => {
@@ -32,30 +31,6 @@ const About = () => {
       icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
       value: "Insured",
       label: "Austin Local"
-    }
-  ];
-
-  const teamTestimonials = [
-    {
-      name: 'Mike Thompson',
-      location: 'Lead Painter',
-      rating: 5,
-      text: 'I take pride in every brushstroke. Clean prep work and attention to detail make all the difference in the final result.',
-      initials: 'MT'
-    },
-    {
-      name: 'Sarah Chen',
-      location: 'Project Manager',
-      rating: 5,
-      text: 'Clear communication and staying on schedule are my priorities. Our clients deserve transparency throughout the process.',
-      initials: 'SC'
-    },
-    {
-      name: 'David Rodriguez',
-      location: 'Cabinet Specialist',
-      rating: 5,
-      text: 'Cabinet painting is an art form. The transformation we achieve saves homeowners thousands while creating beautiful results.',
-      initials: 'DR'
     }
   ];
 
@@ -111,13 +86,6 @@ const About = () => {
 
       {/* Pattern A: Years/Projects Stats */}
       <StatsAndTrust stats={aboutStats} />
-
-      {/* Pattern G: Team Quotes */}
-      <TestimonialsSection
-        title="Meet Our Team"
-        subtitle="The professionals behind Hill Country Painting's reputation for excellence"
-        testimonials={teamTestimonials}
-      />
 
       {/* Pattern I: CTA Banner */}
       <CTABanner
