@@ -1,119 +1,121 @@
-# Netlify Configuration for Hill Country Painting
-# Technical SEO optimizations - no visual changes
-
 [build]
-  publish = "dist"
-  command = "npm run build"
+publish = "dist"
+command = "npx vite build"
 
 [build.environment]
-  NODE_VERSION = "18"
-
-# WWW to non-WWW redirect (handles both http and https)
-[[redirects]]
-  from = "https://www.hillcopaint.com/*"
-  to = "https://hillcopaint.com/:splat"
-  status = 301
-  force = true
+NODE_VERSION = "18"
 
 [[redirects]]
-  from = "http://www.hillcopaint.com/*"
-  to = "https://hillcopaint.com/:splat"
-  status = 301
-  force = true
+from = "https://www.hillcopaint.com/*"
+to = "https://hillcopaint.com/:splat"
+status = 301
+force = true
 
-# Force HTTPS for non-www (this catches any http:// requests)
 [[redirects]]
-  from = "http://hillcopaint.com/*"
-  to = "https://hillcopaint.com/:splat"
-  status = 301
-  force = true
+from = "http://www.hillcopaint.com/*"
+to = "https://hillcopaint.com/:splat"
+status = 301
+force = true
 
-# SPA routing - serve index.html for all routes (MUST be last)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+from = "http://hillcopaint.com/*"
+to = "https://hillcopaint.com/:splat"
+status = 301
+force = true
 
-# Headers configuration
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
 
 [[headers]]
-  for = "/search"
-  [headers.values]
-    X-Robots-Tag = "noindex, follow"
+for = "/*"
+
+[headers.values]
+X-Frame-Options = "SAMEORIGIN"
+X-Content-Type-Options = "nosniff"
+Referrer-Policy = "strict-origin-when-cross-origin"
+Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
 [[headers]]
-  for = "/thank-you"
-  [headers.values]
-    X-Robots-Tag = "noindex, follow"
+for = "/search"
 
-# Cache optimization for static assets
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+[headers.values]
+X-Robots-Tag = "noindex, follow"
 
 [[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+for = "/thank-you"
+
+[headers.values]
+X-Robots-Tag = "noindex, follow"
 
 [[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+for = "/assets/*"
 
-# Cache for images
-[[headers]]
-  for = "/*.jpg"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.jpeg"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+for = "/*.js"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.png"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+for = "/*.css"
+
+[headers.values]
+Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-  for = "/*.webp"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+for = "/*.jpg"
 
-# HTML with short cache for fresh content
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=300, must-revalidate"
+[headers.values]
+Cache-Control = "public, max-age=86400"
 
 [[headers]]
-  for = "/"
-  [headers.values]
-    Cache-Control = "public, max-age=300, must-revalidate"
+for = "/*.jpeg"
 
-# SEO files
-[[headers]]
-  for = "/sitemap.xml"
-  [headers.values]
-    Content-Type = "application/xml"
-    Cache-Control = "public, max-age=3600"
+[headers.values]
+Cache-Control = "public, max-age=86400"
 
 [[headers]]
-  for = "/robots.txt"
-  [headers.values]
-    Content-Type = "text/plain"
-    Cache-Control = "public, max-age=3600"
+for = "/*.png"
 
-# Plugin configuration
+[headers.values]
+Cache-Control = "public, max-age=86400"
+
+[[headers]]
+for = "/*.webp"
+
+[headers.values]
+Cache-Control = "public, max-age=86400"
+
+[[headers]]
+for = "/*.html"
+
+[headers.values]
+Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+for = "/"
+
+[headers.values]
+Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+for = "/sitemap.xml"
+
+[headers.values]
+Content-Type = "application/xml"
+Cache-Control = "public, max-age=3600"
+
+[[headers]]
+for = "/robots.txt"
+
+[headers.values]
+Content-Type = "text/plain"
+Cache-Control = "public, max-age=3600"
+
 [[plugins]]
-  package = "@netlify/plugin-lighthouse"
+package = "@netlify/plugin-lighthouse"
