@@ -139,6 +139,22 @@ const ExteriorPainting = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         </div>
 
+        {/* Financing Badge - Bottom Left */}
+        <div className="absolute bottom-8 left-8 z-20 hidden lg:block">
+          <Link
+            to="/contact"
+            className="group block transition-transform duration-300 hover:scale-105"
+          >
+            <img
+              src="/24mo_blue_badge.png"
+              alt="Up to 24 months interest-free financing available - Click for details"
+              className="w-48 h-auto drop-shadow-2xl"
+              width="192"
+              height="192"
+            />
+          </Link>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
@@ -159,15 +175,6 @@ const ExteriorPainting = () => {
                   <Phone className="w-5 h-5 mr-2" />
                   Call (512) 240-2246
                 </a>
-              </div>
-              <div className="flex justify-center mt-8">
-                <img
-                  src="/24mo_blue_badge.png"
-                  alt="Up to 24 months interest-free financing available"
-                  className="w-64 h-auto drop-shadow-2xl"
-                  width="256"
-                  height="256"
-                />
               </div>
             </div>
           </div>
