@@ -514,7 +514,109 @@ const Contact = () => {
                   We'll respond promptly to schedule your free on-site estimate
                 </p>
               </form>
-              
+
+              {/* Financing Section */}
+              <style dangerouslySetInnerHTML={{ __html: `
+                .container-code-example {
+                  z-index: 1;
+                  justify-content: space-between;
+                  align-items: center;
+                  width: 100%;
+                  max-width: 1000px;
+                  margin-left: auto;
+                  margin-right: auto;
+                }
+
+                .content-code-example-3 {
+                  color: #fff;
+                  font-family: Montserrat, Arial, sans-serif;
+                  background-color: #156ed7;
+                  border-radius: 8px;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: flex-start;
+                  padding: 32px 32px 40px;
+                  display: flex;
+                }
+
+                .box-code-example-3 {
+                  grid-column-gap: 24px;
+                  grid-row-gap: 24px;
+                  text-align: left;
+                  flex-direction: row;
+                  justify-content: space-between;
+                  align-items: flex-end;
+                  width: 100%;
+                  display: flex;
+                }
+
+                .column-left-code-example-3 {
+                  flex-direction: column;
+                  align-items: flex-start;
+                  max-width: 65%;
+                  display: flex;
+                }
+
+                .margin-bot-8-code-example {
+                  margin-bottom: 8px;
+                }
+
+                .title-code-example-xsmall {
+                  margin-top: 0;
+                  margin-bottom: 0;
+                  font-size: 32px;
+                  line-height: 140%;
+                }
+
+                .link-white-code-example {
+                  color: #fff;
+                }
+
+                @media screen and (max-width: 767px) {
+                  .content-code-example-3 {
+                    padding: 24px;
+                  }
+
+                  .column-left-code-example-3 {
+                    text-align: center;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 100%;
+                    max-width: 100%;
+                  }
+
+                  .box-code-example-3 {
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                  }
+                }
+              ` }} />
+
+              <div className="container-code-example mt-8">
+                <div className="content-code-example-3">
+                  <div className="box-code-example-3">
+                    <div className="column-left-code-example-3">
+                      <div className="margin-bot-8-code-example">
+                        <h2 className="title-code-example-xsmall">We offer financing<br /></h2>
+                      </div>
+                      <div className="max-width-585-code-example">
+                        <p className="paragraph-code-example-medium">Prefer to pay over time rather than all at once?</p>
+                        <p className="paragraph-code-example-medium">
+                          <a href="#" className="link-white-code-example">Prequalify for financing</a> today.
+                        </p>
+                      </div>
+                    </div>
+                    <img
+                      src="https://cdn.prod.website-files.com/5f194315e6b47c1697925302/63ff658aae810ab61d7481f4_logo%20(1).svg"
+                      loading="lazy"
+                      alt="The white Wisetack logo"
+                      className="logo-code-example"
+                    />
+                  </div>
+                </div>
+              </div>
+
               {showModal && (
                 <div
                   className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/40"
