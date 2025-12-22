@@ -256,7 +256,7 @@ const Contact = () => {
               <img
                 src="/24mo_blue_badge.png"
                 alt="Up to 24 months interest-free financing available"
-                className="w-40 h-40 object-contain drop-shadow-lg"
+                className="w-60 h-60 object-contain drop-shadow-lg"
                 loading="eager"
               />
             </div>
