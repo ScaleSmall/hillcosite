@@ -225,7 +225,7 @@ const Contact = () => {
               />
             </div>
 
-            {/* Content - Center/Right */}
+            {/* Content - Center */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
               <h1 className="text-3xl md:text-4xl font-bold text-deep-900 mb-2">Contact Us</h1>
               <p className="text-base md:text-lg text-slate-600 mb-4">
@@ -249,6 +249,16 @@ const Contact = () => {
                   <span className="text-slate-700">Transparent pricing</span>
                 </li>
               </ul>
+            </div>
+
+            {/* Financing Badge - Right Side */}
+            <div className="hidden lg:flex flex-shrink-0">
+              <img
+                src="/24mo_blue_badge.png"
+                alt="Up to 24 months interest-free financing available"
+                className="w-40 h-40 object-contain drop-shadow-lg"
+                loading="eager"
+              />
             </div>
           </div>
         </div>
