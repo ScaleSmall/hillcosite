@@ -170,6 +170,15 @@ const CabinetRefinishing = () => {
                   Call (512) 240-2246
                 </a>
               </div>
+              <div className="flex justify-center mt-8">
+                <img
+                  src="/24mo_blue_badge.png"
+                  alt="Up to 24 months interest-free financing available"
+                  className="w-64 h-auto drop-shadow-2xl"
+                  width="256"
+                  height="256"
+                />
+              </div>
             </div>
           </div>
         </div>

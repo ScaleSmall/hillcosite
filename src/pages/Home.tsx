@@ -166,6 +166,29 @@ const Home = () => {
         subtitle="Complete painting solutions for your Austin home"
       />
 
+      {/* Financing Section */}
+      <section className="section-padding bg-gradient-to-br from-slate-50 to-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+              Flexible Financing Available
+            </h2>
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+              Make your painting project more affordable with our financing options
+            </p>
+            <div className="flex justify-center">
+              <img
+                src="/24mo_blue_badge.png"
+                alt="Up to 24 months interest-free financing available"
+                className="w-80 h-auto drop-shadow-2xl"
+                width="320"
+                height="320"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pattern C: Split Section */}
       <SplitSection
         title="Why Choose Hill Country Painting?"
