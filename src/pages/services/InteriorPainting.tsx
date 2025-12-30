@@ -146,9 +146,9 @@ const InteriorPainting = () => {
         </div>
 
         {/* Financing Badge - Bottom Left */}
-        <div className="absolute bottom-8 left-8 z-20 hidden lg:block">
+        <div className="absolute bottom-8 left-8 z-20 hidden lg:flex flex-col items-center gap-2">
           <Link
-            to="/contact"
+            to="/financing"
             className="group block transition-transform duration-300 hover:scale-105"
           >
             <img
@@ -158,6 +158,12 @@ const InteriorPainting = () => {
               width="192"
               height="192"
             />
+          </Link>
+          <Link
+            to="/financing"
+            className="text-white font-semibold text-sm underline decoration-2 underline-offset-2 hover:text-accent-300 transition-colors drop-shadow-lg"
+          >
+            Click to estimate financing
           </Link>
         </div>
 

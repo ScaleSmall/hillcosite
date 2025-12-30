@@ -176,14 +176,22 @@ const Home = () => {
             <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
               Make your painting project more affordable with our financing options
             </p>
-            <div className="flex justify-center">
-              <img
-                src="/24mo_blue_badge.png"
-                alt="Up to 24 months interest-free financing available"
-                className="w-80 h-auto drop-shadow-2xl"
-                width="320"
-                height="320"
-              />
+            <div className="flex flex-col items-center gap-3">
+              <Link to="/financing" className="inline-block transition-transform hover:scale-105">
+                <img
+                  src="/24mo_blue_badge.png"
+                  alt="Up to 24 months interest-free financing available"
+                  className="w-80 h-auto drop-shadow-2xl"
+                  width="320"
+                  height="320"
+                />
+              </Link>
+              <Link
+                to="/financing"
+                className="text-accent-600 hover:text-accent-700 font-semibold text-lg underline decoration-2 underline-offset-4 transition-colors"
+              >
+                Click to estimate financing
+              </Link>
             </div>
           </div>
         </div>

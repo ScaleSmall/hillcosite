@@ -593,7 +593,7 @@ const Contact = () => {
                 }
               ` }} />
 
-              <div className="container-code-example mt-8">
+              <Link to="/financing" className="container-code-example mt-8 block hover:opacity-90 transition-opacity">
                 <div className="content-code-example-3">
                   <div className="box-code-example-3">
                     <div className="column-left-code-example-3">
@@ -603,7 +603,7 @@ const Contact = () => {
                       <div className="max-width-585-code-example">
                         <p className="paragraph-code-example-medium">Prefer to pay over time rather than all at once?</p>
                         <p className="paragraph-code-example-medium">
-                          <a href="#" className="link-white-code-example">Prequalify for financing</a> today.
+                          <span className="link-white-code-example underline">Prequalify for financing</span> today.
                         </p>
                       </div>
                     </div>
@@ -615,7 +615,7 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </Link>
 
               {showModal && (
                 <div
