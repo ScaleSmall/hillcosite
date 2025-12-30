@@ -13,24 +13,49 @@ const Financing = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-deep-900 via-deep-800 to-deep-700 text-white py-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="flex justify-center mb-3">
+      <section className="relative bg-gradient-to-br from-deep-900 via-deep-800 to-deep-700 text-white py-10 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNm0wIDEyYzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02bTAgMTJjMy4zMTQgMCA2IDIuNjg2IDYgNnMtMi42ODYgNi02IDYtNi0yLjY4Ni02LTYgMi42ODYtNiA2LTZNMTggMThjMy4zMTQgMCA2IDIuNjg2IDYgNnMtMi42ODYgNi02IDYtNi0yLjY4Ni02LTYgMi42ODYtNiA2LTZtMCAxMmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNm0wIDEyYzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L2c+PC9zdmc+')] opacity-30"></div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Content - Left Side */}
+            <div className="flex-1 text-center md:text-left">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                Flexible Payment Options
+              </h1>
+              <p className="text-lg md:text-xl text-slate-200 mb-6">
+                Up to 24 months interest-free financing through Wisetack
+              </p>
+              <ul className="space-y-2 text-base md:text-lg">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <span>Financing from $500 to $25,000</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <span>Fast approval with soft credit check</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <span>Flexible terms from 3 to 60 months</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <span>No hidden fees or prepayment penalties</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Financing Badge - Right Side */}
+            <div className="flex-shrink-0">
               <img
                 src="/24mo_blue_badge.png"
                 alt="Up to 24 months interest-free financing"
-                className="w-20 h-auto"
-                width="80"
-                height="80"
+                className="w-60 h-60 object-contain drop-shadow-2xl"
+                width="240"
+                height="240"
               />
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">
-              Flexible Payment Options
-            </h1>
-            <p className="text-base text-slate-200">
-              Up to 24 months interest-free financing through Wisetack
-            </p>
           </div>
         </div>
       </section>

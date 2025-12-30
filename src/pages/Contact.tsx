@@ -254,12 +254,17 @@ const Contact = () => {
 
             {/* Financing Badge - Right Side */}
             <div className="hidden lg:flex flex-shrink-0">
-              <img
-                src="/24mo_blue_badge.png"
-                alt="Up to 24 months interest-free financing available"
-                className="w-60 h-60 object-contain drop-shadow-lg"
-                loading="eager"
-              />
+              <Link to="/financing" className="flex flex-col items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer">
+                <img
+                  src="/24mo_blue_badge.png"
+                  alt="Up to 24 months interest-free financing available"
+                  className="w-60 h-60 object-contain drop-shadow-lg"
+                  loading="eager"
+                />
+                <span className="text-deep-600 font-semibold underline text-center">
+                  Click to estimate financing
+                </span>
+              </Link>
             </div>
           </div>
         </div>
