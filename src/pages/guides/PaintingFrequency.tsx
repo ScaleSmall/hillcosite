@@ -65,7 +65,7 @@ const PaintingFrequency = () => {
     {
       season: 'Summer',
       icon: '☀️',
-      painting: 'Challenging',
+      painting: 'Pro Recommended',
       exterior: 'Hot surfaces, fast drying can cause issues',
       interior: 'AC helps with ventilation and drying',
       roundRockTip: 'Early morning or late afternoon only for exterior'
@@ -217,7 +217,7 @@ const PaintingFrequency = () => {
                 <div className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${
                   season.painting === 'Excellent' ? 'bg-green-100 text-green-700' :
                   season.painting === 'Good' ? 'bg-blue-100 text-blue-700' :
-                  season.painting === 'Challenging' ? 'bg-orange-100 text-orange-700' :
+                  season.painting === 'Pro Recommended' ? 'bg-orange-100 text-orange-700' :
                   'bg-yellow-100 text-yellow-700'
                 }`}>
                   {season.painting}
