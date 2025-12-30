@@ -66,9 +66,9 @@ const PaintingFrequency = () => {
       season: 'Summer',
       icon: '☀️',
       painting: 'Pro Recommended',
-      exterior: 'Hot surfaces, fast drying can cause issues',
+      exterior: 'Pros watch surface temps and dry time for clean results',
       interior: 'AC helps with ventilation and drying',
-      roundRockTip: 'Early morning or late afternoon only for exterior'
+      roundRockTip: 'Pros adjust start times to avoid peak heat'
     },
     {
       season: 'Fall',
