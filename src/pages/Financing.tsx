@@ -118,70 +118,137 @@ const Financing = () => {
 
       {/* Calculator Section */}
       <section className="py-16 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
-              Calculate Your Monthly Payment
-            </h2>
-            <p className="text-xl text-slate-600">
-              See how affordable your painting project can be with flexible financing options
-            </p>
-          </div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          .section-code-example {
+            position: relative;
+            font-family: Montserrat, Arial, sans-serif;
+            display: flex;
+            overflow: hidden;
+            padding: 80px 6vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #31364c;
+            font-size: 16px;
+            line-height: 150%;
+            font-weight: 400;
+          }
 
-          {/* Wisetack Calculator Embed */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <div className="wisetack-calculator-container">
-              <style dangerouslySetInnerHTML={{ __html: `
-                .wisetack-calculator-container {
-                  min-height: 500px;
-                  width: 100%;
-                }
-                .wisetack-calculator-container iframe {
-                  width: 100%;
-                  min-height: 500px;
-                  border: none;
-                }
-              ` }} />
+          .box-code-example-11 {
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            background-color: #f8f8f8;
+            border-radius: 6px;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 50%;
+            padding: 30px;
+            display: flex;
+          }
 
-              <script
-                src="https://calculator.wisetack.com/widget.js"
-                data-wisetack-partner-id="partner_xyzabc123"
-                data-wisetack-widget-type="calculator"
-                async
-              ></script>
+          .container-code-example {
+            z-index: 1;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+          }
 
-              <div
-                id="wisetack-calculator-widget"
-                className="text-center py-12"
-              >
-                <div className="inline-block">
-                  <div className="flex items-center justify-center gap-3 mb-4">
-                    <img
-                      src="https://cdn.prod.website-files.com/5f194315e6b47c1697925302/63ff658aae810ab61d7481f4_logo%20(1).svg"
-                      alt="Wisetack Financing"
-                      className="h-8"
-                    />
-                  </div>
-                  <p className="text-slate-600 mb-6">
-                    Use the calculator above to estimate your monthly payments
-                  </p>
-                  <a
-                    href="https://apply.wisetack.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-block"
-                  >
-                    Apply for Financing
-                  </a>
+          .content-code-example-11 {
+            grid-column-gap: 64px;
+            grid-row-gap: 64px;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            width:100%;
+          }
+
+          .iframe-wrapper-code-example {
+            flex: 1;
+          }
+
+          .margin-bot-24-code-example {
+            margin-bottom: 24px;
+          }
+
+          .title-code-example-xxsmall {
+            margin: 0 0 0;
+            font-size: 21px;
+            line-height: 140%;
+          }
+
+          .list-code-example {
+            display: flex;
+            flex-direction: column;
+            grid-row-gap: 8px;
+            margin-bottom: 0;
+            font-size: 18px;
+          }
+
+          @media screen and (max-width: 767px) {
+            .content-code-example-11 {
+              grid-row-gap: 20px;
+              flex-direction: column-reverse;
+            }
+
+            .iframe-wrapper-code-example {
+              width: 100%;
+            }
+          }
+
+          @media screen and (max-width: 479px) {
+            .section-code-example {
+              padding: 60px 16px;
+            }
+
+            .container-code-example {
+              flex-direction: column;
+              display: flex;
+            }
+
+            .box-code-example-11 {
+              width: 100%;
+              min-width: 100%;
+              max-width: none;
+            }
+          }
+        ` }} />
+
+        <div className="section-code-example">
+          <div className="container-code-example">
+            <div className="content-code-example-11">
+              <div className="iframe-wrapper-code-example">
+                <div className="iframe-code-example w-embed w-iframe">
+                  <iframe
+                    className="myiframe"
+                    style={{ border: 'none', width: '100%', height: '100%', minHeight: '500px' }}
+                    src="https://wisetack.us/#/payment_calculator?type=HS"
+                    title="Wisetack Payment Calculator"
+                  />
                 </div>
+              </div>
+              <div className="box-code-example-11">
+                <div className="margin-bot-24-code-example">
+                  <h3 className="title-code-example-xxsmall">Terms:</h3>
+                </div>
+                <ul role="list" className="list-code-example">
+                  <li className="list-item-code-example">Financing from $500 - $25,000*</li>
+                  <li className="list-item-code-example">APRs from 0% to 35.9%*</li>
+                  <li className="list-item-code-example">Terms from 3 to 60 months*</li>
+                  <li className="list-item-code-example">No penalties, late fees, or compounding interest</li>
+                </ul>
               </div>
             </div>
           </div>
-
-          <p className="text-center text-sm text-slate-500 mt-6">
-            Subject to credit approval. Terms and conditions apply. Financing provided by Wisetack.
-          </p>
         </div>
+
+        <p className="text-center text-sm text-slate-500 mt-6">
+          Subject to credit approval. Terms and conditions apply. Financing provided by Wisetack.
+        </p>
       </section>
 
       {/* How It Works Section */}
