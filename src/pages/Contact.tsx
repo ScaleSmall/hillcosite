@@ -594,26 +594,19 @@ const Contact = () => {
                 }
               ` }} />
 
-              <Link to="/financing" className="container-code-example mt-8 block hover:opacity-90 transition-opacity">
+              <Link to="/financing" className="container-code-example mt-8 block hover:opacity-90 transition-opacity cursor-pointer">
                 <div className="content-code-example-3">
-                  <div className="box-code-example-3">
-                    <div className="column-left-code-example-3">
-                      <div className="margin-bot-8-code-example">
-                        <h2 className="title-code-example-xsmall">We offer financing<br /></h2>
-                      </div>
-                      <div className="max-width-585-code-example">
-                        <p className="paragraph-code-example-medium">Prefer to pay over time rather than all at once?</p>
-                        <p className="paragraph-code-example-medium">
-                          <span className="link-white-code-example underline">Prequalify for financing</span> today.
-                        </p>
-                      </div>
-                    </div>
+                  <div className="box-code-example-3 flex-col items-center text-center">
                     <img
                       src="https://cdn.prod.website-files.com/5f194315e6b47c1697925302/63ff658aae810ab61d7481f4_logo%20(1).svg"
                       loading="lazy"
                       alt="The white Wisetack logo"
-                      className="logo-code-example"
+                      className="logo-code-example mb-4"
+                      style={{ maxWidth: '200px', margin: '0 auto' }}
                     />
+                    <p className="paragraph-code-example-medium text-white text-lg">
+                      <span className="link-white-code-example underline">Click to estimate financing</span>
+                    </p>
                   </div>
                 </div>
               </Link>
