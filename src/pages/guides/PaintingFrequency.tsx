@@ -118,7 +118,7 @@ const PaintingFrequency = () => {
   return (
     <>
       <SEO
-        title="How Often to Paint in Central Texas (2025) | Austin Paint Schedule"
+        title="How Often to Paint in Central Texas (2026) | Austin Paint Schedule"
         description="Complete guide to painting frequency in Central Texas climate. Learn when to repaint your Austin home interior, exterior, and cabinets for maximum protection."
         canonical="/guides/how-often-paint-central-texas"
         breadcrumbs={[
@@ -134,7 +134,7 @@ const PaintingFrequency = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
               <Calendar className="w-4 h-4 mr-2" />
-              Texas Climate Guide 2025
+              Texas Climate Guide 2026
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
               How Often to Paint in Central Texas

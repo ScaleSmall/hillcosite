@@ -88,7 +88,7 @@ const BestPaintTexasHeat = () => {
   return (
     <>
       <SEO
-        title="Best Exterior Paint for Texas Heat (2025) | Austin Paint Guide"
+        title="Best Exterior Paint for Texas Heat (2026) | Austin Paint Guide"
         description="Complete guide to choosing exterior paint that withstands Texas heat. UV-resistant paints, color selection, and professional recommendations for Austin homes."
         canonical="/guides/best-paint-texas-heat"
         breadcrumbs={[
@@ -104,7 +104,7 @@ const BestPaintTexasHeat = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-4">
               <Sun className="w-4 h-4 mr-2" />
-              Texas Heat Guide 2025
+              Texas Heat Guide 2026
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
               Best Exterior Paint for Texas Heat

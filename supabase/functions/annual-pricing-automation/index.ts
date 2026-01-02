@@ -124,27 +124,45 @@ Deno.serve(async (req: Request) => {
 
     await logToDatabase(supabase, 'info', 'automation-start', `Starting annual pricing automation for ${targetYear}${dryRun ? ' (DRY RUN)' : ''}`);
 
-    const cpiData = await fetchCPIData(supabaseUrl, targetYear);
-    
-    if (!cpiData) {
-      const errorMsg = 'Failed to fetch CPI data';
-      await logToDatabase(supabase, 'error', 'automation-failed', errorMsg);
-      
-      if (!dryRun) {
-        await sendNotification(supabaseUrl, {
-          type: 'failure',
-          year: targetYear,
-          errorMessage: errorMsg
-        });
-      }
+    // First check if CPI data already exists in database
+    const { data: existingCPI } = await supabase
+      .from('inflation_rates')
+      .select('*')
+      .eq('year', targetYear)
+      .maybeSingle();
 
-      return new Response(
-        JSON.stringify({ error: errorMsg }),
-        {
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    let cpiData;
+    if (existingCPI) {
+      // Use existing CPI data from database
+      cpiData = {
+        rate: parseFloat(existingCPI.cpi_rate),
+        source: existingCPI.data_source
+      };
+      await logToDatabase(supabase, 'info', 'cpi-source', `Using existing CPI data from database for ${targetYear}`, cpiData);
+    } else {
+      // Try to fetch from external APIs
+      cpiData = await fetchCPIData(supabaseUrl, targetYear);
+
+      if (!cpiData) {
+        const errorMsg = 'Failed to fetch CPI data';
+        await logToDatabase(supabase, 'error', 'automation-failed', errorMsg);
+
+        if (!dryRun) {
+          await sendNotification(supabaseUrl, {
+            type: 'failure',
+            year: targetYear,
+            errorMessage: errorMsg
+          });
         }
-      );
+
+        return new Response(
+          JSON.stringify({ error: errorMsg }),
+          {
+            status: 500,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          }
+        );
+      }
     }
 
     await logToDatabase(supabase, 'info', 'cpi-fetched', `CPI rate: ${cpiData.rate}% from ${cpiData.source}`, cpiData);

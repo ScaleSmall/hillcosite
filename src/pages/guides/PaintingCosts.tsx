@@ -78,7 +78,7 @@ const PaintingCosts = () => {
   return (
     <>
       <SEO
-        title="Cost to Paint a House in Austin (2025) | Painting Cost Guide"
+        title="Cost to Paint a House in Austin (2026) | Painting Cost Guide"
         description="Complete guide to house painting costs in Austin TX. Interior painting, exterior painting, and cabinet painting pricing. Get accurate estimates for your Austin home."
         canonical="/guides/painting-costs-round-rock"
         breadcrumbs={[
@@ -94,10 +94,10 @@ const PaintingCosts = () => {
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4">
               <Calculator className="w-4 h-4 mr-2" />
-              2025 Pricing Guide
+              2026 Pricing Guide
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
-              Cost to Paint a House in Austin (2025)
+              Cost to Paint a House in Austin (2026)
             </h1>
             <p className="text-xl text-slate-600 leading-body">
               Complete pricing guide for Austin homeowners. Get accurate estimates for interior painting, exterior painting, and cabinet painting from local professionals.
