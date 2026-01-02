@@ -6,37 +6,36 @@ Your project's Auth server is configured to use at most 10 connections. This fix
 ## Solution
 Switch to a percentage-based connection allocation strategy instead of a fixed number.
 
-## Steps to Fix (Supabase Dashboard)
+## Steps to Fix
 
-### Method 1: Via Supabase Dashboard
+### Important: This Setting May Require Supabase Support
+
+The Auth DB connection strategy is typically managed internally by Supabase and may not be directly user-configurable through the dashboard. Here are your options:
+
+### Option 1: Contact Supabase Support (Recommended)
 1. Go to your [Supabase Dashboard](https://supabase.com/dashboard)
-2. Select your project
-3. Navigate to **Settings** → **Database** → **Connection Pooling**
-4. Find the **Auth Pool** configuration
-5. Change from:
-   - Current: `Fixed: 10 connections`
-   - To: `Percentage: 10%` (or appropriate percentage for your needs)
-6. Click **Save**
+2. Click on the support icon or go to https://supabase.com/dashboard/support
+3. Create a support ticket with:
+   - **Subject**: "Change Auth DB Connection Strategy from Fixed to Percentage"
+   - **Description**: "My project's Auth server is currently configured with a fixed 10 connections. I need to change this to a percentage-based allocation (e.g., 10%) to improve scalability. Project ref: [your-project-ref]"
 
-### Method 2: Via Supabase CLI (if available)
-```bash
-# Update the connection pooler configuration
-supabase projects update --db-pooler-mode percentage --auth-pooler-size 10
-```
+### Option 2: Check Project Settings
+Some Supabase plans have access to advanced database settings:
 
-### Method 3: Via Management API
-```bash
-# Using the Supabase Management API
-curl -X PATCH 'https://api.supabase.com/v1/projects/{project-ref}/config/database' \
-  -H "Authorization: Bearer {your-access-token}" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "auth_pooler": {
-      "mode": "percentage",
-      "size": 10
-    }
-  }'
-```
+1. Go to **Settings** → **Database**
+2. Look for:
+   - **Connection Pooling** section
+   - **Pool Mode** configuration
+   - **Transaction Pooler** or **Session Pooler** settings
+3. If you see Auth-specific pooling options, change from "Fixed" to "Percentage"
+
+Note: If you don't see these options, your plan may not have direct access to this configuration.
+
+### Option 3: Upgrade Plan (If Applicable)
+Some advanced database configuration options are only available on Pro or Enterprise plans. Check if upgrading your plan provides access to connection pooling configuration.
+
+### Option 4: Environment Configuration (Advanced)
+For self-hosted or advanced configurations, you may be able to set this via environment variables, but this is typically not available for managed Supabase projects.
 
 ## Recommended Configuration
 
