@@ -26,7 +26,7 @@ const Privacy = () => {
                 Website: <a href="https://www.hillcopaint.com" className="text-deep-600 hover:text-deep-700">https://www.hillcopaint.com</a>
               </p>
               <p className="text-lg text-slate-600">
-                Last updated: September 15, 2025
+                Last updated: January 2, 2026
               </p>
             </div>
 

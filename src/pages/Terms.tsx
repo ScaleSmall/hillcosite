@@ -19,7 +19,7 @@ const Terms = () => {
         <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-deep-900 mb-4">Terms of Service</h1>
-            <p className="text-lg text-slate-600">Last Updated: October 12, 2025</p>
+            <p className="text-lg text-slate-600">Last Updated: January 2, 2026</p>
           </div>
         </section>
 
