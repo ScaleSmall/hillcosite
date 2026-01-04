@@ -1,37 +1,28 @@
 # ============================================
 # City-specific redirects from Google Business Profile
 # ============================================
-/austin                   /           301
-/west-lake-hills         /           301
-/westlake                /           301
-/tarrytown               /           301
-/rollingwood             /           301
-/hyde-park               /           301
-/clarksville             /           301
-/lakeway                 /           301
-/bee-cave                /           301
-/dripping-springs        /           301
-/cedar-park              /           301
-/round-rock              /           301
-/central-austin          /           301
-/east-austin             /           301
-/south-austin            /           301
-/north-austin            /           301
+/austin                   /service-areas/austin 301
+/west-lake-hills         /service-areas/west-lake-hills 301
+/westlake                /service-areas/west-lake-hills 301
+/tarrytown               /service-areas/austin 301
+/rollingwood             /service-areas/austin 301
+/hyde-park               /service-areas/austin 301
+/clarksville             /service-areas/austin 301
+/lakeway                 /service-areas/austin 301
+/bee-cave                /service-areas/austin 301
+/dripping-springs        /service-areas/austin 301
+/central-austin          /service-areas/austin 301
+/east-austin             /service-areas/austin 301
+/south-austin            /service-areas/austin 301
+/north-austin            /service-areas/austin 301
 
 # Estimate and quote redirects
-/get-a-free-estimate     /free-estimate 301!
-/get-a-free-estimate/    /free-estimate 301!
-/estimate                /free-estimate 301!
-/quote                   /free-estimate 301!
-/request-estimate        /free-estimate 301!
-/free-estimate           /contact       301!
-
-# Round Rock specific redirects (with trailing slash)
-/round-rock/             /service-areas/round-rock 301!
-
-# Handle common variations
-/Austin                  /           301
-/West-Lake-Hills         /           301
+/get-a-free-estimate     /contact 301!
+/get-a-free-estimate/    /contact 301!
+/estimate                /contact 301!
+/quote                   /contact 301!
+/request-estimate        /contact 301!
+/free-estimate           /contact 301!
 
 # Legacy service URL consolidation - 301 redirect to /services/{service}
 /interior-painting       /services/interior-painting    301
@@ -43,14 +34,22 @@
 /commercial              /services/commercial           301
 /painting-services       /services                      301
 
-# Round Rock specific redirects - create hub page
+# Round Rock & Georgetown specific redirects
 /round-rock              /service-areas/round-rock-georgetown      301
+/round-rock/             /service-areas/round-rock-georgetown      301
 /roundrock               /service-areas/round-rock-georgetown      301
-/georgetown              /service-areas/round-rock-georgetown      301
+/roundrock-painting      /service-areas/round-rock-georgetown      301
 /round-rock-painters     /service-areas/round-rock-georgetown      301
 /round-rock-painting     /service-areas/round-rock-georgetown      301
+/georgetown              /service-areas/round-rock-georgetown      301
 /georgetown-painters     /service-areas/round-rock-georgetown      301
 /georgetown-painting     /service-areas/round-rock-georgetown      301
+/78664                   /service-areas/round-rock-georgetown      301
+/78665                   /service-areas/round-rock-georgetown      301
+/78664-painting          /service-areas/round-rock-georgetown      301
+/78665-painting          /service-areas/round-rock-georgetown      301
+/round-rock-78664        /service-areas/round-rock-georgetown      301
+/round-rock-78665        /service-areas/round-rock-georgetown      301
 
 # Pflugerville & Wells Branch redirects
 /pflugerville            /service-areas/pflugerville-wells-branch  301
@@ -79,43 +78,21 @@
 /leander                 /service-areas/leander                    301
 /leander-painting        /service-areas/leander                    301
 /78645                   /service-areas/leander                    301
-/Westlake                /           301
-/Tarrytown               /           301
 
-# Round Rock specific redirects
-/round-rock              /service-areas/round-rock-georgetown           301
-/round-rock-painting     /service-areas/round-rock-georgetown           301
-/roundrock               /service-areas/round-rock-georgetown           301
-/roundrock-painting      /service-areas/round-rock-georgetown           301
-/78664                   /service-areas/round-rock-georgetown           301
-/78665                   /service-areas/round-rock-georgetown           301
-/78664-painting          /service-areas/round-rock-georgetown           301
-/78665-painting          /service-areas/round-rock-georgetown           301
-/round-rock-78664        /service-areas/round-rock-georgetown           301
-/round-rock-78665        /service-areas/round-rock-georgetown           301
-/pflugerville            /service-areas/pflugerville         301
-/pflugerville-painting   /service-areas/pflugerville         301
-/cedar-park              /service-areas/cedar-park           301
-/cedar-park-painting     /service-areas/cedar-park           301
-/georgetown              /service-areas/round-rock-georgetown           301
-/georgetown-painting     /service-areas/round-rock-georgetown           301
-/hutto                   /service-areas/taylor-hutto         301
-/hutto-painting          /service-areas/taylor-hutto         301
-/leander                 /service-areas/leander              301
-/leander-painting        /service-areas/leander              301
-/taylor                  /service-areas/taylor-hutto         301
-/taylor-painting         /service-areas/taylor-hutto         301
-
-# Handle common variations for new cities
-/Round-Rock              /           301
-/RoundRock               /           301
-/Pflugerville            /           301
-/Cedar-Park              /           301
-/CedarPark               /           301
-/Georgetown              /           301
-/Hutto                   /           301
-/Leander                 /           301
-/Taylor                  /           301
+# Handle common variations (capitalization)
+/Austin                  /service-areas/austin                     301
+/West-Lake-Hills         /service-areas/west-lake-hills            301
+/Westlake                /service-areas/west-lake-hills            301
+/Tarrytown               /service-areas/austin                     301
+/Round-Rock              /service-areas/round-rock-georgetown      301
+/RoundRock               /service-areas/round-rock-georgetown      301
+/Pflugerville            /service-areas/pflugerville-wells-branch  301
+/Cedar-Park              /service-areas/cedar-park                 301
+/CedarPark               /service-areas/cedar-park                 301
+/Georgetown              /service-areas/round-rock-georgetown      301
+/Hutto                   /service-areas/taylor-hutto               301
+/Leander                 /service-areas/leander                    301
+/Taylor                  /service-areas/taylor-hutto               301
 
 # Catch-all for SPA
 /*                       /index.html 200
