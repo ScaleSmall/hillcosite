@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import SplitSection from '../components/sections/SplitSection';
 import CTABanner from '../components/sections/CTABanner';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import GoogleMapEmbed from '../components/GoogleMapEmbed';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Contact = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
@@ -660,8 +660,7 @@ const Contact = () => {
             </h2>
             <p className="text-slate-600">Prefer to call or email? We're here to help.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Contact Information */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
@@ -669,7 +668,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-deep-900">Phone</h3>
-                  <a href="tel:(512) 240-2246" className="text-deep-600 hover:text-deep-700 transition-colors">
+                  <a href="tel:(512)240-2246" className="text-deep-600 hover:text-deep-700 transition-colors">
                     (512) 240-2246
                   </a>
                   <p className="text-sm text-slate-600">Prompt response</p>
@@ -698,11 +697,17 @@ const Contact = () => {
                 <div className="text-center">
                   <h3 className="font-semibold text-deep-900">Service Area</h3>
                   <p className="text-slate-700">Austin Metro Area</p>
-                  <p className="text-sm text-slate-600">Including all surrounding communities</p>
+                  <p className="text-sm text-slate-600">Round Rock, Cedar Park, Georgetown & more</p>
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-bold text-deep-900 mb-2">Our Service Area</h3>
+            <p className="text-slate-600">Serving Austin and surrounding communities</p>
+          </div>
+          <GoogleMapEmbed className="max-w-4xl mx-auto" />
         </div>
       </section>
 

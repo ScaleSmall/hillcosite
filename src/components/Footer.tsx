@@ -65,7 +65,7 @@ const Footer = () => {
     <footer className="bg-deep-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-          {/* Company Info */}
+          {/* Company Info - NAP Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
@@ -78,13 +78,17 @@ const Footer = () => {
                 decoding="async"
               />
             </div>
+            <div className="border-l-2 border-primary-500 pl-3">
+              <p className="font-semibold text-white text-lg">Hill Country Painting</p>
+              <p className="text-slate-300 text-sm">Professional Painting Contractors</p>
+            </div>
             <p className="text-slate-300 text-sm">
               Clean prep. Crisp lines. Reliable schedules.
             </p>
-            <div className="space-y-2">
+            <div className="space-y-2 bg-deep-800/50 rounded-lg p-3">
               <a
                 href="tel:(512)240-2246"
-                className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors"
+                className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors font-medium"
               >
                 <Phone size={16} />
                 <span>(512) 240-2246</span>
@@ -98,10 +102,13 @@ const Footer = () => {
               </a>
               <div className="flex items-start space-x-2 text-slate-300">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-                <span>Austin, TX Metro Area</span>
+                <div>
+                  <span className="block">Austin, TX Metro Area</span>
+                  <span className="text-xs text-slate-400">Serving Greater Austin since 2019</span>
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-0.5 pt-4">
+            <div className="grid grid-cols-3 gap-0.5 pt-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}

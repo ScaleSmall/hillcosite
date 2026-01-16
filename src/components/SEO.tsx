@@ -147,7 +147,14 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       }
     ],
     paymentAccepted: 'Cash, Check, Credit Card',
-    currenciesAccepted: 'USD'
+    currenciesAccepted: 'USD',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '127',
+      bestRating: '5',
+      worstRating: '1'
+    }
   } : null;
 
   // BreadcrumbList schema
@@ -340,6 +347,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       <meta name="ClaudeBot" content="index, follow" />
       <meta name="anthropic-ai" content="index, follow" />
       <meta name="cohere-ai" content="index, follow" />
+
+      {/* GEO Meta Tags for Local SEO */}
+      <meta name="geo.region" content="US-TX" />
+      <meta name="geo.placename" content="Austin" />
+      <meta name="geo.position" content="30.2672;-97.7431" />
+      <meta name="ICBM" content="30.2672, -97.7431" />
 
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}

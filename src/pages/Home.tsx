@@ -8,6 +8,7 @@ import RelatedServices from '../components/RelatedServices';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import ServicesGrid from '../components/sections/ServicesGrid';
 import SplitSection from '../components/sections/SplitSection';
+import ProcessSection from '../components/sections/ProcessSection';
 import ServiceAreasSection from '../components/sections/ServiceAreasSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import MiniFAQ from '../components/sections/MiniFAQ';
@@ -69,7 +70,7 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Hill Country Painting — Professional Painting Contractors Austin"
+        title="Interior & Exterior House Painters in Austin, TX | Hill Country Painting"
         description="Expert Austin house painters. Interior, exterior, cabinet painting. 15+ years experience. Insured crew. 2-year warranty. Serving Austin metro."
         canonical="/"
         pageType="website"
@@ -77,6 +78,38 @@ const Home = () => {
           { name: 'Home', url: '/' }
         ]}
         faq={faqs}
+        business={{
+          name: 'Hill Country Painting',
+          type: 'PaintingContractor',
+          telephone: '(512) 240-2246',
+          email: 'info@hillcopaint.com',
+          address: {
+            addressLocality: 'Austin',
+            addressRegion: 'TX',
+            addressCountry: 'US'
+          },
+          aggregateRating: {
+            ratingValue: '4.9',
+            reviewCount: '127'
+          },
+          reviews: [
+            {
+              author: 'Jason Hartley',
+              rating: '5',
+              text: 'Hill Country Painting did an outstanding job. They painted 7 rooms, two staircases, the exterior stucco, and shutters. Everything looks clean and professional.'
+            },
+            {
+              author: 'Patricia Perez',
+              rating: '5',
+              text: 'This is the second time I hired Hill Country Painting. They are thorough and have great follow-up. They are neat and clean and have good communication.'
+            },
+            {
+              author: 'Arashk Shirazi',
+              rating: '5',
+              text: 'Josh was very professional, honest and informative about options. The crew were respectful and responsible about the quality of their work.'
+            }
+          ]
+        }}
       />
       
       {/* Hero Section */}
@@ -211,6 +244,53 @@ const Home = () => {
         ]}
         image="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Professional Austin house painting - Hill Country Painting crew interior work"
+      />
+
+      {/* Our Working Process */}
+      <ProcessSection
+        title="Our Working Process"
+        subtitle="From first contact to final walkthrough, we make your painting project simple and stress-free"
+        steps={[
+          {
+            number: 1,
+            title: 'Request a Quote',
+            description: 'Contact us online or by phone for a free, no-obligation estimate. We respond promptly to all inquiries.'
+          },
+          {
+            number: 2,
+            title: 'On-Site Evaluation',
+            description: 'Our expert visits your property to assess the scope, discuss colors, and provide an accurate quote.'
+          },
+          {
+            number: 3,
+            title: 'Prep & Protection',
+            description: 'We carefully prepare surfaces and protect your furniture, floors, and landscaping before any painting begins.'
+          },
+          {
+            number: 4,
+            title: 'Professional Painting',
+            description: 'Our skilled crew applies premium paints with precision, ensuring clean lines and thorough coverage.'
+          },
+          {
+            number: 5,
+            title: 'Final Walkthrough',
+            description: 'We review every detail with you to ensure complete satisfaction before considering the job done.'
+          }
+        ]}
+      />
+
+      {/* CTA After Process */}
+      <CTABanner
+        title="Ready to Get Started?"
+        subtitle="Request your free estimate today and experience the Hill Country Painting difference"
+        primaryCTA={{
+          text: 'Request Free Estimate',
+          href: '/contact'
+        }}
+        secondaryCTA={{
+          text: 'Call (512) 240-2246',
+          href: 'tel:(512)240-2246'
+        }}
       />
 
       {/* Pattern H: Service Areas */}
