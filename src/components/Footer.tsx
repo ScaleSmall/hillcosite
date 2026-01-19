@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
+import { businessConfig, getDisplayAddress } from '../config/business';
 
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,32 +80,32 @@ const Footer = () => {
               />
             </div>
             <div className="border-l-2 border-primary-500 pl-3">
-              <p className="font-semibold text-white text-lg">Hill Country Painting</p>
+              <p className="font-semibold text-white text-lg">{businessConfig.name}</p>
               <p className="text-slate-300 text-sm">Professional Painting Contractors</p>
             </div>
             <p className="text-slate-300 text-sm">
-              Clean prep. Crisp lines. Reliable schedules.
+              {businessConfig.tagline}
             </p>
             <div className="space-y-2 bg-deep-800/50 rounded-lg p-3">
               <a
-                href="tel:(512)240-2246"
+                href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
                 className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors font-medium"
               >
                 <Phone size={16} />
-                <span>(512) 240-2246</span>
+                <span>{businessConfig.phone}</span>
               </a>
               <a
-                href="mailto:info@hillcopaint.com"
+                href={`mailto:${businessConfig.email}`}
                 className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors"
               >
                 <Mail size={16} />
-                <span>info@hillcopaint.com</span>
+                <span>{businessConfig.email}</span>
               </a>
               <div className="flex items-start space-x-2 text-slate-300">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" />
                 <div>
-                  <span className="block">Austin, TX Metro Area</span>
-                  <span className="text-xs text-slate-400">Serving Greater Austin since 2019</span>
+                  <span className="block">{getDisplayAddress('full')}</span>
+                  <span className="text-xs text-slate-400">Serving Greater Austin since {businessConfig.servingSince}</span>
                 </div>
               </div>
             </div>

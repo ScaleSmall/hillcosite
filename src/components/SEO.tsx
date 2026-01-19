@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { businessConfig, hasValidRating } from '../config/business';
 
 interface SEOProps {
   title: string;
@@ -50,6 +51,19 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const canonicalStr = canonical === '/'
     ? `${baseUrl}/`
     : `${baseUrl}${canonical}`;
+
+  // Development mode: Check for duplicate canonical tags
+  useEffect(() => {
+    if (import.meta.env.DEV) {
+      const canonicalTags = document.querySelectorAll('link[rel="canonical"]');
+      if (canonicalTags.length > 1) {
+        console.error(
+          `[SEO WARNING] Multiple canonical tags detected (${canonicalTags.length})! This will hurt SEO.`,
+          Array.from(canonicalTags).map(tag => tag.getAttribute('href'))
+        );
+      }
+    }
+  }, [canonicalStr]);
 
   // Ensure title is optimized for length (50-60 chars ideal)
   const optimizedTitle = String(title).length > 60 ? String(title).slice(0, 57) + '...' : String(title);
@@ -148,13 +162,15 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     ],
     paymentAccepted: 'Cash, Check, Credit Card',
     currenciesAccepted: 'USD',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '127',
-      bestRating: '5',
-      worstRating: '1'
-    }
+    ...(hasValidRating() && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: businessConfig.aggregateRating.ratingValue,
+        reviewCount: businessConfig.aggregateRating.reviewCount,
+        bestRating: businessConfig.aggregateRating.bestRating,
+        worstRating: businessConfig.aggregateRating.worstRating
+      }
+    })
   } : null;
 
   // BreadcrumbList schema
