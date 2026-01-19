@@ -5,23 +5,27 @@ command = "npx vite build"
 [build.environment]
 NODE_VERSION = "18"
 
-[[redirects]]
-from = "https://www.hillcopaint.com/*"
-to = "https://hillcopaint.com/:splat"
-status = 301
-force = true
-
-[[redirects]]
-from = "http://www.hillcopaint.com/*"
-to = "https://hillcopaint.com/:splat"
-status = 301
-force = true
-
-[[redirects]]
-from = "http://hillcopaint.com/*"
-to = "https://hillcopaint.com/:splat"
-status = 301
-force = true
+# Domain-specific redirects - DISABLED FOR SITEGROUND
+# These are now in .htaccess for Apache compatibility
+# If you deploy to Netlify in the future, uncomment these:
+#
+# [[redirects]]
+# from = "https://www.hillcopaint.com/*"
+# to = "https://hillcopaint.com/:splat"
+# status = 301
+# force = true
+#
+# [[redirects]]
+# from = "http://www.hillcopaint.com/*"
+# to = "https://hillcopaint.com/:splat"
+# status = 301
+# force = true
+#
+# [[redirects]]
+# from = "http://hillcopaint.com/*"
+# to = "https://hillcopaint.com/:splat"
+# status = 301
+# force = true
 
 [[redirects]]
 from = "/*"

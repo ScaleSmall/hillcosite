@@ -2,10 +2,108 @@
   RewriteEngine On
   RewriteBase /
 
-  # Don't rewrite files or directories
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Force non-www
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [L,R=301]
+
+  # City-specific redirects
+  RewriteRule ^austin/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^west-lake-hills/?$ /service-areas/west-lake-hills [R=301,L]
+  RewriteRule ^westlake/?$ /service-areas/west-lake-hills [R=301,L]
+  RewriteRule ^tarrytown/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^rollingwood/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^hyde-park/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^clarksville/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^lakeway/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^bee-cave/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^dripping-springs/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^central-austin/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^east-austin/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^south-austin/?$ /service-areas/austin [R=301,L]
+  RewriteRule ^north-austin/?$ /service-areas/austin [R=301,L]
+
+  # Estimate and quote redirects
+  RewriteRule ^get-a-free-estimate/?$ /contact [R=301,L]
+  RewriteRule ^estimate/?$ /contact [R=301,L]
+  RewriteRule ^quote/?$ /contact [R=301,L]
+  RewriteRule ^request-estimate/?$ /contact [R=301,L]
+  RewriteRule ^free-estimate/?$ /contact [R=301,L]
+
+  # Service redirects
+  RewriteRule ^interior-painting/?$ /services/interior-painting [R=301,L]
+  RewriteRule ^exterior-painting/?$ /services/exterior-painting [R=301,L]
+  RewriteRule ^cabinet-refinishing/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^cabinet-painting/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^cabinet-staining/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^commercial-painting/?$ /services/commercial [R=301,L]
+  RewriteRule ^commercial/?$ /services/commercial [R=301,L]
+  RewriteRule ^painting-services/?$ /services [R=301,L]
+
+  # Round Rock & Georgetown redirects
+  RewriteRule ^round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^roundrock/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^roundrock-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^round-rock-painters/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^round-rock-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^georgetown/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^georgetown-painters/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^georgetown-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^78664/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^78665/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^78664-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^78665-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^round-rock-78664/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^round-rock-78665/?$ /service-areas/round-rock-georgetown [R=301,L]
+
+  # Pflugerville & Wells Branch redirects
+  RewriteRule ^pflugerville/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+  RewriteRule ^pflugerville-painting/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+  RewriteRule ^wells-branch/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+  RewriteRule ^wells-branch-painting/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+  RewriteRule ^78660/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+  RewriteRule ^78691/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+  RewriteRule ^78728/?$ /service-areas/pflugerville-wells-branch [R=301,L]
+
+  # Taylor & Hutto redirects
+  RewriteRule ^taylor/?$ /service-areas/taylor-hutto [R=301,L]
+  RewriteRule ^taylor-painting/?$ /service-areas/taylor-hutto [R=301,L]
+  RewriteRule ^hutto/?$ /service-areas/taylor-hutto [R=301,L]
+  RewriteRule ^hutto-painting/?$ /service-areas/taylor-hutto [R=301,L]
+  RewriteRule ^76574/?$ /service-areas/taylor-hutto [R=301,L]
+  RewriteRule ^78634/?$ /service-areas/taylor-hutto [R=301,L]
+
+  # Cedar Park redirects
+  RewriteRule ^cedar-park/?$ /service-areas/cedar-park [R=301,L]
+  RewriteRule ^cedar-park-painting/?$ /service-areas/cedar-park [R=301,L]
+  RewriteRule ^78613/?$ /service-areas/cedar-park [R=301,L]
+  RewriteRule ^78641/?$ /service-areas/cedar-park [R=301,L]
+
+  # Leander redirects
+  RewriteRule ^leander/?$ /service-areas/leander [R=301,L]
+  RewriteRule ^leander-painting/?$ /service-areas/leander [R=301,L]
+  RewriteRule ^78645/?$ /service-areas/leander [R=301,L]
+
+  # Case variations
+  RewriteRule ^Austin/?$ /service-areas/austin [R=301,L,NC]
+  RewriteRule ^West-Lake-Hills/?$ /service-areas/west-lake-hills [R=301,L,NC]
+  RewriteRule ^Westlake/?$ /service-areas/west-lake-hills [R=301,L,NC]
+  RewriteRule ^Tarrytown/?$ /service-areas/austin [R=301,L,NC]
+  RewriteRule ^Round-Rock/?$ /service-areas/round-rock-georgetown [R=301,L,NC]
+  RewriteRule ^RoundRock/?$ /service-areas/round-rock-georgetown [R=301,L,NC]
+  RewriteRule ^Pflugerville/?$ /service-areas/pflugerville-wells-branch [R=301,L,NC]
+  RewriteRule ^Cedar-Park/?$ /service-areas/cedar-park [R=301,L,NC]
+  RewriteRule ^CedarPark/?$ /service-areas/cedar-park [R=301,L,NC]
+  RewriteRule ^Georgetown/?$ /service-areas/round-rock-georgetown [R=301,L,NC]
+  RewriteRule ^Hutto/?$ /service-areas/taylor-hutto [R=301,L,NC]
+  RewriteRule ^Leander/?$ /service-areas/leander [R=301,L,NC]
+  RewriteRule ^Taylor/?$ /service-areas/taylor-hutto [R=301,L,NC]
+
+  # SPA routing - must be last
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-
-  # Rewrite everything else to index.html
   RewriteRule ^ index.html [L]
 </IfModule>
