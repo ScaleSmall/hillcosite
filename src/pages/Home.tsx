@@ -13,8 +13,10 @@ import ServiceAreasSection from '../components/sections/ServiceAreasSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import MiniFAQ from '../components/sections/MiniFAQ';
 import CTABanner from '../components/sections/CTABanner';
+import { useGBPRating } from '../hooks/useGBPRating';
 
 const Home = () => {
+  const gbpRating = useGBPRating();
   const serviceAreas = [
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
     { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
@@ -88,10 +90,12 @@ const Home = () => {
             addressRegion: 'TX',
             addressCountry: 'US'
           },
-          aggregateRating: {
-            ratingValue: '4.9',
-            reviewCount: '127'
-          },
+          ...(gbpRating?.shouldDisplay && gbpRating.ratingValue && gbpRating.reviewCount && {
+            aggregateRating: {
+              ratingValue: gbpRating.ratingValue,
+              reviewCount: gbpRating.reviewCount
+            }
+          }),
           reviews: [
             {
               author: 'Jason Hartley',
@@ -183,7 +187,7 @@ const Home = () => {
                 </a>
               </div>
               <div className="text-lg text-white/95 font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
-                Austin's most trusted painting contractors since 2019. We've transformed over 500 homes and businesses across the Austin metro area with professional interior painting, exterior painting, cabinet painting, and commercial painting services. Our experienced, insured crew delivers exceptional results with clean preparation, precise application, and reliable scheduling that Austin homeowners and businesses depend on.
+                Austin's most trusted painting contractors. We've transformed homes and businesses across the Austin metro area with professional interior painting, exterior painting, cabinet painting, and commercial painting services. Our experienced, insured crew delivers exceptional results with clean preparation, precise application, and reliable scheduling that Austin homeowners and businesses depend on.
               </div>
           </div>
           </div>

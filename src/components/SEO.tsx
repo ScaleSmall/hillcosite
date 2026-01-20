@@ -161,16 +161,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       }
     ],
     paymentAccepted: 'Cash, Check, Credit Card',
-    currenciesAccepted: 'USD',
-    ...(hasValidRating() && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: businessConfig.aggregateRating.ratingValue,
-        reviewCount: businessConfig.aggregateRating.reviewCount,
-        bestRating: businessConfig.aggregateRating.bestRating,
-        worstRating: businessConfig.aggregateRating.worstRating
-      }
-    })
+    currenciesAccepted: 'USD'
   } : null;
 
   // BreadcrumbList schema
@@ -299,7 +290,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         ...(business.address.addressCountry && { addressCountry: business.address.addressCountry })
       }
     }),
-    ...(business.aggregateRating && {
+    ...(business.aggregateRating && hasValidRating(business.aggregateRating.ratingValue) && {
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: business.aggregateRating.ratingValue,

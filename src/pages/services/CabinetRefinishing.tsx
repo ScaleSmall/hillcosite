@@ -178,7 +178,7 @@ const CabinetRefinishing = () => {
                 Cabinet Painters in Austin, TX
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Transform your kitchen for thousands less than replacement in Austin. 500+ projects completed • Custom colors • Professional finish • 2-year warranty.
+                Transform your kitchen for thousands less than replacement in Austin. Custom colors • Professional finish • 2-year warranty.
               </p>
               <div className="text-base text-white/90 font-medium drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.

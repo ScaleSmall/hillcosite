@@ -105,7 +105,7 @@ const Footer = () => {
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="block">{getDisplayAddress('full')}</span>
-                  <span className="text-xs text-slate-400">Serving Greater Austin since {businessConfig.servingSince}</span>
+                  <span className="text-xs text-slate-400">Serving Greater Austin</span>
                 </div>
               </div>
             </div>

@@ -127,7 +127,7 @@ const Austin = () => {
                 </a>
               </div>
               <div className="text-base text-white/90 font-medium drop-shadow">
-                Trusted by Austin homeowners and businesses since 2019
+                Trusted by Austin homeowners and businesses
               </div>
             </div>
           </div>
@@ -137,9 +137,9 @@ const Austin = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">1500+</div>,
-            value: "1500+",
-            label: "Austin Projects"
+            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">100+</div>,
+            value: "100+",
+            label: "Local Projects"
           },
           {
             icon: <Music className="w-8 h-8 text-deep-600" />,
@@ -166,7 +166,7 @@ const Austin = () => {
 
       <SplitSection
         title="Austin's Diverse Neighborhoods Demand Expert Painters"
-        description="Austin is a city of incredible diversity, from the Victorian charm of Hyde Park to the sleek modern architecture of downtown, the luxury estates of West Lake Hills to the creative energy of East Austin. Our painters understand the unique requirements of each neighborhood, whether it's preserving historic character in Clarksville, meeting HOA standards in Tarrytown, or creating bold contemporary finishes in Mueller. We navigate Austin's intense summer heat, sudden storms, and diverse architectural styles with expertise gained from thousands of local projects."
+        description="Austin is a city of incredible diversity, from the Victorian charm of Hyde Park to the sleek modern architecture of downtown, the luxury estates of West Lake Hills to the creative energy of East Austin. Our painters understand the unique requirements of each neighborhood, whether it's preserving historic character in Clarksville, meeting HOA standards in Tarrytown, or creating bold contemporary finishes in Mueller. We navigate Austin's intense summer heat, sudden storms, and diverse architectural styles with expertise gained from extensive local experience."
         benefits={[
           { text: 'Historic district expertise including Hyde Park, Clarksville, and Travis Heights with period-appropriate colors' },
           { text: 'Modern downtown high-rise and condo painting with minimal disruption to urban environments' },

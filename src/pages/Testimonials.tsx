@@ -157,7 +157,7 @@ const Testimonials = () => {
         title="Building Trust Through Quality Work"
         description="Our reputation in Austin is built on consistently delivering exceptional results. Every testimonial represents a commitment to clean prep, crisp lines, and reliable schedules that Austin homeowners have come to expect."
         benefits={[
-          { text: 'Over 500 satisfied customers in Austin metro' },
+          { text: 'Satisfied customers throughout Austin metro' },
           { text: 'Consistent 5-star reviews across all platforms' },
           { text: 'Strong referral network from happy clients' },
           { text: 'Long-term relationships with repeat customers' },
