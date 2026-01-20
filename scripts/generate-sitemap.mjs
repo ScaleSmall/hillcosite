@@ -8,6 +8,18 @@ const __dirname = dirname(__filename);
 
 const baseUrl = 'https://hillcopaint.com';
 
+const geoAreas = [
+  { hub: 'steiner-ranch-78732', neighborhoods: ['rob-roy', 'davenport-ranch', 'river-place', 'barclay-place', 'chaparral-cliffside'] },
+  { hub: 'west-lake-hills-and-rollingwood', neighborhoods: ['rollingwood', 'west-lake-hills', 'spanish-oaks', 'davenport-ranch', 'lake-austin-hills'] },
+  { hub: 'barton-creek', neighborhoods: ['barton-creek-country-club-estates', 'fazio-foothills-cliffside', 'spyglass-bartons-bluff', 'lake-austin-west-estates', 'barton-creek-west'] },
+  { hub: 'tarrytown', neighborhoods: ['tarrytown', 'old-enfield', 'pemberton-heights', 'bryker-woods', 'clarksville'] },
+  { hub: 'downtown-austin-luxury', neighborhoods: ['downtown-core-78701', 'rainey-street-district', 'old-west-austin', 'zilker', 'clarksville'] },
+  { hub: 'allandale-and-northwest-hills', neighborhoods: ['allandale', 'northwest-hills', 'crestview', 'quail-creek', 'triangle-north-lamar'] },
+  { hub: 'lakeway-bee-cave-and-lake-travis', neighborhoods: ['lakeway', 'rough-hollow', 'the-peninsula-at-rough-hollow', 'serenity-hills', 'bee-cave'] },
+  { hub: 'circle-c-ranch-and-southwest-austin', neighborhoods: ['circle-c-ranch', 'grey-rock', 'lost-creek', 'shady-hollow', 'west-oak-hill'] },
+  { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights', 'old-enfield', 'bryker-woods', 'clarksville', 'old-west-austin'] }
+];
+
 const routes = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/about', changefreq: 'monthly', priority: '0.8' },
@@ -38,6 +50,13 @@ const routes = [
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
 ];
+
+geoAreas.forEach(area => {
+  routes.push({ path: `/areas/${area.hub}`, changefreq: 'monthly', priority: '0.8' });
+  area.neighborhoods.forEach(neighborhood => {
+    routes.push({ path: `/areas/${area.hub}/${neighborhood}`, changefreq: 'monthly', priority: '0.7' });
+  });
+});
 
 const generateSitemap = () => {
   const lastmod = new Date().toISOString().split('T')[0];
