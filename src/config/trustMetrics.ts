@@ -1,6 +1,6 @@
 export const trustMetrics = {
-  jobCountMinimum: '__REPLACE_WITH_REAL_VALUE__',
-  timeframeMonthsMinimum: '__REPLACE_WITH_REAL_VALUE__',
+  jobCountMinimum: 350,
+  timeframeMonthsMinimum: 24,
   serviceAreaLabel: 'Greater Austin',
 
   variants: [
