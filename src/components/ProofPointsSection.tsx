@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Shield, Award, Users, Clock, Phone } from 'lucide-react';
+import { renderTrustMetric } from '../lib/metricRotation';
 
 interface ProofPointsSectionProps {
   className?: string;
 }
 
 const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
+  const location = useLocation();
+  const trustMetric = renderTrustMetric({ seed: 'ProofPointsSection', pathname: location.pathname });
+
   const proofPoints = [
     {
       icon: <Users className="w-8 h-8 text-white" />,
-      value: "500+",
-      label: "Homes Painted",
+      value: trustMetric,
+      label: "Track Record",
       description: "Trusted by homeowners across Austin"
     },
     {

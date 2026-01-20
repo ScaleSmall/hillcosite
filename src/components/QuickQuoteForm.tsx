@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Palette, Home } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { renderTrustMetric } from '../lib/metricRotation';
 
 interface QuickQuoteFormProps {
   service?: string;
@@ -7,6 +9,9 @@ interface QuickQuoteFormProps {
 }
 
 const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: QuickQuoteFormProps) => {
+  const location = useLocation();
+  const trustMetric = renderTrustMetric({ seed: 'QuickQuoteForm', pathname: location.pathname });
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -176,18 +181,12 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
         </button>
       </form>
 
-      <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/20">
+      <div className="mt-6 pt-6 border-t border-white/20">
         <div className="text-center">
-          <div className="text-white font-semibold text-sm">Insured</div>
-          <div className="text-white/70 text-xs">Local Crew</div>
-        </div>
-        <div className="text-center">
-          <div className="text-white font-semibold text-sm">2-Year</div>
-          <div className="text-white/70 text-xs">Warranty</div>
-        </div>
-        <div className="text-center">
-          <div className="text-white font-semibold text-sm">500+</div>
-          <div className="text-white/70 text-xs">Homes</div>
+          <div className="text-white font-semibold text-sm mb-1">{trustMetric}</div>
+          <div className="flex justify-center gap-4 text-white/70 text-xs">
+            <span>Insured • 2-Year Warranty</span>
+          </div>
         </div>
       </div>
 
