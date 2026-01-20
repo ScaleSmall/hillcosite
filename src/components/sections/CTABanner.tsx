@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { renderTrustMetric } from '../../lib/metricRotation';
+import { Link } from 'react-router-dom';
 
 interface CTABannerProps {
   title: string;
@@ -23,8 +22,6 @@ const CTABanner = ({
   secondaryCTA,
   backgroundColor = 'primary'
 }: CTABannerProps) => {
-  const location = useLocation();
-  const trustMetric = renderTrustMetric({ seed: 'CTABanner', pathname: location.pathname });
   const bgClasses = {
     primary: 'bg-deep-700',
     secondary: 'bg-slate-800',
@@ -77,7 +74,7 @@ const CTABanner = ({
             <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
               <span className="text-xs font-bold">★</span>
             </div>
-            <span className="text-sm font-medium">{trustMetric}</span>
+            <span className="text-sm font-medium">350+ Projects</span>
           </div>
         </div>
       </div>

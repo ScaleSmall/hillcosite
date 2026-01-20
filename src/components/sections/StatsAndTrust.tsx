@@ -1,7 +1,5 @@
 import React from 'react';
 import { Shield, Award, Users, Clock } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
-import { renderTrustMetric } from '../../lib/metricRotation';
 
 interface Stat {
   icon: React.ReactNode;
@@ -14,14 +12,11 @@ interface StatsAndTrustProps {
 }
 
 const StatsAndTrust = ({ stats }: StatsAndTrustProps) => {
-  const location = useLocation();
-  const trustMetric = renderTrustMetric({ seed: 'StatsAndTrust', pathname: location.pathname });
-
   const defaultStats: Stat[] = [
     {
       icon: <Users className="w-8 h-8 text-deep-600" />,
-      value: trustMetric,
-      label: "Track Record"
+      value: "350+",
+      label: "Projects Completed"
     },
     {
       icon: <Award className="w-8 h-8 text-deep-600" />,
