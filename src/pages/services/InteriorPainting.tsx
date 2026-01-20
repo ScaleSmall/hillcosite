@@ -175,7 +175,7 @@ const InteriorPainting = () => {
                 Interior House Painters in Austin, TX
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Transform your home's interior with Austin's most trusted painting contractors. 500+ homes painted • Insured crew • 2-year warranty • Free estimates.
+                Transform your home's interior with Austin's most trusted painting contractors. 100+ homes painted • Insured crew • 2-year warranty • Free estimates.
               </p>
               <div className="text-base text-white/90 font-medium drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.

@@ -109,7 +109,7 @@ const CabinetRefinishing = () => {
     <>
       <SEO
         title="Cabinet Painting — Hill Country Painting"
-        description="Professional cabinet painting in Austin. Save thousands vs replacement. Custom colors, professional finish, 2-year warranty."
+        description="Professional cabinet painting in Austin. Save significantly vs replacement. Custom colors, professional finish, 2-year warranty."
         canonical="/services/cabinet-refinishing"
         pageType="service"
         breadcrumbs={[
@@ -178,7 +178,7 @@ const CabinetRefinishing = () => {
                 Cabinet Painters in Austin, TX
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Transform your kitchen for thousands less than replacement in Austin. Custom colors • Professional finish • 2-year warranty.
+                Transform your kitchen for significantly less than replacement in Austin. Custom colors • Professional finish • 2-year warranty.
               </p>
               <div className="text-base text-white/90 font-medium drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.
@@ -210,7 +210,7 @@ const CabinetRefinishing = () => {
               </h2>
               <div className="space-y-6 text-lg text-slate-600">
                 <p>
-                  Transform your kitchen for thousands less than replacement. Our professional cabinet painting services deliver factory-quality finishes with custom colors.
+                  Transform your kitchen for significantly less than replacement. Our professional cabinet painting services deliver factory-quality finishes with custom colors.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3">
@@ -332,7 +332,7 @@ const CabinetRefinishing = () => {
       {/* Pattern I: CTA Banner */}
       <CTABanner
         title="Ready for a Kitchen Transformation?"
-        subtitle="Save thousands with professional cabinet painting in Austin"
+        subtitle="Save significantly with professional cabinet painting in Austin"
         primaryCTA={{
           text: 'Get Free Estimate',
           href: '/contact'

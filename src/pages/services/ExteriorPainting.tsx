@@ -168,7 +168,7 @@ const ExteriorPainting = () => {
                 Exterior House Painters in Austin, TX
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Protect and beautify your Austin home with professional exterior painting. Weather-resistant finishes • HOA expertise • 500+ projects • 2-year warranty.
+                Protect and beautify your Austin home with professional exterior painting. Weather-resistant finishes • HOA expertise • 100+ projects • 2-year warranty.
               </p>
               <div className="text-base text-white/90 font-medium drop-shadow">
                 Texas heat specialist. Premium paints. Reliable results.

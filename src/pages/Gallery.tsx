@@ -348,7 +348,7 @@ const Gallery = () => {
                     Featured: Custom Kitchen Painting
                   </h3>
                   <p className="text-slate-600 mb-6 leading-body">
-                    Complete cabinet painting with custom color matching. This project saved the homeowners thousands compared to full replacement while achieving a completely fresh, modern look that transforms the entire kitchen space.
+                    Complete cabinet painting with custom color matching. This project saved the homeowners significantly compared to full replacement while achieving a completely fresh, modern look that transforms the entire kitchen space.
                   </p>
                   <div className="flex flex-wrap gap-4 mb-6">
                     <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
@@ -418,7 +418,7 @@ const Gallery = () => {
         stats={[
           {
             icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">9</div>,
-            value: "500+",
+            value: "100+",
             label: "Projects Complete"
           },
           {

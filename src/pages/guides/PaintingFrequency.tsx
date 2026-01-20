@@ -162,7 +162,7 @@ const PaintingFrequency = () => {
               Austin Painting Maintenance Schedule
             </h2>
             <p className="text-xl text-slate-600">
-              Based on Central Texas climate and 500+ Austin projects
+              Based on Central Texas climate and local Austin projects
             </p>
           </div>
           

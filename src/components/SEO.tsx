@@ -43,9 +43,10 @@ interface SEOProps {
       text: string;
     }>;
   };
+  geoPlacename?: string;
 }
 
-const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business }: SEOProps) => {
+const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, geoPlacename }: SEOProps) => {
   const baseUrl = 'https://hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
   const canonicalStr = canonical === '/'
@@ -357,7 +358,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
 
       {/* GEO Meta Tags for Local SEO */}
       <meta name="geo.region" content="US-TX" />
-      <meta name="geo.placename" content="Austin" />
+      <meta name="geo.placename" content={geoPlacename || 'Austin'} />
       <meta name="geo.position" content="30.2672;-97.7431" />
       <meta name="ICBM" content="30.2672, -97.7431" />
 

@@ -122,7 +122,7 @@ const PaintingCosts = () => {
               Austin Painting Costs by Project Type
             </h2>
             <p className="text-xl text-slate-600">
-              Based on 500+ completed projects in Austin
+              Based on local Austin projects
             </p>
           </div>
           
@@ -336,7 +336,7 @@ const PaintingCosts = () => {
           },
           {
             icon: <Home className="w-8 h-8 text-deep-600" />,
-            value: "500+",
+            value: "100+",
             label: "Homes Painted"
           },
           {

@@ -18,8 +18,8 @@ const About = () => {
       label: "Experience"
     },
     {
-      icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">500</div>,
-      value: "500+",
+      icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">100</div>,
+      value: "100+",
       label: "Projects Complete"
     },
     {
@@ -38,7 +38,7 @@ const About = () => {
     <>
       <SEO
         title="About — Hill Country Painting"
-        description="Austin painting pros. 15+ years experience. 500+ homes painted. Insured crew with 2-year warranty. Clean prep, crisp lines, reliable schedules."
+        description="Austin painting pros. 15+ years experience. 100+ homes painted. Insured crew with 2-year warranty. Clean prep, crisp lines, reliable schedules."
         canonical="/about"
         breadcrumbs={[
           { name: 'Home', url: '/' },

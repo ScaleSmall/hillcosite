@@ -89,8 +89,8 @@ const PflugervilleWellsBranch = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">500+</div>,
-            value: "500+",
+            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">100+</div>,
+            value: "100+",
             label: "Pflugerville Projects"
           },
           {
