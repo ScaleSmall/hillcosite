@@ -73,7 +73,7 @@ const Home = () => {
     <>
       <SEO
         title="Interior & Exterior House Painters in Austin, TX | Hill Country Painting"
-        description="Expert Austin house painters. Interior, exterior, cabinet painting. 15+ years experience. Insured crew. 2-year warranty. Serving Austin metro."
+        description="Professional house painting in Austin metro. Interior, exterior, cabinet. 15+ years experience. Insured. 2-year warranty. Free estimates."
         canonical="/"
         pageType="website"
         breadcrumbs={[
