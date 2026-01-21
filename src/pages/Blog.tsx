@@ -139,7 +139,7 @@ const Blog = () => {
     <>
       <SEO
         title="Blog — Hill Country Painting"
-        description="Expert painting tips, color guides, and home improvement advice from Austin's trusted painting professionals. Interior, exterior, and cabinet painting insights."
+        description="Expert painting tips, color guides, and home improvement advice from Austin's trusted professionals. Interior, exterior, and cabinet insights."
         canonical="/blog"
         pageType="collection"
         breadcrumbs={[

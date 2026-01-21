@@ -119,7 +119,7 @@ const PaintingFrequency = () => {
     <>
       <SEO
         title="How Often to Paint in Central Texas (2026) | Austin Paint Schedule"
-        description="Complete guide to painting frequency in Central Texas climate. Learn when to repaint your Austin home interior, exterior, and cabinets for maximum protection."
+        description="Complete guide to painting frequency in Central Texas. Learn when to repaint your Austin home interior, exterior, and cabinets for protection."
         canonical="/guides/how-often-paint-central-texas"
         breadcrumbs={[
           { name: 'Home', url: '/' },

@@ -27,7 +27,7 @@ const PflugervilleWellsBranch = () => {
     <>
       <SEO
         title="Pflugerville & Wells Branch Painting | Professional Painters | Hill Country Painting"
-        description="Professional painting services in Pflugerville and Wells Branch, TX. Expert interior and exterior painting for Blackhawk, Falcon Pointe, and all Pflugerville neighborhoods. Quality craftsmanship for growing communities."
+        description="Professional painting in Pflugerville & Wells Branch, TX. Expert interior/exterior painting for Blackhawk, Falcon Pointe. Free estimates."
         canonical="/service-areas/pflugerville-wells-branch"
         breadcrumbs={[
           { name: 'Home', url: '/' },

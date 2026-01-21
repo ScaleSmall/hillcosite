@@ -79,7 +79,7 @@ const PaintingCosts = () => {
     <>
       <SEO
         title="Cost to Paint a House in Austin (2026) | Painting Cost Guide"
-        description="Complete guide to house painting costs in Austin TX. Interior painting, exterior painting, and cabinet painting pricing. Get accurate estimates for your Austin home."
+        description="Complete guide to house painting costs in Austin TX. Interior, exterior, and cabinet painting pricing. Get accurate estimates for your home."
         canonical="/guides/painting-costs-round-rock"
         breadcrumbs={[
           { name: 'Home', url: '/' },
