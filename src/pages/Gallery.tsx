@@ -154,7 +154,7 @@ const Gallery = () => {
     '@type': 'ImageGallery',
     name: 'Hill Country Painting Gallery',
     description: 'Gallery of professional painting projects by Hill Country Painting in Austin, TX',
-    url: 'https://hillcopaint.com/gallery',
+    url: 'https://www.hillcopaint.com/gallery',
     image: photos.length > 0 ? photos.map(photo => ({
       '@type': 'ImageObject',
       contentUrl: photo.image_url,

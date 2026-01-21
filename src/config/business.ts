@@ -53,7 +53,7 @@ export const businessConfig = {
   },
 
   // Social & Web
-  website: 'https://hillcopaint.com',
+  website: 'https://www.hillcopaint.com',
   logo: '/logo.png',
 
   // Geo Coordinates (Austin, TX)

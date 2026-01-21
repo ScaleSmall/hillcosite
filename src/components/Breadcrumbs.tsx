@@ -25,7 +25,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
       };
 
       if (item.href) {
-        listItem.item = `https://hillcopaint.com${String(item.href)}`;
+        listItem.item = `https://www.hillcopaint.com${String(item.href)}`;
       }
 
       return listItem;

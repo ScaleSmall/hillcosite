@@ -1,6 +1,6 @@
 Contact: mailto:info@hillcopaint.com
 Expires: 2027-01-01T00:00:00.000Z
-Policy: https://hillcopaint.com
+Policy: https://www.hillcopaint.com
 
 # Security Contact Information
 # Please report security vulnerabilities responsibly

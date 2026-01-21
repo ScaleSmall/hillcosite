@@ -44,4 +44,4 @@ Disallow: /admin/
 Disallow: /.well-known/
 Disallow: /api/
 
-Sitemap: https://hillcopaint.com/sitemap.xml
+Sitemap: https://www.hillcopaint.com/sitemap.xml

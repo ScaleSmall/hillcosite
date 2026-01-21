@@ -65,7 +65,7 @@ const Blog = () => {
   };
 
   const generateBlogSchema = () => {
-    const baseUrl = 'https://hillcopaint.com';
+    const baseUrl = 'https://www.hillcopaint.com';
 
     return {
       '@context': 'https://schema.org',

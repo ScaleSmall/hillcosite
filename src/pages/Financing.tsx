@@ -9,7 +9,7 @@ const Financing = () => {
       <SEO
         title="Financing Options - Up to 24 Months Interest-Free"
         description="Flexible payment plans with Wisetack financing. Get up to 24 months interest-free on your painting project. Easy approval and competitive rates available."
-        canonicalUrl="https://hillcopaint.com/financing"
+        canonical="/financing"
       />
 
       {/* Hero Section */}

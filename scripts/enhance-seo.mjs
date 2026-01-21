@@ -145,8 +145,8 @@ function enhanceIndexHTML() {
     );
 
     const canonicalUrl = route === '/'
-      ? 'https://hillcopaint.com/'
-      : `https://hillcopaint.com${route}`;
+      ? 'https://www.hillcopaint.com/'
+      : `https://www.hillcopaint.com${route}`;
     html = html.replace(
       /<link rel="canonical" href=".*?"/,
       `<link rel="canonical" href="${canonicalUrl}"`

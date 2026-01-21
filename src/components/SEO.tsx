@@ -47,7 +47,7 @@ interface SEOProps {
 }
 
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, geoPlacename }: SEOProps) => {
-  const baseUrl = 'https://hillcopaint.com';
+  const baseUrl = 'https://www.hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
   const canonicalStr = canonical === '/'
     ? `${baseUrl}/`
@@ -95,7 +95,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://x.com/Hill_Co_Paint',
       'https://www.youtube.com/@HillCountryPaintingAustin',
       'https://www.tiktok.com/@hillco_painting_austin',
-      'https://hillcopaint.com'
+      'https://www.hillcopaint.com'
     ]
   };
 
