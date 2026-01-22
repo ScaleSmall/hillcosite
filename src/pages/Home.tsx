@@ -122,8 +122,8 @@ const Home = () => {
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Professional house painting in Austin, TX"
+            src="/hill-country-painting-austin-hero.jpg"
+            alt="Hill Country Painting professional painter at work on Austin home"
             className="w-full h-full object-cover"
             loading="eager"
           />
