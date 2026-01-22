@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { usePricingData } from '../../hooks/usePricingData';
 
 const PaintingCostsTable = () => {
@@ -9,6 +10,107 @@ const PaintingCostsTable = () => {
       return pricingData[key].formatted;
     }
     return fallback;
+  };
+
+  const extractPrice = (priceString: string): { min: number; max: number } | null => {
+    const match = priceString.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
+    if (match) {
+      return {
+        min: parseInt(match[1].replace(/,/g, '')),
+        max: parseInt(match[2].replace(/,/g, ''))
+      };
+    }
+    return null;
+  };
+
+  const interiorHomeSize = getCostFactor('cost_factor_home_size_interior', '$2,500 - $6,000');
+  const exteriorHomeSize = getCostFactor('cost_factor_home_size_exterior', '$4,000 - $10,000');
+
+  const interiorPrice = extractPrice(interiorHomeSize);
+  const exteriorPrice = extractPrice(exteriorHomeSize);
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "House Painting Services",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Hill Country Painting",
+      "telephone": "(512) 240-2246",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Austin",
+        "addressRegion": "TX",
+        "addressCountry": "US"
+      }
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Austin",
+      "state": "Texas"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Painting Services",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Interior Painting",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Interior House Painting - Austin TX",
+                "description": "Professional interior painting services for Austin homes"
+              },
+              "price": interiorPrice?.min || 2500,
+              "highPrice": interiorPrice?.max || 6000,
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": interiorPrice?.min || 2500,
+                "priceCurrency": "USD",
+                "referenceQuantity": {
+                  "@type": "QuantitativeValue",
+                  "value": "1",
+                  "unitText": "project"
+                }
+              },
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Exterior Painting",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Exterior House Painting - Austin TX",
+                "description": "Professional exterior painting services for Austin homes"
+              },
+              "price": exteriorPrice?.min || 4000,
+              "highPrice": exteriorPrice?.max || 10000,
+              "priceCurrency": "USD",
+              "priceSpecification": {
+                "@type": "UnitPriceSpecification",
+                "price": exteriorPrice?.min || 4000,
+                "priceCurrency": "USD",
+                "referenceQuantity": {
+                  "@type": "QuantitativeValue",
+                  "value": "1",
+                  "unitText": "project"
+                }
+              },
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        }
+      ]
+    }
   };
 
   const costFactors = [
@@ -39,8 +141,14 @@ const PaintingCostsTable = () => {
   ];
 
   return (
-    <section className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
+      </Helmet>
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
             Austin Painting Costs by Project Type
@@ -74,6 +182,7 @@ const PaintingCostsTable = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

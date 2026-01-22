@@ -1,5 +1,6 @@
 import React from 'react';
 import { Home } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { usePricingData } from '../../hooks/usePricingData';
 
 const TypicalHomeCosts = () => {
@@ -12,9 +13,205 @@ const TypicalHomeCosts = () => {
     return fallback;
   };
 
+  const extractPrice = (priceString: string): { min: number; max: number } | null => {
+    const match = priceString.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
+    if (match) {
+      return {
+        min: parseInt(match[1].replace(/,/g, '')),
+        max: parseInt(match[2].replace(/,/g, ''))
+      };
+    }
+    return null;
+  };
+
+  const house1500Interior = getCostFactor('house_1500_interior', '$3,200 - $5,800');
+  const house1500Exterior = getCostFactor('house_1500_exterior', '$5,200 - $8,500');
+  const house2200Interior = getCostFactor('house_2200_interior', '$4,400 - $7,200');
+  const house2200Exterior = getCostFactor('house_2200_exterior', '$6,800 - $11,000');
+  const house3000Interior = getCostFactor('house_3000_interior', '$6,000 - $10,500');
+  const house3000Exterior = getCostFactor('house_3000_exterior', '$9,500 - $16,000');
+
+  const price1500Int = extractPrice(house1500Interior);
+  const price1500Ext = extractPrice(house1500Exterior);
+  const price2200Int = extractPrice(house2200Interior);
+  const price2200Ext = extractPrice(house2200Exterior);
+  const price3000Int = extractPrice(house3000Interior);
+  const price3000Ext = extractPrice(house3000Exterior);
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Austin House Painting Costs by Size",
+    "description": "Professional house painting costs for different home sizes in Austin, TX",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "Interior Painting - 1,500 sq ft Home Austin",
+          "description": "Professional interior painting service for 1,500 sq ft homes in Austin",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hill Country Painting"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": price1500Int?.min || 3200,
+            "highPrice": price1500Int?.max || 5800,
+            "offerCount": "1",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": price1500Int?.min || 3200,
+              "priceCurrency": "USD"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "Exterior Painting - 1,500 sq ft Home Austin",
+          "description": "Professional exterior painting service for 1,500 sq ft homes in Austin",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hill Country Painting"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": price1500Ext?.min || 5200,
+            "highPrice": price1500Ext?.max || 8500,
+            "offerCount": "1",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": price1500Ext?.min || 5200,
+              "priceCurrency": "USD"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "Interior Painting - 2,200 sq ft Home Austin",
+          "description": "Professional interior painting service for 2,200 sq ft homes in Austin",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hill Country Painting"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": price2200Int?.min || 4400,
+            "highPrice": price2200Int?.max || 7200,
+            "offerCount": "1",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": price2200Int?.min || 4400,
+              "priceCurrency": "USD"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Product",
+          "name": "Exterior Painting - 2,200 sq ft Home Austin",
+          "description": "Professional exterior painting service for 2,200 sq ft homes in Austin",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hill Country Painting"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": price2200Ext?.min || 6800,
+            "highPrice": price2200Ext?.max || 11000,
+            "offerCount": "1",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": price2200Ext?.min || 6800,
+              "priceCurrency": "USD"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Product",
+          "name": "Interior Painting - 3,000+ sq ft Home Austin",
+          "description": "Professional interior painting service for 3,000+ sq ft homes in Austin",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hill Country Painting"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": price3000Int?.min || 6000,
+            "highPrice": price3000Int?.max || 10500,
+            "offerCount": "1",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": price3000Int?.min || 6000,
+              "priceCurrency": "USD"
+            }
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Product",
+          "name": "Exterior Painting - 3,000+ sq ft Home Austin",
+          "description": "Professional exterior painting service for 3,000+ sq ft homes in Austin",
+          "brand": {
+            "@type": "Brand",
+            "name": "Hill Country Painting"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "USD",
+            "lowPrice": price3000Ext?.min || 9500,
+            "highPrice": price3000Ext?.max || 16000,
+            "offerCount": "1",
+            "availability": "https://schema.org/InStock",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": price3000Ext?.min || 9500,
+              "priceCurrency": "USD"
+            }
+          }
+        }
+      }
+    ]
+  };
+
   return (
-    <section className="section-padding bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
+      </Helmet>
+      <section className="section-padding bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
             Typical Austin Home Painting Costs
@@ -78,6 +275,7 @@ const TypicalHomeCosts = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
