@@ -9,10 +9,10 @@ const distPath = resolve(__dirname, '../dist');
 
 const routeMetadata = {
   '/': {
-    title: 'Austin House Painters | Interior & Exterior | Hill Country',
-    description: 'Professional house painting in Austin. Interior, exterior, cabinet. 15+ years experience. Insured. 2-year warranty. Free estimates.',
+    title: 'Austin House Painters: Exterior, Interior, Cabinets | Commercial',
+    description: 'Professional interior, exterior, cabinet, and commercial painting in Austin. Clean prep, crisp lines, durable results. Insured, backed by a 2-year warranty.',
     h1: 'Austin House Painting Done Right',
-    content: 'Professional interior, exterior, and cabinet refinishing in Austin. Clean prep, crisp lines, durable results. Insured, backed by a 2-year warranty.'
+    content: 'Professional interior, exterior, cabinet, and commercial painting in Austin. Clean prep, crisp lines, durable results. Insured, backed by a 2-year warranty.'
   },
   '/about': {
     title: 'About Us — Hill Country Painting',
