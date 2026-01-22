@@ -197,6 +197,12 @@ const Home = () => {
       {/* Pattern A: Stats & Trust */}
       <StatsAndTrust />
 
+      {/* Pattern G: Testimonials */}
+      <TestimonialsSection
+        title="What Our Customers Say"
+        testimonials={testimonials}
+      />
+
       {/* Pattern B: Services Grid */}
       <ServicesGrid
         title="Our Services"
@@ -302,12 +308,6 @@ const Home = () => {
         title="Serving Austin & Surrounding Areas"
         subtitle="Professional painting services throughout the Austin metro"
         areas={serviceAreas}
-      />
-
-      {/* Pattern G: Testimonials */}
-      <TestimonialsSection
-        title="What Our Customers Say"
-        testimonials={testimonials}
       />
 
       {/* Pattern F: Mini-FAQ */}
