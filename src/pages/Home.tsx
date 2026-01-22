@@ -209,6 +209,39 @@ const Home = () => {
         subtitle="Complete painting solutions for your Austin home"
       />
 
+      {/* Our Working Process */}
+      <ProcessSection
+        title="Our Working Process"
+        subtitle="From first contact to final walkthrough, we make your painting project simple and stress-free"
+        steps={[
+          {
+            number: 1,
+            title: 'Request a Quote',
+            description: 'Contact us online or by phone for a free, no-obligation estimate. We respond promptly to all inquiries.'
+          },
+          {
+            number: 2,
+            title: 'On-Site Evaluation',
+            description: 'Our expert visits your property to assess the scope, discuss colors, and provide an accurate quote.'
+          },
+          {
+            number: 3,
+            title: 'Prep & Protection',
+            description: 'We carefully prepare surfaces and protect your furniture, floors, and landscaping before any painting begins.'
+          },
+          {
+            number: 4,
+            title: 'Professional Painting',
+            description: 'Our skilled crew applies premium paints with precision, ensuring clean lines and thorough coverage.'
+          },
+          {
+            number: 5,
+            title: 'Final Walkthrough',
+            description: 'We review every detail with you to ensure complete satisfaction before considering the job done.'
+          }
+        ]}
+      />
+
       {/* Financing Section */}
       <section className="section-padding bg-gradient-to-br from-slate-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -254,39 +287,6 @@ const Home = () => {
         ]}
         image="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Professional Austin house painting - Hill Country Painting crew interior work"
-      />
-
-      {/* Our Working Process */}
-      <ProcessSection
-        title="Our Working Process"
-        subtitle="From first contact to final walkthrough, we make your painting project simple and stress-free"
-        steps={[
-          {
-            number: 1,
-            title: 'Request a Quote',
-            description: 'Contact us online or by phone for a free, no-obligation estimate. We respond promptly to all inquiries.'
-          },
-          {
-            number: 2,
-            title: 'On-Site Evaluation',
-            description: 'Our expert visits your property to assess the scope, discuss colors, and provide an accurate quote.'
-          },
-          {
-            number: 3,
-            title: 'Prep & Protection',
-            description: 'We carefully prepare surfaces and protect your furniture, floors, and landscaping before any painting begins.'
-          },
-          {
-            number: 4,
-            title: 'Professional Painting',
-            description: 'Our skilled crew applies premium paints with precision, ensuring clean lines and thorough coverage.'
-          },
-          {
-            number: 5,
-            title: 'Final Walkthrough',
-            description: 'We review every detail with you to ensure complete satisfaction before considering the job done.'
-          }
-        ]}
       />
 
       {/* CTA After Process */}
