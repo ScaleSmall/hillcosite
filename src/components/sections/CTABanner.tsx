@@ -31,14 +31,6 @@ const CTABanner = ({
   return (
     <section className={`section-padding ${bgClasses[backgroundColor]} text-white`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="text-xl text-white/90 mb-8">
-            {subtitle}
-          </p>
-        )}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={primaryCTA.href} className="btn-primary bg-white text-deep-700 hover:bg-slate-100">
             {primaryCTA.text}

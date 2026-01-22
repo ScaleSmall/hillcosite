@@ -172,10 +172,6 @@ const Terms = () => {
             </p>
 
             <div className="mt-12 p-6 bg-slate-50 rounded-lg border border-slate-200">
-              <h3 className="text-xl font-semibold text-deep-900 mb-4">Ready to Start Your Project?</h3>
-              <p className="text-slate-600 mb-4">
-                Get a free, no-obligation estimate for your painting project. Our team is ready to help transform your space.
-              </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-primary">
                   Get Free Estimate

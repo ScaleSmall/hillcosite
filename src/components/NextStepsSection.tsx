@@ -22,11 +22,6 @@ const NextStepsSection = ({
   return (
     <section className={`section-padding bg-gradient-to-br from-deep-50 to-slate-100 ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-deep-900 mb-4">{title}</h2>
-          <p className="text-lg text-slate-600 leading-body">{description}</p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Primary CTA - Contact */}
           <div className="bg-white rounded-xl p-8 shadow-lg border border-slate-200 hover:shadow-xl transition-shadow">

@@ -202,12 +202,6 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
       <section className="py-16 bg-primary-600">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Ready to Paint Your {neighborhood.name} Home?
-            </h2>
-            <p className="text-xl text-white/90">
-              Get your free estimate today
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
