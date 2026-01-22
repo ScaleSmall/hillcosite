@@ -121,8 +121,8 @@ const ExteriorPainting = () => {
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithGeo
-            src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Exterior painting background"
+            src="/hill-country-home-exterior-painting.jpg"
+            alt="Hill Country Painting professional exterior painting project in Austin"
             className="w-full h-full object-cover"
             width="1920"
             height="1080"
@@ -130,9 +130,9 @@ const ExteriorPainting = () => {
             priority={true}
             sizes="100vw"
             location={{
-              name: 'Round Rock, TX',
-              latitude: 30.5083,
-              longitude: -97.6789,
+              name: 'Austin, TX',
+              latitude: 30.2672,
+              longitude: -97.7431,
               region: 'Texas'
             }}
           />
@@ -244,8 +244,8 @@ const ExteriorPainting = () => {
           { text: 'Detailed trim, fascia, and accent work' },
           { text: 'Fully insured with 2-year warranty on all work' }
         ]}
-        image="https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800"
-        imageAlt="Exterior painting preparation Austin - Professional surface prep"
+        image="/hill-country-home-exterior-painting.jpg"
+        imageAlt="Hill Country Painting exterior work - Professional surface prep and application"
       />
 
       <TestimonialsSection
