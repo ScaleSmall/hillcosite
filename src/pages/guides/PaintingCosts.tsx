@@ -7,6 +7,8 @@ import SplitSection from '../../components/sections/SplitSection';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import PaintingCostsTable from '../../components/sections/PaintingCostsTable';
+import TypicalHomeCosts from '../../components/sections/TypicalHomeCosts';
 import { usePricingData } from '../../hooks/usePricingData';
 
 const PaintingCosts = () => {
@@ -18,33 +20,6 @@ const PaintingCosts = () => {
     }
     return fallback;
   };
-
-  const costFactors = [
-    {
-      factor: 'Home Size',
-      interior: getCostFactor('cost_factor_home_size_interior', '$2,500 - $6,000'),
-      exterior: getCostFactor('cost_factor_home_size_exterior', '$4,000 - $10,000'),
-      details: 'Based on square footage and room count'
-    },
-    {
-      factor: 'Paint Quality',
-      interior: getCostFactor('cost_factor_paint_quality_interior', '+$300 - $800'),
-      exterior: getCostFactor('cost_factor_paint_quality_exterior', '+$500 - $1,200'),
-      details: 'Premium paints last longer, better coverage'
-    },
-    {
-      factor: 'Preparation Work',
-      interior: getCostFactor('cost_factor_prep_work_interior', '+$200 - $600'),
-      exterior: getCostFactor('cost_factor_prep_work_exterior', '+$800 - $2,000'),
-      details: 'Repairs, priming, surface prep requirements'
-    },
-    {
-      factor: 'Color Changes',
-      interior: getCostFactor('cost_factor_color_changes_interior', '+$150 - $400'),
-      exterior: getCostFactor('cost_factor_color_changes_exterior', '+$300 - $800'),
-      details: 'Dark to light colors require additional coats'
-    }
-  ];
 
   const getFAQAnswer = () => {
     const interiorPrice = getCostFactor('faq_2000sqft_interior', '$4,000-$8,000');
@@ -115,108 +90,10 @@ const PaintingCosts = () => {
       </section>
 
       {/* Cost Breakdown Table */}
-      <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
-              Austin Painting Costs by Project Type
-            </h2>
-            <p className="text-xl text-slate-600">
-              Based on local Austin projects
-            </p>
-          </div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-lg shadow-lg">
-              <thead className="bg-deep-700 text-white">
-                <tr>
-                  <th className="px-6 py-4 text-left">Cost Factor</th>
-                  <th className="px-6 py-4 text-center">Interior Range</th>
-                  <th className="px-6 py-4 text-center">Exterior Range</th>
-                  <th className="px-6 py-4 text-left">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                {costFactors.map((factor, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
-                    <td className="px-6 py-4 font-semibold text-deep-900">{factor.factor}</td>
-                    <td className="px-6 py-4 text-center text-green-600 font-medium">{factor.interior}</td>
-                    <td className="px-6 py-4 text-center text-blue-600 font-medium">{factor.exterior}</td>
-                    <td className="px-6 py-4 text-slate-600">{factor.details}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <PaintingCostsTable />
 
       {/* House Size Examples */}
-      <section className="section-padding bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
-              Typical Austin Home Painting Costs
-            </h2>
-            <p className="text-xl text-slate-600">
-              Real examples from Austin neighborhoods
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="card p-8 text-center">
-              <Home className="w-12 h-12 text-deep-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-deep-900 mb-2">1,500 sq ft</h3>
-              <p className="text-slate-600 mb-4">Typical Austin Ranch</p>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Interior:</span>
-                  <span className="font-semibold text-green-600">{getCostFactor('house_1500_interior', '$3,200 - $5,800')}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Exterior:</span>
-                  <span className="font-semibold text-blue-600">{getCostFactor('house_1500_exterior', '$5,200 - $8,500')}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="card p-8 text-center border-2 border-deep-600">
-              <Home className="w-12 h-12 text-deep-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-deep-900 mb-2">2,200 sq ft</h3>
-              <p className="text-slate-600 mb-4">Average Austin Home</p>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Interior:</span>
-                  <span className="font-semibold text-green-600">{getCostFactor('house_2200_interior', '$4,400 - $7,200')}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Exterior:</span>
-                  <span className="font-semibold text-blue-600">{getCostFactor('house_2200_exterior', '$6,800 - $11,000')}</span>
-                </div>
-              </div>
-              <div className="mt-4">
-                <span className="bg-deep-600 text-white px-3 py-1 rounded-full text-sm font-medium">Most Popular</span>
-              </div>
-            </div>
-
-            <div className="card p-8 text-center">
-              <Home className="w-12 h-12 text-deep-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-deep-900 mb-2">3,000+ sq ft</h3>
-              <p className="text-slate-600 mb-4">Larger Austin Homes</p>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span>Interior:</span>
-                  <span className="font-semibold text-green-600">{getCostFactor('house_3000_interior', '$6,000 - $10,500')}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Exterior:</span>
-                  <span className="font-semibold text-blue-600">{getCostFactor('house_3000_exterior', '$9,500 - $16,000')}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TypicalHomeCosts />
 
       {/* Split Section - Value Explanation */}
       <SplitSection

@@ -13,6 +13,8 @@ import ServiceAreasSection from '../components/sections/ServiceAreasSection';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import MiniFAQ from '../components/sections/MiniFAQ';
 import CTABanner from '../components/sections/CTABanner';
+import PaintingCostsTable from '../components/sections/PaintingCostsTable';
+import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
 import { useGBPRating } from '../hooks/useGBPRating';
 
 const Home = () => {
@@ -272,6 +274,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Painting Costs Table */}
+      <PaintingCostsTable />
+
+      {/* Typical Home Costs */}
+      <TypicalHomeCosts />
 
       {/* Pattern C: Split Section */}
       <SplitSection
