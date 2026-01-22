@@ -127,7 +127,6 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -144,7 +143,6 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Services</h3>
             <ul className="space-y-2">
               {services.map((service) => (
                 <li key={service.name}>
@@ -161,7 +159,6 @@ const Footer = () => {
 
           {/* Service Areas */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Service Areas</h3>
             <ul className="space-y-2">
               {serviceAreas.map((area) => (
                 <li key={area.name}>
@@ -178,7 +175,6 @@ const Footer = () => {
 
           {/* Guides */}
           <div>
-            <h3 className="font-semibold text-lg mb-4">Resources</h3>
             <ul className="space-y-2">
               {guides.map((guide) => (
                 <li key={guide.name}>
