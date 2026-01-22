@@ -27,7 +27,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
     {
       title: "Exterior Painting",
       description: "Protect and beautify your home's exterior with durable, weather-resistant finishes.",
-      image: "https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=800",
+      image: "/hill-country-home-exterior-painting.jpg",
       link: "/services/exterior-painting"
     },
     {
