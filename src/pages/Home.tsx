@@ -122,7 +122,7 @@ const Home = () => {
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/IMG_4398_result_result.jpg"
+            src="/austin-professional-house-painting-hero.jpg"
             alt="Professional house painting in Austin, TX"
             className="w-full h-full object-cover"
             loading="eager"
@@ -257,7 +257,7 @@ const Home = () => {
             <div className="flex flex-col items-center gap-3">
               <Link to="/financing" className="inline-block transition-transform hover:scale-105">
                 <img
-                  src="/24mo_blue_badge.png"
+                  src="/financing-24-month-interest-free-badge.png"
                   alt="Up to 24 months interest-free financing available"
                   className="w-80 h-auto drop-shadow-2xl"
                   width="320"

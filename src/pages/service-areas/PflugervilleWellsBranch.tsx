@@ -45,7 +45,7 @@ const PflugervilleWellsBranch = () => {
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithGeo
-            src="/IMG_4398_result_result.jpg"
+            src="/austin-professional-house-painting-hero.jpg"
             alt="Professional Pflugerville and Wells Branch painting services"
             className="w-full h-full object-cover"
             width="1920"

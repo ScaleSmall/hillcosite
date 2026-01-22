@@ -219,7 +219,7 @@ const Contact = () => {
             {/* Award Badge - Left Side */}
             <div className="hidden lg:flex flex-shrink-0">
               <img
-                src="/1000032820.jpg"
+                src="/contact-hill-country-painting-austin-tx.jpg"
                 alt="Winner Best of Round Rock 2025 Award"
                 className="w-40 h-40 object-contain"
                 loading="eager"
@@ -256,7 +256,7 @@ const Contact = () => {
             <div className="hidden lg:flex flex-shrink-0">
               <Link to="/financing" className="flex flex-col items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer">
                 <img
-                  src="/24mo_blue_badge.png"
+                  src="/financing-24-month-interest-free-badge.png"
                   alt="Up to 24 months interest-free financing available"
                   className="w-60 h-60 object-contain drop-shadow-lg"
                   loading="eager"

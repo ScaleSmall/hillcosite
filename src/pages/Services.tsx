@@ -20,7 +20,7 @@ const Services = () => {
     {
       title: 'Exterior Painting',
       description: 'Weather-resistant exterior painting designed for Austin\'s climate. Protect and beautify your home\'s exterior with lasting results.',
-      image: '/IMG_4416_result_result.jpg',
+      image: '/interior-painting-services-austin.jpg',
       link: '/services/exterior-painting',
       features: ['Pressure washing prep', 'Weather-resistant paints', 'Trim & detail work', 'Surface repairs']
     },

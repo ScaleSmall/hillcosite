@@ -121,7 +121,7 @@ const CommercialPainting = () => {
             className="group block transition-transform duration-300 hover:scale-105"
           >
             <img
-              src="/24mo_blue_badge.png"
+              src="/financing-24-month-interest-free-badge.png"
               alt="Up to 24 months interest-free financing available - Click for details"
               className="w-48 h-auto drop-shadow-2xl"
               width="192"

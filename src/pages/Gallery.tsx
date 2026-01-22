@@ -58,17 +58,17 @@ const Gallery = () => {
 
   const featuredProjects = [
     {
-      image: '/IMG_3676_result_result.jpg',
+      image: '/kitchen-cabinet-painting-west-lake-hills.jpg',
       title: 'Kitchen Transformation',
       location: 'West Lake Hills'
     },
     {
-      image: '/IMG_0146_result_result.jpg',
+      image: '/exterior-house-painting-tarrytown-austin.jpg',
       title: 'Exterior Refresh',
       location: 'Tarrytown'
     },
     {
-      image: '/IMG_5925_result_result.jpg',
+      image: '/interior-living-room-painting-central-austin.jpg',
       title: 'Living Room Update',
       location: 'Central Austin'
     },
@@ -83,19 +83,19 @@ const Gallery = () => {
     {
       title: 'Custom Kitchen Painting',
       description: 'Complete cabinet painting with custom color matching for a fresh modern look.',
-      image: '/IMG_4861_result_result.jpg',
+      image: '/circle-c-ranch-kitchen-painting-austin.jpg',
       link: '/contact'
     },
     {
       title: 'Classic Home Exterior',
       description: 'Professional exterior painting with weather-resistant finishes and detailed trim work for lasting protection.',
-      image: '/IMG_6770_result_result.jpg',
+      image: '/classic-exterior-home-painting-austin.jpg',
       link: '/contact'
     },
     {
       title: 'Modern Interior Design',
       description: 'Complete interior painting with custom accent walls and professional color consultation throughout.',
-      image: '/IMG_7896_result_result.jpg',
+      image: '/west-lake-hills-luxury-home-painting.jpg',
       link: '/contact'
     },
     {
@@ -107,13 +107,13 @@ const Gallery = () => {
     {
       title: 'Bright Kids Room Transformation',
       description: 'Vibrant turquoise kids bedroom with playful accent walls and durable finishes perfect for active children.',
-      image: '/IMG_9824_result_result.jpg',
+      image: '/allandale-northwest-hills-home-painting-austin.jpg',
       link: '/contact'
     },
     {
       title: 'Traditional Home Exterior',
       description: 'Complete exterior painting with premium weather-resistant finishes designed for Texas climate conditions.',
-      image: '/IMG_9524_result_result.jpg',
+      image: '/traditional-exterior-painting-austin-tx.jpg',
       link: '/contact'
     },
     {
@@ -330,7 +330,7 @@ const Gallery = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="aspect-w-16 aspect-h-10 lg:aspect-none">
                   <ImageWithGeo
-                    src="/IMG_4861_result_result.jpg"
+                    src="/circle-c-ranch-kitchen-painting-austin.jpg"
                     alt="Kitchen cabinet painting West Lake Hills - Hill Country Painting Austin featured project"
                     width="600"
                     height="400"

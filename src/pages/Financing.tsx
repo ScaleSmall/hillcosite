@@ -49,7 +49,7 @@ const Financing = () => {
             {/* Financing Badge - Right Side */}
             <div className="flex-shrink-0">
               <img
-                src="/24mo_blue_badge.png"
+                src="/financing-24-month-interest-free-badge.png"
                 alt="Up to 24 months interest-free financing"
                 className="w-60 h-60 object-contain drop-shadow-2xl"
                 width="240"
