@@ -311,18 +311,32 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         ...(business.address.addressCountry && { addressCountry: business.address.addressCountry })
       }
     }),
-    ...(business.aggregateRating && hasValidRating(business.aggregateRating.ratingValue) && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: business.aggregateRating.ratingValue,
-        reviewCount: business.aggregateRating.reviewCount,
-        bestRating: '5',
-        worstRating: '1'
-      }
-    }),
+    ...(business.aggregateRating && hasValidRating(business.aggregateRating.ratingValue) && (() => {
+      const ratingVal = typeof business.aggregateRating.ratingValue === 'string'
+        ? parseFloat(business.aggregateRating.ratingValue)
+        : business.aggregateRating.ratingValue;
+      const reviewCnt = parseInt(business.aggregateRating.reviewCount, 10);
+
+      const isValid = !isNaN(ratingVal) && ratingVal > 0 && ratingVal <= 5 &&
+                      !isNaN(reviewCnt) && reviewCnt > 0;
+
+      return isValid ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: String(ratingVal),
+          reviewCount: String(reviewCnt),
+          bestRating: '5',
+          worstRating: '1'
+        }
+      } : {};
+    })()),
     ...(business.reviews && business.reviews.length > 0 && {
       review: business.reviews.map(review => ({
         '@type': 'Review',
+        itemReviewed: {
+          '@type': business.type || 'LocalBusiness',
+          name: business.name
+        },
         author: {
           '@type': 'Person',
           name: review.author
@@ -380,34 +394,43 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       '@type': 'City',
       name: area
     })),
-    ...(testimonials && testimonials.length > 0 && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: (testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length).toFixed(1),
-        reviewCount: String(testimonials.length),
-        bestRating: '5',
-        worstRating: '1'
-      },
-      review: testimonials.map(testimonial => ({
-        '@type': 'Review',
-        author: {
-          '@type': 'Person',
-          name: testimonial.name
+    ...(testimonials && testimonials.length > 0 && (() => {
+      const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+      const isValidRating = !isNaN(avgRating) && avgRating > 0 && avgRating <= 5;
+
+      return isValidRating ? {
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: avgRating.toFixed(1),
+          reviewCount: String(testimonials.length),
+          bestRating: '5',
+          worstRating: '1'
         },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: String(testimonial.rating),
-          bestRating: '5'
-        },
-        reviewBody: testimonial.text,
-        ...(testimonial.location && {
-          locationCreated: {
-            '@type': 'Place',
-            name: testimonial.location
-          }
-        })
-      }))
-    })
+        review: testimonials.map(testimonial => ({
+          '@type': 'Review',
+          itemReviewed: {
+            '@type': 'Product',
+            name: product.name
+          },
+          author: {
+            '@type': 'Person',
+            name: testimonial.name
+          },
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: String(testimonial.rating),
+            bestRating: '5'
+          },
+          reviewBody: testimonial.text,
+          ...(testimonial.location && {
+            locationCreated: {
+              '@type': 'Place',
+              name: testimonial.location
+            }
+          })
+        }))
+      } : {};
+    })())
   } : null;
 
   return (
