@@ -15,6 +15,7 @@ import MiniFAQ from '../components/sections/MiniFAQ';
 import CTABanner from '../components/sections/CTABanner';
 import PaintingCostsTable from '../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
+import NAPMapSection from '../components/NAPMapSection';
 import { useGBPRating } from '../hooks/useGBPRating';
 
 const Home = () => {
@@ -204,6 +205,9 @@ const Home = () => {
         title="What Our Customers Say"
         testimonials={testimonials}
       />
+
+      {/* NAP & Map Section */}
+      <NAPMapSection />
 
       {/* Pattern B: Services Grid */}
       <ServicesGrid
