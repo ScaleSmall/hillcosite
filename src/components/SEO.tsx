@@ -189,32 +189,122 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((crumb, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: crumb.name,
-      item: `${baseUrl}${crumb.url || canonical || '/'}`
-    }))
+    itemListElement: breadcrumbs.map((crumb, index) => {
+      const isLastItem = index === breadcrumbs.length - 1;
+      const item: Record<string, unknown> = {
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name
+      };
+
+      // Only add item URL for non-last breadcrumbs
+      if (!isLastItem && crumb.url) {
+        item.item = `${baseUrl}${crumb.url}`;
+      }
+
+      return item;
+    })
   } : null;
 
   // Service schema - only if service data is provided
-  const serviceSchema = service ? {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: service.name,
-    description: service.description,
-    provider: {
-      '@type': 'Organization',
-      name: 'Hill Country Painting',
-      telephone: '(512) 240-2246',
-      email: 'info@hillcopaint.com'
-    },
-    areaServed: service.areaServed.map(area => ({
-      '@type': 'City',
-      name: area
-    })),
-    serviceType: service.name
-  } : null;
+  const serviceSchema = service ? (() => {
+    // Build base service schema
+    const baseSchema: Record<string, unknown> = {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: service.name,
+      description: service.description,
+      provider: {
+        '@type': 'Organization',
+        name: 'Hill Country Painting',
+        telephone: '(512) 240-2246',
+        email: 'info@hillcopaint.com',
+        url: baseUrl
+      },
+      areaServed: service.areaServed.map(area => ({
+        '@type': 'City',
+        name: area
+      })),
+      serviceType: service.name,
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: `${service.name} Services`,
+        itemListElement: [{
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: service.name
+          }
+        }]
+      }
+    };
+
+    // Add product pricing info if available
+    if (product) {
+      const priceMatch = product.priceRange.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
+
+      if (priceMatch) {
+        const lowPrice = priceMatch[1].replace(/,/g, '');
+        const highPrice = priceMatch[2].replace(/,/g, '');
+
+        baseSchema.offers = {
+          '@type': 'AggregateOffer',
+          lowPrice: lowPrice,
+          highPrice: highPrice,
+          priceCurrency: product.priceCurrency,
+          availability: product.availability
+        };
+      } else {
+        baseSchema.offers = {
+          '@type': 'Offer',
+          availability: product.availability,
+          priceCurrency: product.priceCurrency
+        };
+      }
+    }
+
+    // Add ratings if available
+    if (testimonials && testimonials.length > 0) {
+      const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+      const isValidRating = !isNaN(avgRating) && avgRating > 0 && avgRating <= 5;
+
+      if (isValidRating) {
+        baseSchema.aggregateRating = {
+          '@type': 'AggregateRating',
+          ratingValue: avgRating.toFixed(1),
+          reviewCount: String(testimonials.length),
+          bestRating: '5',
+          worstRating: '1'
+        };
+
+        baseSchema.review = testimonials.map(testimonial => ({
+          '@type': 'Review',
+          itemReviewed: {
+            '@type': 'Service',
+            name: service.name
+          },
+          author: {
+            '@type': 'Person',
+            name: testimonial.name
+          },
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: String(testimonial.rating),
+            bestRating: '5'
+          },
+          reviewBody: testimonial.text,
+          ...(testimonial.location && {
+            locationCreated: {
+              '@type': 'Place',
+              name: testimonial.location
+            }
+          })
+        }));
+      }
+    }
+
+    return baseSchema;
+  })() : null;
 
   // FAQPage schema - only if FAQ data is provided
   const faqSchema = faq && faq.length > 0 ? {
@@ -344,117 +434,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     })
   } : null;
 
-  // Product schema - only if product data is provided
-  const productSchema = product ? (() => {
-    // Extract price range from string like "$3,200 - $7,200" or handle "Contact for quote"
-    const priceMatch = product.priceRange.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
-    let offersData;
-
-    if (priceMatch) {
-      // Has a valid price range
-      const lowPrice = priceMatch[1].replace(/,/g, '');
-      const highPrice = priceMatch[2].replace(/,/g, '');
-
-      offersData = {
-        '@type': 'AggregateOffer',
-        lowPrice: lowPrice,
-        highPrice: highPrice,
-        priceCurrency: product.priceCurrency,
-        availability: product.availability,
-        url: `${baseUrl}${product.url}`,
-        seller: {
-          '@type': 'Organization',
-          name: product.brand,
-          telephone: '(512) 240-2246',
-          email: 'info@hillcopaint.com'
-        }
-      };
-    } else {
-      // No valid price range (e.g., "Contact for quote")
-      offersData = {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: product.priceCurrency,
-        availability: product.availability,
-        url: `${baseUrl}${product.url}`,
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          priceCurrency: product.priceCurrency,
-          valueReference: 'Contact for custom quote'
-        },
-        seller: {
-          '@type': 'Organization',
-          name: product.brand,
-          telephone: '(512) 240-2246',
-          email: 'info@hillcopaint.com'
-        }
-      };
-    }
-
-    return {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
-      name: product.name,
-      description: product.description,
-      brand: {
-        '@type': 'Brand',
-        name: product.brand
-      },
-      category: product.category,
-      sku: product.sku,
-      offers: offersData,
-      warranty: {
-        '@type': 'WarrantyPromise',
-        durationOfWarranty: {
-          '@type': 'QuantitativeValue',
-          value: '2',
-          unitText: 'year'
-        },
-        warrantyScope: product.warranty
-      },
-      areaServed: product.areaServed.map(area => ({
-        '@type': 'City',
-        name: area
-      })),
-      ...(testimonials && testimonials.length > 0 && (() => {
-        const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
-        const isValidRating = !isNaN(avgRating) && avgRating > 0 && avgRating <= 5;
-
-        return isValidRating ? {
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: avgRating.toFixed(1),
-            reviewCount: String(testimonials.length),
-            bestRating: '5',
-            worstRating: '1'
-          },
-          review: testimonials.map(testimonial => ({
-            '@type': 'Review',
-            itemReviewed: {
-              '@type': 'Product',
-              name: product.name
-            },
-            author: {
-              '@type': 'Person',
-              name: testimonial.name
-            },
-            reviewRating: {
-              '@type': 'Rating',
-              ratingValue: String(testimonial.rating),
-              bestRating: '5'
-            },
-            reviewBody: testimonial.text,
-            ...(testimonial.location && {
-              locationCreated: {
-                '@type': 'Place',
-                name: testimonial.location
-              }
-            })
-          }))
-        } : {};
-      })())
-    };
-  })() : null;
+  // Product schema removed - services should use Service schema only, not Product
+  // This prevents "Merchant listings" errors in Google Rich Results
 
   return (
     <Helmet>
@@ -550,12 +531,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {localBusinessSchema && (
         <script type="application/ld+json">
           {JSON.stringify(localBusinessSchema)}
-        </script>
-      )}
-
-      {productSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(productSchema)}
         </script>
       )}
     </Helmet>
