@@ -109,6 +109,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       addressCountry: 'US'
     },
     sameAs: [
+      businessConfig.googleBusinessProfileUrl,
       'https://www.facebook.com/Hillcopaint',
       'https://www.instagram.com/hill_country_painting_austin/',
       'https://x.com/Hill_Co_Paint',
