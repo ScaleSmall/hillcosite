@@ -13,30 +13,9 @@ interface BreadcrumbsProps {
 }
 
 const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
-  // Generate structured data for breadcrumbs
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: items.map((item, index) => {
-      const listItem: Record<string, unknown> = {
-        '@type': 'ListItem',
-        position: index + 1,
-        name: String(item.label)
-      };
-
-      if (item.href) {
-        listItem.item = `https://www.hillcopaint.com${String(item.href)}`;
-      }
-
-      return listItem;
-    })
-  };
-
+  // Note: Structured data is handled by SEO component to avoid duplicates
   return (
     <>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
       <nav aria-label="Breadcrumb" className={`text-sm ${className}`}>
         <ol className="flex items-center space-x-2 text-slate-600">
           <li>

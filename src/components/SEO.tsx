@@ -100,22 +100,25 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     name: 'Hill Country Painting',
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
+    image: `${baseUrl}/logo.png`,
     telephone: '(512) 240-2246',
     email: 'info@hillcopaint.com',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Austin',
       addressRegion: 'TX',
-      addressCountry: 'US'
+      addressCountry: {
+        '@type': 'Country',
+        name: 'US'
+      }
     },
     sameAs: [
-      businessConfig.googleBusinessProfileUrl,
       'https://www.facebook.com/Hillcopaint',
       'https://www.instagram.com/hill_country_painting_austin/',
       'https://x.com/Hill_Co_Paint',
       'https://www.youtube.com/@HillCountryPaintingAustin',
       'https://www.tiktok.com/@hillco_painting_austin',
-      'https://www.hillcopaint.com'
+      'https://www.hillcopaint.com/'
     ]
   };
 
@@ -134,7 +137,10 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       '@type': 'PostalAddress',
       addressLocality: 'Austin',
       addressRegion: 'TX',
-      addressCountry: 'US'
+      addressCountry: {
+        '@type': 'Country',
+        name: 'US'
+      }
     },
     geo: {
       '@type': 'GeoCoordinates',
@@ -382,6 +388,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     name: business.name,
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
+    image: `${baseUrl}/logo.png`,
     ...(business.telephone && { telephone: business.telephone }),
     ...(business.email && { email: business.email }),
     ...(business.address && {
