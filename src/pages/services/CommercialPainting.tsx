@@ -11,6 +11,7 @@ import ProcessSection from '../../components/sections/ProcessSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { getServiceProduct } from '../../config/serviceProducts';
 
 const CommercialPainting = () => {
   const processSteps = [
@@ -46,6 +47,27 @@ const CommercialPainting = () => {
     }
   ];
 
+  const testimonials = [
+    {
+      name: 'Jason Hartley',
+      location: 'Austin',
+      rating: 5,
+      text: 'Hill Country Painting did an outstanding job. They showed up on time, worked hard, and paid close attention to detail. Everything looks clean and professional.'
+    },
+    {
+      name: 'Arashk Shirazi',
+      location: 'Austin',
+      rating: 5,
+      text: 'Josh was very professional, honest and informative about options and gave the best advice and recommendations. The crew were respectful and very responsible about the quality of their work.'
+    },
+    {
+      name: 'Chris Morgan',
+      location: 'Austin',
+      rating: 5,
+      text: 'Great attention to detail, good communication and follow up. The crew was exceptional! Highly recommend.'
+    }
+  ];
+
   const faqs = [
     {
       question: 'Can you work outside business hours?',
@@ -73,6 +95,8 @@ const CommercialPainting = () => {
     }
   ];
 
+  const productData = getServiceProduct('commercial-painting');
+
   return (
     <>
       <SEO
@@ -91,6 +115,8 @@ const CommercialPainting = () => {
           areaServed: ['Round Rock', 'Georgetown', 'Cedar Park', 'Pflugerville', 'Leander', 'Austin']
         }}
         faq={faqs}
+        product={productData}
+        testimonials={testimonials}
       />
 
       {/* Hero */}

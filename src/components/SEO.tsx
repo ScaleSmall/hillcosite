@@ -43,10 +43,29 @@ interface SEOProps {
       text: string;
     }>;
   };
+  product?: {
+    name: string;
+    description: string;
+    brand: string;
+    category: string;
+    sku: string;
+    priceRange: string;
+    priceCurrency: string;
+    availability: string;
+    warranty: string;
+    areaServed: string[];
+    url: string;
+  };
+  testimonials?: Array<{
+    name: string;
+    rating: number;
+    text: string;
+    location?: string;
+  }>;
   geoPlacename?: string;
 }
 
-const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, geoPlacename }: SEOProps) => {
+const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, product, testimonials, geoPlacename }: SEOProps) => {
   const baseUrl = 'https://www.hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
   const canonicalStr = canonical === '/'
@@ -317,6 +336,79 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     })
   } : null;
 
+  // Product schema - only if product data is provided
+  const productSchema = product ? {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    brand: {
+      '@type': 'Brand',
+      name: product.brand
+    },
+    category: product.category,
+    sku: product.sku,
+    offers: {
+      '@type': 'Offer',
+      price: product.priceRange,
+      priceCurrency: product.priceCurrency,
+      availability: product.availability,
+      url: `${baseUrl}${product.url}`,
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: product.priceRange,
+        priceCurrency: product.priceCurrency
+      },
+      seller: {
+        '@type': 'Organization',
+        name: product.brand,
+        telephone: '(512) 240-2246',
+        email: 'info@hillcopaint.com'
+      }
+    },
+    warranty: {
+      '@type': 'WarrantyPromise',
+      durationOfWarranty: {
+        '@type': 'QuantitativeValue',
+        value: '2',
+        unitText: 'year'
+      },
+      warrantyScope: product.warranty
+    },
+    areaServed: product.areaServed.map(area => ({
+      '@type': 'City',
+      name: area
+    })),
+    ...(testimonials && testimonials.length > 0 && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: (testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length).toFixed(1),
+        reviewCount: String(testimonials.length),
+        bestRating: '5',
+        worstRating: '1'
+      },
+      review: testimonials.map(testimonial => ({
+        '@type': 'Review',
+        author: {
+          '@type': 'Person',
+          name: testimonial.name
+        },
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: String(testimonial.rating),
+          bestRating: '5'
+        },
+        reviewBody: testimonial.text,
+        ...(testimonial.location && {
+          locationCreated: {
+            '@type': 'Place',
+            name: testimonial.location
+          }
+        })
+      }))
+    })
+  } : null;
+
   return (
     <Helmet>
       <title>{optimizedTitle}</title>
@@ -411,6 +503,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {localBusinessSchema && (
         <script type="application/ld+json">
           {JSON.stringify(localBusinessSchema)}
+        </script>
+      )}
+
+      {productSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
         </script>
       )}
     </Helmet>

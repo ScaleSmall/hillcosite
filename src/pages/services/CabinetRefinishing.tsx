@@ -12,6 +12,7 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { getServiceProduct } from '../../config/serviceProducts';
 
 const CabinetRefinishing = () => {
   const breadcrumbItems = [
@@ -83,6 +84,27 @@ const CabinetRefinishing = () => {
     }
   ];
 
+  const testimonials = [
+    {
+      name: 'Kara Steenhoek',
+      location: 'Austin',
+      rating: 5,
+      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Great price and quality workmanship.'
+    },
+    {
+      name: 'Patricia Perez',
+      location: 'Austin',
+      rating: 5,
+      text: 'This is the second time I hired Hill Country Painting. They are thorough and have great follow-up and follow through to make sure you are completely happy with the work.'
+    },
+    {
+      name: 'Richard Miller',
+      location: 'Austin',
+      rating: 5,
+      text: 'The lead painter was very helpful and provided us with great customer service. And his team did a fantastic job! We are 100% satisfied with their professional approach, and the final results!'
+    }
+  ];
+
   const faqs = [
     {
       question: 'Can you match any color?',
@@ -106,6 +128,8 @@ const CabinetRefinishing = () => {
     }
   ];
 
+  const productData = getServiceProduct('cabinet-refinishing');
+
   return (
     <>
       <SEO
@@ -124,6 +148,8 @@ const CabinetRefinishing = () => {
           areaServed: ['Round Rock', 'Georgetown', 'Cedar Park', 'Pflugerville', 'Leander', 'Austin']
         }}
         faq={faqs}
+        product={productData}
+        testimonials={testimonials}
       />
 
       {/* Hero */}

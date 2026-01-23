@@ -12,6 +12,7 @@ import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { getServiceProduct } from '../../config/serviceProducts';
 
 const ExteriorPainting = () => {
   const processSteps = [
@@ -98,6 +99,8 @@ const ExteriorPainting = () => {
     }
   ];
 
+  const productData = getServiceProduct('exterior-painting');
+
   return (
     <>
       <SEO
@@ -116,6 +119,8 @@ const ExteriorPainting = () => {
           areaServed: ['Round Rock', 'Georgetown', 'Cedar Park', 'Pflugerville', 'Leander', 'Austin']
         }}
         faq={faqs}
+        product={productData}
+        testimonials={testimonials}
       />
 
       {/* Hero */}
