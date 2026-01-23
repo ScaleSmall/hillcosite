@@ -12,6 +12,7 @@ import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import LocalSignals from '../../components/LocalSignals';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const ExteriorPainting = () => {
@@ -273,6 +274,11 @@ const ExteriorPainting = () => {
       />
 
       <NAPMapSection />
+
+      <LocalSignals
+        areaName="Austin"
+        pageType="service"
+      />
 
       <MiniFAQ
         title="Exterior Painting FAQ"

@@ -12,6 +12,7 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import LocalSignals from '../../components/LocalSignals';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const CabinetRefinishing = () => {
@@ -341,6 +342,11 @@ const CabinetRefinishing = () => {
       </section>
 
       <NAPMapSection />
+
+      <LocalSignals
+        areaName="Austin"
+        pageType="service"
+      />
 
       {/* Pattern F: Mini-FAQ */}
       <MiniFAQ

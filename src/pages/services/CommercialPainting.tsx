@@ -11,6 +11,7 @@ import ProcessSection from '../../components/sections/ProcessSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import LocalSignals from '../../components/LocalSignals';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const CommercialPainting = () => {
@@ -309,6 +310,11 @@ const CommercialPainting = () => {
       />
 
       <NAPMapSection />
+
+      <LocalSignals
+        areaName="Austin"
+        pageType="service"
+      />
 
       <MiniFAQ
         title="Commercial Painting FAQ"
