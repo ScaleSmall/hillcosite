@@ -11,6 +11,7 @@ import ProcessSection from '../../components/sections/ProcessSection';
 import ServicesGrid from '../../components/sections/ServicesGrid';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const CabinetRefinishing = () => {
   const breadcrumbItems = [
@@ -312,6 +313,8 @@ const CabinetRefinishing = () => {
           </div>
         </div>
       </section>
+
+      <NAPMapSection />
 
       {/* Pattern F: Mini-FAQ */}
       <MiniFAQ

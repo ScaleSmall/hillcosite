@@ -11,6 +11,7 @@ import ProcessSection from '../../components/sections/ProcessSection';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const InteriorPainting = () => {
   const breadcrumbItems = [
@@ -394,6 +395,9 @@ const InteriorPainting = () => {
         title="What Our Interior Painting Customers Say"
         testimonials={[testimonials[0], testimonials[1], testimonials[2]]}
       />
+
+      {/* NAP and Map */}
+      <NAPMapSection />
 
       {/* Pattern F: Mini-FAQ */}
       <MiniFAQ

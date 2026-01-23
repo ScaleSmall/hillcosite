@@ -10,6 +10,7 @@ import SplitSection from '../../components/sections/SplitSection';
 import ProcessSection from '../../components/sections/ProcessSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const CommercialPainting = () => {
   const processSteps = [
@@ -280,6 +281,8 @@ const CommercialPainting = () => {
         image="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Commercial painting preparation Austin"
       />
+
+      <NAPMapSection />
 
       <MiniFAQ
         title="Commercial Painting FAQ"

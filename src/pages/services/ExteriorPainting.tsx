@@ -11,6 +11,7 @@ import ProcessSection from '../../components/sections/ProcessSection';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const ExteriorPainting = () => {
   const processSteps = [
@@ -265,6 +266,8 @@ const ExteriorPainting = () => {
         title="What Our Exterior Painting Customers Say"
         testimonials={testimonials}
       />
+
+      <NAPMapSection />
 
       <MiniFAQ
         title="Exterior Painting FAQ"
