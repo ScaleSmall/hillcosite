@@ -189,19 +189,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((crumb, index) => {
-      const listItem: Record<string, unknown> = {
-        '@type': 'ListItem',
-        position: index + 1,
-        name: crumb.name
-      };
-
-      if (crumb.url) {
-        listItem.item = `${baseUrl}${crumb.url}`;
-      }
-
-      return listItem;
-    })
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: `${baseUrl}${crumb.url || canonical || '/'}`
+    }))
   } : null;
 
   // Service schema - only if service data is provided
@@ -352,86 +345,116 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   } : null;
 
   // Product schema - only if product data is provided
-  const productSchema = product ? {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    description: product.description,
-    brand: {
-      '@type': 'Brand',
-      name: product.brand
-    },
-    category: product.category,
-    sku: product.sku,
-    offers: {
-      '@type': 'Offer',
-      price: product.priceRange,
-      priceCurrency: product.priceCurrency,
-      availability: product.availability,
-      url: `${baseUrl}${product.url}`,
-      priceSpecification: {
-        '@type': 'PriceSpecification',
-        price: product.priceRange,
-        priceCurrency: product.priceCurrency
-      },
-      seller: {
-        '@type': 'Organization',
-        name: product.brand,
-        telephone: '(512) 240-2246',
-        email: 'info@hillcopaint.com'
-      }
-    },
-    warranty: {
-      '@type': 'WarrantyPromise',
-      durationOfWarranty: {
-        '@type': 'QuantitativeValue',
-        value: '2',
-        unitText: 'year'
-      },
-      warrantyScope: product.warranty
-    },
-    areaServed: product.areaServed.map(area => ({
-      '@type': 'City',
-      name: area
-    })),
-    ...(testimonials && testimonials.length > 0 && (() => {
-      const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
-      const isValidRating = !isNaN(avgRating) && avgRating > 0 && avgRating <= 5;
+  const productSchema = product ? (() => {
+    // Extract price range from string like "$3,200 - $7,200" or handle "Contact for quote"
+    const priceMatch = product.priceRange.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
+    let offersData;
 
-      return isValidRating ? {
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: avgRating.toFixed(1),
-          reviewCount: String(testimonials.length),
-          bestRating: '5',
-          worstRating: '1'
+    if (priceMatch) {
+      // Has a valid price range
+      const lowPrice = priceMatch[1].replace(/,/g, '');
+      const highPrice = priceMatch[2].replace(/,/g, '');
+
+      offersData = {
+        '@type': 'AggregateOffer',
+        lowPrice: lowPrice,
+        highPrice: highPrice,
+        priceCurrency: product.priceCurrency,
+        availability: product.availability,
+        url: `${baseUrl}${product.url}`,
+        seller: {
+          '@type': 'Organization',
+          name: product.brand,
+          telephone: '(512) 240-2246',
+          email: 'info@hillcopaint.com'
+        }
+      };
+    } else {
+      // No valid price range (e.g., "Contact for quote")
+      offersData = {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: product.priceCurrency,
+        availability: product.availability,
+        url: `${baseUrl}${product.url}`,
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: product.priceCurrency,
+          valueReference: 'Contact for custom quote'
         },
-        review: testimonials.map(testimonial => ({
-          '@type': 'Review',
-          itemReviewed: {
-            '@type': 'Product',
-            name: product.name
+        seller: {
+          '@type': 'Organization',
+          name: product.brand,
+          telephone: '(512) 240-2246',
+          email: 'info@hillcopaint.com'
+        }
+      };
+    }
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      description: product.description,
+      brand: {
+        '@type': 'Brand',
+        name: product.brand
+      },
+      category: product.category,
+      sku: product.sku,
+      offers: offersData,
+      warranty: {
+        '@type': 'WarrantyPromise',
+        durationOfWarranty: {
+          '@type': 'QuantitativeValue',
+          value: '2',
+          unitText: 'year'
+        },
+        warrantyScope: product.warranty
+      },
+      areaServed: product.areaServed.map(area => ({
+        '@type': 'City',
+        name: area
+      })),
+      ...(testimonials && testimonials.length > 0 && (() => {
+        const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
+        const isValidRating = !isNaN(avgRating) && avgRating > 0 && avgRating <= 5;
+
+        return isValidRating ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: avgRating.toFixed(1),
+            reviewCount: String(testimonials.length),
+            bestRating: '5',
+            worstRating: '1'
           },
-          author: {
-            '@type': 'Person',
-            name: testimonial.name
-          },
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: String(testimonial.rating),
-            bestRating: '5'
-          },
-          reviewBody: testimonial.text,
-          ...(testimonial.location && {
-            locationCreated: {
-              '@type': 'Place',
-              name: testimonial.location
-            }
-          })
-        }))
-      } : {};
-    })())
-  } : null;
+          review: testimonials.map(testimonial => ({
+            '@type': 'Review',
+            itemReviewed: {
+              '@type': 'Product',
+              name: product.name
+            },
+            author: {
+              '@type': 'Person',
+              name: testimonial.name
+            },
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: String(testimonial.rating),
+              bestRating: '5'
+            },
+            reviewBody: testimonial.text,
+            ...(testimonial.location && {
+              locationCreated: {
+                '@type': 'Place',
+                name: testimonial.location
+              }
+            })
+          }))
+        } : {};
+      })())
+    };
+  })() : null;
 
   return (
     <Helmet>
