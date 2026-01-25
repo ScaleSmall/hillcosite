@@ -40,7 +40,7 @@ const HubWestLakeHillsAndRollingwood = safeLazy(() => import('./pages/areas/west
 const NeighborhoodWestLakeHillsAndRollingwoodRollingwood = safeLazy(() => import('./pages/areas/west-lake-hills-and-rollingwood/rollingwood'), "NeighborhoodWestLakeHillsAndRollingwoodRollingwood");
 const NeighborhoodWestLakeHillsAndRollingwoodWestLakeHills = safeLazy(() => import('./pages/areas/west-lake-hills-and-rollingwood/west-lake-hills'), "NeighborhoodWestLakeHillsAndRollingwoodWestLakeHills");
 const NeighborhoodWestLakeHillsAndRollingwoodSpanishOaks = safeLazy(() => import('./pages/areas/west-lake-hills-and-rollingwood/spanish-oaks'), "NeighborhoodWestLakeHillsAndRollingwoodSpanishOaks");
-const NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch = safeLazy(() => import('./pages/areas/west-lake-hills-and-rollingwood/davenport-ranch'), "NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch");
+const NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch = safeLazy(() => import('./pages/areas/west-lake-hills-and-rollingwood/davenport-ranch-west'), "NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch");
 const NeighborhoodWestLakeHillsAndRollingwoodLakeAustinHills = safeLazy(() => import('./pages/areas/west-lake-hills-and-rollingwood/lake-austin-hills'), "NeighborhoodWestLakeHillsAndRollingwoodLakeAustinHills");
 const HubBartonCreek = safeLazy(() => import('./pages/areas/barton-creek'), "HubBartonCreek");
 const NeighborhoodBartonCreekBartonCreekCountryClubEstates = safeLazy(() => import('./pages/areas/barton-creek/barton-creek-country-club-estates'), "NeighborhoodBartonCreekBartonCreekCountryClubEstates");
@@ -57,9 +57,9 @@ const NeighborhoodTarrytownClarksville = safeLazy(() => import('./pages/areas/ta
 const HubDowntownAustinLuxury = safeLazy(() => import('./pages/areas/downtown-austin-luxury'), "HubDowntownAustinLuxury");
 const NeighborhoodDowntownAustinLuxuryDowntownCore78701 = safeLazy(() => import('./pages/areas/downtown-austin-luxury/downtown-core-78701'), "NeighborhoodDowntownAustinLuxuryDowntownCore78701");
 const NeighborhoodDowntownAustinLuxuryRaineyStreetDistrict = safeLazy(() => import('./pages/areas/downtown-austin-luxury/rainey-street-district'), "NeighborhoodDowntownAustinLuxuryRaineyStreetDistrict");
-const NeighborhoodDowntownAustinLuxuryOldWestAustin = safeLazy(() => import('./pages/areas/downtown-austin-luxury/old-west-austin'), "NeighborhoodDowntownAustinLuxuryOldWestAustin");
+const NeighborhoodDowntownAustinLuxuryOldWestAustin = safeLazy(() => import('./pages/areas/downtown-austin-luxury/old-west-austin-central'), "NeighborhoodDowntownAustinLuxuryOldWestAustin");
 const NeighborhoodDowntownAustinLuxuryZilker = safeLazy(() => import('./pages/areas/downtown-austin-luxury/zilker'), "NeighborhoodDowntownAustinLuxuryZilker");
-const NeighborhoodDowntownAustinLuxuryClarksville = safeLazy(() => import('./pages/areas/downtown-austin-luxury/clarksville'), "NeighborhoodDowntownAustinLuxuryClarksville");
+const NeighborhoodDowntownAustinLuxuryClarksville = safeLazy(() => import('./pages/areas/downtown-austin-luxury/clarksville-west'), "NeighborhoodDowntownAustinLuxuryClarksville");
 const HubAllandaleAndNorthwestHills = safeLazy(() => import('./pages/areas/allandale-and-northwest-hills'), "HubAllandaleAndNorthwestHills");
 const NeighborhoodAllandaleAndNorthwestHillsAllandale = safeLazy(() => import('./pages/areas/allandale-and-northwest-hills/allandale'), "NeighborhoodAllandaleAndNorthwestHillsAllandale");
 const NeighborhoodAllandaleAndNorthwestHillsNorthwestHills = safeLazy(() => import('./pages/areas/allandale-and-northwest-hills/northwest-hills'), "NeighborhoodAllandaleAndNorthwestHillsNorthwestHills");
@@ -79,11 +79,11 @@ const NeighborhoodCircleCRanchAndSouthwestAustinLostCreek = safeLazy(() => impor
 const NeighborhoodCircleCRanchAndSouthwestAustinShadyHollow = safeLazy(() => import('./pages/areas/circle-c-ranch-and-southwest-austin/shady-hollow'), "NeighborhoodCircleCRanchAndSouthwestAustinShadyHollow");
 const NeighborhoodCircleCRanchAndSouthwestAustinWestOakHill = safeLazy(() => import('./pages/areas/circle-c-ranch-and-southwest-austin/west-oak-hill'), "NeighborhoodCircleCRanchAndSouthwestAustinWestOakHill");
 const HubPembertonHeightsAndOldWestAustinHistoricLuxury = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury'), "HubPembertonHeightsAndOldWestAustinHistoricLuxury");
-const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryPembertonHeights = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryPembertonHeights");
-const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield");
-const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods");
-const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville");
-const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin");
+const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryPembertonHeights = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights-south'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryPembertonHeights");
+const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield-west'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield");
+const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods");
+const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville");
+const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin");
 
 const Contact = safeLazy(() => import('./pages/Contact'), "Contact");
 const Financing = safeLazy(() => import('./pages/Financing'), "Financing");
@@ -164,7 +164,7 @@ function App() {
               <Route path="/areas/west-lake-hills-and-rollingwood/rollingwood" element={<Trace name="/areas/west-lake-hills-and-rollingwood/rollingwood"><NeighborhoodWestLakeHillsAndRollingwoodRollingwood /></Trace>} />
               <Route path="/areas/west-lake-hills-and-rollingwood/west-lake-hills" element={<Trace name="/areas/west-lake-hills-and-rollingwood/west-lake-hills"><NeighborhoodWestLakeHillsAndRollingwoodWestLakeHills /></Trace>} />
               <Route path="/areas/west-lake-hills-and-rollingwood/spanish-oaks" element={<Trace name="/areas/west-lake-hills-and-rollingwood/spanish-oaks"><NeighborhoodWestLakeHillsAndRollingwoodSpanishOaks /></Trace>} />
-              <Route path="/areas/west-lake-hills-and-rollingwood/davenport-ranch" element={<Trace name="/areas/west-lake-hills-and-rollingwood/davenport-ranch"><NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch /></Trace>} />
+              <Route path="/areas/west-lake-hills-and-rollingwood/davenport-ranch-west" element={<Trace name="/areas/west-lake-hills-and-rollingwood/davenport-ranch-west"><NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch /></Trace>} />
               <Route path="/areas/west-lake-hills-and-rollingwood/lake-austin-hills" element={<Trace name="/areas/west-lake-hills-and-rollingwood/lake-austin-hills"><NeighborhoodWestLakeHillsAndRollingwoodLakeAustinHills /></Trace>} />
               <Route path="/areas/barton-creek" element={<Trace name="/areas/barton-creek"><HubBartonCreek /></Trace>} />
               <Route path="/areas/barton-creek/barton-creek-country-club-estates" element={<Trace name="/areas/barton-creek/barton-creek-country-club-estates"><NeighborhoodBartonCreekBartonCreekCountryClubEstates /></Trace>} />
@@ -181,9 +181,9 @@ function App() {
               <Route path="/areas/downtown-austin-luxury" element={<Trace name="/areas/downtown-austin-luxury"><HubDowntownAustinLuxury /></Trace>} />
               <Route path="/areas/downtown-austin-luxury/downtown-core-78701" element={<Trace name="/areas/downtown-austin-luxury/downtown-core-78701"><NeighborhoodDowntownAustinLuxuryDowntownCore78701 /></Trace>} />
               <Route path="/areas/downtown-austin-luxury/rainey-street-district" element={<Trace name="/areas/downtown-austin-luxury/rainey-street-district"><NeighborhoodDowntownAustinLuxuryRaineyStreetDistrict /></Trace>} />
-              <Route path="/areas/downtown-austin-luxury/old-west-austin" element={<Trace name="/areas/downtown-austin-luxury/old-west-austin"><NeighborhoodDowntownAustinLuxuryOldWestAustin /></Trace>} />
+              <Route path="/areas/downtown-austin-luxury/old-west-austin-central" element={<Trace name="/areas/downtown-austin-luxury/old-west-austin-central"><NeighborhoodDowntownAustinLuxuryOldWestAustin /></Trace>} />
               <Route path="/areas/downtown-austin-luxury/zilker" element={<Trace name="/areas/downtown-austin-luxury/zilker"><NeighborhoodDowntownAustinLuxuryZilker /></Trace>} />
-              <Route path="/areas/downtown-austin-luxury/clarksville" element={<Trace name="/areas/downtown-austin-luxury/clarksville"><NeighborhoodDowntownAustinLuxuryClarksville /></Trace>} />
+              <Route path="/areas/downtown-austin-luxury/clarksville-west" element={<Trace name="/areas/downtown-austin-luxury/clarksville-west"><NeighborhoodDowntownAustinLuxuryClarksville /></Trace>} />
               <Route path="/areas/allandale-and-northwest-hills" element={<Trace name="/areas/allandale-and-northwest-hills"><HubAllandaleAndNorthwestHills /></Trace>} />
               <Route path="/areas/allandale-and-northwest-hills/allandale" element={<Trace name="/areas/allandale-and-northwest-hills/allandale"><NeighborhoodAllandaleAndNorthwestHillsAllandale /></Trace>} />
               <Route path="/areas/allandale-and-northwest-hills/northwest-hills" element={<Trace name="/areas/allandale-and-northwest-hills/northwest-hills"><NeighborhoodAllandaleAndNorthwestHillsNorthwestHills /></Trace>} />
@@ -203,11 +203,11 @@ function App() {
               <Route path="/areas/circle-c-ranch-and-southwest-austin/shady-hollow" element={<Trace name="/areas/circle-c-ranch-and-southwest-austin/shady-hollow"><NeighborhoodCircleCRanchAndSouthwestAustinShadyHollow /></Trace>} />
               <Route path="/areas/circle-c-ranch-and-southwest-austin/west-oak-hill" element={<Trace name="/areas/circle-c-ranch-and-southwest-austin/west-oak-hill"><NeighborhoodCircleCRanchAndSouthwestAustinWestOakHill /></Trace>} />
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury"><HubPembertonHeightsAndOldWestAustinHistoricLuxury /></Trace>} />
-              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryPembertonHeights /></Trace>} />
-              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield /></Trace>} />
-              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods /></Trace>} />
-              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville /></Trace>} />
-              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin /></Trace>} />
+              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights-south" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights-south"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryPembertonHeights /></Trace>} />
+              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield-west" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield-west"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield /></Trace>} />
+              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods /></Trace>} />
+              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville /></Trace>} />
+              <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin /></Trace>} />
 
               <Route path="*" element={<Trace name="*"><NotFound /></Trace>} />
             </Routes>

@@ -31,7 +31,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Davenport Ranch',
         slug: 'davenport-ranch',
-        description: 'Expert interior and exterior painting for Davenport Ranch residences.'
+        description: 'Expert painting for Davenport Ranch homes in the 78732 Steiner Ranch corridor. Custom finishes for Hill Country architecture with HOA compliance expertise.'
       },
       {
         name: 'River Place',
@@ -74,8 +74,8 @@ export const geoAreas: HubArea[] = [
       },
       {
         name: 'Davenport Ranch',
-        slug: 'davenport-ranch',
-        description: 'Professional painting for Davenport Ranch properties in the West Lake area.'
+        slug: 'davenport-ranch-west',
+        description: 'Premium painting for Davenport Ranch West near 360 and Westlake. Luxury finishes for established homes with mature landscaping and sophisticated architectural details.'
       },
       {
         name: 'Lake Austin Hills',
@@ -133,22 +133,22 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Old Enfield',
         slug: 'old-enfield',
-        description: 'Preservation-focused painting for Old Enfield historic homes.'
+        description: 'Preservation painting for Old Enfield\'s 1920s-1940s estates along Enfield Road. Expert in Tudor, Colonial Revival, and Mediterranean architecture with strict attention to historical accuracy.'
       },
       {
         name: 'Pemberton Heights',
         slug: 'pemberton-heights',
-        description: 'Expert painting for Pemberton Heights luxury residences.'
+        description: 'Luxury painting for Pemberton Heights estates north of 29th Street. Specialized in high-end finishes for grand historic homes with extensive millwork, custom trim, and architectural details.'
       },
       {
         name: 'Bryker Woods',
         slug: 'bryker-woods',
-        description: 'Professional painting services for Bryker Woods homes.'
+        description: 'Professional painting for Bryker Woods family homes and bungalows. Expert in Ranch-style and mid-century modern architecture with focus on clean lines and period-appropriate color schemes.'
       },
       {
         name: 'Clarksville',
         slug: 'clarksville',
-        description: 'Historic preservation painting for Clarksville neighborhood.'
+        description: 'Historic preservation painting for Clarksville\'s 1870s-era cottages and bungalows. Specialized in period-appropriate colors and maintaining architectural authenticity in Austin\'s oldest freedman town.'
       }
     ]
   },
@@ -172,8 +172,8 @@ export const geoAreas: HubArea[] = [
       },
       {
         name: 'Old West Austin',
-        slug: 'old-west-austin',
-        description: 'Historic and luxury painting for Old West Austin homes.'
+        slug: 'old-west-austin-central',
+        description: 'Historic painting for central Old West Austin between downtown and MoPac. Specialized in Victorian, Craftsman, and early 20th century homes with original architectural features and custom millwork.'
       },
       {
         name: 'Zilker',
@@ -181,9 +181,9 @@ export const geoAreas: HubArea[] = [
         description: 'Professional painting for Zilker area residences.'
       },
       {
-        name: 'Clarksville',
-        slug: 'clarksville',
-        description: 'Expert painting for Clarksville neighborhood near downtown.'
+        name: 'Clarksville West',
+        slug: 'clarksville-west',
+        description: 'Expert painting for western Clarksville homes bordering MoPac. Modern renovations and contemporary updates while respecting the neighborhood\'s historic character and strict preservation standards.'
       }
     ]
   },
@@ -297,29 +297,29 @@ export const geoAreas: HubArea[] = [
     heroImage: '/pemberton-heights-historic-luxury-painting-austin.jpg',
     neighborhoods: [
       {
-        name: 'Pemberton Heights',
-        slug: 'pemberton-heights',
-        description: 'Historic luxury painting for Pemberton Heights estates.'
+        name: 'Pemberton Heights South',
+        slug: 'pemberton-heights-south',
+        description: 'Elite painting for southern Pemberton Heights properties near Westover. Premium finishes for distinguished estates featuring Colonial Revival, Georgian, and Mediterranean architecture with meticulous preservation requirements.'
       },
       {
-        name: 'Old Enfield',
-        slug: 'old-enfield',
-        description: 'Preservation painting for Old Enfield historic homes.'
+        name: 'Old Enfield West',
+        slug: 'old-enfield-west',
+        description: 'Historic preservation for western Old Enfield estates near Windsor Road. Expert in grand architectural styles including Spanish Colonial Revival, French Eclectic, and English Tudor with extensive custom detailing.'
       },
       {
-        name: 'Bryker Woods',
-        slug: 'bryker-woods',
-        description: 'Expert painting for Bryker Woods neighborhood.'
+        name: 'Bryker Woods West',
+        slug: 'bryker-woods-west',
+        description: 'Professional painting for western Bryker Woods homes near MoPac. Specialized in post-war architecture, updated mid-century homes, and modern renovations while maintaining neighborhood character.'
       },
       {
-        name: 'Clarksville',
-        slug: 'clarksville',
-        description: 'Historic home painting in Clarksville.'
+        name: 'Clarksville Historic District',
+        slug: 'clarksville-historic',
+        description: 'Preservation-certified painting for Clarksville Historic District properties. Expert in maintaining historic integrity for National Register homes with documentation requirements and period restoration techniques.'
       },
       {
-        name: 'Old West Austin',
-        slug: 'old-west-austin',
-        description: 'Premium painting for Old West Austin historic properties.'
+        name: 'Old West Austin Historic',
+        slug: 'old-west-austin-historic',
+        description: 'Premium preservation painting for Old West Austin\'s most significant historic properties. Specialized in landmark homes requiring documented restoration work, historically accurate paint analysis, and certified preservation techniques.'
       }
     ]
   }
