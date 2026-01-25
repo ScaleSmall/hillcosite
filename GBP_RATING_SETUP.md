@@ -1,8 +1,30 @@
 # Google Business Profile Rating System
 
+## Current Status: STATIC MODE
+
+The website currently displays **static placeholder values**:
+- Rating: 4.9 stars
+- Review Count: 150 reviews
+
+This is because the client has not provided Google Places API credentials yet.
+
+---
+
 ## Choose Your Setup Method
 
-### 🤖 Automated (Recommended)
+### 📌 Static (Current - No Setup Needed)
+**Hardcoded placeholder values displayed on website**
+
+- Rating: 4.9 stars, 150 reviews (hardcoded)
+- No API calls or database queries
+- Zero setup required
+- **Status**: ✅ Currently Active
+
+To update the static values, edit `/src/hooks/useGBPRating.ts`
+
+---
+
+### 🤖 Automated (Optional - When Client Provides Access)
 **Full automation with daily updates and email alerts**
 
 👉 **[Follow the Automated Setup Guide](./AUTOMATED_GBP_RATING_SETUP.md)**
@@ -11,36 +33,41 @@
 - Stores rating history in Supabase
 - Sends email alerts if rating drops below 4.5
 - Displays on website only if 4.5+ stars
-- **Requires**: Google Cloud API access (free tier is sufficient)
+- **Requires**: Google Cloud API access (client must provide credentials)
+- **Status**: ⚙️ Infrastructure deployed, needs configuration
 
 ---
 
-### ✋ Manual (No API Required)
-**Simple manual updates when you want to refresh the rating**
+### ✋ Manual (Alternative - No API Required)
+**Update rating manually when needed**
 
 👉 **[Follow the Manual Setup Guide](./MANUAL_RATING_UPDATE.md)**
 
 - Update rating manually in Supabase whenever needed
 - No API keys or external services required
 - Displays on website only if 4.5+ stars
-- **Best for**: Clients who don't have Google Cloud access
+- **Best for**: Clients who don't want to share Google Cloud access
 
 ---
 
 ## System Overview
 
-### Architecture
+### Current Configuration (Static Mode)
 
-**Components:**
-1. **Database Table**: `gbp_ratings` - Stores rating history
-2. **Edge Functions**: `fetch-gbp-rating`, `send-rating-alert` (automated mode only)
-3. **Cron Job**: Daily fetch at 9 AM UTC (automated mode only)
-4. **Frontend Helper**: `src/lib/gbpRatings.ts` - Fetches and displays rating
+**Active Components:**
+- `src/hooks/useGBPRating.ts` - Returns static values (4.9 stars, 150 reviews)
 
-**Data Flow:**
-1. Rating is stored in Supabase `gbp_ratings` table
-2. Frontend fetches latest rating for display
-3. Rating displays only if >= 4.5 stars (protects SEO)
+**Inactive Components (Ready to Enable):**
+- Database Table: `gbp_ratings` - Created but not used
+- Edge Functions: `fetch-gbp-rating`, `send-rating-alert` - Deployed but not configured
+- Cron Job: Daily fetch at 9 AM UTC - Scheduled but needs API credentials
+
+### How to Activate Automated Mode
+
+When the client provides Google Places API credentials:
+1. Follow the [Automated Setup Guide](./AUTOMATED_GBP_RATING_SETUP.md)
+2. Add API credentials to Supabase secrets
+3. The system will automatically switch from static to live data
 
 ## Setup Instructions (Manual Mode - No API Required)
 

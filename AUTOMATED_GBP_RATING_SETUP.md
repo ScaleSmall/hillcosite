@@ -2,10 +2,12 @@
 
 ## Overview
 
-Your automated Google Business Profile rating system is **fully deployed and ready**!
+The automated Google Business Profile rating infrastructure is **fully deployed and ready**!
 
-Once you configure the environment variables, your system will:
-- ✅ Automatically fetch your GBP rating **every day at 9 AM UTC** (3 AM CST)
+⚠️ **Current Status**: Website is using static placeholder values (4.9 stars, 150 reviews) because API credentials have not been provided yet.
+
+Once the client provides Google Places API credentials and you configure the environment variables, the system will:
+- ✅ Automatically fetch the GBP rating **every day at 9 AM UTC** (3 AM CST)
 - ✅ Store the rating history in your Supabase database
 - ✅ Display the rating on your website (only if 4.5+ stars)
 - ✅ Send email alerts if rating drops below 4.5
@@ -17,7 +19,7 @@ Once you configure the environment variables, your system will:
 ✅ Cron job scheduled (daily at 9 AM UTC)
 ✅ Frontend integration complete
 
-**All you need to do:** Configure 3 environment variables in Supabase.
+**What you need:** Client must provide Google Cloud access or API credentials.
 
 ---
 
