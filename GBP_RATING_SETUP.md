@@ -36,9 +36,11 @@ This system automatically fetches your Google Business Profile rating daily, sto
 3. Enable the **Places API**
 4. Create API credentials (API Key)
 5. Find your Place ID:
+   - **Note**: Service-area businesses (SABs) have Place IDs just like businesses with physical locations
    - Go to [Place ID Finder](https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder)
    - Search for "Hill Country Painting Austin TX"
    - Copy the Place ID
+   - **Alternative**: Search your business on Google, if you see a Knowledge Panel (business card) on the right, you have a valid GBP with a Place ID
 
 ### 2. Get Resend API Key
 

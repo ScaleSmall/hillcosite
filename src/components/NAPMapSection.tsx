@@ -10,7 +10,7 @@ const NAPMapSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="text-3xl font-bold text-deep-900 mb-6">
-              Visit or Contact Us
+              Contact Us
             </h2>
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
@@ -20,10 +20,10 @@ const NAPMapSection = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-1">Location</h3>
+                  <h3 className="font-semibold text-deep-900 mb-1">Service Area</h3>
                   <p className="text-slate-600">
                     {businessConfig.name}<br />
-                    {businessConfig.address.displayFull}
+                    Serving {businessConfig.address.displayFull}
                   </p>
                 </div>
               </div>
