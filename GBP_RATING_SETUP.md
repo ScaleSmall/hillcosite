@@ -1,19 +1,46 @@
-# Google Business Profile Rating System Setup
+# Google Business Profile Rating System
 
-## Overview
-This system displays your Google Business Profile rating on your website only if the rating is 4.5 or above. The rating is stored in Supabase and can be updated manually or automatically via API.
+## Choose Your Setup Method
 
-## Architecture
+### 🤖 Automated (Recommended)
+**Full automation with daily updates and email alerts**
 
-### Components
+👉 **[Follow the Automated Setup Guide](./AUTOMATED_GBP_RATING_SETUP.md)**
+
+- Automatically fetches rating daily from Google Places API
+- Stores rating history in Supabase
+- Sends email alerts if rating drops below 4.5
+- Displays on website only if 4.5+ stars
+- **Requires**: Google Cloud API access (free tier is sufficient)
+
+---
+
+### ✋ Manual (No API Required)
+**Simple manual updates when you want to refresh the rating**
+
+👉 **[Follow the Manual Setup Guide](./MANUAL_RATING_UPDATE.md)**
+
+- Update rating manually in Supabase whenever needed
+- No API keys or external services required
+- Displays on website only if 4.5+ stars
+- **Best for**: Clients who don't have Google Cloud access
+
+---
+
+## System Overview
+
+### Architecture
+
+**Components:**
 1. **Database Table**: `gbp_ratings` - Stores rating history
-2. **Frontend Helper**: `src/lib/gbpRatings.ts` - Fetches latest rating for display
-3. **Optional Edge Functions**: For automated API fetching (requires Google Cloud access)
+2. **Edge Functions**: `fetch-gbp-rating`, `send-rating-alert` (automated mode only)
+3. **Cron Job**: Daily fetch at 9 AM UTC (automated mode only)
+4. **Frontend Helper**: `src/lib/gbpRatings.ts` - Fetches and displays rating
 
-### Data Flow
-1. Rating is stored in Supabase `gbp_ratings` table (manually or via API)
-2. Frontend fetches latest rating from Supabase for display
-3. Rating displays only if >= 4.5 stars
+**Data Flow:**
+1. Rating is stored in Supabase `gbp_ratings` table
+2. Frontend fetches latest rating for display
+3. Rating displays only if >= 4.5 stars (protects SEO)
 
 ## Setup Instructions (Manual Mode - No API Required)
 
