@@ -42,12 +42,20 @@ GOOGLE_PLACE_ID=<your-place-id-here>
 ```
 
 **How to get these:**
-1. **GOOGLE_API_KEY:**
+1. **GOOGLE_API_KEY** (Google Cloud Platform API Key):
    - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Create/select project
-   - Enable "Places API (New)"
-   - Go to "Credentials" → Create API Key
-   - Restrict the key to "Places API"
+   - Create a new project or select an existing one
+   - In the left sidebar, go to "APIs & Services" → "Library"
+   - Search for and enable "Places API (New)"
+   - Go to "APIs & Services" → "Credentials"
+   - Click "Create Credentials" → "API Key"
+   - Copy the API key
+   - Click "Edit API key" to restrict it:
+     - Under "API restrictions", select "Restrict key"
+     - Check "Places API"
+     - Save
+
+   **Important:** This is your Google Cloud Platform (GCP) API key, not a Google Analytics or Google Ads key
 
 2. **GOOGLE_PLACE_ID:**
    - Go to [Place ID Finder](https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder)

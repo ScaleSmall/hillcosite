@@ -78,14 +78,29 @@
 
 #### Step 1: Get API Keys
 
-1. **Google Places API Key** (Required - fixes most errors)
+1. **Google Cloud Platform (GCP) API Key** (Required - fixes most errors)
+
+   **This is your Google Cloud Console API key, not Google Analytics or Ads:**
+
    - Go to: https://console.cloud.google.com/
-   - Enable "Places API (New)"
-   - Create API Key → Restrict to Places API
+   - Create a new project or select existing one
+   - Navigate to "APIs & Services" → "Library"
+   - Search for and enable "Places API (New)"
+   - Go to "APIs & Services" → "Credentials"
+   - Click "Create Credentials" → "API Key"
+   - Copy the API key
+   - Click "Edit API key" to restrict it:
+     - Under "API restrictions", select "Restrict key"
+     - Check "Places API"
+     - Save
+
+   **Store this as:** `GOOGLE_API_KEY`
 
 2. **Google Place ID** (Required)
    - Find your business at: https://developers.google.com/maps/documentation/places/web-service/place-id
    - Copy the Place ID (format: `ChIJ...`)
+
+   **Store this as:** `GOOGLE_PLACE_ID`
 
 3. **BLS API Key** (Optional - for pricing automation)
    - Register: https://www.bls.gov/developers/api_signature_v2.htm
