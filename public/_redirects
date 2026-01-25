@@ -27,9 +27,9 @@
 # Legacy service URL consolidation - 301 redirect to /services/{service}
 /interior-painting       /services/interior-painting    301
 /exterior-painting       /services/exterior-painting    301
-/cabinet-refinishing     /services/cabinet-refinishing  301
-/cabinet-painting        /services/cabinet-refinishing  301
-/cabinet-staining        /services/cabinet-refinishing  301
+/cabinet-refinishing     /services/cabinet-repainting   301
+/cabinet-painting        /services/cabinet-repainting   301
+/cabinet-staining        /services/cabinet-repainting   301
 /commercial-painting     /services/commercial           301
 /commercial              /services/commercial           301
 /painting-services       /services                      301

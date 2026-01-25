@@ -39,9 +39,9 @@
   # Service redirects
   RewriteRule ^interior-painting/?$ /services/interior-painting [R=301,L]
   RewriteRule ^exterior-painting/?$ /services/exterior-painting [R=301,L]
-  RewriteRule ^cabinet-refinishing/?$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^cabinet-painting/?$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^cabinet-staining/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^cabinet-refinishing/?$ /services/cabinet-repainting [R=301,L]
+  RewriteRule ^cabinet-painting/?$ /services/cabinet-repainting [R=301,L]
+  RewriteRule ^cabinet-staining/?$ /services/cabinet-repainting [R=301,L]
   RewriteRule ^commercial-painting/?$ /services/commercial [R=301,L]
   RewriteRule ^commercial/?$ /services/commercial [R=301,L]
   RewriteRule ^painting-services/?$ /services [R=301,L]
