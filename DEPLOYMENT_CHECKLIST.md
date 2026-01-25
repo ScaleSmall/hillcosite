@@ -58,9 +58,13 @@ GOOGLE_PLACE_ID=<your-place-id-here>
    **Important:** This is your Google Cloud Platform (GCP) API key, not a Google Analytics or Google Ads key
 
 2. **GOOGLE_PLACE_ID:**
+
+   **Important:** This is NOT your Business Profile ID (numeric). You need your Place ID (alphanumeric starting with "ChIJ").
+
    - Go to [Place ID Finder](https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder)
-   - Search for your business
-   - Copy the Place ID (starts with "ChI...")
+   - Search for your business: "Hill Country Painting Austin TX"
+   - Click on your business in the results
+   - Copy the Place ID (format: `ChIJXXXXXXXXXXXX...`)
 
 #### For Pricing Automation (Optional but Recommended)
 ```

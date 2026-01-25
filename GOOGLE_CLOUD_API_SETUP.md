@@ -63,13 +63,48 @@ Go to: **https://console.cloud.google.com/**
 
 ### 6. Get Your Google Place ID
 
-1. Go to: **https://developers.google.com/maps/documentation/places/web-service/place-id**
-2. Use the Place ID Finder tool
-3. Search for your business: "Hill Country Painting Austin TX"
-4. Click on your business in the map
+**Important:** Place ID ≠ Business Profile ID
+- ✅ **Place ID**: Alphanumeric (ChIJ...) - what we need
+- ❌ **Business Profile ID**: Numeric only - NOT what we need
+
+**How to find your Place ID:**
+
+1. Go to: **https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder**
+2. In the search box, type your business name: "Hill Country Painting Austin TX"
+3. Click on your business when it appears in the dropdown
+4. The Place ID will be displayed in the info panel
 5. Copy the Place ID (it starts with "ChIJ...")
 
-Example: `ChIJAQAAAAAAAAAA12345678`
+Example Place ID: `ChIJAQAAAAAAAAAA12345678`
+
+**Alternative Method:**
+- Search your business on Google Maps
+- Click on your business listing
+- Look at the URL - the Place ID is embedded in it
+- Or use the "Share" button and look for the Place ID in the link
+
+---
+
+## Common Confusion: Place ID vs Business Profile ID
+
+Many users confuse these two identifiers. Here's the difference:
+
+| Feature | Place ID ✅ | Business Profile ID ❌ |
+|---------|------------|----------------------|
+| **Format** | `ChIJXXXXXXXXXXXX` (alphanumeric) | `12345678901234567890` (numeric only) |
+| **Used By** | Google Places API | Google Business Profile dashboard |
+| **Where Found** | Place ID Finder tool, Maps URLs | GBP dashboard URL |
+| **Purpose** | API calls for reviews, ratings, data | Managing your business listing |
+| **What We Need** | ✅ YES - this one! | ❌ NO - wrong ID |
+
+**If you're looking at your Google Business Profile dashboard and see a long number in the URL, that's NOT what we need.**
+
+**Example URLs:**
+- ❌ GBP Dashboard: `https://business.google.com/dashboard/l/12345678901234567890`
+  - The `12345678901234567890` is your Business Profile ID (not what we need)
+
+- ✅ Place ID Finder: Shows `ChIJN1t_tDeuEmsRUsoyG83frY4`
+  - This alphanumeric string is your Place ID (what we need!)
 
 ---
 

@@ -96,9 +96,16 @@
 
    **Store this as:** `GOOGLE_API_KEY`
 
-2. **Google Place ID** (Required)
-   - Find your business at: https://developers.google.com/maps/documentation/places/web-service/place-id
-   - Copy the Place ID (format: `ChIJ...`)
+2. **Google Place ID** (Required - NOT Business Profile ID)
+
+   **Important:** Place ID (ChIJ...) ≠ Business Profile ID (numeric)
+
+   You need the **Place ID** for the API, not your Business Profile ID from GBP dashboard.
+
+   - Go to: https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
+   - Search for your business: "Hill Country Painting Austin TX"
+   - Click on your business in the results
+   - Copy the Place ID (format: `ChIJXXXXXXXXXXXX...`)
 
    **Store this as:** `GOOGLE_PLACE_ID`
 
