@@ -12,7 +12,7 @@ const staticUrls = [
   { loc: 'https://hillcopaint.com/services', changefreq: 'monthly', priority: '0.9' },
   { loc: 'https://hillcopaint.com/services/interior-painting', changefreq: 'monthly', priority: '0.9' },
   { loc: 'https://hillcopaint.com/services/exterior-painting', changefreq: 'monthly', priority: '0.9' },
-  { loc: 'https://hillcopaint.com/services/cabinet-refinishing', changefreq: 'monthly', priority: '0.9' },
+  { loc: 'https://hillcopaint.com/services/cabinet-repainting', changefreq: 'monthly', priority: '0.9' },
   { loc: 'https://hillcopaint.com/services/commercial', changefreq: 'monthly', priority: '0.8' },
   { loc: 'https://hillcopaint.com/gallery', changefreq: 'weekly', priority: '0.7' },
   { loc: 'https://hillcopaint.com/testimonials', changefreq: 'monthly', priority: '0.6' },
