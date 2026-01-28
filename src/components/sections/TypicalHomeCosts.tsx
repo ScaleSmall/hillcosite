@@ -38,6 +38,10 @@ const TypicalHomeCosts = () => {
   const price3000Int = extractPrice(house3000Interior);
   const price3000Ext = extractPrice(house3000Exterior);
 
+  const priceValidUntil = new Date();
+  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+  const priceValidDate = priceValidUntil.toISOString().split('T')[0];
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -48,25 +52,34 @@ const TypicalHomeCosts = () => {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@type": "Product",
+          "@type": "Service",
+          "serviceType": "Interior Painting",
           "name": "Interior Painting - 1,500 sq ft Home Austin",
           "description": "Professional interior painting service for 1,500 sq ft homes in Austin",
-          "brand": {
-            "@type": "Brand",
-            "name": "Hill Country Painting"
+          "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Hill Country Painting",
+            "telephone": "(512) 240-2246",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Austin",
+            "state": "Texas"
           },
           "offers": {
-            "@type": "AggregateOffer",
+            "@type": "Offer",
             "priceCurrency": "USD",
-            "lowPrice": price1500Int?.min || 3200,
-            "highPrice": price1500Int?.max || 5800,
-            "offerCount": "1",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": price1500Int?.min || 3200,
-              "priceCurrency": "USD"
-            }
+            "price": String(price1500Int?.min || 3200),
+            "priceRange": house1500Interior,
+            "priceValidUntil": priceValidDate,
+            "availability": "https://schema.org/InStock"
           }
         }
       },
@@ -74,25 +87,34 @@ const TypicalHomeCosts = () => {
         "@type": "ListItem",
         "position": 2,
         "item": {
-          "@type": "Product",
+          "@type": "Service",
+          "serviceType": "Exterior Painting",
           "name": "Exterior Painting - 1,500 sq ft Home Austin",
           "description": "Professional exterior painting service for 1,500 sq ft homes in Austin",
-          "brand": {
-            "@type": "Brand",
-            "name": "Hill Country Painting"
+          "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Hill Country Painting",
+            "telephone": "(512) 240-2246",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Austin",
+            "state": "Texas"
           },
           "offers": {
-            "@type": "AggregateOffer",
+            "@type": "Offer",
             "priceCurrency": "USD",
-            "lowPrice": price1500Ext?.min || 5200,
-            "highPrice": price1500Ext?.max || 8500,
-            "offerCount": "1",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": price1500Ext?.min || 5200,
-              "priceCurrency": "USD"
-            }
+            "price": String(price1500Ext?.min || 5200),
+            "priceRange": house1500Exterior,
+            "priceValidUntil": priceValidDate,
+            "availability": "https://schema.org/InStock"
           }
         }
       },
@@ -100,25 +122,34 @@ const TypicalHomeCosts = () => {
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@type": "Product",
+          "@type": "Service",
+          "serviceType": "Interior Painting",
           "name": "Interior Painting - 2,200 sq ft Home Austin",
           "description": "Professional interior painting service for 2,200 sq ft homes in Austin",
-          "brand": {
-            "@type": "Brand",
-            "name": "Hill Country Painting"
+          "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Hill Country Painting",
+            "telephone": "(512) 240-2246",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Austin",
+            "state": "Texas"
           },
           "offers": {
-            "@type": "AggregateOffer",
+            "@type": "Offer",
             "priceCurrency": "USD",
-            "lowPrice": price2200Int?.min || 4400,
-            "highPrice": price2200Int?.max || 7200,
-            "offerCount": "1",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": price2200Int?.min || 4400,
-              "priceCurrency": "USD"
-            }
+            "price": String(price2200Int?.min || 4400),
+            "priceRange": house2200Interior,
+            "priceValidUntil": priceValidDate,
+            "availability": "https://schema.org/InStock"
           }
         }
       },
@@ -126,25 +157,34 @@ const TypicalHomeCosts = () => {
         "@type": "ListItem",
         "position": 4,
         "item": {
-          "@type": "Product",
+          "@type": "Service",
+          "serviceType": "Exterior Painting",
           "name": "Exterior Painting - 2,200 sq ft Home Austin",
           "description": "Professional exterior painting service for 2,200 sq ft homes in Austin",
-          "brand": {
-            "@type": "Brand",
-            "name": "Hill Country Painting"
+          "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Hill Country Painting",
+            "telephone": "(512) 240-2246",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Austin",
+            "state": "Texas"
           },
           "offers": {
-            "@type": "AggregateOffer",
+            "@type": "Offer",
             "priceCurrency": "USD",
-            "lowPrice": price2200Ext?.min || 6800,
-            "highPrice": price2200Ext?.max || 11000,
-            "offerCount": "1",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": price2200Ext?.min || 6800,
-              "priceCurrency": "USD"
-            }
+            "price": String(price2200Ext?.min || 6800),
+            "priceRange": house2200Exterior,
+            "priceValidUntil": priceValidDate,
+            "availability": "https://schema.org/InStock"
           }
         }
       },
@@ -152,25 +192,34 @@ const TypicalHomeCosts = () => {
         "@type": "ListItem",
         "position": 5,
         "item": {
-          "@type": "Product",
+          "@type": "Service",
+          "serviceType": "Interior Painting",
           "name": "Interior Painting - 3,000+ sq ft Home Austin",
           "description": "Professional interior painting service for 3,000+ sq ft homes in Austin",
-          "brand": {
-            "@type": "Brand",
-            "name": "Hill Country Painting"
+          "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Hill Country Painting",
+            "telephone": "(512) 240-2246",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Austin",
+            "state": "Texas"
           },
           "offers": {
-            "@type": "AggregateOffer",
+            "@type": "Offer",
             "priceCurrency": "USD",
-            "lowPrice": price3000Int?.min || 6000,
-            "highPrice": price3000Int?.max || 10500,
-            "offerCount": "1",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": price3000Int?.min || 6000,
-              "priceCurrency": "USD"
-            }
+            "price": String(price3000Int?.min || 6000),
+            "priceRange": house3000Interior,
+            "priceValidUntil": priceValidDate,
+            "availability": "https://schema.org/InStock"
           }
         }
       },
@@ -178,25 +227,34 @@ const TypicalHomeCosts = () => {
         "@type": "ListItem",
         "position": 6,
         "item": {
-          "@type": "Product",
+          "@type": "Service",
+          "serviceType": "Exterior Painting",
           "name": "Exterior Painting - 3,000+ sq ft Home Austin",
           "description": "Professional exterior painting service for 3,000+ sq ft homes in Austin",
-          "brand": {
-            "@type": "Brand",
-            "name": "Hill Country Painting"
+          "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Hill Country Painting",
+            "telephone": "(512) 240-2246",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            }
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Austin",
+            "state": "Texas"
           },
           "offers": {
-            "@type": "AggregateOffer",
+            "@type": "Offer",
             "priceCurrency": "USD",
-            "lowPrice": price3000Ext?.min || 9500,
-            "highPrice": price3000Ext?.max || 16000,
-            "offerCount": "1",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "UnitPriceSpecification",
-              "price": price3000Ext?.min || 9500,
-              "priceCurrency": "USD"
-            }
+            "price": String(price3000Ext?.min || 9500),
+            "priceRange": house3000Exterior,
+            "priceValidUntil": priceValidDate,
+            "availability": "https://schema.org/InStock"
           }
         }
       }

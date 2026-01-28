@@ -29,6 +29,10 @@ const PaintingCostsTable = () => {
   const interiorPrice = extractPrice(interiorHomeSize);
   const exteriorPrice = extractPrice(exteriorHomeSize);
 
+  const priceValidUntil = new Date();
+  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+  const priceValidDate = priceValidUntil.toISOString().split('T')[0];
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -62,21 +66,13 @@ const PaintingCostsTable = () => {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Interior House Painting - Austin TX",
-                "description": "Professional interior painting services for Austin homes"
+                "description": "Professional interior painting services for Austin homes",
+                "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg"
               },
-              "price": interiorPrice?.min || 2500,
-              "highPrice": interiorPrice?.max || 6000,
+              "price": String(interiorPrice?.min || 2500),
+              "priceRange": interiorHomeSize,
               "priceCurrency": "USD",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": interiorPrice?.min || 2500,
-                "priceCurrency": "USD",
-                "referenceQuantity": {
-                  "@type": "QuantitativeValue",
-                  "value": "1",
-                  "unitText": "project"
-                }
-              },
+              "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"
             }
           ]
@@ -90,21 +86,13 @@ const PaintingCostsTable = () => {
               "itemOffered": {
                 "@type": "Service",
                 "name": "Exterior House Painting - Austin TX",
-                "description": "Professional exterior painting services for Austin homes"
+                "description": "Professional exterior painting services for Austin homes",
+                "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg"
               },
-              "price": exteriorPrice?.min || 4000,
-              "highPrice": exteriorPrice?.max || 10000,
+              "price": String(exteriorPrice?.min || 4000),
+              "priceRange": exteriorHomeSize,
               "priceCurrency": "USD",
-              "priceSpecification": {
-                "@type": "UnitPriceSpecification",
-                "price": exteriorPrice?.min || 4000,
-                "priceCurrency": "USD",
-                "referenceQuantity": {
-                  "@type": "QuantitativeValue",
-                  "value": "1",
-                  "unitText": "project"
-                }
-              },
+              "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"
             }
           ]
