@@ -599,7 +599,7 @@ const Contact = () => {
                 }
               ` }} />
 
-              <Link to="/financing" className="container-code-example mt-8 block hover:opacity-90 transition-opacity cursor-pointer">
+              <div className="container-code-example mt-8">
                 <div className="content-code-example-3">
                   <div className="box-code-example-3 flex-col items-center text-center">
                     <img
@@ -609,12 +609,15 @@ const Contact = () => {
                       className="logo-code-example mb-4"
                       style={{ maxWidth: '200px', margin: '0 auto' }}
                     />
-                    <p className="paragraph-code-example-medium text-white text-lg">
+                    <Link to="/financing" className="paragraph-code-example-medium text-white text-lg hover:opacity-90 transition-opacity">
                       <span className="link-white-code-example underline">Click to estimate financing</span>
-                    </p>
+                    </Link>
+                    <Link to="/pre-approval" className="paragraph-code-example-medium text-white text-lg mt-3 hover:opacity-90 transition-opacity">
+                      <span className="link-white-code-example underline">Get pre-approved now</span>
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
 
               {showModal && (
                 <div
