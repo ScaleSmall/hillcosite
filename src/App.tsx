@@ -87,6 +87,7 @@ const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin = 
 
 const Contact = safeLazy(() => import('./pages/Contact'), "Contact");
 const Financing = safeLazy(() => import('./pages/Financing'), "Financing");
+const PreApproval = safeLazy(() => import('./pages/PreApproval'), "PreApproval");
 const Blog = safeLazy(() => import('./pages/Blog'), "Blog");
 const BlogPost = safeLazy(() => import('./pages/BlogPost'), "BlogPost");
 const ColorConsultation = safeLazy(() => import('./pages/ColorConsultation'), "ColorConsultation");
@@ -179,6 +180,7 @@ function App() {
               <Route path="/color-consultation" element={<Trace name="/color-consultation"><ColorConsultation /></Trace>} />
               <Route path="/contact" element={<Trace name="/contact"><Contact /></Trace>} />
               <Route path="/financing" element={<Trace name="/financing"><Financing /></Trace>} />
+              <Route path="/pre-approval" element={<Trace name="/pre-approval"><PreApproval /></Trace>} />
               <Route path="/blog" element={<Trace name="/blog"><Blog /></Trace>} />
               <Route path="/blog/:slug" element={<Trace name="/blog/:slug"><BlogPost /></Trace>} />
               <Route path="/guides/painting-costs-round-rock" element={<Trace name="/guides/painting-costs-round-rock"><PaintingCosts /></Trace>} />

@@ -160,6 +160,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.hillcopaint.com/pre-approval</loc>
+    <lastmod>2026-01-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.hillcopaint.com/privacy</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>yearly</changefreq>

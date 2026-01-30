@@ -86,6 +86,7 @@ const staticRoutes = [
   '/terms',
   '/do-not-sell',
   '/financing',
+  '/pre-approval',
   '/search',
   '/thank-you',
   ...serviceLocationPages,
