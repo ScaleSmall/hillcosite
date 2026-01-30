@@ -12,6 +12,7 @@ import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
+import ServiceLocationLinks from '../../components/ServiceLocationLinks';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const CommercialPainting = () => {
@@ -342,6 +343,8 @@ const CommercialPainting = () => {
           }
         ]}
       />
+
+      <ServiceLocationLinks service="commercial" />
 
       <CTABanner
         title="Ready to Enhance Your Business?"

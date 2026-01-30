@@ -101,6 +101,44 @@ const Search = safeLazy(() => import('./pages/Search'), "Search");
 const ThankYou = safeLazy(() => import('./pages/ThankYou'), "ThankYou");
 const NotFound = safeLazy(() => import('./pages/NotFound'), "NotFound");
 
+// SERVICE + LOCATION PAGES (36 total: 4 services x 9 locations)
+const InteriorPaintingRoundRock = safeLazy(() => import('./pages/locations/InteriorPaintingRoundRock'), "InteriorPaintingRoundRock");
+const InteriorPaintingGeorgetown = safeLazy(() => import('./pages/locations/InteriorPaintingGeorgetown'), "InteriorPaintingGeorgetown");
+const InteriorPaintingCedarPark = safeLazy(() => import('./pages/locations/InteriorPaintingCedarPark'), "InteriorPaintingCedarPark");
+const InteriorPaintingPflugerville = safeLazy(() => import('./pages/locations/InteriorPaintingPflugerville'), "InteriorPaintingPflugerville");
+const InteriorPaintingLeander = safeLazy(() => import('./pages/locations/InteriorPaintingLeander'), "InteriorPaintingLeander");
+const InteriorPaintingTaylor = safeLazy(() => import('./pages/locations/InteriorPaintingTaylor'), "InteriorPaintingTaylor");
+const InteriorPaintingHutto = safeLazy(() => import('./pages/locations/InteriorPaintingHutto'), "InteriorPaintingHutto");
+const InteriorPaintingAustin = safeLazy(() => import('./pages/locations/InteriorPaintingAustin'), "InteriorPaintingAustin");
+const InteriorPaintingWestLakeHills = safeLazy(() => import('./pages/locations/InteriorPaintingWestLakeHills'), "InteriorPaintingWestLakeHills");
+const ExteriorPaintingRoundRock = safeLazy(() => import('./pages/locations/ExteriorPaintingRoundRock'), "ExteriorPaintingRoundRock");
+const ExteriorPaintingGeorgetown = safeLazy(() => import('./pages/locations/ExteriorPaintingGeorgetown'), "ExteriorPaintingGeorgetown");
+const ExteriorPaintingCedarPark = safeLazy(() => import('./pages/locations/ExteriorPaintingCedarPark'), "ExteriorPaintingCedarPark");
+const ExteriorPaintingPflugerville = safeLazy(() => import('./pages/locations/ExteriorPaintingPflugerville'), "ExteriorPaintingPflugerville");
+const ExteriorPaintingLeander = safeLazy(() => import('./pages/locations/ExteriorPaintingLeander'), "ExteriorPaintingLeander");
+const ExteriorPaintingTaylor = safeLazy(() => import('./pages/locations/ExteriorPaintingTaylor'), "ExteriorPaintingTaylor");
+const ExteriorPaintingHutto = safeLazy(() => import('./pages/locations/ExteriorPaintingHutto'), "ExteriorPaintingHutto");
+const ExteriorPaintingAustin = safeLazy(() => import('./pages/locations/ExteriorPaintingAustin'), "ExteriorPaintingAustin");
+const ExteriorPaintingWestLakeHills = safeLazy(() => import('./pages/locations/ExteriorPaintingWestLakeHills'), "ExteriorPaintingWestLakeHills");
+const CabinetRefinishingRoundRock = safeLazy(() => import('./pages/locations/CabinetRefinishingRoundRock'), "CabinetRefinishingRoundRock");
+const CabinetRefinishingGeorgetown = safeLazy(() => import('./pages/locations/CabinetRefinishingGeorgetown'), "CabinetRefinishingGeorgetown");
+const CabinetRefinishingCedarPark = safeLazy(() => import('./pages/locations/CabinetRefinishingCedarPark'), "CabinetRefinishingCedarPark");
+const CabinetRefinishingPflugerville = safeLazy(() => import('./pages/locations/CabinetRefinishingPflugerville'), "CabinetRefinishingPflugerville");
+const CabinetRefinishingLeander = safeLazy(() => import('./pages/locations/CabinetRefinishingLeander'), "CabinetRefinishingLeander");
+const CabinetRefinishingTaylor = safeLazy(() => import('./pages/locations/CabinetRefinishingTaylor'), "CabinetRefinishingTaylor");
+const CabinetRefinishingHutto = safeLazy(() => import('./pages/locations/CabinetRefinishingHutto'), "CabinetRefinishingHutto");
+const CabinetRefinishingAustin = safeLazy(() => import('./pages/locations/CabinetRefinishingAustin'), "CabinetRefinishingAustin");
+const CabinetRefinishingWestLakeHills = safeLazy(() => import('./pages/locations/CabinetRefinishingWestLakeHills'), "CabinetRefinishingWestLakeHills");
+const CommercialPaintingRoundRock = safeLazy(() => import('./pages/locations/CommercialPaintingRoundRock'), "CommercialPaintingRoundRock");
+const CommercialPaintingGeorgetown = safeLazy(() => import('./pages/locations/CommercialPaintingGeorgetown'), "CommercialPaintingGeorgetown");
+const CommercialPaintingCedarPark = safeLazy(() => import('./pages/locations/CommercialPaintingCedarPark'), "CommercialPaintingCedarPark");
+const CommercialPaintingPflugerville = safeLazy(() => import('./pages/locations/CommercialPaintingPflugerville'), "CommercialPaintingPflugerville");
+const CommercialPaintingLeander = safeLazy(() => import('./pages/locations/CommercialPaintingLeander'), "CommercialPaintingLeander");
+const CommercialPaintingTaylor = safeLazy(() => import('./pages/locations/CommercialPaintingTaylor'), "CommercialPaintingTaylor");
+const CommercialPaintingHutto = safeLazy(() => import('./pages/locations/CommercialPaintingHutto'), "CommercialPaintingHutto");
+const CommercialPaintingAustin = safeLazy(() => import('./pages/locations/CommercialPaintingAustin'), "CommercialPaintingAustin");
+const CommercialPaintingWestLakeHills = safeLazy(() => import('./pages/locations/CommercialPaintingWestLakeHills'), "CommercialPaintingWestLakeHills");
+
 // Loading fallback component
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -208,6 +246,44 @@ function App() {
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods /></Trace>} />
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville /></Trace>} />
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin /></Trace>} />
+
+              {/* SERVICE + LOCATION PAGES - 36 total: 4 services x 9 locations */}
+              <Route path="/interior-painting-round-rock" element={<Trace name="/interior-painting-round-rock"><InteriorPaintingRoundRock /></Trace>} />
+              <Route path="/interior-painting-georgetown" element={<Trace name="/interior-painting-georgetown"><InteriorPaintingGeorgetown /></Trace>} />
+              <Route path="/interior-painting-cedar-park" element={<Trace name="/interior-painting-cedar-park"><InteriorPaintingCedarPark /></Trace>} />
+              <Route path="/interior-painting-pflugerville" element={<Trace name="/interior-painting-pflugerville"><InteriorPaintingPflugerville /></Trace>} />
+              <Route path="/interior-painting-leander" element={<Trace name="/interior-painting-leander"><InteriorPaintingLeander /></Trace>} />
+              <Route path="/interior-painting-taylor" element={<Trace name="/interior-painting-taylor"><InteriorPaintingTaylor /></Trace>} />
+              <Route path="/interior-painting-hutto" element={<Trace name="/interior-painting-hutto"><InteriorPaintingHutto /></Trace>} />
+              <Route path="/interior-painting-austin" element={<Trace name="/interior-painting-austin"><InteriorPaintingAustin /></Trace>} />
+              <Route path="/interior-painting-west-lake-hills" element={<Trace name="/interior-painting-west-lake-hills"><InteriorPaintingWestLakeHills /></Trace>} />
+              <Route path="/exterior-painting-round-rock" element={<Trace name="/exterior-painting-round-rock"><ExteriorPaintingRoundRock /></Trace>} />
+              <Route path="/exterior-painting-georgetown" element={<Trace name="/exterior-painting-georgetown"><ExteriorPaintingGeorgetown /></Trace>} />
+              <Route path="/exterior-painting-cedar-park" element={<Trace name="/exterior-painting-cedar-park"><ExteriorPaintingCedarPark /></Trace>} />
+              <Route path="/exterior-painting-pflugerville" element={<Trace name="/exterior-painting-pflugerville"><ExteriorPaintingPflugerville /></Trace>} />
+              <Route path="/exterior-painting-leander" element={<Trace name="/exterior-painting-leander"><ExteriorPaintingLeander /></Trace>} />
+              <Route path="/exterior-painting-taylor" element={<Trace name="/exterior-painting-taylor"><ExteriorPaintingTaylor /></Trace>} />
+              <Route path="/exterior-painting-hutto" element={<Trace name="/exterior-painting-hutto"><ExteriorPaintingHutto /></Trace>} />
+              <Route path="/exterior-painting-austin" element={<Trace name="/exterior-painting-austin"><ExteriorPaintingAustin /></Trace>} />
+              <Route path="/exterior-painting-west-lake-hills" element={<Trace name="/exterior-painting-west-lake-hills"><ExteriorPaintingWestLakeHills /></Trace>} />
+              <Route path="/cabinet-refinishing-round-rock" element={<Trace name="/cabinet-refinishing-round-rock"><CabinetRefinishingRoundRock /></Trace>} />
+              <Route path="/cabinet-refinishing-georgetown" element={<Trace name="/cabinet-refinishing-georgetown"><CabinetRefinishingGeorgetown /></Trace>} />
+              <Route path="/cabinet-refinishing-cedar-park" element={<Trace name="/cabinet-refinishing-cedar-park"><CabinetRefinishingCedarPark /></Trace>} />
+              <Route path="/cabinet-refinishing-pflugerville" element={<Trace name="/cabinet-refinishing-pflugerville"><CabinetRefinishingPflugerville /></Trace>} />
+              <Route path="/cabinet-refinishing-leander" element={<Trace name="/cabinet-refinishing-leander"><CabinetRefinishingLeander /></Trace>} />
+              <Route path="/cabinet-refinishing-taylor" element={<Trace name="/cabinet-refinishing-taylor"><CabinetRefinishingTaylor /></Trace>} />
+              <Route path="/cabinet-refinishing-hutto" element={<Trace name="/cabinet-refinishing-hutto"><CabinetRefinishingHutto /></Trace>} />
+              <Route path="/cabinet-refinishing-austin" element={<Trace name="/cabinet-refinishing-austin"><CabinetRefinishingAustin /></Trace>} />
+              <Route path="/cabinet-refinishing-west-lake-hills" element={<Trace name="/cabinet-refinishing-west-lake-hills"><CabinetRefinishingWestLakeHills /></Trace>} />
+              <Route path="/commercial-painting-round-rock" element={<Trace name="/commercial-painting-round-rock"><CommercialPaintingRoundRock /></Trace>} />
+              <Route path="/commercial-painting-georgetown" element={<Trace name="/commercial-painting-georgetown"><CommercialPaintingGeorgetown /></Trace>} />
+              <Route path="/commercial-painting-cedar-park" element={<Trace name="/commercial-painting-cedar-park"><CommercialPaintingCedarPark /></Trace>} />
+              <Route path="/commercial-painting-pflugerville" element={<Trace name="/commercial-painting-pflugerville"><CommercialPaintingPflugerville /></Trace>} />
+              <Route path="/commercial-painting-leander" element={<Trace name="/commercial-painting-leander"><CommercialPaintingLeander /></Trace>} />
+              <Route path="/commercial-painting-taylor" element={<Trace name="/commercial-painting-taylor"><CommercialPaintingTaylor /></Trace>} />
+              <Route path="/commercial-painting-hutto" element={<Trace name="/commercial-painting-hutto"><CommercialPaintingHutto /></Trace>} />
+              <Route path="/commercial-painting-austin" element={<Trace name="/commercial-painting-austin"><CommercialPaintingAustin /></Trace>} />
+              <Route path="/commercial-painting-west-lake-hills" element={<Trace name="/commercial-painting-west-lake-hills"><CommercialPaintingWestLakeHills /></Trace>} />
 
               <Route path="*" element={<Trace name="*"><NotFound /></Trace>} />
             </Routes>

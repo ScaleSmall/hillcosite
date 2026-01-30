@@ -6,13 +6,8 @@ http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
 http://www.hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 
 # ============================================
-# Pattern-based service redirects (auto-catch legacy URLs)
+# Pattern-based service redirects (legacy URLs only)
 # ============================================
-/residential-interior-*         /services/interior-painting     301
-/residential-exterior-*         /services/exterior-painting     301
-/residential-cabinet-*          /services/cabinet-refinishing   301
-/commercial-*-painting*         /services/commercial            301
-/commercial-interior-*          /services/commercial            301
 /industrial-*                   /services/commercial            301
 /hotel-*                        /services/commercial            301
 /residential-fence-*            /services                       301
@@ -25,13 +20,9 @@ http://www.hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 /services/commercial*           /services/commercial            301
 
 # ============================================
-# Pattern-based Round Rock redirects (from GSC ghost URLs)
+# Service area consolidation
 # ============================================
 /service-areas/round-rock       /service-areas/round-rock-georgetown  301
-/*-painting-round-rock          /service-areas/round-rock-georgetown  301
-/*-painting-round-rock/         /service-areas/round-rock-georgetown  301
-/*-round-rock                   /service-areas/round-rock-georgetown  301
-/*-round-rock/                  /service-areas/round-rock-georgetown  301
 
 # ============================================
 # City-specific redirects from Google Business Profile
