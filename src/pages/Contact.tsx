@@ -219,7 +219,7 @@ const Contact = () => {
             {/* Award Badge - Left Side */}
             <div className="hidden lg:flex flex-shrink-0">
               <img
-                src="/contact-hill-country-painting-austin-tx.jpg"
+                src="/winner_best_of_round_rock_2025_award.jpg"
                 alt="Winner Best of Round Rock 2025 Award"
                 className="w-40 h-40 object-contain"
                 loading="eager"
