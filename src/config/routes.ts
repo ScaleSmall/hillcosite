@@ -38,6 +38,7 @@ export const staticRoutes = [
   { path: '/guides/best-paint-texas-heat', changefreq: 'monthly', priority: '0.7' },
   { path: '/guides/hoa-color-tips-round-rock', changefreq: 'monthly', priority: '0.7' },
   { path: '/guides/how-often-paint-central-texas', changefreq: 'monthly', priority: '0.7' },
+  { path: '/financing', changefreq: 'monthly', priority: '0.7' },
   { path: '/privacy', changefreq: 'yearly', priority: '0.3' },
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },

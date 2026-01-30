@@ -1,10 +1,24 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, readFileSync } from 'fs';
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { createClient } from '@supabase/supabase-js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const envPath = resolve(__dirname, '../.env');
+const envContent = readFileSync(envPath, 'utf-8');
+const envVars = {};
+envContent.split('\n').forEach(line => {
+  const [key, ...valueParts] = line.split('=');
+  if (key && valueParts.length) {
+    envVars[key.trim()] = valueParts.join('=').trim();
+  }
+});
+
+const supabaseUrl = envVars.VITE_SUPABASE_URL;
+const supabaseKey = envVars.VITE_SUPABASE_ANON_KEY;
 
 const baseUrl = 'https://www.hillcopaint.com';
 
@@ -85,6 +99,7 @@ const routes = [
   { path: '/guides/best-paint-texas-heat', changefreq: 'monthly', priority: '0.7' },
   { path: '/guides/hoa-color-tips-round-rock', changefreq: 'monthly', priority: '0.7' },
   { path: '/guides/how-often-paint-central-texas', changefreq: 'monthly', priority: '0.7' },
+  { path: '/financing', changefreq: 'monthly', priority: '0.7' },
   { path: '/privacy', changefreq: 'yearly', priority: '0.3' },
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
@@ -98,17 +113,51 @@ geoAreas.forEach(area => {
   });
 });
 
-const generateSitemap = () => {
+async function fetchBlogPosts() {
+  if (!supabaseUrl || !supabaseKey) {
+    console.log('  Supabase credentials not found, skipping blog posts');
+    return [];
+  }
+
+  try {
+    const supabase = createClient(supabaseUrl, supabaseKey);
+    const { data, error } = await supabase
+      .from('blog_posts')
+      .select('slug, updated_at')
+      .eq('published', true)
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.log('  Could not fetch blog posts:', error.message);
+      return [];
+    }
+
+    return (data || []).map(post => ({
+      path: `/blog/${post.slug}`,
+      changefreq: 'weekly',
+      priority: '0.6',
+      lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null
+    }));
+  } catch (err) {
+    console.log('  Error fetching blog posts:', err.message);
+    return [];
+  }
+}
+
+const generateSitemap = async () => {
   const lastmod = new Date().toISOString().split('T')[0];
+
+  const blogPosts = await fetchBlogPosts();
+  const allRoutes = [...routes, ...blogPosts];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-${routes.map(route => `  <url>
+${allRoutes.map(route => `  <url>
     <loc>${baseUrl}${route.path}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${route.lastmod || lastmod}</lastmod>
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
   </url>`).join('\n')}
@@ -118,7 +167,9 @@ ${routes.map(route => `  <url>
   writeFileSync(outputPath, sitemapXml, 'utf-8');
 
   console.log(`✓ Sitemap generated successfully at ${outputPath}`);
-  console.log(`  Total URLs: ${routes.length}`);
+  console.log(`  Static pages: ${routes.length}`);
+  console.log(`  Blog posts: ${blogPosts.length}`);
+  console.log(`  Total URLs: ${allRoutes.length}`);
 };
 
 generateSitemap();
