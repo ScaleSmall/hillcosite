@@ -9,8 +9,7 @@ const NotFound = () => {
       <SEO
         title="Page Not Found | Hill Country Painting Austin"
         description="The page you're looking for doesn't exist. Visit our home page or contact Hill Country Painting for professional Austin painting services."
-        canonical="/404"
-        robots="noindex, follow"
+        robots="noindex, nofollow"
       />
       
       <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100 min-h-[60vh] flex items-center">

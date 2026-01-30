@@ -17,6 +17,45 @@ const geoAreas = [
   { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] }
 ];
 
+const serviceLocationPages = [
+  '/interior-painting-round-rock',
+  '/interior-painting-georgetown',
+  '/interior-painting-cedar-park',
+  '/interior-painting-pflugerville',
+  '/interior-painting-leander',
+  '/interior-painting-taylor',
+  '/interior-painting-hutto',
+  '/interior-painting-austin',
+  '/interior-painting-west-lake-hills',
+  '/exterior-painting-round-rock',
+  '/exterior-painting-georgetown',
+  '/exterior-painting-cedar-park',
+  '/exterior-painting-pflugerville',
+  '/exterior-painting-leander',
+  '/exterior-painting-taylor',
+  '/exterior-painting-hutto',
+  '/exterior-painting-austin',
+  '/exterior-painting-west-lake-hills',
+  '/cabinet-refinishing-round-rock',
+  '/cabinet-refinishing-georgetown',
+  '/cabinet-refinishing-cedar-park',
+  '/cabinet-refinishing-pflugerville',
+  '/cabinet-refinishing-leander',
+  '/cabinet-refinishing-taylor',
+  '/cabinet-refinishing-hutto',
+  '/cabinet-refinishing-austin',
+  '/cabinet-refinishing-west-lake-hills',
+  '/commercial-painting-round-rock',
+  '/commercial-painting-georgetown',
+  '/commercial-painting-cedar-park',
+  '/commercial-painting-pflugerville',
+  '/commercial-painting-leander',
+  '/commercial-painting-taylor',
+  '/commercial-painting-hutto',
+  '/commercial-painting-austin',
+  '/commercial-painting-west-lake-hills',
+];
+
 const staticRoutes = [
   '/',
   '/about',
@@ -49,6 +88,7 @@ const staticRoutes = [
   '/financing',
   '/search',
   '/thank-you',
+  ...serviceLocationPages,
 ];
 
 function getAllValidRoutes() {

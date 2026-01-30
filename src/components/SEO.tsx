@@ -68,9 +68,10 @@ interface SEOProps {
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, product, testimonials, geoPlacename }: SEOProps) => {
   const baseUrl = 'https://www.hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
-  const canonicalStr = canonical === '/'
-    ? `${baseUrl}/`
-    : `${baseUrl}${canonical}`;
+  // Only compute canonicalStr if canonical prop is provided
+  const canonicalStr = canonical
+    ? (canonical === '/' ? `${baseUrl}/` : `${baseUrl}${canonical}`)
+    : null;
 
   // Development mode: Check for duplicate canonical tags
   useEffect(() => {
@@ -347,8 +348,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     }
   } : null;
 
-  // CollectionPage schema for index pages
-  const collectionSchema = pageType === 'collection' ? {
+  // CollectionPage schema for index pages (only if canonical is provided)
+  const collectionSchema = pageType === 'collection' && canonicalStr ? {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     '@id': `${canonicalStr}#webpage`,
@@ -363,10 +364,9 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     } : undefined
   } : null;
 
-  // WebPage schema for standard pages (not website or collection types)
-  // Default to WebPage if no pageType is specified, unless it's the homepage
-  const webpageSchema = (pageType !== 'collection' && pageType !== 'website' && canonical !== '/') ||
-                        (pageType === 'service' || pageType === 'article') ? {
+  // WebPage schema for standard pages (only if canonical is provided)
+  const webpageSchema = canonicalStr && ((pageType !== 'collection' && pageType !== 'website' && canonical !== '/') ||
+                        (pageType === 'service' || pageType === 'article')) ? {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${canonicalStr}#webpage`,
@@ -448,13 +448,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     <Helmet>
       <title>{optimizedTitle}</title>
       <meta name="description" content={optimizedDescription} />
-      <link rel="canonical" href={canonicalStr} />
-      
+      {canonicalStr && <link rel="canonical" href={canonicalStr} />}
+
       {/* Open Graph */}
       <meta property="og:title" content={optimizedTitle} />
       <meta property="og:description" content={optimizedDescription} />
       <meta property="og:type" content={pageType === 'article' ? 'article' : 'website'} />
-      <meta property="og:url" content={canonicalStr} />
+      {canonicalStr && <meta property="og:url" content={canonicalStr} />}
       <meta property="og:site_name" content="Hill Country Painting" />
       <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
       <meta property="og:image:width" content="1200" />

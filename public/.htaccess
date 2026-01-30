@@ -46,23 +46,20 @@
   RewriteRule ^commercial/?$ /services/commercial [R=301,L]
   RewriteRule ^painting-services/?$ /services [R=301,L]
 
-  # Pattern-based service redirects (auto-catch legacy URLs)
+  # Pattern-based service redirects (legacy URLs only - excludes valid service+location pages)
   RewriteRule ^residential-interior-.*$ /services/interior-painting [R=301,L]
   RewriteRule ^residential-exterior-.*$ /services/exterior-painting [R=301,L]
   RewriteRule ^residential-cabinet-.*$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^commercial-.*-painting.*$ /services/commercial [R=301,L]
+  RewriteRule ^commercial-interior-.*$ /services/commercial [R=301,L]
   RewriteRule ^industrial-.*$ /services/commercial [R=301,L]
   RewriteRule ^hotel-.*$ /services/commercial [R=301,L]
   RewriteRule ^residential-(fence|deck|porch|garage|stucco)-.*$ /services [R=301,L]
   RewriteRule ^service/.*$ /services [R=301,L]
   RewriteRule ^services/residential.*$ /services [R=301,L]
-  RewriteRule ^services/commercial.*$ /services/commercial [R=301,L]
+  RewriteRule ^services/commercial[^-].*$ /services/commercial [R=301,L]
 
-  # Pattern-based service area redirects (Round Rock specific patterns from GSC)
-  RewriteRule ^service-areas/round-rock$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^.*-painting-round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^.*-round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^round-rock-[0-9]+/?$ /service-areas/round-rock-georgetown [R=301,L]
+  # Service area consolidation (specific path only - not patterns that conflict with valid pages)
+  RewriteRule ^service-areas/round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
 
   # Round Rock & Georgetown redirects
   RewriteRule ^round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]

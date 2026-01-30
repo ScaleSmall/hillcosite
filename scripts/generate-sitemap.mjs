@@ -20,6 +20,45 @@ const geoAreas = [
   { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] }
 ];
 
+const serviceLocationPages = [
+  { path: '/interior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-pflugerville', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-taylor', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-hutto', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-pflugerville', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-taylor', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-hutto', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-pflugerville', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-taylor', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-hutto', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-pflugerville', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-taylor', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-hutto', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+];
+
 const routes = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/about', changefreq: 'monthly', priority: '0.8' },
@@ -49,6 +88,7 @@ const routes = [
   { path: '/privacy', changefreq: 'yearly', priority: '0.3' },
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
+  ...serviceLocationPages,
 ];
 
 geoAreas.forEach(area => {
