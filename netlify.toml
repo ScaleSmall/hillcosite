@@ -1,9 +1,27 @@
 [build]
 publish = "dist"
-command = "npx vite build"
+command = "npm run build"
 
 [build.environment]
 NODE_VERSION = "18"
+
+[[redirects]]
+from = "https://hillcopaint.com/*"
+to = "https://www.hillcopaint.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://hillcopaint.com/*"
+to = "https://www.hillcopaint.com/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://www.hillcopaint.com/*"
+to = "https://www.hillcopaint.com/:splat"
+status = 301
+force = true
 
 [[redirects]]
 from = "/*"

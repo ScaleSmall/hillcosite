@@ -6,9 +6,9 @@
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Force non-www
-  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  RewriteRule ^(.*)$ https://%1%{REQUEST_URI} [L,R=301]
+  # Force www (canonical domain is www.hillcopaint.com)
+  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [L,R=301]
 
   # Dynamic sitemap from Supabase Edge Function
   RewriteRule ^sitemap\.xml$ sitemap.php [L]
@@ -39,12 +39,30 @@
   # Service redirects
   RewriteRule ^interior-painting/?$ /services/interior-painting [R=301,L]
   RewriteRule ^exterior-painting/?$ /services/exterior-painting [R=301,L]
-  RewriteRule ^cabinet-refinishing/?$ /services/cabinet-repainting [R=301,L]
-  RewriteRule ^cabinet-painting/?$ /services/cabinet-repainting [R=301,L]
-  RewriteRule ^cabinet-staining/?$ /services/cabinet-repainting [R=301,L]
+  RewriteRule ^cabinet-refinishing/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^cabinet-painting/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^cabinet-staining/?$ /services/cabinet-refinishing [R=301,L]
   RewriteRule ^commercial-painting/?$ /services/commercial [R=301,L]
   RewriteRule ^commercial/?$ /services/commercial [R=301,L]
   RewriteRule ^painting-services/?$ /services [R=301,L]
+
+  # Pattern-based service redirects (auto-catch legacy URLs)
+  RewriteRule ^residential-interior-.*$ /services/interior-painting [R=301,L]
+  RewriteRule ^residential-exterior-.*$ /services/exterior-painting [R=301,L]
+  RewriteRule ^residential-cabinet-.*$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^commercial-.*-painting.*$ /services/commercial [R=301,L]
+  RewriteRule ^industrial-.*$ /services/commercial [R=301,L]
+  RewriteRule ^hotel-.*$ /services/commercial [R=301,L]
+  RewriteRule ^residential-(fence|deck|porch|garage|stucco)-.*$ /services [R=301,L]
+  RewriteRule ^service/.*$ /services [R=301,L]
+  RewriteRule ^services/residential.*$ /services [R=301,L]
+  RewriteRule ^services/commercial.*$ /services/commercial [R=301,L]
+
+  # Pattern-based service area redirects (Round Rock specific patterns from GSC)
+  RewriteRule ^service-areas/round-rock$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^.*-painting-round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^.*-round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
+  RewriteRule ^round-rock-[0-9]+/?$ /service-areas/round-rock-georgetown [R=301,L]
 
   # Round Rock & Georgetown redirects
   RewriteRule ^round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]

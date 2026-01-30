@@ -1,4 +1,39 @@
 # ============================================
+# Force www canonical domain (MUST be first)
+# ============================================
+https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
+http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
+http://www.hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
+
+# ============================================
+# Pattern-based service redirects (auto-catch legacy URLs)
+# ============================================
+/residential-interior-*         /services/interior-painting     301
+/residential-exterior-*         /services/exterior-painting     301
+/residential-cabinet-*          /services/cabinet-refinishing   301
+/commercial-*-painting*         /services/commercial            301
+/commercial-interior-*          /services/commercial            301
+/industrial-*                   /services/commercial            301
+/hotel-*                        /services/commercial            301
+/residential-fence-*            /services                       301
+/residential-deck-*             /services                       301
+/residential-porch-*            /services                       301
+/residential-garage-*           /services                       301
+/residential-stucco-*           /services                       301
+/service/*                      /services                       301
+/services/residential*          /services                       301
+/services/commercial*           /services/commercial            301
+
+# ============================================
+# Pattern-based Round Rock redirects (from GSC ghost URLs)
+# ============================================
+/service-areas/round-rock       /service-areas/round-rock-georgetown  301
+/*-painting-round-rock          /service-areas/round-rock-georgetown  301
+/*-painting-round-rock/         /service-areas/round-rock-georgetown  301
+/*-round-rock                   /service-areas/round-rock-georgetown  301
+/*-round-rock/                  /service-areas/round-rock-georgetown  301
+
+# ============================================
 # City-specific redirects from Google Business Profile
 # ============================================
 /austin                   /service-areas/austin 301
@@ -24,12 +59,12 @@
 /request-estimate        /contact 301!
 /free-estimate           /contact 301!
 
-# Legacy service URL consolidation - 301 redirect to /services/{service}
+# Legacy service URL consolidation
 /interior-painting       /services/interior-painting    301
 /exterior-painting       /services/exterior-painting    301
-/cabinet-refinishing     /services/cabinet-repainting   301
-/cabinet-painting        /services/cabinet-repainting   301
-/cabinet-staining        /services/cabinet-repainting   301
+/cabinet-refinishing     /services/cabinet-refinishing  301
+/cabinet-painting        /services/cabinet-refinishing  301
+/cabinet-staining        /services/cabinet-refinishing  301
 /commercial-painting     /services/commercial           301
 /commercial              /services/commercial           301
 /painting-services       /services                      301
@@ -53,6 +88,7 @@
 
 # Pflugerville & Wells Branch redirects
 /pflugerville            /service-areas/pflugerville-wells-branch  301
+/pflugerville/           /service-areas/pflugerville-wells-branch  301
 /pflugerville-painting   /service-areas/pflugerville-wells-branch  301
 /wells-branch            /service-areas/pflugerville-wells-branch  301
 /wells-branch-painting   /service-areas/pflugerville-wells-branch  301
@@ -64,6 +100,7 @@
 /taylor                  /service-areas/taylor-hutto               301
 /taylor-painting         /service-areas/taylor-hutto               301
 /hutto                   /service-areas/taylor-hutto               301
+/hutto/                  /service-areas/taylor-hutto               301
 /hutto-painting          /service-areas/taylor-hutto               301
 /76574                   /service-areas/taylor-hutto               301
 /78634                   /service-areas/taylor-hutto               301
@@ -93,6 +130,9 @@
 /Hutto                   /service-areas/taylor-hutto               301
 /Leander                 /service-areas/leander                    301
 /Taylor                  /service-areas/taylor-hutto               301
+
+# Error page redirects
+/404                     /                                          301
 
 # Catch-all for SPA
 /*                       /index.html 200

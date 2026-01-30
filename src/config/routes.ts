@@ -1,14 +1,6 @@
-import { writeFileSync } from 'fs';
-import { resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+export const BASE_URL = 'https://www.hillcopaint.com';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const baseUrl = 'https://www.hillcopaint.com';
-
-const geoAreas = [
+export const geoAreas = [
   { hub: 'steiner-ranch-78732', neighborhoods: ['rob-roy', 'davenport-ranch', 'river-place', 'barclay-place', 'chaparral-cliffside'] },
   { hub: 'west-lake-hills-and-rollingwood', neighborhoods: ['rollingwood', 'west-lake-hills', 'spanish-oaks', 'davenport-ranch-west', 'lake-austin-hills'] },
   { hub: 'barton-creek', neighborhoods: ['barton-creek-country-club-estates', 'fazio-foothills-cliffside', 'spyglass-bartons-bluff', 'lake-austin-west-estates', 'barton-creek-west'] },
@@ -20,7 +12,7 @@ const geoAreas = [
   { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] }
 ];
 
-const routes = [
+export const staticRoutes = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
   { path: '/about', changefreq: 'monthly', priority: '0.8' },
   { path: '/services', changefreq: 'weekly', priority: '0.9' },
@@ -51,34 +43,42 @@ const routes = [
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
 ];
 
-geoAreas.forEach(area => {
-  routes.push({ path: `/areas/${area.hub}`, changefreq: 'monthly', priority: '0.8' });
-  area.neighborhoods.forEach(neighborhood => {
-    routes.push({ path: `/areas/${area.hub}/${neighborhood}`, changefreq: 'monthly', priority: '0.7' });
+export function getAllRoutes() {
+  const routes = [...staticRoutes];
+
+  geoAreas.forEach(area => {
+    routes.push({ path: `/areas/${area.hub}`, changefreq: 'monthly', priority: '0.8' });
+    area.neighborhoods.forEach(neighborhood => {
+      routes.push({ path: `/areas/${area.hub}/${neighborhood}`, changefreq: 'monthly', priority: '0.7' });
+    });
   });
-});
 
-const generateSitemap = () => {
-  const lastmod = new Date().toISOString().split('T')[0];
+  return routes;
+}
 
-  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-${routes.map(route => `  <url>
-    <loc>${baseUrl}${route.path}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>`).join('\n')}
-</urlset>`;
+export function getAllRoutePaths(): string[] {
+  return getAllRoutes().map(r => r.path);
+}
 
-  const outputPath = resolve(__dirname, '../public/sitemap.xml');
-  writeFileSync(outputPath, sitemapXml, 'utf-8');
+export const serviceRedirectPatterns = [
+  { pattern: /^\/residential-interior-/, target: '/services/interior-painting' },
+  { pattern: /^\/residential-exterior-/, target: '/services/exterior-painting' },
+  { pattern: /^\/residential-cabinet-/, target: '/services/cabinet-refinishing' },
+  { pattern: /^\/commercial-.*-painting/, target: '/services/commercial' },
+  { pattern: /^\/commercial-interior-/, target: '/services/commercial' },
+  { pattern: /^\/industrial-/, target: '/services/commercial' },
+  { pattern: /^\/hotel-/, target: '/services/commercial' },
+  { pattern: /^\/residential-(fence|deck|porch|garage|stucco)-/, target: '/services' },
+  { pattern: /^\/service\//, target: '/services' },
+];
 
-  console.log(`✓ Sitemap generated successfully at ${outputPath}`);
-  console.log(`  Total URLs: ${routes.length}`);
-};
-
-generateSitemap();
+export const locationRedirectPatterns = [
+  { pattern: /round-rock/i, target: '/service-areas/round-rock-georgetown' },
+  { pattern: /georgetown/i, target: '/service-areas/round-rock-georgetown' },
+  { pattern: /pflugerville/i, target: '/service-areas/pflugerville-wells-branch' },
+  { pattern: /wells-branch/i, target: '/service-areas/pflugerville-wells-branch' },
+  { pattern: /cedar-park/i, target: '/service-areas/cedar-park' },
+  { pattern: /leander/i, target: '/service-areas/leander' },
+  { pattern: /taylor/i, target: '/service-areas/taylor-hutto' },
+  { pattern: /hutto/i, target: '/service-areas/taylor-hutto' },
+];
