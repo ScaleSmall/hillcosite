@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CheckCircle2, Phone } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const Financing = () => {
@@ -56,25 +56,6 @@ const Financing = () => {
                 height="240"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pre-Approval CTA */}
-      <section className="py-8 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-deep-600 to-deep-700 rounded-xl p-6 md:p-8 text-center text-white">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Get Pre-Approved?</h2>
-            <p className="text-slate-200 mb-6 max-w-2xl mx-auto">
-              Check your financing options in minutes with no impact to your credit score.
-              See what you qualify for before scheduling your estimate.
-            </p>
-            <Link
-              to="/pre-approval"
-              className="inline-flex items-center justify-center bg-white text-deep-700 font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors"
-            >
-              Get Pre-Approved Now
-            </Link>
           </div>
         </div>
       </section>
@@ -235,18 +216,31 @@ const Financing = () => {
         </div>
       </section>
 
-      {/* Quick Info Section */}
+      {/* Pre-Approval CTA */}
       <section className="py-8 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-r from-deep-600 to-deep-700 rounded-xl p-6 md:p-8 text-center text-white">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Get Pre-Approved?</h2>
+            <p className="text-slate-200 mb-6 max-w-2xl mx-auto">
+              Check your financing options in minutes with no impact to your credit score.
+              See what you qualify for before scheduling your estimate.
+            </p>
+            <Link
+              to="/pre-approval"
+              className="inline-flex items-center justify-center bg-white text-deep-700 font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors"
+            >
+              Get Pre-Approved Now
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Info Section */}
+      <section className="py-8 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-600 mb-4">
             Questions about financing? Call us at <a href="tel:(512)240-2246" className="text-deep-600 font-semibold hover:underline">(512) 240-2246</a>
           </p>
-          <Link
-            to="/pre-approval"
-            className="text-deep-600 hover:text-deep-700 font-medium underline"
-          >
-            Or get pre-approved now with no credit impact
-          </Link>
         </div>
       </section>
     </>
