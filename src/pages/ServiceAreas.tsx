@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MapPin } from 'lucide-react';
 import SEO from '../components/SEO';
 import ServiceAreasSection from '../components/sections/ServiceAreasSection';
 import ServicesGrid from '../components/sections/ServicesGrid';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
+import { geoAreas } from '../data/geoAreas';
 
 const ServiceAreas = () => {
   const breadcrumbItems = [
@@ -88,6 +90,42 @@ const ServiceAreas = () => {
         subtitle="Professional painting services throughout the Austin metro area"
         areas={allServiceAreas}
       />
+
+      {/* Hub Areas Section */}
+      <section className="section-padding bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+              Additional Austin Neighborhoods We Serve
+            </h2>
+            <p className="text-xl text-slate-600">
+              Specialized painting services throughout Greater Austin's diverse communities
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {geoAreas.map((hub) => (
+              <Link
+                key={hub.slug}
+                to={`/areas/${hub.slug}`}
+                className="card p-6 hover:shadow-lg transition-all duration-200 group"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <MapPin className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
+                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-primary-700 transition-colors">
+                    {hub.name}
+                  </h3>
+                </div>
+                <p className="text-slate-600 mb-4 leading-relaxed">
+                  {hub.description}
+                </p>
+                <div className="text-sm text-primary-600 font-medium">
+                  View {hub.neighborhoods.length} neighborhoods →
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Services Available in All Areas */}
       <section className="section-padding bg-white">

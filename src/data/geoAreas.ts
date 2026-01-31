@@ -20,7 +20,7 @@ export const geoAreas: HubArea[] = [
     slug: 'steiner-ranch-78732',
     zipCode: '78732',
     description: 'Expert painting services for Steiner Ranch\'s distinctive Hill Country homes. Clean prep. Crisp lines. Reliable schedules.',
-    specialization: 'Steiner Ranch homes require specialized knowledge of Hill Country architecture, HOA color requirements, and premium finishes that complement the area\'s natural beauty and luxury standards.',
+    specialization: 'Steiner Ranch homes require specialized knowledge of Hill Country architecture, HOA color requirements, and quality finishes that complement the area\'s natural beauty and architectural standards.',
     heroImage: '/austin-professional-house-painting-hero.jpg',
     neighborhoods: [
       {
@@ -36,7 +36,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'River Place',
         slug: 'river-place',
-        description: 'Premium painting services for River Place community homes.'
+        description: 'Professional painting services for River Place community homes.'
       },
       {
         name: 'Barclay Place',
@@ -53,14 +53,14 @@ export const geoAreas: HubArea[] = [
   {
     name: 'West Lake Hills & Rollingwood',
     slug: 'west-lake-hills-and-rollingwood',
-    description: 'Premium painting services for West Lake Hills and Rollingwood\'s most distinguished properties. Expert craftsmanship for luxury homes.',
-    specialization: 'West Lake Hills and Rollingwood demand the highest standards in finish quality, premium materials, and meticulous attention to architectural details that define these prestigious communities.',
+    description: 'Professional painting services for West Lake Hills and Rollingwood properties. Expert craftsmanship for quality homes.',
+    specialization: 'West Lake Hills and Rollingwood homes require high standards in finish quality, quality materials, and meticulous attention to architectural details that define these established communities.',
     heroImage: '/west-lake-hills-luxury-home-painting.jpg',
     neighborhoods: [
       {
         name: 'Rollingwood',
         slug: 'rollingwood',
-        description: 'Premier painting services for Rollingwood luxury residences.'
+        description: 'Professional painting services for Rollingwood residences.'
       },
       {
         name: 'West Lake Hills',
@@ -70,36 +70,36 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Spanish Oaks',
         slug: 'spanish-oaks',
-        description: 'High-end painting services for Spanish Oaks estates.'
+        description: 'Professional painting services for Spanish Oaks estates.'
       },
       {
         name: 'Davenport Ranch',
         slug: 'davenport-ranch-west',
-        description: 'Premium painting for Davenport Ranch West near 360 and Westlake. Luxury finishes for established homes with mature landscaping and sophisticated architectural details.'
+        description: 'Professional painting for Davenport Ranch West near 360 and Westlake. Quality finishes for established homes with mature landscaping and sophisticated architectural details.'
       },
       {
         name: 'Lake Austin Hills',
         slug: 'lake-austin-hills',
-        description: 'Premium painting for Lake Austin Hills residences.'
+        description: 'Professional painting for Lake Austin Hills residences.'
       }
     ]
   },
   {
     name: 'Barton Creek',
     slug: 'barton-creek',
-    description: 'Elite painting services for Barton Creek\'s finest estates. Exceptional craftsmanship for discerning homeowners.',
-    specialization: 'Barton Creek estates require expert knowledge of luxury finishes, premium materials, and the precision needed to maintain the area\'s reputation for architectural excellence.',
+    description: 'Professional painting services for Barton Creek estates. Exceptional craftsmanship for quality homes.',
+    specialization: 'Barton Creek estates require expert knowledge of quality finishes, professional materials, and the precision needed to maintain the area\'s reputation for architectural excellence.',
     heroImage: '/barton-creek-estate-painting-austin.jpg',
     neighborhoods: [
       {
         name: 'Barton Creek Country Club Estates',
         slug: 'barton-creek-country-club-estates',
-        description: 'Elite painting for Barton Creek Country Club Estates homes.'
+        description: 'Professional painting for Barton Creek Country Club Estates homes.'
       },
       {
         name: 'Fazio Foothills / Cliffside',
         slug: 'fazio-foothills-cliffside',
-        description: 'Premium painting services for Fazio Foothills and Cliffside properties.'
+        description: 'Professional painting services for Fazio Foothills and Cliffside properties.'
       },
       {
         name: 'Spyglass / Barton\'s Bluff',
@@ -109,7 +109,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Lake Austin West Estates',
         slug: 'lake-austin-west-estates',
-        description: 'Luxury painting services for Lake Austin West Estates.'
+        description: 'Professional painting services for Lake Austin West Estates.'
       },
       {
         name: 'Barton Creek West',
@@ -121,7 +121,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Tarrytown',
     slug: 'tarrytown',
-    description: 'Specialized painting for Tarrytown\'s historic and luxury homes. Honoring architectural heritage with modern excellence.',
+    description: 'Specialized painting for Tarrytown\'s historic homes. Honoring architectural heritage with modern excellence.',
     specialization: 'Tarrytown and surrounding historic neighborhoods require specialized techniques for preserving period details, meeting strict HOA standards, and honoring the architectural character that makes these areas treasured.',
     heroImage: '/tarrytown-historic-home-painting-austin.jpg',
     neighborhoods: [
@@ -138,7 +138,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Pemberton Heights',
         slug: 'pemberton-heights',
-        description: 'Luxury painting for Pemberton Heights estates north of 29th Street. Specialized in high-end finishes for grand historic homes with extensive millwork, custom trim, and architectural details.'
+        description: 'Professional painting for Pemberton Heights estates north of 29th Street. Specialized in quality finishes for grand historic homes with extensive millwork, custom trim, and architectural details.'
       },
       {
         name: 'Bryker Woods',
@@ -156,14 +156,14 @@ export const geoAreas: HubArea[] = [
     name: 'Downtown Austin',
     slug: 'downtown-austin-luxury',
     zipCode: '78701',
-    description: 'Sophisticated painting services for downtown\'s luxury residences. Urban expertise with precision scheduling.',
-    specialization: 'Downtown properties require coordinated scheduling, building compliance expertise, premium finishes for modern architecture, and minimal disruption to residents and neighbors in dense urban environments.',
+    description: 'Professional painting services for downtown residences. Urban expertise with precision scheduling.',
+    specialization: 'Downtown properties require coordinated scheduling, building compliance expertise, quality finishes for modern architecture, and minimal disruption to residents and neighbors in dense urban environments.',
     heroImage: '/downtown-austin-luxury-residence-painting.jpg',
     neighborhoods: [
       {
         name: 'Downtown Core / 78701',
         slug: 'downtown-core-78701',
-        description: 'High-rise and luxury condo painting in downtown Austin core.'
+        description: 'High-rise and condo painting in downtown Austin core.'
       },
       {
         name: 'Rainey Street District',
@@ -212,7 +212,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Quail Creek',
         slug: 'quail-creek',
-        description: 'Premium painting for Quail Creek area properties.'
+        description: 'Professional painting for Quail Creek area properties.'
       },
       {
         name: 'Triangle / North Lamar',
@@ -224,8 +224,8 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Lakeway / Bee Cave / Lake Travis',
     slug: 'lakeway-bee-cave-and-lake-travis',
-    description: 'Premium painting for Lake Travis area homes. Specialized expertise for lakefront properties and Hill Country estates.',
-    specialization: 'Lake Travis area homes face unique challenges including intense sun exposure, humidity from the lake, and premium architectural standards that require specialized knowledge and high-performance materials.',
+    description: 'Professional painting for Lake Travis area homes. Specialized expertise for lakefront properties and Hill Country estates.',
+    specialization: 'Lake Travis area homes face unique challenges including intense sun exposure, humidity from the lake, and architectural standards that require specialized knowledge and high-performance materials.',
     heroImage: '/lakeway-lake-travis-home-painting.jpg',
     neighborhoods: [
       {
@@ -236,7 +236,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Rough Hollow',
         slug: 'rough-hollow',
-        description: 'Premium painting for Rough Hollow community homes.'
+        description: 'Professional painting for Rough Hollow community homes.'
       },
       {
         name: 'The Peninsula at Rough Hollow',
@@ -292,14 +292,14 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Pemberton Heights / Old West Austin',
     slug: 'pemberton-heights-and-old-west-austin-historic-luxury',
-    description: 'Specialized services for Pemberton Heights and Old West Austin\'s historic luxury homes. Preserving architectural heritage with excellence.',
-    specialization: 'These prestigious historic neighborhoods demand the highest level of craftsmanship, period-appropriate techniques, strict adherence to preservation standards, and premium finishes worthy of Austin\'s most distinguished addresses.',
+    description: 'Specialized services for Pemberton Heights and Old West Austin\'s historic homes. Preserving architectural heritage with excellence.',
+    specialization: 'These historic neighborhoods demand the highest level of craftsmanship, period-appropriate techniques, strict adherence to preservation standards, and quality finishes for Austin\'s established addresses.',
     heroImage: '/pemberton-heights-historic-luxury-painting-austin.jpg',
     neighborhoods: [
       {
         name: 'Pemberton Heights South',
         slug: 'pemberton-heights-south',
-        description: 'Elite painting for southern Pemberton Heights properties near Westover. Premium finishes for distinguished estates featuring Colonial Revival, Georgian, and Mediterranean architecture with meticulous preservation requirements.'
+        description: 'Professional painting for southern Pemberton Heights properties near Westover. Quality finishes for established estates featuring Colonial Revival, Georgian, and Mediterranean architecture with meticulous preservation requirements.'
       },
       {
         name: 'Old Enfield West',
@@ -319,7 +319,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Old West Austin Historic',
         slug: 'old-west-austin-historic',
-        description: 'Premium preservation painting for Old West Austin\'s most significant historic properties. Specialized in landmark homes requiring documented restoration work, historically accurate paint analysis, and certified preservation techniques.'
+        description: 'Professional preservation painting for Old West Austin\'s most significant historic properties. Specialized in landmark homes requiring documented restoration work, historically accurate paint analysis, and certified preservation techniques.'
       }
     ]
   }
@@ -347,4 +347,23 @@ export const getNeighborhoodBySlug = (hubSlug: string, neighborhoodSlug: string)
   if (!hub) return null;
   const neighborhood = hub.neighborhoods.find(n => n.slug === neighborhoodSlug);
   return neighborhood ? { hub, neighborhood } : null;
+};
+
+export const nearbyAreasMap: Record<string, string[]> = {
+  'steiner-ranch-78732': ['west-lake-hills-and-rollingwood', 'lakeway-bee-cave-and-lake-travis', 'allandale-and-northwest-hills'],
+  'west-lake-hills-and-rollingwood': ['steiner-ranch-78732', 'barton-creek', 'tarrytown'],
+  'barton-creek': ['west-lake-hills-and-rollingwood', 'tarrytown', 'circle-c-ranch-and-southwest-austin'],
+  'tarrytown': ['barton-creek', 'downtown-austin-luxury', 'pemberton-heights-and-old-west-austin-historic-luxury'],
+  'downtown-austin-luxury': ['tarrytown', 'allandale-and-northwest-hills', 'pemberton-heights-and-old-west-austin-historic-luxury'],
+  'allandale-and-northwest-hills': ['downtown-austin-luxury', 'steiner-ranch-78732', 'tarrytown'],
+  'lakeway-bee-cave-and-lake-travis': ['steiner-ranch-78732', 'west-lake-hills-and-rollingwood', 'circle-c-ranch-and-southwest-austin'],
+  'circle-c-ranch-and-southwest-austin': ['barton-creek', 'lakeway-bee-cave-and-lake-travis', 'west-lake-hills-and-rollingwood'],
+  'pemberton-heights-and-old-west-austin-historic-luxury': ['tarrytown', 'west-lake-hills-and-rollingwood', 'downtown-austin-luxury']
+};
+
+export const getNearbyAreas = (hubSlug: string): HubArea[] => {
+  const nearbySlugArray = nearbyAreasMap[hubSlug] || [];
+  return nearbySlugArray
+    .map(slug => getHubBySlug(slug))
+    .filter((hub): hub is HubArea => hub !== undefined);
 };

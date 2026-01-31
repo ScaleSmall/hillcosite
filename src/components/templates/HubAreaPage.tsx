@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, Paintbrush, ExternalLink } from 'lucide-react';
+import { Phone, MapPin, Paintbrush, ExternalLink, Home, ArrowLeft } from 'lucide-react';
 import SEO from '../SEO';
 import GoogleMapEmbed from '../GoogleMapEmbed';
 import LocalSignals from '../LocalSignals';
+import Breadcrumbs from '../Breadcrumbs';
 import { businessConfig } from '../../config/business';
 import type { HubArea } from '../../data/geoAreas';
+import { getNearbyAreas } from '../../data/geoAreas';
 
 interface HubAreaPageProps {
   hub: HubArea;
@@ -17,6 +19,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
   const canonical = `/areas/${hub.slug}`;
 
   const areaServed = [hub.name, ...hub.neighborhoods.map(n => n.name)];
+  const nearbyAreas = getNearbyAreas(hub.slug);
 
   return (
     <>
@@ -26,6 +29,11 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         canonical={canonical}
         pageType="service"
         geoPlacename={hub.name}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Service Areas', url: '/service-areas' },
+          { name: hub.name, url: canonical }
+        ]}
         service={{
           name: `House Painting in ${hub.name}`,
           description: hub.description,
@@ -43,6 +51,27 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
           }
         }}
       />
+
+      <div className="bg-white py-4 border-b">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex items-center gap-4">
+            <Link
+              to="/service-areas"
+              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="text-sm font-medium">Service Areas</span>
+            </Link>
+            <Breadcrumbs
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Service Areas', href: '/service-areas' },
+                { label: hub.name }
+              ]}
+            />
+          </div>
+        </div>
+      </div>
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -171,6 +200,30 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         zipCodes={hub.zipCode ? [hub.zipCode] : undefined}
         nearbyAreas={hub.neighborhoods.slice(0, 8).map(n => n.name)}
       />
+
+      {nearbyAreas.length > 0 && (
+        <section className="py-16 bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-deep-900 mb-6">
+                Nearby Areas We Serve
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {nearbyAreas.map((nearbyHub) => (
+                  <Link
+                    key={nearbyHub.slug}
+                    to={`/areas/${nearbyHub.slug}`}
+                    className="flex items-center gap-2 p-3 bg-white rounded-lg hover:bg-primary-50 hover:text-primary-900 transition-colors"
+                  >
+                    <Home className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                    <span className="text-sm font-medium">{nearbyHub.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">

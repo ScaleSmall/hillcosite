@@ -53,6 +53,18 @@ const Footer = () => {
     { name: 'How Often to Paint', href: '/guides/how-often-paint-central-texas' },
   ];
 
+  const hubAreas = [
+    { name: 'Allandale / Northwest Hills', href: '/areas/allandale-and-northwest-hills' },
+    { name: 'Barton Creek', href: '/areas/barton-creek' },
+    { name: 'Circle C Ranch / Southwest Austin', href: '/areas/circle-c-ranch-and-southwest-austin' },
+    { name: 'Downtown Austin', href: '/areas/downtown-austin-luxury' },
+    { name: 'Lakeway / Bee Cave / Lake Travis', href: '/areas/lakeway-bee-cave-and-lake-travis' },
+    { name: 'Pemberton Heights / Old West Austin', href: '/areas/pemberton-heights-and-old-west-austin-historic-luxury' },
+    { name: 'Steiner Ranch', href: '/areas/steiner-ranch-78732' },
+    { name: 'Tarrytown', href: '/areas/tarrytown' },
+    { name: 'West Lake Hills & Rollingwood', href: '/areas/west-lake-hills-and-rollingwood' },
+  ];
+
   const socialLinks = [
     { name: 'TikTok', href: 'https://www.tiktok.com/@hillco_painting_austin', icon: TikTokIcon, ariaLabel: 'Follow us on TikTok' },
     { name: 'Instagram', href: 'https://www.instagram.com/hill_country_painting_austin/', icon: Instagram, ariaLabel: 'Follow us on Instagram' },
@@ -65,7 +77,7 @@ const Footer = () => {
   return (
     <footer className="bg-deep-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info - NAP Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -183,6 +195,22 @@ const Footer = () => {
                     className="text-slate-300 hover:text-white transition-colors text-sm"
                   >
                     {guide.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Hub Areas */}
+          <div>
+            <ul className="space-y-2">
+              {hubAreas.map((area) => (
+                <li key={area.name}>
+                  <Link
+                    to={area.href}
+                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                  >
+                    {area.name}
                   </Link>
                 </li>
               ))}

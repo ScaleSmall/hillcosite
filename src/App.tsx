@@ -93,6 +93,8 @@ const BlogPost = safeLazy(() => import('./pages/BlogPost'), "BlogPost");
 const ColorConsultation = safeLazy(() => import('./pages/ColorConsultation'), "ColorConsultation");
 const Privacy = safeLazy(() => import('./pages/Privacy'), "Privacy");
 const Terms = safeLazy(() => import('./pages/Terms'), "Terms");
+const EULA = safeLazy(() => import('./pages/EULA'), "EULA");
+const Sitemap = safeLazy(() => import('./pages/Sitemap'), "Sitemap");
 const DoNotSell = safeLazy(() => import('./pages/DoNotSell'), "DoNotSell");
 const PaintingCosts = safeLazy(() => import('./pages/guides/PaintingCosts'), "PaintingCosts");
 const BestPaintTexasHeat = safeLazy(() => import('./pages/guides/BestPaintTexasHeat'), "BestPaintTexasHeat");
@@ -190,6 +192,8 @@ function App() {
               <Route path="/search" element={<Trace name="/search"><Search /></Trace>} />
               <Route path="/privacy" element={<Trace name="/privacy"><Privacy /></Trace>} />
               <Route path="/terms" element={<Trace name="/terms"><Terms /></Trace>} />
+              <Route path="/eula" element={<Trace name="/eula"><EULA /></Trace>} />
+              <Route path="/sitemap" element={<Trace name="/sitemap"><Sitemap /></Trace>} />
               <Route path="/do-not-sell" element={<Trace name="/do-not-sell"><DoNotSell /></Trace>} />
               <Route path="/thank-you" element={<Trace name="/thank-you"><ThankYou /></Trace>} />
 

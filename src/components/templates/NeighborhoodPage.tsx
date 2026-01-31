@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, ArrowLeft, Paintbrush, ExternalLink } from 'lucide-react';
+import { Phone, MapPin, ArrowLeft, Paintbrush, ExternalLink, Home } from 'lucide-react';
 import SEO from '../SEO';
 import GoogleMapEmbed from '../GoogleMapEmbed';
 import LocalSignals from '../LocalSignals';
+import Breadcrumbs from '../Breadcrumbs';
 import { businessConfig } from '../../config/business';
 import type { HubArea, Neighborhood } from '../../data/geoAreas';
 
@@ -25,6 +26,12 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
         canonical={canonical}
         pageType="service"
         geoPlacename={neighborhood.name}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Service Areas', url: '/service-areas' },
+          { name: hub.name, url: `/areas/${hub.slug}` },
+          { name: neighborhood.name, url: canonical }
+        ]}
         service={{
           name: `House Painting in ${neighborhood.name}`,
           description: neighborhood.description,
@@ -43,6 +50,28 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
         }}
       />
 
+      <div className="bg-white py-4 border-b">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto flex items-center gap-4">
+            <Link
+              to="/service-areas"
+              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+            >
+              <Home className="w-4 h-4" />
+              <span className="text-sm font-medium">Service Areas</span>
+            </Link>
+            <span className="text-slate-400">/</span>
+            <Link
+              to={`/areas/${hub.slug}`}
+              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span className="text-sm font-medium">{hub.name}</span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <section className="relative py-32 md:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
@@ -55,13 +84,6 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
 
         <div className="container relative z-10 mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <Link
-              to={`/areas/${hub.slug}`}
-              className="inline-flex items-center gap-2 text-white/90 hover:text-white transition-colors mb-4"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to {hub.name}
-            </Link>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-heading drop-shadow-lg">
               Professional House Painting in {neighborhood.name}
             </h1>
