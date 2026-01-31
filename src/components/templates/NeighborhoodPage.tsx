@@ -39,7 +39,8 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
         }}
         business={{
           name: businessConfig.name,
-          type: 'PaintingContractor',
+          type: 'LocalBusiness',
+          additionalType: 'https://schema.org/PaintingContractor',
           telephone: businessConfig.phone,
           email: businessConfig.email,
           address: {

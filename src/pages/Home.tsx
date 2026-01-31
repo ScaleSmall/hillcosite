@@ -85,7 +85,8 @@ const Home = () => {
         faq={faqs}
         business={{
           name: 'Hill Country Painting',
-          type: 'PaintingContractor',
+          type: 'LocalBusiness',
+          additionalType: 'https://schema.org/PaintingContractor',
           telephone: '(512) 240-2246',
           email: 'info@hillcopaint.com',
           address: {

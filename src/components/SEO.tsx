@@ -24,6 +24,7 @@ interface SEOProps {
   business?: {
     name: string;
     type?: string;
+    additionalType?: string;
     telephone?: string;
     email?: string;
     address?: {
@@ -385,6 +386,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const businessSchema = business ? {
     '@context': 'https://schema.org',
     '@type': business.type || 'LocalBusiness',
+    ...(business.additionalType && { additionalType: business.additionalType }),
     name: business.name,
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,

@@ -41,7 +41,8 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         }}
         business={{
           name: businessConfig.name,
-          type: 'PaintingContractor',
+          type: 'LocalBusiness',
+          additionalType: 'https://schema.org/PaintingContractor',
           telephone: businessConfig.phone,
           email: businessConfig.email,
           address: {
