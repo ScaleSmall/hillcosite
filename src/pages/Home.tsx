@@ -80,18 +80,6 @@ const Home = () => {
           { name: 'Home', url: '/' }
         ]}
         faq={faqs}
-        business={{
-          name: 'Hill Country Painting',
-          type: 'LocalBusiness',
-          additionalType: 'https://schema.org/PaintingContractor',
-          telephone: '(512) 240-2246',
-          email: 'info@hillcopaint.com',
-          address: {
-            addressLocality: 'Austin',
-            addressRegion: 'TX',
-            addressCountry: 'US'
-          }
-        }}
       />
       
       {/* Hero Section */}
