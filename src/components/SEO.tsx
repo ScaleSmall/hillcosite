@@ -150,14 +150,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       }
     ],
     paymentAccepted: 'Cash, Check, Credit Card',
-    currenciesAccepted: 'USD',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '150',
-      bestRating: '5',
-      worstRating: '1'
-    }
+    currenciesAccepted: 'USD'
   } : null;
 
   // BreadcrumbList schema
