@@ -3,5 +3,8 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
 http://www.hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 
-# Catch-all for SPA
-/*                       /index.html 200
+# Serve static assets directly (prevent SPA fallback from catching these)
+/assets/*  /assets/:splat  200
+
+# Catch-all for SPA (must be last)
+/*  /index.html  200

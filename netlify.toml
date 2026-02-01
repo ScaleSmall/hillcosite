@@ -23,6 +23,13 @@ to = "https://www.hillcopaint.com/:splat"
 status = 301
 force = true
 
+# Serve static assets directly
+[[redirects]]
+from = "/assets/*"
+to = "/assets/:splat"
+status = 200
+
+# SPA catch-all (must be last)
 [[redirects]]
 from = "/*"
 to = "/index.html"
