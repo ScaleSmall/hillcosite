@@ -16,10 +16,7 @@ import CTABanner from '../components/sections/CTABanner';
 import PaintingCostsTable from '../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
 import NAPMapSection from '../components/NAPMapSection';
-import { useGBPRating } from '../hooks/useGBPRating';
-
 const Home = () => {
-  const gbpRating = useGBPRating();
   const serviceAreas = [
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
     { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
@@ -93,30 +90,7 @@ const Home = () => {
             addressLocality: 'Austin',
             addressRegion: 'TX',
             addressCountry: 'US'
-          },
-          ...(gbpRating?.shouldDisplay && gbpRating.ratingValue && gbpRating.reviewCount && {
-            aggregateRating: {
-              ratingValue: gbpRating.ratingValue,
-              reviewCount: gbpRating.reviewCount
-            }
-          }),
-          reviews: [
-            {
-              author: 'Jason Hartley',
-              rating: '5',
-              text: 'Hill Country Painting did an outstanding job. They painted 7 rooms, two staircases, the exterior stucco, and shutters. Everything looks clean and professional.'
-            },
-            {
-              author: 'Patricia Perez',
-              rating: '5',
-              text: 'This is the second time I hired Hill Country Painting. They are thorough and have great follow-up. They are neat and clean and have good communication.'
-            },
-            {
-              author: 'Arashk Shirazi',
-              rating: '5',
-              text: 'Josh was very professional, honest and informative about options. The crew were respectful and responsible about the quality of their work.'
-            }
-          ]
+          }
         }}
       />
       
