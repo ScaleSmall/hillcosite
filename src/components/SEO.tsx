@@ -67,7 +67,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   // Ensure robots is always a string
   const robotsContent = String(robots || "index, follow");
 
-  const organizationSchema = {
+  const organizationSchema = canonical !== '/' ? {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${baseUrl}/#organization`,
@@ -89,7 +89,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     email: 'info@hillcopaint.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '',
       addressLocality: 'Austin',
       addressRegion: 'TX',
       postalCode: '78681',
@@ -102,27 +101,22 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.youtube.com/@HillCountryPaintingAustin',
       'https://www.tiktok.com/@hillco_painting_austin'
     ]
-  };
+  } : null;
 
   const localBusinessSchema = canonical === '/' ? {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
+    '@type': 'LocalBusiness',
     '@id': `${baseUrl}/#localbusiness`,
     name: 'Hill Country Painting',
     description: 'Professional interior, exterior, cabinet, and commercial painting services in Austin, TX. Clean prep, crisp lines, durable results.',
-    image: {
-      '@id': `${baseUrl}/#logo`
-    },
-    logo: {
-      '@id': `${baseUrl}/#logo`
-    },
+    image: `${baseUrl}/logo.png`,
+    logo: `${baseUrl}/logo.png`,
     url: baseUrl,
     telephone: '(512) 240-2246',
     email: 'info@hillcopaint.com',
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '',
       addressLocality: 'Austin',
       addressRegion: 'TX',
       postalCode: '78681',
@@ -149,8 +143,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         closes: '18:00'
       }
     ],
-    paymentAccepted: 'Cash, Check, Credit Card',
-    currenciesAccepted: 'USD'
+    sameAs: [
+      'https://www.facebook.com/Hillcopaint',
+      'https://www.instagram.com/hill_country_painting_austin/',
+      'https://x.com/Hill_Co_Paint',
+      'https://www.youtube.com/@HillCountryPaintingAustin',
+      'https://www.tiktok.com/@hillco_painting_austin'
+    ]
   } : null;
 
   // BreadcrumbList schema
@@ -348,9 +347,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       <meta name="geo.position" content="30.2672;-97.7431" />
       <meta name="ICBM" content="30.2672, -97.7431" />
 
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
-      </script>
+      {organizationSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+      )}
 
       {websiteSchema && (
         <script type="application/ld+json">
