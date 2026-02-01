@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { businessConfig, hasValidRating } from '../config/business';
+import { businessConfig } from '../config/business';
 
 interface SEOProps {
   title: string;
@@ -34,15 +34,6 @@ interface SEOProps {
       postalCode?: string;
       addressCountry?: string;
     };
-    aggregateRating?: {
-      ratingValue: string;
-      reviewCount: string;
-    };
-    reviews?: Array<{
-      author: string;
-      rating: string;
-      text: string;
-    }>;
   };
   product?: {
     name: string;
@@ -57,16 +48,10 @@ interface SEOProps {
     areaServed: string[];
     url: string;
   };
-  testimonials?: Array<{
-    name: string;
-    rating: number;
-    text: string;
-    location?: string;
-  }>;
   geoPlacename?: string;
 }
 
-const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, product, testimonials, geoPlacename }: SEOProps) => {
+const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, product, geoPlacename }: SEOProps) => {
   const baseUrl = 'https://www.hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
   // Only compute canonicalStr if canonical prop is provided
@@ -271,46 +256,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       }
     }
 
-    // Add ratings if available
-    if (testimonials && testimonials.length > 0) {
-      const avgRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length;
-      const isValidRating = !isNaN(avgRating) && avgRating > 0 && avgRating <= 5;
-
-      if (isValidRating) {
-        baseSchema.aggregateRating = {
-          '@type': 'AggregateRating',
-          ratingValue: avgRating.toFixed(1),
-          reviewCount: String(testimonials.length),
-          bestRating: '5',
-          worstRating: '1'
-        };
-
-        baseSchema.review = testimonials.map(testimonial => ({
-          '@type': 'Review',
-          itemReviewed: {
-            '@type': 'Service',
-            name: service.name
-          },
-          author: {
-            '@type': 'Person',
-            name: testimonial.name
-          },
-          reviewRating: {
-            '@type': 'Rating',
-            ratingValue: String(testimonial.rating),
-            bestRating: '5'
-          },
-          reviewBody: testimonial.text,
-          ...(testimonial.location && {
-            locationCreated: {
-              '@type': 'Place',
-              name: testimonial.location
-            }
-          })
-        }));
-      }
-    }
-
     return baseSchema;
   })() : null;
 
@@ -402,44 +347,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         ...(business.address.postalCode && { postalCode: business.address.postalCode }),
         ...(business.address.addressCountry && { addressCountry: business.address.addressCountry })
       }
-    }),
-    ...(business.aggregateRating && hasValidRating(business.aggregateRating.ratingValue) && (() => {
-      const ratingVal = typeof business.aggregateRating.ratingValue === 'string'
-        ? parseFloat(business.aggregateRating.ratingValue)
-        : business.aggregateRating.ratingValue;
-      const reviewCnt = parseInt(business.aggregateRating.reviewCount, 10);
-
-      const isValid = !isNaN(ratingVal) && ratingVal > 0 && ratingVal <= 5 &&
-                      !isNaN(reviewCnt) && reviewCnt > 0;
-
-      return isValid ? {
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: String(ratingVal),
-          reviewCount: String(reviewCnt),
-          bestRating: '5',
-          worstRating: '1'
-        }
-      } : {};
-    })()),
-    ...(business.reviews && business.reviews.length > 0 && {
-      review: business.reviews.map(review => ({
-        '@type': 'Review',
-        itemReviewed: {
-          '@type': business.type || 'LocalBusiness',
-          name: business.name
-        },
-        author: {
-          '@type': 'Person',
-          name: review.author
-        },
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: review.rating,
-          bestRating: '5'
-        },
-        reviewBody: review.text
-      }))
     })
   } : null;
 
