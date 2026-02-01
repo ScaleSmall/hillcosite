@@ -67,7 +67,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   // Ensure robots is always a string
   const robotsContent = String(robots || "index, follow");
 
-  const organizationSchema = canonical !== '/' ? {
+  const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     '@id': `${baseUrl}/#organization`,
@@ -101,56 +101,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.youtube.com/@HillCountryPaintingAustin',
       'https://www.tiktok.com/@hillco_painting_austin'
     ]
-  } : null;
-
-  const localBusinessSchema = canonical === '/' ? {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    '@id': `${baseUrl}/#localbusiness`,
-    name: 'Hill Country Painting',
-    description: 'Professional interior, exterior, cabinet, and commercial painting services in Austin, TX. Clean prep, crisp lines, durable results.',
-    image: `${baseUrl}/logo.png`,
-    logo: `${baseUrl}/logo.png`,
-    url: baseUrl,
-    telephone: '(512) 240-2246',
-    email: 'info@hillcopaint.com',
-    priceRange: '$$',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Austin',
-      addressRegion: 'TX',
-      postalCode: '78681',
-      addressCountry: 'US'
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 30.5083,
-      longitude: -97.6789
-    },
-    areaServed: [
-      { '@type': 'City', name: 'Austin' },
-      { '@type': 'City', name: 'Round Rock' },
-      { '@type': 'City', name: 'Georgetown' },
-      { '@type': 'City', name: 'Cedar Park' },
-      { '@type': 'City', name: 'Leander' },
-      { '@type': 'City', name: 'Pflugerville' }
-    ],
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '08:00',
-        closes: '18:00'
-      }
-    ],
-    sameAs: [
-      'https://www.facebook.com/Hillcopaint',
-      'https://www.instagram.com/hill_country_painting_austin/',
-      'https://x.com/Hill_Co_Paint',
-      'https://www.youtube.com/@HillCountryPaintingAustin',
-      'https://www.tiktok.com/@hillco_painting_austin'
-    ]
-  } : null;
+  };
 
   // BreadcrumbList schema
   const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -347,11 +298,9 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       <meta name="geo.position" content="30.2672;-97.7431" />
       <meta name="ICBM" content="30.2672, -97.7431" />
 
-      {organizationSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(organizationSchema)}
-        </script>
-      )}
+      <script type="application/ld+json">
+        {JSON.stringify(organizationSchema)}
+      </script>
 
       {websiteSchema && (
         <script type="application/ld+json">
@@ -386,12 +335,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {webpageSchema && (
         <script type="application/ld+json">
           {JSON.stringify(webpageSchema)}
-        </script>
-      )}
-
-      {localBusinessSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessSchema)}
         </script>
       )}
     </Helmet>

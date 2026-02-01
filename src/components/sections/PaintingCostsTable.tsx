@@ -38,7 +38,7 @@ const PaintingCostsTable = () => {
     "@type": "Service",
     "serviceType": "House Painting Services",
     "provider": {
-      "@type": "LocalBusiness",
+      "@type": "Organization",
       "name": "Hill Country Painting",
       "telephone": "(512) 240-2246",
       "address": {
