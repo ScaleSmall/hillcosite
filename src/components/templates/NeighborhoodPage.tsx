@@ -37,18 +37,6 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           description: neighborhood.description,
           areaServed: [neighborhood.name]
         }}
-        business={{
-          name: businessConfig.name,
-          type: 'LocalBusiness',
-          additionalType: 'https://schema.org/PaintingContractor',
-          telephone: businessConfig.phone,
-          email: businessConfig.email,
-          address: {
-            addressLocality: businessConfig.address.addressLocality,
-            addressRegion: businessConfig.address.addressRegion,
-            addressCountry: businessConfig.address.addressCountry
-          }
-        }}
       />
 
       <div className="bg-white py-4 border-b">
