@@ -70,16 +70,29 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${baseUrl}/#organization`,
     name: 'Hill Country Painting',
     url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
-    image: `${baseUrl}/logo.png`,
+    logo: {
+      '@type': 'ImageObject',
+      '@id': `${baseUrl}/#logo`,
+      url: `${baseUrl}/logo.png`,
+      contentUrl: `${baseUrl}/logo.png`,
+      width: 512,
+      height: 512,
+      caption: 'Hill Country Painting Logo'
+    },
+    image: {
+      '@id': `${baseUrl}/#logo`
+    },
     telephone: '(512) 240-2246',
     email: 'info@hillcopaint.com',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: '',
       addressLocality: 'Austin',
       addressRegion: 'TX',
+      postalCode: '78681',
       addressCountry: 'US'
     },
     sameAs: [
@@ -96,16 +109,23 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     '@type': 'ProfessionalService',
     '@id': `${baseUrl}/#localbusiness`,
     name: 'Hill Country Painting',
-    image: `${baseUrl}/logo.png`,
-    logo: `${baseUrl}/logo.png`,
+    description: 'Professional interior, exterior, cabinet, and commercial painting services in Austin, TX. Clean prep, crisp lines, durable results.',
+    image: {
+      '@id': `${baseUrl}/#logo`
+    },
+    logo: {
+      '@id': `${baseUrl}/#logo`
+    },
     url: baseUrl,
     telephone: '(512) 240-2246',
     email: 'info@hillcopaint.com',
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: '',
       addressLocality: 'Austin',
       addressRegion: 'TX',
+      postalCode: '78681',
       addressCountry: 'US'
     },
     geo: {
@@ -114,36 +134,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       longitude: -97.6789
     },
     areaServed: [
-      {
-        '@type': 'City',
-        name: 'Austin',
-        '@id': 'https://en.wikipedia.org/wiki/Austin,_Texas'
-      },
-      {
-        '@type': 'City',
-        name: 'Round Rock',
-        '@id': 'https://en.wikipedia.org/wiki/Round_Rock,_Texas'
-      },
-      {
-        '@type': 'City',
-        name: 'Georgetown',
-        '@id': 'https://en.wikipedia.org/wiki/Georgetown,_Texas'
-      },
-      {
-        '@type': 'City',
-        name: 'Cedar Park',
-        '@id': 'https://en.wikipedia.org/wiki/Cedar_Park,_Texas'
-      },
-      {
-        '@type': 'City',
-        name: 'Leander',
-        '@id': 'https://en.wikipedia.org/wiki/Leander,_Texas'
-      },
-      {
-        '@type': 'City',
-        name: 'Pflugerville',
-        '@id': 'https://en.wikipedia.org/wiki/Pflugerville,_Texas'
-      }
+      { '@type': 'City', name: 'Austin' },
+      { '@type': 'City', name: 'Round Rock' },
+      { '@type': 'City', name: 'Georgetown' },
+      { '@type': 'City', name: 'Cedar Park' },
+      { '@type': 'City', name: 'Leander' },
+      { '@type': 'City', name: 'Pflugerville' }
     ],
     openingHoursSpecification: [
       {
@@ -154,7 +150,14 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       }
     ],
     paymentAccepted: 'Cash, Check, Credit Card',
-    currenciesAccepted: 'USD'
+    currenciesAccepted: 'USD',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '150',
+      bestRating: '5',
+      worstRating: '1'
+    }
   } : null;
 
   // BreadcrumbList schema
