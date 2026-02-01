@@ -50,8 +50,7 @@ const PaintingCostsTable = () => {
     },
     "areaServed": {
       "@type": "City",
-      "name": "Austin",
-      "state": "Texas"
+      "name": "Austin, Texas"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -70,7 +69,6 @@ const PaintingCostsTable = () => {
                 "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg"
               },
               "price": String(interiorPrice?.min || 2500),
-              "priceRange": interiorHomeSize,
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"
@@ -90,7 +88,6 @@ const PaintingCostsTable = () => {
                 "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg"
               },
               "price": String(exteriorPrice?.min || 4000),
-              "priceRange": exteriorHomeSize,
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"

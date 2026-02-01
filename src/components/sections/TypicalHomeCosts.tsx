@@ -70,14 +70,12 @@ const TypicalHomeCosts = () => {
           },
           "areaServed": {
             "@type": "City",
-            "name": "Austin",
-            "state": "Texas"
+            "name": "Austin, Texas"
           },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": String(price1500Int?.min || 3200),
-            "priceRange": house1500Interior,
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -105,14 +103,12 @@ const TypicalHomeCosts = () => {
           },
           "areaServed": {
             "@type": "City",
-            "name": "Austin",
-            "state": "Texas"
+            "name": "Austin, Texas"
           },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": String(price1500Ext?.min || 5200),
-            "priceRange": house1500Exterior,
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -140,14 +136,12 @@ const TypicalHomeCosts = () => {
           },
           "areaServed": {
             "@type": "City",
-            "name": "Austin",
-            "state": "Texas"
+            "name": "Austin, Texas"
           },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": String(price2200Int?.min || 4400),
-            "priceRange": house2200Interior,
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -175,14 +169,12 @@ const TypicalHomeCosts = () => {
           },
           "areaServed": {
             "@type": "City",
-            "name": "Austin",
-            "state": "Texas"
+            "name": "Austin, Texas"
           },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": String(price2200Ext?.min || 6800),
-            "priceRange": house2200Exterior,
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -210,14 +202,12 @@ const TypicalHomeCosts = () => {
           },
           "areaServed": {
             "@type": "City",
-            "name": "Austin",
-            "state": "Texas"
+            "name": "Austin, Texas"
           },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": String(price3000Int?.min || 6000),
-            "priceRange": house3000Interior,
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -245,14 +235,12 @@ const TypicalHomeCosts = () => {
           },
           "areaServed": {
             "@type": "City",
-            "name": "Austin",
-            "state": "Texas"
+            "name": "Austin, Texas"
           },
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
             "price": String(price3000Ext?.min || 9500),
-            "priceRange": house3000Exterior,
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }

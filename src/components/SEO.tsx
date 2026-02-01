@@ -21,20 +21,6 @@ interface SEOProps {
     question: string;
     answer: string;
   }>;
-  business?: {
-    name: string;
-    type?: string;
-    additionalType?: string;
-    telephone?: string;
-    email?: string;
-    address?: {
-      streetAddress?: string;
-      addressLocality?: string;
-      addressRegion?: string;
-      postalCode?: string;
-      addressCountry?: string;
-    };
-  };
   product?: {
     name: string;
     description: string;
@@ -51,7 +37,7 @@ interface SEOProps {
   geoPlacename?: string;
 }
 
-const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, business, product, geoPlacename }: SEOProps) => {
+const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename }: SEOProps) => {
   const baseUrl = 'https://www.hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
   // Only compute canonicalStr if canonical prop is provided
@@ -94,18 +80,14 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       '@type': 'PostalAddress',
       addressLocality: 'Austin',
       addressRegion: 'TX',
-      addressCountry: {
-        '@type': 'Country',
-        name: 'US'
-      }
+      addressCountry: 'US'
     },
     sameAs: [
       'https://www.facebook.com/Hillcopaint',
       'https://www.instagram.com/hill_country_painting_austin/',
       'https://x.com/Hill_Co_Paint',
       'https://www.youtube.com/@HillCountryPaintingAustin',
-      'https://www.tiktok.com/@hillco_painting_austin',
-      'https://www.hillcopaint.com/'
+      'https://www.tiktok.com/@hillco_painting_austin'
     ]
   };
 
@@ -124,10 +106,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       '@type': 'PostalAddress',
       addressLocality: 'Austin',
       addressRegion: 'TX',
-      addressCountry: {
-        '@type': 'Country',
-        name: 'US'
-      }
+      addressCountry: 'US'
     },
     geo: {
       '@type': 'GeoCoordinates',
@@ -327,31 +306,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     } : undefined
   } : null;
 
-  // Business schema - only if business data is provided
-  const businessSchema = business ? {
-    '@context': 'https://schema.org',
-    '@type': business.type || 'LocalBusiness',
-    ...(business.additionalType && { additionalType: business.additionalType }),
-    name: business.name,
-    url: baseUrl,
-    logo: `${baseUrl}/logo.png`,
-    image: `${baseUrl}/logo.png`,
-    ...(business.telephone && { telephone: business.telephone }),
-    ...(business.email && { email: business.email }),
-    ...(business.address && {
-      address: {
-        '@type': 'PostalAddress',
-        ...(business.address.streetAddress && { streetAddress: business.address.streetAddress }),
-        ...(business.address.addressLocality && { addressLocality: business.address.addressLocality }),
-        ...(business.address.addressRegion && { addressRegion: business.address.addressRegion }),
-        ...(business.address.postalCode && { postalCode: business.address.postalCode }),
-        ...(business.address.addressCountry && { addressCountry: business.address.addressCountry })
-      }
-    })
-  } : null;
-
-  // Product schema removed - services should use Service schema only, not Product
-  // This prevents "Merchant listings" errors in Google Rich Results
 
   return (
     <Helmet>
@@ -435,12 +389,6 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {webpageSchema && (
         <script type="application/ld+json">
           {JSON.stringify(webpageSchema)}
-        </script>
-      )}
-
-      {businessSchema && (
-        <script type="application/ld+json">
-          {JSON.stringify(businessSchema)}
         </script>
       )}
 

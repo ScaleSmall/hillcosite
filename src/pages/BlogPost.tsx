@@ -192,8 +192,7 @@ const BlogPost = () => {
             {
               '@type': 'ListItem',
               position: 3,
-              name: post.title,
-              item: `${baseUrl}/blog/${post.slug}`
+              name: post.title
             }
           ]
         },
@@ -244,11 +243,10 @@ const BlogPost = () => {
         ))}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={post.featured_image || 'https://www.hillcopaint.com/logo.png'} />
+        <script type="application/ld+json">
+          {JSON.stringify(generateStructuredData())}
+        </script>
       </Helmet>
-
-      <script type="application/ld+json">
-        {JSON.stringify(generateStructuredData())}
-      </script>
 
       {/* Hero Section with Featured Image */}
       <section className="relative py-16 md:py-24 bg-gradient-to-br from-deep-50 to-slate-100">

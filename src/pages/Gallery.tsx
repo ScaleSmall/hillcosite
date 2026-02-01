@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Phone, ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
@@ -177,9 +178,11 @@ const Gallery = () => {
       />
 
       {/* ImageGallery Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify(imageGallerySchema)}
-      </script>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(imageGallerySchema)}
+        </script>
+      </Helmet>
 
       {/* Unique Hero Section */}
       <section className="section-padding bg-gradient-to-br from-slate-50 to-white">

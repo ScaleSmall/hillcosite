@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import SEO from '../components/SEO';
 import CTABanner from '../components/sections/CTABanner';
 import SplitSection from '../components/sections/SplitSection';
@@ -125,8 +126,7 @@ const Blog = () => {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: 'Blog',
-                item: `${baseUrl}/blog`
+                name: 'Blog'
               }
             ]
           }
@@ -149,9 +149,11 @@ const Blog = () => {
       />
 
       {!loading && blogPosts.length > 0 && (
-        <script type="application/ld+json">
-          {JSON.stringify(generateBlogSchema())}
-        </script>
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(generateBlogSchema())}
+          </script>
+        </Helmet>
       )}
 
       {/* Hero */}
