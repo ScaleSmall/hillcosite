@@ -122,7 +122,6 @@ const ExteriorPainting = () => {
         }}
         faq={faqs}
         product={productData}
-        testimonials={testimonials}
       />
 
       {/* Hero */}

@@ -118,7 +118,6 @@ const CommercialPainting = () => {
         }}
         faq={faqs}
         product={productData}
-        testimonials={testimonials}
       />
 
       {/* Hero */}

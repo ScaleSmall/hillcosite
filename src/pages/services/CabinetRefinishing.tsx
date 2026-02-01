@@ -151,7 +151,6 @@ const CabinetRefinishing = () => {
         }}
         faq={faqs}
         product={productData}
-        testimonials={testimonials}
       />
 
       {/* Hero */}
