@@ -100,24 +100,24 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .btn-primary {
-      transition: opacity 200ms ease;
+      transition: background-color 200ms ease, opacity 200ms ease;
     }
     .btn-primary:hover {
-      opacity: 0.95;
+      @apply bg-brand-azureDark;
     }
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-brand-azure text-white font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 min-h-touch;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-brand-azureDark font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 min-h-touch;
     transform: translateZ(0);
   }
 
   @media (prefers-reduced-motion: no-preference) {
     .btn-secondary {
-      transition: opacity 200ms ease;
+      transition: background-color 200ms ease, opacity 200ms ease;
     }
     .btn-secondary:hover {
-      opacity: 0.95;
+      @apply bg-brand-gray-100;
     }
   }
 
@@ -128,10 +128,10 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .btn-outline {
-      transition: opacity 200ms ease;
+      transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
     }
     .btn-outline:hover {
-      opacity: 0.95;
+      @apply bg-brand-gray-50;
     }
   }
 

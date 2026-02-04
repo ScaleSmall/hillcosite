@@ -24,7 +24,7 @@ const CTABanner = ({
 }: CTABannerProps) => {
   const bgClasses = {
     primary: 'bg-brand-azureDark',
-    secondary: 'bg-slate-800',
+    secondary: 'bg-brand-gray-900',
     accent: 'bg-brand-coral'
   };
 
@@ -32,7 +32,7 @@ const CTABanner = ({
     <section className={`section-padding ${bgClasses[backgroundColor]} text-white`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to={primaryCTA.href} className="btn-primary bg-white text-brand-azureDark hover:bg-slate-100">
+          <Link to={primaryCTA.href} className="btn-primary bg-white text-brand-azureDark hover:bg-brand-gray-100">
             {primaryCTA.text}
           </Link>
           {secondaryCTA && (
