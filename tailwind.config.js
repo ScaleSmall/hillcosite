@@ -4,6 +4,23 @@ export default {
   theme: {
     extend: {
       colors: {
+        brand: {
+          azure: '#1F7A8C',
+          azureDark: '#0B3C49',
+          coral: '#E36414',
+          gray: {
+            50: '#F8FAFC',
+            100: '#F1F5F9',
+            200: '#E2E8F0',
+            300: '#CBD5E1',
+            400: '#94A3B8',
+            500: '#64748B',
+            600: '#475569',
+            700: '#334155',
+            800: '#1E293B',
+            900: '#0F172A'
+          }
+        },
         primary: {
           50: '#eff6ff',
           100: '#dbeafe',
@@ -43,6 +60,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
+        body: ['Open Sans', 'sans-serif']
       },
       lineHeight: {
         'body': '1.5',

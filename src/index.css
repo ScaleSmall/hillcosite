@@ -29,7 +29,7 @@
 
 @layer base {
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Open Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -38,6 +38,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     line-height: 1.2;
     font-display: swap;
   }
@@ -99,10 +100,10 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .btn-primary {
-      transition: transform 200ms ease, opacity 200ms ease;
+      transition: opacity 200ms ease;
     }
     .btn-primary:hover {
-      transform: scale(1.05) translateZ(0);
+      opacity: 0.95;
     }
   }
 
@@ -113,10 +114,10 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .btn-secondary {
-      transition: transform 200ms ease, opacity 200ms ease;
+      transition: opacity 200ms ease;
     }
     .btn-secondary:hover {
-      transform: scale(1.05) translateZ(0);
+      opacity: 0.95;
     }
   }
 
@@ -127,10 +128,10 @@
 
   @media (prefers-reduced-motion: no-preference) {
     .btn-outline {
-      transition: transform 200ms ease, opacity 200ms ease;
+      transition: opacity 200ms ease;
     }
     .btn-outline:hover {
-      transform: scale(1.05) translateZ(0);
+      opacity: 0.95;
     }
   }
 
