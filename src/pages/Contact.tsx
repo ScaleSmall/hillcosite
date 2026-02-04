@@ -524,7 +524,6 @@ const Contact = () => {
 
                 .content-code-example-3 {
                   color: #fff;
-                  font-family: Montserrat, Arial, sans-serif;
                   background-color: #156ed7;
                   border-radius: 8px;
                   flex-direction: column;
@@ -589,7 +588,7 @@ const Contact = () => {
               ` }} />
 
               <div className="container-code-example mt-8">
-                <div className="content-code-example-3">
+                <div className="content-code-example-3 font-heading">
                   <div className="box-code-example-3 flex-col items-center text-center">
                     <img
                       src="https://cdn.prod.website-files.com/5f194315e6b47c1697925302/63ff658aae810ab61d7481f4_logo%20(1).svg"

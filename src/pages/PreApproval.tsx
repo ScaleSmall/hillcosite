@@ -14,7 +14,6 @@ const PreApproval = () => {
       <style dangerouslySetInnerHTML={{ __html: `
         .section-prequal {
           position: relative;
-          font-family: Montserrat, Arial, sans-serif;
           display: flex;
           overflow: hidden;
           padding: 80px 6vw;
@@ -128,7 +127,7 @@ const PreApproval = () => {
         }
       ` }} />
 
-      <section className="section-prequal bg-brand-gray-50">
+      <section className="section-prequal bg-brand-gray-50 font-heading">
         <div className="container-prequal">
           <div className="content-prequal-10">
             <div className="iframe-wrapper-prequal">

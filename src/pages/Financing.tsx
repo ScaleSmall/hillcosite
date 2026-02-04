@@ -76,7 +76,6 @@ const Financing = () => {
         <style dangerouslySetInnerHTML={{ __html: `
           .section-code-example {
             position: relative;
-            font-family: Montserrat, Arial, sans-serif;
             display: flex;
             overflow: hidden;
             padding: 40px 6vw;
@@ -173,7 +172,7 @@ const Financing = () => {
           }
         ` }} />
 
-        <div className="section-code-example">
+        <div className="section-code-example font-heading">
           <div className="container-code-example">
             <div className="content-code-example-11">
               <div className="iframe-wrapper-code-example">
