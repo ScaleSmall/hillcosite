@@ -25,7 +25,7 @@ const CTABanner = ({
   const bgClasses = {
     primary: 'bg-brand-azureDark',
     secondary: 'bg-slate-800',
-    accent: 'bg-accent-600'
+    accent: 'bg-brand-coral'
   };
 
   return (

@@ -68,3 +68,43 @@ Any deviation must be intentional, reviewed, and approved.
 ## Enforcement
 
 Any component, page, or asset usage that violates this contract is considered a brand defect and must be corrected before release.
+
+---
+
+## Brand Guardrails (Enforced)
+
+### Forbidden Tokens
+The following CSS class patterns are **strictly forbidden** and will cause builds to fail:
+
+- **`primary-*`** — Legacy palette, replaced by `brand-azure`
+- **`deep-*`** — Legacy palette, replaced by `brand-azureDark`
+- **`accent-*`** — Legacy palette, replaced by `brand-coral`
+
+### Forbidden Motion Tokens
+The following animation patterns are **strictly forbidden**:
+
+- **`hover:scale-*`** — Non-accessible, violates motion safety
+- **`group-hover:scale-*`** — Non-accessible, violates motion safety
+
+### Required Tokens
+All brand colors must use the official brand palette:
+
+- **`brand-azure`** — Primary brand color (#1F7A8C)
+- **`brand-azureDark`** — Dark brand color (#0B3C49)
+- **`brand-coral`** — CTA/emphasis color (#E36414)
+- **`brand-gray-*`** — Neutral grayscale (50-900)
+
+### Required Fonts
+All typography must use the official brand fonts:
+
+- **Montserrat** — Headings and display text
+- **Open Sans** — Body text and UI elements
+
+### Enforcement Mechanism
+Before every deployment, the build process runs:
+
+```bash
+npm run brand:guard
+```
+
+This script scans all source files and fails the build if any forbidden tokens are detected. This ensures brand consistency and prevents regression to legacy design patterns.

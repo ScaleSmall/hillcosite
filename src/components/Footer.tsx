@@ -101,14 +101,14 @@ const Footer = () => {
             <div className="space-y-2 bg-brand-gray-800/50 rounded-lg p-3">
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors font-medium"
+                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors font-medium"
               >
                 <Phone size={16} />
                 <span>{businessConfig.phone}</span>
               </a>
               <a
                 href={`mailto:${businessConfig.email}`}
-                className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors"
+                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors"
               >
                 <Mail size={16} />
                 <span>{businessConfig.email}</span>

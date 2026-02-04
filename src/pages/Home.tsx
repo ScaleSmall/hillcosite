@@ -233,7 +233,7 @@ const Home = () => {
               </Link>
               <Link
                 to="/financing"
-                className="text-accent-600 hover:text-accent-700 font-semibold text-lg underline decoration-2 underline-offset-4 transition-colors"
+                className="text-brand-coral hover:text-brand-coral font-semibold text-lg underline decoration-2 underline-offset-4 transition-colors"
               >
                 Click to estimate financing
               </Link>

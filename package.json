@@ -10,7 +10,8 @@
     "prerender": "node scripts/prerender.mjs",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "brand:guard": "(! grep -R \"\\bprimary-\\|\\bdeep-\\|hover:scale\\|group-hover:scale\\|\\baccent-\" -n src) || (echo \"\\n❌ Brand Guard failed: forbidden tokens found (primary-/deep-/accent-/hover:scale).\\n\" && exit 1)"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

@@ -28,19 +28,19 @@ const Financing = () => {
               </p>
               <ul className="space-y-2 text-base md:text-lg">
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle2 className="text-brand-coral flex-shrink-0 mt-1" size={20} />
                   <span>Financing from $500 to $25,000</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle2 className="text-brand-coral flex-shrink-0 mt-1" size={20} />
                   <span>Fast approval with soft credit check</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle2 className="text-brand-coral flex-shrink-0 mt-1" size={20} />
                   <span>Flexible terms from 3 to 60 months</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <CheckCircle2 className="text-accent-400 flex-shrink-0 mt-1" size={20} />
+                  <CheckCircle2 className="text-brand-coral flex-shrink-0 mt-1" size={20} />
                   <span>No hidden fees or prepayment penalties</span>
                 </li>
               </ul>
