@@ -91,7 +91,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             aria-required="true"
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'quote-name-error' : undefined}
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.name && (
             <p id="quote-name-error" className="mt-1 text-sm text-red-200" role="alert">
@@ -115,7 +115,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             aria-required="true"
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? 'quote-phone-error' : undefined}
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.phone && (
             <p id="quote-phone-error" className="mt-1 text-sm text-red-200" role="alert">
@@ -139,7 +139,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             aria-required="true"
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'quote-email-error' : undefined}
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.email && (
             <p id="quote-email-error" className="mt-1 text-sm text-red-200" role="alert">
@@ -158,7 +158,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             value={formData.service}
             onChange={handleChange}
             aria-label="Select painting service"
-            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent [&>option]:text-brand-azureDark [&>option]:bg-white"
+            className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure [&>option]:text-brand-azureDark [&>option]:bg-white"
           >
             <option value="Interior Painting">Interior Painting</option>
             <option value="Exterior Painting">Exterior Painting</option>
@@ -170,7 +170,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
 
         <button
           type="submit"
-          className="w-full bg-white text-brand-azureDark font-semibold py-4 px-6 rounded-lg hover:bg-slate-100 transition-colors duration-200 flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-azureDark"
+          className="w-full bg-white text-brand-azureDark font-semibold py-4 px-6 rounded-lg hover:bg-brand-gray-100 transition-colors duration-200 flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 focus:ring-offset-brand-azureDark"
         >
           <Home className="w-5 h-5" aria-hidden="true" />
           <span>Get Consultation</span>
@@ -190,7 +190,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
       <div className="text-center mt-4">
         <a
           href="tel:(512)240-2246"
-          className="inline-flex items-center text-white/90 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-brand-azureDark rounded px-2 py-1"
+          className="inline-flex items-center text-white/90 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 focus:ring-offset-brand-azureDark rounded px-2 py-1"
         >
           <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
           Or call (512) 240-2246
