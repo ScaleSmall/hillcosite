@@ -84,7 +84,7 @@ const Footer = () => {
               <img
                 src="/brand/hill-country-painting-logo-reverse.png"
                 alt="Hill Country Painting Logo"
-                className="h-32 w-auto"
+                className="h-12 w-auto"
                 width="150"
                 height="150"
                 loading="lazy"
