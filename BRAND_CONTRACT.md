@@ -121,3 +121,22 @@ Before any deploy or merge:
 This project blocks brand drift automatically via:
 - `npm run brand:guard` (forbidden tokens)
 - `predev` / `prebuild` enforcement
+
+---
+
+## Enforcement (Locked)
+
+Brand guard runs on:
+
+- `npm run dev` (predev)
+- `npm run build` (prebuild)
+- `npm run verify`
+
+Forbidden in `src/**` (non-guides):
+
+- **legacy tokens:** `primary-*`, `deep-*`, `accent-*`
+- **motion:** `hover:scale-*`, `group-hover:scale-*`
+- **raw palette prefixes:** `red-*`, `orange-*`, `yellow-*`, `green-*`, `purple-*`, `pink-*`, `blue-*`
+- **slate colors** (except transforms): `bg-slate-*`, `text-slate-*`, `border-slate-*`, `from-slate-*`, `to-slate-*`, `ring-slate-*`
+
+Exception scope: only `src/pages/guides/**` is exempt.
