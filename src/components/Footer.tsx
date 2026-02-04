@@ -91,7 +91,7 @@ const Footer = () => {
                 decoding="async"
               />
             </div>
-            <div className="border-l-2 border-primary-500 pl-3">
+            <div className="border-l-2 border-brand-azure pl-3">
               <p className="font-semibold text-white text-lg">{businessConfig.name}</p>
               <p className="text-slate-300 text-sm">Professional Painting Contractors</p>
             </div>

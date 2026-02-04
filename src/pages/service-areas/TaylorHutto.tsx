@@ -73,10 +73,10 @@ const TaylorHutto = () => {
                 Expert painting for Taylor and Hutto communities along Highway 79. From historic downtown Taylor to rapidly growing Hutto neighborhoods, we serve Williamson County with exceptional craftsmanship. Historic preservation expertise and new construction specialists.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-                <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   Get Free Taylor-Hutto Estimate
                 </Link>
-                <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
                   (512) 240-2246
                 </a>
@@ -128,17 +128,17 @@ const TaylorHutto = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
-              <Wheat className="w-12 h-12 text-primary-600 mb-4" />
+              <Wheat className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-deep-900 mb-2">Historic Taylor</h3>
               <p className="text-slate-600">Professional painting for Taylor's historic downtown and established neighborhoods with preservation expertise.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
-              <TrendingUp className="w-12 h-12 text-primary-600 mb-4" />
+              <TrendingUp className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-deep-900 mb-2">Growing Hutto</h3>
               <p className="text-slate-600">Expert painting for Hutto's rapidly expanding communities and new construction developments.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
-              <Home className="w-12 h-12 text-primary-600 mb-4" />
+              <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-deep-900 mb-2">Star Ranch</h3>
               <p className="text-slate-600">Quality painting for Star Ranch and other Hutto master-planned communities.</p>
             </div>

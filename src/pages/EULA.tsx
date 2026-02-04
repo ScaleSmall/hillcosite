@@ -99,7 +99,7 @@ const EULA = () => {
 
             <h2>Privacy</h2>
             <p>
-              Your use of the website is also governed by our <Link to="/privacy" className="text-primary-600 hover:text-primary-700">Privacy Policy</Link>. Please review our Privacy Policy to understand how we collect, use, and protect your information.
+              Your use of the website is also governed by our <Link to="/privacy" className="text-brand-azure hover:text-brand-azureDark">Privacy Policy</Link>. Please review our Privacy Policy to understand how we collect, use, and protect your information.
             </p>
 
             <h2>Modifications to Agreement</h2>
@@ -124,7 +124,7 @@ const EULA = () => {
 
             <h2>Entire Agreement</h2>
             <p>
-              This Agreement, together with our <Link to="/privacy" className="text-primary-600 hover:text-primary-700">Privacy Policy</Link> and <Link to="/terms" className="text-primary-600 hover:text-primary-700">Terms of Service</Link>, constitutes the entire agreement between you and Hill Country Painting regarding the use of the website.
+              This Agreement, together with our <Link to="/privacy" className="text-brand-azure hover:text-brand-azureDark">Privacy Policy</Link> and <Link to="/terms" className="text-brand-azure hover:text-brand-azureDark">Terms of Service</Link>, constitutes the entire agreement between you and Hill Country Painting regarding the use of the website.
             </p>
 
             <h2>Contact Information</h2>
@@ -134,16 +134,16 @@ const EULA = () => {
             <ul>
               <li>By email: info@hillcopaint.com</li>
               <li>By phone: (512) 240-2246</li>
-              <li>By visiting our <Link to="/contact" className="text-primary-600 hover:text-primary-700">contact page</Link></li>
+              <li>By visiting our <Link to="/contact" className="text-brand-azure hover:text-brand-azureDark">contact page</Link></li>
             </ul>
 
-            <div className="mt-8 p-6 bg-slate-50 rounded-lg border-l-4 border-primary-600">
+            <div className="mt-8 p-6 bg-slate-50 rounded-lg border-l-4 border-brand-azure">
               <h3 className="text-xl font-bold text-deep-900 mb-2">Related Documents</h3>
               <div className="space-y-2">
-                <Link to="/terms" className="block text-primary-600 hover:text-primary-700">
+                <Link to="/terms" className="block text-brand-azure hover:text-brand-azureDark">
                   Terms of Service
                 </Link>
-                <Link to="/privacy" className="block text-primary-600 hover:text-primary-700">
+                <Link to="/privacy" className="block text-brand-azure hover:text-brand-azureDark">
                   Privacy Policy
                 </Link>
               </div>

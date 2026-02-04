@@ -119,10 +119,10 @@ const Austin = () => {
                 Serving the Live Music Capital of the World with exceptional painting craftsmanship. From historic Hyde Park Victorians to modern downtown high-rises, West Lake Hills estates to vibrant East Austin homes. Expert painters who understand Austin's unique character, climate, and architectural diversity.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-                <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   Get Free Austin Estimate
                 </Link>
-                <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
                   (512) 240-2246
                 </a>
@@ -212,7 +212,7 @@ const Austin = () => {
             ].map((neighborhood) => (
               <div key={neighborhood} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center space-x-2">
-                  <MapPin className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                  <MapPin className="w-4 h-4 text-brand-azure flex-shrink-0" />
                   <span className="text-deep-900 font-medium text-sm">{neighborhood}</span>
                 </div>
               </div>
@@ -239,15 +239,15 @@ const Austin = () => {
                 className="card p-6 hover:shadow-lg transition-all duration-200 group"
               >
                 <div className="flex items-start gap-3 mb-3">
-                  <Home className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
-                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-primary-700 transition-colors">
+                  <Home className="w-6 h-6 text-brand-azure flex-shrink-0 mt-1" />
+                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-brand-azureDark transition-colors">
                     {hub.name}
                   </h3>
                 </div>
                 <p className="text-slate-600 mb-4 leading-relaxed">
                   {hub.description}
                 </p>
-                <div className="text-sm text-primary-600 font-medium">
+                <div className="text-sm text-brand-azure font-medium">
                   {hub.neighborhoods.length} neighborhoods →
                 </div>
               </Link>

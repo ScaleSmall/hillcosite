@@ -15,8 +15,8 @@ const NAPMapSection = () => {
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-brand-azure" />
                   </div>
                 </div>
                 <div>
@@ -30,15 +30,15 @@ const NAPMapSection = () => {
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-brand-azure" />
                   </div>
                 </div>
                 <div>
                   <h3 className="font-semibold text-deep-900 mb-1">Phone</h3>
                   <a
                     href={`tel:${businessConfig.phone}`}
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors"
+                    className="text-brand-azure hover:text-brand-azureDark font-medium transition-colors"
                   >
                     {businessConfig.phone}
                   </a>
@@ -50,15 +50,15 @@ const NAPMapSection = () => {
 
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-primary-600" />
+                  <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-brand-azure" />
                   </div>
                 </div>
                 <div>
                   <h3 className="font-semibold text-deep-900 mb-1">Email</h3>
                   <a
                     href={`mailto:${businessConfig.email}`}
-                    className="text-primary-600 hover:text-primary-700 font-medium transition-colors break-all"
+                    className="text-brand-azure hover:text-brand-azureDark font-medium transition-colors break-all"
                   >
                     {businessConfig.email}
                   </a>

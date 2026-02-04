@@ -74,18 +74,18 @@ const Sitemap = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <Home className="w-5 h-5 text-primary-600" />
+                  <Home className="w-5 h-5 text-brand-azure" />
                   <h2 className="text-2xl font-bold text-deep-900">Company</h2>
                 </div>
                 <ul className="space-y-2">
                   <li>
-                    <Link to="/" className="text-primary-600 hover:text-primary-700 transition-colors">
+                    <Link to="/" className="text-brand-azure hover:text-brand-azureDark transition-colors">
                       Home
                     </Link>
                   </li>
                   {companyPages.map((page) => (
                     <li key={page.href}>
-                      <Link to={page.href} className="text-primary-600 hover:text-primary-700 transition-colors">
+                      <Link to={page.href} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {page.name}
                       </Link>
                     </li>
@@ -95,18 +95,18 @@ const Sitemap = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <Wrench className="w-5 h-5 text-primary-600" />
+                  <Wrench className="w-5 h-5 text-brand-azure" />
                   <h2 className="text-2xl font-bold text-deep-900">Services</h2>
                 </div>
                 <ul className="space-y-2">
                   <li>
-                    <Link to="/services" className="text-primary-600 hover:text-primary-700 transition-colors">
+                    <Link to="/services" className="text-brand-azure hover:text-brand-azureDark transition-colors">
                       All Services
                     </Link>
                   </li>
                   {services.map((service) => (
                     <li key={service.href}>
-                      <Link to={service.href} className="text-primary-600 hover:text-primary-700 transition-colors">
+                      <Link to={service.href} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {service.name}
                       </Link>
                     </li>
@@ -116,13 +116,13 @@ const Sitemap = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <BookOpen className="w-5 h-5 text-primary-600" />
+                  <BookOpen className="w-5 h-5 text-brand-azure" />
                   <h2 className="text-2xl font-bold text-deep-900">Guides & Resources</h2>
                 </div>
                 <ul className="space-y-2">
                   {guides.map((guide) => (
                     <li key={guide.href}>
-                      <Link to={guide.href} className="text-primary-600 hover:text-primary-700 transition-colors">
+                      <Link to={guide.href} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {guide.name}
                       </Link>
                     </li>
@@ -132,18 +132,18 @@ const Sitemap = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="w-5 h-5 text-primary-600" />
+                  <MapPin className="w-5 h-5 text-brand-azure" />
                   <h2 className="text-2xl font-bold text-deep-900">Main Service Areas</h2>
                 </div>
                 <ul className="space-y-2">
                   <li>
-                    <Link to="/service-areas" className="text-primary-600 hover:text-primary-700 transition-colors">
+                    <Link to="/service-areas" className="text-brand-azure hover:text-brand-azureDark transition-colors">
                       All Service Areas
                     </Link>
                   </li>
                   {mainServiceAreas.map((area) => (
                     <li key={area.href}>
-                      <Link to={area.href} className="text-primary-600 hover:text-primary-700 transition-colors">
+                      <Link to={area.href} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {area.name}
                       </Link>
                     </li>
@@ -153,13 +153,13 @@ const Sitemap = () => {
 
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <HelpCircle className="w-5 h-5 text-primary-600" />
+                  <HelpCircle className="w-5 h-5 text-brand-azure" />
                   <h2 className="text-2xl font-bold text-deep-900">Legal & Policies</h2>
                 </div>
                 <ul className="space-y-2">
                   {legalPages.map((page) => (
                     <li key={page.href}>
-                      <Link to={page.href} className="text-primary-600 hover:text-primary-700 transition-colors">
+                      <Link to={page.href} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {page.name}
                       </Link>
                     </li>
@@ -170,7 +170,7 @@ const Sitemap = () => {
 
             <div className="mt-12 pt-8 border-t border-slate-200">
               <div className="flex items-center gap-2 mb-6">
-                <MapPin className="w-6 h-6 text-primary-600" />
+                <MapPin className="w-6 h-6 text-brand-azure" />
                 <h2 className="text-3xl font-bold text-deep-900">Austin Neighborhoods</h2>
               </div>
               <p className="text-slate-600 mb-6">
@@ -180,7 +180,7 @@ const Sitemap = () => {
                 {geoAreas.map((hub) => (
                   <div key={hub.slug} className="bg-slate-50 p-6 rounded-lg">
                     <h3 className="text-xl font-bold text-deep-900 mb-3">
-                      <Link to={`/areas/${hub.slug}`} className="text-primary-600 hover:text-primary-700 transition-colors">
+                      <Link to={`/areas/${hub.slug}`} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {hub.name}
                       </Link>
                     </h3>
@@ -189,7 +189,7 @@ const Sitemap = () => {
                         <li key={neighborhood.slug}>
                           <Link
                             to={`/areas/${hub.slug}/${neighborhood.slug}`}
-                            className="text-slate-700 hover:text-primary-600 transition-colors text-sm"
+                            className="text-slate-700 hover:text-brand-azure transition-colors text-sm"
                           >
                             {neighborhood.name}
                           </Link>
@@ -201,9 +201,9 @@ const Sitemap = () => {
               </div>
             </div>
 
-            <div className="mt-12 p-6 bg-primary-50 rounded-lg border-l-4 border-primary-600">
+            <div className="mt-12 p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
               <div className="flex items-center gap-2 mb-3">
-                <Phone className="w-6 h-6 text-primary-600" />
+                <Phone className="w-6 h-6 text-brand-azure" />
                 <h3 className="text-2xl font-bold text-deep-900">Need Help Finding Something?</h3>
               </div>
               <p className="text-slate-700 mb-4">
@@ -211,7 +211,7 @@ const Sitemap = () => {
               </p>
               <Link
                 to="/contact"
-                className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
               >
                 Contact Us
               </Link>

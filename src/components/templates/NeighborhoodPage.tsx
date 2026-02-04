@@ -44,7 +44,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           <div className="max-w-4xl mx-auto flex items-center gap-4">
             <Link
               to="/service-areas"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors"
             >
               <Home className="w-4 h-4" />
               <span className="text-sm font-medium">Service Areas</span>
@@ -52,7 +52,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <span className="text-slate-400">/</span>
             <Link
               to={`/areas/${hub.slug}`}
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-medium">{hub.name}</span>
@@ -68,7 +68,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             alt={`Professional house painting in ${neighborhood.name}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-900/90 via-deep-800/85 to-primary-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-deep-900/90 via-deep-800/85 to-brand-gray-900/90"></div>
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
@@ -82,13 +82,13 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200"
               >
                 Get Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 {businessConfig.phone}
@@ -101,9 +101,9 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-primary-600 mb-8">
+            <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-brand-azure mb-8">
               <div className="flex items-center gap-3 mb-2">
-                <MapPin className="w-6 h-6 text-primary-600" />
+                <MapPin className="w-6 h-6 text-brand-azure" />
                 <h2 className="text-2xl font-bold text-deep-900">
                   Serving {neighborhood.name}
                 </h2>
@@ -196,9 +196,9 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   <Link
                     key={index}
                     to={`/areas/${hub.slug}/${n.slug}`}
-                    className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg hover:bg-primary-50 hover:text-primary-900 transition-colors"
+                    className="flex items-center gap-2 p-3 bg-slate-50 rounded-lg hover:bg-brand-gray-50 hover:text-brand-gray-900 transition-colors"
                   >
-                    <Paintbrush className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                    <Paintbrush className="w-4 h-4 text-brand-azure flex-shrink-0" />
                     <span className="text-sm font-medium">{n.name}</span>
                   </Link>
                 ))}
@@ -210,7 +210,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-8 p-6 bg-primary-50 rounded-lg border-2 border-primary-200">
+            <div className="mb-8 p-6 bg-brand-gray-50 rounded-lg border-2 border-brand-gray-200">
               <h2 className="text-2xl font-bold text-deep-900 mb-3">Find Us on Google Maps</h2>
               <p className="text-slate-700 mb-4">
                 View reviews, service details, and directions on our Google Business Profile.
@@ -220,7 +220,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   href={businessConfig.googleBusinessProfileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
                   View our Google Business Profile
@@ -245,13 +245,13 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
         </div>
       </section>
 
-      <section className="py-16 bg-primary-600">
+      <section className="py-16 bg-brand-azure">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 hover:bg-slate-100 font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-slate-100 font-semibold rounded-lg transition-colors duration-200"
               >
                 Request Consultation
               </Link>

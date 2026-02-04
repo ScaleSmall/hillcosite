@@ -46,7 +46,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
           <div className="max-w-4xl mx-auto flex items-center gap-4">
             <Link
               to="/service-areas"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors"
+              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-medium">Service Areas</span>
@@ -69,7 +69,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
             alt={`Professional house painting in ${hub.name}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-900/85 via-deep-800/80 to-primary-900/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-deep-900/85 via-deep-800/80 to-brand-gray-900/85"></div>
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
@@ -88,13 +88,13 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 Get Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 {businessConfig.phone}
@@ -108,7 +108,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
-              <MapPin className="w-8 h-8 text-primary-600" />
+              <MapPin className="w-8 h-8 text-brand-azure" />
               <h2 className="text-3xl md:text-4xl font-bold text-deep-900">
                 Serving These Neighborhoods
               </h2>
@@ -118,15 +118,15 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 <Link
                   key={index}
                   to={`/areas/${hub.slug}/${neighborhood.slug}`}
-                  className="flex items-center gap-3 text-lg text-slate-700 bg-slate-50 p-4 rounded-lg hover:bg-primary-50 hover:text-primary-900 transition-colors"
+                  className="flex items-center gap-3 text-lg text-slate-700 bg-slate-50 p-4 rounded-lg hover:bg-brand-gray-50 hover:text-brand-gray-900 transition-colors"
                 >
-                  <Paintbrush className="w-5 h-5 text-primary-600 flex-shrink-0" />
+                  <Paintbrush className="w-5 h-5 text-brand-azure flex-shrink-0" />
                   <span>{neighborhood.name}</span>
                 </Link>
               ))}
             </div>
             {hub.specialization && (
-              <div className="mt-8 p-6 bg-primary-50 rounded-lg border-l-4 border-primary-600">
+              <div className="mt-8 p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
                 <p className="text-lg text-deep-900">{hub.specialization}</p>
               </div>
             )}
@@ -202,9 +202,9 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                   <Link
                     key={nearbyHub.slug}
                     to={`/areas/${nearbyHub.slug}`}
-                    className="flex items-center gap-2 p-3 bg-white rounded-lg hover:bg-primary-50 hover:text-primary-900 transition-colors"
+                    className="flex items-center gap-2 p-3 bg-white rounded-lg hover:bg-brand-gray-50 hover:text-brand-gray-900 transition-colors"
                   >
-                    <Home className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                    <Home className="w-4 h-4 text-brand-azure flex-shrink-0" />
                     <span className="text-sm font-medium">{nearbyHub.name}</span>
                   </Link>
                 ))}
@@ -217,7 +217,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-8 p-6 bg-primary-50 rounded-lg border-2 border-primary-200">
+            <div className="mb-8 p-6 bg-brand-gray-50 rounded-lg border-2 border-brand-gray-200">
               <h2 className="text-2xl font-bold text-deep-900 mb-3">Find Us on Google Maps</h2>
               <p className="text-slate-700 mb-4">
                 View reviews, service details, and directions on our Google Business Profile.
@@ -227,7 +227,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                   href={businessConfig.googleBusinessProfileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
                   View our Google Business Profile
@@ -252,13 +252,13 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         </div>
       </section>
 
-      <section className="py-16 bg-primary-600">
+      <section className="py-16 bg-brand-azure">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 hover:bg-slate-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-slate-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
               >
                 Request Consultation
               </Link>

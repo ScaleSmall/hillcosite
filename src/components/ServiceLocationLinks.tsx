@@ -57,10 +57,10 @@ const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, cu
             <Link
               key={location.slug}
               to={`/${serviceSlug}-${location.slug}`}
-              className="flex items-center gap-2 px-4 py-3 bg-white rounded-lg border border-slate-200 hover:border-primary-300 hover:bg-primary-50 transition-colors group"
+              className="flex items-center gap-2 px-4 py-3 bg-white rounded-lg border border-slate-200 hover:border-brand-gray-300 hover:bg-brand-gray-50 transition-colors group"
             >
-              <MapPin className="w-4 h-4 text-primary-600 flex-shrink-0" />
-              <span className="text-slate-700 group-hover:text-primary-700 font-medium text-sm">
+              <MapPin className="w-4 h-4 text-brand-azure flex-shrink-0" />
+              <span className="text-slate-700 group-hover:text-brand-azureDark font-medium text-sm">
                 {serviceName} {location.name}
               </span>
             </Link>

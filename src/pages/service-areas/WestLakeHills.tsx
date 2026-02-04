@@ -73,10 +73,10 @@ const WestLakeHills = () => {
                 Premium painting for West Lake Hills' most distinguished homes. Exceptional craftsmanship for luxury properties with the attention to detail your home deserves. Expert hillside property specialists, premium finishes, and HOA-compliant excellence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-                <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   Get Free West Lake Hills Estimate
                 </Link>
-                <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
                   (512) 240-2246
                 </a>
@@ -128,17 +128,17 @@ const WestLakeHills = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
-              <Award className="w-12 h-12 text-primary-600 mb-4" />
+              <Award className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-deep-900 mb-2">Luxury Properties</h3>
               <p className="text-slate-600">Exceptional craftsmanship for high-end homes with premium materials and meticulous attention to detail.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
-              <Home className="w-12 h-12 text-primary-600 mb-4" />
+              <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-deep-900 mb-2">Hillside Specialists</h3>
               <p className="text-slate-600">Expert painting for challenging hillside locations with proper equipment and safety protocols.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
-              <Sparkles className="w-12 h-12 text-primary-600 mb-4" />
+              <Sparkles className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-deep-900 mb-2">Designer Collaboration</h3>
               <p className="text-slate-600">Work seamlessly with architects and designers to achieve your vision with precision execution.</p>
             </div>

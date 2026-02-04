@@ -177,7 +177,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200"
               >
                 Get Free {location.name} Estimate
               </Link>
@@ -207,7 +207,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {content.benefits.slice(0, 6).map((benefit, idx) => (
                     <div key={idx} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
+                      <CheckCircle className="w-5 h-5 text-brand-azure mt-1 flex-shrink-0" />
                       <span>{benefit}</span>
                     </div>
                   ))}
@@ -254,9 +254,9 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             {content.processSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 rounded-xl p-6 border border-slate-200 hover:border-primary-300 transition-colors"
+                className="bg-slate-50 rounded-xl p-6 border border-slate-200 hover:border-brand-gray-300 transition-colors"
               >
-                <div className="w-10 h-10 bg-primary-600 text-white rounded-lg flex items-center justify-center font-bold mb-4">
+                <div className="w-10 h-10 bg-brand-azure text-white rounded-lg flex items-center justify-center font-bold mb-4">
                   {idx + 1}
                 </div>
                 <h3 className="text-lg font-semibold text-deep-900 mb-2">

@@ -110,15 +110,15 @@ const ServiceAreas = () => {
                 className="card p-6 hover:shadow-lg transition-all duration-200 group"
               >
                 <div className="flex items-start gap-3 mb-3">
-                  <MapPin className="w-6 h-6 text-primary-600 flex-shrink-0 mt-1" />
-                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-primary-700 transition-colors">
+                  <MapPin className="w-6 h-6 text-brand-azure flex-shrink-0 mt-1" />
+                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-brand-azureDark transition-colors">
                     {hub.name}
                   </h3>
                 </div>
                 <p className="text-slate-600 mb-4 leading-relaxed">
                   {hub.description}
                 </p>
-                <div className="text-sm text-primary-600 font-medium">
+                <div className="text-sm text-brand-azure font-medium">
                   View {hub.neighborhoods.length} neighborhoods →
                 </div>
               </Link>
