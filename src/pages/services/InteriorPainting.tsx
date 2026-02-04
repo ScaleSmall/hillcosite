@@ -156,7 +156,7 @@ const InteriorPainting = () => {
         <div className="absolute bottom-8 left-8 z-20 hidden lg:flex flex-col items-center gap-2">
           <Link
             to="/financing"
-            className="group block transition-transform duration-300 hover:scale-105"
+            className="group block transition-transform duration-300"
           >
             <img
               src="/financing-24-month-interest-free-badge.png"
@@ -176,7 +176,7 @@ const InteriorPainting = () => {
 
         {/* Award Badge - Bottom Right */}
         <div className="absolute bottom-8 right-8 z-20 hidden lg:flex flex-col items-center gap-2">
-          <div className="transition-transform duration-300 hover:scale-105">
+          <div className="transition-transform duration-300">
             <img
               src="/winner_best_of_round_rock_2025_award.jpg"
               alt="Winner Best of Round Rock 2025 Award - Hill Country Painting"
@@ -289,7 +289,7 @@ const InteriorPainting = () => {
                       <div className={`bg-white rounded-2xl p-8 shadow-xl border-l-4 ${
                         index % 3 === 0 ? 'border-blue-500' :
                         index % 3 === 1 ? 'border-indigo-500' : 'border-purple-500'
-                      } transform hover:scale-105 transition-all duration-300 hover:shadow-2xl`}>
+                      } transform transition-all duration-300 hover:shadow-2xl`}>
                         <div className="flex items-start gap-4">
                           <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg ${
                             index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600' :

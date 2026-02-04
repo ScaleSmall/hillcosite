@@ -150,7 +150,7 @@ const ExteriorPainting = () => {
         <div className="absolute bottom-8 left-8 z-20 hidden lg:flex flex-col items-center gap-2">
           <Link
             to="/financing"
-            className="group block transition-transform duration-300 hover:scale-105"
+            className="group block transition-transform duration-300"
           >
             <img
               src="/financing-24-month-interest-free-badge.png"
@@ -170,7 +170,7 @@ const ExteriorPainting = () => {
 
         {/* Award Badge - Bottom Right */}
         <div className="absolute bottom-8 right-8 z-20 hidden lg:flex flex-col items-center gap-2">
-          <div className="transition-transform duration-300 hover:scale-105">
+          <div className="transition-transform duration-300">
             <img
               src="/winner_best_of_round_rock_2025_award.jpg"
               alt="Winner Best of Round Rock 2025 Award - Hill Country Painting"

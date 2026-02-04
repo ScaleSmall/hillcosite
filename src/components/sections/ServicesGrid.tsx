@@ -73,7 +73,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
                   alt={`${service.title} Austin Texas - Hill Country Painting professional service`}
                   width="400"
                   height="250"
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-64 object-cover transition-transform duration-300"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   location={{
                     name: 'Austin, TX',

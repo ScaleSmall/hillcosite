@@ -127,7 +127,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         </div>
 
         <div className="absolute bottom-8 left-8 z-20 hidden lg:flex flex-col items-center gap-2">
-          <Link to="/financing" className="group block transition-transform duration-300 hover:scale-105">
+          <Link to="/financing" className="group block transition-transform duration-300">
             <img
               src="/financing-24-month-interest-free-badge.png"
               alt="Up to 24 months interest-free financing available"

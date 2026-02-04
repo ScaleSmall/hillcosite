@@ -106,7 +106,7 @@ const Home = () => {
               <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-red-700 transform translate-x-[1px] -translate-y-[1px]"></div>
               
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-200">
+                <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg transition-transform duration-200">
                   <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a4 4 0 004-4V5z" />
                   </svg>
@@ -222,7 +222,7 @@ const Home = () => {
               Make your painting project more affordable with our financing options
             </p>
             <div className="flex flex-col items-center gap-3">
-              <Link to="/financing" className="inline-block transition-transform hover:scale-105">
+              <Link to="/financing" className="inline-block transition-transform">
                 <img
                   src="/financing-24-month-interest-free-badge.png"
                   alt="Up to 24 months interest-free financing available"

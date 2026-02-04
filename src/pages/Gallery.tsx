@@ -221,7 +221,7 @@ const Gallery = () => {
                     alt={project.title}
                     width="300"
                     height="200"
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-48 object-cover transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, 300px"
                     location={{
                       name: `${project.location}, Austin, TX`,
@@ -262,7 +262,7 @@ const Gallery = () => {
                   <img
                     src={photo.image_url}
                     alt={photo.alt_text}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-64 object-cover transition-transform duration-300"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -295,7 +295,7 @@ const Gallery = () => {
                         <img
                           src={photo.image_url}
                           alt={photo.alt_text}
-                          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-64 object-cover transition-transform duration-300"
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -382,7 +382,7 @@ const Gallery = () => {
                     alt={project.title}
                     width="400"
                     height="250"
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-64 object-cover transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     location={{
                       name: 'Round Rock, TX',
