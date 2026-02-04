@@ -13,22 +13,22 @@ const About = () => {
 
   const aboutStats = [
     {
-      icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">15</div>,
+      icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">15</div>,
       value: "15+ Years",
       label: "Experience"
     },
     {
-      icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">100</div>,
+      icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">100</div>,
       value: "100+",
       label: "Projects Complete"
     },
     {
-      icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">★</div>,
+      icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">★</div>,
       value: "5-Star",
       label: "Reviews"
     },
     {
-      icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+      icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
       value: "Insured",
       label: "Austin Local"
     }
@@ -47,10 +47,10 @@ const About = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               About Hill Country Painting
             </h1>
             <p className="text-xl text-slate-600 leading-body">

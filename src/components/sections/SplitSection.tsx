@@ -29,7 +29,7 @@ const SplitSection = ({
 }: SplitSectionProps) => {
   const ContentSection = () => (
     <div className="space-y-6">
-      <h2 className="text-3xl md:text-4xl font-bold text-deep-900">
+      <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900">
         {title}
       </h2>
       <p className="text-lg text-slate-600 leading-body">
@@ -38,7 +38,7 @@ const SplitSection = ({
       <ul className="space-y-3">
         {benefits.map((benefit, index) => (
           <li key={index} className="flex items-start space-x-3">
-            <Check className="w-5 h-5 text-deep-600 mt-0.5 flex-shrink-0" />
+            <Check className="w-5 h-5 text-brand-azureDark mt-0.5 flex-shrink-0" />
             <span className="text-slate-700">{benefit.text}</span>
           </li>
         ))}

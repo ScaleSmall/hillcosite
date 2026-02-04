@@ -121,14 +121,14 @@ const HOAColorTips = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
               <FileText className="w-4 h-4 mr-2" />
               HOA Compliance Guide
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               HOA Color Tips for Austin Homes
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -150,7 +150,7 @@ const HOAColorTips = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Common Austin HOA Paint Requirements
             </h2>
             <p className="text-xl text-slate-600">
@@ -181,7 +181,7 @@ const HOAColorTips = () => {
                   </div>
                   <div className="flex-grow">
                     <div className="flex items-center space-x-2 mb-2">
-                      <h3 className="text-xl font-bold text-deep-900">{req.requirement}</h3>
+                      <h3 className="text-xl font-bold text-brand-gray-900">{req.requirement}</h3>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         req.status === 'required' ? 'bg-red-100 text-red-700' :
                         req.status === 'common' ? 'bg-blue-100 text-blue-700' :
@@ -208,7 +208,7 @@ const HOAColorTips = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Popular HOA-Approved Colors in Austin
             </h2>
             <p className="text-xl text-slate-600">
@@ -220,14 +220,14 @@ const HOAColorTips = () => {
             {popularHOAColors.map((category, index) => (
               <div key={index} className="card p-8">
                 <div className="flex items-center space-x-3 mb-6">
-                  <Palette className="w-8 h-8 text-deep-600" />
-                  <h3 className="text-2xl font-bold text-deep-900">{category.category}</h3>
+                  <Palette className="w-8 h-8 text-brand-azureDark" />
+                  <h3 className="text-2xl font-bold text-brand-gray-900">{category.category}</h3>
                 </div>
                 <p className="text-slate-600 mb-6">{category.description}</p>
                 <div className="space-y-3">
                   {category.colors.map((color, colorIndex) => (
                     <div key={colorIndex} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
-                      <span className="font-medium text-deep-900">{color.name}</span>
+                      <span className="font-medium text-brand-gray-900">{color.name}</span>
                       <div
                         className="w-8 h-8 rounded-full border-2 border-slate-300"
                         style={{ backgroundColor: color.hex }}
@@ -245,7 +245,7 @@ const HOAColorTips = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               HOA Paint Approval Process
             </h2>
             <p className="text-xl text-slate-600">
@@ -295,14 +295,14 @@ const HOAColorTips = () => {
               ].map((item, index) => (
                 <div key={index} className="flex items-start space-x-6">
                   <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-deep-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
+                    <div className="w-12 h-12 bg-brand-azureDark text-white rounded-full flex items-center justify-center font-bold text-lg">
                       {item.step}
                     </div>
                   </div>
                   <div className="flex-grow">
                     <div className="flex items-center space-x-4 mb-2">
-                      <h3 className="text-xl font-bold text-deep-900">{item.title}</h3>
-                      <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                      <h3 className="text-xl font-bold text-brand-gray-900">{item.title}</h3>
+                      <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                         {item.timeline}
                       </span>
                     </div>
@@ -336,7 +336,7 @@ const HOAColorTips = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Common HOA Approval Mistakes to Avoid
             </h2>
             <p className="text-xl text-slate-600">

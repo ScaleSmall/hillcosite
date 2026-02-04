@@ -9,7 +9,7 @@ const NAPMapSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl font-bold text-deep-900 mb-6">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
               Contact Us
             </h2>
             <div className="space-y-6">
@@ -20,7 +20,7 @@ const NAPMapSection = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-1">Service Area</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-1">Service Area</h3>
                   <p className="text-slate-600">
                     {businessConfig.name}<br />
                     Serving {businessConfig.address.displayFull}
@@ -35,7 +35,7 @@ const NAPMapSection = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-1">Phone</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-1">Phone</h3>
                   <a
                     href={`tel:${businessConfig.phone}`}
                     className="text-brand-azure hover:text-brand-azureDark font-medium transition-colors"
@@ -55,7 +55,7 @@ const NAPMapSection = () => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-1">Email</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-1">Email</h3>
                   <a
                     href={`mailto:${businessConfig.email}`}
                     className="text-brand-azure hover:text-brand-azureDark font-medium transition-colors break-all"

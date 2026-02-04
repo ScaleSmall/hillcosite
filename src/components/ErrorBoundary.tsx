@@ -44,7 +44,7 @@ class ErrorBoundary extends Component<Props, State> {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.35 16.5c-.77.833.192 2.5 1.732 2.5z" />
                 </svg>
               </div>
-              <h1 className="text-3xl font-bold text-deep-900 mb-4">
+              <h1 className="text-3xl font-bold text-brand-gray-900 mb-4">
                 Something went wrong
               </h1>
               <p className="text-lg text-slate-600 mb-8">
@@ -64,14 +64,14 @@ class ErrorBoundary extends Component<Props, State> {
             </div>
             
             <div className="bg-slate-50 rounded-lg p-6">
-              <h3 className="font-semibold text-deep-900 mb-4">
+              <h3 className="font-semibold text-brand-gray-900 mb-4">
                 Need immediate help?
               </h3>
               <div className="space-y-2">
-                <a href="tel:(512)240-2246" className="text-deep-600 hover:text-deep-700 block">
+                <a href="tel:(512)240-2246" className="text-brand-azureDark hover:text-brand-azureDark block">
                   Call (512) 240-2246
                 </a>
-                <a href="mailto:info@hillcopaint.com" className="text-deep-600 hover:text-deep-700 block">
+                <a href="mailto:info@hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark block">
                   Email info@hillcopaint.com
                 </a>
               </div>

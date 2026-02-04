@@ -246,7 +246,7 @@ const CabinetRefinishing = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-deep-900 mb-6">
+              <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Cabinet Painting in Austin
               </h2>
               <div className="space-y-6 text-lg text-slate-600">
@@ -255,19 +255,19 @@ const CabinetRefinishing = () => {
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Save 60% vs replacement</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Custom colors</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Professional prep</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Factory sprayed finish</span>
                   </div>
                 </div>
@@ -306,7 +306,7 @@ const CabinetRefinishing = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Complete Kitchen Solutions
             </h2>
             <p className="text-xl text-slate-600">
@@ -326,7 +326,7 @@ const CabinetRefinishing = () => {
                     className="w-full h-48 object-cover rounded-xl mx-auto"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-deep-900 mb-4">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-4">
                   {service.title}
                 </h3>
                 <p className="text-slate-600 mb-6 leading-body">

@@ -26,7 +26,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
       <section className="py-12 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">Local Service Area Details</h2>
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">Local Service Area Details</h2>
             <p className="text-lg text-slate-700">
               We serve the greater {city} area, including {areaName} and nearby communities.
             </p>
@@ -40,12 +40,12 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
     <section className="py-12 bg-slate-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-deep-900 mb-6">Local Service Area Details</h2>
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">Local Service Area Details</h2>
 
           <div className="space-y-6">
             {zipCodes && zipCodes.length > 0 && (
               <div>
-                <h3 className="text-xl font-semibold text-deep-900 mb-3">ZIP Codes We Serve</h3>
+                <h3 className="text-xl font-semibold text-brand-gray-900 mb-3">ZIP Codes We Serve</h3>
                 <div className="flex flex-wrap gap-2">
                   {zipCodes.map((zip, index) => (
                     <span
@@ -61,7 +61,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
 
             {nearbyAreas && nearbyAreas.length > 0 && (
               <div>
-                <h3 className="text-xl font-semibold text-deep-900 mb-3">Nearby Areas</h3>
+                <h3 className="text-xl font-semibold text-brand-gray-900 mb-3">Nearby Areas</h3>
                 <div className="flex flex-wrap gap-2">
                   {nearbyAreas.map((area, index) => (
                     <span
@@ -77,7 +77,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
 
             {serviceKeywords && serviceKeywords.length > 0 && (
               <div>
-                <h3 className="text-xl font-semibold text-deep-900 mb-3">Services Commonly Requested Here</h3>
+                <h3 className="text-xl font-semibold text-brand-gray-900 mb-3">Services Commonly Requested Here</h3>
                 <ul className="list-disc list-inside space-y-1 text-slate-700">
                   {serviceKeywords.map((keyword, index) => (
                     <li key={index}>{keyword}</li>

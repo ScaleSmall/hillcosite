@@ -68,7 +68,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             alt={`Professional house painting in ${neighborhood.name}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-900/90 via-deep-800/85 to-brand-gray-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-gray-900/90 via-brand-gray-800/85 to-brand-gray-900/90"></div>
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
@@ -104,7 +104,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-brand-azure mb-8">
               <div className="flex items-center gap-3 mb-2">
                 <MapPin className="w-6 h-6 text-brand-azure" />
-                <h2 className="text-2xl font-bold text-deep-900">
+                <h2 className="text-2xl font-bold text-brand-gray-900">
                   Serving {neighborhood.name}
                 </h2>
               </div>
@@ -114,7 +114,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             </div>
 
             <div className="prose prose-lg max-w-none mb-8">
-              <h2 className="text-2xl font-bold text-deep-900 mb-4">
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">
                 Why Choose Hill Country Painting for {neighborhood.name}?
               </h2>
               <p className="text-slate-700 mb-4">
@@ -131,7 +131,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-8 text-center">
               Our Services in {neighborhood.name}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -139,7 +139,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/services/interior-painting"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Interior Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Interior Painting</h3>
                 <p className="text-slate-700">
                   Expert color consultation and flawless application for your home's interior.
                 </p>
@@ -148,7 +148,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/services/exterior-painting"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Exterior Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Exterior Painting</h3>
                 <p className="text-slate-700">
                   Premium exterior painting built for Texas weather and your home's protection.
                 </p>
@@ -157,7 +157,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/services/cabinet-refinishing"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Cabinet Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Cabinet Painting</h3>
                 <p className="text-slate-700">
                   Kitchen and bathroom cabinet painting for a fresh, updated look.
                 </p>
@@ -166,7 +166,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/services/commercial"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Commercial Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
                 <p className="text-slate-700">
                   Professional painting for offices, retail spaces, and commercial properties.
                 </p>
@@ -186,7 +186,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-deep-900 mb-6">
+            <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">
               Other Neighborhoods We Serve in {hub.name}
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -211,7 +211,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-8 p-6 bg-brand-gray-50 rounded-lg border-2 border-brand-gray-200">
-              <h2 className="text-2xl font-bold text-deep-900 mb-3">Find Us on Google Maps</h2>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-3">Find Us on Google Maps</h2>
               <p className="text-slate-700 mb-4">
                 View reviews, service details, and directions on our Google Business Profile.
               </p>
@@ -229,7 +229,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   href={businessConfig.googleBusinessProfileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-deep-900 hover:bg-deep-800 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-gray-900 hover:bg-brand-gray-800 text-white font-semibold rounded-lg transition-colors"
                 >
                   <MapPin className="w-5 h-5 mr-2" />
                   See reviews & directions
@@ -237,7 +237,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-8 text-center">
               Find Us in {neighborhood.name}
             </h2>
             <GoogleMapEmbed query={mapQuery} />
@@ -257,7 +257,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-deep-900 text-white hover:bg-deep-800 font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-gray-900 text-white hover:bg-brand-gray-800 font-semibold rounded-lg transition-colors duration-200"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call {businessConfig.phone}

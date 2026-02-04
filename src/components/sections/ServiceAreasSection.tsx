@@ -19,7 +19,7 @@ const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProp
         {(title || subtitle) && (
           <div className="text-center mb-16">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
                 {title}
               </h2>
             )}
@@ -37,14 +37,14 @@ const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProp
               <Link
                 key={index}
                 to={area.href}
-                className="px-6 py-3 bg-white hover:bg-deep-50 text-deep-700 hover:text-deep-800 border border-deep-200 hover:border-deep-300 rounded-full font-medium transition-all duration-200"
+                className="px-6 py-3 bg-white hover:bg-brand-gray-50 text-brand-azureDark hover:text-brand-gray-800 border border-brand-gray-200 hover:border-brand-gray-300 rounded-full font-medium transition-all duration-200"
               >
                 {area.name}
               </Link>
             ) : (
               <span
                 key={index}
-                className="px-6 py-3 bg-white text-deep-700 border border-deep-200 rounded-full font-medium"
+                className="px-6 py-3 bg-white text-brand-azureDark border border-brand-gray-200 rounded-full font-medium"
               >
                 {area.name}
               </span>

@@ -52,7 +52,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
         {(title || subtitle) && (
           <div className="text-center mb-16">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
                 {title}
               </h2>
             )}
@@ -84,7 +84,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-deep-900 mb-3">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                   {service.title}
                 </h3>
                 <p className="text-slate-600 mb-4 leading-body">
@@ -92,7 +92,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
                 </p>
                 <Link
                   to={service.link}
-                  className="inline-flex items-center text-deep-700 hover:text-deep-800 font-medium transition-colors group"
+                  className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors group"
                 >
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

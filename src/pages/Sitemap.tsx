@@ -59,9 +59,9 @@ const Sitemap = () => {
       />
 
       <div className="min-h-screen bg-white">
-        <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl font-bold text-deep-900 mb-4">Site Map</h1>
+            <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">Site Map</h1>
             <p className="text-lg text-slate-600">
               Navigate our complete site structure. Find all our services, service areas, guides, and resources.
             </p>
@@ -75,7 +75,7 @@ const Sitemap = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Home className="w-5 h-5 text-brand-azure" />
-                  <h2 className="text-2xl font-bold text-deep-900">Company</h2>
+                  <h2 className="text-2xl font-bold text-brand-gray-900">Company</h2>
                 </div>
                 <ul className="space-y-2">
                   <li>
@@ -96,7 +96,7 @@ const Sitemap = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <Wrench className="w-5 h-5 text-brand-azure" />
-                  <h2 className="text-2xl font-bold text-deep-900">Services</h2>
+                  <h2 className="text-2xl font-bold text-brand-gray-900">Services</h2>
                 </div>
                 <ul className="space-y-2">
                   <li>
@@ -117,7 +117,7 @@ const Sitemap = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <BookOpen className="w-5 h-5 text-brand-azure" />
-                  <h2 className="text-2xl font-bold text-deep-900">Guides & Resources</h2>
+                  <h2 className="text-2xl font-bold text-brand-gray-900">Guides & Resources</h2>
                 </div>
                 <ul className="space-y-2">
                   {guides.map((guide) => (
@@ -133,7 +133,7 @@ const Sitemap = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <MapPin className="w-5 h-5 text-brand-azure" />
-                  <h2 className="text-2xl font-bold text-deep-900">Main Service Areas</h2>
+                  <h2 className="text-2xl font-bold text-brand-gray-900">Main Service Areas</h2>
                 </div>
                 <ul className="space-y-2">
                   <li>
@@ -154,7 +154,7 @@ const Sitemap = () => {
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <HelpCircle className="w-5 h-5 text-brand-azure" />
-                  <h2 className="text-2xl font-bold text-deep-900">Legal & Policies</h2>
+                  <h2 className="text-2xl font-bold text-brand-gray-900">Legal & Policies</h2>
                 </div>
                 <ul className="space-y-2">
                   {legalPages.map((page) => (
@@ -171,7 +171,7 @@ const Sitemap = () => {
             <div className="mt-12 pt-8 border-t border-slate-200">
               <div className="flex items-center gap-2 mb-6">
                 <MapPin className="w-6 h-6 text-brand-azure" />
-                <h2 className="text-3xl font-bold text-deep-900">Austin Neighborhoods</h2>
+                <h2 className="text-3xl font-bold text-brand-gray-900">Austin Neighborhoods</h2>
               </div>
               <p className="text-slate-600 mb-6">
                 We serve neighborhoods throughout Greater Austin. Browse by area below:
@@ -179,7 +179,7 @@ const Sitemap = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {geoAreas.map((hub) => (
                   <div key={hub.slug} className="bg-slate-50 p-6 rounded-lg">
-                    <h3 className="text-xl font-bold text-deep-900 mb-3">
+                    <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                       <Link to={`/areas/${hub.slug}`} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {hub.name}
                       </Link>
@@ -204,7 +204,7 @@ const Sitemap = () => {
             <div className="mt-12 p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
               <div className="flex items-center gap-2 mb-3">
                 <Phone className="w-6 h-6 text-brand-azure" />
-                <h3 className="text-2xl font-bold text-deep-900">Need Help Finding Something?</h3>
+                <h3 className="text-2xl font-bold text-brand-gray-900">Need Help Finding Something?</h3>
               </div>
               <p className="text-slate-700 mb-4">
                 Can't find what you're looking for? Contact us directly and we'll be happy to help.

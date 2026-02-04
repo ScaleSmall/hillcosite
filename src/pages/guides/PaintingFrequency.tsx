@@ -136,7 +136,7 @@ const PaintingFrequency = () => {
               <Calendar className="w-4 h-4 mr-2" />
               Texas Climate Guide 2026
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               How Often to Paint in Central Texas
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -158,7 +158,7 @@ const PaintingFrequency = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Austin Painting Maintenance Schedule
             </h2>
             <p className="text-xl text-slate-600">
@@ -168,7 +168,7 @@ const PaintingFrequency = () => {
           
           <div className="overflow-x-auto">
             <table className="w-full bg-white rounded-lg shadow-lg">
-              <thead className="bg-deep-700 text-white">
+              <thead className="bg-brand-azureDark text-white">
                 <tr>
                   <th className="px-6 py-4 text-left">Surface Type</th>
                   <th className="px-6 py-4 text-center">Frequency</th>
@@ -180,7 +180,7 @@ const PaintingFrequency = () => {
               <tbody>
                 {paintingSchedule.map((item, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
-                    <td className="px-6 py-4 font-semibold text-deep-900">{item.surface}</td>
+                    <td className="px-6 py-4 font-semibold text-brand-gray-900">{item.surface}</td>
                     <td className="px-6 py-4 text-center">
                       <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">
                         {item.frequency}
@@ -201,7 +201,7 @@ const PaintingFrequency = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Best Times to Paint in Round Rock
             </h2>
             <p className="text-xl text-slate-600">
@@ -213,7 +213,7 @@ const PaintingFrequency = () => {
             {seasonalFactors.map((season, index) => (
               <div key={index} className="card p-6 text-center">
                 <div className="text-4xl mb-4">{season.icon}</div>
-                <h3 className="text-xl font-bold text-deep-900 mb-2">{season.season}</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">{season.season}</h3>
                 <div className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${
                   season.painting === 'Excellent' ? 'bg-green-100 text-green-700' :
                   season.painting === 'Good' ? 'bg-blue-100 text-blue-700' :
@@ -225,15 +225,15 @@ const PaintingFrequency = () => {
                 
                 <div className="space-y-3 text-sm">
                   <div>
-                    <p className="font-medium text-deep-900 mb-1">Exterior:</p>
+                    <p className="font-medium text-brand-gray-900 mb-1">Exterior:</p>
                     <p className="text-slate-600">{season.exterior}</p>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900 mb-1">Interior:</p>
+                    <p className="font-medium text-brand-gray-900 mb-1">Interior:</p>
                     <p className="text-slate-600">{season.interior}</p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-3 mt-4">
-                    <p className="font-medium text-deep-900 mb-1">Round Rock Tip:</p>
+                    <p className="font-medium text-brand-gray-900 mb-1">Round Rock Tip:</p>
                     <p className="text-slate-600">{season.roundRockTip}</p>
                   </div>
                 </div>
@@ -264,7 +264,7 @@ const PaintingFrequency = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               When to Schedule Repainting: Warning Signs
             </h2>
             <p className="text-xl text-slate-600">
@@ -277,7 +277,7 @@ const PaintingFrequency = () => {
               <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sun className="w-6 h-6 text-red-600" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3 text-center">Immediate Action Needed</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3 text-center">Immediate Action Needed</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="text-red-500 mr-2">•</span>
@@ -302,7 +302,7 @@ const PaintingFrequency = () => {
               <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-6 h-6 text-yellow-600" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3 text-center">Plan Within 6-12 Months</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3 text-center">Plan Within 6-12 Months</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="text-yellow-500 mr-2">•</span>
@@ -327,7 +327,7 @@ const PaintingFrequency = () => {
               <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Home className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3 text-center">Good Condition</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3 text-center">Good Condition</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">•</span>
@@ -355,7 +355,7 @@ const PaintingFrequency = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Extend Paint Life in Texas Heat
             </h2>
             <p className="text-xl text-slate-600">
@@ -365,14 +365,14 @@ const PaintingFrequency = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-2xl font-bold text-deep-900 mb-6">Annual Maintenance</h3>
+              <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">Annual Maintenance</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">1</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Clean Exterior Surfaces</p>
+                    <p className="font-medium text-brand-gray-900">Clean Exterior Surfaces</p>
                     <p className="text-slate-600 text-sm">Pressure wash annually to remove dirt, mildew, and pollutants</p>
                   </div>
                 </div>
@@ -382,7 +382,7 @@ const PaintingFrequency = () => {
                     <span className="text-white text-sm font-bold">2</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Inspect for Damage</p>
+                    <p className="font-medium text-brand-gray-900">Inspect for Damage</p>
                     <p className="text-slate-600 text-sm">Check for cracks, peeling, or bare spots, especially on sun-exposed areas</p>
                   </div>
                 </div>
@@ -392,7 +392,7 @@ const PaintingFrequency = () => {
                     <span className="text-white text-sm font-bold">3</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Touch Up Early</p>
+                    <p className="font-medium text-brand-gray-900">Touch Up Early</p>
                     <p className="text-slate-600 text-sm">Address minor issues before they become major problems</p>
                   </div>
                 </div>
@@ -402,7 +402,7 @@ const PaintingFrequency = () => {
                     <span className="text-white text-sm font-bold">4</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Maintain Caulking</p>
+                    <p className="font-medium text-brand-gray-900">Maintain Caulking</p>
                     <p className="text-slate-600 text-sm">Keep caulk around windows and trim in good condition to prevent moisture</p>
                   </div>
                 </div>
@@ -410,14 +410,14 @@ const PaintingFrequency = () => {
             </div>
             
             <div>
-              <h3 className="text-2xl font-bold text-deep-900 mb-6">Protective Measures</h3>
+              <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">Protective Measures</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
                   <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">A</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Trim Vegetation</p>
+                    <p className="font-medium text-brand-gray-900">Trim Vegetation</p>
                     <p className="text-slate-600 text-sm">Keep bushes and trees away from painted surfaces to improve air circulation</p>
                   </div>
                 </div>
@@ -427,7 +427,7 @@ const PaintingFrequency = () => {
                     <span className="text-white text-sm font-bold">B</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Clean Gutters</p>
+                    <p className="font-medium text-brand-gray-900">Clean Gutters</p>
                     <p className="text-slate-600 text-sm">Ensure proper drainage to prevent water damage and staining</p>
                   </div>
                 </div>
@@ -437,7 +437,7 @@ const PaintingFrequency = () => {
                     <span className="text-white text-sm font-bold">C</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Control Sprinklers</p>
+                    <p className="font-medium text-brand-gray-900">Control Sprinklers</p>
                     <p className="text-slate-600 text-sm">Avoid spraying painted surfaces with irrigation systems</p>
                   </div>
                 </div>
@@ -447,7 +447,7 @@ const PaintingFrequency = () => {
                     <span className="text-white text-sm font-bold">D</span>
                   </div>
                   <div>
-                    <p className="font-medium text-deep-900">Shade Planning</p>
+                    <p className="font-medium text-brand-gray-900">Shade Planning</p>
                     <p className="text-slate-600 text-sm">Consider awnings or strategic landscaping for extreme sun exposure</p>
                   </div>
                 </div>

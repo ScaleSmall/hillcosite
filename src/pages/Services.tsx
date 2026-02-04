@@ -54,10 +54,10 @@ const Services = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-deep-900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-gray-900 leading-tight">
               Complete Painting Services in Austin
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -91,7 +91,7 @@ const Services = () => {
                   />
                 </div>
                 <div className="lg:w-1/2 space-y-6">
-                  <h3 className="text-3xl font-bold text-deep-900">
+                  <h3 className="text-3xl font-bold text-brand-gray-900">
                     {service.title}
                   </h3>
                   <p className="text-lg text-slate-600 leading-body">
@@ -100,7 +100,7 @@ const Services = () => {
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-slate-700">
-                        <ArrowRight className="w-4 h-4 text-deep-600 mr-3 flex-shrink-0" />
+                        <ArrowRight className="w-4 h-4 text-brand-azureDark mr-3 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}

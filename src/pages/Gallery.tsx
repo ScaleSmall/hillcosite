@@ -191,13 +191,13 @@ const Gallery = () => {
             {/* Left Content */}
             <div className="space-y-6">
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+                <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
                   Our Work Gallery
                 </h1>
                 <p className="text-xl text-slate-600 leading-body">
                   Explore our recent painting projects across Austin. From interior transformations to exterior makeovers and cabinet painting, see the quality that comes with clean prep, crisp lines, and professional execution.
                 </p>
-                <div className="text-deep-700 font-medium">
+                <div className="text-brand-azureDark font-medium">
                   Clean prep. Crisp lines. Reliable schedules.
                 </div>
               </div>
@@ -247,7 +247,7 @@ const Gallery = () => {
         <section className="section-padding bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
                 Latest Projects
               </h2>
               <p className="text-xl text-slate-600">
@@ -281,7 +281,7 @@ const Gallery = () => {
               <div className="border-t border-slate-200 pt-8">
                 <button
                   onClick={() => setShowOlderPhotos(!showOlderPhotos)}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-deep-700 font-semibold rounded-lg transition-colors duration-200"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-brand-azureDark font-semibold rounded-lg transition-colors duration-200"
                   aria-expanded={showOlderPhotos}
                 >
                   {showOlderPhotos ? 'Hide' : 'Show'} Older Projects ({olderPhotos.length})
@@ -319,7 +319,7 @@ const Gallery = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Portfolio Highlights
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -347,20 +347,20 @@ const Gallery = () => {
                   />
                 </div>
                 <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <h3 className="text-2xl font-bold text-deep-900 mb-4">
+                  <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
                     Featured: Custom Kitchen Painting
                   </h3>
                   <p className="text-slate-600 mb-6 leading-body">
                     Complete cabinet painting with custom color matching. This project saved the homeowners significantly compared to full replacement while achieving a completely fresh, modern look that transforms the entire kitchen space.
                   </p>
                   <div className="flex flex-wrap gap-4 mb-6">
-                    <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                    <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                       Cabinet Painting
                     </span>
-                    <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                    <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                       West Lake Hills
                     </span>
-                    <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                    <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                       Custom Finish
                     </span>
                   </div>
@@ -393,13 +393,13 @@ const Gallery = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-deep-900 mb-3">
+                  <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                     {project.title}
                   </h3>
                   <p className="text-slate-600 mb-4 leading-body">
                     {project.description}
                   </p>
-                  <Link to="/contact" className="text-deep-700 hover:text-deep-800 font-medium transition-colors">
+                  <Link to="/contact" className="text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors">
                     Get Similar Results →
                   </Link>
                 </div>
@@ -420,22 +420,22 @@ const Gallery = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">9</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">9</div>,
             value: "100+",
             label: "Projects Complete"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">★</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">★</div>,
             value: "5-Star",
             label: "Reviews"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
             value: "Insured",
             label: "Professional"
           }

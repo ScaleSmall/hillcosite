@@ -89,22 +89,22 @@ const Leander = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">300+</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">300+</div>,
             value: "300+",
             label: "Leander Projects"
           },
           {
-            icon: <Mountain className="w-8 h-8 text-deep-600" />,
+            icon: <Mountain className="w-8 h-8 text-brand-azureDark" />,
             value: "Hill Country",
             label: "Specialists"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <Waves className="w-8 h-8 text-deep-600" />,
+            icon: <Waves className="w-8 h-8 text-brand-azureDark" />,
             value: "Lakefront",
             label: "Experts"
           }
@@ -119,7 +119,7 @@ const Leander = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Leander Neighborhoods We Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -129,17 +129,17 @@ const Leander = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
               <Mountain className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Crystal Falls</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Crystal Falls</h3>
               <p className="text-slate-600">Professional painting for Crystal Falls master-planned community with HOA compliance and premium finishes.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Waves className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Lakefront Properties</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Lakefront Properties</h3>
               <p className="text-slate-600">Expert painting for homes near Lake Travis with moisture-resistant and UV-protective coatings.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Old Town Leander</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Old Town Leander</h3>
               <p className="text-slate-600">Quality painting for established Leander neighborhoods and historic homes.</p>
             </div>
           </div>

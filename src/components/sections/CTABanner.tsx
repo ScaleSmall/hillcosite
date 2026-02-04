@@ -23,7 +23,7 @@ const CTABanner = ({
   backgroundColor = 'primary'
 }: CTABannerProps) => {
   const bgClasses = {
-    primary: 'bg-deep-700',
+    primary: 'bg-brand-azureDark',
     secondary: 'bg-slate-800',
     accent: 'bg-accent-600'
   };
@@ -32,16 +32,16 @@ const CTABanner = ({
     <section className={`section-padding ${bgClasses[backgroundColor]} text-white`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to={primaryCTA.href} className="btn-primary bg-white text-deep-700 hover:bg-slate-100">
+          <Link to={primaryCTA.href} className="btn-primary bg-white text-brand-azureDark hover:bg-slate-100">
             {primaryCTA.text}
           </Link>
           {secondaryCTA && (
             secondaryCTA.href.startsWith('tel:') ? (
-              <a href={secondaryCTA.href} className="btn-outline border-white text-white hover:bg-white hover:text-deep-700">
+              <a href={secondaryCTA.href} className="btn-outline border-white text-white hover:bg-white hover:text-brand-azureDark">
                 {secondaryCTA.text}
               </a>
             ) : (
-              <Link to={secondaryCTA.href} className="btn-outline border-white text-white hover:bg-white hover:text-deep-700">
+              <Link to={secondaryCTA.href} className="btn-outline border-white text-white hover:bg-white hover:text-brand-azureDark">
                 {secondaryCTA.text}
               </Link>
             )

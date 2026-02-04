@@ -106,7 +106,7 @@ const BestPaintTexasHeat = () => {
               <Sun className="w-4 h-4 mr-2" />
               Texas Heat Guide 2026
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Best Exterior Paint for Texas Heat
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -128,7 +128,7 @@ const BestPaintTexasHeat = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Paint Types for Texas Heat
             </h2>
             <p className="text-xl text-slate-600">
@@ -141,7 +141,7 @@ const BestPaintTexasHeat = () => {
               <div key={index} className={`card p-8 ${paint.rating === 'Excellent' ? 'border-2 border-green-200 bg-green-50' : paint.rating === 'Poor' ? 'border-2 border-red-200 bg-red-50' : ''}`}>
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-deep-900 mb-2">{paint.type}</h3>
+                    <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">{paint.type}</h3>
                     <div className="flex items-center space-x-2 mb-4">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                         paint.rating === 'Excellent' ? 'bg-green-100 text-green-700' :
@@ -210,7 +210,7 @@ const BestPaintTexasHeat = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Color Selection for Texas Heat
             </h2>
             <p className="text-xl text-slate-600">
@@ -224,7 +224,7 @@ const BestPaintTexasHeat = () => {
                 <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-orange-500">
                   <Thermometer className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-deep-900 mb-4">{color.color}</h3>
+                <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">{color.color}</h3>
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
                     <span>Heat Reflection:</span>
@@ -269,7 +269,7 @@ const BestPaintTexasHeat = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Heat Protection Features to Look For
             </h2>
             <p className="text-xl text-slate-600">
@@ -282,7 +282,7 @@ const BestPaintTexasHeat = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3">UV Blockers</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3">UV Blockers</h3>
               <p className="text-slate-600 text-sm">Titanium dioxide and zinc oxide protect against harmful UV rays</p>
             </div>
             
@@ -290,7 +290,7 @@ const BestPaintTexasHeat = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Droplets className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3">Moisture Resistance</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Moisture Resistance</h3>
               <p className="text-slate-600 text-sm">Advanced polymers resist humidity and prevent mold growth</p>
             </div>
             
@@ -298,7 +298,7 @@ const BestPaintTexasHeat = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sun className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3">Reflective Pigments</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Reflective Pigments</h3>
               <p className="text-slate-600 text-sm">Special pigments reflect infrared heat away from surfaces</p>
             </div>
             
@@ -306,7 +306,7 @@ const BestPaintTexasHeat = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Thermometer className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-deep-900 mb-3">Temperature Flex</h3>
+              <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Temperature Flex</h3>
               <p className="text-slate-600 text-sm">Flexible resins move with temperature changes without cracking</p>
             </div>
           </div>

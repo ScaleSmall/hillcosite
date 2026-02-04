@@ -12,7 +12,7 @@ const NotFound = () => {
         robots="noindex, nofollow"
       />
       
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100 min-h-[60vh] flex items-center">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100 min-h-[60vh] flex items-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -21,10 +21,10 @@ const NotFound = () => {
                   Looking for Austin painting services?
                 </div>
               </div>
-              <h1 className="text-6xl md:text-8xl font-bold text-deep-900">
+              <h1 className="text-6xl md:text-8xl font-bold text-brand-gray-900">
                 404
               </h1>
-              <h2 className="text-2xl md:text-3xl font-bold text-deep-900">
+              <h2 className="text-2xl md:text-3xl font-bold text-brand-gray-900">
                 Page Not Found
               </h2>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -48,7 +48,7 @@ const NotFound = () => {
             </div>
 
             <div className="bg-white rounded-lg p-6 max-w-lg mx-auto">
-              <h3 className="font-semibold text-deep-900 mb-3">
+              <h3 className="font-semibold text-brand-gray-900 mb-3">
                 We serve all Austin areas including:
               </h3>
               <div className="grid grid-cols-2 gap-2 text-sm text-slate-600">
@@ -64,32 +64,32 @@ const NotFound = () => {
             </div>
 
             <div className="pt-8 border-t border-slate-200">
-              <h3 className="text-lg font-semibold text-deep-900 mb-4">
+              <h3 className="text-lg font-semibold text-brand-gray-900 mb-4">
                 Our Services
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                <Link to="/services/interior-painting" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/services/interior-painting" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Interior Painting
                 </Link>
-                <Link to="/services/exterior-painting" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/services/exterior-painting" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Exterior Painting
                 </Link>
-                <Link to="/services/cabinet-refinishing" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/services/cabinet-refinishing" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Cabinet Painting
                 </Link>
-                <Link to="/services/commercial" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/services/commercial" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Commercial Painting
                 </Link>
-                <Link to="/gallery" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/gallery" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Gallery
                 </Link>
-                <Link to="/testimonials" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/testimonials" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Testimonials
                 </Link>
-                <Link to="/faq" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/faq" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   FAQ
                 </Link>
-                <Link to="/contact" className="text-deep-600 hover:text-deep-700 transition-colors">
+                <Link to="/contact" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                   Contact
                 </Link>
               </div>

@@ -25,7 +25,7 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
         {(title || subtitle) && (
           <div className="text-center mb-16">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
                 {title}
               </h2>
             )}
@@ -44,13 +44,13 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
               >
-                <h3 className="font-semibold text-deep-900 pr-4">
+                <h3 className="font-semibold text-brand-gray-900 pr-4">
                   {faq.question}
                 </h3>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5 text-deep-600 flex-shrink-0" />
+                  <ChevronUp className="w-5 h-5 text-brand-azureDark flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5 text-deep-600 flex-shrink-0" />
+                  <ChevronDown className="w-5 h-5 text-brand-azureDark flex-shrink-0" />
                 )}
               </button>
               {openIndex === index && (

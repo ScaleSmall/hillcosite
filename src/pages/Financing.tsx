@@ -13,7 +13,7 @@ const Financing = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-deep-900 via-deep-800 to-deep-700 text-white py-10 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-brand-gray-900 via-brand-gray-800 to-brand-azureDark text-white py-10 overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNm0wIDEyYzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02bTAgMTJjMy4zMTQgMCA2IDIuNjg2IDYgNnMtMi42ODYgNi02IDYtNi0yLjY4Ni02LTYgMi42ODYtNiA2LTZNMTggMThjMy4zMTQgMCA2IDIuNjg2IDYgNnMtMi42ODYgNi02IDYtNi0yLjY4Ni02LTYgMi42ODYtNiA2LTZtMCAxMmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNm0wIDEyYzMuMzE0IDAgNiAyLjY4NiA2IDZzLTIuNjg2IDYtNiA2LTYtMi42ODYtNi02IDIuNjg2LTYgNi02IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L2c+PC9zdmc+')] opacity-30"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -219,7 +219,7 @@ const Financing = () => {
       {/* Pre-Approval CTA */}
       <section className="py-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-deep-600 to-deep-700 rounded-xl p-6 md:p-8 text-center text-white">
+          <div className="bg-gradient-to-r from-brand-azureDark to-brand-azureDark rounded-xl p-6 md:p-8 text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Get Pre-Approved?</h2>
             <p className="text-slate-200 mb-6 max-w-2xl mx-auto">
               Check your financing options in minutes with no impact to your credit score.
@@ -227,7 +227,7 @@ const Financing = () => {
             </p>
             <Link
               to="/pre-approval"
-              className="inline-flex items-center justify-center bg-white text-deep-700 font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center bg-white text-brand-azureDark font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors"
             >
               Get Pre-Approved Now
             </Link>
@@ -239,7 +239,7 @@ const Financing = () => {
       <section className="py-8 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-600 mb-4">
-            Questions about financing? Call us at <a href="tel:(512)240-2246" className="text-deep-600 font-semibold hover:underline">(512) 240-2246</a>
+            Questions about financing? Call us at <a href="tel:(512)240-2246" className="text-brand-azureDark font-semibold hover:underline">(512) 240-2246</a>
           </p>
         </div>
       </section>

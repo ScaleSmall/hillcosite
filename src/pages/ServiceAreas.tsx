@@ -63,10 +63,10 @@ const ServiceAreas = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Austin Metro Service Areas
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -95,7 +95,7 @@ const ServiceAreas = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Additional Austin Neighborhoods We Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -111,7 +111,7 @@ const ServiceAreas = () => {
               >
                 <div className="flex items-start gap-3 mb-3">
                   <MapPin className="w-6 h-6 text-brand-azure flex-shrink-0 mt-1" />
-                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-brand-azureDark transition-colors">
+                  <h3 className="text-xl font-bold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors">
                     {hub.name}
                   </h3>
                 </div>
@@ -131,7 +131,7 @@ const ServiceAreas = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Our Services Throughout Austin
             </h2>
             <p className="text-xl text-slate-600">
@@ -153,20 +153,20 @@ const ServiceAreas = () => {
                     />
                   </div>
                   <div className="lg:col-span-3">
-                    <h3 className="text-2xl font-bold text-deep-900 mb-4">
+                    <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
                       {service.title}
                     </h3>
                     <p className="text-slate-600 mb-6 leading-body text-lg">
                       {service.description}
                     </p>
                     <div className="flex flex-wrap gap-3 mb-6">
-                      <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                      <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                         Greater Austin Area
                       </span>
-                      <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                      <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                         Consultations Available
                       </span>
-                      <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
+                      <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">
                         2-Year Warranty
                       </span>
                     </div>
@@ -185,22 +185,22 @@ const ServiceAreas = () => {
       <StatsAndTrust 
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">15</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">15</div>,
             value: "15+",
             label: "Service Areas"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">★</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">★</div>,
             value: "Local",
             label: "Austin Business"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
             value: "Insured",
             label: "Professionals"
           }

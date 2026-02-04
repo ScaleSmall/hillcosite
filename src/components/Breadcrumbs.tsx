@@ -19,7 +19,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
       <nav aria-label="Breadcrumb" className={`text-sm ${className}`}>
         <ol className="flex items-center space-x-2 text-slate-600">
           <li>
-            <Link to="/" className="flex items-center hover:text-deep-700 transition-colors">
+            <Link to="/" className="flex items-center hover:text-brand-azureDark transition-colors">
               <Home className="w-4 h-4" />
               <span className="sr-only">Home</span>
             </Link>
@@ -30,7 +30,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
               {item.href && index < items.length - 1 ? (
                 <Link
                   to={String(item.href)}
-                  className="hover:text-deep-700 transition-colors"
+                  className="hover:text-brand-azureDark transition-colors"
                 >
                   {String(item.label)}
                 </Link>

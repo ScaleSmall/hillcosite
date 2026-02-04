@@ -90,8 +90,8 @@ const Header = () => {
                       className={`flex items-center space-x-1 text-base font-semibold transition-colors duration-200 whitespace-nowrap ${
                         (item.name === 'Services' && location.pathname.startsWith('/services')) ||
                         (item.name === 'Guides' && location.pathname.startsWith('/guides'))
-                          ? 'text-deep-700'
-                          : 'text-slate-700 hover:text-deep-700'
+                          ? 'text-brand-azureDark'
+                          : 'text-slate-700 hover:text-brand-azureDark'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -105,7 +105,7 @@ const Header = () => {
                           <Link
                             key={service.name}
                             to={service.href}
-                            className="block px-4 py-3 text-slate-700 hover:bg-deep-50 hover:text-deep-700 transition-colors"
+                            className="block px-4 py-3 text-slate-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
                           >
                             {service.name}
                           </Link>
@@ -120,7 +120,7 @@ const Header = () => {
                           <Link
                             key={guide.name}
                             to={guide.href}
-                            className="block px-4 py-3 text-slate-700 hover:bg-deep-50 hover:text-deep-700 transition-colors"
+                            className="block px-4 py-3 text-slate-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
                           >
                             {guide.name}
                           </Link>
@@ -133,8 +133,8 @@ const Header = () => {
                     to={item.href}
                     className={`text-base font-semibold transition-colors duration-200 whitespace-nowrap ${
                       location.pathname === item.href
-                        ? 'text-deep-700'
-                        : 'text-slate-700 hover:text-deep-700'
+                        ? 'text-brand-azureDark'
+                        : 'text-slate-700 hover:text-brand-azureDark'
                     }`}
                   >
                     {item.name}
@@ -145,7 +145,7 @@ const Header = () => {
 
             <a
               href="tel:(512)240-2246"
-              className="flex items-center space-x-2 text-slate-700 hover:text-deep-700 transition-colors text-base font-semibold whitespace-nowrap"
+              className="flex items-center space-x-2 text-slate-700 hover:text-brand-azureDark transition-colors text-base font-semibold whitespace-nowrap"
             >
               <Phone size={18} />
               <span>(512) 240-2246</span>
@@ -167,7 +167,7 @@ const Header = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon text-slate-600 hover:text-deep-700 transition-colors flex items-center justify-center w-6 h-6"
+                  className="social-icon text-slate-600 hover:text-brand-azureDark transition-colors flex items-center justify-center w-6 h-6"
                   aria-label={social.ariaLabel}
                 >
                   <social.icon size={22} className="block shrink-0" strokeWidth={1.5} />
@@ -179,7 +179,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-slate-600 hover:text-deep-700 hover:bg-slate-50 transition-colors flex items-center justify-center ml-auto"
+            className="lg:hidden p-2 rounded-md text-slate-600 hover:text-brand-azureDark hover:bg-slate-50 transition-colors flex items-center justify-center ml-auto"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -200,8 +200,8 @@ const Header = () => {
                     location.pathname === item.href || 
                     (item.name === 'Services' && location.pathname.startsWith('/services/')) ||
                     (item.name === 'Guides' && location.pathname.startsWith('/guides/'))
-                      ? 'text-deep-700'
-                      : 'text-slate-700 hover:text-deep-700'
+                      ? 'text-brand-azureDark'
+                      : 'text-slate-700 hover:text-brand-azureDark'
                   }`}
                 >
                   {item.name}
@@ -217,8 +217,8 @@ const Header = () => {
                         onClick={() => setIsMenuOpen(false)}
                         className={`block py-2 text-sm transition-colors duration-200 ${
                           location.pathname === service.href
-                            ? 'text-deep-700 font-medium'
-                            : 'text-slate-600 hover:text-deep-700'
+                            ? 'text-brand-azureDark font-medium'
+                            : 'text-slate-600 hover:text-brand-azureDark'
                         }`}
                       >
                         {service.name}
@@ -237,8 +237,8 @@ const Header = () => {
                         onClick={() => setIsMenuOpen(false)}
                         className={`block py-2 text-sm transition-colors duration-200 ${
                           location.pathname === guide.href
-                            ? 'text-deep-700 font-medium'
-                            : 'text-slate-600 hover:text-deep-700'
+                            ? 'text-brand-azureDark font-medium'
+                            : 'text-slate-600 hover:text-brand-azureDark'
                         }`}
                       >
                         {guide.name}
@@ -257,7 +257,7 @@ const Header = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-600 hover:text-deep-700 transition-colors"
+                    className="text-slate-600 hover:text-brand-azureDark transition-colors"
                     aria-label={social.ariaLabel}
                   >
                     <social.icon size={20} />

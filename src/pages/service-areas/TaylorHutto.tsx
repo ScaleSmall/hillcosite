@@ -89,22 +89,22 @@ const TaylorHutto = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">250+</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">250+</div>,
             value: "250+",
             label: "Taylor-Hutto Projects"
           },
           {
-            icon: <Wheat className="w-8 h-8 text-deep-600" />,
+            icon: <Wheat className="w-8 h-8 text-brand-azureDark" />,
             value: "Historic",
             label: "Preservation"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <TrendingUp className="w-8 h-8 text-deep-600" />,
+            icon: <TrendingUp className="w-8 h-8 text-brand-azureDark" />,
             value: "Growth",
             label: "Specialists"
           }
@@ -119,7 +119,7 @@ const TaylorHutto = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Taylor & Hutto Communities We Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -129,17 +129,17 @@ const TaylorHutto = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
               <Wheat className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Historic Taylor</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Historic Taylor</h3>
               <p className="text-slate-600">Professional painting for Taylor's historic downtown and established neighborhoods with preservation expertise.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <TrendingUp className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Growing Hutto</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Growing Hutto</h3>
               <p className="text-slate-600">Expert painting for Hutto's rapidly expanding communities and new construction developments.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Star Ranch</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Star Ranch</h3>
               <p className="text-slate-600">Quality painting for Star Ranch and other Hutto master-planned communities.</p>
             </div>
           </div>

@@ -64,14 +64,14 @@ const PaintingCosts = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4">
               <Calculator className="w-4 h-4 mr-2" />
               2026 Pricing Guide
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Cost to Paint a House in Austin (2026)
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -116,7 +116,7 @@ const PaintingCosts = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Smart Ways to Save on Painting Costs
             </h2>
             <p className="text-xl text-slate-600">
@@ -131,7 +131,7 @@ const PaintingCosts = () => {
                   <span className="text-green-600 font-bold">1</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-2">Bundle Interior & Exterior</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Bundle Interior & Exterior</h3>
                   <p className="text-slate-600">Save 10-15% when combining multiple services in one project.</p>
                 </div>
               </div>
@@ -141,7 +141,7 @@ const PaintingCosts = () => {
                   <span className="text-green-600 font-bold">2</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-2">Choose Standard Colors</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Choose Standard Colors</h3>
                   <p className="text-slate-600">Custom color matching adds 5-10% to material costs.</p>
                 </div>
               </div>
@@ -151,7 +151,7 @@ const PaintingCosts = () => {
                   <span className="text-green-600 font-bold">3</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-2">Schedule Off-Season</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Schedule Off-Season</h3>
                   <p className="text-slate-600">Interior painting in summer may offer slight discounts.</p>
                 </div>
               </div>
@@ -163,7 +163,7 @@ const PaintingCosts = () => {
                   <span className="text-green-600 font-bold">4</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-2">Clear Access</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Clear Access</h3>
                   <p className="text-slate-600">Easy access reduces labor time and setup costs.</p>
                 </div>
               </div>
@@ -173,7 +173,7 @@ const PaintingCosts = () => {
                   <span className="text-green-600 font-bold">5</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-2">Address Repairs First</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Address Repairs First</h3>
                   <p className="text-slate-600">Fixing issues before painting prevents change orders.</p>
                 </div>
               </div>
@@ -183,7 +183,7 @@ const PaintingCosts = () => {
                   <span className="text-green-600 font-bold">6</span>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900 mb-2">Maintain Your Paint</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Maintain Your Paint</h3>
                   <p className="text-slate-600">Regular cleaning and touch-ups extend paint life by 3-5 years.</p>
                 </div>
               </div>
@@ -202,22 +202,22 @@ const PaintingCosts = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <DollarSign className="w-8 h-8 text-deep-600" />,
+            icon: <DollarSign className="w-8 h-8 text-brand-azureDark" />,
             value: pricingData?.stat_average_project?.formatted || "$6,500",
             label: "Average Project"
           },
           {
-            icon: <Clock className="w-8 h-8 text-deep-600" />,
+            icon: <Clock className="w-8 h-8 text-brand-azureDark" />,
             value: "3-5 Days",
             label: "Typical Timeline"
           },
           {
-            icon: <Home className="w-8 h-8 text-deep-600" />,
+            icon: <Home className="w-8 h-8 text-brand-azureDark" />,
             value: "100+",
             label: "Homes Painted"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
             value: "2-Year",
             label: "Warranty"
           }

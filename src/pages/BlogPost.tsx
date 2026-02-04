@@ -80,7 +80,7 @@ const BlogPost = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-deep-600"></div>
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
           <p className="mt-4 text-slate-600">Loading post...</p>
         </div>
       </div>
@@ -97,7 +97,7 @@ const BlogPost = () => {
         />
         <div className="min-h-screen flex items-center justify-center bg-slate-50">
           <div className="text-center max-w-md mx-auto px-4">
-            <h1 className="text-4xl font-bold text-deep-900 mb-4">Post Not Found</h1>
+            <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">Post Not Found</h1>
             <p className="text-slate-600 mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
             <Link to="/blog" className="btn-primary">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -249,11 +249,11 @@ const BlogPost = () => {
       </Helmet>
 
       {/* Hero Section with Featured Image */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="relative py-16 md:py-24 bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/blog"
-            className="inline-flex items-center text-deep-700 hover:text-deep-800 font-medium mb-8 transition-colors"
+            className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium mb-8 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
@@ -265,13 +265,13 @@ const BlogPost = () => {
                 <Calendar className="w-4 h-4" />
                 <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
               </div>
-              <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-xs font-medium">
+              <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-xs font-medium">
                 {post.category}
               </span>
               <span className="text-slate-500">By {post.author}</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               {post.title}
             </h1>
 
@@ -298,29 +298,29 @@ const BlogPost = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {post.tldr && (
             <section
-              className="mb-12 p-6 bg-deep-50 border-l-4 border-deep-600 rounded-r-lg"
+              className="mb-12 p-6 bg-brand-gray-50 border-l-4 border-brand-azureDark rounded-r-lg"
               role="complementary"
               aria-label="Article summary"
               itemProp="abstract"
             >
-              <h2 className="text-xl font-bold text-deep-900 mb-3">TL;DR</h2>
+              <h2 className="text-xl font-bold text-brand-gray-900 mb-3">TL;DR</h2>
               <p className="text-slate-700 text-lg leading-relaxed">{post.tldr}</p>
             </section>
           )}
           <div
             className="prose prose-lg prose-slate max-w-none
-              prose-headings:font-bold prose-headings:text-deep-900
+              prose-headings:font-bold prose-headings:text-brand-gray-900
               prose-h1:text-4xl prose-h1:mt-20 prose-h1:mb-12 prose-h1:leading-tight
               prose-h2:text-3xl prose-h2:mt-20 prose-h2:mb-10 prose-h2:leading-snug
               prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8 prose-h3:leading-snug
               prose-p:text-slate-700 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-10
-              prose-a:text-deep-600 prose-a:font-medium prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-deep-700
-              prose-strong:text-deep-900 prose-strong:font-bold
+              prose-a:text-brand-azureDark prose-a:font-medium prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-brand-azureDark
+              prose-strong:text-brand-gray-900 prose-strong:font-bold
               prose-ul:my-10 prose-ul:space-y-4 prose-li:text-slate-700 prose-li:leading-relaxed prose-li:mb-3
               prose-ol:my-10 prose-ol:space-y-4
-              prose-blockquote:border-l-4 prose-blockquote:border-deep-500 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-12 prose-blockquote:italic prose-blockquote:text-slate-600 prose-blockquote:bg-slate-50 prose-blockquote:rounded-r
+              prose-blockquote:border-l-4 prose-blockquote:border-brand-azure prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-12 prose-blockquote:italic prose-blockquote:text-slate-600 prose-blockquote:bg-slate-50 prose-blockquote:rounded-r
               prose-img:rounded-xl prose-img:shadow-lg prose-img:my-12
-              prose-code:text-deep-600 prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+              prose-code:text-brand-azureDark prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
               first:prose-p:text-xl first:prose-p:font-medium first:prose-p:text-slate-900"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />

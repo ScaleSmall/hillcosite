@@ -50,7 +50,7 @@ const ComparisonSection = ({
     <section className="section-padding bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
             {title}
           </h2>
           {subtitle && (
@@ -62,12 +62,12 @@ const ComparisonSection = ({
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Option 1 */}
-          <div className="card p-8 border-2 border-deep-200">
+          <div className="card p-8 border-2 border-brand-gray-200">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-deep-900 mb-2">
+              <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">
                 {option1Title}
               </h3>
-              <div className="text-3xl font-bold text-deep-600 mb-2">
+              <div className="text-3xl font-bold text-brand-azureDark mb-2">
                 {option1Price}
               </div>
               <p className="text-slate-600">
@@ -89,7 +89,7 @@ const ComparisonSection = ({
           {/* Option 2 */}
           <div className="card p-8">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-deep-900 mb-2">
+              <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">
                 {option2Title}
               </h3>
               <div className="text-3xl font-bold text-slate-500 mb-2">

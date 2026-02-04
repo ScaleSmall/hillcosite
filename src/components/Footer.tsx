@@ -75,7 +75,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-deep-900 text-white">
+    <footer className="bg-brand-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info - NAP Section */}
@@ -98,7 +98,7 @@ const Footer = () => {
             <p className="text-slate-300 text-sm">
               {businessConfig.tagline}
             </p>
-            <div className="space-y-2 bg-deep-800/50 rounded-lg p-3">
+            <div className="space-y-2 bg-brand-gray-800/50 rounded-lg p-3">
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
                 className="flex items-center space-x-2 text-white hover:text-accent-400 transition-colors font-medium"
@@ -218,7 +218,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-deep-700 pt-8 mt-8">
+        <div className="border-t border-brand-azureDark pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-slate-300 text-sm text-center md:text-left">
               <div>© {currentYear} Hill Country Painting. All rights reserved.</div>

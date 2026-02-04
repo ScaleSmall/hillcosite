@@ -137,22 +137,22 @@ const RoundRockGeorgetown = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">580</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">580</div>,
             value: "580+",
             label: "Corridor Projects"
           },
           {
-            icon: <Cpu className="w-8 h-8 text-deep-600" />,
+            icon: <Cpu className="w-8 h-8 text-brand-azureDark" />,
             value: "Tech Corridor",
             label: "Specialists"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <GraduationCap className="w-8 h-8 text-deep-600" />,
+            icon: <GraduationCap className="w-8 h-8 text-brand-azureDark" />,
             value: "University",
             label: "Town Experts"
           }

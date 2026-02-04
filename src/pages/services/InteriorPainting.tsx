@@ -222,7 +222,7 @@ const InteriorPainting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-deep-900 mb-6">
+              <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Transform Your Austin Home's Interior
               </h2>
               <div className="space-y-6 text-lg text-slate-600">
@@ -231,19 +231,19 @@ const InteriorPainting = () => {
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Complete furniture protection</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Premium paint selection</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Free color consultation</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Complete daily cleanup</span>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ const InteriorPainting = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Our Interior Painting Process
             </h2>
             <p className="text-xl text-slate-600">
@@ -298,7 +298,7 @@ const InteriorPainting = () => {
                             {step.number}
                           </div>
                           <div className="flex-grow">
-                            <h3 className="text-xl font-bold text-deep-900 mb-3">
+                            <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                               {step.title}
                             </h3>
                             <p className="text-slate-600 leading-relaxed">
@@ -350,7 +350,7 @@ const InteriorPainting = () => {
                   index % 3 === 0 ? 'border-blue-500' :
                   index % 3 === 1 ? 'border-indigo-500' : 'border-purple-500'
                 }`}>
-                  <h3 className="font-bold text-deep-900 mb-3 text-lg">
+                  <h3 className="font-bold text-brand-gray-900 mb-3 text-lg">
                     {step.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">

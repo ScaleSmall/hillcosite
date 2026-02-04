@@ -132,19 +132,19 @@ const Search = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 mb-4">
               Search Results
             </h1>
             {query && (
               <p className="text-xl text-slate-600">
-                Results for: <span className="font-semibold text-deep-900">"{query}"</span>
+                Results for: <span className="font-semibold text-brand-gray-900">"{query}"</span>
               </p>
             )}
           </div>
 
           {loading && (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-deep-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
               <p className="mt-4 text-slate-600">Searching...</p>
             </div>
           )}
@@ -161,7 +161,7 @@ const Search = () => {
           {!loading && query && results.length === 0 && (
             <div className="text-center py-12 bg-white rounded-lg shadow-sm p-8">
               <SearchIcon className="w-16 h-16 mx-auto text-slate-400 mb-4" />
-              <h2 className="text-2xl font-bold text-deep-900 mb-2">No Results Found</h2>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-2">No Results Found</h2>
               <p className="text-lg text-slate-600 mb-8">
                 We couldn't find any results for "{query}". Try a different search term or browse our services below.
               </p>
@@ -194,18 +194,18 @@ const Search = () => {
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       {result.category && (
-                        <span className="inline-block px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-xs font-medium mb-2">
+                        <span className="inline-block px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-xs font-medium mb-2">
                           {result.category}
                         </span>
                       )}
-                      <h3 className="text-xl font-bold text-deep-900 mb-2 group-hover:text-deep-700 transition-colors">
+                      <h3 className="text-xl font-bold text-brand-gray-900 mb-2 group-hover:text-brand-azureDark transition-colors">
                         {result.title}
                       </h3>
                       <p className="text-slate-600 leading-relaxed">
                         {result.description}
                       </p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-deep-600 ml-4 mt-1 group-hover:translate-x-1 transition-transform flex-shrink-0" />
+                    <ArrowRight className="w-5 h-5 text-brand-azureDark ml-4 mt-1 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                   </div>
                 </Link>
               ))}

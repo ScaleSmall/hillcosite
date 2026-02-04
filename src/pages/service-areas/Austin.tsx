@@ -138,22 +138,22 @@ const Austin = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">100+</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">100+</div>,
             value: "100+",
             label: "Local Projects"
           },
           {
-            icon: <Music className="w-8 h-8 text-deep-600" />,
+            icon: <Music className="w-8 h-8 text-brand-azureDark" />,
             value: "Local",
             label: "Austin Experts"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <Landmark className="w-8 h-8 text-deep-600" />,
+            icon: <Landmark className="w-8 h-8 text-brand-azureDark" />,
             value: "Historic",
             label: "Preservation"
           }
@@ -184,7 +184,7 @@ const Austin = () => {
       <section className="py-16 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Neighborhoods We Proudly Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -213,7 +213,7 @@ const Austin = () => {
               <div key={neighborhood} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center space-x-2">
                   <MapPin className="w-4 h-4 text-brand-azure flex-shrink-0" />
-                  <span className="text-deep-900 font-medium text-sm">{neighborhood}</span>
+                  <span className="text-brand-gray-900 font-medium text-sm">{neighborhood}</span>
                 </div>
               </div>
             ))}
@@ -224,7 +224,7 @@ const Austin = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Austin Neighborhoods We Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -240,7 +240,7 @@ const Austin = () => {
               >
                 <div className="flex items-start gap-3 mb-3">
                   <Home className="w-6 h-6 text-brand-azure flex-shrink-0 mt-1" />
-                  <h3 className="text-xl font-bold text-deep-900 group-hover:text-brand-azureDark transition-colors">
+                  <h3 className="text-xl font-bold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors">
                     {hub.name}
                   </h3>
                 </div>

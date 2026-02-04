@@ -175,7 +175,7 @@ const PreApproval = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-slate-600 mb-4">
             Questions about financing? Call us at{' '}
-            <a href="tel:(512)240-2246" className="text-deep-600 font-semibold hover:underline">
+            <a href="tel:(512)240-2246" className="text-brand-azureDark font-semibold hover:underline">
               (512) 240-2246
             </a>
           </p>

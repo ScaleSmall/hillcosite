@@ -199,7 +199,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-deep-900 mb-6">
+              <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Professional {service.name} in {location.name}
               </h2>
               <div className="space-y-6 text-lg text-slate-600">
@@ -215,7 +215,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
               </div>
 
               <div className="mt-8 p-6 bg-white rounded-xl border border-slate-200">
-                <h3 className="text-xl font-semibold text-deep-900 mb-4">
+                <h3 className="text-xl font-semibold text-brand-gray-900 mb-4">
                   {location.name} Areas We Serve
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -243,7 +243,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Our {service.name} Process in {location.name}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -259,7 +259,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 <div className="w-10 h-10 bg-brand-azure text-white rounded-lg flex items-center justify-center font-bold mb-4">
                   {idx + 1}
                 </div>
-                <h3 className="text-lg font-semibold text-deep-900 mb-2">
+                <h3 className="text-lg font-semibold text-brand-gray-900 mb-2">
                   {step.title}
                 </h3>
                 <p className="text-slate-600">{step.description}</p>

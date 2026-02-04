@@ -135,7 +135,7 @@ const PaintingCostsTable = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
             Austin Painting Costs by Project Type
           </h2>
           <p className="text-xl text-slate-600">
@@ -145,7 +145,7 @@ const PaintingCostsTable = () => {
 
         <div className="overflow-x-auto">
           <table className="w-full bg-white rounded-lg shadow-lg">
-            <thead className="bg-deep-700 text-white">
+            <thead className="bg-brand-azureDark text-white">
               <tr>
                 <th className="px-6 py-4 text-left">Cost Factor</th>
                 <th className="px-6 py-4 text-center">Interior Range</th>
@@ -156,7 +156,7 @@ const PaintingCostsTable = () => {
             <tbody>
               {costFactors.map((factor, index) => (
                 <tr key={index} className={index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
-                  <td className="px-6 py-4 font-semibold text-deep-900">{factor.factor}</td>
+                  <td className="px-6 py-4 font-semibold text-brand-gray-900">{factor.factor}</td>
                   <td className="px-6 py-4 text-center text-green-600 font-medium">{factor.interior}</td>
                   <td className="px-6 py-4 text-center text-blue-600 font-medium">{factor.exterior}</td>
                   <td className="px-6 py-4 text-slate-600">{factor.details}</td>

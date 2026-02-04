@@ -202,7 +202,7 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6 lg:gap-8">
             {/* Award Badge - Left Side */}
@@ -217,25 +217,25 @@ const Contact = () => {
 
             {/* Content - Center */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
-              <h1 className="text-3xl md:text-4xl font-bold text-deep-900 mb-2">Contact Us</h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Contact Us</h1>
               <p className="text-base md:text-lg text-slate-600 mb-4">
                 Get your consultation or reach out with any questions about your painting project.
               </p>
               <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-brand-azureDark mt-0.5">✓</span>
                   <span className="text-slate-700">Professional service</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-brand-azureDark mt-0.5">✓</span>
                   <span className="text-slate-700">Prompt responses</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-brand-azureDark mt-0.5">✓</span>
                   <span className="text-slate-700">Consultations available</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-deep-600 mt-0.5">✓</span>
+                  <span className="text-brand-azureDark mt-0.5">✓</span>
                   <span className="text-slate-700">Transparent pricing</span>
                 </li>
               </ul>
@@ -250,7 +250,7 @@ const Contact = () => {
                   className="w-60 h-60 object-contain drop-shadow-lg"
                   loading="eager"
                 />
-                <span className="text-deep-600 font-semibold underline text-center">
+                <span className="text-brand-azureDark font-semibold underline text-center">
                   Click to estimate financing
                 </span>
               </Link>
@@ -265,7 +265,7 @@ const Contact = () => {
           <div className="max-w-4xl mx-auto">
             {/* Contact Form */}
             <div className="card p-8 lg:p-12">
-              <h2 className="text-3xl font-bold text-deep-900 mb-8 text-center">
+              <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
                 Request Consultation
               </h2>
               <form
@@ -299,7 +299,7 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.firstName ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                     />
@@ -318,7 +318,7 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.lastName ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                     />
@@ -339,7 +339,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.email ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                     />
@@ -359,7 +359,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="(512) 555-1234"
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.phone ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                     />
@@ -379,7 +379,7 @@ const Contact = () => {
                     value={formData.streetAddress}
                     onChange={handleChange}
                     required
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                       errors.streetAddress ? 'border-red-500 bg-red-50' : 'border-slate-300'
                     }`}
                     placeholder="123 Main St"
@@ -400,7 +400,7 @@ const Contact = () => {
                       value={formData.city}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.city ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                       placeholder="Round Rock"
@@ -420,7 +420,7 @@ const Contact = () => {
                       value={formData.zipCode}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.zipCode ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                       placeholder="78664"
@@ -441,7 +441,7 @@ const Contact = () => {
                       value={formData.serviceRequested}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.serviceRequested ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                     >
@@ -465,7 +465,7 @@ const Contact = () => {
                       value={formData.howContacted}
                       onChange={handleChange}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.howContacted ? 'border-red-500 bg-red-50' : 'border-slate-300'
                       }`}
                     >
@@ -494,7 +494,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-deep-500 focus:border-deep-500 transition-colors"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors"
                     placeholder="Tell us about your painting project... (optional)"
                   ></textarea>
                 </div>
@@ -647,7 +647,7 @@ const Contact = () => {
       <section className="section-padding bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-deep-900 mb-4">
+            <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">
               Other Ways to Contact Us
             </h2>
             <p className="text-slate-600">Prefer to call or email? We're here to help.</p>
@@ -656,11 +656,11 @@ const Contact = () => {
             <div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
-                  <Phone className="w-6 h-6 text-deep-600 mt-1 flex-shrink-0" />
+                  <Phone className="w-6 h-6 text-brand-azureDark mt-1 flex-shrink-0" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900">Phone</h3>
-                  <a href="tel:(512)240-2246" className="text-deep-600 hover:text-deep-700 transition-colors">
+                  <h3 className="font-semibold text-brand-gray-900">Phone</h3>
+                  <a href="tel:(512)240-2246" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                     (512) 240-2246
                   </a>
                   <p className="text-sm text-slate-600">Prompt response</p>
@@ -670,11 +670,11 @@ const Contact = () => {
             <div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
-                  <Mail className="w-6 h-6 text-deep-600 mt-1 flex-shrink-0" />
+                  <Mail className="w-6 h-6 text-brand-azureDark mt-1 flex-shrink-0" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-deep-900">Email</h3>
-                  <a href="mailto:info@hillcopaint.com" className="text-deep-600 hover:text-deep-700 transition-colors">
+                  <h3 className="font-semibold text-brand-gray-900">Email</h3>
+                  <a href="mailto:info@hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                     info@hillcopaint.com
                   </a>
                   <p className="text-sm text-slate-600">Prompt response</p>
@@ -684,10 +684,10 @@ const Contact = () => {
             <div>
               <div className="text-center">
                 <div className="flex justify-center mb-4">
-                  <MapPin className="w-6 h-6 text-deep-600 mt-1 flex-shrink-0" />
+                  <MapPin className="w-6 h-6 text-brand-azureDark mt-1 flex-shrink-0" />
                 </div>
                 <div className="text-center">
-                  <h3 className="font-semibold text-deep-900">Service Area</h3>
+                  <h3 className="font-semibold text-brand-gray-900">Service Area</h3>
                   <p className="text-slate-700">Austin Metro Area</p>
                   <p className="text-sm text-slate-600">Round Rock, Cedar Park, Georgetown & more</p>
                 </div>
@@ -696,7 +696,7 @@ const Contact = () => {
           </div>
 
           <div className="text-center mb-6">
-            <h3 className="text-xl font-bold text-deep-900 mb-2">Our Service Area</h3>
+            <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Our Service Area</h3>
             <p className="text-slate-600">Serving Austin and surrounding communities</p>
           </div>
           <GoogleMapEmbed className="max-w-4xl mx-auto" />
@@ -707,22 +707,22 @@ const Contact = () => {
       <StatsAndTrust 
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
             value: "Fast",
             label: "Response Time"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
             value: "Insured",
             label: "Professional"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">✓</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
             value: "Free",
             label: "Estimates"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           }

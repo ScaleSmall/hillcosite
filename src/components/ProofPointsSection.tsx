@@ -35,7 +35,7 @@ const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
   ];
 
   return (
-    <section className={`section-padding bg-gradient-to-r from-deep-700 to-deep-800 text-white ${className}`}>
+    <section className={`section-padding bg-gradient-to-r from-brand-azureDark to-brand-gray-800 text-white ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
@@ -68,13 +68,13 @@ const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
         <div className="text-center mt-12">
           <Link 
             to="/contact" 
-            className="inline-flex items-center px-8 py-4 bg-white text-deep-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors duration-200 mr-4"
+            className="inline-flex items-center px-8 py-4 bg-white text-brand-azureDark font-semibold rounded-lg hover:bg-slate-100 transition-colors duration-200 mr-4"
           >
             Get Consultation
           </Link>
           <a 
             href="tel:(512)240-2246" 
-            className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-deep-700 transition-colors duration-200"
+            className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-azureDark transition-colors duration-200"
           >
             <Phone className="w-5 h-5 mr-2" />
             Call (512) 240-2246

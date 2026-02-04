@@ -157,10 +157,10 @@ const Blog = () => {
       )}
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-deep-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <h1 className="text-4xl md:text-5xl font-bold text-deep-900 leading-heading">
+            <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Industry Insights
             </h1>
             <p className="text-xl text-slate-600 leading-body">
@@ -183,12 +183,12 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-deep-600"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
               <p className="mt-4 text-slate-600">Loading posts...</p>
             </div>
           ) : blogPosts.length === 0 ? (
             <div className="text-center py-12">
-              <h2 className="text-2xl font-bold text-deep-900 mb-4">No posts yet</h2>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">No posts yet</h2>
               <p className="text-slate-600 mb-4">Check back soon for industry insights and painting tips from our experts.</p>
               {!supabaseConfigured && (
                 <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg max-w-2xl mx-auto text-left">
@@ -210,11 +210,11 @@ const Blog = () => {
                           <Calendar className="w-4 h-4" />
                           <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
                         </div>
-                        <span className="px-2 py-1 bg-deep-100 text-deep-700 rounded text-xs font-medium">
+                        <span className="px-2 py-1 bg-brand-gray-100 text-brand-azureDark rounded text-xs font-medium">
                           {post.category}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-deep-900 mb-3 group-hover:text-deep-700 transition-colors">
+                      <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azureDark transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-slate-600 mb-4 leading-body">
@@ -222,7 +222,7 @@ const Blog = () => {
                       </p>
                       <Link
                         to={`/blog/${post.slug}`}
-                        className="inline-flex items-center text-deep-700 hover:text-deep-800 font-medium transition-colors group"
+                        className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors group"
                       >
                         Read More
                         <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -236,14 +236,14 @@ const Blog = () => {
                 <div className="mt-12 max-w-3xl mx-auto">
                   <button
                     onClick={() => setShowPastArticles(!showPastArticles)}
-                    className="w-full flex items-center justify-between p-4 bg-deep-50 hover:bg-deep-100 rounded-lg transition-colors"
+                    className="w-full flex items-center justify-between p-4 bg-brand-gray-50 hover:bg-brand-gray-100 rounded-lg transition-colors"
                     aria-expanded={showPastArticles}
                   >
-                    <span className="text-lg font-semibold text-deep-900">
+                    <span className="text-lg font-semibold text-brand-gray-900">
                       Past Articles ({pastPosts.length})
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-deep-700 transition-transform ${
+                      className={`w-5 h-5 text-brand-azureDark transition-transform ${
                         showPastArticles ? 'rotate-180' : ''
                       }`}
                     />
@@ -259,7 +259,7 @@ const Blog = () => {
                         >
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex-1">
-                              <h3 className="text-lg font-semibold text-deep-900 group-hover:text-deep-700 transition-colors mb-1">
+                              <h3 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-1">
                                 {post.title}
                               </h3>
                               <div className="flex items-center space-x-4 text-sm text-slate-500">
@@ -267,12 +267,12 @@ const Blog = () => {
                                   <Calendar className="w-3 h-3" />
                                   <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
                                 </div>
-                                <span className="px-2 py-0.5 bg-deep-100 text-deep-700 rounded text-xs font-medium">
+                                <span className="px-2 py-0.5 bg-brand-gray-100 text-brand-azureDark rounded text-xs font-medium">
                                   {post.category}
                                 </span>
                               </div>
                             </div>
-                            <ArrowRight className="w-5 h-5 text-deep-600 group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1" />
+                            <ArrowRight className="w-5 h-5 text-brand-azureDark group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1" />
                           </div>
                         </Link>
                       ))}

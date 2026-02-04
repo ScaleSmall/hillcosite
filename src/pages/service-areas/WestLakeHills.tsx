@@ -89,22 +89,22 @@ const WestLakeHills = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">200+</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">200+</div>,
             value: "200+",
             label: "Luxury Projects"
           },
           {
-            icon: <Award className="w-8 h-8 text-deep-600" />,
+            icon: <Award className="w-8 h-8 text-brand-azureDark" />,
             value: "Premium",
             label: "Specialists"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <Sparkles className="w-8 h-8 text-deep-600" />,
+            icon: <Sparkles className="w-8 h-8 text-brand-azureDark" />,
             value: "High-End",
             label: "Finishes"
           }
@@ -119,7 +119,7 @@ const WestLakeHills = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               West Lake Hills Luxury Home Expertise
             </h2>
             <p className="text-xl text-slate-600">
@@ -129,17 +129,17 @@ const WestLakeHills = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
               <Award className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Luxury Properties</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Luxury Properties</h3>
               <p className="text-slate-600">Exceptional craftsmanship for high-end homes with premium materials and meticulous attention to detail.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Hillside Specialists</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Hillside Specialists</h3>
               <p className="text-slate-600">Expert painting for challenging hillside locations with proper equipment and safety protocols.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Sparkles className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Designer Collaboration</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Designer Collaboration</h3>
               <p className="text-slate-600">Work seamlessly with architects and designers to achieve your vision with precision execution.</p>
             </div>
           </div>

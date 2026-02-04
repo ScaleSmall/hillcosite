@@ -69,7 +69,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
             alt={`Professional house painting in ${hub.name}`}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-900/85 via-deep-800/80 to-brand-gray-900/85"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-gray-900/85 via-brand-gray-800/80 to-brand-gray-900/85"></div>
         </div>
 
         <div className="container relative z-10 mx-auto px-4">
@@ -109,7 +109,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <MapPin className="w-8 h-8 text-brand-azure" />
-              <h2 className="text-3xl md:text-4xl font-bold text-deep-900">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900">
                 Serving These Neighborhoods
               </h2>
             </div>
@@ -127,7 +127,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
             </div>
             {hub.specialization && (
               <div className="mt-8 p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
-                <p className="text-lg text-deep-900">{hub.specialization}</p>
+                <p className="text-lg text-brand-gray-900">{hub.specialization}</p>
               </div>
             )}
           </div>
@@ -137,7 +137,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
       <section className="py-16 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-8 text-center">
               Our Painting Services in {hub.name}
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
@@ -145,7 +145,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 to="/services/interior-painting"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Interior Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Interior Painting</h3>
                 <p className="text-slate-700">
                   Transform your home's interior with expert color consultation and flawless application.
                 </p>
@@ -154,7 +154,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 to="/services/exterior-painting"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Exterior Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Exterior Painting</h3>
                 <p className="text-slate-700">
                   Protect and beautify your home's exterior with premium paints built for Texas climate.
                 </p>
@@ -163,7 +163,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 to="/services/cabinet-refinishing"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Cabinet Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Cabinet Painting</h3>
                 <p className="text-slate-700">
                   Refresh your kitchen with professional cabinet painting.
                 </p>
@@ -172,7 +172,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 to="/services/commercial"
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <h3 className="text-xl font-bold text-deep-900 mb-2">Commercial Painting</h3>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
                 <p className="text-slate-700">
                   Professional commercial painting services with minimal disruption to your business.
                 </p>
@@ -194,7 +194,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         <section className="py-16 bg-slate-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-deep-900 mb-6">
+              <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">
                 Nearby Areas We Serve
               </h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -218,7 +218,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="mb-8 p-6 bg-brand-gray-50 rounded-lg border-2 border-brand-gray-200">
-              <h2 className="text-2xl font-bold text-deep-900 mb-3">Find Us on Google Maps</h2>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-3">Find Us on Google Maps</h2>
               <p className="text-slate-700 mb-4">
                 View reviews, service details, and directions on our Google Business Profile.
               </p>
@@ -236,7 +236,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                   href={businessConfig.googleBusinessProfileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-deep-900 hover:bg-deep-800 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-gray-900 hover:bg-brand-gray-800 text-white font-semibold rounded-lg transition-colors"
                 >
                   <MapPin className="w-5 h-5 mr-2" />
                   See reviews & directions
@@ -244,7 +244,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               </div>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-8 text-center">
               Find Us in {hub.name}
             </h2>
             <GoogleMapEmbed query={mapQuery} />
@@ -264,7 +264,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-deep-900 text-white hover:bg-deep-800 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-gray-900 text-white hover:bg-brand-gray-800 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call {businessConfig.phone}

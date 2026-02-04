@@ -18,7 +18,7 @@ const ThankYou = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <CheckCircle className="w-20 h-20 text-green-600 mx-auto" />
-              <h1 className="text-4xl md:text-5xl font-bold text-deep-900">
+              <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900">
                 Thank You!
               </h1>
               <p className="text-xl text-slate-600 max-w-2xl mx-auto">
@@ -39,7 +39,7 @@ const ThankYou = () => {
             </div>
 
             <div className="bg-white rounded-lg p-6 max-w-lg mx-auto">
-              <h3 className="font-semibold text-deep-900 mb-3">
+              <h3 className="font-semibold text-brand-gray-900 mb-3">
                 What happens next?
               </h3>
               <div className="space-y-2 text-sm text-slate-600">

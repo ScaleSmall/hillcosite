@@ -89,22 +89,22 @@ const PflugervilleWellsBranch = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">100+</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">100+</div>,
             value: "100+",
             label: "Pflugerville Projects"
           },
           {
-            icon: <Users className="w-8 h-8 text-deep-600" />,
+            icon: <Users className="w-8 h-8 text-brand-azureDark" />,
             value: "Community",
             label: "Focused"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <Zap className="w-8 h-8 text-deep-600" />,
+            icon: <Zap className="w-8 h-8 text-brand-azureDark" />,
             value: "Fast",
             label: "Service"
           }
@@ -119,7 +119,7 @@ const PflugervilleWellsBranch = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Pflugerville & Wells Branch Neighborhoods We Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -129,17 +129,17 @@ const PflugervilleWellsBranch = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Blackhawk</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Blackhawk</h3>
               <p className="text-slate-600">Professional painting for Blackhawk homes with HOA compliance and quality finishes.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Users className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Wells Branch</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Wells Branch</h3>
               <p className="text-slate-600">Expert painting for the diverse Wells Branch community straddling Austin and Pflugerville.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Zap className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Falcon Pointe</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Falcon Pointe</h3>
               <p className="text-slate-600">Quality painting for established and new Falcon Pointe family homes.</p>
             </div>
           </div>

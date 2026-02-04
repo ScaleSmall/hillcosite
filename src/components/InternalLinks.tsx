@@ -18,7 +18,7 @@ const InternalLinks: React.FC<InternalLinksProps> = ({ links, title = 'Related R
   return (
     <section className="section-padding bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-deep-900 mb-8 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-brand-gray-900 mb-8 text-center">
           {title}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -28,7 +28,7 @@ const InternalLinks: React.FC<InternalLinksProps> = ({ links, title = 'Related R
               to={link.href}
               className="card p-6 hover:shadow-lg transition-shadow duration-200"
             >
-              <h3 className="text-lg font-semibold text-deep-900 mb-2">
+              <h3 className="text-lg font-semibold text-brand-gray-900 mb-2">
                 {link.title}
               </h3>
               <p className="text-slate-600 text-sm">

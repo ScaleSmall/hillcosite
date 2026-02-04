@@ -45,17 +45,17 @@ const ColorConsultation = () => {
       label: "Color Analysis"
     },
     {
-      icon: <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-deep-600 font-bold">✓</div>,
+      icon: <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-brand-azureDark font-bold">✓</div>,
       value: "Free",
       label: "With Service"
     },
     {
-      icon: <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-deep-600 font-bold">∞</div>,
+      icon: <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-brand-azureDark font-bold">∞</div>,
       value: "Unlimited",
       label: "Color Options"
     },
     {
-      icon: <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-deep-600 font-bold">15</div>,
+      icon: <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-brand-azureDark font-bold">15</div>,
       value: "15+ Years",
       label: "Design Experience"
     }
@@ -191,7 +191,7 @@ const ColorConsultation = () => {
                   <Eye className="w-4 h-4 mr-2" />
                   Professional Color Vision
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-deep-900">
+                <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900">
                   The Science of Perfect Color Selection
                 </h2>
                 <p className="text-lg text-slate-600 leading-body">
@@ -202,22 +202,22 @@ const ColorConsultation = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
                   <Lightbulb className="w-8 h-8 text-purple-600 mb-3" />
-                  <h3 className="font-semibold text-deep-900 mb-2">Lighting Analysis</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Lighting Analysis</h3>
                   <p className="text-sm text-slate-600">Understanding how Austin's natural light affects color throughout the day</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-pink-500">
                   <Heart className="w-8 h-8 text-pink-600 mb-3" />
-                  <h3 className="font-semibold text-deep-900 mb-2">Mood Creation</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Mood Creation</h3>
                   <p className="text-sm text-slate-600">Colors that enhance your lifestyle and emotional well-being</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
                   <Eye className="w-8 h-8 text-blue-600 mb-3" />
-                  <h3 className="font-semibold text-deep-900 mb-2">Space Perception</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Space Perception</h3>
                   <p className="text-sm text-slate-600">Making rooms feel larger, cozier, brighter, or more intimate</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
                   <Palette className="w-8 h-8 text-green-600 mb-3" />
-                  <h3 className="font-semibold text-deep-900 mb-2">Harmony Design</h3>
+                  <h3 className="font-semibold text-brand-gray-900 mb-2">Harmony Design</h3>
                   <p className="text-sm text-slate-600">Creating flow and cohesion throughout your entire home</p>
                 </div>
               </div>
@@ -235,7 +235,7 @@ const ColorConsultation = () => {
             {/* Right Content - Color Visualization */}
             <div className="relative">
               <div className="bg-white rounded-2xl p-8 shadow-2xl">
-                <h3 className="text-2xl font-bold text-deep-900 mb-6 text-center">Color Harmony Wheel</h3>
+                <h3 className="text-2xl font-bold text-brand-gray-900 mb-6 text-center">Color Harmony Wheel</h3>
                 <div className="relative w-64 h-64 mx-auto mb-6">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-red-400 via-yellow-400 to-green-400 opacity-80"></div>
                   <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 opacity-80"></div>

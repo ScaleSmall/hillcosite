@@ -14,22 +14,22 @@ interface StatsAndTrustProps {
 const StatsAndTrust = ({ stats }: StatsAndTrustProps) => {
   const defaultStats: Stat[] = [
     {
-      icon: <Users className="w-8 h-8 text-deep-600" />,
+      icon: <Users className="w-8 h-8 text-brand-azureDark" />,
       value: "350+",
       label: "Projects Completed"
     },
     {
-      icon: <Award className="w-8 h-8 text-deep-600" />,
+      icon: <Award className="w-8 h-8 text-brand-azureDark" />,
       value: "2-Year",
       label: "Warranty"
     },
     {
-      icon: <Shield className="w-8 h-8 text-deep-600" />,
+      icon: <Shield className="w-8 h-8 text-brand-azureDark" />,
       value: "Insured",
       label: "Local Crew"
     },
     {
-      icon: <Clock className="w-8 h-8 text-deep-600" />,
+      icon: <Clock className="w-8 h-8 text-brand-azureDark" />,
       value: "15+",
       label: "Years Experience"
     }
@@ -46,7 +46,7 @@ const StatsAndTrust = ({ stats }: StatsAndTrustProps) => {
               <div className="flex justify-center mb-4">
                 {stat.icon}
               </div>
-              <div className="text-3xl font-bold text-deep-900 mb-2">
+              <div className="text-3xl font-bold text-brand-gray-900 mb-2">
                 {stat.value}
               </div>
               <div className="text-slate-600 font-medium">

@@ -25,7 +25,7 @@ const RelatedServices = ({
     <section className={`section-padding bg-slate-50 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-deep-900 mb-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
             {title} in {location}
           </h2>
           <p className="text-lg text-slate-600">
@@ -38,17 +38,17 @@ const RelatedServices = ({
             <Link
               key={index}
               to={service.href}
-              className="group bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-200 border border-slate-200 hover:border-deep-300"
+              className="group bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-200 border border-slate-200 hover:border-brand-gray-300"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-grow">
-                  <h3 className="text-lg font-semibold text-deep-900 mb-2 group-hover:text-deep-700">
+                  <h3 className="text-lg font-semibold text-brand-gray-900 mb-2 group-hover:text-brand-azureDark">
                     {service.title}
                   </h3>
                   <p className="text-slate-600 text-sm mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  <div className="inline-flex items-center text-deep-600 font-medium text-sm group-hover:text-deep-700">
+                  <div className="inline-flex items-center text-brand-azureDark font-medium text-sm group-hover:text-brand-azureDark">
                     Learn More
                     <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>

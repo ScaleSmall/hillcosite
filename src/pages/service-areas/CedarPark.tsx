@@ -89,22 +89,22 @@ const CedarPark = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">400+</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">400+</div>,
             value: "400+",
             label: "Cedar Park Projects"
           },
           {
-            icon: <Trees className="w-8 h-8 text-deep-600" />,
+            icon: <Trees className="w-8 h-8 text-brand-azureDark" />,
             value: "Local",
             label: "Cedar Park Experts"
           },
           {
-            icon: <div className="w-8 h-8 bg-deep-600 rounded-full flex items-center justify-center text-white font-bold">2</div>,
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
             value: "2-Year",
             label: "Warranty"
           },
           {
-            icon: <Home className="w-8 h-8 text-deep-600" />,
+            icon: <Home className="w-8 h-8 text-brand-azureDark" />,
             value: "HOA",
             label: "Compliant"
           }
@@ -119,7 +119,7 @@ const CedarPark = () => {
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Cedar Park Neighborhoods We Serve
             </h2>
             <p className="text-xl text-slate-600">
@@ -129,17 +129,17 @@ const CedarPark = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-slate-50 p-6 rounded-lg">
               <Trees className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Buttercup Creek</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Buttercup Creek</h3>
               <p className="text-slate-600">Professional painting for Buttercup Creek homes with HOA compliance and quality finishes.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Brushy Creek</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Brushy Creek</h3>
               <p className="text-slate-600">Expert painting for established Brushy Creek neighborhoods and new developments.</p>
             </div>
             <div className="bg-slate-50 p-6 rounded-lg">
               <Building2 className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-deep-900 mb-2">Cedar Park Town Center</h3>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Cedar Park Town Center</h3>
               <p className="text-slate-600">Commercial and residential painting near Cedar Park's vibrant town center area.</p>
             </div>
           </div>

@@ -18,7 +18,7 @@ const DoNotSell = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="space-y-8">
             <div className="text-center">
-              <h1 className="text-4xl font-bold text-deep-900 mb-4">
+              <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">
                 Do Not Sell or Share My Personal Information
               </h1>
               <p className="text-lg text-slate-600">
@@ -28,24 +28,24 @@ const DoNotSell = () => {
 
             <div className="max-w-2xl mx-auto space-y-6">
               <div className="card p-8">
-                <h2 className="text-2xl font-bold text-deep-900 mb-4">Your Privacy Rights</h2>
+                <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">Your Privacy Rights</h2>
                 <p className="text-slate-700 mb-4">
                   Under certain state privacy laws (including California's CCPA/CPRA and similar laws in other states), 
                   you have the right to opt out of the "sale" or "sharing" of your personal information for advertising purposes.
                 </p>
                 
-                <h3 className="text-xl font-semibold text-deep-800 mb-3">What This Means</h3>
+                <h3 className="text-xl font-semibold text-brand-gray-800 mb-3">What This Means</h3>
                 <p className="text-slate-700 mb-4">
                   While we don't sell your information in the traditional sense, sharing data with advertising partners 
                   (like Meta/Facebook) for targeted advertising may be considered "selling" or "sharing" under some state laws.
                 </p>
 
-                <h3 className="text-xl font-semibold text-deep-800 mb-3">How to Opt Out</h3>
+                <h3 className="text-xl font-semibold text-brand-gray-800 mb-3">How to Opt Out</h3>
                 <div className="space-y-4">
                   <div className="bg-slate-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-deep-900 mb-2">Email Us</h4>
+                    <h4 className="font-semibold text-brand-gray-900 mb-2">Email Us</h4>
                     <p className="text-slate-700 mb-2">
-                      Send an email to <a href="mailto:info@hillcopaint.com?subject=Do Not Sell or Share My Personal Information" className="text-deep-600 hover:text-deep-700 font-medium">info@hillcopaint.com</a> with:
+                      Send an email to <a href="mailto:info@hillcopaint.com?subject=Do Not Sell or Share My Personal Information" className="text-brand-azureDark hover:text-brand-azureDark font-medium">info@hillcopaint.com</a> with:
                     </p>
                     <ul className="list-disc pl-6 text-slate-700 space-y-1">
                       <li>Subject line: "Do Not Sell or Share My Personal Information"</li>
@@ -55,16 +55,16 @@ const DoNotSell = () => {
                   </div>
                   
                   <div className="bg-slate-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-deep-900 mb-2">Other Controls</h4>
+                    <h4 className="font-semibold text-brand-gray-900 mb-2">Other Controls</h4>
                     <ul className="list-disc pl-6 text-slate-700 space-y-1">
-                      <li>Visit <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener noreferrer" className="text-deep-600 hover:text-deep-700">Meta Ad Preferences</a> to control Facebook and Instagram ads</li>
+                      <li>Visit <a href="https://www.facebook.com/adpreferences" target="_blank" rel="noopener noreferrer" className="text-brand-azureDark hover:text-brand-azureDark">Meta Ad Preferences</a> to control Facebook and Instagram ads</li>
                       <li>Use browser settings to block cookies and tracking</li>
                       <li>Enable Global Privacy Control (GPC) in your browser - we honor these signals where required</li>
                     </ul>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold text-deep-800 mb-3 mt-6">What Happens Next</h3>
+                <h3 className="text-xl font-semibold text-brand-gray-800 mb-3 mt-6">What Happens Next</h3>
                 <p className="text-slate-700 mb-4">
                   After you submit your request:
                 </p>

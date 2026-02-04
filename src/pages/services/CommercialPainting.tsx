@@ -209,7 +209,7 @@ const CommercialPainting = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold text-deep-900 mb-6">
+              <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Professional Commercial Painting in Austin
               </h2>
               <div className="space-y-6 text-lg text-slate-600">
@@ -218,19 +218,19 @@ const CommercialPainting = () => {
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Flexible scheduling</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Fully insured</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Minimal disruption</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-deep-600 rounded-full"></div>
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
                     <span>Professional crew</span>
                   </div>
                 </div>
@@ -246,7 +246,7 @@ const CommercialPainting = () => {
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-deep-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Commercial Painting Advantages
             </h2>
             <p className="text-xl text-slate-600">
@@ -256,30 +256,30 @@ const CommercialPainting = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6">
-              <div className="w-16 h-16 bg-deep-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-deep-600" />
+              <div className="w-16 h-16 bg-brand-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-brand-azureDark" />
               </div>
-              <h3 className="text-xl font-bold text-deep-900 mb-3">Flexible Scheduling</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Flexible Scheduling</h3>
               <p className="text-slate-600">
                 Evening and weekend work available to minimize business disruption
               </p>
             </div>
 
             <div className="text-center p-6">
-              <div className="w-16 h-16 bg-deep-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-deep-600" />
+              <div className="w-16 h-16 bg-brand-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-brand-azureDark" />
               </div>
-              <h3 className="text-xl font-bold text-deep-900 mb-3">Fully Insured</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Fully Insured</h3>
               <p className="text-slate-600">
                 Full commercial liability coverage for your peace of mind
               </p>
             </div>
 
             <div className="text-center p-6">
-              <div className="w-16 h-16 bg-deep-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Building2 className="w-8 h-8 text-deep-600" />
+              <div className="w-16 h-16 bg-brand-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Building2 className="w-8 h-8 text-brand-azureDark" />
               </div>
-              <h3 className="text-xl font-bold text-deep-900 mb-3">All Property Types</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">All Property Types</h3>
               <p className="text-slate-600">
                 Offices, retail, restaurants, medical facilities, and more
               </p>
