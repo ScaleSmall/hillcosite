@@ -60,7 +60,7 @@ const Header = () => {
             <img
               src="/brand/hill-country-painting-logo-primary.png"
               alt="Hill Country Painting Logo"
-              className="h-12 lg:h-16 w-auto"
+              className="h-16 lg:h-20 w-auto"
               width="200"
               height="200"
               loading="eager"
