@@ -108,3 +108,16 @@ npm run brand:guard
 ```
 
 This script scans all source files and fails the build if any forbidden tokens are detected. This ensures brand consistency and prevents regression to legacy design patterns.
+
+---
+
+## Verification (Required)
+
+Before any deploy or merge:
+
+- Run: `npm run verify`
+- If it fails, DO NOT ship. Fix the violation first.
+
+This project blocks brand drift automatically via:
+- `npm run brand:guard` (forbidden tokens)
+- `predev` / `prebuild` enforcement
