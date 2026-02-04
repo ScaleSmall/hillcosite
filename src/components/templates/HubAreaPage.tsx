@@ -25,7 +25,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
     <>
       <SEO
         title={pageTitle}
-        description={`${hub.description} Serving ${hub.neighborhoods.map(n => n.name).join(', ')}. Free estimates and 2-year warranty.`}
+        description={`${hub.description} Serving ${hub.neighborhoods.map(n => n.name).join(', ')}. Consultations available and 2-year warranty.`}
         canonical={canonical}
         pageType="service"
         geoPlacename={hub.name}
@@ -90,7 +90,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               >
-                Get Free Estimate
+                Get Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
@@ -260,7 +260,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 hover:bg-slate-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
               >
-                Request Free Estimate
+                Request Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}

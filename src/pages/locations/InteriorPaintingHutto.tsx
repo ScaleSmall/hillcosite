@@ -25,7 +25,7 @@ const config: ServiceLocationConfig = {
       '2-year warranty included'
     ],
     processSteps: [
-      { title: 'Free Quote', description: 'In-home consultation at your Hutto residence with straightforward pricing.' },
+      { title: 'Project Evaluation', description: 'In-home consultation at your Hutto residence with straightforward pricing.' },
       { title: 'Color Selection', description: 'Help choosing colors perfect for Hutto\'s bright, modern homes.' },
       { title: 'Efficient Prep', description: 'Quick but thorough preparation to minimize family disruption.' },
       { title: 'Quality Application', description: 'Professional painting with attention to every detail.' },

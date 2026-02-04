@@ -29,16 +29,16 @@ const NextStepsSection = ({
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
                 <Phone className="w-6 h-6 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-deep-900">Get Your Free Estimate</h3>
+              <h3 className="text-xl font-bold text-deep-900">Get Your Consultation</h3>
               <p className="text-slate-600">
-                Schedule a free consultation and estimate for your painting project. No obligation, just honest advice and transparent pricing.
+                Schedule a consultation for your painting project. No obligation, just honest advice and transparent pricing.
               </p>
               <div className="flex flex-col gap-3">
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
                 >
-                  Request Free Estimate
+                  Request Consultation
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
                 <a

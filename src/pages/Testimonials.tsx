@@ -128,7 +128,7 @@ const Testimonials = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
               <Link to="/gallery" className="btn-outline">
                 View Gallery
@@ -173,7 +173,7 @@ const Testimonials = () => {
         title="Join Our Satisfied Customers"
         subtitle="Experience the Hill Country Painting difference for yourself"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

@@ -68,7 +68,7 @@ const NAPMapSection = () => {
               <div className="pt-6 border-t border-slate-200">
                 <p className="text-slate-600 leading-relaxed">
                   Serving the Austin metro area with professional painting services.
-                  Contact us today for a free estimate on your project.
+                  Contact us today for a consultation on your project.
                 </p>
               </div>
             </div>

@@ -115,7 +115,7 @@ const InteriorPainting = () => {
     <>
       <SEO
         title="Interior Painting — Hill Country Painting"
-        description="Expert interior painting in Austin TX. Transform your home with professional painters. Clean prep, premium paints, 2-year warranty. Free estimates."
+        description="Expert interior painting in Austin TX. Transform your home with professional painters. Clean prep, premium paints, 2-year warranty. Consultations available."
         canonical="/services/interior-painting"
         pageType="service"
         breadcrumbs={[
@@ -195,14 +195,14 @@ const InteriorPainting = () => {
                 Interior House Painters in Austin, TX
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Transform your home's interior with Austin's most trusted painting contractors. 100+ homes painted • Insured crew • 2-year warranty • Free estimates.
+                Transform your home's interior with Austin's most trusted painting contractors. 100+ homes painted • Insured crew • 2-year warranty • Consultations available.
               </p>
               <div className="text-base text-white/90 font-medium drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                  Get Free Estimate
+                  Get Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -449,9 +449,9 @@ const InteriorPainting = () => {
       {/* Pattern I: CTA Banner */}
       <CTABanner
         title="Ready to Transform Your Interior?"
-        subtitle="Get a free estimate for professional interior painting in Austin"
+        subtitle="Get a consultation for professional interior painting in Austin"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
       />

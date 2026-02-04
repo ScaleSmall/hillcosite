@@ -70,7 +70,7 @@ const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
             to="/contact" 
             className="inline-flex items-center px-8 py-4 bg-white text-deep-700 font-semibold rounded-lg hover:bg-slate-100 transition-colors duration-200 mr-4"
           >
-            Get Free Estimate
+            Get Consultation
           </Link>
           <a 
             href="tel:(512)240-2246" 

@@ -27,7 +27,7 @@ const PflugervilleWellsBranch = () => {
     <>
       <SEO
         title="Pflugerville & Wells Branch Painting | Professional Painters | Hill Country Painting"
-        description="Professional painting in Pflugerville & Wells Branch, TX. Expert interior/exterior painting for Blackhawk, Falcon Pointe. Free estimates."
+        description="Professional painting in Pflugerville & Wells Branch, TX. Expert interior/exterior painting for Blackhawk, Falcon Pointe. Consultations available."
         canonical="/service-areas/pflugerville-wells-branch"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -148,9 +148,9 @@ const PflugervilleWellsBranch = () => {
 
       <CTABanner
         title="Ready to Transform Your Pflugerville Home?"
-        subtitle="Get a free estimate from Pflugerville's trusted painting professionals"
+        subtitle="Get a consultation from Pflugerville's trusted painting professionals"
         primaryCTA={{
-          text: "Get Free Estimate",
+          text: "Get Consultation",
           href: "/contact"
         }}
         secondaryCTA={{

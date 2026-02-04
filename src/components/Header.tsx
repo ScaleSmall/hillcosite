@@ -158,7 +158,7 @@ const Header = () => {
               to="/contact"
               className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 whitespace-nowrap"
             >
-              Free Estimate
+              Consultation
             </Link>
             <div className="grid grid-cols-3 gap-1.5 items-center ml-6">
               {socialLinks.map((social) => (
@@ -276,7 +276,7 @@ const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
                 className="inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full"
               >
-                Free Estimate
+                Consultation
               </Link>
             </div>
           </div>

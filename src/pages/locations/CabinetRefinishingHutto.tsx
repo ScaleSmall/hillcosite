@@ -25,7 +25,7 @@ const config: ServiceLocationConfig = {
       '2-year warranty protection'
     ],
     processSteps: [
-      { title: 'Free Estimate', description: 'Assess your Hutto kitchen cabinets and discuss transformation options.' },
+      { title: 'Consultation', description: 'Assess your Hutto kitchen cabinets and discuss transformation options.' },
       { title: 'Color Selection', description: 'Help choosing colors that brighten and modernize your kitchen.' },
       { title: 'Efficient Preparation', description: 'Thorough prep while minimizing family disruption.' },
       { title: 'Quality Finishing', description: 'Professional spray application for smooth, even results.' },

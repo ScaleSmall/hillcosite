@@ -193,7 +193,7 @@ const Contact = () => {
     <>
       <SEO
         title="Contact — Hill Country Painting"
-        description="Free estimates on interior, exterior, cabinet painting in Austin. Call (512) 240-2246 or request online. Fast response. Insured crew."
+        description="Consultations available for interior, exterior, cabinet painting in Austin. Call (512) 240-2246 or request online. Fast response. Insured crew."
         canonical="/contact"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -219,7 +219,7 @@ const Contact = () => {
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
               <h1 className="text-3xl md:text-4xl font-bold text-deep-900 mb-2">Contact Us</h1>
               <p className="text-base md:text-lg text-slate-600 mb-4">
-                Get your free estimate or reach out with any questions about your painting project.
+                Get your consultation or reach out with any questions about your painting project.
               </p>
               <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">
@@ -232,7 +232,7 @@ const Contact = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-deep-600 mt-0.5">✓</span>
-                  <span className="text-slate-700">Free estimates</span>
+                  <span className="text-slate-700">Consultations available</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-deep-600 mt-0.5">✓</span>
@@ -266,7 +266,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="card p-8 lg:p-12">
               <h2 className="text-3xl font-bold text-deep-900 mb-8 text-center">
-                Request Free Estimate
+                Request Consultation
               </h2>
               <form
                 id="estimateForm"
@@ -732,7 +732,7 @@ const Contact = () => {
       {/* CTA Banner */}
       <CTABanner
         title="Ready to Get Started?"
-        subtitle="Contact us today for your free estimate and let's transform your space"
+        subtitle="Contact us today for your consultation and let's transform your space"
         primaryCTA={{
           text: 'Call (512) 240-2246',
           href: 'tel:(512) 240-2246'

@@ -71,7 +71,7 @@ const RoundRockGeorgetown = () => {
     <>
       <SEO
         title="Round Rock Georgetown Corridor Painting | Dell Diamond to Historic Square"
-        description="Professional Round Rock & Georgetown painting. Dell Diamond to historic square. Tech workforce homes & preservation specialists. Free estimates."
+        description="Professional Round Rock & Georgetown painting. Dell Diamond to historic square. Tech workforce homes & preservation specialists. Consultations available."
         canonical="/service-areas/round-rock-georgetown"
         breadcrumbs={[
           { name: 'Home', url: '/' },

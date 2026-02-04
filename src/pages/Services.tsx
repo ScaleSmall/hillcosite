@@ -44,7 +44,7 @@ const Services = () => {
     <>
       <SEO
         title="Services — Hill Country Painting"
-        description="Complete Austin painting: interior, exterior, cabinets, commercial. Professional crew. 2-year warranty. Free estimates. Serving Austin metro."
+        description="Complete Austin painting: interior, exterior, cabinets, commercial. Professional crew. 2-year warranty. Consultations available. Serving Austin metro."
         canonical="/services"
         pageType="collection"
         breadcrumbs={[
@@ -65,7 +65,7 @@ const Services = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
               <a href="tel:(512)240-2246" className="btn-outline">
                 Call (512) 240-2246
@@ -178,9 +178,9 @@ const Services = () => {
       {/* CTA Banner */}
       <CTABanner
         title="Ready to Start Your Project?"
-        subtitle="Get a free estimate for any of our professional painting services"
+        subtitle="Get a consultation for any of our professional painting services"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

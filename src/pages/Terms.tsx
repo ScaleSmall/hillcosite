@@ -174,7 +174,7 @@ const Terms = () => {
             <div className="mt-12 p-6 bg-slate-50 rounded-lg border border-slate-200">
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-primary">
-                  Get Free Estimate
+                  Get Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="btn-outline">
                   Call (512) 240-2246

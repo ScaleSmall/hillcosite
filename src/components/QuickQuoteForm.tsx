@@ -71,7 +71,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
         <div className="inline-flex items-center justify-center w-16 h-16 bg-white/10 rounded-full mb-4">
           <Palette className="w-8 h-8 text-white" aria-hidden="true" />
         </div>
-        <h3 className="text-2xl font-bold text-white mb-2">Get Free Quote</h3>
+        <h3 className="text-2xl font-bold text-white mb-2">Get Project Evaluation</h3>
         <p className="text-white/90">Quick estimate for your Austin project</p>
       </div>
 
@@ -173,7 +173,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
           className="w-full bg-white text-deep-700 font-semibold py-4 px-6 rounded-lg hover:bg-slate-100 transition-colors duration-200 flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-deep-700"
         >
           <Home className="w-5 h-5" aria-hidden="true" />
-          <span>Get Free Estimate</span>
+          <span>Get Consultation</span>
         </button>
       </form>
 

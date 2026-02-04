@@ -169,7 +169,7 @@ const Gallery = () => {
     <>
       <SEO
         title="Gallery — Hill Country Painting"
-        description="See Hill Country Painting's gallery of Austin interior, exterior, and cabinet painting projects. Quality workmanship, professional results. Free estimates."
+        description="See Hill Country Painting's gallery of Austin interior, exterior, and cabinet painting projects. Quality workmanship, professional results. Consultations available."
         canonical="/gallery"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -445,9 +445,9 @@ const Gallery = () => {
       {/* CTA Banner */}
       <CTABanner
         title="Ready to Add Your Project to Our Gallery?"
-        subtitle="Get a free estimate and see why Austin trusts Hill Country Painting"
+        subtitle="Get a consultation and see why Austin trusts Hill Country Painting"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

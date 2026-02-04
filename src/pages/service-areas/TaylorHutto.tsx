@@ -148,9 +148,9 @@ const TaylorHutto = () => {
 
       <CTABanner
         title="Ready to Transform Your Taylor or Hutto Home?"
-        subtitle="Get a free estimate from Taylor-Hutto's trusted painting professionals"
+        subtitle="Get a consultation from Taylor-Hutto's trusted painting professionals"
         primaryCTA={{
-          text: "Get Free Estimate",
+          text: "Get Consultation",
           href: "/contact"
         }}
         secondaryCTA={{

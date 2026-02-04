@@ -68,7 +68,7 @@ const Financing = () => {
               to="/contact"
               className="btn-primary inline-flex items-center justify-center"
             >
-              Return to Free Estimate Page
+              Return to Consultation Page
             </Link>
           </div>
         </div>
@@ -207,7 +207,7 @@ const Financing = () => {
               to="/contact"
               className="btn-primary inline-flex items-center justify-center"
             >
-              Return to Free Estimate Page
+              Return to Consultation Page
             </Link>
           </div>
           <p className="text-center text-sm text-slate-500">

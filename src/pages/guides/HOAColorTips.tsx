@@ -139,7 +139,7 @@ const HOAColorTips = () => {
                 Get Color Consultation
               </Link>
               <Link to="/contact" className="btn-outline">
-                Free Estimate
+                Consultation
               </Link>
             </div>
           </div>

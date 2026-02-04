@@ -58,7 +58,7 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
               <Link to="/gallery" className="btn-outline">
                 View Our Work
@@ -92,7 +92,7 @@ const About = () => {
         title="Ready to Experience the Difference?"
         subtitle="Join hundreds of satisfied Austin homeowners who trust Hill Country Painting"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

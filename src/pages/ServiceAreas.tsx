@@ -74,7 +74,7 @@ const ServiceAreas = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
               <a href="tel:(512)240-2246" className="btn-outline">
                 Call (512) 240-2246
@@ -164,7 +164,7 @@ const ServiceAreas = () => {
                         Greater Austin Area
                       </span>
                       <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
-                        Free Estimates
+                        Consultations Available
                       </span>
                       <span className="px-3 py-1 bg-deep-100 text-deep-700 rounded-full text-sm font-medium">
                         2-Year Warranty
@@ -210,9 +210,9 @@ const ServiceAreas = () => {
       {/* Pattern I: CTA Banner */}
       <CTABanner
         title="Ready to Get Started in Your Austin Area?"
-        subtitle="Contact us today for a free estimate anywhere in Austin"
+        subtitle="Contact us today for a consultation anywhere in Austin"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

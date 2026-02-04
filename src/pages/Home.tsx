@@ -56,8 +56,8 @@ const Home = () => {
       answer: 'We serve Austin and the surrounding metro area, including Round Rock, Pflugerville, Cedar Park, Georgetown, and other nearby neighborhoods.'
     },
     {
-      question: 'Do you offer free estimates?',
-      answer: 'Yes, we provide free, no-obligation estimates for all our painting services.'
+      question: 'Do you offer consultations?',
+      answer: 'Yes, we provide no-obligation consultations for all our painting services.'
     },
     {
       question: 'Are you insured?',
@@ -145,7 +145,7 @@ const Home = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                  Get Free Estimate
+                  Get Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -267,9 +267,9 @@ const Home = () => {
       {/* CTA After Process */}
       <CTABanner
         title="Ready to Get Started?"
-        subtitle="Request your free estimate today and experience the Hill Country Painting difference"
+        subtitle="Request your consultation today and experience the Hill Country Painting difference"
         primaryCTA={{
-          text: 'Request Free Estimate',
+          text: 'Request Consultation',
           href: '/contact'
         }}
         secondaryCTA={{
@@ -294,9 +294,9 @@ const Home = () => {
       {/* Pattern I: CTA Banner */}
       <CTABanner
         title="Ready to Transform Your Home?"
-        subtitle="Get a free estimate today and see why Austin homeowners trust Hill Country Painting"
+        subtitle="Get a consultation today and see why Austin homeowners trust Hill Country Painting"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

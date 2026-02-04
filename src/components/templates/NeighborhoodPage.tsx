@@ -22,7 +22,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
     <>
       <SEO
         title={pageTitle}
-        description={`${neighborhood.description} Part of ${hub.name} service area. Interior & exterior painting, cabinet refinishing. Free estimates and 2-year warranty.`}
+        description={`${neighborhood.description} Part of ${hub.name} service area. Interior & exterior painting, cabinet refinishing. Consultations available and 2-year warranty.`}
         canonical={canonical}
         pageType="service"
         geoPlacename={neighborhood.name}
@@ -84,7 +84,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200"
               >
-                Get Free Estimate
+                Get Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
@@ -253,7 +253,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 hover:bg-slate-100 font-semibold rounded-lg transition-colors duration-200"
               >
-                Request Free Estimate
+                Request Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}

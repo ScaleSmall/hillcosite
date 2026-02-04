@@ -168,7 +168,7 @@ const Blog = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
               <Link to="/services" className="btn-outline">
                 Our Services
@@ -305,9 +305,9 @@ const Blog = () => {
       {/* CTA Banner */}
       <CTABanner
         title="Ready to Start Your Painting Project?"
-        subtitle="Get professional advice and a free estimate for your Austin home"
+        subtitle="Get professional advice and a consultation for your Austin home"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

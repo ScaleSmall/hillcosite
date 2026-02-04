@@ -148,9 +148,9 @@ const Leander = () => {
 
       <CTABanner
         title="Ready to Transform Your Leander Home?"
-        subtitle="Get a free estimate from Leander's trusted Hill Country painting professionals"
+        subtitle="Get a consultation from Leander's trusted Hill Country painting professionals"
         primaryCTA={{
-          text: "Get Free Estimate",
+          text: "Get Consultation",
           href: "/contact"
         }}
         secondaryCTA={{

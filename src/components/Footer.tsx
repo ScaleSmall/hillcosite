@@ -234,7 +234,7 @@ const Footer = () => {
             </div>
             <div className="flex space-x-4">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
             </div>
           </div>

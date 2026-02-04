@@ -25,7 +25,7 @@ const config: ServiceLocationConfig = {
       '2-year warranty standard'
     ],
     processSteps: [
-      { title: 'Free Estimate', description: 'Thorough assessment of your Hutto home\'s exterior with transparent pricing.' },
+      { title: 'Consultation', description: 'Thorough assessment of your Hutto home\'s exterior with transparent pricing.' },
       { title: 'Color Guidance', description: 'Help selecting colors that meet HOA requirements and your preferences.' },
       { title: 'Proper Preparation', description: 'Complete prep work for maximum paint adhesion and longevity.' },
       { title: 'Weather Monitoring', description: 'Scheduling around Hutto weather for optimal results.' },

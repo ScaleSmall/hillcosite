@@ -59,7 +59,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
 
   const canonicalPath = `/${service.slug}-${location.slug}`;
   const pageTitle = `${service.name} ${location.name} TX | Professional Painters | Hill Country Painting`;
-  const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Licensed, insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Free estimates.`;
+  const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Licensed, insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Consultations available.`;
 
   const relatedServices = [
     service.type !== 'interior' && {
@@ -300,9 +300,9 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
 
       <CTABanner
         title={`Ready for Professional ${service.name} in ${location.name}?`}
-        subtitle={`Get a free estimate from ${location.name}'s trusted painting professionals`}
+        subtitle={`Get a consultation from ${location.name}'s trusted painting professionals`}
         primaryCTA={{
-          text: `Get Free ${location.name} Estimate`,
+          text: `Get ${location.name} Consultation`,
           href: '/contact'
         }}
         secondaryCTA={{

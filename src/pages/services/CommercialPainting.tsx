@@ -103,7 +103,7 @@ const CommercialPainting = () => {
     <>
       <SEO
         title="Commercial Painting — Hill Country Painting"
-        description="Professional commercial painting in Austin TX. Offices, retail, restaurants. Fully insured. Flexible scheduling. Minimal disruption. Free estimates."
+        description="Professional commercial painting in Austin TX. Offices, retail, restaurants. Fully insured. Flexible scheduling. Minimal disruption. Consultations available."
         canonical="/services/commercial"
         pageType="service"
         breadcrumbs={[
@@ -191,7 +191,7 @@ const CommercialPainting = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                  Get Free Estimate
+                  Get Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -347,9 +347,9 @@ const CommercialPainting = () => {
 
       <CTABanner
         title="Ready to Enhance Your Business?"
-        subtitle="Get a free estimate for professional commercial painting in Austin"
+        subtitle="Get a consultation for professional commercial painting in Austin"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
       />

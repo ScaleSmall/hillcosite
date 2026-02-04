@@ -107,7 +107,7 @@ const ExteriorPainting = () => {
     <>
       <SEO
         title="Exterior Painting — Hill Country Painting"
-        description="Expert exterior painting in Austin TX. Weather-resistant finishes for Texas climate. Professional prep, premium paints, 2-year warranty. Free estimates."
+        description="Expert exterior painting in Austin TX. Weather-resistant finishes for Texas climate. Professional prep, premium paints, 2-year warranty. Consultations available."
         canonical="/services/exterior-painting"
         pageType="service"
         breadcrumbs={[
@@ -195,7 +195,7 @@ const ExteriorPainting = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
-                  Get Free Estimate
+                  Get Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -316,9 +316,9 @@ const ExteriorPainting = () => {
 
       <CTABanner
         title="Ready to Enhance Your Home's Exterior?"
-        subtitle="Get a free estimate for professional exterior painting in Austin"
+        subtitle="Get a consultation for professional exterior painting in Austin"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
       />

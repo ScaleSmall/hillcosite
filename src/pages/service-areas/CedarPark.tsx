@@ -148,9 +148,9 @@ const CedarPark = () => {
 
       <CTABanner
         title="Ready to Transform Your Cedar Park Home?"
-        subtitle="Get a free estimate from Cedar Park's trusted painting professionals"
+        subtitle="Get a consultation from Cedar Park's trusted painting professionals"
         primaryCTA={{
-          text: "Get Free Estimate",
+          text: "Get Consultation",
           href: "/contact"
         }}
         secondaryCTA={{

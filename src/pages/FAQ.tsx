@@ -8,8 +8,8 @@ import CTABanner from '../components/sections/CTABanner';
 const FAQ = () => {
   const allFAQs = [
     {
-      question: 'Do you provide free estimates?',
-      answer: 'Yes, we provide free, detailed estimates for all our painting services. We\'ll assess your project, discuss your needs, and provide transparent pricing with no hidden fees.'
+      question: 'Do you provide consultations?',
+      answer: 'Yes, we provide detailed consultations for all our painting services. We\'ll assess your project, discuss your needs, and provide transparent pricing with no hidden fees.'
     },
     {
       question: 'Are you insured?',
@@ -82,7 +82,7 @@ const FAQ = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Free Estimate
+                Get Consultation
               </Link>
               <a href="tel:(512)240-2246" className="btn-outline">
                 Call (512) 240-2246
@@ -117,7 +117,7 @@ const FAQ = () => {
         title="Still Have Questions?"
         subtitle="Contact us for personalized answers about your painting project"
         primaryCTA={{
-          text: 'Get Free Estimate',
+          text: 'Get Consultation',
           href: '/contact'
         }}
         secondaryCTA={{
