@@ -76,8 +76,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     logo: {
       '@type': 'ImageObject',
       '@id': `${baseUrl}/#logo`,
-      url: `${baseUrl}/logo.png`,
-      contentUrl: `${baseUrl}/logo.png`,
+      url: `${baseUrl}/brand/hill-country-painting-logo-primary.png`,
+      contentUrl: `${baseUrl}/brand/hill-country-painting-logo-primary.png`,
       width: 512,
       height: 512,
       caption: 'Hill Country Painting Logo'

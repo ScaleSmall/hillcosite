@@ -84,7 +84,7 @@ const Blog = () => {
             url: baseUrl,
             logo: {
               '@type': 'ImageObject',
-              url: `${baseUrl}/logo.png`
+              url: `${baseUrl}/brand/hill-country-painting-logo-primary.png`
             },
             telephone: '(512) 240-2246',
             address: {

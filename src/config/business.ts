@@ -54,7 +54,7 @@ export const businessConfig = {
 
   // Social & Web
   website: 'https://www.hillcopaint.com',
-  logo: '/logo.png',
+  logo: '/brand/hill-country-painting-logo-primary.png',
   googleBusinessProfileUrl: 'https://share.google/nnJ8rkOVgGiwe0ys3',
 
   // Geo Coordinates (Austin, TX)
