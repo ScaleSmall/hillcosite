@@ -40,7 +40,7 @@ const ComparisonSection = ({
       return value ? (
         <Check className="w-5 h-5 text-green-600" />
       ) : (
-        <X className="w-5 h-5 text-red-500" />
+        <X className="w-5 h-5 text-brand-coral" />
       );
     }
     return <span className="text-sm text-brand-gray-600">{value}</span>;

@@ -26,7 +26,7 @@ const NextStepsSection = ({
           {/* Primary CTA - Contact */}
           <div className="bg-white rounded-xl p-8 shadow-lg border border-brand-gray-200 hover:shadow-xl transition-shadow">
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+              <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
                 <Phone className="w-6 h-6 text-brand-coral" />
               </div>
               <h3 className="text-xl font-bold text-brand-gray-900">Get Your Consultation</h3>
@@ -36,7 +36,7 @@ const NextStepsSection = ({
               <div className="flex flex-col gap-3">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
                 >
                   Request Consultation
                   <ArrowRight className="ml-2 w-4 h-4" />
