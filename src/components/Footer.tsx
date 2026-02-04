@@ -85,8 +85,8 @@ const Footer = () => {
                 src="/brand/hill-country-painting-logo-reverse.png"
                 alt="Hill Country Painting Logo"
                 className="h-12 w-auto"
-                width="144"
-                height="48"
+                width="150"
+                height="150"
                 loading="lazy"
                 decoding="async"
               />
