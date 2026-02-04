@@ -258,13 +258,13 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-brand-gray-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-brand-gray-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 Request Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-brand-gray-900 text-white hover:bg-brand-gray-800 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-gray-900 text-white hover:bg-brand-gray-800 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call {businessConfig.phone}

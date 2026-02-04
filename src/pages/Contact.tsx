@@ -300,11 +300,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.firstName ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.firstName ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.firstName && (
-                      <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.firstName}</p>
                     )}
                   </div>
                   <div>
@@ -319,11 +319,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.lastName ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.lastName ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.lastName && (
-                      <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.lastName}</p>
                     )}
                   </div>
                 </div>
@@ -340,11 +340,11 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.email ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.email ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.email}</p>
                     )}
                   </div>
                   <div>
@@ -360,11 +360,11 @@ const Contact = () => {
                       required
                       placeholder="(512) 555-1234"
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.phone ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.phone ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.phone && (
-                      <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -380,12 +380,12 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                      errors.streetAddress ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                      errors.streetAddress ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                     }`}
                     placeholder="123 Main St"
                   />
                   {errors.streetAddress && (
-                    <p className="mt-1 text-sm text-red-600">{errors.streetAddress}</p>
+                    <p className="mt-1 text-sm text-brand-coral">{errors.streetAddress}</p>
                   )}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -401,12 +401,12 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.city ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.city ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                       placeholder="Round Rock"
                     />
                     {errors.city && (
-                      <p className="mt-1 text-sm text-red-600">{errors.city}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.city}</p>
                     )}
                   </div>
                   <div>
@@ -421,12 +421,12 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.zipCode ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.zipCode ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                       placeholder="78664"
                     />
                     {errors.zipCode && (
-                      <p className="mt-1 text-sm text-red-600">{errors.zipCode}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.zipCode}</p>
                     )}
                   </div>
                 </div>
@@ -442,7 +442,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.serviceRequested ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.serviceRequested ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     >
                       <option value="">Select a service</option>
@@ -452,7 +452,7 @@ const Contact = () => {
                       <option value="Commercial">Commercial Painting</option>
                     </select>
                     {errors.serviceRequested && (
-                      <p className="mt-1 text-sm text-red-600">{errors.serviceRequested}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.serviceRequested}</p>
                     )}
                   </div>
                   <div>
@@ -466,7 +466,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.howContacted ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
+                        errors.howContacted ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     >
                       <option value="Google">Google</option>
@@ -480,7 +480,7 @@ const Contact = () => {
                       <option value="Yard Sign">Yard Sign</option>
                     </select>
                     {errors.howContacted && (
-                      <p className="mt-1 text-sm text-red-600">{errors.howContacted}</p>
+                      <p className="mt-1 text-sm text-brand-coral">{errors.howContacted}</p>
                     )}
                   </div>
                 </div>

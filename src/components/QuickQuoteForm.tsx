@@ -94,7 +94,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.name && (
-            <p id="quote-name-error" className="mt-1 text-sm text-red-200" role="alert">
+            <p id="quote-name-error" className="mt-1 text-sm text-white/80" role="alert">
               {errors.name}
             </p>
           )}
@@ -118,7 +118,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.phone && (
-            <p id="quote-phone-error" className="mt-1 text-sm text-red-200" role="alert">
+            <p id="quote-phone-error" className="mt-1 text-sm text-white/80" role="alert">
               {errors.phone}
             </p>
           )}
@@ -142,7 +142,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.email && (
-            <p id="quote-email-error" className="mt-1 text-sm text-red-200" role="alert">
+            <p id="quote-email-error" className="mt-1 text-sm text-white/80" role="alert">
               {errors.email}
             </p>
           )}

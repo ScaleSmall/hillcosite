@@ -27,7 +27,7 @@ const NextStepsSection = ({
           <div className="bg-white rounded-xl p-8 shadow-lg border border-brand-gray-200 hover:shadow-xl transition-shadow">
             <div className="space-y-4">
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
-                <Phone className="w-6 h-6 text-red-600" />
+                <Phone className="w-6 h-6 text-brand-coral" />
               </div>
               <h3 className="text-xl font-bold text-brand-gray-900">Get Your Consultation</h3>
               <p className="text-brand-gray-600">
