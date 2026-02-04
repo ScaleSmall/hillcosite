@@ -130,7 +130,7 @@ const ColorConsultation = () => {
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
         {/* Colorful Gradient Background */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-500 to-red-500"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-azure via-brand-coral to-brand-azureDark"></div>
           <div className="absolute inset-0 bg-gradient-to-tl from-blue-500 via-purple-600 to-pink-600 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-600 mix-blend-screen opacity-30"></div>
         </div>
@@ -237,7 +237,7 @@ const ColorConsultation = () => {
               <div className="bg-white rounded-2xl p-8 shadow-2xl">
                 <h3 className="text-2xl font-bold text-brand-gray-900 mb-6 text-center">Color Harmony Wheel</h3>
                 <div className="relative w-64 h-64 mx-auto mb-6">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-red-400 via-yellow-400 to-green-400 opacity-80"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-coral via-brand-azure to-brand-azureDark opacity-80"></div>
                   <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 opacity-80"></div>
                   <div className="absolute inset-8 rounded-full bg-gradient-to-br from-cyan-400 via-indigo-400 to-violet-400 opacity-80"></div>
                   <div className="absolute inset-12 rounded-full bg-white flex items-center justify-center">

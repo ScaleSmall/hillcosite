@@ -101,7 +101,7 @@ const Home = () => {
             className="group relative overflow-hidden"
           >
             {/* Ribbon Background */}
-            <div className="relative bg-gradient-to-r from-orange-400 to-red-500 px-8 py-4 transform rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-2xl">
+            <div className="relative bg-gradient-to-r from-brand-coral to-brand-azureDark px-8 py-4 transform rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-2xl">
               {/* Corner fold effect */}
               <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-red-700 transform translate-x-[1px] -translate-y-[1px]"></div>
               
