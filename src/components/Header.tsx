@@ -58,7 +58,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 flex-shrink-0">
             <img
-              src="/hill-country-painting-logo-primary.png"
+              src="/logo.png"
               alt="Hill Country Painting Logo"
               className="h-12 lg:h-16 w-auto"
               width="240"

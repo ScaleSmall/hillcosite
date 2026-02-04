@@ -82,7 +82,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="/hill-country-painting-logo-transparent.png"
+                src="/logo.png"
                 alt="Hill Country Painting Logo"
                 className="h-12 w-auto"
                 width="144"
