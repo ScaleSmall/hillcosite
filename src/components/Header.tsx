@@ -156,7 +156,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center flex-shrink-0">
             <Link
               to="/contact"
-              className="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 whitespace-nowrap"
+              className="inline-flex items-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 whitespace-nowrap"
             >
               Consultation
             </Link>
@@ -179,7 +179,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-slate-600 hover:text-brand-azureDark hover:bg-slate-50 transition-colors flex items-center justify-center ml-auto"
+            className="lg:hidden p-2 rounded-md text-slate-600 hover:text-brand-azureDark hover:bg-brand-gray-50 transition-colors flex items-center justify-center ml-auto"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -274,7 +274,7 @@ const Header = () => {
               <Link
                 to="/contact"
                 onClick={() => setIsMenuOpen(false)}
-                className="inline-flex items-center justify-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 w-full"
+                className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 w-full"
               >
                 Consultation
               </Link>
