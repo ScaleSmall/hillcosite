@@ -140,7 +140,7 @@ const BlogPost = () => {
             url: baseUrl,
             logo: {
               '@type': 'ImageObject',
-              url: `${baseUrl}/logo.png`,
+              url: `${baseUrl}/hill-country-painting-logo-primary.png`,
               width: 180,
               height: 180
             }
@@ -151,7 +151,7 @@ const BlogPost = () => {
             url: baseUrl,
             logo: {
               '@type': 'ImageObject',
-              url: `${baseUrl}/logo.png`,
+              url: `${baseUrl}/hill-country-painting-logo-primary.png`,
               width: 180,
               height: 180
             }
@@ -231,7 +231,7 @@ const BlogPost = () => {
 
       <Helmet>
         <meta property="og:type" content="article" />
-        <meta property="og:image" content={post.featured_image || 'https://www.hillcopaint.com/logo.png'} />
+        <meta property="og:image" content={post.featured_image || 'https://www.hillcopaint.com/hill-country-painting-logo-primary.png'} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="article:published_time" content={post.published_at} />
@@ -242,7 +242,7 @@ const BlogPost = () => {
           <meta key={index} property="article:tag" content={tag} />
         ))}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={post.featured_image || 'https://www.hillcopaint.com/logo.png'} />
+        <meta name="twitter:image" content={post.featured_image || 'https://www.hillcopaint.com/hill-country-painting-logo-primary.png'} />
         <script type="application/ld+json">
           {JSON.stringify(generateStructuredData())}
         </script>
