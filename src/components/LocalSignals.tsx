@@ -23,11 +23,11 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
 
   if (!hasAnyData) {
     return (
-      <section className="py-12 bg-slate-50">
+      <section className="py-12 bg-brand-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">Local Service Area Details</h2>
-            <p className="text-lg text-slate-700">
+            <p className="text-lg text-brand-gray-700">
               We serve the greater {city} area, including {areaName} and nearby communities.
             </p>
           </div>
@@ -37,7 +37,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
   }
 
   return (
-    <section className="py-12 bg-slate-50">
+    <section className="py-12 bg-brand-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">Local Service Area Details</h2>
@@ -50,7 +50,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
                   {zipCodes.map((zip, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-white text-slate-700 rounded-lg border border-slate-200 font-medium"
+                      className="px-4 py-2 bg-white text-brand-gray-700 rounded-lg border border-brand-gray-200 font-medium"
                     >
                       {zip}
                     </span>
@@ -66,7 +66,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
                   {nearbyAreas.map((area, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-white text-slate-700 rounded-lg border border-slate-200"
+                      className="px-4 py-2 bg-white text-brand-gray-700 rounded-lg border border-brand-gray-200"
                     >
                       {area}
                     </span>
@@ -78,7 +78,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
             {serviceKeywords && serviceKeywords.length > 0 && (
               <div>
                 <h3 className="text-xl font-semibold text-brand-gray-900 mb-3">Services Commonly Requested Here</h3>
-                <ul className="list-disc list-inside space-y-1 text-slate-700">
+                <ul className="list-disc list-inside space-y-1 text-brand-gray-700">
                   {serviceKeywords.map((keyword, index) => (
                     <li key={index}>{keyword}</li>
                   ))}

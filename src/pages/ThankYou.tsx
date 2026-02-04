@@ -21,7 +21,7 @@ const ThankYou = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900">
                 Thank You!
               </h1>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              <p className="text-xl text-brand-gray-600 max-w-2xl mx-auto">
                 We've received your request and will contact you within 24 hours to schedule your consultation. 
                 Hill Country Painting looks forward to transforming your Austin home.
               </p>
@@ -42,7 +42,7 @@ const ThankYou = () => {
               <h3 className="font-semibold text-brand-gray-900 mb-3">
                 What happens next?
               </h3>
-              <div className="space-y-2 text-sm text-slate-600">
+              <div className="space-y-2 text-sm text-brand-gray-600">
                 <p>✓ We'll call within 24 hours to schedule your consultation</p>
                 <p>✓ On-site consultation and detailed proposal</p>
                 <p>✓ Professional painting with 2-year warranty</p>

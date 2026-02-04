@@ -138,7 +138,7 @@ const PaintingCostsTable = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
             Austin Painting Costs by Project Type
           </h2>
-          <p className="text-xl text-slate-600">
+          <p className="text-xl text-brand-gray-600">
             Based on local Austin projects
           </p>
         </div>
@@ -155,11 +155,11 @@ const PaintingCostsTable = () => {
             </thead>
             <tbody>
               {costFactors.map((factor, index) => (
-                <tr key={index} className={index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+                <tr key={index} className={index % 2 === 0 ? 'bg-brand-gray-50' : 'bg-white'}>
                   <td className="px-6 py-4 font-semibold text-brand-gray-900">{factor.factor}</td>
                   <td className="px-6 py-4 text-center text-green-600 font-medium">{factor.interior}</td>
                   <td className="px-6 py-4 text-center text-blue-600 font-medium">{factor.exterior}</td>
-                  <td className="px-6 py-4 text-slate-600">{factor.details}</td>
+                  <td className="px-6 py-4 text-brand-gray-600">{factor.details}</td>
                 </tr>
               ))}
             </tbody>

@@ -242,14 +242,14 @@ const CabinetRefinishing = () => {
       <ProofPointsSection />
 
       {/* Quick Quote Form - Above the Fold */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Cabinet Painting in Austin
               </h2>
-              <div className="space-y-6 text-lg text-slate-600">
+              <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
                   Transform your kitchen for significantly less than replacement. Our professional cabinet painting services deliver factory-quality finishes with custom colors.
                 </p>
@@ -309,7 +309,7 @@ const CabinetRefinishing = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Complete Kitchen Solutions
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Transform your entire kitchen with our comprehensive services
             </p>
           </div>
@@ -329,7 +329,7 @@ const CabinetRefinishing = () => {
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-4">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 mb-6 leading-body">
+                <p className="text-brand-gray-600 mb-6 leading-body">
                   {service.description}
                 </p>
                 <a href={service.link} className="btn-outline">

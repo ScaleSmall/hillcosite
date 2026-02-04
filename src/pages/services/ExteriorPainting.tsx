@@ -209,14 +209,14 @@ const ExteriorPainting = () => {
 
       <ProofPointsSection />
 
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Professional Exterior Painting in Austin
               </h2>
-              <div className="space-y-6 text-lg text-slate-600">
+              <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
                   Transform your home's curb appeal with professional exterior painting designed for Texas climate. Our experienced crew delivers exceptional preparation, premium materials, and flawless application.
                 </p>

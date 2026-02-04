@@ -59,10 +59,10 @@ const Sitemap = () => {
       />
 
       <div className="min-h-screen bg-white">
-        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">Site Map</h1>
-            <p className="text-lg text-slate-600">
+            <p className="text-lg text-brand-gray-600">
               Navigate our complete site structure. Find all our services, service areas, guides, and resources.
             </p>
           </div>
@@ -168,17 +168,17 @@ const Sitemap = () => {
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-slate-200">
+            <div className="mt-12 pt-8 border-t border-brand-gray-200">
               <div className="flex items-center gap-2 mb-6">
                 <MapPin className="w-6 h-6 text-brand-azure" />
                 <h2 className="text-3xl font-bold text-brand-gray-900">Austin Neighborhoods</h2>
               </div>
-              <p className="text-slate-600 mb-6">
+              <p className="text-brand-gray-600 mb-6">
                 We serve neighborhoods throughout Greater Austin. Browse by area below:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {geoAreas.map((hub) => (
-                  <div key={hub.slug} className="bg-slate-50 p-6 rounded-lg">
+                  <div key={hub.slug} className="bg-brand-gray-50 p-6 rounded-lg">
                     <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                       <Link to={`/areas/${hub.slug}`} className="text-brand-azure hover:text-brand-azureDark transition-colors">
                         {hub.name}
@@ -189,7 +189,7 @@ const Sitemap = () => {
                         <li key={neighborhood.slug}>
                           <Link
                             to={`/areas/${hub.slug}/${neighborhood.slug}`}
-                            className="text-slate-700 hover:text-brand-azure transition-colors text-sm"
+                            className="text-brand-gray-700 hover:text-brand-azure transition-colors text-sm"
                           >
                             {neighborhood.name}
                           </Link>
@@ -206,7 +206,7 @@ const Sitemap = () => {
                 <Phone className="w-6 h-6 text-brand-azure" />
                 <h3 className="text-2xl font-bold text-brand-gray-900">Need Help Finding Something?</h3>
               </div>
-              <p className="text-slate-700 mb-4">
+              <p className="text-brand-gray-700 mb-4">
                 Can't find what you're looking for? Contact us directly and we'll be happy to help.
               </p>
               <Link

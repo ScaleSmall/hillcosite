@@ -20,7 +20,7 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
   };
 
   return (
-    <section className="section-padding bg-slate-50">
+    <section className="section-padding bg-brand-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-16">
@@ -30,7 +30,7 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-slate-600">
+              <p className="text-xl text-brand-gray-600">
                 {subtitle}
               </p>
             )}
@@ -42,7 +42,7 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
             <div key={index} className="card overflow-hidden">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-slate-50 transition-colors"
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-brand-gray-50 transition-colors"
               >
                 <h3 className="font-semibold text-brand-gray-900 pr-4">
                   {faq.question}
@@ -55,7 +55,7 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
               </button>
               {openIndex === index && (
                 <div className="px-6 pb-4">
-                  <p className="text-slate-600 leading-body">
+                  <p className="text-brand-gray-600 leading-body">
                     {faq.answer}
                   </p>
                 </div>

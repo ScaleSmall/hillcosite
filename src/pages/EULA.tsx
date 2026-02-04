@@ -16,10 +16,10 @@ const EULA = () => {
       />
 
       <div className="min-h-screen bg-white">
-        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">End User License Agreement</h1>
-            <p className="text-lg text-slate-600">Last Updated: January 31, 2026</p>
+            <p className="text-lg text-brand-gray-600">Last Updated: January 31, 2026</p>
           </div>
         </section>
 
@@ -137,7 +137,7 @@ const EULA = () => {
               <li>By visiting our <Link to="/contact" className="text-brand-azure hover:text-brand-azureDark">contact page</Link></li>
             </ul>
 
-            <div className="mt-8 p-6 bg-slate-50 rounded-lg border-l-4 border-brand-azure">
+            <div className="mt-8 p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
               <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Related Documents</h3>
               <div className="space-y-2">
                 <Link to="/terms" className="block text-brand-azure hover:text-brand-azureDark">

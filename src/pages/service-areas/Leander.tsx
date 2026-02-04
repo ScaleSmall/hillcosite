@@ -122,25 +122,25 @@ const Leander = () => {
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Leander Neighborhoods We Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Expert painting throughout Leander's Hill Country communities
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Mountain className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Crystal Falls</h3>
-              <p className="text-slate-600">Professional painting for Crystal Falls master-planned community with HOA compliance and premium finishes.</p>
+              <p className="text-brand-gray-600">Professional painting for Crystal Falls master-planned community with HOA compliance and premium finishes.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Waves className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Lakefront Properties</h3>
-              <p className="text-slate-600">Expert painting for homes near Lake Travis with moisture-resistant and UV-protective coatings.</p>
+              <p className="text-brand-gray-600">Expert painting for homes near Lake Travis with moisture-resistant and UV-protective coatings.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Old Town Leander</h3>
-              <p className="text-slate-600">Quality painting for established Leander neighborhoods and historic homes.</p>
+              <p className="text-brand-gray-600">Quality painting for established Leander neighborhoods and historic homes.</p>
             </div>
           </div>
         </div>

@@ -54,13 +54,13 @@ const Services = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-gray-900 leading-tight">
               Complete Painting Services in Austin
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               From interior and exterior painting to cabinet painting and commercial projects, we deliver professional results backed by our 2-year warranty. Serving Austin and surrounding areas. Clean prep, crisp lines, reliable schedules.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -94,12 +94,12 @@ const Services = () => {
                   <h3 className="text-3xl font-bold text-brand-gray-900">
                     {service.title}
                   </h3>
-                  <p className="text-lg text-slate-600 leading-body">
+                  <p className="text-lg text-brand-gray-600 leading-body">
                     {service.description}
                   </p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-slate-700">
+                      <li key={featureIndex} className="flex items-center text-brand-gray-700">
                         <ArrowRight className="w-4 h-4 text-brand-azureDark mr-3 flex-shrink-0" />
                         {feature}
                       </li>

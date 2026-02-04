@@ -218,14 +218,14 @@ const InteriorPainting = () => {
       <ProofPointsSection />
 
       {/* Quick Quote Form - Above the Fold */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Transform Your Austin Home's Interior
               </h2>
-              <div className="space-y-6 text-lg text-slate-600">
+              <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
                   Professional interior painting that enhances every room in your Austin home. Our experienced crew delivers clean preparation, premium materials, and precise application for lasting results.
                 </p>
@@ -269,7 +269,7 @@ const InteriorPainting = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Our Interior Painting Process
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Professional approach for lasting interior painting results
             </p>
           </div>
@@ -301,7 +301,7 @@ const InteriorPainting = () => {
                             <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                               {step.title}
                             </h3>
-                            <p className="text-slate-600 leading-relaxed">
+                            <p className="text-brand-gray-600 leading-relaxed">
                               {step.description}
                             </p>
                           </div>
@@ -353,7 +353,7 @@ const InteriorPainting = () => {
                   <h3 className="font-bold text-brand-gray-900 mb-3 text-lg">
                     {step.title}
                   </h3>
-                  <p className="text-slate-600 leading-relaxed">
+                  <p className="text-brand-gray-600 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -369,7 +369,7 @@ const InteriorPainting = () => {
                 <div className="w-3 h-3 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
                 <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
               </div>
-              <span className="text-slate-700 font-semibold">Professional Results, Every Step</span>
+              <span className="text-brand-gray-700 font-semibold">Professional Results, Every Step</span>
               <div className="flex gap-1">
                 <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
                 <div className="w-3 h-3 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.8s'}}></div>

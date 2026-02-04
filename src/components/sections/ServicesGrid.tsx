@@ -57,7 +57,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
@@ -87,7 +87,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 mb-4 leading-body">
+                <p className="text-brand-gray-600 mb-4 leading-body">
                   {service.description}
                 </p>
                 <Link

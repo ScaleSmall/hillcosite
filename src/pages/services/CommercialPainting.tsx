@@ -205,14 +205,14 @@ const CommercialPainting = () => {
 
       <ProofPointsSection />
 
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Professional Commercial Painting in Austin
               </h2>
-              <div className="space-y-6 text-lg text-slate-600">
+              <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
                   Enhance your business with professional commercial painting services. We understand the importance of minimizing disruption while delivering exceptional results.
                 </p>
@@ -249,7 +249,7 @@ const CommercialPainting = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Commercial Painting Advantages
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Why businesses choose Hill Country Painting
             </p>
           </div>
@@ -260,7 +260,7 @@ const CommercialPainting = () => {
                 <Clock className="w-8 h-8 text-brand-azureDark" />
               </div>
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Flexible Scheduling</h3>
-              <p className="text-slate-600">
+              <p className="text-brand-gray-600">
                 Evening and weekend work available to minimize business disruption
               </p>
             </div>
@@ -270,7 +270,7 @@ const CommercialPainting = () => {
                 <Shield className="w-8 h-8 text-brand-azureDark" />
               </div>
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Fully Insured</h3>
-              <p className="text-slate-600">
+              <p className="text-brand-gray-600">
                 Full commercial liability coverage for your peace of mind
               </p>
             </div>
@@ -280,7 +280,7 @@ const CommercialPainting = () => {
                 <Building2 className="w-8 h-8 text-brand-azureDark" />
               </div>
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">All Property Types</h3>
-              <p className="text-slate-600">
+              <p className="text-brand-gray-600">
                 Offices, retail, restaurants, medical facilities, and more
               </p>
             </div>

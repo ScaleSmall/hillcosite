@@ -63,13 +63,13 @@ const ServiceAreas = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Austin Metro Service Areas
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Hill Country Painting proudly serves the Austin metro area with professional residential and commercial painting services. Clean prep, crisp lines, reliable schedules for homes and businesses.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -92,13 +92,13 @@ const ServiceAreas = () => {
       />
 
       {/* Hub Areas Section */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Additional Austin Neighborhoods We Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Specialized painting services throughout Greater Austin's diverse communities
             </p>
           </div>
@@ -115,7 +115,7 @@ const ServiceAreas = () => {
                     {hub.name}
                   </h3>
                 </div>
-                <p className="text-slate-600 mb-4 leading-relaxed">
+                <p className="text-brand-gray-600 mb-4 leading-relaxed">
                   {hub.description}
                 </p>
                 <div className="text-sm text-brand-azure font-medium">
@@ -134,7 +134,7 @@ const ServiceAreas = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Our Services Throughout Austin
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Complete painting solutions available in all service areas
             </p>
           </div>
@@ -156,7 +156,7 @@ const ServiceAreas = () => {
                     <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
                       {service.title}
                     </h3>
-                    <p className="text-slate-600 mb-6 leading-body text-lg">
+                    <p className="text-brand-gray-600 mb-6 leading-body text-lg">
                       {service.description}
                     </p>
                     <div className="flex flex-wrap gap-3 mb-6">

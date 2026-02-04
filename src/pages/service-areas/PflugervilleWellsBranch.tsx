@@ -122,25 +122,25 @@ const PflugervilleWellsBranch = () => {
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Pflugerville & Wells Branch Neighborhoods We Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Expert painting throughout Pflugerville's diverse communities
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Blackhawk</h3>
-              <p className="text-slate-600">Professional painting for Blackhawk homes with HOA compliance and quality finishes.</p>
+              <p className="text-brand-gray-600">Professional painting for Blackhawk homes with HOA compliance and quality finishes.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Users className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Wells Branch</h3>
-              <p className="text-slate-600">Expert painting for the diverse Wells Branch community straddling Austin and Pflugerville.</p>
+              <p className="text-brand-gray-600">Expert painting for the diverse Wells Branch community straddling Austin and Pflugerville.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Zap className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Falcon Pointe</h3>
-              <p className="text-slate-600">Quality painting for established and new Falcon Pointe family homes.</p>
+              <p className="text-brand-gray-600">Quality painting for established and new Falcon Pointe family homes.</p>
             </div>
           </div>
         </div>

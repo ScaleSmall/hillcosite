@@ -43,7 +43,7 @@ const ComparisonSection = ({
         <X className="w-5 h-5 text-red-500" />
       );
     }
-    return <span className="text-sm text-slate-600">{value}</span>;
+    return <span className="text-sm text-brand-gray-600">{value}</span>;
   };
 
   return (
@@ -54,7 +54,7 @@ const ComparisonSection = ({
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               {subtitle}
             </p>
           )}
@@ -70,14 +70,14 @@ const ComparisonSection = ({
               <div className="text-3xl font-bold text-brand-azureDark mb-2">
                 {option1Price}
               </div>
-              <p className="text-slate-600">
+              <p className="text-brand-gray-600">
                 {option1Description}
               </p>
             </div>
             <div className="space-y-3">
               {comparisons.map((item, index) => (
                 <div key={index} className="flex items-center justify-between py-2">
-                  <span className="text-slate-700">{item.feature}</span>
+                  <span className="text-brand-gray-700">{item.feature}</span>
                   <div className="flex justify-center min-w-[24px]">
                     {renderValue(item.option1)}
                   </div>
@@ -92,17 +92,17 @@ const ComparisonSection = ({
               <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">
                 {option2Title}
               </h3>
-              <div className="text-3xl font-bold text-slate-500 mb-2">
+              <div className="text-3xl font-bold text-brand-gray-500 mb-2">
                 {option2Price}
               </div>
-              <p className="text-slate-600">
+              <p className="text-brand-gray-600">
                 {option2Description}
               </p>
             </div>
             <div className="space-y-3">
               {comparisons.map((item, index) => (
                 <div key={index} className="flex items-center justify-between py-2">
-                  <span className="text-slate-700">{item.feature}</span>
+                  <span className="text-brand-gray-700">{item.feature}</span>
                   <div className="flex justify-center min-w-[24px]">
                     {renderValue(item.option2)}
                   </div>

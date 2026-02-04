@@ -122,25 +122,25 @@ const TaylorHutto = () => {
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Taylor & Hutto Communities We Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Expert painting throughout the Highway 79 corridor
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Wheat className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Historic Taylor</h3>
-              <p className="text-slate-600">Professional painting for Taylor's historic downtown and established neighborhoods with preservation expertise.</p>
+              <p className="text-brand-gray-600">Professional painting for Taylor's historic downtown and established neighborhoods with preservation expertise.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <TrendingUp className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Growing Hutto</h3>
-              <p className="text-slate-600">Expert painting for Hutto's rapidly expanding communities and new construction developments.</p>
+              <p className="text-brand-gray-600">Expert painting for Hutto's rapidly expanding communities and new construction developments.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Star Ranch</h3>
-              <p className="text-slate-600">Quality painting for Star Ranch and other Hutto master-planned communities.</p>
+              <p className="text-brand-gray-600">Quality painting for Star Ranch and other Hutto master-planned communities.</p>
             </div>
           </div>
         </div>

@@ -16,10 +16,10 @@ const Terms = () => {
       />
 
       <div className="min-h-screen bg-white">
-        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">Terms of Service</h1>
-            <p className="text-lg text-slate-600">Last Updated: January 2, 2026</p>
+            <p className="text-lg text-brand-gray-600">Last Updated: January 2, 2026</p>
           </div>
         </section>
 
@@ -171,7 +171,7 @@ const Terms = () => {
               Email: <a href="mailto:info@hillcopaint.com">info@hillcopaint.com</a>
             </p>
 
-            <div className="mt-12 p-6 bg-slate-50 rounded-lg border border-slate-200">
+            <div className="mt-12 p-6 bg-brand-gray-50 rounded-lg border border-brand-gray-200">
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-primary">
                   Get Consultation

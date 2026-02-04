@@ -122,25 +122,25 @@ const WestLakeHills = () => {
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               West Lake Hills Luxury Home Expertise
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Premium painting services for West Lake Hills' finest properties
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Award className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Luxury Properties</h3>
-              <p className="text-slate-600">Exceptional craftsmanship for high-end homes with premium materials and meticulous attention to detail.</p>
+              <p className="text-brand-gray-600">Exceptional craftsmanship for high-end homes with premium materials and meticulous attention to detail.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Hillside Specialists</h3>
-              <p className="text-slate-600">Expert painting for challenging hillside locations with proper equipment and safety protocols.</p>
+              <p className="text-brand-gray-600">Expert painting for challenging hillside locations with proper equipment and safety protocols.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Sparkles className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Designer Collaboration</h3>
-              <p className="text-slate-600">Work seamlessly with architects and designers to achieve your vision with precision execution.</p>
+              <p className="text-brand-gray-600">Work seamlessly with architects and designers to achieve your vision with precision execution.</p>
             </div>
           </div>
         </div>

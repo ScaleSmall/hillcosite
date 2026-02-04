@@ -157,13 +157,13 @@ const Blog = () => {
       )}
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Industry Insights
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Professional insights from Austin's painting experts. Industry trends, expert advice, and insider knowledge to help you make informed decisions about your painting projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -184,12 +184,12 @@ const Blog = () => {
           {loading ? (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
-              <p className="mt-4 text-slate-600">Loading posts...</p>
+              <p className="mt-4 text-brand-gray-600">Loading posts...</p>
             </div>
           ) : blogPosts.length === 0 ? (
             <div className="text-center py-12">
               <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">No posts yet</h2>
-              <p className="text-slate-600 mb-4">Check back soon for industry insights and painting tips from our experts.</p>
+              <p className="text-brand-gray-600 mb-4">Check back soon for industry insights and painting tips from our experts.</p>
               {!supabaseConfigured && (
                 <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg max-w-2xl mx-auto text-left">
                   <p className="text-sm text-yellow-800 font-semibold mb-2">⚠️ Configuration Issue Detected</p>
@@ -205,7 +205,7 @@ const Blog = () => {
                 {recentPosts.map((post) => (
                   <article key={post.id} className="card overflow-hidden group">
                     <div className="p-6">
-                      <div className="flex items-center space-x-4 text-sm text-slate-500 mb-3">
+                      <div className="flex items-center space-x-4 text-sm text-brand-gray-500 mb-3">
                         <div className="flex items-center space-x-1">
                           <Calendar className="w-4 h-4" />
                           <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
@@ -217,7 +217,7 @@ const Blog = () => {
                       <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azureDark transition-colors">
                         {post.title}
                       </h3>
-                      <p className="text-slate-600 mb-4 leading-body">
+                      <p className="text-brand-gray-600 mb-4 leading-body">
                         {post.excerpt}
                       </p>
                       <Link
@@ -250,19 +250,19 @@ const Blog = () => {
                   </button>
 
                   {showPastArticles && (
-                    <div className="mt-4 bg-white rounded-lg border border-slate-200 divide-y divide-slate-200">
+                    <div className="mt-4 bg-white rounded-lg border border-brand-gray-200 divide-y divide-brand-gray-200">
                       {pastPosts.map((post) => (
                         <Link
                           key={post.id}
                           to={`/blog/${post.slug}`}
-                          className="block p-4 hover:bg-slate-50 transition-colors group"
+                          className="block p-4 hover:bg-brand-gray-50 transition-colors group"
                         >
                           <div className="flex items-start justify-between gap-4">
                             <div className="flex-1">
                               <h3 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-1">
                                 {post.title}
                               </h3>
-                              <div className="flex items-center space-x-4 text-sm text-slate-500">
+                              <div className="flex items-center space-x-4 text-sm text-brand-gray-500">
                                 <div className="flex items-center space-x-1">
                                   <Calendar className="w-3 h-3" />
                                   <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>

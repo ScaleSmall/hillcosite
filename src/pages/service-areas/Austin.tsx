@@ -181,13 +181,13 @@ const Austin = () => {
         imageLeft={true}
       />
 
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Neighborhoods We Proudly Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Professional painting throughout the Austin metropolitan area
             </p>
           </div>
@@ -227,7 +227,7 @@ const Austin = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Austin Neighborhoods We Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Explore detailed information about each Austin area we serve
             </p>
           </div>
@@ -244,7 +244,7 @@ const Austin = () => {
                     {hub.name}
                   </h3>
                 </div>
-                <p className="text-slate-600 mb-4 leading-relaxed">
+                <p className="text-brand-gray-600 mb-4 leading-relaxed">
                   {hub.description}
                 </p>
                 <div className="text-sm text-brand-azure font-medium">

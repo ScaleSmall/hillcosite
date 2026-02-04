@@ -128,7 +128,7 @@ const PreApproval = () => {
         }
       ` }} />
 
-      <section className="section-prequal bg-slate-50">
+      <section className="section-prequal bg-brand-gray-50">
         <div className="container-prequal">
           <div className="content-prequal-10">
             <div className="iframe-wrapper-prequal">
@@ -173,7 +173,7 @@ const PreApproval = () => {
 
       <section className="py-8 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-600 mb-4">
+          <p className="text-brand-gray-600 mb-4">
             Questions about financing? Call us at{' '}
             <a href="tel:(512)240-2246" className="text-brand-azureDark font-semibold hover:underline">
               (512) 240-2246
@@ -190,9 +190,9 @@ const PreApproval = () => {
         </div>
       </section>
 
-      <section className="py-6 bg-slate-50">
+      <section className="py-6 bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-brand-gray-500">
             Subject to credit approval. Terms and conditions apply. Financing provided by Wisetack.
             All financing is subject to credit approval. Your terms may vary. Payment options through Wisetack are provided by our lending partners.
           </p>

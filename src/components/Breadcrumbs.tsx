@@ -17,7 +17,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
   return (
     <>
       <nav aria-label="Breadcrumb" className={`text-sm ${className}`}>
-        <ol className="flex items-center space-x-2 text-slate-600">
+        <ol className="flex items-center space-x-2 text-brand-gray-600">
           <li>
             <Link to="/" className="flex items-center hover:text-brand-azureDark transition-colors">
               <Home className="w-4 h-4" />
@@ -26,7 +26,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
           </li>
           {items.map((item, index) => (
             <li key={index} className="flex items-center">
-              <ChevronRight className="w-4 h-4 mx-2 text-slate-400" />
+              <ChevronRight className="w-4 h-4 mx-2 text-brand-gray-400" />
               {item.href && index < items.length - 1 ? (
                 <Link
                   to={String(item.href)}
@@ -35,7 +35,7 @@ const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
                   {String(item.label)}
                 </Link>
               ) : (
-                <span className="text-slate-800 font-medium" aria-current="page">
+                <span className="text-brand-gray-800 font-medium" aria-current="page">
                   {String(item.label)}
                 </span>
               )}

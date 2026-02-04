@@ -202,7 +202,7 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-gradient-to-br from-brand-gray-50 to-slate-100">
+      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6 lg:gap-8">
             {/* Award Badge - Left Side */}
@@ -218,25 +218,25 @@ const Contact = () => {
             {/* Content - Center */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
               <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Contact Us</h1>
-              <p className="text-base md:text-lg text-slate-600 mb-4">
+              <p className="text-base md:text-lg text-brand-gray-600 mb-4">
                 Get your consultation or reach out with any questions about your painting project.
               </p>
               <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">
                   <span className="text-brand-azureDark mt-0.5">✓</span>
-                  <span className="text-slate-700">Professional service</span>
+                  <span className="text-brand-gray-700">Professional service</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-azureDark mt-0.5">✓</span>
-                  <span className="text-slate-700">Prompt responses</span>
+                  <span className="text-brand-gray-700">Prompt responses</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-azureDark mt-0.5">✓</span>
-                  <span className="text-slate-700">Consultations available</span>
+                  <span className="text-brand-gray-700">Consultations available</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-brand-azureDark mt-0.5">✓</span>
-                  <span className="text-slate-700">Transparent pricing</span>
+                  <span className="text-brand-gray-700">Transparent pricing</span>
                 </li>
               </ul>
             </div>
@@ -289,7 +289,7 @@ const Contact = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="firstName" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       First Name *
                     </label>
                     <input
@@ -300,7 +300,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.firstName ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.firstName ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.firstName && (
@@ -308,7 +308,7 @@ const Contact = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="lastName" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       Last Name *
                     </label>
                     <input
@@ -319,7 +319,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.lastName ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.lastName ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.lastName && (
@@ -329,7 +329,7 @@ const Contact = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="email" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -340,7 +340,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.email ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.email ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.email && (
@@ -348,7 +348,7 @@ const Contact = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       Phone Number *
                     </label>
                     <input
@@ -360,7 +360,7 @@ const Contact = () => {
                       required
                       placeholder="(512) 555-1234"
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.phone ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.phone ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.phone && (
@@ -369,7 +369,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="streetAddress" className="block text-sm font-medium text-slate-700 mb-2">
+                  <label htmlFor="streetAddress" className="block text-sm font-medium text-brand-gray-700 mb-2">
                     Street Address *
                   </label>
                   <input
@@ -380,7 +380,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                      errors.streetAddress ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                      errors.streetAddress ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                     }`}
                     placeholder="123 Main St"
                   />
@@ -390,7 +390,7 @@ const Contact = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="city" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="city" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       City *
                     </label>
                     <input
@@ -401,7 +401,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.city ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.city ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                       placeholder="Round Rock"
                     />
@@ -410,7 +410,7 @@ const Contact = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="zipCode" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="zipCode" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       Zip Code *
                     </label>
                     <input
@@ -421,7 +421,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.zipCode ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.zipCode ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                       placeholder="78664"
                     />
@@ -432,7 +432,7 @@ const Contact = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="serviceRequested" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="serviceRequested" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       Service Requested *
                     </label>
                     <select
@@ -442,7 +442,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.serviceRequested ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.serviceRequested ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                     >
                       <option value="">Select a service</option>
@@ -456,7 +456,7 @@ const Contact = () => {
                     )}
                   </div>
                   <div>
-                    <label htmlFor="howContacted" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="howContacted" className="block text-sm font-medium text-brand-gray-700 mb-2">
                       How did you find us? *
                     </label>
                     <select
@@ -466,7 +466,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
-                        errors.howContacted ? 'border-red-500 bg-red-50' : 'border-slate-300'
+                        errors.howContacted ? 'border-red-500 bg-red-50' : 'border-brand-gray-300'
                       }`}
                     >
                       <option value="Google">Google</option>
@@ -485,7 +485,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+                  <label htmlFor="message" className="block text-sm font-medium text-brand-gray-700 mb-2">
                     Project Details
                   </label>
                   <textarea
@@ -494,7 +494,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={4}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors"
+                    className="w-full px-4 py-3 border border-brand-gray-300 rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors"
                     placeholder="Tell us about your painting project... (optional)"
                   ></textarea>
                 </div>
@@ -505,7 +505,7 @@ const Contact = () => {
                 >
                   {isSubmitting ? 'Sending...' : 'Send Request'}
                 </button>
-                <p className="text-sm text-slate-600 text-center">
+                <p className="text-sm text-brand-gray-600 text-center">
                   We'll respond promptly to schedule your free on-site estimate
                 </p>
               </form>
@@ -620,10 +620,10 @@ const Contact = () => {
                     className="w-[92%] max-w-[520px] rounded-xl bg-white p-6 shadow-2xl"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <h3 id="hc-modal-title" className="mb-2 text-center text-[22px] font-bold text-slate-900">
+                    <h3 id="hc-modal-title" className="mb-2 text-center text-[22px] font-bold text-brand-gray-900">
                       Request received ✅
                     </h3>
-                    <p className="mb-4 text-center text-slate-700">
+                    <p className="mb-4 text-center text-brand-gray-700">
                       Thanks! Hill Co Painting will contact you soon.
                     </p>
                     <div className="flex justify-center">
@@ -644,13 +644,13 @@ const Contact = () => {
       </section>
       
       {/* Contact Information Below Form */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">
               Other Ways to Contact Us
             </h2>
-            <p className="text-slate-600">Prefer to call or email? We're here to help.</p>
+            <p className="text-brand-gray-600">Prefer to call or email? We're here to help.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div>
@@ -663,7 +663,7 @@ const Contact = () => {
                   <a href="tel:(512)240-2246" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                     (512) 240-2246
                   </a>
-                  <p className="text-sm text-slate-600">Prompt response</p>
+                  <p className="text-sm text-brand-gray-600">Prompt response</p>
                 </div>
               </div>
             </div>
@@ -677,7 +677,7 @@ const Contact = () => {
                   <a href="mailto:info@hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                     info@hillcopaint.com
                   </a>
-                  <p className="text-sm text-slate-600">Prompt response</p>
+                  <p className="text-sm text-brand-gray-600">Prompt response</p>
                 </div>
               </div>
             </div>
@@ -688,8 +688,8 @@ const Contact = () => {
                 </div>
                 <div className="text-center">
                   <h3 className="font-semibold text-brand-gray-900">Service Area</h3>
-                  <p className="text-slate-700">Austin Metro Area</p>
-                  <p className="text-sm text-slate-600">Round Rock, Cedar Park, Georgetown & more</p>
+                  <p className="text-brand-gray-700">Austin Metro Area</p>
+                  <p className="text-sm text-brand-gray-600">Round Rock, Cedar Park, Georgetown & more</p>
                 </div>
               </div>
             </div>
@@ -697,7 +697,7 @@ const Contact = () => {
 
           <div className="text-center mb-6">
             <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Our Service Area</h3>
-            <p className="text-slate-600">Serving Austin and surrounding communities</p>
+            <p className="text-brand-gray-600">Serving Austin and surrounding communities</p>
           </div>
           <GoogleMapEmbed className="max-w-4xl mx-auto" />
         </div>

@@ -21,7 +21,7 @@ const NAPMapSection = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-1">Service Area</h3>
-                  <p className="text-slate-600">
+                  <p className="text-brand-gray-600">
                     {businessConfig.name}<br />
                     Serving {businessConfig.address.displayFull}
                   </p>
@@ -42,7 +42,7 @@ const NAPMapSection = () => {
                   >
                     {businessConfig.phone}
                   </a>
-                  <p className="text-sm text-slate-500 mt-1">
+                  <p className="text-sm text-brand-gray-500 mt-1">
                     Mon-Fri: 8:00 AM - 6:00 PM
                   </p>
                 </div>
@@ -65,8 +65,8 @@ const NAPMapSection = () => {
                 </div>
               </div>
 
-              <div className="pt-6 border-t border-slate-200">
-                <p className="text-slate-600 leading-relaxed">
+              <div className="pt-6 border-t border-brand-gray-200">
+                <p className="text-brand-gray-600 leading-relaxed">
                   Serving the Austin metro area with professional painting services.
                   Contact us today for a consultation on your project.
                 </p>

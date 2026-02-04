@@ -185,7 +185,7 @@ const Gallery = () => {
       </Helmet>
 
       {/* Unique Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-slate-50 to-white">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -194,7 +194,7 @@ const Gallery = () => {
                 <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
                   Our Work Gallery
                 </h1>
-                <p className="text-xl text-slate-600 leading-body">
+                <p className="text-xl text-brand-gray-600 leading-body">
                   Explore our recent painting projects across Austin. From interior transformations to exterior makeovers and cabinet painting, see the quality that comes with clean prep, crisp lines, and professional execution.
                 </p>
                 <div className="text-brand-azureDark font-medium">
@@ -250,7 +250,7 @@ const Gallery = () => {
               <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
                 Latest Projects
               </h2>
-              <p className="text-xl text-slate-600">
+              <p className="text-xl text-brand-gray-600">
                 Fresh from our recent work across Austin
               </p>
             </div>
@@ -278,10 +278,10 @@ const Gallery = () => {
 
             {/* Dropdown for Older Photos (After 12) */}
             {olderPhotos.length > 0 && (
-              <div className="border-t border-slate-200 pt-8">
+              <div className="border-t border-brand-gray-200 pt-8">
                 <button
                   onClick={() => setShowOlderPhotos(!showOlderPhotos)}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-brand-azureDark font-semibold rounded-lg transition-colors duration-200"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-brand-gray-100 hover:bg-brand-gray-200 text-brand-azureDark font-semibold rounded-lg transition-colors duration-200"
                   aria-expanded={showOlderPhotos}
                 >
                   {showOlderPhotos ? 'Hide' : 'Show'} Older Projects ({olderPhotos.length})
@@ -316,13 +316,13 @@ const Gallery = () => {
       )}
 
       {/* Featured Project */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Portfolio Highlights
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
               Explore our portfolio of painting projects across Austin. From interior transformations to exterior makeovers and cabinet painting.
             </p>
           </div>
@@ -350,7 +350,7 @@ const Gallery = () => {
                   <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
                     Featured: Custom Kitchen Painting
                   </h3>
-                  <p className="text-slate-600 mb-6 leading-body">
+                  <p className="text-brand-gray-600 mb-6 leading-body">
                     Complete cabinet painting with custom color matching. This project saved the homeowners significantly compared to full replacement while achieving a completely fresh, modern look that transforms the entire kitchen space.
                   </p>
                   <div className="flex flex-wrap gap-4 mb-6">
@@ -396,7 +396,7 @@ const Gallery = () => {
                   <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-slate-600 mb-4 leading-body">
+                  <p className="text-brand-gray-600 mb-4 leading-body">
                     {project.description}
                   </p>
                   <Link to="/contact" className="text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors">

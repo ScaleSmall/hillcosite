@@ -195,14 +195,14 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
 
       <ProofPointsSection />
 
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
                 Professional {service.name} in {location.name}
               </h2>
-              <div className="space-y-6 text-lg text-slate-600">
+              <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>{content.introText}</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {content.benefits.slice(0, 6).map((benefit, idx) => (
@@ -214,7 +214,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 </div>
               </div>
 
-              <div className="mt-8 p-6 bg-white rounded-xl border border-slate-200">
+              <div className="mt-8 p-6 bg-white rounded-xl border border-brand-gray-200">
                 <h3 className="text-xl font-semibold text-brand-gray-900 mb-4">
                   {location.name} Areas We Serve
                 </h3>
@@ -222,13 +222,13 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                   {location.neighborhoods.map((neighborhood, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm"
+                      className="px-3 py-1 bg-brand-gray-100 text-brand-gray-700 rounded-full text-sm"
                     >
                       {neighborhood}
                     </span>
                   ))}
                 </div>
-                <p className="mt-4 text-sm text-slate-500">
+                <p className="mt-4 text-sm text-brand-gray-500">
                   ZIP Codes: {location.zipCodes.join(', ')}
                 </p>
               </div>
@@ -246,7 +246,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Our {service.name} Process in {location.name}
             </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
               Professional approach tailored for {location.name} homes and conditions
             </p>
           </div>
@@ -254,7 +254,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             {content.processSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-slate-50 rounded-xl p-6 border border-slate-200 hover:border-brand-gray-300 transition-colors"
+                className="bg-brand-gray-50 rounded-xl p-6 border border-brand-gray-200 hover:border-brand-gray-300 transition-colors"
               >
                 <div className="w-10 h-10 bg-brand-azure text-white rounded-lg flex items-center justify-center font-bold mb-4">
                   {idx + 1}
@@ -262,7 +262,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 <h3 className="text-lg font-semibold text-brand-gray-900 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-slate-600">{step.description}</p>
+                <p className="text-brand-gray-600">{step.description}</p>
               </div>
             ))}
           </div>

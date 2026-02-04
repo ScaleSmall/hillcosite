@@ -12,7 +12,7 @@ const NotFound = () => {
         robots="noindex, nofollow"
       />
       
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100 min-h-[60vh] flex items-center">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100 min-h-[60vh] flex items-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="space-y-4">
@@ -27,7 +27,7 @@ const NotFound = () => {
               <h2 className="text-2xl md:text-3xl font-bold text-brand-gray-900">
                 Page Not Found
               </h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              <p className="text-xl text-brand-gray-600 max-w-2xl mx-auto">
                 You've reached Hill Country Painting! Whether you came from Google, a city-specific link, or just browsing - we're here to help with all your Austin area painting needs.
               </p>
             </div>
@@ -51,7 +51,7 @@ const NotFound = () => {
               <h3 className="font-semibold text-brand-gray-900 mb-3">
                 We serve all Austin areas including:
               </h3>
-              <div className="grid grid-cols-2 gap-2 text-sm text-slate-600">
+              <div className="grid grid-cols-2 gap-2 text-sm text-brand-gray-600">
                 <span>• Round Rock</span>
                 <span>• Pflugerville</span>
                 <span>• Cedar Park</span>
@@ -63,7 +63,7 @@ const NotFound = () => {
               </div>
             </div>
 
-            <div className="pt-8 border-t border-slate-200">
+            <div className="pt-8 border-t border-brand-gray-200">
               <h3 className="text-lg font-semibold text-brand-gray-900 mb-4">
                 Our Services
               </h3>

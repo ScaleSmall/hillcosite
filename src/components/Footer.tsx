@@ -93,9 +93,9 @@ const Footer = () => {
             </div>
             <div className="border-l-2 border-brand-azure pl-3">
               <p className="font-semibold text-white text-lg">{businessConfig.name}</p>
-              <p className="text-slate-300 text-sm">Professional Painting Contractors</p>
+              <p className="text-brand-gray-300 text-sm">Professional Painting Contractors</p>
             </div>
-            <p className="text-slate-300 text-sm">
+            <p className="text-brand-gray-300 text-sm">
               {businessConfig.tagline}
             </p>
             <div className="space-y-2 bg-brand-gray-800/50 rounded-lg p-3">
@@ -113,11 +113,11 @@ const Footer = () => {
                 <Mail size={16} />
                 <span>{businessConfig.email}</span>
               </a>
-              <div className="flex items-start space-x-2 text-slate-300">
+              <div className="flex items-start space-x-2 text-brand-gray-300">
                 <MapPin size={16} className="mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="block">{getDisplayAddress('full')}</span>
-                  <span className="text-xs text-slate-400">Serving Greater Austin</span>
+                  <span className="text-xs text-brand-gray-400">Serving Greater Austin</span>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-brand-gray-300 hover:text-white transition-colors"
                   aria-label={social.ariaLabel}
                 >
                   <social.icon size={20} />
@@ -144,7 +144,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
                   >
                     {link.name}
                   </Link>
@@ -160,7 +160,7 @@ const Footer = () => {
                 <li key={service.name}>
                   <Link
                     to={service.href}
-                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
                   >
                     {service.name}
                   </Link>
@@ -176,7 +176,7 @@ const Footer = () => {
                 <li key={area.name}>
                   <Link
                     to={area.href}
-                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
                   >
                     {area.name}
                   </Link>
@@ -192,7 +192,7 @@ const Footer = () => {
                 <li key={guide.name}>
                   <Link
                     to={guide.href}
-                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
                   >
                     {guide.name}
                   </Link>
@@ -208,7 +208,7 @@ const Footer = () => {
                 <li key={area.name}>
                   <Link
                     to={area.href}
-                    className="text-slate-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
                   >
                     {area.name}
                   </Link>
@@ -220,15 +220,15 @@ const Footer = () => {
 
         <div className="border-t border-brand-azureDark pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-slate-300 text-sm text-center md:text-left">
+            <div className="text-brand-gray-300 text-sm text-center md:text-left">
               <div>© {currentYear} Hill Country Painting. All rights reserved.</div>
               <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
                 <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                <span className="text-slate-500">•</span>
+                <span className="text-brand-gray-500">•</span>
                 <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                <span className="text-slate-500">•</span>
+                <span className="text-brand-gray-500">•</span>
                 <Link to="/eula" className="hover:text-white transition-colors">EULA</Link>
-                <span className="text-slate-500">•</span>
+                <span className="text-brand-gray-500">•</span>
                 <Link to="/financing" className="hover:text-white transition-colors">Financing</Link>
               </div>
             </div>

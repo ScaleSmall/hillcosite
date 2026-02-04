@@ -68,7 +68,7 @@ const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
         <div className="text-center mt-12">
           <Link 
             to="/contact" 
-            className="inline-flex items-center px-8 py-4 bg-white text-brand-azureDark font-semibold rounded-lg hover:bg-slate-100 transition-colors duration-200 mr-4"
+            className="inline-flex items-center px-8 py-4 bg-white text-brand-azureDark font-semibold rounded-lg hover:bg-brand-gray-100 transition-colors duration-200 mr-4"
           >
             Get Consultation
           </Link>

@@ -122,25 +122,25 @@ const CedarPark = () => {
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
               Cedar Park Neighborhoods We Serve
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Expert painting throughout Cedar Park's diverse communities
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Trees className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Buttercup Creek</h3>
-              <p className="text-slate-600">Professional painting for Buttercup Creek homes with HOA compliance and quality finishes.</p>
+              <p className="text-brand-gray-600">Professional painting for Buttercup Creek homes with HOA compliance and quality finishes.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Brushy Creek</h3>
-              <p className="text-slate-600">Expert painting for established Brushy Creek neighborhoods and new developments.</p>
+              <p className="text-brand-gray-600">Expert painting for established Brushy Creek neighborhoods and new developments.</p>
             </div>
-            <div className="bg-slate-50 p-6 rounded-lg">
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Building2 className="w-12 h-12 text-brand-azure mb-4" />
               <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Cedar Park Town Center</h3>
-              <p className="text-slate-600">Commercial and residential painting near Cedar Park's vibrant town center area.</p>
+              <p className="text-brand-gray-600">Commercial and residential painting near Cedar Park's vibrant town center area.</p>
             </div>
           </div>
         </div>

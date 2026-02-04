@@ -16,7 +16,7 @@ const InternalLinks: React.FC<InternalLinksProps> = ({ links, title = 'Related R
   if (!links || links.length === 0) return null;
 
   return (
-    <section className="section-padding bg-slate-50">
+    <section className="section-padding bg-brand-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl md:text-3xl font-bold text-brand-gray-900 mb-8 text-center">
           {title}
@@ -31,7 +31,7 @@ const InternalLinks: React.FC<InternalLinksProps> = ({ links, title = 'Related R
               <h3 className="text-lg font-semibold text-brand-gray-900 mb-2">
                 {link.title}
               </h3>
-              <p className="text-slate-600 text-sm">
+              <p className="text-brand-gray-600 text-sm">
                 {link.description}
               </p>
             </Link>

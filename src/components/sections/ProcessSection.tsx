@@ -14,14 +14,14 @@ interface ProcessSectionProps {
 
 const ProcessSection = ({ title, subtitle, steps }: ProcessSectionProps) => {
   return (
-    <section className="section-padding bg-slate-50">
+    <section className="section-padding bg-brand-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
               {subtitle}
             </p>
           )}
@@ -36,7 +36,7 @@ const ProcessSection = ({ title, subtitle, steps }: ProcessSectionProps) => {
               <h3 className="text-xl font-bold text-brand-gray-900 mb-4">
                 {step.title}
               </h3>
-              <p className="text-slate-600 leading-body flex-grow">
+              <p className="text-brand-gray-600 leading-body flex-grow">
                 {step.description}
               </p>
             </div>

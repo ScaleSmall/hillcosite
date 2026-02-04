@@ -14,7 +14,7 @@ interface ServiceAreasSectionProps {
 
 const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProps) => {
   return (
-    <section className="section-padding bg-slate-50">
+    <section className="section-padding bg-brand-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-16">
@@ -24,7 +24,7 @@ const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProp
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-slate-600">
+              <p className="text-xl text-brand-gray-600">
                 {subtitle}
               </p>
             )}

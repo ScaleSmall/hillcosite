@@ -91,7 +91,7 @@ const Header = () => {
                         (item.name === 'Services' && location.pathname.startsWith('/services')) ||
                         (item.name === 'Guides' && location.pathname.startsWith('/guides'))
                           ? 'text-brand-azureDark'
-                          : 'text-slate-700 hover:text-brand-azureDark'
+                          : 'text-brand-gray-700 hover:text-brand-azureDark'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -100,12 +100,12 @@ const Header = () => {
 
                     {/* Services Dropdown */}
                     {item.name === 'Services' && isServicesOpen && (
-                      <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50">
                         {services.map((service) => (
                           <Link
                             key={service.name}
                             to={service.href}
-                            className="block px-4 py-3 text-slate-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
+                            className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
                           >
                             {service.name}
                           </Link>
@@ -115,12 +115,12 @@ const Header = () => {
 
                     {/* Guides Dropdown */}
                     {item.name === 'Guides' && isGuidesOpen && (
-                      <div className="absolute top-full left-0 mt-0 w-72 bg-white rounded-lg shadow-xl border border-slate-200 py-2 z-50">
+                      <div className="absolute top-full left-0 mt-0 w-72 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50">
                         {guides.map((guide) => (
                           <Link
                             key={guide.name}
                             to={guide.href}
-                            className="block px-4 py-3 text-slate-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
+                            className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
                           >
                             {guide.name}
                           </Link>
@@ -134,7 +134,7 @@ const Header = () => {
                     className={`text-base font-semibold transition-colors duration-200 whitespace-nowrap ${
                       location.pathname === item.href
                         ? 'text-brand-azureDark'
-                        : 'text-slate-700 hover:text-brand-azureDark'
+                        : 'text-brand-gray-700 hover:text-brand-azureDark'
                     }`}
                   >
                     {item.name}
@@ -145,7 +145,7 @@ const Header = () => {
 
             <a
               href="tel:(512)240-2246"
-              className="flex items-center space-x-2 text-slate-700 hover:text-brand-azureDark transition-colors text-base font-semibold whitespace-nowrap"
+              className="flex items-center space-x-2 text-brand-gray-700 hover:text-brand-azureDark transition-colors text-base font-semibold whitespace-nowrap"
             >
               <Phone size={18} />
               <span>(512) 240-2246</span>
@@ -167,7 +167,7 @@ const Header = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon text-slate-600 hover:text-brand-azureDark transition-colors flex items-center justify-center w-6 h-6"
+                  className="social-icon text-brand-gray-600 hover:text-brand-azureDark transition-colors flex items-center justify-center w-6 h-6"
                   aria-label={social.ariaLabel}
                 >
                   <social.icon size={22} className="block shrink-0" strokeWidth={1.5} />
@@ -179,7 +179,7 @@ const Header = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-slate-600 hover:text-brand-azureDark hover:bg-brand-gray-50 transition-colors flex items-center justify-center ml-auto"
+            className="lg:hidden p-2 rounded-md text-brand-gray-600 hover:text-brand-azureDark hover:bg-brand-gray-50 transition-colors flex items-center justify-center ml-auto"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -189,7 +189,7 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100">
+        <div className="lg:hidden bg-white border-t border-brand-gray-100">
           <div className="px-4 py-6 space-y-1">
             {mainNavigation.map((item) => (
               <div key={item.name}>
@@ -201,7 +201,7 @@ const Header = () => {
                     (item.name === 'Services' && location.pathname.startsWith('/services/')) ||
                     (item.name === 'Guides' && location.pathname.startsWith('/guides/'))
                       ? 'text-brand-azureDark'
-                      : 'text-slate-700 hover:text-brand-azureDark'
+                      : 'text-brand-gray-700 hover:text-brand-azureDark'
                   }`}
                 >
                   {item.name}
@@ -218,7 +218,7 @@ const Header = () => {
                         className={`block py-2 text-sm transition-colors duration-200 ${
                           location.pathname === service.href
                             ? 'text-brand-azureDark font-medium'
-                            : 'text-slate-600 hover:text-brand-azureDark'
+                            : 'text-brand-gray-600 hover:text-brand-azureDark'
                         }`}
                       >
                         {service.name}
@@ -238,7 +238,7 @@ const Header = () => {
                         className={`block py-2 text-sm transition-colors duration-200 ${
                           location.pathname === guide.href
                             ? 'text-brand-azureDark font-medium'
-                            : 'text-slate-600 hover:text-brand-azureDark'
+                            : 'text-brand-gray-600 hover:text-brand-azureDark'
                         }`}
                       >
                         {guide.name}
@@ -249,7 +249,7 @@ const Header = () => {
               </div>
             ))}
             
-            <div className="pt-6 border-t border-slate-100 space-y-3">
+            <div className="pt-6 border-t border-brand-gray-100 space-y-3">
               <div className="grid grid-cols-3 gap-0.5 pb-4">
                 {socialLinks.map((social) => (
                   <a
@@ -257,7 +257,7 @@ const Header = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-600 hover:text-brand-azureDark transition-colors"
+                    className="text-brand-gray-600 hover:text-brand-azureDark transition-colors"
                     aria-label={social.ariaLabel}
                   >
                     <social.icon size={20} />
@@ -266,7 +266,7 @@ const Header = () => {
               </div>
               <a
                 href="tel:(512)240-2246"
-                className="flex items-center space-x-2 text-slate-700 font-semibold py-2"
+                className="flex items-center space-x-2 text-brand-gray-700 font-semibold py-2"
               >
                 <Phone size={18} />
                 <span>(512) 240-2246</span>

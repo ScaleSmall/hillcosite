@@ -47,13 +47,13 @@ const About = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-slate-100">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               About Hill Country Painting
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Austin's trusted painting professionals, committed to transforming homes and commercial spaces with clean prep, crisp lines, and reliable schedules. Insured, experienced, and backed by a 2-year warranty.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -81,7 +81,7 @@ const BlogPost = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
-          <p className="mt-4 text-slate-600">Loading post...</p>
+          <p className="mt-4 text-brand-gray-600">Loading post...</p>
         </div>
       </div>
     );
@@ -95,10 +95,10 @@ const BlogPost = () => {
           description="The blog post you're looking for could not be found."
           canonical="/blog"
         />
-        <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="min-h-screen flex items-center justify-center bg-brand-gray-50">
           <div className="text-center max-w-md mx-auto px-4">
             <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">Post Not Found</h1>
-            <p className="text-slate-600 mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
+            <p className="text-brand-gray-600 mb-8">The blog post you're looking for doesn't exist or has been removed.</p>
             <Link to="/blog" className="btn-primary">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Blog
@@ -249,7 +249,7 @@ const BlogPost = () => {
       </Helmet>
 
       {/* Hero Section with Featured Image */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-brand-gray-50 to-slate-100">
+      <section className="relative py-16 md:py-24 bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/blog"
@@ -260,7 +260,7 @@ const BlogPost = () => {
           </Link>
 
           <div className="space-y-6">
-            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-600">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-brand-gray-600">
               <div className="flex items-center space-x-2">
                 <Calendar className="w-4 h-4" />
                 <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
@@ -268,7 +268,7 @@ const BlogPost = () => {
               <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-xs font-medium">
                 {post.category}
               </span>
-              <span className="text-slate-500">By {post.author}</span>
+              <span className="text-brand-gray-500">By {post.author}</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
@@ -277,11 +277,11 @@ const BlogPost = () => {
 
             {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap items-center gap-2">
-                <Tag className="w-4 h-4 text-slate-500" />
+                <Tag className="w-4 h-4 text-brand-gray-500" />
                 {post.tags.map((tag, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 bg-slate-200 text-slate-700 rounded text-xs"
+                    className="px-2 py-1 bg-brand-gray-200 text-brand-gray-700 rounded text-xs"
                   >
                     {tag}
                   </span>
@@ -304,7 +304,7 @@ const BlogPost = () => {
               itemProp="abstract"
             >
               <h2 className="text-xl font-bold text-brand-gray-900 mb-3">TL;DR</h2>
-              <p className="text-slate-700 text-lg leading-relaxed">{post.tldr}</p>
+              <p className="text-brand-gray-700 text-lg leading-relaxed">{post.tldr}</p>
             </section>
           )}
           <div
@@ -313,15 +313,15 @@ const BlogPost = () => {
               prose-h1:text-4xl prose-h1:mt-20 prose-h1:mb-12 prose-h1:leading-tight
               prose-h2:text-3xl prose-h2:mt-20 prose-h2:mb-10 prose-h2:leading-snug
               prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8 prose-h3:leading-snug
-              prose-p:text-slate-700 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-10
+              prose-p:text-brand-gray-700 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-10
               prose-a:text-brand-azureDark prose-a:font-medium prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-brand-azureDark
               prose-strong:text-brand-gray-900 prose-strong:font-bold
-              prose-ul:my-10 prose-ul:space-y-4 prose-li:text-slate-700 prose-li:leading-relaxed prose-li:mb-3
+              prose-ul:my-10 prose-ul:space-y-4 prose-li:text-brand-gray-700 prose-li:leading-relaxed prose-li:mb-3
               prose-ol:my-10 prose-ol:space-y-4
-              prose-blockquote:border-l-4 prose-blockquote:border-brand-azure prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-12 prose-blockquote:italic prose-blockquote:text-slate-600 prose-blockquote:bg-slate-50 prose-blockquote:rounded-r
+              prose-blockquote:border-l-4 prose-blockquote:border-brand-azure prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-12 prose-blockquote:italic prose-blockquote:text-brand-gray-600 prose-blockquote:bg-brand-gray-50 prose-blockquote:rounded-r
               prose-img:rounded-xl prose-img:shadow-lg prose-img:my-12
-              prose-code:text-brand-azureDark prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-              first:prose-p:text-xl first:prose-p:font-medium first:prose-p:text-slate-900"
+              prose-code:text-brand-azureDark prose-code:bg-brand-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+              first:prose-p:text-xl first:prose-p:font-medium first:prose-p:text-brand-gray-900"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>

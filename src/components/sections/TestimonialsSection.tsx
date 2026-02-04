@@ -27,7 +27,7 @@ const TestimonialsSection = ({ title, subtitle, testimonials }: TestimonialsSect
               </h2>
             )}
             {subtitle && (
-              <p className="text-xl text-slate-600">
+              <p className="text-xl text-brand-gray-600">
                 {subtitle}
               </p>
             )}
@@ -43,7 +43,7 @@ const TestimonialsSection = ({ title, subtitle, testimonials }: TestimonialsSect
                 </div>
                 <div>
                   <div className="font-semibold text-brand-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-slate-600">{testimonial.location}</div>
+                  <div className="text-sm text-brand-gray-600">{testimonial.location}</div>
                 </div>
               </div>
               <div className="flex items-center mb-4">
@@ -51,7 +51,7 @@ const TestimonialsSection = ({ title, subtitle, testimonials }: TestimonialsSect
                   <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
                 ))}
               </div>
-              <p className="text-slate-700 leading-body">
+              <p className="text-brand-gray-700 leading-body">
                 "{testimonial.text}"
               </p>
             </div>

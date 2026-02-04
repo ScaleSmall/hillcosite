@@ -129,14 +129,14 @@ const Search = () => {
         robots="noindex, follow"
       />
 
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 mb-4">
               Search Results
             </h1>
             {query && (
-              <p className="text-xl text-slate-600">
+              <p className="text-xl text-brand-gray-600">
                 Results for: <span className="font-semibold text-brand-gray-900">"{query}"</span>
               </p>
             )}
@@ -145,14 +145,14 @@ const Search = () => {
           {loading && (
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
-              <p className="mt-4 text-slate-600">Searching...</p>
+              <p className="mt-4 text-brand-gray-600">Searching...</p>
             </div>
           )}
 
           {!loading && !query && (
             <div className="text-center py-12">
-              <SearchIcon className="w-16 h-16 mx-auto text-slate-400 mb-4" />
-              <p className="text-lg text-slate-600">
+              <SearchIcon className="w-16 h-16 mx-auto text-brand-gray-400 mb-4" />
+              <p className="text-lg text-brand-gray-600">
                 Enter a search term to find services, guides, and blog posts.
               </p>
             </div>
@@ -160,9 +160,9 @@ const Search = () => {
 
           {!loading && query && results.length === 0 && (
             <div className="text-center py-12 bg-white rounded-lg shadow-sm p-8">
-              <SearchIcon className="w-16 h-16 mx-auto text-slate-400 mb-4" />
+              <SearchIcon className="w-16 h-16 mx-auto text-brand-gray-400 mb-4" />
               <h2 className="text-2xl font-bold text-brand-gray-900 mb-2">No Results Found</h2>
-              <p className="text-lg text-slate-600 mb-8">
+              <p className="text-lg text-brand-gray-600 mb-8">
                 We couldn't find any results for "{query}". Try a different search term or browse our services below.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
@@ -181,7 +181,7 @@ const Search = () => {
 
           {!loading && results.length > 0 && (
             <div className="space-y-4">
-              <p className="text-slate-600 mb-6">
+              <p className="text-brand-gray-600 mb-6">
                 Found {results.length} {results.length === 1 ? 'result' : 'results'}
               </p>
 
@@ -201,7 +201,7 @@ const Search = () => {
                       <h3 className="text-xl font-bold text-brand-gray-900 mb-2 group-hover:text-brand-azureDark transition-colors">
                         {result.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-brand-gray-600 leading-relaxed">
                         {result.description}
                       </p>
                     </div>

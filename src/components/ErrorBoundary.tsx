@@ -47,7 +47,7 @@ class ErrorBoundary extends Component<Props, State> {
               <h1 className="text-3xl font-bold text-brand-gray-900 mb-4">
                 Something went wrong
               </h1>
-              <p className="text-lg text-slate-600 mb-8">
+              <p className="text-lg text-brand-gray-600 mb-8">
                 We're sorry, but something unexpected happened. Please try refreshing the page or return to our homepage.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -63,7 +63,7 @@ class ErrorBoundary extends Component<Props, State> {
               </div>
             </div>
             
-            <div className="bg-slate-50 rounded-lg p-6">
+            <div className="bg-brand-gray-50 rounded-lg p-6">
               <h3 className="font-semibold text-brand-gray-900 mb-4">
                 Need immediate help?
               </h3>

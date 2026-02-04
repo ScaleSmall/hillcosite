@@ -23,7 +23,7 @@ const Financing = () => {
               <h1 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
                 Flexible Payment Options
               </h1>
-              <p className="text-lg md:text-xl text-slate-200 mb-6">
+              <p className="text-lg md:text-xl text-brand-gray-200 mb-6">
                 Up to 24 months interest-free financing through Wisetack
               </p>
               <ul className="space-y-2 text-base md:text-lg">
@@ -61,7 +61,7 @@ const Financing = () => {
       </section>
 
       {/* Calculator Section */}
-      <section className="py-8 bg-slate-50">
+      <section className="py-8 bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <Link
@@ -210,7 +210,7 @@ const Financing = () => {
               Return to Consultation Page
             </Link>
           </div>
-          <p className="text-center text-sm text-slate-500">
+          <p className="text-center text-sm text-brand-gray-500">
             Subject to credit approval. Terms and conditions apply. Financing provided by Wisetack.
           </p>
         </div>
@@ -221,13 +221,13 @@ const Financing = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-brand-azureDark to-brand-azureDark rounded-xl p-6 md:p-8 text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-3">Ready to Get Pre-Approved?</h2>
-            <p className="text-slate-200 mb-6 max-w-2xl mx-auto">
+            <p className="text-brand-gray-200 mb-6 max-w-2xl mx-auto">
               Check your financing options in minutes with no impact to your credit score.
               See what you qualify for before scheduling your estimate.
             </p>
             <Link
               to="/pre-approval"
-              className="inline-flex items-center justify-center bg-white text-brand-azureDark font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors"
+              className="inline-flex items-center justify-center bg-white text-brand-azureDark font-semibold px-8 py-3 rounded-lg hover:bg-brand-gray-100 transition-colors"
             >
               Get Pre-Approved Now
             </Link>
@@ -236,9 +236,9 @@ const Financing = () => {
       </section>
 
       {/* Quick Info Section */}
-      <section className="py-8 bg-slate-50">
+      <section className="py-8 bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-slate-600 mb-4">
+          <p className="text-brand-gray-600 mb-4">
             Questions about financing? Call us at <a href="tel:(512)240-2246" className="text-brand-azureDark font-semibold hover:underline">(512) 240-2246</a>
           </p>
         </div>
