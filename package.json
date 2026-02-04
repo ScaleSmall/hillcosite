@@ -11,7 +11,7 @@
     "sitemap": "node scripts/generate-sitemap.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "brand:guard": "(! grep -R \"\\bprimary-\\|\\bdeep-\\|hover:scale\\|group-hover:scale\\|\\baccent-\" -n src) || (echo \"\\n❌ Brand Guard failed: forbidden tokens found (primary-/deep-/accent-/hover:scale).\\n\" && exit 1)",
+    "brand:guard": "node scripts/brand-guard.mjs",
     "prebuild": "npm run brand:guard",
     "predev": "npm run brand:guard",
     "typecheck": "tsc -p tsconfig.json --noEmit",
