@@ -88,6 +88,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             value={formData.name}
             onChange={handleChange}
             required
+            autoComplete="name"
             aria-required="true"
             aria-invalid={!!errors.name}
             aria-describedby={errors.name ? 'quote-name-error' : undefined}
@@ -112,6 +113,8 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             value={formData.phone}
             onChange={handleChange}
             required
+            autoComplete="tel"
+            inputMode="tel"
             aria-required="true"
             aria-invalid={!!errors.phone}
             aria-describedby={errors.phone ? 'quote-phone-error' : undefined}
@@ -136,6 +139,8 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             value={formData.email}
             onChange={handleChange}
             required
+            autoComplete="email"
+            inputMode="email"
             aria-required="true"
             aria-invalid={!!errors.email}
             aria-describedby={errors.email ? 'quote-email-error' : undefined}

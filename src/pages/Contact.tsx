@@ -299,12 +299,16 @@ const Contact = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
+                      autoComplete="given-name"
+                      aria-required="true"
+                      aria-invalid={!!errors.firstName}
+                      aria-describedby={errors.firstName ? 'firstName-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.firstName ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.firstName && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.firstName}</p>
+                      <p id="firstName-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.firstName}</p>
                     )}
                   </div>
                   <div>
@@ -318,12 +322,16 @@ const Contact = () => {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
+                      autoComplete="family-name"
+                      aria-required="true"
+                      aria-invalid={!!errors.lastName}
+                      aria-describedby={errors.lastName ? 'lastName-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.lastName ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.lastName && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.lastName}</p>
+                      <p id="lastName-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.lastName}</p>
                     )}
                   </div>
                 </div>
@@ -339,12 +347,17 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
+                      autoComplete="email"
+                      inputMode="email"
+                      aria-required="true"
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.email ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.email && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.email}</p>
+                      <p id="email-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.email}</p>
                     )}
                   </div>
                   <div>
@@ -358,13 +371,18 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       required
+                      autoComplete="tel"
+                      inputMode="tel"
                       placeholder="(512) 555-1234"
+                      aria-required="true"
+                      aria-invalid={!!errors.phone}
+                      aria-describedby={errors.phone ? 'phone-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.phone ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
                     />
                     {errors.phone && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.phone}</p>
+                      <p id="phone-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -379,13 +397,17 @@ const Contact = () => {
                     value={formData.streetAddress}
                     onChange={handleChange}
                     required
+                    autoComplete="street-address"
+                    placeholder="123 Main St"
+                    aria-required="true"
+                    aria-invalid={!!errors.streetAddress}
+                    aria-describedby={errors.streetAddress ? 'streetAddress-error' : undefined}
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                       errors.streetAddress ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                     }`}
-                    placeholder="123 Main St"
                   />
                   {errors.streetAddress && (
-                    <p className="mt-1 text-sm text-brand-coral">{errors.streetAddress}</p>
+                    <p id="streetAddress-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.streetAddress}</p>
                   )}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -400,13 +422,17 @@ const Contact = () => {
                       value={formData.city}
                       onChange={handleChange}
                       required
+                      autoComplete="address-level2"
+                      placeholder="Round Rock"
+                      aria-required="true"
+                      aria-invalid={!!errors.city}
+                      aria-describedby={errors.city ? 'city-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.city ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
-                      placeholder="Round Rock"
                     />
                     {errors.city && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.city}</p>
+                      <p id="city-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.city}</p>
                     )}
                   </div>
                   <div>
@@ -420,13 +446,18 @@ const Contact = () => {
                       value={formData.zipCode}
                       onChange={handleChange}
                       required
+                      autoComplete="postal-code"
+                      inputMode="numeric"
+                      placeholder="78664"
+                      aria-required="true"
+                      aria-invalid={!!errors.zipCode}
+                      aria-describedby={errors.zipCode ? 'zipCode-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.zipCode ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
-                      placeholder="78664"
                     />
                     {errors.zipCode && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.zipCode}</p>
+                      <p id="zipCode-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.zipCode}</p>
                     )}
                   </div>
                 </div>
@@ -441,6 +472,9 @@ const Contact = () => {
                       value={formData.serviceRequested}
                       onChange={handleChange}
                       required
+                      aria-required="true"
+                      aria-invalid={!!errors.serviceRequested}
+                      aria-describedby={errors.serviceRequested ? 'serviceRequested-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.serviceRequested ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
@@ -452,7 +486,7 @@ const Contact = () => {
                       <option value="Commercial">Commercial Painting</option>
                     </select>
                     {errors.serviceRequested && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.serviceRequested}</p>
+                      <p id="serviceRequested-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.serviceRequested}</p>
                     )}
                   </div>
                   <div>
@@ -465,6 +499,9 @@ const Contact = () => {
                       value={formData.howContacted}
                       onChange={handleChange}
                       required
+                      aria-required="true"
+                      aria-invalid={!!errors.howContacted}
+                      aria-describedby={errors.howContacted ? 'howContacted-error' : undefined}
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-brand-azure focus:border-brand-azure transition-colors ${
                         errors.howContacted ? 'border-brand-coral bg-brand-gray-50' : 'border-brand-gray-300'
                       }`}
@@ -480,7 +517,7 @@ const Contact = () => {
                       <option value="Yard Sign">Yard Sign</option>
                     </select>
                     {errors.howContacted && (
-                      <p className="mt-1 text-sm text-brand-coral">{errors.howContacted}</p>
+                      <p id="howContacted-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.howContacted}</p>
                     )}
                   </div>
                 </div>
