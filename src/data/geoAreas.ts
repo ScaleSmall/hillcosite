@@ -87,8 +87,8 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Barton Creek',
     slug: 'barton-creek',
-    description: 'Professional painting services for Barton Creek estates. Exceptional craftsmanship for quality homes.',
-    specialization: 'Barton Creek estates require expert knowledge of quality finishes, professional materials, and the precision needed to maintain the area\'s reputation for architectural excellence.',
+    description: 'Professional painting services for Barton Creek homes. Careful craftsmanship for quality properties.',
+    specialization: 'Barton Creek homes require expert knowledge of quality finishes, professional materials, and the precision needed to maintain architectural standards.',
     heroImage: '/barton-creek-estate-painting-austin.jpg',
     neighborhoods: [
       {
@@ -121,8 +121,8 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Tarrytown',
     slug: 'tarrytown',
-    description: 'Specialized painting for Tarrytown\'s historic homes. Honoring architectural heritage with modern excellence.',
-    specialization: 'Tarrytown and surrounding historic neighborhoods require specialized techniques for preserving period details, meeting strict HOA standards, and honoring the architectural character that makes these areas treasured.',
+    description: 'Specialized painting for Tarrytown\'s historic homes. Honoring architectural heritage with careful techniques.',
+    specialization: 'Tarrytown and surrounding historic neighborhoods require specialized techniques for preserving period details, meeting strict HOA standards, and honoring the architectural character that defines these areas.',
     heroImage: '/tarrytown-historic-home-painting-austin.jpg',
     neighborhoods: [
       {
@@ -133,12 +133,12 @@ export const geoAreas: HubArea[] = [
       {
         name: 'Old Enfield',
         slug: 'old-enfield',
-        description: 'Preservation painting for Old Enfield\'s 1920s-1940s estates along Enfield Road. Expert in Tudor, Colonial Revival, and Mediterranean architecture with strict attention to historical accuracy.'
+        description: 'Preservation painting for Old Enfield\'s 1920s-1940s homes along Enfield Road. Expert in Tudor, Colonial Revival, and Mediterranean architecture with strict attention to historical accuracy.'
       },
       {
         name: 'Pemberton Heights',
         slug: 'pemberton-heights',
-        description: 'Professional painting for Pemberton Heights estates north of 29th Street. Specialized in quality finishes for grand historic homes with extensive millwork, custom trim, and architectural details.'
+        description: 'Professional painting for Pemberton Heights homes north of 29th Street. Specialized in quality finishes for historic homes with extensive millwork, custom trim, and architectural details.'
       },
       {
         name: 'Bryker Woods',
@@ -224,7 +224,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Lakeway / Bee Cave / Lake Travis',
     slug: 'lakeway-bee-cave-and-lake-travis',
-    description: 'Professional painting for Lake Travis area homes. Specialized expertise for lakefront properties and Hill Country estates.',
+    description: 'Professional painting for Lake Travis area homes. Specialized expertise for lakefront properties and Hill Country homes.',
     specialization: 'Lake Travis area homes face unique challenges including intense sun exposure, humidity from the lake, and architectural standards that require specialized knowledge and high-performance materials.',
     heroImage: '/lakeway-lake-travis-home-painting.jpg',
     neighborhoods: [
@@ -241,7 +241,7 @@ export const geoAreas: HubArea[] = [
       {
         name: 'The Peninsula at Rough Hollow',
         slug: 'the-peninsula-at-rough-hollow',
-        description: 'Expert painting for The Peninsula at Rough Hollow estates.'
+        description: 'Expert painting for The Peninsula at Rough Hollow homes.'
       },
       {
         name: 'Serenity Hills',
@@ -292,19 +292,19 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Pemberton Heights / Old West Austin',
     slug: 'pemberton-heights-and-old-west-austin-historic-luxury',
-    description: 'Specialized services for Pemberton Heights and Old West Austin\'s historic homes. Preserving architectural heritage with excellence.',
-    specialization: 'These historic neighborhoods demand the highest level of craftsmanship, period-appropriate techniques, strict adherence to preservation standards, and quality finishes for Austin\'s established addresses.',
+    description: 'Specialized services for Pemberton Heights and Old West Austin\'s historic homes. Preserving architectural heritage with careful craftsmanship.',
+    specialization: 'These historic neighborhoods require careful craftsmanship, period-appropriate techniques, strict adherence to preservation standards, and quality finishes that respect architectural heritage.',
     heroImage: '/pemberton-heights-historic-luxury-painting-austin.jpg',
     neighborhoods: [
       {
         name: 'Pemberton Heights South',
         slug: 'pemberton-heights-south',
-        description: 'Professional painting for southern Pemberton Heights properties near Westover. Quality finishes for established estates featuring Colonial Revival, Georgian, and Mediterranean architecture with meticulous preservation requirements.'
+        description: 'Professional painting for southern Pemberton Heights properties near Westover. Quality finishes for established homes featuring Colonial Revival, Georgian, and Mediterranean architecture with meticulous preservation requirements.'
       },
       {
         name: 'Old Enfield West',
         slug: 'old-enfield-west',
-        description: 'Historic preservation for western Old Enfield estates near Windsor Road. Expert in grand architectural styles including Spanish Colonial Revival, French Eclectic, and English Tudor with extensive custom detailing.'
+        description: 'Historic preservation for western Old Enfield homes near Windsor Road. Expert in architectural styles including Spanish Colonial Revival, French Eclectic, and English Tudor with extensive custom detailing.'
       },
       {
         name: 'Bryker Woods West',

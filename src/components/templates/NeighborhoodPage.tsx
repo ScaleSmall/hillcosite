@@ -130,10 +130,13 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
 
             <div className="prose prose-lg max-w-none mb-8">
               <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">
-                Why Choose Hill Country Painting for {neighborhood.name}?
+                Our Approach in {neighborhood.name}
               </h2>
               <p className="text-brand-gray-700 mb-4">
-                As trusted painting contractors serving {neighborhood.name}, we understand the unique needs of homes in this area. Our team delivers clean prep, crisp lines, and reliable schedules on every project.
+                We work throughout {neighborhood.name} with attention to the details that matter to residents: thorough surface preparation, clean work areas, predictable schedules, and respect for your home and neighbors.
+              </p>
+              <p className="text-brand-gray-700 mb-4">
+                Projects are organized to minimize disruption. Equipment stays contained, music stays off, and crews arrive and leave as scheduled. You'll know what to expect each day.
               </p>
               <p className="text-brand-gray-700">
                 {hub.specialization}
@@ -157,7 +160,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Interior Painting</h3>
                 <p className="text-brand-gray-700">
-                  Expert color consultation and flawless application for your home's interior.
+                  Color consultation and careful application for walls, trim, and ceilings.
                 </p>
               </Link>
               <Link
@@ -166,7 +169,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Exterior Painting</h3>
                 <p className="text-brand-gray-700">
-                  Premium exterior painting built for Texas weather and your home's protection.
+                  Thorough surface preparation and quality paints suited for Texas climate.
                 </p>
               </Link>
               <Link
@@ -175,7 +178,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Cabinet Painting</h3>
                 <p className="text-brand-gray-700">
-                  Kitchen and bathroom cabinet painting for a fresh, updated look.
+                  Kitchen and bathroom cabinet refinishing with durable finishes.
                 </p>
               </Link>
               <Link
@@ -184,7 +187,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
                 <p className="text-brand-gray-700">
-                  Professional painting for offices, retail spaces, and commercial properties.
+                  Painting for offices, retail, and commercial properties with coordinated scheduling.
                 </p>
               </Link>
             </div>

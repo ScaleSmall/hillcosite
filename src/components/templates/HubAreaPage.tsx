@@ -141,8 +141,14 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               ))}
             </div>
             {hub.specialization && (
-              <div className="mt-8 p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
-                <p className="text-lg text-brand-gray-900">{hub.specialization}</p>
+              <div className="mt-8 space-y-4">
+                <h3 className="text-2xl font-bold text-brand-gray-900">Working in {hub.name}</h3>
+                <p className="text-lg text-brand-gray-700">
+                  We approach every project with attention to what matters to homeowners here: thorough preparation, clean work areas, predictable schedules, and respect for homes and neighbors.
+                </p>
+                <div className="p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
+                  <p className="text-lg text-brand-gray-900">{hub.specialization}</p>
+                </div>
               </div>
             )}
           </div>
@@ -163,7 +169,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Interior Painting</h3>
                 <p className="text-brand-gray-700">
-                  Transform your home's interior with expert color consultation and flawless application.
+                  Color consultation and careful application for walls, trim, and ceilings.
                 </p>
               </Link>
               <Link
@@ -172,7 +178,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Exterior Painting</h3>
                 <p className="text-brand-gray-700">
-                  Protect and beautify your home's exterior with premium paints built for Texas climate.
+                  Thorough surface preparation and quality paints suited for Texas climate.
                 </p>
               </Link>
               <Link
@@ -181,7 +187,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Cabinet Painting</h3>
                 <p className="text-brand-gray-700">
-                  Refresh your kitchen with professional cabinet painting.
+                  Kitchen and bathroom cabinet refinishing with durable finishes.
                 </p>
               </Link>
               <Link
@@ -190,7 +196,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
                 <p className="text-brand-gray-700">
-                  Professional commercial painting services with minimal disruption to your business.
+                  Painting for offices, retail, and commercial properties with coordinated scheduling.
                 </p>
               </Link>
             </div>
