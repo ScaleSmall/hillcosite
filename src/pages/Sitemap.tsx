@@ -15,7 +15,7 @@ const Sitemap = () => {
   const mainServiceAreas = [
     { name: 'Austin', href: '/service-areas/austin' },
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
+    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
     { name: 'Leander', href: '/service-areas/leander' },
     { name: 'Taylor', href: '/service-areas/taylor-hutto' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },

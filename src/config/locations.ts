@@ -67,7 +67,7 @@ export const locations: Record<string, LocationData> = {
       'Samsung corridor workforce flexibility',
       'Growing community specialist',
       'New construction and established homes',
-      'Wells Branch extension coverage',
+      'Extended area coverage',
       'SH-130 corridor access'
     ],
     serviceAreaSlug: 'pflugerville-wells-branch',
