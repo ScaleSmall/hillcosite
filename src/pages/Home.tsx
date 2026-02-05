@@ -137,13 +137,13 @@ const Home = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
-                Your Home Deserves a Careful, Predictable Painting Experience
+                A Painting Experience Without the Stress
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                We handle residential and commercial painting projects across Austin with consistent communication, thorough surface prep, and respect for your schedule and space.
+                No uncertainty. No surprises. Just clear communication, clean work areas, and a predictable timeline from start to finish.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Clear timelines. Protected spaces. Quality that lasts.
+                Serving Austin homeowners who value calm, organized, professional service.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -154,36 +154,83 @@ const Home = () => {
                   (512) 240-2246
                 </a>
               </div>
-              <div className="text-lg text-white font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
-                Serving Austin homeowners and businesses who value clear communication and consistent follow-through. Our process removes the uncertainty from painting projects—from surface preparation through final walkthrough, you'll know exactly what to expect and when.
-              </div>
           </div>
           </div>
         </div>
       </section>
 
-      {/* Pattern A: Stats & Trust */}
-      <StatsAndTrust surface="white" />
+      {/* Why This Feels Different */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+              Why This Feels Different
+            </h2>
+            <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
+              Most painting projects create anxiety. We've built a process that removes the common frustrations.
+            </p>
+          </div>
 
-      {/* Pattern G: Testimonials */}
-      <TestimonialsSection
-        title="What Clients Say About Working With Us"
-        testimonials={testimonials}
-      />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Concern 1 */}
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                Poor Communication
+              </h3>
+              <p className="text-brand-gray-600 mb-3">
+                Many contractors go silent after signing the contract. Timelines shift without warning.
+              </p>
+              <p className="text-brand-gray-900 font-semibold">
+                → We confirm schedules in writing, provide daily updates, and respond to calls and texts promptly.
+              </p>
+            </div>
 
-      {/* NAP & Map Section */}
-      <NAPMapSection />
+            {/* Concern 2 */}
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                Messy Work Areas
+              </h3>
+              <p className="text-brand-gray-600 mb-3">
+                Paint spills on floors. Debris left in landscaping. No respect for your property.
+              </p>
+              <p className="text-brand-gray-900 font-semibold">
+                → We protect surfaces before work begins and clean daily. Your home remains organized throughout the project.
+              </p>
+            </div>
 
-      {/* Pattern B: Services Grid */}
-      <ServicesGrid
-        title="Services We Provide"
-        subtitle="Interior, exterior, cabinet, and commercial painting—managed with the same attention to detail and clear communication"
-      />
+            {/* Concern 3 */}
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                Missed Timelines
+              </h3>
+              <p className="text-brand-gray-600 mb-3">
+                Projects drag on indefinitely. Crews disappear mid-project to work other jobs.
+              </p>
+              <p className="text-brand-gray-900 font-semibold">
+                → We schedule projects realistically and commit our crew to your timeline. If something changes, we notify you immediately.
+              </p>
+            </div>
+
+            {/* Concern 4 */}
+            <div className="bg-brand-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                Unclear Expectations
+              </h3>
+              <p className="text-brand-gray-600 mb-3">
+                Vague contracts. Hidden costs. Disputes about what's included in the scope.
+              </p>
+              <p className="text-brand-gray-900 font-semibold">
+                → Our estimates itemize every task. You know exactly what we'll do, what materials we'll use, and what it costs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Our Working Process */}
       <ProcessSection
-        title="How We Work"
-        subtitle="A straightforward process designed to remove uncertainty and protect your daily routine"
+        title="A Clear, Step-by-Step Process"
+        subtitle="From consultation to completion, you'll know exactly what's happening and when"
         steps={[
           {
             number: 1,
@@ -212,6 +259,82 @@ const Home = () => {
           }
         ]}
       />
+
+      {/* Services Overview - Framed by Outcomes */}
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+              What We Can Help You Accomplish
+            </h2>
+            <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
+              Each service follows the same organized approach—clear planning, thorough prep, and consistent communication.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Interior Painting */}
+            <Link to="/services/interior-painting" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azure transition-colors">
+                  Interior Painting
+                </h3>
+                <p className="text-brand-gray-600 mb-4">
+                  Refresh your living spaces without disrupting daily life. Protected furniture, daily cleanup, and minimal inconvenience.
+                </p>
+                <span className="text-brand-azure font-semibold group-hover:underline">
+                  Learn more →
+                </span>
+              </div>
+            </Link>
+
+            {/* Exterior Painting */}
+            <Link to="/services/exterior-painting" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azure transition-colors">
+                  Exterior Painting
+                </h3>
+                <p className="text-brand-gray-600 mb-4">
+                  Protect your home from Austin's weather while improving curb appeal. Weather-appropriate materials and proper surface prep.
+                </p>
+                <span className="text-brand-azure font-semibold group-hover:underline">
+                  Learn more →
+                </span>
+              </div>
+            </Link>
+
+            {/* Cabinet Painting */}
+            <Link to="/services/cabinet-refinishing" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azure transition-colors">
+                  Cabinet Painting
+                </h3>
+                <p className="text-brand-gray-600 mb-4">
+                  Update your kitchen at a fraction of replacement cost. Durable finish that withstands daily use.
+                </p>
+                <span className="text-brand-azure font-semibold group-hover:underline">
+                  Learn more →
+                </span>
+              </div>
+            </Link>
+
+            {/* Commercial Painting */}
+            <Link to="/services/commercial" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azure transition-colors">
+                  Commercial Painting
+                </h3>
+                <p className="text-brand-gray-600 mb-4">
+                  Coordinate around your business hours. Minimize disruption while maintaining professional results.
+                </p>
+                <span className="text-brand-azure font-semibold group-hover:underline">
+                  Learn more →
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Financing Section */}
       <section className="section-padding bg-brand-gray-50">
@@ -250,35 +373,59 @@ const Home = () => {
       {/* Typical Home Costs */}
       <TypicalHomeCosts />
 
-      {/* Pattern C: Split Section */}
-      <SplitSection
-        title="Why Choose Hill Country Painting?"
-        description="We're Austin's trusted painting professionals, committed to delivering exceptional results that stand the test of time."
-        benefits={[
-          { text: 'Insured local crew with 15+ years experience' },
-          { text: '2-year warranty on all work' },
-          { text: 'Clean prep work and precise execution' },
-          { text: 'Reliable scheduling and communication' },
-          { text: 'Free color consultation and estimates' },
-          { text: 'Interior, exterior, cabinet, and commercial specialists' }
-        ]}
-        image="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
-        imageAlt="Professional Austin house painting - Hill Country Painting crew interior work"
+      {/* Neighborhood Trust Section */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+              Trusted Throughout Austin
+            </h2>
+            <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
+              We bring the same level of care and professionalism to every project—whether it's a home in Tarrytown, a business in Round Rock, or a property in West Lake Hills.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-brand-gray-50 p-8 rounded-lg mb-8">
+              <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
+                What Makes Our Approach Consistent
+              </h3>
+              <div className="space-y-4 text-lg text-brand-gray-600">
+                <p>
+                  <span className="font-semibold text-brand-gray-900">Same crew, start to finish.</span> You won't see different teams showing up each day. The crew that starts your project completes it.
+                </p>
+                <p>
+                  <span className="font-semibold text-brand-gray-900">Same communication standard.</span> Whether you prefer text, email, or phone calls, we establish your preferred method during planning and stick with it.
+                </p>
+                <p>
+                  <span className="font-semibold text-brand-gray-900">Same quality expectations.</span> We don't adjust our prep work or material standards based on project size or location. Proper surface preparation and application techniques apply everywhere.
+                </p>
+                <p>
+                  <span className="font-semibold text-brand-gray-900">Same protection protocols.</span> Drop cloths, plastic sheeting, and daily cleanup happen on every job—whether it's a single room or an entire exterior.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <p className="text-lg text-brand-gray-600 mb-6">
+                Serving: Austin, Round Rock, Georgetown, Cedar Park, Pflugerville, Leander, West Lake Hills, Lakeway, Bee Cave, and surrounding communities
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pattern G: Testimonials */}
+      <TestimonialsSection
+        title="What Clients Say About Working With Us"
+        testimonials={testimonials}
       />
 
-      {/* CTA After Process */}
-      <CTABanner
-        title="Ready to Get Started?"
-        subtitle="Request your consultation today and experience the Hill Country Painting difference"
-        primaryCTA={{
-          text: 'Request Consultation',
-          href: '/contact'
-        }}
-        secondaryCTA={{
-          text: 'Call (512) 240-2246',
-          href: 'tel:(512)240-2246'
-        }}
-      />
+      {/* Pattern A: Stats & Trust */}
+      <StatsAndTrust surface="white" />
+
+      {/* NAP & Map Section */}
+      <NAPMapSection />
 
       {/* Pattern H: Service Areas */}
       <ServiceAreasSection
@@ -295,10 +442,10 @@ const Home = () => {
 
       {/* Pattern I: CTA Banner */}
       <CTABanner
-        title="Ready to Transform Your Home?"
-        subtitle="Get a consultation today and see why Austin homeowners trust Hill Country Painting"
+        title="Let's Talk About Your Project"
+        subtitle="We'll assess your space, answer your questions, and provide a detailed estimate—no pressure, no obligation"
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Request Consultation',
           href: '/contact'
         }}
         secondaryCTA={{
