@@ -161,7 +161,7 @@ const Home = () => {
       </section>
 
       {/* Pattern A: Stats & Trust */}
-      <StatsAndTrust surface="coral" />
+      <StatsAndTrust surface="white" />
 
       {/* Pattern G: Testimonials */}
       <TestimonialsSection
