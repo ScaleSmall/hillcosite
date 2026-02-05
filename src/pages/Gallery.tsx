@@ -283,13 +283,14 @@ const Gallery = () => {
                   onClick={() => setShowOlderPhotos(!showOlderPhotos)}
                   className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-brand-gray-100 hover:bg-brand-gray-200 text-brand-azureDark font-semibold rounded-lg transition-colors duration-200"
                   aria-expanded={showOlderPhotos}
+                  aria-controls="older-photos"
                 >
                   {showOlderPhotos ? 'Hide' : 'Show'} Older Projects ({olderPhotos.length})
                   {showOlderPhotos ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </button>
 
                 {showOlderPhotos && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                  <div id="older-photos" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                     {olderPhotos.map((photo) => (
                       <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                         <img

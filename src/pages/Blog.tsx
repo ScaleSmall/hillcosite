@@ -238,6 +238,7 @@ const Blog = () => {
                     onClick={() => setShowPastArticles(!showPastArticles)}
                     className="w-full flex items-center justify-between p-4 bg-brand-gray-50 hover:bg-brand-gray-100 rounded-lg transition-colors"
                     aria-expanded={showPastArticles}
+                    aria-controls="past-articles"
                   >
                     <span className="text-lg font-semibold text-brand-gray-900">
                       Past Articles ({pastPosts.length})
@@ -250,7 +251,7 @@ const Blog = () => {
                   </button>
 
                   {showPastArticles && (
-                    <div className="mt-4 bg-white rounded-lg border border-brand-gray-200 divide-y divide-brand-gray-200">
+                    <div id="past-articles" className="mt-4 bg-white rounded-lg border border-brand-gray-200 divide-y divide-brand-gray-200">
                       {pastPosts.map((post) => (
                         <Link
                           key={post.id}

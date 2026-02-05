@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
 
@@ -19,6 +19,8 @@ const Header = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isGuidesOpen, setIsGuidesOpen] = useState(false);
   const location = useLocation();
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const services = [
     { name: 'Interior Painting', href: '/services/interior-painting' },
@@ -50,6 +52,34 @@ const Header = () => {
     { name: 'Facebook', href: 'https://www.facebook.com/Hillcopaint', icon: Facebook, ariaLabel: 'Like us on Facebook' },
     { name: 'LinkedIn', href: 'https://hillcopaint.com', icon: Linkedin, ariaLabel: 'Connect on LinkedIn' },
   ];
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (isMenuOpen) {
+          setIsMenuOpen(false);
+          mobileMenuButtonRef.current?.focus();
+        }
+        if (isServicesOpen) setIsServicesOpen(false);
+        if (isGuidesOpen) setIsGuidesOpen(false);
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target as Node) &&
+          mobileMenuButtonRef.current && !mobileMenuButtonRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen, isServicesOpen, isGuidesOpen]);
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -85,8 +115,14 @@ const Header = () => {
                       if (item.name === 'Guides') setIsGuidesOpen(false);
                     }}
                   >
-                    <Link
-                      to={item.href}
+                    <button
+                      onClick={() => {
+                        if (item.name === 'Services') setIsServicesOpen(!isServicesOpen);
+                        if (item.name === 'Guides') setIsGuidesOpen(!isGuidesOpen);
+                      }}
+                      aria-expanded={item.name === 'Services' ? isServicesOpen : isGuidesOpen}
+                      aria-controls={item.name === 'Services' ? 'services-dropdown' : 'guides-dropdown'}
+                      aria-haspopup="true"
                       className={`flex items-center space-x-1 text-base font-semibold transition-colors duration-200 whitespace-nowrap ${
                         (item.name === 'Services' && location.pathname.startsWith('/services')) ||
                         (item.name === 'Guides' && location.pathname.startsWith('/guides'))
@@ -94,17 +130,23 @@ const Header = () => {
                           : 'text-brand-gray-700 hover:text-brand-azureDark'
                       }`}
                     >
-                      <span>{item.name}</span>
-                      <ChevronDown size={16} className="transition-transform duration-200" />
-                    </Link>
+                      <Link to={item.href} className="flex items-center space-x-1">
+                        <span>{item.name}</span>
+                        <ChevronDown size={16} className="transition-transform duration-200" />
+                      </Link>
+                    </button>
 
                     {/* Services Dropdown */}
                     {item.name === 'Services' && isServicesOpen && (
-                      <div className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50">
+                      <div
+                        id="services-dropdown"
+                        className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50"
+                      >
                         {services.map((service) => (
                           <Link
                             key={service.name}
                             to={service.href}
+                            onClick={() => setIsServicesOpen(false)}
                             className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
                           >
                             {service.name}
@@ -115,11 +157,15 @@ const Header = () => {
 
                     {/* Guides Dropdown */}
                     {item.name === 'Guides' && isGuidesOpen && (
-                      <div className="absolute top-full left-0 mt-0 w-72 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50">
+                      <div
+                        id="guides-dropdown"
+                        className="absolute top-full left-0 mt-0 w-72 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50"
+                      >
                         {guides.map((guide) => (
                           <Link
                             key={guide.name}
                             to={guide.href}
+                            onClick={() => setIsGuidesOpen(false)}
                             className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
                           >
                             {guide.name}
@@ -178,7 +224,10 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
+            ref={mobileMenuButtonRef}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
             className="lg:hidden p-2 rounded-md text-brand-gray-600 hover:text-brand-azureDark hover:bg-brand-gray-50 transition-colors flex items-center justify-center ml-auto"
             aria-label="Toggle menu"
           >
@@ -189,7 +238,11 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-brand-gray-100">
+        <div
+          ref={mobileMenuRef}
+          id="mobile-menu"
+          className="lg:hidden bg-white border-t border-brand-gray-100"
+        >
           <div className="px-4 py-6 space-y-1">
             {mainNavigation.map((item) => (
               <div key={item.name}>
@@ -197,7 +250,7 @@ const Header = () => {
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={`block py-3 text-base font-semibold transition-colors duration-200 ${
-                    location.pathname === item.href || 
+                    location.pathname === item.href ||
                     (item.name === 'Services' && location.pathname.startsWith('/services/')) ||
                     (item.name === 'Guides' && location.pathname.startsWith('/guides/'))
                       ? 'text-brand-azureDark'
@@ -206,7 +259,7 @@ const Header = () => {
                 >
                   {item.name}
                 </Link>
-                
+
                 {/* Mobile Services Submenu */}
                 {item.name === 'Services' && item.hasDropdown && (
                   <div className="pl-4 space-y-1">
@@ -226,7 +279,7 @@ const Header = () => {
                     ))}
                   </div>
                 )}
-                
+
                 {/* Mobile Guides Submenu */}
                 {item.name === 'Guides' && item.hasDropdown && (
                   <div className="pl-4 space-y-1">
@@ -248,7 +301,7 @@ const Header = () => {
                 )}
               </div>
             ))}
-            
+
             <div className="pt-6 border-t border-brand-gray-100 space-y-3">
               <div className="grid grid-cols-3 gap-0.5 pb-4">
                 {socialLinks.map((social) => (

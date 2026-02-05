@@ -1,16 +1,31 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import CTABanner from '../components/sections/CTABanner';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import GoogleMapEmbed from '../components/GoogleMapEmbed';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { useFocusTrap } from '../hooks/useFocusTrap';
 
 const Contact = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const formRef = useRef<HTMLFormElement | null>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  useFocusTrap(showModal, modalRef);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && showModal) {
+        setShowModal(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [showModal]);
 
   const initialFormData = {
     firstName: '',
@@ -653,6 +668,7 @@ const Contact = () => {
                   aria-labelledby="hc-modal-title"
                 >
                   <div
+                    ref={modalRef}
                     className="w-[92%] max-w-[520px] rounded-xl bg-white p-6 shadow-2xl"
                     onClick={(e) => e.stopPropagation()}
                   >
