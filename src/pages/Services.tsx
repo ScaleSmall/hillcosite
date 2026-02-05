@@ -75,8 +75,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Services Cards - Custom Layout */}
-      <section className="section-padding bg-white">
+      {/* Services Cards - Warm Surface */}
+      <section className="section-padding bg-brand-coral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {allServices.map((service, index) => (

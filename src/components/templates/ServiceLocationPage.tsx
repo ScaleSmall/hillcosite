@@ -1,3 +1,16 @@
+/**
+ * SURFACE ROLE SYSTEM IN USE:
+ *
+ * This template uses the intentional surface hierarchy defined in src/config/surfaceRoles.ts
+ *
+ * Surfaces used in this template:
+ * - Base Canvas (bg-white): Main content sections
+ * - Warm Surface (bg-brand-coral): TestimonialsSection for trust and warmth
+ * - Neutral Surface (bg-brand-gray-50): ProofPointsSection has emphasis surface
+ * - Emphasis Surface (bg-brand-azureDark): ProofPointsSection for strong visual impact
+ *
+ * See src/config/surfaceRoles.ts for complete surface role documentation
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, Shield, Clock, Star, CheckCircle } from 'lucide-react';

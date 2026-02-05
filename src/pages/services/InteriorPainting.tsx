@@ -256,13 +256,13 @@ const InteriorPainting = () => {
         </div>
       </section>
 
-      {/* Pattern D: Process */}
+      {/* Pattern D: Process - Neutral Surface */}
       {/* Split Timeline Process Layout */}
-      <section className="section-padding bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      <section className="section-padding bg-brand-gray-50 relative overflow-hidden">
         {/* Decorative background elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-24 h-24 bg-purple-200 rounded-full opacity-30 animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-indigo-200 rounded-full opacity-25"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-brand-azure/20 rounded-full opacity-20 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-24 h-24 bg-brand-azureDark/20 rounded-full opacity-30 animate-bounce"></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-brand-azure/20 rounded-full opacity-25"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -278,7 +278,7 @@ const InteriorPainting = () => {
           <div className="hidden lg:block">
             <div className="relative max-w-4xl mx-auto">
               {/* Central Timeline */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400 via-indigo-500 to-purple-600 transform -translate-x-1/2"></div>
+              <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-brand-azureDark transform -translate-x-1/2"></div>
 
               {/* Timeline Steps */}
               <div className="space-y-12">
@@ -286,15 +286,9 @@ const InteriorPainting = () => {
                   <div key={step.number} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'} relative`}>
                     {/* Content Card */}
                     <div className={`w-5/12 ${index % 2 === 0 ? 'pr-12' : 'pl-12'}`}>
-                      <div className={`bg-white rounded-2xl p-8 shadow-xl border-l-4 ${
-                        index % 3 === 0 ? 'border-blue-500' :
-                        index % 3 === 1 ? 'border-indigo-500' : 'border-purple-500'
-                      } transform transition-[box-shadow,transform] duration-300 hover:shadow-2xl`}>
+                      <div className="bg-white rounded-2xl p-8 shadow-xl border-l-4 border-brand-azure transform transition-[box-shadow,transform] duration-300 hover:shadow-2xl">
                         <div className="flex items-start gap-4">
-                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg ${
-                            index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600' :
-                            index % 3 === 1 ? 'bg-gradient-to-br from-indigo-500 to-indigo-600' : 'bg-gradient-to-br from-purple-500 to-purple-600'
-                          }`}>
+                          <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg bg-brand-azureDark">
                             {step.number}
                           </div>
                           <div className="flex-grow">
@@ -311,18 +305,12 @@ const InteriorPainting = () => {
 
                     {/* Central Timeline Node */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 z-10">
-                      <div className={`w-6 h-6 rounded-full border-4 border-white shadow-lg ${
-                        index % 3 === 0 ? 'bg-blue-500' :
-                        index % 3 === 1 ? 'bg-indigo-500' : 'bg-purple-500'
-                      }`}></div>
+                      <div className="w-6 h-6 rounded-full border-4 border-white shadow-lg bg-brand-azureDark"></div>
                     </div>
 
                     {/* Connecting Line */}
                     <div className={`w-5/12 flex ${index % 2 === 0 ? 'justify-start pl-8' : 'justify-end pr-8'}`}>
-                      <div className={`w-8 h-1 ${
-                        index % 3 === 0 ? 'bg-blue-400' :
-                        index % 3 === 1 ? 'bg-indigo-400' : 'bg-purple-400'
-                      } rounded-full`}></div>
+                      <div className="w-8 h-1 bg-brand-azure rounded-full"></div>
                     </div>
                   </div>
                 ))}
@@ -335,21 +323,15 @@ const InteriorPainting = () => {
             {processSteps.map((step, index) => (
               <div key={step.number} className="flex items-start gap-4">
                 <div className="flex flex-col items-center">
-                  <div className={`w-12 h-12 text-white rounded-xl flex items-center justify-center font-bold shadow-lg ${
-                    index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600' :
-                    index % 3 === 1 ? 'bg-gradient-to-br from-indigo-500 to-indigo-600' : 'bg-gradient-to-br from-purple-500 to-purple-600'
-                  }`}>
+                  <div className="w-12 h-12 text-white rounded-xl flex items-center justify-center font-bold shadow-lg bg-brand-azureDark">
                     {step.number}
                   </div>
                   {index < processSteps.length - 1 && (
-                    <div className="w-1 h-12 bg-gradient-to-b from-blue-300 to-purple-300 mt-4 rounded-full"></div>
+                    <div className="w-1 h-12 bg-brand-azure mt-4 rounded-full"></div>
                   )}
                 </div>
 
-                <div className={`flex-grow bg-white rounded-xl p-6 shadow-lg border-l-4 ${
-                  index % 3 === 0 ? 'border-blue-500' :
-                  index % 3 === 1 ? 'border-indigo-500' : 'border-purple-500'
-                }`}>
+                <div className="flex-grow bg-white rounded-xl p-6 shadow-lg border-l-4 border-brand-azure">
                   <h3 className="font-bold text-brand-gray-900 mb-3 text-lg">
                     {step.title}
                   </h3>
@@ -363,17 +345,17 @@ const InteriorPainting = () => {
 
           {/* Bottom decorative flourish */}
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-100 via-indigo-100 to-purple-100 rounded-full shadow-lg">
+            <div className="inline-flex items-center gap-2 px-8 py-4 bg-white rounded-full shadow-lg border-2 border-brand-gray-200">
               <div className="flex gap-1">
-                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-                <div className="w-3 h-3 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
-                <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
+                <div className="w-3 h-3 bg-brand-azureDark rounded-full animate-pulse"></div>
+                <div className="w-3 h-3 bg-brand-azure rounded-full animate-pulse" style={{animationDelay: '0.2s'}}></div>
+                <div className="w-3 h-3 bg-brand-azureDark rounded-full animate-pulse" style={{animationDelay: '0.4s'}}></div>
               </div>
               <span className="text-brand-gray-700 font-semibold">Professional Results, Every Step</span>
               <div className="flex gap-1">
-                <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
-                <div className="w-3 h-3 bg-indigo-500 rounded-full animate-pulse" style={{animationDelay: '0.8s'}}></div>
-                <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="w-3 h-3 bg-brand-azure rounded-full animate-pulse" style={{animationDelay: '0.6s'}}></div>
+                <div className="w-3 h-3 bg-brand-azureDark rounded-full animate-pulse" style={{animationDelay: '0.8s'}}></div>
+                <div className="w-3 h-3 bg-brand-azure rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
               </div>
             </div>
           </div>

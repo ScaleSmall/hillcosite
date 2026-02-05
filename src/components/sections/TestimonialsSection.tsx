@@ -17,7 +17,7 @@ interface TestimonialsSectionProps {
 
 const TestimonialsSection = ({ title, subtitle, testimonials }: TestimonialsSectionProps) => {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-brand-coral">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-16">
