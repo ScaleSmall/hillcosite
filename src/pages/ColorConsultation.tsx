@@ -277,8 +277,8 @@ const ColorConsultation = () => {
 
       {/* CTA Banner */}
       <CTABanner
-        title="Ready to Transform Your Space with Perfect Colors?"
-        description="Get professional color consultation and expert painting services in Austin. Free consultation with all painting projects."
+        title="Let's Talk About Your Project"
+        subtitle="Get professional color consultation and expert painting services in Austin. Free consultation with all painting projects."
         primaryCTA={{
           text: "Request a Color Consultation",
           href: "/contact"
@@ -287,6 +287,7 @@ const ColorConsultation = () => {
           text: "Call (512) 240-2246",
           href: "tel:(512)240-2246"
         }}
+        backgroundColor="coral"
       />
     </>
   );

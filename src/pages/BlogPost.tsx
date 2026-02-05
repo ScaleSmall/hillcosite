@@ -329,8 +329,8 @@ const BlogPost = () => {
 
       {/* CTA Banner */}
       <CTABanner
-        title="Ready to Transform Your Space?"
-        subtitle="Get expert painting services from Austin's trusted professionals"
+        title="Let's Talk About Your Project"
+        subtitle="No pressure, no sales pitch. Just a conversation about what you'd like to accomplish."
         primaryCTA={{
           text: 'Request a Consultation',
           href: '/contact'
@@ -339,6 +339,7 @@ const BlogPost = () => {
           text: 'Call (512) 240-2246',
           href: 'tel:(512) 240-2246'
         }}
+        backgroundColor="coral"
       />
     </>
   );
