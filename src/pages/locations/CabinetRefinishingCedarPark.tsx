@@ -12,8 +12,8 @@ const config: ServiceLocationConfig = {
   },
   location: location,
   content: {
-    heroSubtitle: 'Transform your Cedar Park kitchen with professional cabinet refinishing. Modern updates, factory-quality finishes, family-friendly scheduling.',
-    introText: `Cedar Park families are updating their kitchens with cabinet refinishing - achieving modern looks at a fraction of new cabinet costs. Whether your Buttercup Creek kitchen has dated oak or your Twin Creeks cabinets need a color refresh, our team delivers smooth, durable finishes that transform your space while working around your family's schedule.`,
+    heroSubtitle: 'Transform your Leander kitchen with professional cabinet refinishing. Modern updates, factory-quality finishes, family-friendly scheduling.',
+    introText: `Leander families are updating their kitchens with cabinet refinishing - achieving modern looks at a fraction of new cabinet costs. Whether your Crystal Falls kitchen has dated oak or your Mason Hills cabinets need a color refresh, our team delivers smooth, durable finishes that transform your space while working around your family's schedule.`,
     benefits: [
       'Family schedule flexibility',
       'Modern color transformations',
@@ -25,18 +25,18 @@ const config: ServiceLocationConfig = {
       '2-year warranty protection'
     ],
     processSteps: [
-      { title: 'Free Consultation', description: 'Evaluate your Cedar Park cabinets and discuss transformation options.' },
-      { title: 'Color Selection', description: 'Help choosing colors that modernize your Cedar Park kitchen.' },
+      { title: 'Free Consultation', description: 'Evaluate your Leander cabinets and discuss transformation options.' },
+      { title: 'Color Selection', description: 'Help choosing colors that modernize your Leander kitchen.' },
       { title: 'Efficient Preparation', description: 'Thorough prep while minimizing disruption to your family.' },
       { title: 'Professional Finishing', description: 'Expert spray application for smooth, factory-quality results.' },
       { title: 'Hardware Installation', description: 'New or existing hardware installed to complete the transformation.' },
       { title: 'Final Walkthrough', description: 'Review ensuring every cabinet meets your expectations.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in Cedar Park?', answer: 'Cedar Park cabinet refinishing typically ranges from $3,200-$7,500 depending on kitchen size and cabinet condition. Much less than replacement!' },
-      { question: 'How long will the project take?', answer: 'Most Cedar Park cabinet projects take 4-6 days. We work efficiently to get your kitchen back to full function quickly.' },
-      { question: 'Can you work around our family schedule?', answer: 'Absolutely! We coordinate timing to minimize disruption. Many Cedar Park families appreciate our efficiency and respect for their routines.' },
-      { question: 'What colors are popular in Cedar Park?', answer: 'White, greige, and soft gray are popular choices. We help select colors that brighten your kitchen and complement your home.' },
+      { question: 'How much does cabinet refinishing cost in Leander?', answer: 'Leander cabinet refinishing typically ranges from $3,200-$7,500 depending on kitchen size and cabinet condition. Much less than replacement!' },
+      { question: 'How long will the project take?', answer: 'Most Leander cabinet projects take 4-6 days. We work efficiently to get your kitchen back to full function quickly.' },
+      { question: 'Can you work around our family schedule?', answer: 'Absolutely! We coordinate timing to minimize disruption. Many Leander families appreciate our efficiency and respect for their routines.' },
+      { question: 'What colors are popular in Leander?', answer: 'White, greige, and soft gray are popular choices. We help select colors that brighten your kitchen and complement your home.' },
       { question: 'Is the finish durable for busy families?', answer: 'Yes! Our finishes withstand daily use including cleaning, moisture, and normal kitchen activity. We use premium products designed for durability.' }
     ],
     testimonials: [
@@ -47,9 +47,9 @@ const config: ServiceLocationConfig = {
   },
   images: {
     hero: '/kitchen-cabinet-refinishing-austin.jpg',
-    heroAlt: 'Cabinet refinishing in Cedar Park Texas',
+    heroAlt: 'Cabinet refinishing in Leander Texas',
     secondary: '/circle-c-ranch-kitchen-painting-austin.jpg',
-    secondaryAlt: 'Cedar Park cabinet painting services'
+    secondaryAlt: 'Leander cabinet painting services'
   }
 };
 

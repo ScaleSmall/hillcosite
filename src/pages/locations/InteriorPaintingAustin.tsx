@@ -13,7 +13,7 @@ const config: ServiceLocationConfig = {
   location: location,
   content: {
     heroSubtitle: 'Austin\'s trusted interior painting professionals. From downtown condos to South Austin bungalows, we deliver excellence across the capital city.',
-    introText: `Austin's diverse architecture - from historic Hyde Park homes to modern Mueller developments, downtown high-rises to South Austin cottages - requires painters who understand the city's unique character. Our team has painted interiors across every Austin neighborhood, adapting our approach to each home's style, age, and your personal vision. Keep Austin painted beautifully.`,
+    introText: `Austin's diverse architecture - from historic Clarksville homes to modern Barton Creek developments, downtown high-rises to South Austin cottages - requires painters who understand the city's unique character. Our team has painted interiors across every Austin neighborhood, adapting our approach to each home's style, age, and your personal vision. Keep Austin painted beautifully.`,
     benefits: [
       'All Austin neighborhoods served',
       'Historic home specialists',
@@ -35,7 +35,7 @@ const config: ServiceLocationConfig = {
     faqs: [
       { question: 'How much does interior painting cost in Austin?', answer: 'Austin interior painting ranges from $3,200-$8,500+ depending on home size, location, and complexity. Downtown condos and historic homes may vary. We provide detailed quotes.' },
       { question: 'Do you work in downtown Austin condos?', answer: 'Yes! We have extensive experience with downtown Austin high-rises and condos, including coordinating with building management and working within HOA guidelines.' },
-      { question: 'What about Austin\'s historic homes?', answer: 'We specialize in historic Austin neighborhoods like Hyde Park, Travis Heights, and Clarksville. We respect original details while providing modern protection.' },
+      { question: 'What about Austin\'s historic homes?', answer: 'We specialize in historic Austin neighborhoods like Clarksville, Travis Heights, and Tarrytown. We respect original details while providing modern protection.' },
       { question: 'Can you match Austin\'s eclectic style?', answer: 'Absolutely. We embrace Austin\'s creative spirit and help clients choose colors that express their personality while complementing their home\'s architecture.' },
       { question: 'How do you handle Austin traffic for appointments?', answer: 'We\'re Austin locals who understand the traffic. We schedule appointments and deliveries to avoid peak times and arrive when promised.' }
     ],

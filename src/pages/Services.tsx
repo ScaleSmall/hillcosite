@@ -124,10 +124,9 @@ const Services = () => {
         subtitle="Professional painting services throughout the Austin metro area"
         areas={[
           { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-          { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
-          { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-          { name: 'Taylor & Hutto', href: '/service-areas/taylor-hutto' },
-          { name: 'Leander', href: '/service-areas/leander' },
+          { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
+          { name: 'Leander', href: '/service-areas/cedar-park' },
+          { name: 'Taylor', href: '/service-areas/taylor-hutto' },
           { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' }
         ]}
       />

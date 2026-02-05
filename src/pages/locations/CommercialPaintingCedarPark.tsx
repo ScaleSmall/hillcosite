@@ -12,12 +12,12 @@ const config: ServiceLocationConfig = {
   },
   location: location,
   content: {
-    heroSubtitle: 'Professional commercial painting for Cedar Park businesses. Retail, office, and industrial expertise with scheduling that works around your operations.',
-    introText: `Cedar Park's growing business community needs commercial painters who understand local business needs. From Lakeline Mall area retail to 1890 Ranch shops and professional offices throughout, we deliver quality commercial painting that enhances your business image. Our team works efficiently around your schedule to minimize disruption.`,
+    heroSubtitle: 'Professional commercial painting for Leander businesses. Retail, office, and industrial expertise with scheduling that works around your operations.',
+    introText: `Leander's growing business community needs commercial painters who understand local business needs. From Crystal Falls retail to professional offices throughout, we deliver quality commercial painting that enhances your business image. Our team works efficiently around your schedule to minimize disruption.`,
     benefits: [
       'Retail painting expertise',
       'Office space specialists',
-      '1890 Ranch experience',
+      'Commercial space experience',
       'Flexible scheduling options',
       'Efficient turnaround capable',
       'Quality commercial finishes',
@@ -25,19 +25,19 @@ const config: ServiceLocationConfig = {
       'Competitive rates'
     ],
     processSteps: [
-      { title: 'Site Evaluation', description: 'Assess your Cedar Park commercial space and project requirements.' },
-      { title: 'Business-Friendly Schedule', description: 'Develop timeline minimizing impact on your Cedar Park operations.' },
+      { title: 'Site Evaluation', description: 'Assess your Leander commercial space and project requirements.' },
+      { title: 'Business-Friendly Schedule', description: 'Develop timeline minimizing impact on your Leander operations.' },
       { title: 'Professional Preparation', description: 'Protect your business assets while preparing surfaces for quality results.' },
       { title: 'Efficient Painting', description: 'Quality application meeting commercial durability standards.' },
       { title: 'Quality Assurance', description: 'Inspection ensuring professional standards throughout.' },
-      { title: 'Clean Handoff', description: 'Your Cedar Park business ready for customers.' }
+      { title: 'Clean Handoff', description: 'Your Leander business ready for customers.' }
     ],
     faqs: [
-      { question: 'How much does commercial painting cost in Cedar Park?', answer: 'Cedar Park commercial painting typically ranges from $1.50-$4.00 per square foot depending on scope, conditions, and scheduling. We provide detailed quotes after site assessment.' },
-      { question: 'Can you work nights and weekends?', answer: 'Yes! We regularly schedule after-hours and weekend work for Cedar Park retail and office spaces to avoid business disruption.' },
-      { question: 'What types of businesses do you serve?', answer: 'We paint retail stores, restaurants, offices, medical facilities, gyms, warehouses, and more throughout Cedar Park.' },
-      { question: 'How fast can you complete a retail space?', answer: 'Depending on size and complexity, many Cedar Park retail spaces can be completed over a weekend. We discuss timelines during assessment.' },
-      { question: 'Do you handle tenant improvements?', answer: 'Yes! We work with landlords and tenants on commercial space improvements and build-outs throughout Cedar Park.' }
+      { question: 'How much does commercial painting cost in Leander?', answer: 'Leander commercial painting typically ranges from $1.50-$4.00 per square foot depending on scope, conditions, and scheduling. We provide detailed quotes after site assessment.' },
+      { question: 'Can you work nights and weekends?', answer: 'Yes! We regularly schedule after-hours and weekend work for Leander retail and office spaces to avoid business disruption.' },
+      { question: 'What types of businesses do you serve?', answer: 'We paint retail stores, restaurants, offices, medical facilities, gyms, warehouses, and more throughout Leander.' },
+      { question: 'How fast can you complete a retail space?', answer: 'Depending on size and complexity, many Leander retail spaces can be completed over a weekend. We discuss timelines during assessment.' },
+      { question: 'Do you handle tenant improvements?', answer: 'Yes! We work with landlords and tenants on commercial space improvements and build-outs throughout Leander.' }
     ],
     testimonials: [
       { name: 'Retail Manager', location: '1890 Ranch', rating: 5, text: 'They transformed our store in one weekend. Customers on Monday had no idea we\'d just been painted. Great work!', initials: 'RM' },
@@ -47,9 +47,9 @@ const config: ServiceLocationConfig = {
   },
   images: {
     hero: '/commercial-painting-services-austin.jpg',
-    heroAlt: 'Commercial painting in Cedar Park Texas',
+    heroAlt: 'Commercial painting in Leander Texas',
     secondary: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800',
-    secondaryAlt: 'Cedar Park commercial painting services'
+    secondaryAlt: 'Leander commercial painting services'
   }
 };
 

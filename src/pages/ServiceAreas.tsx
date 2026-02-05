@@ -16,10 +16,9 @@ const ServiceAreas = () => {
 
   const allServiceAreas = [
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Taylor & Hutto', href: '/service-areas/taylor-hutto' },
-    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
+    { name: 'Leander', href: '/service-areas/cedar-park' },
+    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
     { name: 'Austin', href: '/service-areas' }
   ];
 
@@ -54,7 +53,7 @@ const ServiceAreas = () => {
     <>
       <SEO
         title="Service Areas | Round Rock Metro Painting Services | Hill Country Painting"
-        description="Hill Country Painting serves Austin, Round Rock (78664, 78665), Pflugerville, Cedar Park, Georgetown, and surrounding areas. Professional painting services throughout Central Texas."
+        description="Hill Country Painting serves Austin, Round Rock (78664, 78665), Pflugerville, Leander, Georgetown, Taylor, and surrounding areas. Professional painting services throughout Central Texas."
         canonical="/service-areas"
         breadcrumbs={[
           { name: 'Home', url: '/' },

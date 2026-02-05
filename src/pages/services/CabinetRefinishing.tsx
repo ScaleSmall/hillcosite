@@ -147,7 +147,7 @@ const CabinetRefinishing = () => {
         service={{
           name: 'Cabinet Painting',
           description: 'Professional cabinet painting services for kitchens and bathrooms in Austin, Texas.',
-          areaServed: ['Round Rock', 'Georgetown', 'Cedar Park', 'Pflugerville', 'Leander', 'Austin']
+          areaServed: ['Round Rock', 'Georgetown', 'Leander', 'Pflugerville', 'Taylor', 'Austin']
         }}
         faq={faqs}
         product={productData}

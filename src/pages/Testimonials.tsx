@@ -95,13 +95,13 @@ const Testimonials = () => {
   ];
 
   const serviceAreas = [
+    { name: 'Austin', href: '/service-areas/austin' },
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville', href: '/service-areas/pflugerville' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Hutto', href: '/service-areas/taylor-hutto' },
+    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
     { name: 'Leander', href: '/service-areas/leander' },
-    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
-    { name: 'Austin', href: '/service-areas' }
+    { name: 'Lakeway & Bee Cave', href: '/service-areas/west-lake-hills' },
+    { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
+    { name: 'Taylor', href: '/service-areas/taylor-hutto' }
   ];
 
   return (

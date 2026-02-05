@@ -13,7 +13,7 @@ const config: ServiceLocationConfig = {
   location: location,
   content: {
     heroSubtitle: 'Austin\'s trusted exterior painting professionals. From historic bungalows to modern homes, we protect and beautify properties across the capital city.',
-    introText: `Austin's diverse architecture demands exterior painters who understand the city's unique character. From Hyde Park Victorians to South Austin bungalows, Mueller modern homes to East Austin revivals, we bring expertise appropriate for every style. Our team navigates Austin's varied microclimates and architectural requirements to deliver lasting exterior protection and beauty.`,
+    introText: `Austin's diverse architecture demands exterior painters who understand the city's unique character. From Clarksville Victorians to South Austin bungalows, Barton Creek modern homes to Tarrytown revivals, we bring expertise appropriate for every style. Our team navigates Austin's varied microclimates and architectural requirements to deliver lasting exterior protection and beauty.`,
     benefits: [
       'All Austin neighborhoods',
       'Historic preservation experts',
@@ -34,7 +34,7 @@ const config: ServiceLocationConfig = {
     ],
     faqs: [
       { question: 'How much does exterior painting cost in Austin?', answer: 'Austin exterior painting ranges from $4,500-$15,000+ depending on home size, location, and complexity. Historic homes and large properties may exceed this range.' },
-      { question: 'Do you work with Austin\'s historic neighborhoods?', answer: 'Yes! We specialize in Hyde Park, Travis Heights, Clarksville, and other historic Austin areas. We respect original details while providing modern protection.' },
+      { question: 'Do you work with Austin\'s historic neighborhoods?', answer: 'Yes! We specialize in Clarksville, Travis Heights, Tarrytown, and other historic Austin areas. We respect original details while providing modern protection.' },
       { question: 'What about Austin\'s tree coverage and shade?', answer: 'Austin\'s urban forest creates varied conditions. We assess sun and shade patterns to recommend appropriate products and schedule work for optimal results.' },
       { question: 'How do you handle Austin HOA requirements?', answer: 'Many Austin neighborhoods have architectural standards. We help select compliant colors and can assist with approval processes where required.' },
       { question: 'What warranty do you provide?', answer: 'We offer a 2-year warranty on exterior painting covering peeling, flaking, and blistering. Quality prep and premium paint ensure lasting results.' }

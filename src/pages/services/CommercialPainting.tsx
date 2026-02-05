@@ -114,7 +114,7 @@ const CommercialPainting = () => {
         service={{
           name: 'Commercial Painting',
           description: 'Professional commercial painting services for businesses in Austin, Texas.',
-          areaServed: ['Round Rock', 'Georgetown', 'Cedar Park', 'Pflugerville', 'Leander', 'Austin']
+          areaServed: ['Round Rock', 'Georgetown', 'Leander', 'Pflugerville', 'Taylor', 'Austin']
         }}
         faq={faqs}
         product={productData}

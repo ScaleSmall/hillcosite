@@ -118,8 +118,8 @@ const PaintingFrequency = () => {
   return (
     <>
       <SEO
-        title="How Often to Paint in Central Texas (2026) | Austin Paint Schedule"
-        description="Complete guide to painting frequency in Central Texas. Learn when to repaint your Austin home interior, exterior, and cabinets for protection."
+        title="How Often to Paint in Greater Austin Area (2026) | Austin Paint Schedule"
+        description="Complete guide to painting frequency in Greater Austin Area. Learn when to repaint your Austin home interior, exterior, and cabinets for protection."
         canonical="/guides/how-often-paint-central-texas"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -137,7 +137,7 @@ const PaintingFrequency = () => {
               Texas Climate Guide 2026
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
-              How Often to Paint in Central Texas
+              How Often to Paint in Greater Austin Area
             </h1>
             <p className="text-xl text-slate-600 leading-body">
               Professional maintenance schedule for Austin homes. Learn when to repaint interior, exterior, and cabinets to protect your investment in Texas's demanding climate.
@@ -162,7 +162,7 @@ const PaintingFrequency = () => {
               Austin Painting Maintenance Schedule
             </h2>
             <p className="text-xl text-slate-600">
-              Based on Central Texas climate and local Austin projects
+              Based on Greater Austin Area climate and local Austin projects
             </p>
           </div>
           
@@ -245,7 +245,7 @@ const PaintingFrequency = () => {
 
       {/* Texas Climate Impact */}
       <SplitSection
-        title="How Central Texas Climate Affects Paint Longevity"
+        title="How Greater Austin Area Climate Affects Paint Longevity"
         description="Austin's climate presents specific challenges for paint durability. Understanding these factors helps you plan maintenance schedules and choose the right materials for maximum longevity."
         benefits={[
           { text: 'Intense UV rays cause faster fading and breakdown' },

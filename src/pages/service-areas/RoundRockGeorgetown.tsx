@@ -13,10 +13,9 @@ import CTABanner from '../../components/sections/CTABanner';
 
 const RoundRockGeorgetown = () => {
   const serviceAreas = [
-    { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Taylor & Hutto', href: '/service-areas/taylor-hutto' },
-    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
+    { name: 'Leander', href: '/service-areas/cedar-park' },
+    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
     { name: 'Austin', href: '/service-areas' }
   ];
 

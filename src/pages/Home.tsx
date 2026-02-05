@@ -19,10 +19,9 @@ import NAPMapSection from '../components/NAPMapSection';
 const Home = () => {
   const serviceAreas = [
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Taylor & Hutto', href: '/service-areas/taylor-hutto' },
-    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
+    { name: 'Leander', href: '/service-areas/cedar-park' },
+    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
     { name: 'Austin', href: '/service-areas' }
   ];
 
@@ -53,7 +52,7 @@ const Home = () => {
   const faqs = [
     {
       question: 'What areas do you serve?',
-      answer: 'We serve Austin and the surrounding metro area, including Round Rock, Pflugerville, Cedar Park, Georgetown, and other nearby neighborhoods.'
+      answer: 'We serve Austin and the surrounding metro area, including Round Rock, Pflugerville, Leander, Georgetown, Taylor, and other nearby neighborhoods.'
     },
     {
       question: 'Do you offer consultations?',
@@ -413,7 +412,7 @@ const Home = () => {
 
             <div className="text-center">
               <p className="text-lg text-brand-gray-600 mb-6">
-                Serving: Austin, Round Rock, Georgetown, Cedar Park, Pflugerville, Leander, West Lake Hills, Lakeway, Bee Cave, and surrounding communities
+                Serving: Austin, Round Rock, Georgetown, Leander, Pflugerville, Taylor, West Lake Hills, Lakeway, Bee Cave, and surrounding communities
               </p>
             </div>
           </div>

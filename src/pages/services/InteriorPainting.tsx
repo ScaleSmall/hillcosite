@@ -126,7 +126,7 @@ const InteriorPainting = () => {
         service={{
           name: 'Interior Painting',
           description: 'Professional interior painting services for homes and businesses in Austin, Texas.',
-          areaServed: ['Round Rock', 'Georgetown', 'Cedar Park', 'Pflugerville', 'Leander', 'Austin']
+          areaServed: ['Round Rock', 'Georgetown', 'Leander', 'Pflugerville', 'Taylor', 'Austin']
         }}
         faq={faqs}
         product={productData}

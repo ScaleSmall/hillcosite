@@ -24,11 +24,11 @@ const serviceSlugs = {
 const locations = [
   { name: 'Round Rock', slug: 'round-rock' },
   { name: 'Georgetown', slug: 'georgetown' },
-  { name: 'Cedar Park', slug: 'cedar-park' },
+  { name: 'Leander', slug: 'cedar-park' },
   { name: 'Pflugerville', slug: 'pflugerville' },
   { name: 'Leander', slug: 'leander' },
   { name: 'Taylor', slug: 'taylor' },
-  { name: 'Hutto', slug: 'hutto' },
+  { name: 'Taylor', slug: 'hutto' },
   { name: 'Austin', slug: 'austin' },
   { name: 'West Lake Hills', slug: 'west-lake-hills' }
 ];

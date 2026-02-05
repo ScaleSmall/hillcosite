@@ -52,29 +52,8 @@ export const locations: Record<string, LocationData> = {
     serviceAreaSlug: 'round-rock-georgetown',
     localInfo: {
       climate: 'Similar to Round Rock with limestone terrain affecting exterior surfaces',
-      homeStyles: ['Victorian', 'Historic', 'Texas Hill Country', 'Modern suburban'],
+      homeStyles: ['Victorian', 'Historic', 'Texas limestone traditional', 'Modern suburban'],
       paintChallenges: ['Historic preservation requirements', 'Limestone-based soil affecting foundations']
-    }
-  },
-  'cedar-park': {
-    name: 'Cedar Park',
-    slug: 'cedar-park',
-    zipCodes: ['78613', '78641'],
-    coordinates: { lat: 30.5052, lng: -97.8203 },
-    neighborhoods: ['Buttercup Creek', 'Twin Creeks', 'Anderson Mill', 'Ranch at Brushy Creek', 'Whitestone Oaks', 'Cypress Canyon', 'Silverado West', 'Carriage Hills', 'Cedar Park Town Center', 'Lakeline'],
-    highlights: [
-      'Cedar Park Center event coordination',
-      'Family-friendly neighborhood experience',
-      'Modern subdivision specialists',
-      'Quick turnaround for busy families',
-      'Anderson Mill Road corridor coverage',
-      'Lakeline area expertise'
-    ],
-    serviceAreaSlug: 'cedar-park',
-    localInfo: {
-      climate: 'Hill Country terrain with variable elevations affecting sun exposure',
-      homeStyles: ['Modern suburban', 'Texas contemporary', 'Traditional'],
-      paintChallenges: ['Diverse sun exposure due to terrain', 'Cedar pollen considerations']
     }
   },
   'pflugerville': {
@@ -109,13 +88,13 @@ export const locations: Record<string, LocationData> = {
       'New construction painting specialists',
       'Crystal Falls community experience',
       'Austin commuter scheduling flexibility',
-      'Hill Country views preservation',
+      'Scenic elevated terrain preservation',
       'MetroRail corridor coverage'
     ],
     serviceAreaSlug: 'leander',
     localInfo: {
-      climate: 'Higher elevation Hill Country with increased wind exposure',
-      homeStyles: ['Hill Country modern', 'Texas contemporary', 'New construction'],
+      climate: 'Higher elevation terrain with increased wind exposure',
+      homeStyles: ['Texas limestone modern', 'Texas contemporary', 'New construction'],
       paintChallenges: ['Wind exposure', 'Limestone terrain', 'Rapid sun intensity changes']
     }
   },
@@ -140,33 +119,12 @@ export const locations: Record<string, LocationData> = {
       paintChallenges: ['Historic preservation', 'Agricultural dust', 'Temperature extremes']
     }
   },
-  'hutto': {
-    name: 'Hutto',
-    slug: 'hutto',
-    zipCodes: ['78634'],
-    coordinates: { lat: 30.5427, lng: -97.5467 },
-    neighborhoods: ['Star Ranch', 'Hutto Parke', 'Legends of Hutto', 'Creek Bend', 'Enclave at Brushy Creek', 'Emory Farms', 'Riverwalk', 'Huttoparke', 'Lakeside Estates', 'Heritage on San Gabriel'],
-    highlights: [
-      'Hippo pride community connection',
-      'Rapidly growing community specialist',
-      'New construction expertise',
-      'Family-oriented scheduling',
-      'Hutto ISD coordination',
-      'SH-130 corridor access'
-    ],
-    serviceAreaSlug: 'taylor-hutto',
-    localInfo: {
-      climate: 'Similar to Taylor with Blackland prairie conditions',
-      homeStyles: ['Modern suburban', 'New construction', 'Texas traditional'],
-      paintChallenges: ['New construction settling', 'Rapid growth area considerations']
-    }
-  },
   'austin': {
     name: 'Austin',
     slug: 'austin',
     zipCodes: ['78701', '78702', '78703', '78704', '78705', '78721', '78722', '78723', '78724', '78725', '78726', '78727', '78728', '78729', '78730', '78731', '78732', '78733', '78734', '78735', '78736', '78737', '78738', '78739', '78741', '78742', '78744', '78745', '78746', '78747', '78748', '78749', '78750', '78751', '78752', '78753', '78754', '78756', '78757', '78758', '78759'],
     coordinates: { lat: 30.2672, lng: -97.7431 },
-    neighborhoods: ['Downtown Austin', 'Hyde Park', 'Mueller', 'East Austin', 'South Austin', 'North Austin', 'Zilker', 'Barton Hills', 'Allandale', 'Crestview', 'Tarrytown', 'Clarksville', 'Travis Heights', 'Bouldin Creek'],
+    neighborhoods: ['Allandale', 'Crestview', 'Tarrytown', 'Clarksville', 'Northwest Hills', 'Circle C Ranch'],
     highlights: [
       'Capital city expertise across all neighborhoods',
       'Historic district preservation specialists',
@@ -177,7 +135,7 @@ export const locations: Record<string, LocationData> = {
     ],
     serviceAreaSlug: 'austin',
     localInfo: {
-      climate: 'Variable microclimate zones from Hill Country to Blackland prairie',
+      climate: 'Variable microclimate zones from elevated limestone terrain to Blackland prairie',
       homeStyles: ['Historic', 'Modern', 'Eclectic Austin', 'High-rise condo', 'Bungalow'],
       paintChallenges: ['Historic preservation', 'Varied architectural styles', 'Urban environment']
     }
@@ -191,15 +149,15 @@ export const locations: Record<string, LocationData> = {
     highlights: [
       'Luxury home specialists',
       'Eanes ISD community expertise',
-      'Hill Country estate experience',
+      'Elevated terrain estate experience',
       'Premium finish and materials',
       'Privacy-conscious service',
       'High-end HOA compliance'
     ],
     serviceAreaSlug: 'west-lake-hills',
     localInfo: {
-      climate: 'Hill Country terrain with dramatic elevation changes',
-      homeStyles: ['Luxury estate', 'Hill Country modern', 'Mediterranean', 'Contemporary'],
+      climate: 'Elevated limestone terrain with dramatic elevation changes',
+      homeStyles: ['Luxury estate', 'Texas limestone modern', 'Mediterranean', 'Contemporary'],
       paintChallenges: ['Complex architecture', 'Premium material requirements', 'Steep terrain access']
     }
   }

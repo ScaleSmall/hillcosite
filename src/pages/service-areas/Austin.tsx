@@ -15,10 +15,9 @@ import { geoAreas } from '../../data/geoAreas';
 const Austin = () => {
   const serviceAreas = [
     { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville & Wells Branch', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Taylor & Hutto', href: '/service-areas/taylor-hutto' },
-    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
+    { name: 'Leander', href: '/service-areas/cedar-park' },
+    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' }
   ];
 
@@ -53,7 +52,7 @@ const Austin = () => {
     },
     {
       question: 'Do you work with Austin\'s diverse architectural styles?',
-      answer: 'Absolutely. Austin features everything from historic Victorian homes in Hyde Park to modern contemporary designs in West Lake Hills, mid-century ranches in Allandale, and new construction in Mueller. We have extensive experience with each architectural style and understand the specific requirements, from period-appropriate colors for historic districts to cutting-edge finishes for modern properties.'
+      answer: 'Absolutely. Austin features everything from historic Victorian homes in Clarksville to modern contemporary designs in West Lake Hills, mid-century ranches in Allandale, and new construction in Circle C Ranch. We have extensive experience with each architectural style and understand the specific requirements, from period-appropriate colors for historic districts to cutting-edge finishes for modern properties.'
     },
     {
       question: 'Can you coordinate around SXSW, ACL Festival, and other major Austin events?',
@@ -73,7 +72,7 @@ const Austin = () => {
     <>
       <SEO
         title="Austin Painting Services | Live Music Capital Painters | Hill Country Painting"
-        description="Professional Austin painters serving the Live Music Capital of the World. Expert interior and exterior painting for historic Hyde Park, downtown high-rises, West Lake Hills estates, and all Austin neighborhoods. Local specialists understanding Texas Capitol area needs."
+        description="Professional Austin painters serving the Live Music Capital of the World. Expert interior and exterior painting for historic Clarksville, downtown high-rises, West Lake Hills estates, and all Austin neighborhoods. Local specialists understanding Texas Capitol area needs."
         canonical="/service-areas/austin"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -83,7 +82,7 @@ const Austin = () => {
         service={{
           name: 'Austin Professional Painting Services',
           description: 'Professional residential and commercial painting services throughout Austin, Texas. Specializing in historic district preservation, modern downtown properties, West Lake Hills luxury homes, and all Austin architectural styles. Expert painters serving the Live Music Capital with quality craftsmanship.',
-          areaServed: ['Austin', 'Downtown Austin', 'West Lake Hills', 'Hyde Park', 'Tarrytown', 'Travis Heights', 'South Congress', 'East Austin', 'Zilker', 'Allandale', 'Rosedale', 'Clarksville', 'Mueller', 'University of Texas Area', 'Barton Hills', 'Bouldin Creek']
+          areaServed: ['Austin', 'Downtown Austin', 'West Lake Hills', 'Tarrytown', 'Clarksville', 'Travis Heights', 'South Congress', 'Zilker', 'Allandale', 'Crestview', 'Rosedale', 'Pemberton Heights', 'University of Texas Area', 'Barton Creek', 'Circle C Ranch']
         }}
         faq={austinSpecificFAQs}
       />
@@ -116,7 +115,7 @@ const Austin = () => {
                 Austin's Premier Painting Specialists
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Serving the Live Music Capital of the World with exceptional painting craftsmanship. From historic Hyde Park Victorians to modern downtown high-rises, West Lake Hills estates to vibrant East Austin homes. Expert painters who understand Austin's unique character, climate, and architectural diversity.
+                Serving the Live Music Capital of the World with exceptional painting craftsmanship. From historic Clarksville Victorians to modern downtown high-rises, West Lake Hills estates to vibrant Tarrytown homes. Expert painters who understand Austin's unique character, climate, and architectural diversity.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
                 <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -167,12 +166,12 @@ const Austin = () => {
 
       <SplitSection
         title="Austin's Diverse Neighborhoods Demand Expert Painters"
-        description="Austin is a city of incredible diversity, from the Victorian charm of Hyde Park to the sleek modern architecture of downtown, the luxury estates of West Lake Hills to the creative energy of East Austin. Our painters understand the unique requirements of each neighborhood, whether it's preserving historic character in Clarksville, meeting HOA standards in Tarrytown, or creating bold contemporary finishes in Mueller. We navigate Austin's intense summer heat, sudden storms, and diverse architectural styles with expertise gained from extensive local experience."
+        description="Austin is a city of incredible diversity, from the Victorian charm of Clarksville to the sleek modern architecture of downtown, the luxury estates of West Lake Hills to the creative energy of Tarrytown. Our painters understand the unique requirements of each neighborhood, whether it's preserving historic character in Pemberton Heights, meeting HOA standards in Circle C Ranch, or creating bold contemporary finishes in Barton Creek. We navigate Austin's intense summer heat, sudden storms, and diverse architectural styles with expertise gained from extensive local experience."
         benefits={[
-          { text: 'Historic district expertise including Hyde Park, Clarksville, and Travis Heights with period-appropriate colors' },
+          { text: 'Historic district expertise including Clarksville, Tarrytown, and Travis Heights with period-appropriate colors' },
           { text: 'Modern downtown high-rise and condo painting with minimal disruption to urban environments' },
           { text: 'West Lake Hills luxury home experience with premium finishes and high-end materials' },
-          { text: 'East Austin creative district painting including vibrant colors and artistic design elements' },
+          { text: 'Crestview and Allandale mid-century modern painting including vibrant colors and artistic design elements' },
           { text: 'UT campus area coordination with academic calendars and student housing requirements' },
           { text: 'Climate-specific paint selection for Austin\'s extreme heat, UV exposure, and humidity challenges' }
         ]}
@@ -195,20 +194,20 @@ const Austin = () => {
             {[
               'Downtown Austin',
               'West Lake Hills',
-              'Hyde Park',
               'Tarrytown',
+              'Clarksville',
               'Travis Heights',
               'South Congress',
-              'East Austin',
               'Zilker',
               'Allandale',
+              'Crestview',
               'Rosedale',
-              'Clarksville',
-              'Mueller',
+              'Pemberton Heights',
               'UT Campus Area',
-              'Barton Hills',
-              'Bouldin Creek',
-              'Westlake'
+              'Barton Creek',
+              'Circle C Ranch',
+              'Rollingwood',
+              'Steiner Ranch'
             ].map((neighborhood) => (
               <div key={neighborhood} className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center space-x-2">

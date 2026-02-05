@@ -18,26 +18,26 @@ const PflugervilleWellsBranch = () => {
       answer: 'Absolutely. We\'re familiar with major Pflugerville events and festivals and can coordinate project schedules around community activities to ensure smooth completion without disruption.'
     },
     {
-      question: 'Do you serve both Pflugerville and Wells Branch?',
-      answer: 'Yes, we serve the entire Pflugerville area including Wells Branch, which straddles the Austin and Pflugerville boundary. We understand the unique character of both communities and provide consistent quality service throughout the area.'
+      question: 'Do you serve the entire Pflugerville area?',
+      answer: 'Yes, we serve the entire Pflugerville area and surrounding neighborhoods that straddle the Austin and Pflugerville boundary. We understand the unique character of the community and provide consistent quality service throughout the area.'
     }
   ];
 
   return (
     <>
       <SEO
-        title="Pflugerville & Wells Branch Painting | Professional Painters | Hill Country Painting"
-        description="Professional painting in Pflugerville & Wells Branch, TX. Expert interior/exterior painting for Blackhawk, Falcon Pointe. Consultations available."
+        title="Pflugerville Painting | Professional Painters | Hill Country Painting"
+        description="Professional painting in Pflugerville, TX. Expert interior/exterior painting for Blackhawk, Falcon Pointe. Consultations available."
         canonical="/service-areas/pflugerville-wells-branch"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Service Areas', url: '/service-areas' },
-          { name: 'Pflugerville & Wells Branch', url: '/service-areas/pflugerville-wells-branch' }
+          { name: 'Pflugerville', url: '/service-areas/pflugerville-wells-branch' }
         ]}
         service={{
-          name: 'Pflugerville & Wells Branch Professional Painting Services',
-          description: 'Professional residential and commercial painting services throughout Pflugerville and Wells Branch, Texas. Specializing in HOA-compliant work, family neighborhoods, and diverse communities. Expert painters serving Pflugerville with quality craftsmanship.',
-          areaServed: ['Pflugerville', 'Wells Branch', 'Blackhawk', 'Falcon Pointe', 'Windermere', 'Springbrook', 'Cambridge Heights']
+          name: 'Pflugerville Professional Painting Services',
+          description: 'Professional residential and commercial painting services throughout Pflugerville, Texas. Specializing in HOA-compliant work, family neighborhoods, and diverse communities. Expert painters serving Pflugerville with quality craftsmanship.',
+          areaServed: ['Pflugerville', 'Blackhawk', 'Falcon Pointe', 'Windermere', 'Springbrook', 'Cambridge Heights', 'Heatherwilde']
         }}
         faq={pflugervilleFAQs}
       />
@@ -46,7 +46,7 @@ const PflugervilleWellsBranch = () => {
         <div className="absolute inset-0 z-0">
           <ImageWithGeo
             src="/austin-professional-house-painting-hero.jpg"
-            alt="Professional Pflugerville and Wells Branch painting services"
+            alt="Professional Pflugerville painting services"
             className="w-full h-full object-cover"
             width="1920"
             height="1080"
@@ -67,10 +67,10 @@ const PflugervilleWellsBranch = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
             <div className="space-y-6">
               <h1 className="text-hero font-bold text-white leading-heading drop-shadow-lg">
-                Pflugerville & Wells Branch Painting Services
+                Pflugerville Painting Services
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Expert painting for Pflugerville and Wells Branch family neighborhoods. From Blackhawk to Falcon Pointe, we serve diverse communities with exceptional craftsmanship. HOA-compliant work, new construction expertise, and quality finishes for growing neighborhoods.
+                Expert painting for Pflugerville family neighborhoods. From Blackhawk to Falcon Pointe, we serve diverse communities with exceptional craftsmanship. HOA-compliant work, new construction expertise, and quality finishes for growing neighborhoods.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
                 <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -112,7 +112,7 @@ const PflugervilleWellsBranch = () => {
       />
 
       <ServicesGrid
-        title="Pflugerville & Wells Branch Painting Services"
+        title="Pflugerville Painting Services"
         subtitle="Professional craftsmanship for every neighborhood"
       />
 
@@ -120,7 +120,7 @@ const PflugervilleWellsBranch = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
-              Pflugerville & Wells Branch Neighborhoods We Serve
+              Pflugerville Neighborhoods We Serve
             </h2>
             <p className="text-xl text-brand-gray-600">
               Expert painting throughout Pflugerville's diverse communities
@@ -134,8 +134,8 @@ const PflugervilleWellsBranch = () => {
             </div>
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Users className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Wells Branch</h3>
-              <p className="text-brand-gray-600">Expert painting for the diverse Wells Branch community straddling Austin and Pflugerville.</p>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Heatherwilde</h3>
+              <p className="text-brand-gray-600">Expert painting for the diverse Heatherwilde community in Pflugerville.</p>
             </div>
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Zap className="w-12 h-12 text-brand-azure mb-4" />
