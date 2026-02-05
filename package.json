@@ -12,10 +12,11 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "brand:guard": "node scripts/brand-guard.mjs",
+    "contrast:verify": "node scripts/verify-contrast.mjs",
     "prebuild": "npm run brand:guard",
     "predev": "npm run brand:guard",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "verify": "npm run brand:guard && npm run typecheck && npm run build"
+    "verify": "npm run brand:guard && npm run contrast:verify && npm run typecheck && npm run build"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

@@ -4,60 +4,46 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ========================================
+        // SEMANTIC COLOR SYSTEM
+        // ========================================
+
+        // PRIMARY BRAND COLORS
+        // Use for: interactive elements, links, focus states, primary CTAs
         brand: {
-          azure: '#197E90',
-          azureDark: '#163C43',
-          coral: '#FBE7CC',
-          regentGray: '#84949C',
+          azure: '#197E90',      // Primary interactive color
+          azureDark: '#163C43',  // Headers, footers, contrast surfaces
+          coral: '#FBE7CC',      // Warm cream - section backgrounds only
+          regentGray: '#84949C', // Secondary text, dividers, UI chrome
+
+          // Neutral grayscale - text and backgrounds
           gray: {
-            50: '#F8FAFC',
-            100: '#F1F5F9',
-            200: '#E2E8F0',
-            300: '#CBD5E1',
-            400: '#94A3B8',
-            500: '#64748B',
-            600: '#475569',
-            700: '#334155',
-            800: '#1E293B',
-            900: '#0F172A'
+            50: '#F8FAFC',   // Lightest background
+            100: '#F1F5F9',  // Light background
+            200: '#E2E8F0',  // Subtle borders
+            300: '#CBD5E1',  // Borders, dividers
+            400: '#94A3B8',  // Disabled text
+            500: '#64748B',  // Secondary text
+            600: '#475569',  // Body text
+            700: '#334155',  // Headings
+            800: '#1E293B',  // Dark headings
+            900: '#0F172A'   // Maximum contrast
           }
         },
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-        },
-        deep: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
-        },
+
+        // SLATE ALIAS (for backward compatibility)
+        // Mirrors brand.gray - gradually migrate to brand-gray-*
         slate: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          300: '#CBD5E1',
+          400: '#94A3B8',
+          500: '#64748B',
           600: '#475569',
           700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
+          800: '#1E293B',
+          900: '#0F172A',
         },
-        accent: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
