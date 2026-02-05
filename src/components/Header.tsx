@@ -82,7 +82,9 @@ const Header = () => {
   }, [isMenuOpen, isServicesOpen, isGuidesOpen]);
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-50 border-b-2 border-gradient-to-r from-brand-azure via-brand-azureDark to-brand-regentGray40">
+      {/* Gradient accent border */}
+      <div className="h-1 bg-gradient-to-r from-brand-azure via-brand-azureDark to-brand-regentGray"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo */}

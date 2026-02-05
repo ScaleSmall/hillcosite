@@ -91,7 +91,9 @@ const Home = () => {
             className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
+          {/* Layered gradient overlays with brand colors */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-azureDark40 via-brand-azureDark20 to-brand-azureDark60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-azure20 via-transparent to-brand-regentGray20"></div>
         </div>
         
         {/* Color Consultation Floating Card - Bottom Right */}

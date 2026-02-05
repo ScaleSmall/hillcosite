@@ -17,6 +17,36 @@ export default {
           coralFull: '#FBE7CC',  // Full opacity cream - header/footer only
           regentGray: '#84949C', // Secondary text, dividers, UI chrome
 
+          // Azure opacity variants
+          azure80: 'rgba(25, 126, 144, 0.8)',
+          azure60: 'rgba(25, 126, 144, 0.6)',
+          azure40: 'rgba(25, 126, 144, 0.4)',
+          azure20: 'rgba(25, 126, 144, 0.2)',
+          azure10: 'rgba(25, 126, 144, 0.1)',
+          azure5: 'rgba(25, 126, 144, 0.05)',
+
+          // Dark Azure opacity variants
+          azureDark80: 'rgba(22, 60, 67, 0.8)',
+          azureDark60: 'rgba(22, 60, 67, 0.6)',
+          azureDark40: 'rgba(22, 60, 67, 0.4)',
+          azureDark20: 'rgba(22, 60, 67, 0.2)',
+          azureDark10: 'rgba(22, 60, 67, 0.1)',
+          azureDark5: 'rgba(22, 60, 67, 0.05)',
+
+          // Regent Gray opacity variants
+          regentGray80: 'rgba(132, 148, 156, 0.8)',
+          regentGray60: 'rgba(132, 148, 156, 0.6)',
+          regentGray40: 'rgba(132, 148, 156, 0.4)',
+          regentGray20: 'rgba(132, 148, 156, 0.2)',
+          regentGray10: 'rgba(132, 148, 156, 0.1)',
+          regentGray5: 'rgba(132, 148, 156, 0.05)',
+
+          // Coral opacity variants
+          coral80: 'rgba(251, 231, 204, 0.8)',
+          coral40: 'rgba(251, 231, 204, 0.4)',
+          coral20: 'rgba(251, 231, 204, 0.2)',
+          coral10: 'rgba(251, 231, 204, 0.1)',
+
           // Neutral grayscale - text and backgrounds
           gray: {
             50: '#F8FAFC',   // Lightest background

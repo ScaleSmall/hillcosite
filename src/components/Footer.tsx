@@ -77,8 +77,12 @@ const Footer = () => {
   return (
     <footer className="bg-brand-azureDark text-white">
       {/* CTA Section */}
-      <div className="bg-brand-coralFull py-12 border-b-4 border-brand-azure">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="bg-brand-coralFull py-12 border-b-4 border-brand-azure relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-azure10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-azureDark10 rounded-full translate-x-1/2 translate-y-1/2"></div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-azureDark">
             Ready to Transform Your Space?
           </h2>
@@ -97,19 +101,19 @@ const Footer = () => {
           {/* Trust Indicators */}
           <div className="flex flex-wrap justify-center gap-6 mt-10 pt-8 border-t border-brand-azureDark/20">
             <div className="flex items-center space-x-2 text-brand-azureDark">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <div className="w-8 h-8 bg-gradient-to-br from-brand-azure20 to-brand-azureDark20 rounded-full flex items-center justify-center shadow-md">
                 <span className="text-sm font-bold text-brand-azure">✓</span>
               </div>
               <span className="text-sm font-semibold">Insured</span>
             </div>
             <div className="flex items-center space-x-2 text-brand-azureDark">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <div className="w-8 h-8 bg-gradient-to-br from-brand-azure20 to-brand-azureDark20 rounded-full flex items-center justify-center shadow-md">
                 <span className="text-sm font-bold text-brand-azure">2</span>
               </div>
               <span className="text-sm font-semibold">2-Year Warranty</span>
             </div>
             <div className="flex items-center space-x-2 text-brand-azureDark">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+              <div className="w-8 h-8 bg-gradient-to-br from-brand-azure20 to-brand-azureDark20 rounded-full flex items-center justify-center shadow-md">
                 <span className="text-sm font-bold text-brand-azure">★</span>
               </div>
               <span className="text-sm font-semibold">350+ Projects</span>
@@ -119,8 +123,12 @@ const Footer = () => {
       </div>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+        {/* Subtle decorative accents */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-azure5 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-regentGray10 rounded-full -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 relative z-10">
           {/* Company Info - NAP Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -141,7 +149,7 @@ const Footer = () => {
             <p className="text-brand-gray-300 text-sm">
               {businessConfig.tagline}
             </p>
-            <div className="space-y-2 bg-brand-azureDark/80 rounded-lg p-3 border border-brand-coral/20">
+            <div className="space-y-2 bg-gradient-to-br from-brand-azureDark80 to-brand-azureDark rounded-lg p-3 border border-brand-azure20">
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
                 className="flex items-center space-x-2 text-white hover:text-brand-azure transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"

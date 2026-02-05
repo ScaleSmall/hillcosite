@@ -54,8 +54,12 @@ const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: Services
   }[surface];
 
   return (
-    <section className={`section-padding ${surfaceClass}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={`section-padding ${surfaceClass} relative overflow-hidden`}>
+      {/* Decorative background elements */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-brand-azure10 rounded-full translate-x-1/2"></div>
+      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-brand-regentGray10 rounded-full -translate-x-1/2"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {(title || subtitle) && (
           <div className="text-center mb-16">
             {title && (
@@ -70,11 +74,16 @@ const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: Services
             )}
           </div>
         )}
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayServices.map((service, index) => (
-            <div key={index} className="card overflow-hidden group">
-              <div className="aspect-w-16 aspect-h-10 overflow-hidden">
+            <div key={index} className="card overflow-hidden group relative">
+              {/* Subtle gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-azure5 to-brand-azureDark5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none"></div>
+
+              <div className="aspect-w-16 aspect-h-10 overflow-hidden relative">
+                {/* Colored border accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-azure via-brand-azureDark to-brand-regentGray z-20"></div>
                 <ImageWithGeo
                   src={service.image}
                   alt={`${service.title} Austin Texas - Hill Country Painting professional service`}
@@ -90,7 +99,7 @@ const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: Services
                   }}
                 />
               </div>
-              <div className="p-6">
+              <div className="p-6 relative z-20">
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
                   {service.title}
                 </h3>
@@ -99,7 +108,7 @@ const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: Services
                 </p>
                 <Link
                   to={service.link}
-                  className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors group focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"
+                  className="inline-flex items-center text-brand-azureDark hover:text-brand-azure font-medium transition-colors group focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"
                 >
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
