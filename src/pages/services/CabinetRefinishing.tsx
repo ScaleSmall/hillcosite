@@ -216,13 +216,13 @@ const CabinetRefinishing = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-heading drop-shadow-lg">
-                Cabinet Painters in Austin, TX
+                Cabinet Painting in Austin
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Transform your kitchen for significantly less than replacement in Austin. Custom colors • Professional finish • 2-year warranty.
+                Professional cabinet refinishing provides a fresh look at a fraction of replacement cost. Requires careful prep, proper products, and controlled application.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Clean prep. Crisp lines. Reliable schedules.
+                Thorough surface prep. Durable finish. Minimal kitchen disruption.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">

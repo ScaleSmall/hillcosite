@@ -26,33 +26,33 @@ const InteriorPainting = () => {
   const processSteps = [
     {
       number: 1,
-      title: 'Consultation & Planning',
-      description: 'We assess your space, discuss color preferences, and create a detailed plan for your interior painting project.'
+      title: 'Initial Walk-Through',
+      description: 'We visit your home to examine surfaces, discuss your preferences, and answer questions about the process, timeline, and materials.'
     },
     {
       number: 2,
-      title: 'Furniture Protection',
-      description: 'All furniture and belongings are carefully covered to ensure complete protection during painting.'
+      title: 'Protection Setup',
+      description: 'Before any work begins, we protect floors, furniture, and fixtures with drop cloths and plastic sheeting.'
     },
     {
       number: 3,
       title: 'Surface Preparation',
-      description: 'Thorough cleaning, patching, sanding, and priming ensures the best possible paint adhesion and finish.'
+      description: 'We clean walls, repair imperfections, sand rough areas, and apply primer where needed. Proper prep determines how long your paint will last.'
     },
     {
       number: 4,
-      title: 'Professional Application',
-      description: 'Expert application using high-quality tools and techniques for smooth, even coverage throughout your home.'
+      title: 'Paint Application',
+      description: 'We apply finish coats systematically—cutting in edges first, then rolling walls and ceilings for consistent coverage.'
     },
     {
       number: 5,
-      title: 'Quality Inspection',
-      description: 'Detailed walkthrough to ensure every surface meets our high standards before project completion.'
+      title: 'Daily Cleanup',
+      description: 'At the end of each work day, we remove debris, organize materials, and ensure your home remains livable during the project.'
     },
     {
       number: 6,
-      title: 'Clean-up & Final Walk',
-      description: 'Complete cleanup and final inspection with you to ensure complete satisfaction with the results.'
+      title: 'Final Walkthrough',
+      description: 'We review the completed work room by room with you, address any concerns, and ensure you\'re satisfied before we leave.'
     }
   ];
 
@@ -84,28 +84,28 @@ const InteriorPainting = () => {
 
   const faqs = [
     {
-      question: 'How long does interior painting take?',
-      answer: 'Most interior painting projects take 2-5 days depending on the size of the space and number of rooms. We provide a detailed timeline during your consultation.'
+      question: 'How long does interior painting typically take?',
+      answer: 'Most interior projects take 2-5 days depending on room count, ceiling height, and surface conditions. We provide a specific timeline after assessing your space.'
     },
     {
-      question: 'Do I need to move all my furniture?',
-      answer: 'No, our team will carefully cover and protect all furniture and belongings. We handle all the preparation so you don\'t have to.'
+      question: 'Do we need to move furniture ourselves?',
+      answer: 'No. We move what needs to be moved and protect everything else with drop cloths and plastic sheeting. You won\'t need to do any furniture moving.'
     },
     {
-      question: 'What paint brands do you use?',
-      answer: 'We use premium paint brands known for durability and coverage. We\'ll recommend the best options for your specific needs and budget.'
+      question: 'What paint do you use?',
+      answer: 'We use Sherwin-Williams and Benjamin Moore products. During your consultation, we\'ll recommend specific products based on the room type and your durability requirements.'
     },
     {
-      question: 'Can you match any color?',
-      answer: 'Yes, we offer full custom color matching services and can help you choose the perfect colors for your space.'
+      question: 'Can you help with color selection?',
+      answer: 'Yes. We can provide color guidance during your consultation and help you understand how different colors will look in your specific lighting conditions.'
     },
     {
-      question: 'How much does interior painting cost in Round Rock?',
-      answer: 'Interior painting typically ranges from $3,200-$7,200 depending on home size, paint quality, and scope of work. We provide detailed estimates with transparent pricing.'
+      question: 'What does interior painting cost in Austin?',
+      answer: 'Interior projects typically range from $3,200-$7,200 depending on square footage, ceiling height, and paint quality. We provide itemized estimates that break down all costs.'
     },
     {
-      question: 'How often should I repaint interior rooms?',
-      answer: 'High-traffic areas like kitchens and hallways typically need repainting every 3-5 years, while bedrooms and formal rooms can go 7-10 years between paint jobs.'
+      question: 'How often should interior paint be refreshed?',
+      answer: 'High-traffic areas like kitchens and hallways typically need attention every 3-5 years. Bedrooms and formal rooms often last 7-10 years before showing wear.'
     }
   ];
 
@@ -192,21 +192,21 @@ const InteriorPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Interior House Painters in Austin, TX
+                Interior Painting in Austin
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Transform your home's interior with Austin's most trusted painting contractors. 100+ homes painted • Insured crew • 2-year warranty • Consultations available.
+                Professional interior painting with thorough surface prep, protected work areas, and clear communication throughout the project.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Clean prep. Crisp lines. Reliable schedules.
+                Insured crew. 2-year warranty. Consistent project management.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Get Consultation
+                  Request Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call (512) 240-2246
+                  (512) 240-2246
                 </a>
               </div>
             </div>
@@ -223,28 +223,28 @@ const InteriorPainting = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
-                Transform Your Austin Home's Interior
+                Interior Painting for Austin Homes
               </h2>
               <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
-                  Professional interior painting that enhances every room in your Austin home. Our experienced crew delivers clean preparation, premium materials, and precise application for lasting results.
+                  Painting the interior of your home requires careful planning and execution. We approach each project systematically—protecting your belongings, preparing surfaces properly, and maintaining a clean work environment throughout.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Complete furniture protection</span>
+                    <span>Furniture and floor protection</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Premium paint selection</span>
+                    <span>Quality paint and materials</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Free color consultation</span>
+                    <span>Color guidance available</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Complete daily cleanup</span>
+                    <span>Daily cleanup protocol</span>
                   </div>
                 </div>
               </div>

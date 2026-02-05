@@ -232,9 +232,9 @@ const Contact = () => {
 
             {/* Content - Center */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
-              <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Contact Us</h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Request a Consultation</h1>
               <p className="text-base md:text-lg text-brand-gray-600 mb-4">
-                Get your consultation or reach out with any questions about your painting project.
+                Contact us to schedule an on-site assessment. We'll review your project, answer questions, and provide a detailed estimate.
               </p>
               <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">

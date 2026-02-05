@@ -181,13 +181,13 @@ const CommercialPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Commercial Painting Services in Austin, TX
+                Commercial Painting in Austin
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Professional commercial painting for Austin businesses. Offices, retail, restaurants • Fully insured • Flexible scheduling • Minimal disruption.
+                Commercial painting for offices, retail spaces, and restaurants. We coordinate around your business hours and maintain clean, organized work areas.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Professional results. Business-friendly scheduling.
+                Fully insured. Flexible scheduling. Clear communication.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">

@@ -20,33 +20,33 @@ const ExteriorPainting = () => {
   const processSteps = [
     {
       number: 1,
-      title: 'Property Assessment',
-      description: 'Thorough evaluation of your exterior surfaces, including inspection for damage, moisture, and structural issues.'
+      title: 'Exterior Assessment',
+      description: 'We inspect all surfaces for damage, moisture issues, and areas requiring repair before painting begins.'
     },
     {
       number: 2,
-      title: 'Color Selection',
-      description: 'Professional color consultation and material recommendations for Texas climate and HOA requirements.'
+      title: 'Color & Material Discussion',
+      description: 'We review color options, HOA requirements if applicable, and recommend paints suited to Austin\'s climate.'
     },
     {
       number: 3,
       title: 'Surface Preparation',
-      description: 'Power washing, scraping, sanding, caulking, and priming to ensure proper paint adhesion and longevity.'
+      description: 'We pressure wash, scrape loose paint, sand rough areas, fill cracks, and prime bare wood or stucco as needed.'
     },
     {
       number: 4,
-      title: 'Professional Application',
-      description: 'Expert spray and brush application using premium weather-resistant paints designed for Texas heat.'
+      title: 'Paint Application',
+      description: 'We apply weather-resistant finish coats using spray or brush methods appropriate for each surface type.'
     },
     {
       number: 5,
-      title: 'Detail Work',
-      description: 'Precise trim work, fascia, and accent painting to complete your home\'s transformation.'
+      title: 'Trim & Detail Work',
+      description: 'We complete all trim, fascia, and accent areas—ensuring clean lines and thorough coverage.'
     },
     {
       number: 6,
-      title: 'Final Inspection',
-      description: 'Complete walkthrough and quality check to ensure exceptional results and your complete satisfaction.'
+      title: 'Site Cleanup & Review',
+      description: 'We remove all materials, clean the work area, and review the finished project with you before leaving.'
     }
   ];
 
@@ -185,13 +185,13 @@ const ExteriorPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Exterior House Painters in Austin, TX
+                Exterior Painting in Austin
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Protect and beautify your Austin home with professional exterior painting. Weather-resistant finishes • HOA expertise • 100+ projects • 2-year warranty.
+                Exterior painting that accounts for Austin's heat, humidity, and UV exposure. We use appropriate prep methods and weather-resistant coatings.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Texas heat specialist. Premium paints. Reliable results.
+                Proper surface prep. Climate-appropriate materials. 2-year warranty.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -214,11 +214,11 @@ const ExteriorPainting = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
-                Professional Exterior Painting in Austin
+                Exterior Painting for Austin Homes
               </h2>
               <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
-                  Transform your home's curb appeal with professional exterior painting designed for Texas climate. Our experienced crew delivers exceptional preparation, premium materials, and flawless application.
+                  Exterior painting in Central Texas requires specific preparation and materials to withstand intense heat and UV exposure. We follow proven methods for surface prep, product selection, and application timing.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex items-center space-x-3">

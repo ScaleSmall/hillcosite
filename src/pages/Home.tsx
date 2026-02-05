@@ -137,25 +137,25 @@ const Home = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
-                Austin House Painting Done Right
+                Your Home Deserves a Careful, Predictable Painting Experience
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Professional interior, exterior, cabinet, and commercial painting in Austin. Clean prep, crisp lines, durable results. Insured, backed by a 2-year warranty.
+                We handle residential and commercial painting projects across Austin with consistent communication, thorough surface prep, and respect for your schedule and space.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Clean prep. Crisp lines. Reliable schedules.
+                Clear timelines. Protected spaces. Quality that lasts.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Get Consultation
+                  Request Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
-                  Call (512) 240-2246
+                  (512) 240-2246
                 </a>
               </div>
               <div className="text-lg text-white font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
-                Austin's most trusted painting contractors. We've transformed homes and businesses across the Austin metro area with professional interior painting, exterior painting, cabinet painting, and commercial painting services. Our experienced, insured crew delivers exceptional results with clean preparation, precise application, and reliable scheduling that Austin homeowners and businesses depend on.
+                Serving Austin homeowners and businesses who value clear communication and consistent follow-through. Our process removes the uncertainty from painting projects—from surface preparation through final walkthrough, you'll know exactly what to expect and when.
               </div>
           </div>
           </div>
@@ -167,7 +167,7 @@ const Home = () => {
 
       {/* Pattern G: Testimonials */}
       <TestimonialsSection
-        title="What Our Customers Say"
+        title="What Clients Say About Working With Us"
         testimonials={testimonials}
       />
 
@@ -176,39 +176,39 @@ const Home = () => {
 
       {/* Pattern B: Services Grid */}
       <ServicesGrid
-        title="Our Services"
-        subtitle="Complete painting solutions for your Austin home"
+        title="Services We Provide"
+        subtitle="Interior, exterior, cabinet, and commercial painting—managed with the same attention to detail and clear communication"
       />
 
       {/* Our Working Process */}
       <ProcessSection
-        title="Our Working Process"
-        subtitle="From first contact to final walkthrough, we make your painting project simple and stress-free"
+        title="How We Work"
+        subtitle="A straightforward process designed to remove uncertainty and protect your daily routine"
         steps={[
           {
             number: 1,
-            title: 'Request a Quote',
-            description: 'Contact us online or by phone for a free, no-obligation estimate. We respond promptly to all inquiries.'
+            title: 'Initial Consultation',
+            description: 'We visit your property to assess surfaces, discuss your goals, and answer questions. You receive a clear, itemized estimate with no pressure to commit.'
           },
           {
             number: 2,
-            title: 'On-Site Evaluation',
-            description: 'Our expert visits your property to assess the scope, discuss colors, and provide an accurate quote.'
+            title: 'Project Planning',
+            description: 'Once you approve, we confirm dates, review protection protocols, and establish a communication plan so you know exactly what to expect.'
           },
           {
             number: 3,
-            title: 'Prep & Protection',
-            description: 'We carefully prepare surfaces and protect your furniture, floors, and landscaping before any painting begins.'
+            title: 'Surface Preparation',
+            description: 'Proper prep determines paint longevity. We thoroughly clean, repair, and prime surfaces before any finish coats are applied.'
           },
           {
             number: 4,
-            title: 'Professional Painting',
-            description: 'Our skilled crew applies premium paints with precision, ensuring clean lines and thorough coverage.'
+            title: 'Application & Progress Updates',
+            description: 'Our crew works efficiently while maintaining clean, organized work areas. We provide regular updates and address any questions as they arise.'
           },
           {
             number: 5,
-            title: 'Final Walkthrough',
-            description: 'We review every detail with you to ensure complete satisfaction before considering the job done.'
+            title: 'Final Review',
+            description: 'We walk through the completed work together, address any concerns immediately, and ensure you\'re completely satisfied before we consider the project finished.'
           }
         ]}
       />
@@ -218,10 +218,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-              Flexible Financing Available
+              Financing Options Available
             </h2>
             <p className="text-xl text-brand-gray-600 mb-8 max-w-2xl mx-auto">
-              Make your painting project more affordable with our financing options
+              We offer payment plans through established lenders for projects of all sizes
             </p>
             <div className="flex flex-col items-center gap-3">
               <Link to="/financing" className="inline-block transition-transform">

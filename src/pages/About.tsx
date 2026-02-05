@@ -54,7 +54,7 @@ const About = () => {
               About Hill Country Painting
             </h1>
             <p className="text-xl text-brand-gray-600 leading-body">
-              Austin's trusted painting professionals, committed to transforming homes and commercial spaces with clean prep, crisp lines, and reliable schedules. Insured, experienced, and backed by a 2-year warranty.
+              We provide residential and commercial painting services across Austin with consistent communication, thorough preparation, and respect for your schedule and space.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
@@ -70,15 +70,15 @@ const About = () => {
 
       {/* Pattern C: Story */}
       <SplitSection
-        title="Our Austin Story"
-        description="Hill Country Painting was founded with a simple mission: to provide Austin homeowners with honest, professional painting services they can trust. After 15+ years serving the Austin market, we've built our reputation on quality work, clear communication, and reliable service throughout the metro area."
+        title="How We Work"
+        description="Hill Country Painting was established to provide straightforward, professionally managed painting services to Austin homeowners and businesses. Over 15 years, we've built a process that removes uncertainty from painting projects—from initial consultation through final walkthrough."
         benefits={[
-          { text: 'Local Austin business, supporting our community' },
-          { text: '15+ years of experience in Austin homes' },
-          { text: 'Insured crew you can trust in your home' },
-          { text: '2-year warranty on all painting services' },
-          { text: 'Transparent pricing with no hidden fees' },
-          { text: 'Clean prep work and professional execution' }
+          { text: 'Austin-based with knowledge of local conditions and requirements' },
+          { text: '15+ years serving the Austin metro area' },
+          { text: 'Fully insured crew trained in proper procedures' },
+          { text: '2-year warranty covering workmanship' },
+          { text: 'Itemized pricing with no hidden costs' },
+          { text: 'Systematic approach to prep, application, and cleanup' }
         ]}
         image="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Austin painting professionals - Hill Country Painting experienced crew at work"
@@ -89,10 +89,10 @@ const About = () => {
 
       {/* Pattern I: CTA Banner */}
       <CTABanner
-        title="Ready to Experience the Difference?"
-        subtitle="Join hundreds of satisfied Austin homeowners who trust Hill Country Painting"
+        title="Ready to Discuss Your Project?"
+        subtitle="We provide clear estimates and straightforward timelines for painting projects across Austin"
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Request Consultation',
           href: '/contact'
         }}
         secondaryCTA={{
