@@ -105,7 +105,7 @@ const Header = () => {
                           <Link
                             key={service.name}
                             to={service.href}
-                            className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
+                            className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
                           >
                             {service.name}
                           </Link>
@@ -120,7 +120,7 @@ const Header = () => {
                           <Link
                             key={guide.name}
                             to={guide.href}
-                            className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors"
+                            className="block px-4 py-3 text-brand-gray-700 hover:bg-brand-gray-50 hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
                           >
                             {guide.name}
                           </Link>

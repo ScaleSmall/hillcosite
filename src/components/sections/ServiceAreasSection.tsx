@@ -37,7 +37,7 @@ const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProp
               <Link
                 key={index}
                 to={area.href}
-                className="px-6 py-3 bg-white hover:bg-brand-gray-50 text-brand-azureDark hover:text-brand-gray-800 border border-brand-gray-200 hover:border-brand-gray-300 rounded-full font-medium transition-all duration-200"
+                className="px-6 py-3 bg-white hover:bg-brand-gray-50 text-brand-azureDark hover:text-brand-gray-800 border border-brand-gray-200 hover:border-brand-gray-300 rounded-full font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 {area.name}
               </Link>

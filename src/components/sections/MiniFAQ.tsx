@@ -42,7 +42,7 @@ const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
             <div key={index} className="card overflow-hidden">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-brand-gray-50 transition-colors"
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-brand-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="font-semibold text-brand-gray-900 pr-4">
                   {faq.question}

@@ -101,14 +101,14 @@ const Footer = () => {
             <div className="space-y-2 bg-brand-gray-800/50 rounded-lg p-3">
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors font-medium"
+                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
               >
                 <Phone size={16} />
                 <span>{businessConfig.phone}</span>
               </a>
               <a
                 href={`mailto:${businessConfig.email}`}
-                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors"
+                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
               >
                 <Mail size={16} />
                 <span>{businessConfig.email}</span>
@@ -128,7 +128,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-gray-300 hover:text-white transition-colors"
+                  className="text-brand-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
                   aria-label={social.ariaLabel}
                 >
                   <social.icon size={20} />
@@ -144,7 +144,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
                   >
                     {link.name}
                   </Link>
@@ -160,7 +160,7 @@ const Footer = () => {
                 <li key={service.name}>
                   <Link
                     to={service.href}
-                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
                   >
                     {service.name}
                   </Link>
@@ -176,7 +176,7 @@ const Footer = () => {
                 <li key={area.name}>
                   <Link
                     to={area.href}
-                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
                   >
                     {area.name}
                   </Link>
@@ -192,7 +192,7 @@ const Footer = () => {
                 <li key={guide.name}>
                   <Link
                     to={guide.href}
-                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
                   >
                     {guide.name}
                   </Link>
@@ -208,7 +208,7 @@ const Footer = () => {
                 <li key={area.name}>
                   <Link
                     to={area.href}
-                    className="text-brand-gray-300 hover:text-white transition-colors text-sm"
+                    className="text-brand-gray-300 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
                   >
                     {area.name}
                   </Link>
@@ -223,13 +223,13 @@ const Footer = () => {
             <div className="text-brand-gray-300 text-sm text-center md:text-left">
               <div>© {currentYear} Hill Country Painting. All rights reserved.</div>
               <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
-                <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                <Link to="/privacy" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">Privacy Policy</Link>
                 <span className="text-brand-gray-500">•</span>
-                <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+                <Link to="/terms" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">Terms of Service</Link>
                 <span className="text-brand-gray-500">•</span>
-                <Link to="/eula" className="hover:text-white transition-colors">EULA</Link>
+                <Link to="/eula" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">EULA</Link>
                 <span className="text-brand-gray-500">•</span>
-                <Link to="/financing" className="hover:text-white transition-colors">Financing</Link>
+                <Link to="/financing" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">Financing</Link>
               </div>
             </div>
             <div className="flex space-x-4">

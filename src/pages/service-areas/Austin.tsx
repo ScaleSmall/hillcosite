@@ -236,7 +236,7 @@ const Austin = () => {
               <Link
                 key={hub.slug}
                 to={`/areas/${hub.slug}`}
-                className="card p-6 hover:shadow-lg transition-all duration-200 group"
+                className="card p-6 hover:shadow-lg transition-shadow duration-200 group"
               >
                 <div className="flex items-start gap-3 mb-3">
                   <Home className="w-6 h-6 text-brand-azure flex-shrink-0 mt-1" />

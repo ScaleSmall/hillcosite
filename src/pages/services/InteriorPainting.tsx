@@ -289,7 +289,7 @@ const InteriorPainting = () => {
                       <div className={`bg-white rounded-2xl p-8 shadow-xl border-l-4 ${
                         index % 3 === 0 ? 'border-blue-500' :
                         index % 3 === 1 ? 'border-indigo-500' : 'border-purple-500'
-                      } transform transition-all duration-300 hover:shadow-2xl`}>
+                      } transform transition-[box-shadow,transform] duration-300 hover:shadow-2xl`}>
                         <div className="flex items-start gap-4">
                           <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg ${
                             index % 3 === 0 ? 'bg-gradient-to-br from-blue-500 to-blue-600' :

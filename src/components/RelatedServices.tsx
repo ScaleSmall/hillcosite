@@ -38,7 +38,7 @@ const RelatedServices = ({
             <Link
               key={index}
               to={service.href}
-              className="group bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-200 border border-brand-gray-200 hover:border-brand-gray-300"
+              className="group bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-[box-shadow,border-color] duration-200 border border-brand-gray-200 hover:border-brand-gray-300"
             >
               <div className="flex items-start justify-between">
                 <div className="flex-grow">

@@ -215,7 +215,7 @@ const Gallery = () => {
             {/* Right Featured Projects Grid */}
             <div className="grid grid-cols-2 gap-4">
               {featuredProjects.map((project, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <ImageWithGeo
                     src={project.image}
                     alt={project.title}
@@ -258,7 +258,7 @@ const Gallery = () => {
             {/* Recent Photos Grid (First 12) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {recentPhotos.map((photo) => (
-                <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <img
                     src={photo.image_url}
                     alt={photo.alt_text}
@@ -291,7 +291,7 @@ const Gallery = () => {
                 {showOlderPhotos && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                     {olderPhotos.map((photo) => (
-                      <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                      <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                         <img
                           src={photo.image_url}
                           alt={photo.alt_text}

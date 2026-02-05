@@ -44,7 +44,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           <div className="max-w-4xl mx-auto flex items-center gap-4">
             <Link
               to="/service-areas"
-              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors"
+              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"
             >
               <Home className="w-4 h-4" />
               <span className="text-sm font-medium">Service Areas</span>
@@ -52,7 +52,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <span className="text-brand-gray-400">/</span>
             <Link
               to={`/areas/${hub.slug}`}
-              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors"
+              className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-medium">{hub.name}</span>
@@ -82,13 +82,13 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 Get Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 {businessConfig.phone}
@@ -137,7 +137,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <div className="grid md:grid-cols-2 gap-6">
               <Link
                 to="/services/interior-painting"
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Interior Painting</h3>
                 <p className="text-brand-gray-700">
@@ -146,7 +146,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               </Link>
               <Link
                 to="/services/exterior-painting"
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Exterior Painting</h3>
                 <p className="text-brand-gray-700">
@@ -155,7 +155,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               </Link>
               <Link
                 to="/services/cabinet-refinishing"
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Cabinet Painting</h3>
                 <p className="text-brand-gray-700">
@@ -164,7 +164,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               </Link>
               <Link
                 to="/services/commercial"
-                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
                 <p className="text-brand-gray-700">
@@ -196,7 +196,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   <Link
                     key={index}
                     to={`/areas/${hub.slug}/${n.slug}`}
-                    className="flex items-center gap-2 p-3 bg-brand-gray-50 rounded-lg hover:bg-brand-gray-50 hover:text-brand-gray-900 transition-colors"
+                    className="flex items-center gap-2 p-3 bg-brand-gray-50 rounded-lg hover:bg-brand-gray-50 hover:text-brand-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
                   >
                     <Paintbrush className="w-4 h-4 text-brand-azure flex-shrink-0" />
                     <span className="text-sm font-medium">{n.name}</span>
@@ -220,7 +220,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   href={businessConfig.googleBusinessProfileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
                 >
                   <ExternalLink className="w-5 h-5 mr-2" />
                   View our Google Business Profile
@@ -229,7 +229,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   href={businessConfig.googleBusinessProfileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-gray-900 hover:bg-brand-gray-800 text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-gray-900 hover:bg-brand-gray-800 text-white font-semibold rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-brand-gray-700 focus:ring-offset-2"
                 >
                   <MapPin className="w-5 h-5 mr-2" />
                   See reviews & directions
@@ -251,13 +251,13 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-brand-gray-100 font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-brand-gray-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-azure"
               >
                 Request Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="inline-flex items-center justify-center px-8 py-4 bg-brand-gray-900 text-white hover:bg-brand-gray-800 font-semibold rounded-lg transition-colors duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-gray-900 text-white hover:bg-brand-gray-800 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-azure"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Call {businessConfig.phone}

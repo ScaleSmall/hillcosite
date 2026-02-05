@@ -92,7 +92,7 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
                 </p>
                 <Link
                   to={service.link}
-                  className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors group"
+                  className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors group focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"
                 >
                   Learn More
                   <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
