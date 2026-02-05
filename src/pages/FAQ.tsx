@@ -33,7 +33,7 @@ const FAQ = () => {
     },
     {
       question: 'What paint brands do you use?',
-      answer: 'We use premium paint brands selected for durability, coverage, and finish quality. We\'ll recommend the best options for your specific project and budget requirements.'
+      answer: 'We use premium paint brands selected for durability, coverage, and finish quality. We\'ll recommend the right options for your specific project and budget requirements.'
     },
     {
       question: 'Can you match any color?',

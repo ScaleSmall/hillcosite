@@ -146,7 +146,7 @@ const PreApproval = () => {
               </div>
 
               <div className="margin-bot-24-prequal">
-                <h3 className="title-prequal-xxsmall">Fast and easy</h3>
+                <h3 className="title-prequal-xxsmall">Simple and straightforward</h3>
                 <p className="paragraph-prequal-lg">
                   The application takes about a minute to complete.
                 </p>

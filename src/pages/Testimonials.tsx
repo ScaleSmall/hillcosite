@@ -26,7 +26,7 @@ const Testimonials = () => {
       name: 'leslie lyon-house',
       location: 'Austin',
       rating: 5,
-      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Everyone who we worked with at Hill Country Painting was great. Fantastic value - the price point is beyond fair. And we used a 20% discount on our project.',
+      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Everyone who we worked with at Hill Country Painting was great. Fantastic value - the price point is beyond fair.',
       initials: 'LL'
     },
     {

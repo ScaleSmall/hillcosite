@@ -29,7 +29,7 @@ const Services = () => {
       description: 'Transform your kitchen for significantly less than replacement. Professional cabinet painting with custom colors and factory-quality finishes.',
       image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800',
       link: '/services/cabinet-refinishing',
-      features: ['Custom painting', 'Factory sprayed finish', 'Save 60% vs replacement']
+      features: ['Custom painting', 'Factory sprayed finish', 'A cost-effective alternative to replacement']
     },
     {
       title: 'Commercial Painting',

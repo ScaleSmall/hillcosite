@@ -20,7 +20,7 @@ const config: ServiceLocationConfig = {
       'Minimal business disruption',
       'Office and retail expertise',
       'Industrial space capable',
-      'Fast turnaround available',
+      'Efficient turnaround available',
       'Licensed and insured',
       'Competitive commercial rates'
     ],

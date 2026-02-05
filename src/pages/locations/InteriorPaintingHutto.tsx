@@ -17,7 +17,7 @@ const config: ServiceLocationConfig = {
     benefits: [
       'New home customization experts',
       'Family schedule flexibility',
-      'Fast, efficient service',
+      'Efficient service',
       'Kid and pet-safe paints available',
       'Open floor plan specialists',
       'Quality workmanship guaranteed',

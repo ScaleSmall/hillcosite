@@ -21,7 +21,7 @@ const config: ServiceLocationConfig = {
       'Modern floor plan experience',
       'Austin commuter flexibility',
       'Premium finish upgrades',
-      'Fast, efficient service',
+      'Efficient service',
       '2-year warranty included'
     ],
     processSteps: [

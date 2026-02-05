@@ -19,7 +19,7 @@ const config: ServiceLocationConfig = {
       'Office space specialists',
       '1890 Ranch experience',
       'Flexible scheduling options',
-      'Fast turnaround capable',
+      'Efficient turnaround capable',
       'Quality commercial finishes',
       'Licensed and insured',
       'Competitive rates'

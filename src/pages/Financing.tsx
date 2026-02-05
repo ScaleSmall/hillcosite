@@ -33,7 +33,7 @@ const Financing = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="text-brand-azure flex-shrink-0 mt-1" size={20} />
-                  <span>Fast approval with soft credit check</span>
+                  <span>Streamlined approval with soft credit check</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="text-brand-azure flex-shrink-0 mt-1" size={20} />

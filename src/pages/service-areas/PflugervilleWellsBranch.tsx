@@ -105,7 +105,7 @@ const PflugervilleWellsBranch = () => {
           },
           {
             icon: <Zap className="w-8 h-8 text-brand-azureDark" />,
-            value: "Fast",
+            value: "Responsive",
             label: "Service"
           }
         ]}

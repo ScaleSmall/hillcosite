@@ -25,7 +25,7 @@ export const locations: Record<string, LocationData> = {
       'Dell Diamond event-day logistics management',
       'HOA compliance expertise for Round Rock communities',
       'Experience with newer construction and established homes',
-      'Fast response times for Round Rock residents',
+      'Timely communication with Round Rock residents',
       'Knowledge of local Round Rock building codes'
     ],
     serviceAreaSlug: 'round-rock-georgetown',

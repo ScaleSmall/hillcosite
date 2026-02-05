@@ -19,7 +19,7 @@ const config: ServiceLocationConfig = {
       'Retail center experience',
       'Industrial capabilities',
       'Flexible scheduling',
-      'Fast project completion',
+      'Efficient project completion',
       'Quality commercial finishes',
       'Licensed and insured',
       'Competitive pricing'

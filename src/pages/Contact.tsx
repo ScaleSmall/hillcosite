@@ -208,7 +208,7 @@ const Contact = () => {
     <>
       <SEO
         title="Contact — Hill Country Painting"
-        description="Consultations available for interior, exterior, cabinet painting in Austin. Call (512) 240-2246 or request online. Fast response. Insured crew."
+        description="Consultations available for interior, exterior, cabinet painting in Austin. Call (512) 240-2246 or request online. Responsive communication. Insured crew."
         canonical="/contact"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -765,7 +765,7 @@ const Contact = () => {
         stats={[
           {
             icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">✓</div>,
-            value: "Fast",
+            value: "Responsive",
             label: "Response Time"
           },
           {
