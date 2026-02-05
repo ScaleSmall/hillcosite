@@ -174,19 +174,6 @@ const InteriorPainting = () => {
           </Link>
         </div>
 
-        {/* Award Badge - Bottom Right */}
-        <div className="absolute bottom-8 right-8 z-20 hidden lg:flex flex-col items-center gap-2">
-          <div className="transition-transform duration-300">
-            <img
-              src="/winner_best_of_round_rock_2025_award.jpg"
-              alt="Winner Best of Round Rock 2025 Award - Hill Country Painting"
-              className="w-48 h-auto drop-shadow-2xl"
-              width="192"
-              height="192"
-            />
-          </div>
-        </div>
-
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">

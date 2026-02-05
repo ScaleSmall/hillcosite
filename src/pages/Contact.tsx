@@ -220,18 +220,8 @@ const Contact = () => {
       <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6 lg:gap-8">
-            {/* Award Badge - Left Side */}
-            <div className="hidden lg:flex flex-shrink-0">
-              <img
-                src="/winner_best_of_round_rock_2025_award.jpg"
-                alt="Winner Best of Round Rock 2025 Award"
-                className="w-40 h-40 object-contain"
-                loading="eager"
-              />
-            </div>
-
             {/* Content - Center */}
-            <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
+            <div className="flex-1 text-center max-w-3xl mx-auto">
               <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Let's Talk About Your Project</h1>
               <p className="text-base md:text-lg text-brand-gray-600 mb-4">
                 Share some details about your project and we'll schedule a time to visit. We'll review the space, answer questions, and provide a clear written estimate.
