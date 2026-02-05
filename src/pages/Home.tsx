@@ -150,10 +150,10 @@ const Home = () => {
                 Serving Austin homeowners who value calm, organized, professional service.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
+                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azureDark hover:bg-brand-azure text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   Request Consultation
                 </Link>
-                <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
+                <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azureDark hover:bg-brand-azure text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
                   (512) 240-2246
                 </a>

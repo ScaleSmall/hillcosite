@@ -64,10 +64,10 @@ const Services = () => {
               From interior and exterior painting to cabinet painting and commercial projects, we deliver professional results backed by our 2-year warranty. Serving Austin and surrounding areas. Clean prep, crisp lines, reliable schedules.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn-primary">
+              <Link to="/contact" className="inline-flex items-center justify-center px-6 py-3 bg-brand-azureDark hover:bg-brand-azure text-white font-heading font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 transition-colors duration-200">
                 Request a Consultation
               </Link>
-              <a href="tel:(512)240-2246" className="btn-outline">
+              <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-azureDark hover:border-brand-azure text-brand-azureDark hover:text-brand-azure font-heading font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 transition-colors duration-200">
                 Call (512) 240-2246
               </a>
             </div>
