@@ -143,9 +143,9 @@ const InteriorPainting = () => {
             width="1920"
             height="1080"
             location={{
-              name: 'Round Rock, TX',
-              latitude: 30.5083,
-              longitude: -97.6789,
+              name: 'Austin, TX',
+              latitude: 30.2672,
+              longitude: -97.7431,
               region: 'Texas'
             }}
           />
@@ -467,7 +467,7 @@ const InteriorPainting = () => {
           {
             title: 'Interior Painting Cost Guide',
             description: 'Complete guide to interior painting costs and budgeting for Austin homes.',
-            href: '/guides/painting-costs-round-rock'
+            href: '/guides/painting-costs-austin'
           }
         ]}
       />

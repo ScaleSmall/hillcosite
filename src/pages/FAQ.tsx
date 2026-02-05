@@ -21,7 +21,7 @@ const FAQ = () => {
     },
     {
       question: 'What areas do you serve?',
-      answer: 'We serve Austin and the surrounding metro area, including Round Rock, Pflugerville, Leander, Georgetown, and other nearby neighborhoods.'
+      answer: 'We serve Austin and the surrounding metro area, including Tarrytown, West Lake Hills, Northwest Hills, West Lake Highlands, Lakeway, Cedar Park, Hutto, and other nearby neighborhoods.'
     },
     {
       question: 'How long do painting projects typically take?',

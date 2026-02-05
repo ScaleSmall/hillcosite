@@ -8,45 +8,45 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import CTABanner from '../../components/sections/CTABanner';
 
 const CedarPark = () => {
-  const leanderFAQs = [
+  const cedarParkFAQs = [
     {
-      question: 'Do you work with Leander HOA requirements?',
-      answer: 'Yes, Leander has many HOA-governed communities like Crystal Falls, Mason Hills, and Summerlyn. We understand HOA approval processes and ensure all exterior work meets community standards and guidelines.'
+      question: 'Do you work with Cedar Park HOA requirements?',
+      answer: 'Yes, Cedar Park has many HOA-governed communities like Avery Ranch, Twin Creeks, and Brushy Creek. We understand HOA approval processes and ensure all exterior work meets community standards and guidelines.'
     },
     {
-      question: 'How do you handle painting in Leander\'s growing neighborhoods?',
-      answer: 'Leander is one of the fastest-growing cities in Texas. We have extensive experience with both new construction painting and established homes, from the newer developments near Crystal Falls to older neighborhoods near South West Leander.'
+      question: 'How do you handle painting in Cedar Park\'s growing neighborhoods?',
+      answer: 'Cedar Park is one of the fastest-growing cities in Texas. We have extensive experience with both new construction painting and established homes, from the newer developments near Avery Ranch to older neighborhoods throughout Cedar Park.'
     },
     {
-      question: 'Can you coordinate around Leander events and festivals?',
-      answer: 'Absolutely. We work around major Leander events like festivals at Robin Bledsoe Park and other community activities to ensure smooth project completion.'
+      question: 'Can you coordinate around Cedar Park events and festivals?',
+      answer: 'Absolutely. We work around major Cedar Park events and community activities to ensure smooth project completion.'
     }
   ];
 
   return (
     <>
       <SEO
-        title="Leander Painting Services | Professional Painters | Hill Country Painting"
-        description="Professional painting services in Leander, TX. Expert interior and exterior painting for Crystal Falls, Mason Hills, and all Leander neighborhoods. Quality craftsmanship for one of Texas's fastest-growing cities."
-        canonical="/service-areas/leander"
+        title="Cedar Park Painting Services | Professional Painters | Hill Country Painting"
+        description="Professional painting services in Cedar Park, TX. Expert interior and exterior painting for Avery Ranch, Twin Creeks, and all Cedar Park neighborhoods. Quality craftsmanship for one of Texas's fastest-growing cities."
+        canonical="/service-areas/cedar-park"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Service Areas', url: '/service-areas' },
-          { name: 'Leander', url: '/service-areas/cedar-park' }
+          { name: 'Cedar Park', url: '/service-areas/cedar-park' }
         ]}
         service={{
-          name: 'Leander Professional Painting Services',
-          description: 'Professional residential and commercial painting services throughout Leander, Texas. Specializing in HOA-compliant work, new construction, and established neighborhoods. Expert painters serving Leander with quality craftsmanship.',
-          areaServed: ['Leander', 'Crystal Falls', 'Mason Hills', 'Summerlyn', 'Parkside Village', 'South West Leander']
+          name: 'Cedar Park Professional Painting Services',
+          description: 'Professional residential and commercial painting services throughout Cedar Park, Texas. Specializing in HOA-compliant work, new construction, and established neighborhoods. Expert painters serving Cedar Park with quality craftsmanship.',
+          areaServed: ['Cedar Park', 'Avery Ranch', 'Twin Creeks', 'Brushy Creek', 'Anderson Mill', 'Buttercup Creek']
         }}
-        faq={leanderFAQs}
+        faq={cedarParkFAQs}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithGeo
             src="/austin-professional-house-painting-hero.jpg"
-            alt="Professional Leander painting services"
+            alt="Professional Cedar Park painting services"
             className="w-full h-full object-cover"
             width="1920"
             height="1080"
@@ -54,9 +54,9 @@ const CedarPark = () => {
             priority={true}
             sizes="100vw"
             location={{
-              name: 'Leander, TX',
-              latitude: 30.5788,
-              longitude: -97.8531,
+              name: 'Cedar Park, TX',
+              latitude: 30.5052,
+              longitude: -97.8203,
               region: 'Texas'
             }}
           />
@@ -67,10 +67,10 @@ const CedarPark = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
             <div className="space-y-6">
               <h1 className="text-hero font-bold text-white leading-heading drop-shadow-lg">
-                Leander Professional Painting Services
+                Cedar Park Professional Painting Services
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Expert painting for one of Texas's fastest-growing cities. From Crystal Falls to Mason Hills, we serve all Leander neighborhoods with exceptional craftsmanship. HOA-compliant work, new construction expertise, and quality finishes for established homes.
+                Expert painting for one of Texas's fastest-growing cities. From Avery Ranch to Twin Creeks, we serve all Cedar Park neighborhoods with exceptional craftsmanship. HOA-compliant work, new construction expertise, and quality finishes for established homes.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
                 <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -91,12 +91,12 @@ const CedarPark = () => {
           {
             icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">400+</div>,
             value: "400+",
-            label: "Leander Projects"
+            label: "Cedar Park Projects"
           },
           {
             icon: <Trees className="w-8 h-8 text-brand-azureDark" />,
             value: "Local",
-            label: "Leander Experts"
+            label: "Cedar Park Experts"
           },
           {
             icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">2</div>,
@@ -112,43 +112,43 @@ const CedarPark = () => {
       />
 
       <ServicesGrid
-        title="Leander Painting Services"
-        subtitle="Professional craftsmanship for every Leander home"
+        title="Cedar Park Painting Services"
+        subtitle="Professional craftsmanship for every Cedar Park home"
       />
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
-              Leander Neighborhoods We Serve
+              Cedar Park Neighborhoods We Serve
             </h2>
             <p className="text-xl text-brand-gray-600">
-              Expert painting throughout Leander's diverse communities
+              Expert painting throughout Cedar Park's diverse communities
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Trees className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Crystal Falls</h3>
-              <p className="text-brand-gray-600">Professional painting for Crystal Falls homes with HOA compliance and quality finishes.</p>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Avery Ranch</h3>
+              <p className="text-brand-gray-600">Professional painting for Avery Ranch homes with HOA compliance and quality finishes.</p>
             </div>
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Home className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Mason Hills</h3>
-              <p className="text-brand-gray-600">Expert painting for established Mason Hills neighborhoods and new developments.</p>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Twin Creeks</h3>
+              <p className="text-brand-gray-600">Expert painting for established Twin Creeks neighborhoods and new developments.</p>
             </div>
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <Building2 className="w-12 h-12 text-brand-azure mb-4" />
-              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Summerlyn</h3>
-              <p className="text-brand-gray-600">Commercial and residential painting in Leander's vibrant Summerlyn community.</p>
+              <h3 className="text-xl font-semibold text-brand-gray-900 mb-2">Brushy Creek</h3>
+              <p className="text-brand-gray-600">Commercial and residential painting in Cedar Park's vibrant Brushy Creek community.</p>
             </div>
           </div>
         </div>
       </section>
 
       <CTABanner
-        title="Ready to Transform Your Leander Home?"
-        subtitle="Get a consultation from Leander's trusted painting professionals"
+        title="Ready to Transform Your Cedar Park Home?"
+        subtitle="Get a consultation from Cedar Park's trusted painting professionals"
         primaryCTA={{
           text: "Request a Consultation",
           href: "/contact"

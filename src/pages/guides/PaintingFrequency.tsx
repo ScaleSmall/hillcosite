@@ -174,7 +174,7 @@ const PaintingFrequency = () => {
                   <th className="px-6 py-4 text-center">Frequency</th>
                   <th className="px-6 py-4 text-left">Key Factors</th>
                   <th className="px-6 py-4 text-left">Warning Signs</th>
-                  <th className="px-6 py-4 text-left">Round Rock Notes</th>
+                  <th className="px-6 py-4 text-left">Central Texas Notes</th>
                 </tr>
               </thead>
               <tbody>
@@ -202,7 +202,7 @@ const PaintingFrequency = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-              Best Times to Paint in Round Rock
+              Best Times to Paint in Central Texas
             </h2>
             <p className="text-xl text-slate-600">
               Seasonal factors affecting paint performance and application
@@ -233,7 +233,7 @@ const PaintingFrequency = () => {
                     <p className="text-slate-600">{season.interior}</p>
                   </div>
                   <div className="bg-slate-50 rounded-lg p-3 mt-4">
-                    <p className="font-medium text-brand-gray-900 mb-1">Round Rock Tip:</p>
+                    <p className="font-medium text-brand-gray-900 mb-1">Central Texas Tip:</p>
                     <p className="text-slate-600">{season.roundRockTip}</p>
                   </div>
                 </div>

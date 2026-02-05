@@ -43,9 +43,9 @@ const staticContent = [
   },
   {
     type: 'guide' as const,
-    title: 'Painting Costs Round Rock',
-    description: 'Complete guide to house painting costs in Round Rock, TX. Learn about pricing factors, cost-saving tips, and what to expect.',
-    url: '/guides/painting-costs-round-rock',
+    title: 'Painting Costs Austin',
+    description: 'Complete guide to house painting costs in Austin, TX. Learn about pricing factors, cost-saving tips, and what to expect.',
+    url: '/guides/painting-costs-austin',
     category: 'Guides'
   },
   {
@@ -57,9 +57,9 @@ const staticContent = [
   },
   {
     type: 'guide' as const,
-    title: 'HOA Color Tips Round Rock',
-    description: 'Navigate HOA color requirements in Round Rock with expert tips. Approval processes, popular colors, and compliance guidance.',
-    url: '/guides/hoa-color-tips-round-rock',
+    title: 'HOA Color Tips Austin',
+    description: 'Navigate HOA color requirements in Austin with expert tips. Approval processes, popular colors, and compliance guidance.',
+    url: '/guides/hoa-color-tips-austin',
     category: 'Guides'
   },
   {

@@ -386,9 +386,9 @@ const Gallery = () => {
                     className="w-full h-64 object-cover transition-transform duration-300"
                     sizes="(max-width: 768px) 100vw, 50vw"
                     location={{
-                      name: 'Round Rock, TX',
-                      latitude: 30.5083,
-                      longitude: -97.6789,
+                      name: 'Austin, TX',
+                      latitude: 30.2672,
+                      longitude: -97.7431,
                       region: 'Texas'
                     }}
                   />

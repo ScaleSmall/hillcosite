@@ -353,7 +353,7 @@ const ExteriorPainting = () => {
           {
             title: 'Exterior Painting Cost Guide',
             description: 'Complete guide to exterior painting costs for Austin homes.',
-            href: '/guides/painting-costs-round-rock'
+            href: '/guides/painting-costs-austin'
           }
         ]}
       />

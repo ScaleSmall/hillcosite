@@ -68,7 +68,7 @@ const BestPaintTexasHeat = () => {
       answer: '100% acrylic latex paint is the best choice for Texas heat. It offers superior UV resistance, flexibility with temperature changes, and excellent color retention even in extreme temperatures.'
     },
     {
-      question: 'Should I choose light or dark colors for my Round Rock home?',
+      question: 'Should I choose light or dark colors for my Central Texas home?',
       answer: 'Light colors are generally better for Texas heat as they reflect sunlight and stay cooler. However, high-quality paints allow for medium and even some dark colors if properly applied.'
     },
     {
@@ -80,7 +80,7 @@ const BestPaintTexasHeat = () => {
       answer: 'Yes, brand quality matters significantly in Texas. Premium brands like Sherwin Williams, Benjamin Moore, and PPG offer superior heat and UV resistance compared to budget options.'
     },
     {
-      question: 'Can I paint my house in summer in Round Rock?',
+      question: 'Can I paint my house in summer in Central Texas?',
       answer: 'Yes, but timing matters. Early morning or late afternoon painting is best. Professional painters know how to work safely and effectively in Texas heat with proper techniques.'
     }
   ];
@@ -132,7 +132,7 @@ const BestPaintTexasHeat = () => {
               Paint Types for Texas Heat
             </h2>
             <p className="text-xl text-slate-600">
-              How different paint types perform in Round Rock's climate
+              How different paint types perform in Central Texas's climate
             </p>
           </div>
           

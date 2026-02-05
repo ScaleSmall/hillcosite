@@ -152,7 +152,7 @@ export const locations: Record<string, LocationData> = {
       'Family-friendly scheduling',
       'HOA compliance knowledge',
       'Northwest Austin corridor',
-      'Leander ISD coordination'
+      'Cedar Park community expertise'
     ],
     serviceAreaSlug: 'cedar-park',
     localInfo: {

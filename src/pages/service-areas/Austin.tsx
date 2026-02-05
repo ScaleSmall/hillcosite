@@ -14,11 +14,13 @@ import { geoAreas } from '../../data/geoAreas';
 
 const Austin = () => {
   const serviceAreas = [
-    { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Leander', href: '/service-areas/cedar-park' },
-    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
-    { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' }
+    { name: 'Tarrytown', href: '/service-areas/tarrytown' },
+    { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
+    { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
+    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'Hutto', href: '/service-areas/hutto' }
   ];
 
   const realTestimonials = [

@@ -52,14 +52,14 @@ const NotFound = () => {
                 We serve all Austin areas including:
               </h3>
               <div className="grid grid-cols-2 gap-2 text-sm text-brand-gray-600">
-                <span>• Round Rock</span>
-                <span>• Pflugerville</span>
-                <span>• Leander</span>
-                <span>• Georgetown</span>
+                <span>• Austin</span>
+                <span>• Tarrytown</span>
+                <span>• West Lake Hills</span>
+                <span>• Northwest Hills</span>
+                <span>• West Lake Highlands</span>
                 <span>• Lakeway</span>
-                <span>• Bee Cave</span>
-                <span>• Taylor</span>
-                <span>• And more!</span>
+                <span>• Cedar Park</span>
+                <span>• Hutto</span>
               </div>
             </div>
 

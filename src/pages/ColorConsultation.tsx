@@ -121,7 +121,7 @@ const ColorConsultation = () => {
         service={{
           name: 'Color Consultation',
           description: 'Professional color consultation and paint color selection services for homes and businesses in Austin, Texas.',
-          areaServed: ['Austin', 'Round Rock', 'Georgetown', 'Pflugerville', 'Leander', 'Lakeway', 'Bee Cave', 'Taylor', 'Barton Creek']
+          areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek']
         }}
         faq={faqs}
       />

@@ -167,9 +167,9 @@ const CabinetRefinishing = () => {
             priority={true}
             sizes="100vw"
             location={{
-              name: 'Round Rock, TX',
-              latitude: 30.5083,
-              longitude: -97.6789,
+              name: 'Austin, TX',
+              latitude: 30.2672,
+              longitude: -97.7431,
               region: 'Texas'
             }}
           />
@@ -435,7 +435,7 @@ const CabinetRefinishing = () => {
         }}
         secondaryCTA={{
           text: 'View Cost Guide',
-          href: '/guides/painting-costs-round-rock'
+          href: '/guides/painting-costs-austin'
         }}
       />
     </>
