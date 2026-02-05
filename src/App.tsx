@@ -158,7 +158,7 @@ function App() {
         <ScrollToTop />
         <div className="min-h-screen bg-white">
           <Header />
-          <main id="main">
+          <main id="main-content" tabIndex={-1}>
             <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<Trace name="/"><Home /></Trace>} />
