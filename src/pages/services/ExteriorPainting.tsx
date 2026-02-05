@@ -190,7 +190,7 @@ const ExteriorPainting = () => {
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
                 Protect and beautify your Austin home with professional exterior painting. Weather-resistant finishes • HOA expertise • 100+ projects • 2-year warranty.
               </p>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Texas heat specialist. Premium paints. Reliable results.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

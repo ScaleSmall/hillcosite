@@ -221,7 +221,7 @@ const CabinetRefinishing = () => {
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
                 Transform your kitchen for significantly less than replacement in Austin. Custom colors • Professional finish • 2-year warranty.
               </p>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

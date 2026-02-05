@@ -115,7 +115,7 @@ const Home = () => {
                   <div className="text-lg font-bold leading-tight">
                     FREE Color Consultation
                   </div>
-                  <div className="text-sm font-medium opacity-90">
+                  <div className="text-sm font-semibold">
                     Click to Transform Your Space
                   </div>
                 </div>
@@ -140,7 +140,7 @@ const Home = () => {
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
                 Professional interior, exterior, cabinet, and commercial painting in Austin. Clean prep, crisp lines, durable results. Insured, backed by a 2-year warranty.
               </p>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -152,7 +152,7 @@ const Home = () => {
                   Call (512) 240-2246
                 </a>
               </div>
-              <div className="text-lg text-white/95 font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
+              <div className="text-lg text-white font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
                 Austin's most trusted painting contractors. We've transformed homes and businesses across the Austin metro area with professional interior painting, exterior painting, cabinet painting, and commercial painting services. Our experienced, insured crew delivers exceptional results with clean preparation, precise application, and reliable scheduling that Austin homeowners and businesses depend on.
               </div>
           </div>

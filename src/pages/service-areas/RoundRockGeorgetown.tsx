@@ -126,7 +126,7 @@ const RoundRockGeorgetown = () => {
                   (512) 240-2246
                 </a>
               </div>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Tech corridor innovation meets historic preservation expertise
               </div>
             </div>

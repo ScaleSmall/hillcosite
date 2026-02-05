@@ -176,7 +176,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
               {content.heroSubtitle}
             </p>
-            <div className="flex flex-wrap justify-center gap-4 text-white/90 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 text-white text-sm font-medium">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4" />
                 <span>Licensed & Insured</span>

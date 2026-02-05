@@ -51,7 +51,7 @@ const CTABanner = ({
           {title}
         </h2>
         {subtitle && (
-          <p className={`text-xl mb-8 max-w-2xl mx-auto ${isLightBg ? 'text-brand-gray-700' : 'text-white/90'}`}>
+          <p className={`text-xl mb-8 max-w-2xl mx-auto ${isLightBg ? 'text-brand-gray-700' : 'text-white'}`}>
             {subtitle}
           </p>
         )}

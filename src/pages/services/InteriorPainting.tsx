@@ -197,7 +197,7 @@ const InteriorPainting = () => {
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
                 Transform your home's interior with Austin's most trusted painting contractors. 100+ homes painted • Insured crew • 2-year warranty • Consultations available.
               </p>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Clean prep. Crisp lines. Reliable schedules.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

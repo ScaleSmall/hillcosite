@@ -233,7 +233,7 @@ const Gallery = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                     <h3 className="font-semibold text-sm mb-1">{project.title}</h3>
-                    <p className="text-xs text-white/90">{project.location}</p>
+                    <p className="text-xs text-white">{project.location}</p>
                   </div>
                 </div>
               ))}
@@ -269,7 +269,7 @@ const Gallery = () => {
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                     <h3 className="font-semibold text-base mb-1">{photo.title}</h3>
                     {photo.description && (
-                      <p className="text-sm text-white/90 line-clamp-2">{photo.description}</p>
+                      <p className="text-sm text-white line-clamp-2">{photo.description}</p>
                     )}
                   </div>
                 </div>
@@ -303,7 +303,7 @@ const Gallery = () => {
                         <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                           <h3 className="font-semibold text-base mb-1">{photo.title}</h3>
                           {photo.description && (
-                            <p className="text-sm text-white/90 line-clamp-2">{photo.description}</p>
+                            <p className="text-sm text-white line-clamp-2">{photo.description}</p>
                           )}
                         </div>
                       </div>

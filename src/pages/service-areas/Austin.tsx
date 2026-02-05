@@ -127,7 +127,7 @@ const Austin = () => {
                   (512) 240-2246
                 </a>
               </div>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Trusted by Austin homeowners and businesses
               </div>
             </div>

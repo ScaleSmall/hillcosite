@@ -72,7 +72,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
           <Palette className="w-8 h-8 text-white" aria-hidden="true" />
         </div>
         <h3 className="text-2xl font-bold text-white mb-2">Get Project Evaluation</h3>
-        <p className="text-white/90">Quick estimate for your Austin project</p>
+        <p className="text-white">Quick estimate for your Austin project</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
@@ -95,7 +95,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.name && (
-            <p id="quote-name-error" className="mt-1 text-sm text-white/80" role="alert">
+            <p id="quote-name-error" className="mt-1 text-sm text-white" role="alert">
               {errors.name}
             </p>
           )}
@@ -121,7 +121,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.phone && (
-            <p id="quote-phone-error" className="mt-1 text-sm text-white/80" role="alert">
+            <p id="quote-phone-error" className="mt-1 text-sm text-white" role="alert">
               {errors.phone}
             </p>
           )}
@@ -147,7 +147,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
             className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:border-brand-azure"
           />
           {errors.email && (
-            <p id="quote-email-error" className="mt-1 text-sm text-white/80" role="alert">
+            <p id="quote-email-error" className="mt-1 text-sm text-white" role="alert">
               {errors.email}
             </p>
           )}
@@ -184,7 +184,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
 
       <div className="mt-6 pt-6 border-t border-white/20">
         <div className="text-center">
-          <div className="flex justify-center gap-4 text-white/90 text-sm font-medium">
+          <div className="flex justify-center gap-4 text-white text-sm font-medium">
             <span>350+ Projects</span>
             <span>Insured</span>
             <span>2-Year Warranty</span>
@@ -195,7 +195,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
       <div className="text-center mt-4">
         <a
           href="tel:(512)240-2246"
-          className="inline-flex items-center text-white/90 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 focus:ring-offset-brand-azureDark rounded px-2 py-1"
+          className="inline-flex items-center text-white hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 focus:ring-offset-brand-azureDark rounded px-2 py-1"
         >
           <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
           Or call (512) 240-2246

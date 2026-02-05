@@ -186,7 +186,7 @@ const CommercialPainting = () => {
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
                 Professional commercial painting for Austin businesses. Offices, retail, restaurants • Fully insured • Flexible scheduling • Minimal disruption.
               </p>
-              <div className="text-base text-white/90 font-medium drop-shadow">
+              <div className="text-base text-white font-semibold drop-shadow">
                 Professional results. Business-friendly scheduling.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

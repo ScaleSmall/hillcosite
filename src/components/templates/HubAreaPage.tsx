@@ -93,7 +93,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
               Professional House Painting in {hub.name}
             </h1>
             {hub.zipCode && (
-              <p className="text-xl text-white/90 font-medium">
+              <p className="text-xl text-white font-medium">
                 Serving {hub.zipCode} and surrounding neighborhoods
               </p>
             )}

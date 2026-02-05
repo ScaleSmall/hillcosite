@@ -158,7 +158,7 @@ const ColorConsultation = () => {
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md max-w-3xl mx-auto">
                 Transform your space with professional color guidance in Austin. Expert analysis, custom palettes, and perfect color harmony that brings your vision to life.
               </p>
-              <div className="text-lg text-white/95 font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
+              <div className="text-lg text-white font-medium drop-shadow bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 inline-block">
                 Free consultation with all painting services
               </div>
             </div>
