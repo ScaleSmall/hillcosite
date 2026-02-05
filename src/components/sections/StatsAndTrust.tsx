@@ -45,19 +45,13 @@ const StatsAndTrust = ({ stats, surface = 'gray' }: StatsAndTrustProps) => {
   }[surface];
 
   return (
-    <section className={`section-padding ${surfaceClass} relative overflow-hidden`}>
-      {/* Decorative background elements */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-brand-azureDark10 rounded-full translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-regentGray10 rounded-full -translate-x-1/3 translate-y-1/3"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className={`section-padding ${surfaceClass}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {displayStats.map((stat, index) => (
-            <div key={index} className="text-center group">
+            <div key={index} className="text-center group p-6 rounded-lg hover:bg-brand-azure5 transition-colors duration-300">
               <div className="flex justify-center mb-4 relative">
-                {/* Icon background with gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-azure20 to-brand-azureDark20 rounded-full w-16 h-16 mx-auto group-hover:opacity-80 transition-opacity duration-300"></div>
-                <div className="relative z-10">
+                <div className="p-4 rounded-full bg-gradient-to-br from-brand-azure10 to-brand-azureDark10 group-hover:from-brand-azure20 group-hover:to-brand-azureDark20 transition-colors duration-300">
                   {stat.icon}
                 </div>
               </div>
@@ -67,6 +61,7 @@ const StatsAndTrust = ({ stats, surface = 'gray' }: StatsAndTrustProps) => {
               <div className="text-brand-gray-600 font-medium">
                 {stat.label}
               </div>
+              <div className="h-1 w-12 mx-auto mt-3 bg-gradient-to-r from-brand-azure to-brand-regentGray opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           ))}
         </div>

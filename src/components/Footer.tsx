@@ -77,12 +77,8 @@ const Footer = () => {
   return (
     <footer className="bg-brand-azureDark text-white">
       {/* CTA Section */}
-      <div className="bg-brand-coralFull py-12 border-b-4 border-brand-azure relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-azure10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-brand-azureDark10 rounded-full translate-x-1/2 translate-y-1/2"></div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="bg-brand-coralFull py-12 border-b-4 border-brand-azure">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-azureDark">
             Ready to Transform Your Space?
           </h2>
@@ -123,12 +119,8 @@ const Footer = () => {
       </div>
 
       {/* Main Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
-        {/* Subtle decorative accents */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-azure5 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-regentGray10 rounded-full -translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info - NAP Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">

@@ -45,22 +45,8 @@ const CTABanner = ({
   const badgeTextClass = isLightBg ? 'text-brand-azureDark' : 'text-white';
 
   return (
-    <section className={`section-padding ${bgClasses[backgroundColor]} ${textColorClass} relative overflow-hidden`}>
-      {/* Decorative background elements based on background color */}
-      {!isLightBg && (
-        <>
-          <div className="absolute top-0 right-0 w-96 h-96 bg-brand-azure20 rounded-full translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-regentGray20 rounded-full -translate-x-1/2 translate-y-1/2"></div>
-        </>
-      )}
-      {isLightBg && (
-        <>
-          <div className="absolute top-0 left-0 w-72 h-72 bg-brand-azure10 rounded-full -translate-x-1/3 -translate-y-1/3"></div>
-          <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand-azureDark10 rounded-full translate-x-1/3 translate-y-1/3"></div>
-        </>
-      )}
-
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <section className={`section-padding ${bgClasses[backgroundColor]} ${textColorClass} border-t-4 ${isLightBg ? 'border-brand-azure' : 'border-brand-azure40'}`}>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           {title}
         </h2>

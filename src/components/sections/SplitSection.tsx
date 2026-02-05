@@ -61,29 +61,24 @@ const SplitSection = ({
 
   const ImageSection = () => (
     <div className="relative group">
-      {/* Decorative accent behind image */}
-      <div className="absolute -inset-4 bg-gradient-to-br from-brand-azure20 via-brand-azureDark20 to-brand-regentGray20 rounded-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
-      <div className="relative">
-        {/* Colored border accent */}
-        <div className="absolute -top-2 -left-2 w-24 h-24 bg-gradient-to-br from-brand-azure to-brand-azureDark rounded-xl opacity-30"></div>
+      <div className="relative border-4 border-brand-azure20 rounded-xl group-hover:border-brand-azure40 transition-colors duration-300">
         <img
           src={image}
           alt={imageAlt}
           width="1200"
           height="800"
-          className="w-full h-auto rounded-xl shadow-lg relative z-10"
+          className="w-full h-auto rounded-lg shadow-lg"
         />
+        {/* Corner accent */}
+        <div className="absolute -top-3 -left-3 w-20 h-20 border-t-4 border-l-4 border-brand-azureDark rounded-tl-xl"></div>
+        <div className="absolute -bottom-3 -right-3 w-20 h-20 border-b-4 border-r-4 border-brand-regentGray rounded-br-xl"></div>
       </div>
     </div>
   );
 
   return (
-    <section className="section-padding bg-white relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-brand-regentGray10 rounded-full translate-x-1/2"></div>
-      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-brand-azure10 rounded-full -translate-x-1/2"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="section-padding bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${imageLeft ? 'lg:grid-flow-col' : ''}`}>
           {imageLeft ? (
             <>
