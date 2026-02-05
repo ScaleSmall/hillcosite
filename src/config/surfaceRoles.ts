@@ -24,7 +24,7 @@
  *    - Secondary background for less emphasized content
  *
  * 4. EMPHASIS SURFACE (bg-brand-azureDark with text-white)
- *    - Dark teal (#114B5C)
+ *    - Dark Azure (#163C43)
  *    - Strong visual emphasis for CTAs or important sections
  *    - Use sparingly for maximum impact
  *    - Always pair with white text for contrast
@@ -45,10 +45,11 @@
  * - DO NOT use non-brand colors (blue, purple, orange, etc.) in gradients
  *
  * EXISTING TOKENS ONLY:
- * - brand-azure (#1F7A8C)
- * - brand-azureDark (#114B5C)
+ * - brand-azure (#197E90)
+ * - brand-azureDark (#163C43)
+ * - brand-regentGray (#84949C)
  * - brand-coral (#FBE7CC) ← WARM SURFACE
- * - brand-gray-50, 100, 200, 600, 700, 800, 900
+ * - brand-gray-50, 100, 200, 300, 400, 500, 600, 700, 800, 900
  * - white, black (standard)
  */
 

@@ -221,7 +221,7 @@ const BestPaintTexasHeat = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {colorConsiderations.map((color, index) => (
               <div key={index} className="card p-8 text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-amber-500">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-brand-coral to-brand-coral80">
                   <Thermometer className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">{color.color}</h3>
@@ -279,31 +279,31 @@ const BestPaintTexasHeat = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-azure to-brand-azureDark rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">UV Blockers</h3>
               <p className="text-slate-600 text-sm">Titanium dioxide and zinc oxide protect against harmful UV rays</p>
             </div>
-            
+
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-azure to-brand-azureDark rounded-full flex items-center justify-center mx-auto mb-4">
                 <Droplets className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Moisture Resistance</h3>
               <p className="text-slate-600 text-sm">Advanced polymers resist humidity and prevent mold growth</p>
             </div>
-            
+
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Sun className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-coral to-brand-coral80 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sun className="w-8 h-8 text-brand-azureDark" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Reflective Pigments</h3>
               <p className="text-slate-600 text-sm">Special pigments reflect infrared heat away from surfaces</p>
             </div>
-            
+
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-regentGray to-brand-regentGray80 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Thermometer className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Temperature Flex</h3>

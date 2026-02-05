@@ -131,7 +131,6 @@ const ColorConsultation = () => {
         {/* Colorful Gradient Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-azure via-brand-coral to-brand-azureDark"></div>
-          <div className="absolute inset-0 bg-gradient-to-tl from-blue-500 via-purple-600 to-pink-600 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-r from-brand-coral via-brand-azure to-brand-azureDark mix-blend-screen opacity-20"></div>
         </div>
 

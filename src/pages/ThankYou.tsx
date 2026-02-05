@@ -13,7 +13,7 @@ const ThankYou = () => {
         robots="noindex, follow"
       />
       
-      <section className="section-padding bg-gradient-to-br from-green-50 to-blue-50 min-h-[60vh] flex items-center">
+      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white min-h-[60vh] flex items-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="space-y-4">
