@@ -77,7 +77,7 @@ const About = () => {
           { text: '15+ years serving the Austin metro area' },
           { text: 'Fully insured crew trained in proper procedures' },
           { text: '2-year warranty covering workmanship' },
-          { text: 'Itemized pricing with no hidden costs' },
+          { text: 'Clear written estimates with no hidden costs' },
           { text: 'Systematic approach to prep, application, and cleanup' }
         ]}
         image="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"

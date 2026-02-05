@@ -220,7 +220,7 @@ const Home = () => {
                 Vague contracts. Hidden costs. Disputes about what's included in the scope.
               </p>
               <p className="text-brand-gray-900 font-semibold">
-                → Our estimates itemize every task. You know exactly what we'll do, what materials we'll use, and what it costs.
+                → We provide written estimates that clearly define the work scope, what's included, and total cost—so there's no confusion later.
               </p>
             </div>
           </div>
@@ -235,7 +235,7 @@ const Home = () => {
           {
             number: 1,
             title: 'Initial Consultation',
-            description: 'We visit your property to assess surfaces, discuss your goals, and answer questions. You receive a clear, itemized estimate with no pressure to commit.'
+            description: 'We visit your property to assess surfaces, discuss your goals, and answer questions. You receive a detailed written estimate with no pressure to commit.'
           },
           {
             number: 2,

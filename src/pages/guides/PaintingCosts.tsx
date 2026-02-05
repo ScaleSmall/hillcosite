@@ -46,7 +46,7 @@ const PaintingCosts = () => {
     },
     {
       question: 'What\'s included in a professional painting estimate?',
-      answer: 'Quality estimates include materials, labor, surface prep, priming, cleanup, and warranty. At Hill Country Painting, we provide detailed breakdowns with no hidden fees.'
+      answer: 'Quality estimates include materials, labor, surface prep, priming, cleanup, and warranty. At Hill Country Painting, we provide clear written estimates with no hidden fees.'
     }
   ];
 
