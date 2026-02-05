@@ -161,7 +161,7 @@ const Home = () => {
       </section>
 
       {/* Pattern A: Stats & Trust */}
-      <StatsAndTrust />
+      <StatsAndTrust surface="coral" />
 
       {/* Pattern G: Testimonials */}
       <TestimonialsSection
@@ -303,6 +303,7 @@ const Home = () => {
           text: 'Call (512) 240-2246',
           href: 'tel:(512) 240-2246'
         }}
+        backgroundColor="coral"
       />
     </>
   );

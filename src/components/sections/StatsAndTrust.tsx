@@ -9,9 +9,10 @@ interface Stat {
 
 interface StatsAndTrustProps {
   stats?: Stat[];
+  surface?: 'white' | 'gray' | 'coral';
 }
 
-const StatsAndTrust = ({ stats }: StatsAndTrustProps) => {
+const StatsAndTrust = ({ stats, surface = 'gray' }: StatsAndTrustProps) => {
   const defaultStats: Stat[] = [
     {
       icon: <Users className="w-8 h-8 text-brand-azureDark" />,
@@ -37,8 +38,14 @@ const StatsAndTrust = ({ stats }: StatsAndTrustProps) => {
 
   const displayStats = stats || defaultStats;
 
+  const surfaceClass = {
+    white: 'bg-white',
+    gray: 'bg-brand-gray-50',
+    coral: 'bg-brand-coral'
+  }[surface];
+
   return (
-    <section className="section-padding bg-brand-gray-50">
+    <section className={`section-padding ${surfaceClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {displayStats.map((stat, index) => (
