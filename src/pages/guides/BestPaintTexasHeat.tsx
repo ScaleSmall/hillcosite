@@ -252,7 +252,7 @@ const BestPaintTexasHeat = () => {
       {/* Professional Tips */}
       <SplitSection
         title="Professional Paint Selection Tips for Austin"
-        description="Our 15+ years of experience painting in Texas heat has taught us what works and what doesn't. Here's what we recommend for maximum paint performance in Austin's climate."
+        description={<>Our 15+ years of experience with <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting in Austin</Link> has taught us what works and what doesn't in Texas heat. Here's what we recommend for maximum paint performance in Austin's climate.</>}
         benefits={[
           { text: '100% acrylic latex for maximum UV protection' },
           { text: 'Light Reflective Value (LRV) of 50+ for heat reflection' },

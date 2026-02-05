@@ -319,7 +319,7 @@ const HOAColorTips = () => {
       {/* Professional Help */}
       <SplitSection
         title="Professional HOA Compliance Assistance"
-        description="We've worked with dozens of Austin HOAs and understand their specific requirements. Let us help you navigate the approval process and choose colors that will be approved quickly."
+        description={<>We've worked with dozens of Austin HOAs and understand their specific requirements for <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting projects</Link>. Let us help you navigate the approval process and choose colors that will be approved quickly.</>}
         benefits={[
           { text: 'Familiar with Austin HOA requirements' },
           { text: 'Help choose pre-approved colors' },

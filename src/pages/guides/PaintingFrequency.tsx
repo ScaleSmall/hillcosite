@@ -246,7 +246,7 @@ const PaintingFrequency = () => {
       {/* Texas Climate Impact */}
       <SplitSection
         title="How Greater Austin Area Climate Affects Paint Longevity"
-        description="Austin's climate presents specific challenges for paint durability. Understanding these factors helps you plan maintenance schedules and choose the right materials for maximum longevity."
+        description={<>Austin's climate presents specific challenges for both <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> durability. Understanding these factors helps you plan maintenance schedules and choose the right materials for maximum longevity.</>}
         benefits={[
           { text: 'Intense UV rays cause faster fading and breakdown' },
           { text: 'High summer temperatures stress paint film' },

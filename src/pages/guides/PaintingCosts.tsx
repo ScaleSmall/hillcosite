@@ -133,7 +133,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Bundle Interior & Exterior</h3>
-                  <p className="text-slate-600">Save 10-15% when combining multiple services in one project.</p>
+                  <p className="text-slate-600">Save 10-15% when combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> services in one project.</p>
                 </div>
               </div>
               
