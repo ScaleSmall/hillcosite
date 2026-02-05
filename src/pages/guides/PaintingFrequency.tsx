@@ -215,10 +215,10 @@ const PaintingFrequency = () => {
                 <div className="text-4xl mb-4">{season.icon}</div>
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">{season.season}</h3>
                 <div className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${
-                  season.painting === 'Excellent' ? 'bg-green-100 text-green-700' :
+                  season.painting === 'Excellent' ? 'bg-brand-azure10 text-brand-azure' :
                   season.painting === 'Good' ? 'bg-brand-azure10 text-brand-azure' :
-                  season.painting === 'Pro Recommended' ? 'bg-amber-100 text-amber-700' :
-                  'bg-yellow-100 text-yellow-700'
+                  season.painting === 'Pro Recommended' ? 'bg-brand-coral text-brand-azureDark' :
+                  'bg-brand-regentGray10 text-brand-regentGray'
                 }`}>
                   {season.painting}
                 </div>
@@ -274,75 +274,75 @@ const PaintingFrequency = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card p-6">
-              <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Sun className="w-6 h-6 text-red-600" />
+              <div className="w-12 h-12 bg-brand-azureDark10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Sun className="w-6 h-6 text-brand-azureDark" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3 text-center">Immediate Action Needed</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
+                  <span className="text-brand-azureDark mr-2">•</span>
                   <span>Peeling or flaking paint</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
+                  <span className="text-brand-azureDark mr-2">•</span>
                   <span>Bare wood or metal showing</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
+                  <span className="text-brand-azureDark mr-2">•</span>
                   <span>Cracks allowing moisture in</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-red-500 mr-2">•</span>
+                  <span className="text-brand-azureDark mr-2">•</span>
                   <span>Mold or mildew stains</span>
                 </li>
               </ul>
             </div>
             
             <div className="card p-6">
-              <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-6 h-6 text-yellow-600" />
+              <div className="w-12 h-12 bg-brand-regentGray10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-6 h-6 text-brand-regentGray" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3 text-center">Plan Within 6-12 Months</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
+                  <span className="text-brand-regentGray mr-2">•</span>
                   <span>Noticeable fading or color change</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
+                  <span className="text-brand-regentGray mr-2">•</span>
                   <span>Chalking (powdery residue)</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
+                  <span className="text-brand-regentGray mr-2">•</span>
                   <span>Minor cracking in paint film</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
+                  <span className="text-brand-regentGray mr-2">•</span>
                   <span>Paint feeling brittle or thin</span>
                 </li>
               </ul>
             </div>
             
             <div className="card p-6">
-              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Home className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-brand-azure10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Home className="w-6 h-6 text-brand-azure" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3 text-center">Good Condition</h3>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
+                  <span className="text-brand-azure mr-2">•</span>
                   <span>Rich, vibrant colors</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
+                  <span className="text-brand-azure mr-2">•</span>
                   <span>Smooth, intact surface</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
+                  <span className="text-brand-azure mr-2">•</span>
                   <span>No visible wear or damage</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
+                  <span className="text-brand-azure mr-2">•</span>
                   <span>Continue annual inspections</span>
                 </li>
               </ul>
@@ -413,7 +413,7 @@ const PaintingFrequency = () => {
               <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">Protective Measures</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">A</span>
                   </div>
                   <div>
@@ -423,7 +423,7 @@ const PaintingFrequency = () => {
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">B</span>
                   </div>
                   <div>
@@ -433,7 +433,7 @@ const PaintingFrequency = () => {
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">C</span>
                   </div>
                   <div>
@@ -443,7 +443,7 @@ const PaintingFrequency = () => {
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">D</span>
                   </div>
                   <div>

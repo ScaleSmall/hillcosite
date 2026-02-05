@@ -68,7 +68,7 @@ const PaintingCosts = () => {
       <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-brand-azure10 text-brand-azureDark rounded-full text-sm font-medium mb-4">
               <Calculator className="w-4 h-4 mr-2" />
               2026 Pricing Guide
             </div>
@@ -128,8 +128,8 @@ const PaintingCosts = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-600 font-bold">1</span>
+                <div className="w-8 h-8 bg-brand-azure10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-brand-azure font-bold">1</span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Bundle Interior & Exterior</h3>
@@ -138,8 +138,8 @@ const PaintingCosts = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-600 font-bold">2</span>
+                <div className="w-8 h-8 bg-brand-azure10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-brand-azure font-bold">2</span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Choose Standard Colors</h3>
@@ -148,8 +148,8 @@ const PaintingCosts = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-600 font-bold">3</span>
+                <div className="w-8 h-8 bg-brand-azure10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-brand-azure font-bold">3</span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Schedule Off-Season</h3>
@@ -160,8 +160,8 @@ const PaintingCosts = () => {
             
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-600 font-bold">4</span>
+                <div className="w-8 h-8 bg-brand-azure10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-brand-azure font-bold">4</span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Clear Access</h3>
@@ -170,8 +170,8 @@ const PaintingCosts = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-600 font-bold">5</span>
+                <div className="w-8 h-8 bg-brand-azure10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-brand-azure font-bold">5</span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Address Repairs First</h3>
@@ -180,8 +180,8 @@ const PaintingCosts = () => {
               </div>
               
               <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-green-600 font-bold">6</span>
+                <div className="w-8 h-8 bg-brand-azure10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-brand-azure font-bold">6</span>
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Maintain Your Paint</h3>

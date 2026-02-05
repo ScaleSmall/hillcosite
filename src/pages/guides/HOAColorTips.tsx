@@ -165,8 +165,8 @@ const HOAColorTips = () => {
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     {req.status === 'required' && (
-                      <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
-                        <AlertTriangle className="w-6 h-6 text-red-600" />
+                      <div className="w-12 h-12 bg-brand-azureDark10 rounded-full flex items-center justify-center">
+                        <AlertTriangle className="w-6 h-6 text-brand-azureDark" />
                       </div>
                     )}
                     {req.status === 'common' && (
@@ -175,8 +175,8 @@ const HOAColorTips = () => {
                       </div>
                     )}
                     {req.status === 'varies' && (
-                      <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                        <FileText className="w-6 h-6 text-yellow-600" />
+                      <div className="w-12 h-12 bg-brand-regentGray10 rounded-full flex items-center justify-center">
+                        <FileText className="w-6 h-6 text-brand-regentGray" />
                       </div>
                     )}
                   </div>
@@ -184,9 +184,9 @@ const HOAColorTips = () => {
                     <div className="flex items-center space-x-2 mb-2">
                       <h3 className="text-xl font-bold text-brand-gray-900">{req.requirement}</h3>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        req.status === 'required' ? 'bg-red-100 text-red-700' :
+                        req.status === 'required' ? 'bg-brand-azureDark10 text-brand-azureDark' :
                         req.status === 'common' ? 'bg-brand-azure10 text-brand-azure' :
-                        'bg-yellow-100 text-yellow-700'
+                        'bg-brand-regentGray10 text-brand-regentGray'
                       }`}>
                         {req.status}
                       </span>
@@ -347,35 +347,35 @@ const HOAColorTips = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-6">
-              <div className="card p-6 border-l-4 border-red-500">
-                <h3 className="text-lg font-bold text-red-600 mb-2">❌ Don't Paint First</h3>
+              <div className="card p-6 border-l-4 border-brand-azureDark">
+                <h3 className="text-lg font-bold text-brand-azureDark mb-2">❌ Don't Paint First</h3>
                 <p className="text-slate-600">Never start painting before getting HOA approval, even if you think the color is safe.</p>
               </div>
               
-              <div className="card p-6 border-l-4 border-red-500">
-                <h3 className="text-lg font-bold text-red-600 mb-2">❌ Don't Submit Tiny Samples</h3>
+              <div className="card p-6 border-l-4 border-brand-azureDark">
+                <h3 className="text-lg font-bold text-brand-azureDark mb-2">❌ Don't Submit Tiny Samples</h3>
                 <p className="text-slate-600">Small paint chips don't show true color. Use large samples or painted boards.</p>
               </div>
               
-              <div className="card p-6 border-l-4 border-red-500">
-                <h3 className="text-lg font-bold text-red-600 mb-2">❌ Don't Forget Trim Colors</h3>
+              <div className="card p-6 border-l-4 border-brand-azureDark">
+                <h3 className="text-lg font-bold text-brand-azureDark mb-2">❌ Don't Forget Trim Colors</h3>
                 <p className="text-slate-600">Include all colors in your submission - body, trim, shutters, doors, etc.</p>
               </div>
             </div>
             
             <div className="space-y-6">
-              <div className="card p-6 border-l-4 border-green-500">
-                <h3 className="text-lg font-bold text-green-600 mb-2">✅ Submit Complete Applications</h3>
+              <div className="card p-6 border-l-4 border-brand-azure">
+                <h3 className="text-lg font-bold text-brand-azure mb-2">✅ Submit Complete Applications</h3>
                 <p className="text-slate-600">Include all required forms, samples, and documentation in your initial submission.</p>
               </div>
               
-              <div className="card p-6 border-l-4 border-green-500">
-                <h3 className="text-lg font-bold text-green-600 mb-2">✅ Plan for Processing Time</h3>
+              <div className="card p-6 border-l-4 border-brand-azure">
+                <h3 className="text-lg font-bold text-brand-azure mb-2">✅ Plan for Processing Time</h3>
                 <p className="text-slate-600">Start the approval process 4-6 weeks before you want to begin painting.</p>
               </div>
               
-              <div className="card p-6 border-l-4 border-green-500">
-                <h3 className="text-lg font-bold text-green-600 mb-2">✅ Follow Up Professionally</h3>
+              <div className="card p-6 border-l-4 border-brand-azure">
+                <h3 className="text-lg font-bold text-brand-azure mb-2">✅ Follow Up Professionally</h3>
                 <p className="text-slate-600">Check on status respectfully and be prepared to provide additional information if needed.</p>
               </div>
             </div>

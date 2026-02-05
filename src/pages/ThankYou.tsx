@@ -17,7 +17,7 @@ const ThankYou = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="space-y-4">
-              <CheckCircle className="w-20 h-20 text-green-600 mx-auto" />
+              <CheckCircle className="w-20 h-20 text-brand-azure mx-auto" />
               <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900">
                 Thank You!
               </h1>

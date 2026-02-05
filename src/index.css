@@ -186,7 +186,7 @@
   
   /* Loading states for mobile */
   .loading-skeleton {
-    background: #e0e0e0;
+    background: #E2E8F0;
     position: relative;
     overflow: hidden;
     contain: layout style paint;

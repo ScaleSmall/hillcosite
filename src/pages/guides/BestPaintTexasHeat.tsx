@@ -102,7 +102,7 @@ const BestPaintTexasHeat = () => {
       <section className="section-padding bg-brand-coral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-brand-coral text-brand-azureDark rounded-full text-sm font-medium mb-4">
               <Sun className="w-4 h-4 mr-2" />
               Texas Heat Guide 2026
             </div>
@@ -138,15 +138,15 @@ const BestPaintTexasHeat = () => {
           
           <div className="space-y-8">
             {paintTypes.map((paint, index) => (
-              <div key={index} className={`card p-8 ${paint.rating === 'Excellent' ? 'border-2 border-green-200 bg-green-50' : paint.rating === 'Poor' ? 'border-2 border-red-200 bg-red-50' : ''}`}>
+              <div key={index} className={`card p-8 ${paint.rating === 'Excellent' ? 'border-2 border-brand-azure bg-brand-azure5' : paint.rating === 'Poor' ? 'border-2 border-brand-azureDark bg-brand-azureDark5' : ''}`}>
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                   <div>
                     <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">{paint.type}</h3>
                     <div className="flex items-center space-x-2 mb-4">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        paint.rating === 'Excellent' ? 'bg-green-100 text-green-700' :
+                        paint.rating === 'Excellent' ? 'bg-brand-azure10 text-brand-azure' :
                         paint.rating === 'Good' ? 'bg-brand-azure10 text-brand-azure' :
-                        'bg-red-100 text-red-700'
+                        'bg-brand-azureDark10 text-brand-azureDark'
                       }`}>
                         {paint.rating}
                       </span>
@@ -167,22 +167,22 @@ const BestPaintTexasHeat = () => {
                     <p className="text-slate-600 mb-4">{paint.description}</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <h4 className="font-semibold text-green-600 mb-2">Pros:</h4>
+                        <h4 className="font-semibold text-brand-azure mb-2">Pros:</h4>
                         <ul className="space-y-1">
                           {paint.pros.map((pro, i) => (
                             <li key={i} className="text-sm text-slate-600 flex items-center">
-                              <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                              <div className="w-2 h-2 bg-brand-azure50 rounded-full mr-2"></div>
                               {pro}
                             </li>
                           ))}
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-red-600 mb-2">Cons:</h4>
+                        <h4 className="font-semibold text-brand-azureDark mb-2">Cons:</h4>
                         <ul className="space-y-1">
                           {paint.cons.map((con, i) => (
                             <li key={i} className="text-sm text-slate-600 flex items-center">
-                              <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+                              <div className="w-2 h-2 bg-brand-azureDark50 rounded-full mr-2"></div>
                               {con}
                             </li>
                           ))}
@@ -193,9 +193,9 @@ const BestPaintTexasHeat = () => {
                   
                   <div className="text-center">
                     {paint.rating === 'Excellent' && (
-                      <div className="bg-green-100 rounded-lg p-4">
-                        <Shield className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                        <p className="text-green-700 font-medium text-sm">Recommended for Texas</p>
+                      <div className="bg-brand-azure10 rounded-lg p-4">
+                        <Shield className="w-8 h-8 text-brand-azure mx-auto mb-2" />
+                        <p className="text-brand-azure font-medium text-sm">Recommended for Texas</p>
                       </div>
                     )}
                   </div>
@@ -235,9 +235,9 @@ const BestPaintTexasHeat = () => {
                     <span className="font-medium">{color.lrv}</span>
                   </div>
                   <div className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    color.recommendation === 'Best Choice' ? 'bg-green-100 text-green-700' :
+                    color.recommendation === 'Best Choice' ? 'bg-brand-azure10 text-brand-azure' :
                     color.recommendation === 'Good Option' ? 'bg-brand-azure10 text-brand-azure' :
-                    'bg-yellow-100 text-yellow-700'
+                    'bg-brand-regentGray10 text-brand-regentGray'
                   }`}>
                     {color.recommendation}
                   </div>

@@ -191,9 +191,9 @@ const Blog = () => {
               <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">No posts yet</h2>
               <p className="text-brand-gray-600 mb-4">Check back soon for industry insights and painting tips from our experts.</p>
               {!supabaseConfigured && (
-                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg max-w-2xl mx-auto text-left">
-                  <p className="text-sm text-yellow-800 font-semibold mb-2">⚠️ Configuration Issue Detected</p>
-                  <p className="text-sm text-yellow-700">
+                <div className="mt-6 p-4 bg-brand-coral border border-brand-regentGray20 rounded-lg max-w-2xl mx-auto text-left">
+                  <p className="text-sm text-brand-azureDark font-semibold mb-2">⚠️ Configuration Issue Detected</p>
+                  <p className="text-sm text-brand-gray-700">
                     Supabase environment variables are not configured. Check the browser console for details, or contact your site administrator.
                   </p>
                 </div>
