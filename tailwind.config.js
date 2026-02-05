@@ -47,13 +47,21 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Open Sans', 'system-ui', '-apple-system', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
         body: ['Open Sans', 'sans-serif']
       },
       lineHeight: {
         'body': '1.5',
         'heading': '1.2',
+      },
+      fontWeight: {
+        'light': '300',
+        'regular': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'black': '900',
       },
       screens: {
         'xs': '475px',

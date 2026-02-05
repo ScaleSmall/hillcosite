@@ -28,6 +28,27 @@
 }
 
 @layer base {
+  /* Typography System - Hill Country Painting Brand Guidelines
+   *
+   * PRIMARY FONT: Montserrat
+   * - All major headings, page titles, emphasis statements
+   * - Communicates strength, clarity, modern professionalism
+   * - Line height: 120% (1.2)
+   * - Weights: Light (300), Regular (400), Medium (500), Semi-Bold (600), Bold (700), Black (900)
+   *
+   * SECONDARY FONT: Open Sans
+   * - All body copy, captions, subheadings, long-form content
+   * - Exceptional readability, warmth, neutrality
+   * - Line height: 150% (1.5)
+   * - Weights: Light (300), Regular (400), Medium (500), Semi-Bold (600), Bold (700), Black (900)
+   *
+   * HIERARCHY:
+   * 1. Heading 1 (Page Title) - Montserrat, Large, Bold
+   * 2. Heading 2 (Section Title) - Montserrat, Medium, Bold
+   * 3. Body Text - Open Sans, Regular weight, 150% line height
+   * 4. Captions & Quotes - Open Sans, Small, Medium weight
+   */
+
   body {
     font-family: 'Open Sans', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     line-height: 1.5;
@@ -36,7 +57,7 @@
     text-rendering: optimizeLegibility;
     font-display: swap;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
     line-height: 1.2;
