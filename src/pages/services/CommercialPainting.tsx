@@ -181,13 +181,13 @@ const CommercialPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Commercial Painting in Austin
+                Professional Results Without Disrupting Business
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Commercial painting for offices, retail spaces, and restaurants. We coordinate around your business hours and maintain clean, organized work areas.
+                Commercial painting scheduled around your operations. Flexible hours, protected spaces, and a process designed to keep your business running.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Fully insured. Flexible scheduling. Clear communication.
+                No surprises. No extended closures. Just professional results on schedule.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -210,28 +210,32 @@ const CommercialPainting = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
-                Professional Commercial Painting in Austin
+                What You Don't Have to Worry About
               </h2>
               <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
-                  Enhance your business with professional commercial painting services. We understand the importance of minimizing disruption while delivering exceptional results.
+                  Commercial painting requires coordination, insurance, and minimal disruption. Here's what we handle:
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Flexible scheduling</span>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Business closure</strong> — We work evenings, weekends, or section-by-section to keep your operation running</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Fully insured</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Liability concerns</strong> — Full commercial insurance coverage protects your property and operations</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Minimal disruption</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Unpredictable timelines</strong> — Detailed scheduling and daily communication prevent unexpected delays</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Professional crew</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Customer or employee complaints</strong> — Professional crews work quietly, park considerately, and respect your space</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Equipment and inventory damage</strong> — Thorough protection protocols safeguard your assets throughout the project</span>
                   </div>
                 </div>
               </div>
@@ -239,6 +243,26 @@ const CommercialPainting = () => {
             <div className="lg:col-span-1">
               <QuickQuoteForm service="Commercial Painting" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why This Matters */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            Why Proper Commercial Painting Matters
+          </h2>
+          <div className="space-y-4 text-lg text-brand-gray-600">
+            <p>
+              Your business appearance affects customer perception, employee morale, and property value. Faded, peeling, or inconsistent paint signals neglect and drives customers away.
+            </p>
+            <p>
+              Commercial painting requires coordination with business operations, proper insurance coverage, and crews who understand professionalism. Scheduling mishaps, uninsured contractors, or disruptive work practices cost you revenue and reputation.
+            </p>
+            <p>
+              We coordinate around your schedule, maintain insurance for your protection, and work efficiently to minimize business disruption. Clear communication prevents surprises and ensures your operation continues smoothly.
+            </p>
           </div>
         </div>
       </section>
@@ -294,6 +318,41 @@ const CommercialPainting = () => {
         steps={processSteps}
       />
 
+      {/* What Makes This Experience Different */}
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
+            What Makes This Experience Different
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Written Project Plans</h3>
+              <p className="text-brand-gray-600">
+                Detailed timelines showing work hours, access requirements, and completion dates so you can plan business operations accordingly.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Daily Updates</h3>
+              <p className="text-brand-gray-600">
+                Regular communication with designated point of contact to review progress, address concerns, and confirm next-day scheduling.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Respectful Crews</h3>
+              <p className="text-brand-gray-600">
+                Professional painters who understand commercial environments—courteous to customers, discreet around employees, and respectful of your operations.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Clean Job Sites</h3>
+              <p className="text-brand-gray-600">
+                Equipment staged out of customer view, work areas contained and protected, and thorough cleanup after each session.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <SplitSection
         title="Expert Commercial Painting Services"
         description="Our commercial painting services are designed to deliver exceptional results while minimizing disruption to your business operations."
@@ -346,10 +405,10 @@ const CommercialPainting = () => {
       <ServiceLocationLinks service="commercial" />
 
       <CTABanner
-        title="Ready to Enhance Your Business?"
-        subtitle="Get a consultation for professional commercial painting in Austin"
+        title="Let's Discuss Your Commercial Project"
+        subtitle="We'll assess your space, discuss scheduling options, and provide a detailed proposal that works with your operations."
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Schedule a Consultation',
           href: '/contact'
         }}
       />

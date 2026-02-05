@@ -216,13 +216,13 @@ const CabinetRefinishing = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-heading drop-shadow-lg">
-                Cabinet Painting in Austin
+                A Fresh Kitchen Without the Renovation Chaos
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Professional cabinet refinishing provides a fresh look at a fraction of replacement cost. Requires careful prep, proper products, and controlled application.
+                Cabinet painting that transforms your kitchen in days, not weeks. Careful prep, factory-quality finish, and a process designed to keep your home functional.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Thorough surface prep. Durable finish. Minimal kitchen disruption.
+                No demolition. No extended disruption. Just a kitchen you'll love again.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -247,28 +247,32 @@ const CabinetRefinishing = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
-                Cabinet Painting in Austin
+                What You Don't Have to Worry About
               </h2>
               <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
-                  Transform your kitchen for significantly less than replacement. Our professional cabinet painting services deliver factory-quality finishes with custom colors.
+                  Cabinet painting involves removing doors, working in your kitchen, and applying durable finishes. Here's what we handle:
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Save 60% vs replacement</span>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Kitchen access during the project</strong> — Boxes and frames are painted in sections so you can still use your kitchen</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Custom colors</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Tracking which door goes where</strong> — Every piece is labeled and photographed before removal for perfect reassembly</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Professional prep</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Visible brush strokes</strong> — Doors are sprayed off-site in a controlled environment for a smooth, factory finish</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Factory sprayed finish</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Grease and buildup</strong> — We thoroughly clean and degrease all surfaces before any painting begins</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Chipping within a year</strong> — Proper prep, primer, and quality paint mean durable results, not early failure</span>
                   </div>
                 </div>
               </div>
@@ -276,6 +280,26 @@ const CabinetRefinishing = () => {
             <div className="lg:col-span-1">
               <QuickQuoteForm service="Cabinet Painting" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why This Matters */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            Why Proper Cabinet Painting Matters
+          </h2>
+          <div className="space-y-4 text-lg text-brand-gray-600">
+            <p>
+              Cabinet painting isn't just rolling on a fresh coat. Kitchens involve grease, moisture, and constant contact—conditions that cause poorly applied paint to chip, peel, or yellow within months.
+            </p>
+            <p>
+              Proper cabinet painting requires thorough degreasing, sanding, bonding primer, and multiple finish coats applied in a controlled environment. Shortcuts in any of these steps lead to early failure and frustration.
+            </p>
+            <p>
+              When done correctly, painted cabinets last 7-10 years and provide a factory-quality finish at a fraction of replacement cost. Clear communication throughout prevents surprises and ensures you know exactly what to expect.
+            </p>
           </div>
         </div>
       </section>
@@ -301,6 +325,41 @@ const CabinetRefinishing = () => {
         subtitle="Professional techniques for factory-quality painted finishes"
         steps={processSteps}
       />
+
+      {/* What Makes This Experience Different */}
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
+            What Makes This Experience Different
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Written Project Plans</h3>
+              <p className="text-brand-gray-600">
+                You'll receive a detailed timeline showing when doors are removed, when painting occurs off-site, and when reinstallation happens. No guessing.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Daily Updates</h3>
+              <p className="text-brand-gray-600">
+                We keep you informed about progress, drying times, and when your kitchen will be fully functional again.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Respectful Crews</h3>
+              <p className="text-brand-gray-600">
+                Our painters work carefully around your home, respect your schedule, and minimize disruption to daily routines.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Clean Job Sites</h3>
+              <p className="text-brand-gray-600">
+                Work areas are protected, dust is minimized, and we clean thoroughly each day rather than waiting until the end.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Complete Kitchen Solutions */}
       <section className="section-padding bg-white">
@@ -381,10 +440,10 @@ const CabinetRefinishing = () => {
 
       {/* Pattern I: CTA Banner */}
       <CTABanner
-        title="Ready for a Kitchen Transformation?"
-        subtitle="Save significantly with professional cabinet painting in Austin"
+        title="Let's Talk About Your Kitchen"
+        subtitle="We'll assess your cabinets, discuss finish options, and provide a clear timeline and cost estimate."
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Schedule a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

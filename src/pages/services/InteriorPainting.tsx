@@ -192,13 +192,13 @@ const InteriorPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Interior Painting in Austin
+                Your Home, Refreshed Without the Disruption
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Professional interior painting with thorough surface prep, protected work areas, and clear communication throughout the project.
+                Interior painting that protects your belongings, respects your schedule, and keeps you informed at every step.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Insured crew. 2-year warranty. Consistent project management.
+                No surprises. No mess. Just a beautifully refreshed home.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -223,28 +223,32 @@ const InteriorPainting = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
-                Interior Painting for Austin Homes
+                What You Don't Have to Worry About
               </h2>
               <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
-                  Painting the interior of your home requires careful planning and execution. We approach each project systematically—protecting your belongings, preparing surfaces properly, and maintaining a clean work environment throughout.
+                  We understand that inviting painters into your home can feel overwhelming. Here's what we handle so you don't have to:
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Furniture and floor protection</span>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Moving furniture</strong> — We shift what needs to move and protect everything else in place</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Quality paint and materials</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Paint splatters and spills</strong> — Drop cloths and careful masking protect floors, trim, and fixtures</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Color guidance available</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Wondering when we'll show up</strong> — We confirm arrival times and communicate any changes immediately</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Daily cleanup protocol</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Daily mess</strong> — We clean up completely at the end of each day, not when the project ends</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Rushed prep work</strong> — We don't cut corners on surface preparation, even when it takes longer</span>
                   </div>
                 </div>
               </div>
@@ -252,6 +256,26 @@ const InteriorPainting = () => {
             <div className="lg:col-span-1">
               <QuickQuoteForm service="Interior Painting" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why This Matters */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            Why Proper Interior Painting Matters
+          </h2>
+          <div className="space-y-4 text-lg text-brand-gray-600">
+            <p>
+              Paint isn't just about color. When applied correctly, it protects walls from moisture, wear, and fading. When rushed or poorly prepped, it peels, cracks, and needs redoing within a few years.
+            </p>
+            <p>
+              Proper surface preparation—cleaning, patching, sanding, priming—determines how long your paint lasts. We don't skip these steps because they prevent callbacks and ensure you won't need touch-ups next year.
+            </p>
+            <p>
+              Clear communication prevents stress. You'll know exactly what's happening each day, when we'll arrive, and what to expect. No guessing, no surprises.
+            </p>
           </div>
         </div>
       </section>
@@ -378,6 +402,41 @@ const InteriorPainting = () => {
         imageAlt="Interior painting preparation Austin - Professional surface prep by Hill Country Painting"
       />
 
+      {/* What Makes This Experience Different */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
+            What Makes This Experience Different
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Written Project Plans</h3>
+              <p className="text-brand-gray-600">
+                You receive a written timeline before we start. No vague estimates—you'll know exactly what happens each day.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Daily Updates</h3>
+              <p className="text-brand-gray-600">
+                We check in at the end of each work day to review progress, answer questions, and confirm the next day's plan.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Respectful Crews</h3>
+              <p className="text-brand-gray-600">
+                Our painters treat your home with care. They remove shoes, ask before moving personal items, and keep music and conversation at reasonable levels.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Clean Job Sites</h3>
+              <p className="text-brand-gray-600">
+                We don't wait until project completion to clean up. Tools are organized, debris is removed daily, and floors are protected at all times.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pattern G: Testimonials */}
       <TestimonialsSection
         title="What Our Interior Painting Customers Say"
@@ -430,10 +489,10 @@ const InteriorPainting = () => {
 
       {/* Pattern I: CTA Banner */}
       <CTABanner
-        title="Ready to Transform Your Interior?"
-        subtitle="Get a consultation for professional interior painting in Austin"
+        title="Let's Talk About Your Project"
+        subtitle="No pressure, no sales pitch. Just a conversation about what you'd like to accomplish."
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Schedule a Consultation',
           href: '/contact'
         }}
       />

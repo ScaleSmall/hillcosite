@@ -185,13 +185,13 @@ const ExteriorPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Exterior Painting in Austin
+                Protection That Lasts Through Texas Weather
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Exterior painting that accounts for Austin's heat, humidity, and UV exposure. We use appropriate prep methods and weather-resistant coatings.
+                Exterior painting designed for Austin's intense heat and UV exposure. Proper prep, climate-appropriate materials, and a process you can count on.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Proper surface prep. Climate-appropriate materials. 2-year warranty.
+                No shortcuts. No surprises. Just lasting protection for your home.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -214,28 +214,32 @@ const ExteriorPainting = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             <div className="lg:col-span-2">
               <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
-                Exterior Painting for Austin Homes
+                What You Don't Have to Worry About
               </h2>
               <div className="space-y-6 text-lg text-brand-gray-600">
                 <p>
-                  Exterior painting in Central Texas requires specific preparation and materials to withstand intense heat and UV exposure. We follow proven methods for surface prep, product selection, and application timing.
+                  Exterior painting involves scaffolding, ladders, and pressure washing. Here's what we handle so you can relax:
                 </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Weather-resistant paints</span>
+                <div className="space-y-3">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Choosing the wrong paint</strong> — We select products specifically rated for Texas heat and UV exposure</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>HOA color expertise</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Landscaping damage</strong> — Shrubs, plants, and outdoor furniture are protected or relocated before work begins</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>Complete surface prep</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>HOA approval</strong> — We help you navigate color restrictions and provide documentation for architectural review</span>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-2 h-2 bg-brand-azureDark rounded-full"></div>
-                    <span>7-10 year durability</span>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Hidden damage</strong> — We identify and repair wood rot, damaged trim, and compromised surfaces during prep</span>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
+                    <span><strong>Weather delays</strong> — We monitor forecasts and adjust scheduling to avoid rain, extreme heat, or humidity issues</span>
                   </div>
                 </div>
               </div>
@@ -243,6 +247,26 @@ const ExteriorPainting = () => {
             <div className="lg:col-span-1">
               <QuickQuoteForm service="Exterior Painting" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why This Matters */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            Why Proper Exterior Painting Matters
+          </h2>
+          <div className="space-y-4 text-lg text-brand-gray-600">
+            <p>
+              Your exterior paint is your home's primary defense against sun, rain, and temperature swings. When applied correctly with proper prep, it protects siding, trim, and wood from rot and weather damage for 7-10 years.
+            </p>
+            <p>
+              Rushed prep leads to peeling within a year or two. Improper paint selection causes premature fading and chalking. Weather-inappropriate application timing results in poor adhesion and early failure.
+            </p>
+            <p>
+              We don't paint in extreme heat, high humidity, or when rain is forecasted. We don't skip surface repairs or use interior-grade products outside. These decisions prevent callbacks and ensure your investment lasts.
+            </p>
           </div>
         </div>
       </section>
@@ -267,6 +291,41 @@ const ExteriorPainting = () => {
         image="/hill-country-home-exterior-painting.jpg"
         imageAlt="Hill Country Painting exterior work - Professional surface prep and application"
       />
+
+      {/* What Makes This Experience Different */}
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
+            What Makes This Experience Different
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Written Project Plans</h3>
+              <p className="text-brand-gray-600">
+                You'll receive a detailed timeline showing what gets painted each day, when we'll need access to different areas, and how we'll protect your property.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Daily Updates</h3>
+              <p className="text-brand-gray-600">
+                We communicate progress every day, notify you of any discovered issues before proceeding, and confirm weather-dependent scheduling adjustments.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Respectful Crews</h3>
+              <p className="text-brand-gray-600">
+                Our painters park considerately, respect neighbor boundaries, keep noise reasonable, and ask before accessing side yards or gated areas.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <h3 className="text-xl font-bold text-brand-gray-900">Clean Job Sites</h3>
+              <p className="text-brand-gray-600">
+                Equipment is staged neatly, drop cloths protect driveways and walkways, and we remove debris daily rather than leaving it until project completion.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <TestimonialsSection
         title="What Our Exterior Painting Customers Say"
@@ -315,10 +374,10 @@ const ExteriorPainting = () => {
       <ServiceLocationLinks service="exterior" />
 
       <CTABanner
-        title="Ready to Enhance Your Home's Exterior?"
-        subtitle="Get a consultation for professional exterior painting in Austin"
+        title="Let's Discuss Your Exterior Project"
+        subtitle="We'll assess your surfaces, discuss your concerns, and provide straightforward recommendations."
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Schedule a Consultation',
           href: '/contact'
         }}
       />
