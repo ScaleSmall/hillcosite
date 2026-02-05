@@ -168,7 +168,7 @@ const InteriorPainting = () => {
           </Link>
           <Link
             to="/financing"
-            className="text-white font-semibold text-sm underline decoration-2 underline-offset-2 hover:text-brand-coral transition-colors drop-shadow-lg"
+            className="text-white font-semibold text-sm underline decoration-2 underline-offset-2 hover:text-brand-azure transition-colors drop-shadow-lg"
           >
             Click to estimate financing
           </Link>

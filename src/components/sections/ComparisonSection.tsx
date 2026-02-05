@@ -40,9 +40,9 @@ const ComparisonSection = ({
   const renderValue = (value: boolean | string) => {
     if (typeof value === 'boolean') {
       return value ? (
-        <Check className="w-5 h-5 text-green-600" />
+        <Check className="w-5 h-5 text-brand-azure" />
       ) : (
-        <X className="w-5 h-5 text-brand-coral" />
+        <X className="w-5 h-5 text-brand-gray-400" />
       );
     }
     return <span className="text-sm text-brand-gray-600">{value}</span>;

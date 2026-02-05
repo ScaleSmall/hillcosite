@@ -323,7 +323,7 @@ const Contact = () => {
                       }`}
                     />
                     {errors.firstName && (
-                      <p id="firstName-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.firstName}</p>
+                      <p id="firstName-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.firstName}</p>
                     )}
                   </div>
                   <div>
@@ -346,7 +346,7 @@ const Contact = () => {
                       }`}
                     />
                     {errors.lastName && (
-                      <p id="lastName-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.lastName}</p>
+                      <p id="lastName-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.lastName}</p>
                     )}
                   </div>
                 </div>
@@ -372,7 +372,7 @@ const Contact = () => {
                       }`}
                     />
                     {errors.email && (
-                      <p id="email-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.email}</p>
+                      <p id="email-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.email}</p>
                     )}
                   </div>
                   <div>
@@ -397,7 +397,7 @@ const Contact = () => {
                       }`}
                     />
                     {errors.phone && (
-                      <p id="phone-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.phone}</p>
+                      <p id="phone-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.phone}</p>
                     )}
                   </div>
                 </div>
@@ -422,7 +422,7 @@ const Contact = () => {
                     }`}
                   />
                   {errors.streetAddress && (
-                    <p id="streetAddress-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.streetAddress}</p>
+                    <p id="streetAddress-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.streetAddress}</p>
                   )}
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -447,7 +447,7 @@ const Contact = () => {
                       }`}
                     />
                     {errors.city && (
-                      <p id="city-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.city}</p>
+                      <p id="city-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.city}</p>
                     )}
                   </div>
                   <div>
@@ -472,7 +472,7 @@ const Contact = () => {
                       }`}
                     />
                     {errors.zipCode && (
-                      <p id="zipCode-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.zipCode}</p>
+                      <p id="zipCode-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.zipCode}</p>
                     )}
                   </div>
                 </div>
@@ -501,7 +501,7 @@ const Contact = () => {
                       <option value="Commercial">Commercial Painting</option>
                     </select>
                     {errors.serviceRequested && (
-                      <p id="serviceRequested-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.serviceRequested}</p>
+                      <p id="serviceRequested-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.serviceRequested}</p>
                     )}
                   </div>
                   <div>
@@ -532,7 +532,7 @@ const Contact = () => {
                       <option value="Yard Sign">Yard Sign</option>
                     </select>
                     {errors.howContacted && (
-                      <p id="howContacted-error" className="mt-1 text-sm text-brand-coral" role="alert">{errors.howContacted}</p>
+                      <p id="howContacted-error" className="mt-1 text-sm text-brand-azureDark font-medium" role="alert">{errors.howContacted}</p>
                     )}
                   </div>
                 </div>
