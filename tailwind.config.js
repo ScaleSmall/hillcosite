@@ -5,9 +5,10 @@ export default {
     extend: {
       colors: {
         brand: {
-          azure: '#1F7A8C',
-          azureDark: '#0B3C49',
-          coral: '#E36414',
+          azure: '#197E90',
+          azureDark: '#163C43',
+          coral: '#FBE7CC',
+          regentGray: '#84949C',
           gray: {
             50: '#F8FAFC',
             100: '#F1F5F9',

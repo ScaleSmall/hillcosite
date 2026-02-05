@@ -123,10 +123,11 @@ function checkTailwindBrandPalette() {
   try {
     const content = readFileSync('tailwind.config.js', 'utf-8');
 
-    // Check for brand.azure
-    const hasAzure = content.includes("azure: '#1F7A8C'");
-    const hasAzureDark = content.includes("azureDark: '#0B3C49'");
-    const hasCoral = content.includes("coral: '#E36414'");
+    // Check for CANONICAL brand colors (source of truth)
+    const hasAzure = content.includes("azure: '#197E90'");
+    const hasAzureDark = content.includes("azureDark: '#163C43'");
+    const hasCoral = content.includes("coral: '#FBE7CC'");
+    const hasRegentGray = content.includes("regentGray: '#84949C'");
 
     // Check for all 10 gray shades (50-900)
     const grayShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
@@ -136,10 +137,11 @@ function checkTailwindBrandPalette() {
     });
 
     return {
-      pass: hasAzure && hasAzureDark && hasCoral && hasAllGrays,
-      details: !hasAzure ? 'Missing brand.azure' :
-               !hasAzureDark ? 'Missing brand.azureDark' :
-               !hasCoral ? 'Missing brand.coral' :
+      pass: hasAzure && hasAzureDark && hasCoral && hasRegentGray && hasAllGrays,
+      details: !hasAzure ? 'Missing brand.azure (#197E90)' :
+               !hasAzureDark ? 'Missing brand.azureDark (#163C43)' :
+               !hasCoral ? 'Missing brand.coral (#FBE7CC - cream)' :
+               !hasRegentGray ? 'Missing brand.regentGray (#84949C)' :
                !hasAllGrays ? 'Missing complete brand.gray palette (50-900)' :
                'Complete'
     };
@@ -172,11 +174,11 @@ function checkThemeColorInvariant() {
   try {
     const content = readFileSync('index.html', 'utf-8');
 
-    const hasThemeColor = content.includes('<meta name="theme-color" content="#1F7A8C"');
+    const hasThemeColor = content.includes('<meta name="theme-color" content="#197E90"');
 
     return {
       pass: hasThemeColor,
-      details: hasThemeColor ? 'Complete' : 'Missing or incorrect theme-color meta tag (#1F7A8C required)'
+      details: hasThemeColor ? 'Complete' : 'Missing or incorrect theme-color meta tag (#197E90 required)'
     };
   } catch (error) {
     return { pass: false, details: `Error reading index.html: ${error.message}` };
@@ -275,9 +277,9 @@ function main() {
   console.log('BRAND INVARIANT CHECKS:\n');
 
   const invariants = [
-    { name: 'A) Tailwind Brand Palette', check: checkTailwindBrandPalette() },
+    { name: 'A) Tailwind Brand Palette (CANONICAL)', check: checkTailwindBrandPalette() },
     { name: 'B) Google Fonts (Montserrat + Open Sans)', check: checkFontsInvariant() },
-    { name: 'C) Theme Color (#1F7A8C)', check: checkThemeColorInvariant() },
+    { name: 'C) Theme Color (#197E90 - Azure)', check: checkThemeColorInvariant() },
     { name: 'D) Button Typography + Focus Rings', check: checkButtonInvariant() },
     { name: 'E) Brand Logo Location', check: checkBrandLogoLocation() }
   ];
