@@ -102,7 +102,7 @@ const BestPaintTexasHeat = () => {
       <section className="section-padding bg-brand-coral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-amber-100 text-amber-700 rounded-full text-sm font-medium mb-4">
               <Sun className="w-4 h-4 mr-2" />
               Texas Heat Guide 2026
             </div>
@@ -221,7 +221,7 @@ const BestPaintTexasHeat = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {colorConsiderations.map((color, index) => (
               <div key={index} className="card p-8 text-center">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-orange-500">
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-amber-500">
                   <Thermometer className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">{color.color}</h3>
@@ -295,7 +295,7 @@ const BestPaintTexasHeat = () => {
             </div>
             
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Sun className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Reflective Pigments</h3>

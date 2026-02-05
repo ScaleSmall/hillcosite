@@ -89,9 +89,10 @@ The following animation patterns are **strictly forbidden**:
 ### Required Tokens
 All brand colors must use the official brand palette:
 
-- **`brand-azure`** — Primary brand color (#1F7A8C)
-- **`brand-azureDark`** — Dark brand color (#0B3C49)
-- **`brand-coral`** — CTA/emphasis color (#E36414)
+- **`brand-azure`** — Primary brand color (#197E90)
+- **`brand-azureDark`** — Dark brand color (#163C43)
+- **`brand-coral`** — Warm cream accent (#FBE7CC)
+- **`brand-regentGray`** — Secondary neutral (#84949C)
 - **`brand-gray-*`** — Neutral grayscale (50-900)
 
 ### Required Fonts
