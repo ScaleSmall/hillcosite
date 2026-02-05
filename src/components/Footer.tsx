@@ -77,7 +77,7 @@ const Footer = () => {
   return (
     <footer className="bg-brand-azureDark text-white">
       {/* CTA Section */}
-      <div className="bg-brand-coral py-12 border-b-4 border-brand-azure">
+      <div className="bg-brand-coralFull py-12 border-b-4 border-brand-azure">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-azureDark">
             Ready to Transform Your Space?

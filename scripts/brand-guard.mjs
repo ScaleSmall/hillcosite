@@ -126,7 +126,8 @@ function checkTailwindBrandPalette() {
     // Check for CANONICAL brand colors (source of truth)
     const hasAzure = content.includes("azure: '#197E90'");
     const hasAzureDark = content.includes("azureDark: '#163C43'");
-    const hasCoral = content.includes("coral: '#FBE7CC'");
+    const hasCoral = content.includes("coral: 'rgba(251, 231, 204, 0.6)'");
+    const hasCoralFull = content.includes("coralFull: '#FBE7CC'");
     const hasRegentGray = content.includes("regentGray: '#84949C'");
 
     // Check for all 10 gray shades (50-900)
@@ -137,10 +138,11 @@ function checkTailwindBrandPalette() {
     });
 
     return {
-      pass: hasAzure && hasAzureDark && hasCoral && hasRegentGray && hasAllGrays,
+      pass: hasAzure && hasAzureDark && hasCoral && hasCoralFull && hasRegentGray && hasAllGrays,
       details: !hasAzure ? 'Missing brand.azure (#197E90)' :
                !hasAzureDark ? 'Missing brand.azureDark (#163C43)' :
-               !hasCoral ? 'Missing brand.coral (#FBE7CC - cream)' :
+               !hasCoral ? 'Missing brand.coral (rgba(251, 231, 204, 0.6) - 60% cream)' :
+               !hasCoralFull ? 'Missing brand.coralFull (#FBE7CC - full cream)' :
                !hasRegentGray ? 'Missing brand.regentGray (#84949C)' :
                !hasAllGrays ? 'Missing complete brand.gray palette (50-900)' :
                'Complete'

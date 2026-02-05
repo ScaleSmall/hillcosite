@@ -43,7 +43,8 @@ const colors = {
   white: '#FFFFFF',
   azure: '#197E90',
   azureDark: '#163C43',
-  coral: '#FBE7CC',
+  coral: '#FBE7CC',        // Verify against full color for maximum contrast requirements
+  coralFull: '#FBE7CC',
   regentGray: '#84949C',
   gray50: '#F8FAFC',
   gray100: '#F1F5F9',

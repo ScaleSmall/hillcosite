@@ -13,7 +13,8 @@ export default {
         brand: {
           azure: '#197E90',      // Primary interactive color
           azureDark: '#163C43',  // Headers, footers, contrast surfaces
-          coral: '#FBE7CC',      // Warm cream - section backgrounds only
+          coral: 'rgba(251, 231, 204, 0.6)',      // Warm cream - section backgrounds only (60% opacity)
+          coralFull: '#FBE7CC',  // Full opacity cream - header/footer only
           regentGray: '#84949C', // Secondary text, dividers, UI chrome
 
           // Neutral grayscale - text and backgrounds
