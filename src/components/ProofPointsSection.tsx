@@ -4,9 +4,10 @@ import { Shield, Award, Users, Clock, Phone } from 'lucide-react';
 
 interface ProofPointsSectionProps {
   className?: string;
+  surface?: 'white' | 'gray' | 'coral';
 }
 
-const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
+const ProofPointsSection = ({ className = '', surface = 'coral' }: ProofPointsSectionProps) => {
   const proofPoints = [
     {
       icon: <Users className="w-8 h-8 text-white" />,
@@ -41,8 +42,14 @@ const ProofPointsSection = ({ className = '' }: ProofPointsSectionProps) => {
     'Clock': Clock
   };
 
+  const surfaceClass = {
+    white: 'bg-white',
+    gray: 'bg-brand-gray-50',
+    coral: 'bg-brand-coral'
+  }[surface];
+
   return (
-    <section className={`section-padding bg-brand-coral ${className}`}>
+    <section className={`section-padding ${surfaceClass} ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 text-brand-azureDark">

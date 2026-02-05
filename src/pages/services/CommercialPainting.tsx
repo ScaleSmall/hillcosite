@@ -203,7 +203,7 @@ const CommercialPainting = () => {
         </div>
       </section>
 
-      <ProofPointsSection />
+      <ProofPointsSection surface="white" />
 
       <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

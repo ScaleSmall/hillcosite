@@ -239,7 +239,7 @@ const CabinetRefinishing = () => {
       </section>
 
       {/* Proof Points */}
-      <ProofPointsSection />
+      <ProofPointsSection surface="white" />
 
       {/* Quick Quote Form - Above the Fold */}
       <section className="section-padding bg-brand-gray-50">
