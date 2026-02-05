@@ -132,7 +132,7 @@ const PaintingFrequency = () => {
       <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-brand-azure10 text-brand-azure rounded-full text-sm font-medium mb-4">
               <Calendar className="w-4 h-4 mr-2" />
               Texas Climate Guide 2026
             </div>
@@ -182,7 +182,7 @@ const PaintingFrequency = () => {
                   <tr key={index} className={index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
                     <td className="px-6 py-4 font-semibold text-brand-gray-900">{item.surface}</td>
                     <td className="px-6 py-4 text-center">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">
+                      <span className="px-3 py-1 bg-brand-azure10 text-brand-azure rounded-full font-medium">
                         {item.frequency}
                       </span>
                     </td>
@@ -216,7 +216,7 @@ const PaintingFrequency = () => {
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">{season.season}</h3>
                 <div className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${
                   season.painting === 'Excellent' ? 'bg-green-100 text-green-700' :
-                  season.painting === 'Good' ? 'bg-blue-100 text-blue-700' :
+                  season.painting === 'Good' ? 'bg-brand-azure10 text-brand-azure' :
                   season.painting === 'Pro Recommended' ? 'bg-amber-100 text-amber-700' :
                   'bg-yellow-100 text-yellow-700'
                 }`}>
@@ -368,7 +368,7 @@ const PaintingFrequency = () => {
               <h3 className="text-2xl font-bold text-brand-gray-900 mb-6">Annual Maintenance</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">1</span>
                   </div>
                   <div>
@@ -378,7 +378,7 @@ const PaintingFrequency = () => {
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">2</span>
                   </div>
                   <div>
@@ -388,7 +388,7 @@ const PaintingFrequency = () => {
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">3</span>
                   </div>
                   <div>
@@ -398,7 +398,7 @@ const PaintingFrequency = () => {
                 </div>
                 
                 <div className="flex items-start space-x-3">
-                  <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-6 h-6 bg-brand-azure rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                     <span className="text-white text-sm font-bold">4</span>
                   </div>
                   <div>

@@ -132,16 +132,16 @@ const ColorConsultation = () => {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-azure via-brand-coral to-brand-azureDark"></div>
           <div className="absolute inset-0 bg-gradient-to-tl from-blue-500 via-purple-600 to-pink-600 mix-blend-multiply"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-600 mix-blend-screen opacity-30"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-coral via-brand-azure to-brand-azureDark mix-blend-screen opacity-20"></div>
         </div>
-        
+
         {/* Floating Color Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-yellow-400 rounded-full opacity-60 animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 bg-blue-500 rounded-full opacity-50 animate-bounce"></div>
-          <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-green-400 rounded-full opacity-70"></div>
-          <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-purple-500 rounded-full opacity-40 animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-pink-400 rounded-full opacity-20"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-brand-coral rounded-full opacity-60 animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-brand-azure rounded-full opacity-50 animate-bounce"></div>
+          <div className="absolute bottom-32 left-1/4 w-20 h-20 bg-brand-coral rounded-full opacity-70"></div>
+          <div className="absolute bottom-20 right-1/3 w-28 h-28 bg-brand-azure rounded-full opacity-40 animate-pulse"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-brand-coral rounded-full opacity-20"></div>
         </div>
         
         {/* Content */}
@@ -179,15 +179,15 @@ const ColorConsultation = () => {
       {/* Unique Color Wheel Section */}
       <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white relative overflow-hidden">
         {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-30 -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-blue-200 to-cyan-200 rounded-full opacity-40 translate-y-1/2 -translate-x-1/2"></div>
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-brand-coral to-brand-coral80 rounded-full opacity-30 -translate-y-1/2 translate-x-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-brand-azure20 to-brand-azure10 rounded-full opacity-40 translate-y-1/2 -translate-x-1/2"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="space-y-8">
               <div className="space-y-6">
-                <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full text-purple-700 font-medium">
+                <div className="inline-flex items-center px-4 py-2 bg-brand-coral rounded-full text-brand-azureDark font-medium">
                   <Eye className="w-4 h-4 mr-2" />
                   Professional Color Vision
                 </div>
@@ -200,23 +200,23 @@ const ColorConsultation = () => {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-purple-500">
-                  <Lightbulb className="w-8 h-8 text-purple-600 mb-3" />
+                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-brand-azure">
+                  <Lightbulb className="w-8 h-8 text-brand-azure mb-3" />
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Lighting Analysis</h3>
                   <p className="text-sm text-brand-gray-600">Understanding how Austin's natural light affects color throughout the day</p>
                 </div>
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-pink-500">
-                  <Heart className="w-8 h-8 text-pink-600 mb-3" />
+                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-brand-azureDark">
+                  <Heart className="w-8 h-8 text-brand-azureDark mb-3" />
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Mood Creation</h3>
                   <p className="text-sm text-brand-gray-600">Colors that enhance your lifestyle and emotional well-being</p>
                 </div>
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-blue-500">
-                  <Eye className="w-8 h-8 text-blue-600 mb-3" />
+                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-brand-azure">
+                  <Eye className="w-8 h-8 text-brand-azure mb-3" />
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Space Perception</h3>
                   <p className="text-sm text-brand-gray-600">Making rooms feel larger, cozier, brighter, or more intimate</p>
                 </div>
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500">
-                  <Palette className="w-8 h-8 text-green-600 mb-3" />
+                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-brand-azureDark">
+                  <Palette className="w-8 h-8 text-brand-azureDark mb-3" />
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Harmony Design</h3>
                   <p className="text-sm text-brand-gray-600">Creating flow and cohesion throughout your entire home</p>
                 </div>
@@ -238,10 +238,10 @@ const ColorConsultation = () => {
                 <h3 className="text-2xl font-bold text-brand-gray-900 mb-6 text-center">Color Harmony Wheel</h3>
                 <div className="relative w-64 h-64 mx-auto mb-6">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-coral via-brand-azure to-brand-azureDark opacity-80"></div>
-                  <div className="absolute inset-4 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 opacity-80"></div>
-                  <div className="absolute inset-8 rounded-full bg-gradient-to-br from-cyan-400 via-indigo-400 to-violet-400 opacity-80"></div>
+                  <div className="absolute inset-4 rounded-full bg-gradient-to-br from-brand-azure via-brand-azureDark to-brand-coral opacity-70"></div>
+                  <div className="absolute inset-8 rounded-full bg-gradient-to-br from-brand-coral via-brand-azure to-brand-azureDark opacity-60"></div>
                   <div className="absolute inset-12 rounded-full bg-white flex items-center justify-center">
-                    <Palette className="w-16 h-16 text-purple-600" />
+                    <Palette className="w-16 h-16 text-brand-azure" />
                   </div>
                 </div>
                 <p className="text-center text-brand-gray-600">

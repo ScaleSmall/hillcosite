@@ -17,7 +17,7 @@ const NotFound = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="mb-6">
-                <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
+                <div className="inline-flex items-center px-4 py-2 bg-brand-coral text-brand-azureDark rounded-full text-sm font-medium">
                   Looking for Austin painting services?
                 </div>
               </div>

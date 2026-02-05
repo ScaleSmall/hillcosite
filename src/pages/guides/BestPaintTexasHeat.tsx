@@ -145,7 +145,7 @@ const BestPaintTexasHeat = () => {
                     <div className="flex items-center space-x-2 mb-4">
                       <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                         paint.rating === 'Excellent' ? 'bg-green-100 text-green-700' :
-                        paint.rating === 'Good' ? 'bg-blue-100 text-blue-700' :
+                        paint.rating === 'Good' ? 'bg-brand-azure10 text-brand-azure' :
                         'bg-red-100 text-red-700'
                       }`}>
                         {paint.rating}
@@ -236,7 +236,7 @@ const BestPaintTexasHeat = () => {
                   </div>
                   <div className={`px-3 py-1 rounded-full text-sm font-medium ${
                     color.recommendation === 'Best Choice' ? 'bg-green-100 text-green-700' :
-                    color.recommendation === 'Good Option' ? 'bg-blue-100 text-blue-700' :
+                    color.recommendation === 'Good Option' ? 'bg-brand-azure10 text-brand-azure' :
                     'bg-yellow-100 text-yellow-700'
                   }`}>
                     {color.recommendation}

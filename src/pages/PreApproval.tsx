@@ -20,7 +20,7 @@ const PreApproval = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          color: #31364c;
+          color: #334155;
           font-size: 16px;
           line-height: 150%;
           font-weight: 400;

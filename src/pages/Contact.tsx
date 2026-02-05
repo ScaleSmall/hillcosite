@@ -580,8 +580,8 @@ const Contact = () => {
                 }
 
                 .content-code-example-3 {
-                  color: #fff;
-                  background-color: #156ed7;
+                  color: white;
+                  background-color: #197E90;
                   border-radius: 8px;
                   flex-direction: column;
                   justify-content: center;
@@ -620,7 +620,7 @@ const Contact = () => {
                 }
 
                 .link-white-code-example {
-                  color: #fff;
+                  color: white;
                 }
 
                 @media screen and (max-width: 767px) {
@@ -687,7 +687,7 @@ const Contact = () => {
                       <button
                         type="button"
                         onClick={() => setShowModal(false)}
-                        className="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="rounded-lg bg-brand-azure px-4 py-2 font-semibold text-white hover:bg-brand-azureDark focus:outline-none focus:ring-2 focus:ring-brand-azure"
                       >
                         Close
                       </button>

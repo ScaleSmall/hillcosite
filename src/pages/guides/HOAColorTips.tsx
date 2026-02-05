@@ -125,7 +125,7 @@ const HOAColorTips = () => {
       <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-brand-coral text-brand-azureDark rounded-full text-sm font-medium mb-4">
               <FileText className="w-4 h-4 mr-2" />
               HOA Compliance Guide
             </div>
@@ -170,8 +170,8 @@ const HOAColorTips = () => {
                       </div>
                     )}
                     {req.status === 'common' && (
-                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <CheckCircle className="w-6 h-6 text-blue-600" />
+                      <div className="w-12 h-12 bg-brand-azure10 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-6 h-6 text-brand-azure" />
                       </div>
                     )}
                     {req.status === 'varies' && (
@@ -185,7 +185,7 @@ const HOAColorTips = () => {
                       <h3 className="text-xl font-bold text-brand-gray-900">{req.requirement}</h3>
                       <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         req.status === 'required' ? 'bg-red-100 text-red-700' :
-                        req.status === 'common' ? 'bg-blue-100 text-blue-700' :
+                        req.status === 'common' ? 'bg-brand-azure10 text-brand-azure' :
                         'bg-yellow-100 text-yellow-700'
                       }`}>
                         {req.status}

@@ -82,7 +82,7 @@ const Financing = () => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #31364c;
+            color: #334155;
             font-size: 16px;
             line-height: 150%;
             font-weight: 400;
@@ -91,7 +91,7 @@ const Financing = () => {
           .box-code-example-11 {
             grid-column-gap: 0px;
             grid-row-gap: 0px;
-            background-color: #f8f8f8;
+            background-color: #F8FAFC;
             border-radius: 6px;
             flex-direction: column;
             align-items: flex-start;

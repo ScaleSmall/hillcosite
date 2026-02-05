@@ -157,8 +157,8 @@ const PaintingCostsTable = () => {
               {costFactors.map((factor, index) => (
                 <tr key={index} className={index % 2 === 0 ? 'bg-brand-gray-50' : 'bg-white'}>
                   <td className="px-6 py-4 font-semibold text-brand-gray-900">{factor.factor}</td>
-                  <td className="px-6 py-4 text-center text-green-600 font-medium">{factor.interior}</td>
-                  <td className="px-6 py-4 text-center text-blue-600 font-medium">{factor.exterior}</td>
+                  <td className="px-6 py-4 text-center text-brand-azureDark font-medium">{factor.interior}</td>
+                  <td className="px-6 py-4 text-center text-brand-azure font-medium">{factor.exterior}</td>
                   <td className="px-6 py-4 text-brand-gray-600">{factor.details}</td>
                 </tr>
               ))}
