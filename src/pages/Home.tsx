@@ -141,13 +141,13 @@ const Home = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
             <div className="space-y-6">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight drop-shadow-lg">
-                A Painting Experience Without the Stress
+                The New Standard for Stress-Free Home Painting
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                No uncertainty. No surprises. Just clear communication, clean work areas, and a predictable timeline from start to finish.
+                We deliver clear timelines, thoughtful preparation, clean workspaces, and proactive communication—so your project runs smoothly from day one to final walkthrough.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                Serving Austin homeowners who value calm, organized, professional service.
+                Serving discerning Austin homeowners who value quality, professionalism, and reliability.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azureDark hover:bg-brand-azure text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
