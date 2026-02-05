@@ -15,11 +15,14 @@ const ServiceAreas = () => {
   ];
 
   const allServiceAreas = [
-    { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Leander', href: '/service-areas/cedar-park' },
-    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
-    { name: 'Austin', href: '/service-areas' }
+    { name: 'Austin', href: '/service-areas/austin' },
+    { name: 'Tarrytown', href: '/service-areas/tarrytown' },
+    { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
+    { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
+    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'Hutto', href: '/service-areas/hutto' }
   ];
 
   const featuredServices = [
@@ -52,8 +55,8 @@ const ServiceAreas = () => {
   return (
     <>
       <SEO
-        title="Service Areas | Round Rock Metro Painting Services | Hill Country Painting"
-        description="Hill Country Painting serves Austin, Round Rock (78664, 78665), Pflugerville, Leander, Georgetown, Taylor, and surrounding areas. Professional painting services throughout Greater Austin Area."
+        title="Service Areas | Austin Metro Painting Services | Hill Country Painting"
+        description="Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, West Lake Highlands, Lakeway, Cedar Park, Hutto, and surrounding areas. Professional painting services throughout Greater Austin Area."
         canonical="/service-areas"
         breadcrumbs={[
           { name: 'Home', url: '/' },

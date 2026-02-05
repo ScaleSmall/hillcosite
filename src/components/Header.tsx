@@ -30,15 +30,13 @@ const Header = () => {
   ];
 
   const guides = [
-    { name: 'Painting Costs Austin', href: '/guides/painting-costs-round-rock' },
     { name: 'Best Paint for Texas Heat', href: '/guides/best-paint-texas-heat' },
-    { name: 'HOA Color Tips Austin', href: '/guides/hoa-color-tips-round-rock' },
     { name: 'How Often to Paint in Texas', href: '/guides/how-often-paint-central-texas' },
   ];
 
   const mainNavigation = [
     { name: 'Services', href: '/services', hasDropdown: true },
-    { name: 'Guides', href: '/guides/painting-costs-round-rock', hasDropdown: true },
+    { name: 'Guides', href: '/guides/best-paint-texas-heat', hasDropdown: true },
     { name: 'Industry Insights', href: '/blog' },
     { name: 'Color Consult', href: '/color-consultation' },
     { name: 'Gallery', href: '/gallery' },

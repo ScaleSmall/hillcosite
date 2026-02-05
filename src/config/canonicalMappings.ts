@@ -17,61 +17,12 @@ export interface CanonicalMapping {
 /**
  * Service-area page canonical mappings
  */
-export const serviceAreaCanonicals: CanonicalMapping[] = [
-  {
-    legacyPath: '/service-areas/cedar-park',
-    canonicalTarget: '/service-areas/leander',
-    reason: 'Cedar Park content consolidated into Leander service area'
-  }
-];
+export const serviceAreaCanonicals: CanonicalMapping[] = [];
 
 /**
  * Service location page canonical mappings
  */
-export const serviceLocationCanonicals: CanonicalMapping[] = [
-  // Cedar Park → Leander
-  {
-    legacyPath: '/interior-painting-cedar-park',
-    canonicalTarget: '/interior-painting-leander',
-    reason: 'Cedar Park interior painting consolidated into Leander'
-  },
-  {
-    legacyPath: '/exterior-painting-cedar-park',
-    canonicalTarget: '/exterior-painting-leander',
-    reason: 'Cedar Park exterior painting consolidated into Leander'
-  },
-  {
-    legacyPath: '/cabinet-refinishing-cedar-park',
-    canonicalTarget: '/cabinet-refinishing-leander',
-    reason: 'Cedar Park cabinet refinishing consolidated into Leander'
-  },
-  {
-    legacyPath: '/commercial-painting-cedar-park',
-    canonicalTarget: '/commercial-painting-leander',
-    reason: 'Cedar Park commercial painting consolidated into Leander'
-  },
-  // Hutto → Taylor
-  {
-    legacyPath: '/interior-painting-hutto',
-    canonicalTarget: '/interior-painting-taylor',
-    reason: 'Hutto interior painting consolidated into Taylor'
-  },
-  {
-    legacyPath: '/exterior-painting-hutto',
-    canonicalTarget: '/exterior-painting-taylor',
-    reason: 'Hutto exterior painting consolidated into Taylor'
-  },
-  {
-    legacyPath: '/cabinet-refinishing-hutto',
-    canonicalTarget: '/cabinet-refinishing-taylor',
-    reason: 'Hutto cabinet refinishing consolidated into Taylor'
-  },
-  {
-    legacyPath: '/commercial-painting-hutto',
-    canonicalTarget: '/commercial-painting-taylor',
-    reason: 'Hutto commercial painting consolidated into Taylor'
-  }
-];
+export const serviceLocationCanonicals: CanonicalMapping[] = [];
 
 /**
  * Get canonical target for a given path, or null if no mapping exists

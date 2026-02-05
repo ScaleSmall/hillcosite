@@ -22,15 +22,14 @@ const serviceSlugs = {
 };
 
 const locations = [
-  { name: 'Round Rock', slug: 'round-rock' },
-  { name: 'Georgetown', slug: 'georgetown' },
-  { name: 'Leander', slug: 'cedar-park' },
-  { name: 'Pflugerville', slug: 'pflugerville' },
-  { name: 'Leander', slug: 'leander' },
-  { name: 'Taylor', slug: 'taylor' },
-  { name: 'Taylor', slug: 'hutto' },
   { name: 'Austin', slug: 'austin' },
-  { name: 'West Lake Hills', slug: 'west-lake-hills' }
+  { name: 'Tarrytown', slug: 'tarrytown' },
+  { name: 'Northwest Hills', slug: 'northwest-hills' },
+  { name: 'West Lake Hills', slug: 'west-lake-hills' },
+  { name: 'West Lake Highlands', slug: 'west-lake-highlands' },
+  { name: 'Lakeway', slug: 'lakeway' },
+  { name: 'Cedar Park', slug: 'cedar-park' },
+  { name: 'Hutto', slug: 'hutto' }
 ];
 
 const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, currentLocation }) => {
