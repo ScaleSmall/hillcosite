@@ -4,10 +4,13 @@
  * This template uses the intentional surface hierarchy defined in src/config/surfaceRoles.ts
  *
  * Surfaces used in this template:
- * - Base Canvas (bg-white): Main content sections
- * - Warm Surface (bg-brand-coral): TestimonialsSection for trust and warmth
- * - Neutral Surface (bg-brand-gray-50): ProofPointsSection has emphasis surface
+ * - Base Canvas (bg-white): Intro section, SplitSection, and other main content
+ * - Warm Surface (bg-brand-coral): Process section (cards), TestimonialsSection
+ * - Neutral Surface (bg-brand-gray-50): Intro text section with benefits list
  * - Emphasis Surface (bg-brand-azureDark): ProofPointsSection for strong visual impact
+ *
+ * Surface Pattern: Hero (image) → Emphasis (azureDark) → Neutral (gray-50) →
+ * Warm (coral cards) → White → Warm (coral testimonials) → Neutral (gray-50)
  *
  * See src/config/surfaceRoles.ts for complete surface role documentation
  */
@@ -253,7 +256,8 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         </div>
       </section>
 
-      <section className="section-padding bg-white">
+      {/* Warm Surface - Process section with cards */}
+      <section className="section-padding bg-brand-coral">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
@@ -267,7 +271,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             {content.processSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-brand-gray-50 rounded-xl p-6 border border-brand-gray-200 hover:border-brand-gray-300 transition-colors"
+                className="bg-white rounded-xl p-6 border border-brand-gray-200 hover:border-brand-gray-300 transition-colors shadow-sm"
               >
                 <div className="w-10 h-10 bg-brand-azure text-white rounded-lg flex items-center justify-center font-bold mb-4">
                   {idx + 1}

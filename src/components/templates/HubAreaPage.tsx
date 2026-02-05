@@ -1,3 +1,18 @@
+/**
+ * SURFACE ROLE SYSTEM IN USE:
+ *
+ * This template uses the intentional surface hierarchy defined in src/config/surfaceRoles.ts
+ *
+ * Surfaces used in this template:
+ * - Base Canvas (bg-white): Neighborhoods section, Map section
+ * - Warm Surface (bg-brand-coral): Services section with white cards
+ * - Neutral Surface (bg-brand-gray-50): Nearby areas section
+ * - Emphasis Surface (bg-brand-azure): CTA section
+ *
+ * Surface Pattern: Hero (image) → White → Warm (coral cards) → Neutral (gray-50) → White → Azure CTA
+ *
+ * See src/config/surfaceRoles.ts for complete surface role documentation
+ */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, MapPin, Paintbrush, ExternalLink, Home, ArrowLeft } from 'lucide-react';
@@ -134,7 +149,8 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
         </div>
       </section>
 
-      <section className="py-16 bg-brand-gray-50">
+      {/* Warm Surface - Services section with white cards */}
+      <section className="py-16 bg-brand-coral">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-8 text-center">
