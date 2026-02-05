@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['cedar-park'];
+const location = locations['leander'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'interior-painting'
   },
   location: location,
+  canonicalOverride: '/interior-painting-leander',
   content: {
     heroSubtitle: 'Transform your Leander home with expert interior painting. From Crystal Falls to Mason Hills, we deliver quality results on your family\'s schedule.',
     introText: `Leander families trust Hill Country Painting for interior transformations that last. Our team understands the demands of busy Leander households - we work efficiently, keep spaces clean, and coordinate around school and activity schedules. From open-concept great rooms to kids' bedrooms, we bring expertise and care to every project.`,

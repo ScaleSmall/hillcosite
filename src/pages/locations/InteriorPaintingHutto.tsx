@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['hutto'];
+const location = locations['taylor'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'interior-painting'
   },
   location: location,
+  canonicalOverride: '/interior-painting-taylor',
   content: {
     heroSubtitle: 'Professional interior painting for Taylor homes. From Heritage Park to Murphy\'s Crossing, we deliver quality results for your growing family.',
     introText: `Taylor's family-friendly communities deserve interior painting that matches your active lifestyle. Whether you're personalizing a newer home or refreshing an established residence, our team delivers beautiful results efficiently. We understand Taylor families are busy - we work around your schedule and keep disruption to a minimum.`,

@@ -28,7 +28,7 @@ const CedarPark = () => {
       <SEO
         title="Leander Painting Services | Professional Painters | Hill Country Painting"
         description="Professional painting services in Leander, TX. Expert interior and exterior painting for Crystal Falls, Mason Hills, and all Leander neighborhoods. Quality craftsmanship for one of Texas's fastest-growing cities."
-        canonical="/service-areas/cedar-park"
+        canonical="/service-areas/leander"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Service Areas', url: '/service-areas' },

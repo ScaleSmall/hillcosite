@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['hutto'];
+const location = locations['taylor'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'commercial-painting'
   },
   location: location,
+  canonicalOverride: '/commercial-painting-taylor',
   content: {
     heroSubtitle: 'Professional commercial painting for Taylor businesses. Supporting Taylor\'s rapid growth with quality commercial painting services.',
     introText: `Taylor's booming growth includes a expanding business community that needs professional commercial painting. From new retail developments to professional offices and restaurants, we provide quality commercial painting for Taylor businesses. Our team delivers efficient, professional results that help Taylor businesses succeed.`,

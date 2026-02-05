@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['hutto'];
+const location = locations['taylor'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'cabinet-refinishing'
   },
   location: location,
+  canonicalOverride: '/cabinet-refinishing-taylor',
   content: {
     heroSubtitle: 'Transform your Taylor kitchen with professional cabinet refinishing. Upgrade builder cabinets to premium finishes at a fraction of replacement cost.',
     introText: `Taylor families are discovering cabinet refinishing as the smart way to upgrade their kitchens. Many Taylor homes have solid builder-grade cabinets that just need premium finishes to look custom. Our team transforms Heritage Park, Murphy's Crossing, and area kitchens with factory-smooth finishes that make daily life more enjoyable.`,

@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['hutto'];
+const location = locations['taylor'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'exterior-painting'
   },
   location: location,
+  canonicalOverride: '/exterior-painting-taylor',
   content: {
     heroSubtitle: 'Quality exterior painting for Taylor\'s growing community. Protect your home with premium finishes designed for Texas conditions.',
     introText: `Taylor's family-friendly communities deserve exterior painting that lasts. From Heritage Park to Murphy's Crossing, our team delivers quality results that enhance curb appeal and protect your investment. We specialize in both new and established homes, upgrading builder-grade finishes to premium paints that withstand Texas weather.`,

@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['cedar-park'];
+const location = locations['leander'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'exterior-painting'
   },
   location: location,
+  canonicalOverride: '/exterior-painting-leander',
   content: {
     heroSubtitle: 'Protect your Leander home with professional exterior painting. Quality preparation, premium paints, and lasting results for Hill Country homes.',
     introText: `Leander homes face unique Hill Country challenges - intense sun exposure, variable terrain, and active family lifestyles. Our exterior painting services address these needs with thorough preparation, premium UV-resistant paints, and efficient execution. Whether you're in Crystal Falls or Mason Hills, we deliver protection and beauty that lasts.`,

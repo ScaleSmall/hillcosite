@@ -64,6 +64,7 @@ export interface ServiceLocationConfig {
     secondary: string;
     secondaryAlt: string;
   };
+  canonicalOverride?: string;
 }
 
 interface Props {
@@ -71,9 +72,9 @@ interface Props {
 }
 
 const ServiceLocationPage: React.FC<Props> = ({ config }) => {
-  const { service, location, content, images } = config;
+  const { service, location, content, images, canonicalOverride } = config;
 
-  const canonicalPath = `/${service.slug}-${location.slug}`;
+  const canonicalPath = canonicalOverride || `/${service.slug}-${location.slug}`;
   const pageTitle = `${service.name} ${location.name} TX | Professional Painters | Hill Country Painting`;
   const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Licensed, insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Consultations available.`;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['cedar-park'];
+const location = locations['leander'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'commercial-painting'
   },
   location: location,
+  canonicalOverride: '/commercial-painting-leander',
   content: {
     heroSubtitle: 'Professional commercial painting for Leander businesses. Retail, office, and industrial expertise with scheduling that works around your operations.',
     introText: `Leander's growing business community needs commercial painters who understand local business needs. From Crystal Falls retail to professional offices throughout, we deliver quality commercial painting that enhances your business image. Our team works efficiently around your schedule to minimize disruption.`,

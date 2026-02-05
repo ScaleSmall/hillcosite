@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['cedar-park'];
+const location = locations['leander'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,6 +11,7 @@ const config: ServiceLocationConfig = {
     slug: 'cabinet-refinishing'
   },
   location: location,
+  canonicalOverride: '/cabinet-refinishing-leander',
   content: {
     heroSubtitle: 'Transform your Leander kitchen with professional cabinet refinishing. Modern updates, factory-quality finishes, family-friendly scheduling.',
     introText: `Leander families are updating their kitchens with cabinet refinishing - achieving modern looks at a fraction of new cabinet costs. Whether your Crystal Falls kitchen has dated oak or your Mason Hills cabinets need a color refresh, our team delivers smooth, durable finishes that transform your space while working around your family's schedule.`,
