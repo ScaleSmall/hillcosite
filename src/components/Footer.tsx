@@ -75,7 +75,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-brand-gray-900 text-white">
+    <footer className="bg-brand-azureDark text-white">
       {/* CTA Section */}
       <div className="bg-brand-coral py-12 border-b-4 border-brand-azure">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -141,17 +141,17 @@ const Footer = () => {
             <p className="text-brand-gray-300 text-sm">
               {businessConfig.tagline}
             </p>
-            <div className="space-y-2 bg-brand-gray-800/50 rounded-lg p-3">
+            <div className="space-y-2 bg-brand-azureDark/80 rounded-lg p-3 border border-brand-coral/20">
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
-                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
+                className="flex items-center space-x-2 text-white hover:text-brand-azure transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
               >
                 <Phone size={16} />
                 <span>{businessConfig.phone}</span>
               </a>
               <a
                 href={`mailto:${businessConfig.email}`}
-                className="flex items-center space-x-2 text-white hover:text-brand-coral transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
+                className="flex items-center space-x-2 text-white hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
               >
                 <Mail size={16} />
                 <span>{businessConfig.email}</span>
@@ -171,7 +171,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-brand-gray-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
+                  className="text-brand-gray-300 hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
                   aria-label={social.ariaLabel}
                 >
                   <social.icon size={20} />
@@ -187,7 +187,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     to={link.href}
-                    className="text-brand-gray-300 hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-coral rounded"
+                    className="text-brand-gray-300 hover:text-brand-azure transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
                   >
                     {link.name}
                   </Link>
@@ -261,17 +261,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-brand-gray-700 pt-8 mt-8">
+        <div className="border-t border-brand-coral/20 pt-8 mt-8">
           <div className="text-brand-gray-300 text-sm text-center">
             <div className="mb-4">© {currentYear} Hill Country Painting. All rights reserved.</div>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/privacy" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Privacy Policy</Link>
-              <span className="text-brand-gray-500">•</span>
-              <Link to="/terms" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Terms of Service</Link>
-              <span className="text-brand-gray-500">•</span>
-              <Link to="/eula" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">EULA</Link>
-              <span className="text-brand-gray-500">•</span>
-              <Link to="/financing" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Financing</Link>
+              <Link to="/privacy" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Privacy Policy</Link>
+              <span className="text-brand-gray-400">•</span>
+              <Link to="/terms" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Terms of Service</Link>
+              <span className="text-brand-gray-400">•</span>
+              <Link to="/eula" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">EULA</Link>
+              <span className="text-brand-gray-400">•</span>
+              <Link to="/financing" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Financing</Link>
             </div>
           </div>
         </div>

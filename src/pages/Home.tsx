@@ -101,7 +101,7 @@ const Home = () => {
             className="group relative overflow-hidden"
           >
             {/* Ribbon Background */}
-            <div className="relative bg-gradient-to-r from-brand-coral to-brand-azureDark px-8 py-4 transform rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-2xl">
+            <div className="relative bg-brand-azure px-8 py-4 transform rotate-3 group-hover:rotate-0 transition-transform duration-300 shadow-2xl">
               {/* Corner fold effect */}
               <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-t-[20px] border-t-red-700 transform translate-x-[1px] -translate-y-[1px]"></div>
               
@@ -212,7 +212,7 @@ const Home = () => {
       />
 
       {/* Financing Section */}
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">

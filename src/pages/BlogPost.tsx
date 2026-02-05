@@ -249,7 +249,7 @@ const BlogPost = () => {
       </Helmet>
 
       {/* Hero Section with Featured Image */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
+      <section className="relative py-16 md:py-24 bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/blog"

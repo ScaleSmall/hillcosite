@@ -54,7 +54,7 @@ const Services = () => {
       />
 
       {/* Hero */}
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-gray-900 leading-tight">

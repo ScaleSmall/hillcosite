@@ -59,7 +59,7 @@ const Sitemap = () => {
       />
 
       <div className="min-h-screen bg-white">
-        <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
+        <section className="section-padding bg-brand-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">Site Map</h1>
             <p className="text-lg text-brand-gray-600">

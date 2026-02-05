@@ -12,7 +12,7 @@ const NotFound = () => {
         robots="noindex, nofollow"
       />
       
-      <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100 min-h-[60vh] flex items-center">
+      <section className="section-padding bg-brand-gray-50 min-h-[60vh] flex items-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-8">
             <div className="space-y-4">

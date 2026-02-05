@@ -217,7 +217,7 @@ const Contact = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-gradient-to-br from-brand-gray-50 to-brand-gray-100">
+      <section className="pt-20 pb-6 md:pt-24 md:pb-8 bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-6 lg:gap-8">
             {/* Award Badge - Left Side */}
