@@ -232,9 +232,9 @@ const Contact = () => {
 
             {/* Content - Center */}
             <div className="flex-1 text-center lg:text-left max-w-3xl mx-auto lg:mx-0">
-              <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Request a Consultation</h1>
+              <h1 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-2">Let's Talk About Your Project</h1>
               <p className="text-base md:text-lg text-brand-gray-600 mb-4">
-                Contact us to schedule an on-site assessment. We'll review your project, answer questions, and provide a detailed estimate.
+                Share some details about your project and we'll schedule a time to visit. We'll review the space, answer questions, and provide a clear written estimate.
               </p>
               <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm md:text-base">
                 <li className="flex items-start gap-2">
@@ -280,9 +280,14 @@ const Contact = () => {
           <div className="max-w-4xl mx-auto">
             {/* Contact Form */}
             <div className="card p-8 lg:p-12">
-              <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
-                Request Consultation
-              </h2>
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold text-brand-gray-900 mb-3">
+                  Request Your Consultation
+                </h2>
+                <p className="text-brand-gray-600 max-w-2xl mx-auto">
+                  Fill out the form below and we'll contact you within one business day to schedule a visit at your convenience. No obligation.
+                </p>
+              </div>
               <form
                 id="estimateForm"
                 ref={formRef}
@@ -550,15 +555,15 @@ const Contact = () => {
                     placeholder="Tell us about your painting project... (optional)"
                   ></textarea>
                 </div>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   disabled={isSubmitting}
                   className="btn-primary w-full text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Request'}
+                  {isSubmitting ? 'Sending...' : 'Submit Request'}
                 </button>
                 <p className="text-sm text-brand-gray-600 text-center">
-                  We'll respond promptly to schedule your free on-site estimate
+                  We'll reach out within one business day to arrange a time that works for you
                 </p>
               </form>
 

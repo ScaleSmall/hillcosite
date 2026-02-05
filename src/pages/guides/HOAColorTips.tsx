@@ -137,10 +137,10 @@ const HOAColorTips = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Color Consultation
+                Request Color Consultation
               </Link>
               <Link to="/contact" className="btn-outline">
-                Consultation
+                Schedule Visit
               </Link>
             </div>
           </div>

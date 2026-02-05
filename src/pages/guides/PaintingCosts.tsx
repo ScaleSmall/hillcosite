@@ -227,8 +227,8 @@ const PaintingCosts = () => {
 
       {/* Next Steps */}
       <NextStepsSection
-        title="Get Your Accurate Painting Estimate"
-        description="Receive transparent, detailed pricing for your specific project with no hidden fees or surprises."
+        title="Request a Clear Written Estimate"
+        description="We'll visit your property, review the scope, and provide transparent pricing with detailed line items."
         serviceTitle="View Our Services"
         serviceDescription="Explore our complete range of interior, exterior, and cabinet painting services."
         serviceLink="/services"

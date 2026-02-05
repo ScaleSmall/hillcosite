@@ -12,8 +12,8 @@ interface NextStepsProps {
 }
 
 const NextStepsSection = ({
-  title = "Ready to Get Started?",
-  description = "Transform your space with professional painting services from Hill Country Painting.",
+  title = "Let's Discuss Your Project",
+  description = "We'll visit your property, review the scope, and provide transparent pricing with no obligation.",
   serviceTitle,
   serviceDescription,
   serviceLink,
@@ -37,9 +37,9 @@ const NextStepsSection = ({
               <div className="w-14 h-14 bg-brand-azure/10 rounded-xl flex items-center justify-center">
                 <Phone className="w-7 h-7 text-brand-azure" />
               </div>
-              <h3 className="text-2xl font-bold text-brand-azureDark">Get Your Consultation</h3>
+              <h3 className="text-2xl font-bold text-brand-azureDark">Schedule a Consultation</h3>
               <p className="text-brand-gray-700 leading-relaxed">
-                Schedule a consultation for your painting project. No obligation, just honest advice and transparent pricing.
+                We'll visit your property, review the scope, answer questions, and provide a detailed written estimate. No obligation.
               </p>
               <div className="flex flex-col gap-3 pt-2">
                 <Link
