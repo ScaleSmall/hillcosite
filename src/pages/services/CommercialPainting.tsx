@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Building2, Clock, Shield } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ProofPointsSection from '../../components/ProofPointsSection';
 import QuickQuoteForm from '../../components/QuickQuoteForm';
@@ -268,46 +268,23 @@ const CommercialPainting = () => {
       </section>
 
       <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-              Commercial Painting Advantages
-            </h2>
-            <p className="text-xl text-brand-gray-600">
-              Why businesses choose Hill Country Painting
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            How We Coordinate Commercial Projects
+          </h2>
+          <div className="space-y-6 text-lg text-brand-gray-600">
+            <p>
+              Commercial painting requires planning around your operations. Before work begins, we establish a clear timeline that accounts for your business hours, customer flow, and employee schedules.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-brand-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-brand-azureDark" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Flexible Scheduling</h3>
-              <p className="text-brand-gray-600">
-                Evening and weekend work available to minimize business disruption
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-brand-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-brand-azureDark" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Fully Insured</h3>
-              <p className="text-brand-gray-600">
-                Full commercial liability coverage for your peace of mind
-              </p>
-            </div>
-
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-brand-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Building2 className="w-8 h-8 text-brand-azureDark" />
-              </div>
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">All Property Types</h3>
-              <p className="text-brand-gray-600">
-                Offices, retail, restaurants, medical facilities, and more
-              </p>
-            </div>
+            <p>
+              You'll receive written documentation showing exactly when we'll arrive, which areas we'll work in each day, and when spaces will be accessible again. If scheduling needs to change, we notify you immediately—not the day of.
+            </p>
+            <p>
+              We assign a single point of contact for your project who understands your business requirements and can make decisions on-site. This prevents delays caused by waiting for approvals or clarification.
+            </p>
+            <p>
+              Work areas are clearly marked, protected, and contained. Equipment is staged out of customer view. Crews understand they're working in an active business environment and conduct themselves accordingly.
+            </p>
           </div>
         </div>
       </section>
@@ -318,35 +295,35 @@ const CommercialPainting = () => {
         steps={processSteps}
       />
 
-      {/* What Makes This Experience Different */}
+      {/* Coordination and Communication */}
       <section className="section-padding bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-brand-gray-900 mb-8 text-center">
-            What Makes This Experience Different
+            Coordination and Communication Standards
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-3">
-              <h3 className="text-xl font-bold text-brand-gray-900">Written Project Plans</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900">Pre-Project Planning</h3>
               <p className="text-brand-gray-600">
-                Detailed timelines showing work hours, access requirements, and completion dates so you can plan business operations accordingly.
+                Written timeline provided before work begins showing daily schedule, work areas, and access requirements. You'll know exactly what to expect and when.
               </p>
             </div>
             <div className="space-y-3">
-              <h3 className="text-xl font-bold text-brand-gray-900">Daily Updates</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900">Single Point of Contact</h3>
               <p className="text-brand-gray-600">
-                Regular communication with designated point of contact to review progress, address concerns, and confirm next-day scheduling.
+                One dedicated project manager handles all communication, makes on-site decisions, and coordinates with your operations to prevent delays.
               </p>
             </div>
             <div className="space-y-3">
-              <h3 className="text-xl font-bold text-brand-gray-900">Respectful Crews</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900">Daily Progress Reports</h3>
               <p className="text-brand-gray-600">
-                Professional painters who understand commercial environments—courteous to customers, discreet around employees, and respectful of your operations.
+                End-of-day updates confirming completed work, addressing any issues discovered, and confirming the next day's schedule and access needs.
               </p>
             </div>
             <div className="space-y-3">
-              <h3 className="text-xl font-bold text-brand-gray-900">Clean Job Sites</h3>
+              <h3 className="text-xl font-bold text-brand-gray-900">Immediate Problem Notification</h3>
               <p className="text-brand-gray-600">
-                Equipment staged out of customer view, work areas contained and protected, and thorough cleanup after each session.
+                If we discover damage, scheduling conflicts, or material issues, you're notified immediately with options—not at the end of the week.
               </p>
             </div>
           </div>
@@ -354,15 +331,15 @@ const CommercialPainting = () => {
       </section>
 
       <SplitSection
-        title="Expert Commercial Painting Services"
-        description="Our commercial painting services are designed to deliver exceptional results while minimizing disruption to your business operations."
+        title="Property Types We Serve"
+        description="We work with various commercial property types, adjusting our approach based on your specific operational requirements and schedule constraints."
         benefits={[
-          { text: 'Flexible scheduling including evenings and weekends' },
-          { text: 'Fully insured with commercial liability coverage' },
-          { text: 'Professional crew with commercial experience' },
-          { text: 'Complete protection of furniture and equipment' },
-          { text: 'Minimal disruption to business operations' },
-          { text: 'Warranty on all commercial painting work' }
+          { text: 'Office buildings and professional spaces' },
+          { text: 'Retail stores and shopping centers' },
+          { text: 'Restaurants and food service facilities' },
+          { text: 'Medical and dental offices' },
+          { text: 'Warehouses and industrial facilities' },
+          { text: 'Multi-unit residential properties' }
         ]}
         image="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Commercial painting preparation Austin"
