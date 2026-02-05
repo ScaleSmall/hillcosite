@@ -116,9 +116,9 @@ Services:
 - Commercial Painting
 
 Locations:
-- Austin, Round Rock, Georgetown, Cedar Park
-- Pflugerville, Leander, Taylor, Hutto
-- West Lake Hills
+- Austin, Round Rock, Georgetown, Leander
+- Pflugerville, Lakeway, Bee Cave, Taylor
+- Barton Creek, West Lake Hills
 ```
 
 **All combinations verified:** ✅

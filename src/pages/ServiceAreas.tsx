@@ -31,7 +31,7 @@ const ServiceAreas = () => {
     },
     {
       title: 'Exterior Painting',
-      description: 'Weather-resistant exterior painting designed for Central Texas climate conditions.',
+      description: 'Weather-resistant exterior painting designed for Greater Austin Area climate conditions.',
       image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
       link: '/services/exterior-painting'
     },
@@ -53,7 +53,7 @@ const ServiceAreas = () => {
     <>
       <SEO
         title="Service Areas | Round Rock Metro Painting Services | Hill Country Painting"
-        description="Hill Country Painting serves Austin, Round Rock (78664, 78665), Pflugerville, Leander, Georgetown, Taylor, and surrounding areas. Professional painting services throughout Central Texas."
+        description="Hill Country Painting serves Austin, Round Rock (78664, 78665), Pflugerville, Leander, Georgetown, Taylor, and surrounding areas. Professional painting services throughout Greater Austin Area."
         canonical="/service-areas"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -66,7 +66,7 @@ const ServiceAreas = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
-              Austin Metro Service Areas
+              Greater Austin Area Service Areas
             </h1>
             <p className="text-xl text-brand-gray-600 leading-body">
               Hill Country Painting proudly serves the Austin metro area with professional residential and commercial painting services. Clean prep, crisp lines, reliable schedules for homes and businesses.

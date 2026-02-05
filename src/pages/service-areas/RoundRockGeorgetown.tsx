@@ -180,7 +180,7 @@ const RoundRockGeorgetown = () => {
       />
 
       <ServiceAreasSection
-        title="Serving the I-35 Corridor & Austin Metro"
+        title="Serving the I-35 Corridor & Greater Austin Area"
         subtitle="Professional painting throughout the tech and heritage corridor"
         areas={serviceAreas}
       />

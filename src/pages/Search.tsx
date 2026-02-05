@@ -64,8 +64,8 @@ const staticContent = [
   },
   {
     type: 'guide' as const,
-    title: 'How Often to Paint in Central Texas',
-    description: 'Learn how often to repaint your home in Central Texas climate. Maintenance schedules for interior and exterior painting.',
+    title: 'How Often to Paint in Greater Austin Area',
+    description: 'Learn how often to repaint your home in Greater Austin Area climate. Maintenance schedules for interior and exterior painting.',
     url: '/guides/how-often-paint-central-texas',
     category: 'Guides'
   }

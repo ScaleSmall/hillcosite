@@ -48,7 +48,7 @@ const Austin = () => {
   const austinSpecificFAQs = [
     {
       question: 'How do you handle Austin\'s unique weather challenges?',
-      answer: 'Austin\'s climate requires special consideration. We work around the intense summer heat (often 100°F+), sudden thunderstorms, and high humidity. Our paint selections are specifically chosen to withstand UV exposure, resist fading, and handle temperature fluctuations. We schedule exterior work during optimal weather windows and use premium paints designed for Central Texas conditions.'
+      answer: 'Austin\'s climate requires special consideration. We work around the intense summer heat (often 100°F+), sudden thunderstorms, and high humidity. Our paint selections are specifically chosen to withstand UV exposure, resist fading, and handle temperature fluctuations. We schedule exterior work during optimal weather windows and use premium paints designed for Greater Austin Area conditions.'
     },
     {
       question: 'Do you work with Austin\'s diverse architectural styles?',
@@ -256,7 +256,7 @@ const Austin = () => {
       </section>
 
       <ServiceAreasSection
-        title="Serving Greater Austin & Central Texas"
+        title="Serving Greater Austin & Greater Austin Area"
         subtitle="Professional painting throughout the metro area"
         areas={serviceAreas}
       />

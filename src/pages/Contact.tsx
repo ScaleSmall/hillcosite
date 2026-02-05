@@ -745,8 +745,8 @@ const Contact = () => {
                 </div>
                 <div className="text-center">
                   <h3 className="font-semibold text-brand-gray-900">Service Area</h3>
-                  <p className="text-brand-gray-700">Austin Metro Area</p>
-                  <p className="text-sm text-brand-gray-600">Round Rock, Cedar Park, Georgetown & more</p>
+                  <p className="text-brand-gray-700">Greater Austin Area</p>
+                  <p className="text-sm text-brand-gray-600">Round Rock, Leander, Georgetown & more</p>
                 </div>
               </div>
             </div>

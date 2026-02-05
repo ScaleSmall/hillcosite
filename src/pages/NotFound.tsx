@@ -54,11 +54,11 @@ const NotFound = () => {
               <div className="grid grid-cols-2 gap-2 text-sm text-brand-gray-600">
                 <span>• Round Rock</span>
                 <span>• Pflugerville</span>
-                <span>• Cedar Park</span>
+                <span>• Leander</span>
                 <span>• Georgetown</span>
-              <span>• Hutto</span>
-              <span>• Leander</span>
-              <span>• Taylor</span>
+                <span>• Lakeway</span>
+                <span>• Bee Cave</span>
+                <span>• Taylor</span>
                 <span>• And more!</span>
               </div>
             </div>
