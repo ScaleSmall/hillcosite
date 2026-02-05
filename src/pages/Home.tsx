@@ -179,7 +179,7 @@ const Home = () => {
             {/* Concern 1 */}
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
-                Poor Communication
+                Proactive & Consistent Communication
               </h3>
               <p className="text-brand-gray-600 mb-3">
                 Many contractors go silent after signing the contract. Timelines shift without warning.
@@ -192,7 +192,7 @@ const Home = () => {
             {/* Concern 2 */}
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
-                Messy Work Areas
+                Clean & Organized Work Areas
               </h3>
               <p className="text-brand-gray-600 mb-3">
                 Paint spills on floors. Debris left in landscaping. No respect for your property.
@@ -205,7 +205,7 @@ const Home = () => {
             {/* Concern 3 */}
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
-                Missed Timelines
+                Reliable & Punctual Scheduling
               </h3>
               <p className="text-brand-gray-600 mb-3">
                 Projects drag on indefinitely. Crews disappear mid-project to work other jobs.
@@ -218,7 +218,7 @@ const Home = () => {
             {/* Concern 4 */}
             <div className="bg-brand-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
-                Unclear Expectations
+                Clear & Transparent Expectations
               </h3>
               <p className="text-brand-gray-600 mb-3">
                 Vague contracts. Hidden costs. Disputes about what's included in the scope.
