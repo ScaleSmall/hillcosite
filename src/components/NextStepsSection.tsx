@@ -20,32 +20,40 @@ const NextStepsSection = ({
   className = ""
 }: NextStepsProps) => {
   return (
-    <section className={`section-padding bg-gradient-to-br from-brand-gray-50 to-brand-gray-100 ${className}`}>
+    <section className={`section-padding bg-brand-coral ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-brand-azureDark">
+            {title}
+          </h2>
+          <p className="text-xl text-brand-gray-700">
+            {description}
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Primary CTA - Contact */}
-          <div className="bg-white rounded-xl p-8 shadow-lg border border-brand-gray-200 hover:shadow-xl transition-shadow">
+          <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-brand-azure/20 hover:border-brand-azure hover:shadow-xl transition-all">
             <div className="space-y-4">
-              <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
-                <Phone className="w-6 h-6 text-brand-coral" />
+              <div className="w-14 h-14 bg-brand-azure/10 rounded-xl flex items-center justify-center">
+                <Phone className="w-7 h-7 text-brand-azure" />
               </div>
-              <h3 className="text-xl font-bold text-brand-gray-900">Get Your Consultation</h3>
-              <p className="text-brand-gray-600">
+              <h3 className="text-2xl font-bold text-brand-azureDark">Get Your Consultation</h3>
+              <p className="text-brand-gray-700 leading-relaxed">
                 Schedule a consultation for your painting project. No obligation, just honest advice and transparent pricing.
               </p>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 pt-2">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors shadow-sm"
                 >
                   Request Consultation
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <a
                   href="tel:(512)240-2246"
-                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-azureDark text-brand-azureDark hover:bg-brand-gray-50 font-semibold rounded-lg transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-azureDark text-brand-azureDark hover:bg-brand-azureDark hover:text-white font-semibold rounded-lg transition-colors"
                 >
-                  <Phone className="mr-2 w-4 h-4" />
+                  <Phone className="mr-2 w-5 h-5" />
                   Call (512) 240-2246
                 </a>
               </div>
@@ -54,21 +62,21 @@ const NextStepsSection = ({
 
           {/* Related Service */}
           {serviceTitle && serviceLink && (
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-brand-gray-200 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-brand-gray-300/50 hover:border-brand-gray-400 hover:shadow-xl transition-all">
               <div className="space-y-4">
-                <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
-                  <ArrowRight className="w-6 h-6 text-brand-azureDark" />
+                <div className="w-14 h-14 bg-brand-gray-100 rounded-xl flex items-center justify-center">
+                  <ArrowRight className="w-7 h-7 text-brand-azureDark" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-gray-900">{serviceTitle}</h3>
-                <p className="text-brand-gray-600">
+                <h3 className="text-2xl font-bold text-brand-azureDark">{serviceTitle}</h3>
+                <p className="text-brand-gray-700 leading-relaxed">
                   {serviceDescription || `Learn more about our ${serviceTitle.toLowerCase()} services.`}
                 </p>
                 <Link
                   to={serviceLink}
-                  className="inline-flex items-center text-brand-azureDark font-semibold hover:text-brand-azureDark transition-colors"
+                  className="inline-flex items-center text-brand-azure font-semibold hover:text-brand-azureDark transition-colors pt-2"
                 >
                   Learn More About This Service
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
             </div>
@@ -76,21 +84,21 @@ const NextStepsSection = ({
 
           {/* Default - Services Overview */}
           {!serviceTitle && (
-            <div className="bg-white rounded-xl p-8 shadow-lg border border-brand-gray-200 hover:shadow-xl transition-shadow">
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-brand-gray-300/50 hover:border-brand-gray-400 hover:shadow-xl transition-all">
               <div className="space-y-4">
-                <div className="w-12 h-12 bg-brand-gray-100 rounded-lg flex items-center justify-center">
-                  <ArrowRight className="w-6 h-6 text-brand-azureDark" />
+                <div className="w-14 h-14 bg-brand-gray-100 rounded-xl flex items-center justify-center">
+                  <ArrowRight className="w-7 h-7 text-brand-azureDark" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-gray-900">Explore Our Services</h3>
-                <p className="text-brand-gray-600">
+                <h3 className="text-2xl font-bold text-brand-azureDark">Explore Our Services</h3>
+                <p className="text-brand-gray-700 leading-relaxed">
                   Discover our complete range of professional painting services for residential and commercial properties.
                 </p>
                 <Link
                   to="/services"
-                  className="inline-flex items-center text-brand-azureDark font-semibold hover:text-brand-azureDark transition-colors"
+                  className="inline-flex items-center text-brand-azure font-semibold hover:text-brand-azureDark transition-colors pt-2"
                 >
                   View All Services
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </div>
             </div>

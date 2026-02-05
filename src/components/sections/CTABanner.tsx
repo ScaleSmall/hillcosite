@@ -29,20 +29,20 @@ const CTABanner = ({
     coral: 'bg-brand-coral'
   };
 
-  const isLightBg = backgroundColor === 'coral';
-  const textColorClass = isLightBg ? 'text-brand-gray-900' : 'text-white';
+  const isLightBg = backgroundColor === 'coral' || backgroundColor === 'accent';
+  const textColorClass = isLightBg ? 'text-brand-azureDark' : 'text-white';
 
   const primaryBtnClass = isLightBg
     ? "btn-primary"
-    : "btn-primary bg-white text-brand-azureDark hover:bg-brand-gray-100";
+    : "bg-white text-brand-azureDark hover:bg-brand-gray-100 font-semibold px-8 py-4 rounded-lg transition-colors duration-200";
 
   const secondaryBtnClass = isLightBg
-    ? "btn-outline border-brand-gray-900 text-brand-gray-900 hover:bg-brand-gray-900 hover:text-white"
-    : "btn-outline border-white text-white hover:bg-white hover:text-brand-azureDark";
+    ? "border-2 border-brand-azureDark text-brand-azureDark hover:bg-brand-azureDark hover:text-white font-semibold px-8 py-4 rounded-lg transition-colors duration-200"
+    : "border-2 border-white text-white hover:bg-white hover:text-brand-azureDark font-semibold px-8 py-4 rounded-lg transition-colors duration-200";
 
-  const borderClass = isLightBg ? 'border-brand-gray-300' : 'border-white/20';
-  const badgeBgClass = isLightBg ? 'bg-brand-gray-900/10' : 'bg-white/20';
-  const badgeTextClass = isLightBg ? 'text-brand-gray-700' : 'text-white/90';
+  const borderClass = isLightBg ? 'border-brand-azureDark/20' : 'border-white/20';
+  const badgeBgClass = isLightBg ? 'bg-white' : 'bg-white/20';
+  const badgeTextClass = isLightBg ? 'text-brand-azureDark' : 'text-white';
 
   return (
     <section className={`section-padding ${bgClasses[backgroundColor]} ${textColorClass}`}>
@@ -51,7 +51,7 @@ const CTABanner = ({
           {title}
         </h2>
         {subtitle && (
-          <p className={`text-xl mb-8 max-w-2xl mx-auto ${isLightBg ? 'text-brand-gray-600' : 'text-white/90'}`}>
+          <p className={`text-xl mb-8 max-w-2xl mx-auto ${isLightBg ? 'text-brand-gray-700' : 'text-white/90'}`}>
             {subtitle}
           </p>
         )}
@@ -73,24 +73,24 @@ const CTABanner = ({
         </div>
 
         {/* Trust Badges */}
-        <div className={`flex flex-wrap justify-center gap-6 mt-8 pt-6 border-t ${borderClass}`}>
+        <div className={`flex flex-wrap justify-center gap-6 mt-10 pt-8 border-t ${borderClass}`}>
           <div className={`flex items-center space-x-2 ${badgeTextClass}`}>
-            <div className={`w-6 h-6 ${badgeBgClass} rounded-full flex items-center justify-center`}>
-              <span className="text-xs font-bold">✓</span>
+            <div className={`w-8 h-8 ${badgeBgClass} rounded-full flex items-center justify-center shadow-sm`}>
+              <span className={`text-sm font-bold ${isLightBg ? 'text-brand-azure' : 'text-brand-azure'}`}>✓</span>
             </div>
-            <span className="text-sm font-medium">Insured Local Crew</span>
+            <span className="text-sm font-semibold">Insured Local Crew</span>
           </div>
           <div className={`flex items-center space-x-2 ${badgeTextClass}`}>
-            <div className={`w-6 h-6 ${badgeBgClass} rounded-full flex items-center justify-center`}>
-              <span className="text-xs font-bold">2</span>
+            <div className={`w-8 h-8 ${badgeBgClass} rounded-full flex items-center justify-center shadow-sm`}>
+              <span className={`text-sm font-bold ${isLightBg ? 'text-brand-azure' : 'text-brand-azure'}`}>2</span>
             </div>
-            <span className="text-sm font-medium">2-Year Warranty</span>
+            <span className="text-sm font-semibold">2-Year Warranty</span>
           </div>
           <div className={`flex items-center space-x-2 ${badgeTextClass}`}>
-            <div className={`w-6 h-6 ${badgeBgClass} rounded-full flex items-center justify-center`}>
-              <span className="text-xs font-bold">★</span>
+            <div className={`w-8 h-8 ${badgeBgClass} rounded-full flex items-center justify-center shadow-sm`}>
+              <span className={`text-sm font-bold ${isLightBg ? 'text-brand-azure' : 'text-brand-azure'}`}>★</span>
             </div>
-            <span className="text-sm font-medium">350+ Projects</span>
+            <span className="text-sm font-semibold">350+ Projects</span>
           </div>
         </div>
       </div>

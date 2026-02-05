@@ -76,6 +76,49 @@ const Footer = () => {
 
   return (
     <footer className="bg-brand-gray-900 text-white">
+      {/* CTA Section */}
+      <div className="bg-brand-coral py-12 border-b-4 border-brand-azure">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-azureDark">
+            Ready to Transform Your Space?
+          </h2>
+          <p className="text-xl mb-8 text-brand-gray-700">
+            Get your consultation today and experience the Hill Country Painting difference
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 shadow-md min-w-[200px]">
+              Get Consultation
+            </Link>
+            <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-azureDark text-brand-azureDark hover:bg-brand-azureDark hover:text-white font-semibold rounded-lg transition-colors duration-200 min-w-[200px]">
+              <Phone className="w-5 h-5 mr-2" />
+              (512) 240-2246
+            </a>
+          </div>
+          {/* Trust Indicators */}
+          <div className="flex flex-wrap justify-center gap-6 mt-10 pt-8 border-t border-brand-azureDark/20">
+            <div className="flex items-center space-x-2 text-brand-azureDark">
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <span className="text-sm font-bold text-brand-azure">✓</span>
+              </div>
+              <span className="text-sm font-semibold">Insured</span>
+            </div>
+            <div className="flex items-center space-x-2 text-brand-azureDark">
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <span className="text-sm font-bold text-brand-azure">2</span>
+              </div>
+              <span className="text-sm font-semibold">2-Year Warranty</span>
+            </div>
+            <div className="flex items-center space-x-2 text-brand-azureDark">
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <span className="text-sm font-bold text-brand-azure">★</span>
+              </div>
+              <span className="text-sm font-semibold">350+ Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info - NAP Section */}
@@ -218,24 +261,17 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-brand-azureDark pt-8 mt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-brand-gray-300 text-sm text-center md:text-left">
-              <div>© {currentYear} Hill Country Painting. All rights reserved.</div>
-              <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
-                <Link to="/privacy" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">Privacy Policy</Link>
-                <span className="text-brand-gray-500">•</span>
-                <Link to="/terms" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">Terms of Service</Link>
-                <span className="text-brand-gray-500">•</span>
-                <Link to="/eula" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">EULA</Link>
-                <span className="text-brand-gray-500">•</span>
-                <Link to="/financing" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-coral rounded">Financing</Link>
-              </div>
-            </div>
-            <div className="flex space-x-4">
-              <Link to="/contact" className="btn-primary">
-                Get Consultation
-              </Link>
+        <div className="border-t border-brand-gray-700 pt-8 mt-8">
+          <div className="text-brand-gray-300 text-sm text-center">
+            <div className="mb-4">© {currentYear} Hill Country Painting. All rights reserved.</div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/privacy" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Privacy Policy</Link>
+              <span className="text-brand-gray-500">•</span>
+              <Link to="/terms" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Terms of Service</Link>
+              <span className="text-brand-gray-500">•</span>
+              <Link to="/eula" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">EULA</Link>
+              <span className="text-brand-gray-500">•</span>
+              <Link to="/financing" className="hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Financing</Link>
             </div>
           </div>
         </div>
