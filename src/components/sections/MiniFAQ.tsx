@@ -10,17 +10,24 @@ interface MiniFAQProps {
   title?: string;
   subtitle?: string;
   faqs: FAQ[];
+  surface?: 'white' | 'gray' | 'coral';
 }
 
-const MiniFAQ = ({ title, subtitle, faqs }: MiniFAQProps) => {
+const MiniFAQ = ({ title, subtitle, faqs, surface = 'gray' }: MiniFAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const surfaceClass = {
+    white: 'bg-white',
+    gray: 'bg-brand-gray-50',
+    coral: 'bg-brand-coral'
+  }[surface];
+
   return (
-    <section className="section-padding bg-brand-gray-50">
+    <section className={`section-padding ${surfaceClass}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-16">

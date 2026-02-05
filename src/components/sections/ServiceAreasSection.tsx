@@ -10,11 +10,18 @@ interface ServiceAreasSectionProps {
   title?: string;
   subtitle?: string;
   areas: ServiceArea[];
+  surface?: 'white' | 'gray' | 'coral';
 }
 
-const ServiceAreasSection = ({ title, subtitle, areas }: ServiceAreasSectionProps) => {
+const ServiceAreasSection = ({ title, subtitle, areas, surface = 'gray' }: ServiceAreasSectionProps) => {
+  const surfaceClass = {
+    white: 'bg-white',
+    gray: 'bg-brand-gray-50',
+    coral: 'bg-brand-coral'
+  }[surface];
+
   return (
-    <section className="section-padding bg-brand-gray-50">
+    <section className={`section-padding ${surfaceClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-16">

@@ -14,9 +14,10 @@ interface ServicesGridProps {
   services?: Service[];
   title?: string;
   subtitle?: string;
+  surface?: 'white' | 'gray' | 'coral';
 }
 
-const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
+const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: ServicesGridProps) => {
   const defaultServices: Service[] = [
     {
       title: "Interior Painting",
@@ -46,8 +47,14 @@ const ServicesGrid = ({ services, title, subtitle }: ServicesGridProps) => {
 
   const displayServices = services || defaultServices;
 
+  const surfaceClass = {
+    white: 'bg-white',
+    gray: 'bg-brand-gray-50',
+    coral: 'bg-brand-coral'
+  }[surface];
+
   return (
-    <section className="section-padding bg-white">
+    <section className={`section-padding ${surfaceClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || subtitle) && (
           <div className="text-center mb-16">

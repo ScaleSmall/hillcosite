@@ -20,6 +20,7 @@ interface ComparisonSectionProps {
   comparisons: ComparisonItem[];
   ctaText?: string;
   ctaLink?: string;
+  surface?: 'white' | 'gray' | 'coral';
 }
 
 const ComparisonSection = ({
@@ -33,7 +34,8 @@ const ComparisonSection = ({
   option2Description,
   comparisons,
   ctaText,
-  ctaLink
+  ctaLink,
+  surface = 'white'
 }: ComparisonSectionProps) => {
   const renderValue = (value: boolean | string) => {
     if (typeof value === 'boolean') {
@@ -46,8 +48,14 @@ const ComparisonSection = ({
     return <span className="text-sm text-brand-gray-600">{value}</span>;
   };
 
+  const surfaceClass = {
+    white: 'bg-white',
+    gray: 'bg-brand-gray-50',
+    coral: 'bg-brand-coral'
+  }[surface];
+
   return (
-    <section className="section-padding bg-white">
+    <section className={`section-padding ${surfaceClass}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
