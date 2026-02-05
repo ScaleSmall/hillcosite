@@ -332,7 +332,7 @@ const BlogPost = () => {
         title="Ready to Transform Your Space?"
         subtitle="Get expert painting services from Austin's trusted professionals"
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

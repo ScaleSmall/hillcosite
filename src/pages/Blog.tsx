@@ -168,7 +168,7 @@ const Blog = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Consultation
+                Request a Consultation
               </Link>
               <Link to="/services" className="btn-outline">
                 Our Services
@@ -308,7 +308,7 @@ const Blog = () => {
         title="Ready to Start Your Painting Project?"
         subtitle="Get professional advice and a consultation for your Austin home"
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

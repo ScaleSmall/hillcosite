@@ -202,7 +202,7 @@ const InteriorPainting = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Request Consultation
+                  Request a Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -492,7 +492,7 @@ const InteriorPainting = () => {
         title="Let's Talk About Your Project"
         subtitle="No pressure, no sales pitch. Just a conversation about what you'd like to accomplish."
         primaryCTA={{
-          text: 'Schedule a Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
       />

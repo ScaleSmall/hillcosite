@@ -74,7 +74,7 @@ const ServiceAreas = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Get Consultation
+                Request a Consultation
               </Link>
               <a href="tel:(512)240-2246" className="btn-outline">
                 Call (512) 240-2246
@@ -212,7 +212,7 @@ const ServiceAreas = () => {
         title="Ready to Get Started in Your Austin Area?"
         subtitle="Contact us today for a consultation anywhere in Austin"
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

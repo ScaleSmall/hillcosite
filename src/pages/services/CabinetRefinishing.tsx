@@ -226,7 +226,7 @@ const CabinetRefinishing = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Get Consultation
+                  Request a Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -315,7 +315,7 @@ const CabinetRefinishing = () => {
         option1Description="Transform with custom paint colors"
         option2Description="Expensive and time-consuming process"
         comparisons={comparisonItems}
-        ctaText="Get Free Painting Estimate"
+        ctaText="Request an Estimate"
         ctaLink="/contact"
       />
 
@@ -443,7 +443,7 @@ const CabinetRefinishing = () => {
         title="Let's Talk About Your Kitchen"
         subtitle="We'll assess your cabinets, discuss finish options, and provide a clear timeline and cost estimate."
         primaryCTA={{
-          text: 'Schedule a Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

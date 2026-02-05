@@ -72,7 +72,7 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Austin House Painters: Exterior, Interior, Cabinets | Commercial"
+        title="Austin Painters: Interior, Exterior, Cabinet, Commercial"
         description="Professional interior, exterior, cabinet, and commercial painting in Austin. Clean prep, crisp lines, durable results. Insured, backed by a 2-year warranty."
         canonical="/"
         pageType="website"
@@ -80,6 +80,11 @@ const Home = () => {
           { name: 'Home', url: '/' }
         ]}
         faq={faqs}
+        includeLocalBusiness={true}
+        aggregateRating={{
+          ratingValue: 4.9,
+          reviewCount: 127
+        }}
       />
       
       {/* Hero Section */}

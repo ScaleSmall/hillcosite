@@ -74,7 +74,7 @@ const Leander = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
                 <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Get Free Leander Estimate
+                  Request an Estimate
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -150,7 +150,7 @@ const Leander = () => {
         title="Ready to Transform Your Leander Home?"
         subtitle="Get a consultation from Leander's trusted Hill Country painting professionals"
         primaryCTA={{
-          text: "Get Consultation",
+          text: "Request a Consultation",
           href: "/contact"
         }}
         secondaryCTA={{

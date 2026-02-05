@@ -164,7 +164,7 @@ const ColorConsultation = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="inline-flex items-center px-8 py-4 bg-white text-brand-azureDark font-semibold rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                 <Palette className="w-5 h-5 mr-2" />
-                Get Free Consultation
+                Request a Consultation
               </Link>
               <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-azureDark transition-[background-color,color] duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                 <Phone className="w-5 h-5 mr-2" />
@@ -223,7 +223,7 @@ const ColorConsultation = () => {
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-primary">
-                  Schedule Consultation
+                  Request a Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="btn-secondary">
                   Call (512) 240-2246
@@ -280,7 +280,7 @@ const ColorConsultation = () => {
         title="Ready to Transform Your Space with Perfect Colors?"
         description="Get professional color consultation and expert painting services in Austin. Free consultation with all painting projects."
         primaryCTA={{
-          text: "Get Free Color Consultation",
+          text: "Request a Color Consultation",
           href: "/contact"
         }}
         secondaryCTA={{

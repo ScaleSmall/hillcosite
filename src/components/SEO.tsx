@@ -35,9 +35,14 @@ interface SEOProps {
     url: string;
   };
   geoPlacename?: string;
+  includeLocalBusiness?: boolean;
+  aggregateRating?: {
+    ratingValue: number;
+    reviewCount: number;
+  };
 }
 
-const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename }: SEOProps) => {
+const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating }: SEOProps) => {
   const baseUrl = 'https://www.hillcopaint.com';
   // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
   // Only compute canonicalStr if canonical prop is provided
@@ -102,6 +107,57 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.tiktok.com/@hillco_painting_austin'
     ]
   };
+
+  // LocalBusiness schema - only if requested (for homepage or service area pages)
+  const localBusinessSchema = includeLocalBusiness ? {
+    '@context': 'https://schema.org',
+    '@type': 'PaintingContractor',
+    '@id': `${baseUrl}/#localbusiness`,
+    name: 'Hill Country Painting',
+    url: baseUrl,
+    telephone: '(512) 240-2246',
+    email: 'info@hillcopaint.com',
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '',
+      addressLocality: 'Austin',
+      addressRegion: 'TX',
+      postalCode: '78681',
+      addressCountry: 'US'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 30.2672,
+      longitude: -97.7431
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Austin' },
+      { '@type': 'City', name: 'Round Rock' },
+      { '@type': 'City', name: 'Georgetown' },
+      { '@type': 'City', name: 'Cedar Park' },
+      { '@type': 'City', name: 'Leander' },
+      { '@type': 'City', name: 'Pflugerville' },
+      { '@type': 'City', name: 'Taylor' },
+      { '@type': 'City', name: 'Hutto' },
+      { '@type': 'City', name: 'West Lake Hills' }
+    ],
+    openingHours: 'Mo-Fr 08:00-17:00',
+    sameAs: [
+      'https://www.facebook.com/Hillcopaint',
+      'https://www.instagram.com/hill_country_painting_austin/',
+      'https://x.com/Hill_Co_Paint',
+      'https://www.youtube.com/@HillCountryPaintingAustin',
+      'https://www.tiktok.com/@hillco_painting_austin'
+    ],
+    aggregateRating: aggregateRating ? {
+      '@type': 'AggregateRating',
+      ratingValue: aggregateRating.ratingValue,
+      reviewCount: aggregateRating.reviewCount,
+      bestRating: 5,
+      worstRating: 1
+    } : undefined
+  } : null;
 
   // BreadcrumbList schema
   const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
@@ -323,6 +379,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {faqSchema && (
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
+        </script>
+      )}
+
+      {localBusinessSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessSchema)}
         </script>
       )}
 

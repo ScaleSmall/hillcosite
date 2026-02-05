@@ -448,7 +448,7 @@ const Gallery = () => {
         title="Ready to Add Your Project to Our Gallery?"
         subtitle="Get a consultation and see why Austin trusts Hill Country Painting"
         primaryCTA={{
-          text: 'Get Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{
