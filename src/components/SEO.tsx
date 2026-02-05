@@ -133,15 +133,15 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     },
     areaServed: [
       { '@type': 'City', name: 'Austin' },
-      { '@type': 'City', name: 'Round Rock' },
-      { '@type': 'City', name: 'Georgetown' },
-      { '@type': 'City', name: 'Leander' },
-      { '@type': 'City', name: 'Pflugerville' },
+      { '@type': 'City', name: 'Tarrytown' },
+      { '@type': 'City', name: 'West Lake Hills' },
+      { '@type': 'City', name: 'Northwest Hills' },
+      { '@type': 'City', name: 'West Lake Highlands' },
       { '@type': 'City', name: 'Lakeway' },
       { '@type': 'City', name: 'Bee Cave' },
-      { '@type': 'City', name: 'Taylor' },
-      { '@type': 'City', name: 'Barton Creek' },
-      { '@type': 'City', name: 'West Lake Hills' }
+      { '@type': 'City', name: 'Cedar Park' },
+      { '@type': 'City', name: 'Hutto' },
+      { '@type': 'City', name: 'Barton Creek' }
     ],
     openingHours: 'Mo-Fr 08:00-17:00',
     sameAs: [

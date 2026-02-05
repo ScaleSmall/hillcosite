@@ -171,9 +171,9 @@ function App() {
               <Route path="/pre-approval" element={<Trace name="/pre-approval"><PreApproval /></Trace>} />
               <Route path="/blog" element={<Trace name="/blog"><Blog /></Trace>} />
               <Route path="/blog/:slug" element={<Trace name="/blog/:slug"><BlogPost /></Trace>} />
-              <Route path="/guides/painting-costs-round-rock" element={<Trace name="/guides/painting-costs-round-rock"><PaintingCosts /></Trace>} />
+              <Route path="/guides/painting-costs-austin" element={<Trace name="/guides/painting-costs-austin"><PaintingCosts /></Trace>} />
               <Route path="/guides/best-paint-texas-heat" element={<Trace name="/guides/best-paint-texas-heat"><BestPaintTexasHeat /></Trace>} />
-              <Route path="/guides/hoa-color-tips-round-rock" element={<Trace name="/guides/hoa-color-tips-round-rock"><HOAColorTips /></Trace>} />
+              <Route path="/guides/hoa-color-tips-austin" element={<Trace name="/guides/hoa-color-tips-austin"><HOAColorTips /></Trace>} />
               <Route path="/guides/how-often-paint-central-texas" element={<Trace name="/guides/how-often-paint-central-texas"><PaintingFrequency /></Trace>} />
               <Route path="/search" element={<Trace name="/search"><Search /></Trace>} />
               <Route path="/privacy" element={<Trace name="/privacy"><Privacy /></Trace>} />

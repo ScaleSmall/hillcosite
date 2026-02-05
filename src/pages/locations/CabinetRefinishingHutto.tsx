@@ -2,7 +2,7 @@ import React from 'react';
 import ServiceLocationPage, { ServiceLocationConfig } from '../../components/templates/ServiceLocationPage';
 import { locations } from '../../config/locations';
 
-const location = locations['taylor'];
+const location = locations['hutto'];
 
 const config: ServiceLocationConfig = {
   service: {
@@ -11,10 +11,10 @@ const config: ServiceLocationConfig = {
     slug: 'cabinet-refinishing'
   },
   location: location,
-  canonicalOverride: '/cabinet-refinishing-taylor',
+  canonicalOverride: '/cabinet-refinishing-hutto',
   content: {
-    heroSubtitle: 'Transform your Taylor kitchen with professional cabinet refinishing. Upgrade builder cabinets to premium finishes at a fraction of replacement cost.',
-    introText: `Taylor families are discovering cabinet refinishing as the smart way to upgrade their kitchens. Many Taylor homes have solid builder-grade cabinets that just need premium finishes to look custom. Our team transforms Heritage Park, Murphy's Crossing, and area kitchens with factory-smooth finishes that make daily life more enjoyable.`,
+    heroSubtitle: 'Transform your Hutto kitchen with professional cabinet refinishing. Upgrade builder cabinets to premium finishes at a fraction of replacement cost.',
+    introText: `Hutto families are discovering cabinet refinishing as the smart way to upgrade their kitchens. Many Hutto homes have solid builder-grade cabinets that just need premium finishes to look custom. Our team transforms Star Ranch, Emory Farms, and area kitchens with factory-smooth finishes that make daily life more enjoyable.`,
     benefits: [
       'Builder cabinet upgrades',
       'Family-friendly scheduling',
@@ -26,7 +26,7 @@ const config: ServiceLocationConfig = {
       '2-year warranty protection'
     ],
     processSteps: [
-      { title: 'Consultation', description: 'Assess your Taylor kitchen cabinets and discuss transformation options.' },
+      { title: 'Consultation', description: 'Assess your Hutto kitchen cabinets and discuss transformation options.' },
       { title: 'Color Selection', description: 'Help choosing colors that brighten and modernize your kitchen.' },
       { title: 'Efficient Preparation', description: 'Thorough prep while minimizing family disruption.' },
       { title: 'Quality Finishing', description: 'Professional spray application for smooth, even results.' },
@@ -34,11 +34,11 @@ const config: ServiceLocationConfig = {
       { title: 'Final Review', description: 'Walkthrough ensuring your complete satisfaction.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in Taylor?', answer: 'Taylor cabinet refinishing typically ranges from $2,900-$6,800 depending on kitchen size. Builder-grade cabinets often refinish beautifully at competitive prices.' },
-      { question: 'Why refinish instead of replace in Taylor?', answer: 'Most Taylor homes have quality cabinet boxes. Refinishing provides a custom look at 1/3 to 1/5 the cost of new cabinets with far less disruption.' },
-      { question: 'How long does the process take?', answer: 'Most Taylor kitchen projects take 4-5 days. We work efficiently to restore your kitchen function quickly.' },
-      { question: 'Is the finish family-friendly?', answer: 'Yes! Our finishes are durable and easy to clean - perfect for busy Taylor families with kids.' },
-      { question: 'What colors are trending in Taylor?', answer: 'White remains most popular, with soft gray and navy blue gaining popularity. We help select colors that suit your taste and home.' }
+      { question: 'How much does cabinet refinishing cost in Hutto?', answer: 'Hutto cabinet refinishing typically ranges from $2,900-$6,800 depending on kitchen size. Builder-grade cabinets often refinish beautifully at competitive prices.' },
+      { question: 'Why refinish instead of replace in Hutto?', answer: 'Most Hutto homes have quality cabinet boxes. Refinishing provides a custom look at 1/3 to 1/5 the cost of new cabinets with far less disruption.' },
+      { question: 'How long does the process take?', answer: 'Most Hutto kitchen projects take 4-5 days. We work efficiently to restore your kitchen function quickly.' },
+      { question: 'Is the finish family-friendly?', answer: 'Yes! Our finishes are durable and easy to clean - perfect for busy Hutto families with kids.' },
+      { question: 'What colors are trending in Hutto?', answer: 'White remains most popular, with soft gray and navy blue gaining popularity. We help select colors that suit your taste and home.' }
     ],
     testimonials: [
       { name: 'Courtney Smith', location: 'Star Ranch Hutto', rating: 5, text: 'Our builder cabinets now look custom! They worked fast and the finish is beautiful. Kitchen of our dreams at an affordable price.', initials: 'CS' },
@@ -48,12 +48,12 @@ const config: ServiceLocationConfig = {
   },
   images: {
     hero: '/kitchen-cabinet-painting-west-lake-hills.jpg',
-    heroAlt: 'Cabinet refinishing in Taylor Texas',
+    heroAlt: 'Cabinet refinishing in Hutto Texas',
     secondary: '/circle-c-ranch-kitchen-painting-austin.jpg',
-    secondaryAlt: 'Taylor cabinet painting services'
+    secondaryAlt: 'Hutto cabinet painting services'
   }
 };
 
-const CabinetRefinishingTaylor = () => <ServiceLocationPage config={config} />;
+const CabinetRefinishingHutto = () => <ServiceLocationPage config={config} />;
 
-export default CabinetRefinishingTaylor;
+export default CabinetRefinishingHutto;

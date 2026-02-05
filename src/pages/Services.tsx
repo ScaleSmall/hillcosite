@@ -123,11 +123,14 @@ const Services = () => {
         title="Austin Areas We Serve"
         subtitle="Professional painting services throughout the Austin metro area"
         areas={[
-          { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-          { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
-          { name: 'Leander', href: '/service-areas/cedar-park' },
-          { name: 'Taylor', href: '/service-areas/taylor-hutto' },
-          { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' }
+          { name: 'Austin', href: '/service-areas/austin' },
+          { name: 'Tarrytown', href: '/service-areas/tarrytown' },
+          { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
+          { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
+          { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
+          { name: 'Lakeway', href: '/service-areas/lakeway' },
+          { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+          { name: 'Hutto', href: '/service-areas/hutto' }
         ]}
       />
 
@@ -157,17 +160,17 @@ const Services = () => {
         location="Austin"
         services={[
           {
-            title: 'Interior Painting Round Rock',
+            title: 'Interior Painting Austin',
             description: 'Professional interior house painting services throughout Austin and surrounding areas.',
             href: '/services/interior-painting'
           },
           {
-            title: 'Exterior Painting Round Rock',
+            title: 'Exterior Painting Austin',
             description: 'Weather-resistant exterior painting designed for Austin\'s climate conditions.',
             href: '/services/exterior-painting'
           },
           {
-            title: 'Cabinet Painting Round Rock',
+            title: 'Cabinet Painting Austin',
             description: 'Kitchen and bathroom cabinet painting services at a fraction of replacement cost.',
             href: '/services/cabinet-refinishing'
           }

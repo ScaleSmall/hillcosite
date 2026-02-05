@@ -14,17 +14,19 @@ const Sitemap = () => {
 
   const mainServiceAreas = [
     { name: 'Austin', href: '/service-areas/austin' },
-    { name: 'Round Rock & Georgetown', href: '/service-areas/round-rock-georgetown' },
-    { name: 'Pflugerville', href: '/service-areas/pflugerville-wells-branch' },
-    { name: 'Leander', href: '/service-areas/leander' },
-    { name: 'Taylor', href: '/service-areas/taylor-hutto' },
+    { name: 'Tarrytown', href: '/service-areas/tarrytown' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
+    { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
+    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'Hutto', href: '/service-areas/hutto' },
   ];
 
   const guides = [
-    { name: 'Painting Costs Guide', href: '/guides/painting-costs-round-rock' },
+    { name: 'Painting Costs Guide', href: '/guides/painting-costs-austin' },
     { name: 'Best Paint for Texas Heat', href: '/guides/best-paint-texas-heat' },
-    { name: 'HOA Color Tips', href: '/guides/hoa-color-tips-round-rock' },
+    { name: 'HOA Color Tips', href: '/guides/hoa-color-tips-austin' },
     { name: 'How Often to Paint', href: '/guides/how-often-paint-central-texas' },
   ];
 

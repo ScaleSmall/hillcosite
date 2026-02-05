@@ -76,13 +76,31 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/service-areas/round-rock-georgetown</loc>
+    <loc>https://www.hillcopaint.com/service-areas/tarrytown</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/service-areas/pflugerville-wells-branch</loc>
+    <loc>https://www.hillcopaint.com/service-areas/west-lake-hills</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.hillcopaint.com/service-areas/northwest-hills</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.hillcopaint.com/service-areas/west-lake-highlands</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.hillcopaint.com/service-areas/lakeway</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -94,19 +112,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/service-areas/taylor-hutto</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/service-areas/leander</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/service-areas/west-lake-hills</loc>
+    <loc>https://www.hillcopaint.com/service-areas/hutto</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -130,7 +136,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/guides/painting-costs-round-rock</loc>
+    <loc>https://www.hillcopaint.com/guides/painting-costs-austin</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -142,7 +148,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/guides/hoa-color-tips-round-rock</loc>
+    <loc>https://www.hillcopaint.com/guides/hoa-color-tips-austin</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -184,37 +190,25 @@
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/interior-painting-round-rock</loc>
+    <loc>https://www.hillcopaint.com/interior-painting-tarrytown</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/interior-painting-georgetown</loc>
+    <loc>https://www.hillcopaint.com/interior-painting-northwest-hills</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/interior-painting-cedar-park</loc>
+    <loc>https://www.hillcopaint.com/interior-painting-west-lake-highlands</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/interior-painting-pflugerville</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/interior-painting-leander</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/interior-painting-taylor</loc>
+    <loc>https://www.hillcopaint.com/interior-painting-lakeway</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -226,49 +220,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/interior-painting-austin</loc>
+    <loc>https://www.hillcopaint.com/exterior-painting-tarrytown</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/interior-painting-west-lake-hills</loc>
+    <loc>https://www.hillcopaint.com/exterior-painting-northwest-hills</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-round-rock</loc>
+    <loc>https://www.hillcopaint.com/exterior-painting-west-lake-highlands</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-georgetown</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-cedar-park</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-pflugerville</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-leander</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-taylor</loc>
+    <loc>https://www.hillcopaint.com/exterior-painting-lakeway</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -280,49 +250,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-austin</loc>
+    <loc>https://www.hillcopaint.com/cabinet-refinishing-tarrytown</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/exterior-painting-west-lake-hills</loc>
+    <loc>https://www.hillcopaint.com/cabinet-refinishing-northwest-hills</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-round-rock</loc>
+    <loc>https://www.hillcopaint.com/cabinet-refinishing-west-lake-highlands</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-georgetown</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-cedar-park</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-pflugerville</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-leander</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-taylor</loc>
+    <loc>https://www.hillcopaint.com/cabinet-refinishing-lakeway</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -334,67 +280,31 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-austin</loc>
+    <loc>https://www.hillcopaint.com/commercial-painting-tarrytown</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/cabinet-refinishing-west-lake-hills</loc>
+    <loc>https://www.hillcopaint.com/commercial-painting-northwest-hills</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-round-rock</loc>
+    <loc>https://www.hillcopaint.com/commercial-painting-west-lake-highlands</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-georgetown</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-cedar-park</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-pflugerville</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-leander</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-taylor</loc>
+    <loc>https://www.hillcopaint.com/commercial-painting-lakeway</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.hillcopaint.com/commercial-painting-hutto</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-austin</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-west-lake-hills</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

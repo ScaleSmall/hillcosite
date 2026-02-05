@@ -112,11 +112,11 @@ const HOAColorTips = () => {
       <SEO
         title="HOA Color Tips for Austin Homes | Paint Approval Guide"
         description="Navigate HOA paint color requirements in Austin. Get approval tips, popular HOA colors, and professional guidance for your painting project compliance."
-        canonical="/guides/hoa-color-tips-round-rock"
+        canonical="/guides/hoa-color-tips-austin"
         breadcrumbs={[
           { name: 'Home', url: '/' },
-          { name: 'Guides', url: '/guides/hoa-color-tips-round-rock' },
-          { name: 'HOA Color Tips', url: '/guides/hoa-color-tips-round-rock' }
+          { name: 'Guides', url: '/guides/hoa-color-tips-austin' },
+          { name: 'HOA Color Tips', url: '/guides/hoa-color-tips-austin' }
         ]}
       />
 

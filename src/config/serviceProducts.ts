@@ -33,7 +33,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Round Rock', 'Georgetown', 'Pflugerville', 'Leander', 'Lakeway', 'Bee Cave', 'Taylor', 'Barton Creek'],
+    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
     url: '/services/interior-painting'
   },
 
@@ -47,7 +47,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Round Rock', 'Georgetown', 'Pflugerville', 'Leander', 'Lakeway', 'Bee Cave', 'Taylor', 'Barton Creek'],
+    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
     url: '/services/exterior-painting'
   },
 
@@ -61,7 +61,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Round Rock', 'Georgetown', 'Pflugerville', 'Leander', 'Lakeway', 'Bee Cave', 'Taylor', 'Barton Creek'],
+    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
     url: '/services/cabinet-refinishing'
   },
 
@@ -75,7 +75,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Round Rock', 'Georgetown', 'Pflugerville', 'Leander', 'Lakeway', 'Bee Cave', 'Taylor', 'Barton Creek'],
+    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
     url: '/services/commercial-painting'
   }
 };
