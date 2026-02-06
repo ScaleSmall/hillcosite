@@ -58,41 +58,10 @@
   RewriteRule ^services/residential.*$ /services [R=301,L]
   RewriteRule ^services/commercial[^-].*$ /services/commercial [R=301,L]
 
-  # Service area consolidation (specific path only - not patterns that conflict with valid pages)
-  RewriteRule ^service-areas/round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
-
-  # Round Rock & Georgetown redirects
-  RewriteRule ^round-rock/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^roundrock/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^roundrock-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^round-rock-painters/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^round-rock-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^georgetown/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^georgetown-painters/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^georgetown-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^78664/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^78665/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^78664-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^78665-painting/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^round-rock-78664/?$ /service-areas/round-rock-georgetown [R=301,L]
-  RewriteRule ^round-rock-78665/?$ /service-areas/round-rock-georgetown [R=301,L]
-
-  # Pflugerville & Wells Branch redirects
-  RewriteRule ^pflugerville/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-  RewriteRule ^pflugerville-painting/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-  RewriteRule ^wells-branch/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-  RewriteRule ^wells-branch-painting/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-  RewriteRule ^78660/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-  RewriteRule ^78691/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-  RewriteRule ^78728/?$ /service-areas/pflugerville-wells-branch [R=301,L]
-
-  # Taylor & Hutto redirects
-  RewriteRule ^taylor/?$ /service-areas/taylor-hutto [R=301,L]
-  RewriteRule ^taylor-painting/?$ /service-areas/taylor-hutto [R=301,L]
-  RewriteRule ^hutto/?$ /service-areas/taylor-hutto [R=301,L]
-  RewriteRule ^hutto-painting/?$ /service-areas/taylor-hutto [R=301,L]
-  RewriteRule ^76574/?$ /service-areas/taylor-hutto [R=301,L]
-  RewriteRule ^78634/?$ /service-areas/taylor-hutto [R=301,L]
+  # Hutto redirects
+  RewriteRule ^hutto/?$ /service-areas/hutto [R=301,L]
+  RewriteRule ^hutto-painting/?$ /service-areas/hutto [R=301,L]
+  RewriteRule ^78634/?$ /service-areas/hutto [R=301,L]
 
   # Cedar Park redirects
   RewriteRule ^cedar-park/?$ /service-areas/cedar-park [R=301,L]
@@ -100,25 +69,14 @@
   RewriteRule ^78613/?$ /service-areas/cedar-park [R=301,L]
   RewriteRule ^78641/?$ /service-areas/cedar-park [R=301,L]
 
-  # Leander redirects
-  RewriteRule ^leander/?$ /service-areas/leander [R=301,L]
-  RewriteRule ^leander-painting/?$ /service-areas/leander [R=301,L]
-  RewriteRule ^78645/?$ /service-areas/leander [R=301,L]
-
   # Case variations
   RewriteRule ^Austin/?$ /service-areas/austin [R=301,L,NC]
   RewriteRule ^West-Lake-Hills/?$ /service-areas/west-lake-hills [R=301,L,NC]
   RewriteRule ^Westlake/?$ /service-areas/west-lake-hills [R=301,L,NC]
   RewriteRule ^Tarrytown/?$ /service-areas/austin [R=301,L,NC]
-  RewriteRule ^Round-Rock/?$ /service-areas/round-rock-georgetown [R=301,L,NC]
-  RewriteRule ^RoundRock/?$ /service-areas/round-rock-georgetown [R=301,L,NC]
-  RewriteRule ^Pflugerville/?$ /service-areas/pflugerville-wells-branch [R=301,L,NC]
   RewriteRule ^Cedar-Park/?$ /service-areas/cedar-park [R=301,L,NC]
   RewriteRule ^CedarPark/?$ /service-areas/cedar-park [R=301,L,NC]
-  RewriteRule ^Georgetown/?$ /service-areas/round-rock-georgetown [R=301,L,NC]
-  RewriteRule ^Hutto/?$ /service-areas/taylor-hutto [R=301,L,NC]
-  RewriteRule ^Leander/?$ /service-areas/leander [R=301,L,NC]
-  RewriteRule ^Taylor/?$ /service-areas/taylor-hutto [R=301,L,NC]
+  RewriteRule ^Hutto/?$ /service-areas/hutto [R=301,L,NC]
 
   # SPA routing - must be last
   RewriteCond %{REQUEST_FILENAME} !-f
