@@ -58,25 +58,11 @@
   RewriteRule ^services/residential.*$ /services [R=301,L]
   RewriteRule ^services/commercial[^-].*$ /services/commercial [R=301,L]
 
-  # Hutto redirects
-  RewriteRule ^hutto/?$ /service-areas/hutto [R=301,L]
-  RewriteRule ^hutto-painting/?$ /service-areas/hutto [R=301,L]
-  RewriteRule ^78634/?$ /service-areas/hutto [R=301,L]
-
-  # Cedar Park redirects
-  RewriteRule ^cedar-park/?$ /service-areas/cedar-park [R=301,L]
-  RewriteRule ^cedar-park-painting/?$ /service-areas/cedar-park [R=301,L]
-  RewriteRule ^78613/?$ /service-areas/cedar-park [R=301,L]
-  RewriteRule ^78641/?$ /service-areas/cedar-park [R=301,L]
-
   # Case variations
   RewriteRule ^Austin/?$ /service-areas/austin [R=301,L,NC]
   RewriteRule ^West-Lake-Hills/?$ /service-areas/west-lake-hills [R=301,L,NC]
   RewriteRule ^Westlake/?$ /service-areas/west-lake-hills [R=301,L,NC]
   RewriteRule ^Tarrytown/?$ /service-areas/austin [R=301,L,NC]
-  RewriteRule ^Cedar-Park/?$ /service-areas/cedar-park [R=301,L,NC]
-  RewriteRule ^CedarPark/?$ /service-areas/cedar-park [R=301,L,NC]
-  RewriteRule ^Hutto/?$ /service-areas/hutto [R=301,L,NC]
 
   # SPA routing - must be last
   RewriteCond %{REQUEST_FILENAME} !-f

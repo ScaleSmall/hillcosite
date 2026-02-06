@@ -41,10 +41,8 @@ const Footer = () => {
     { name: 'Tarrytown', href: '/service-areas/tarrytown' },
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
-    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
     { name: 'Lakeway', href: '/service-areas/lakeway' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Hutto', href: '/service-areas/hutto' },
   ];
 
   const guides = [

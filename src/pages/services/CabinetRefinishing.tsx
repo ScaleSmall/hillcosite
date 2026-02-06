@@ -147,7 +147,7 @@ const CabinetRefinishing = () => {
         service={{
           name: 'Cabinet Painting',
           description: 'Professional cabinet painting services for kitchens and bathrooms in Austin, Texas.',
-          areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Cedar Park', 'Hutto']
+          areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
         }}
         faq={faqs}
         product={productData}

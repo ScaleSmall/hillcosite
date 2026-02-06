@@ -133,15 +133,21 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     },
     areaServed: [
       { '@type': 'City', name: 'Austin' },
-      { '@type': 'City', name: 'Tarrytown' },
-      { '@type': 'City', name: 'West Lake Hills' },
-      { '@type': 'City', name: 'Northwest Hills' },
-      { '@type': 'City', name: 'West Lake Highlands' },
       { '@type': 'City', name: 'Lakeway' },
       { '@type': 'City', name: 'Bee Cave' },
-      { '@type': 'City', name: 'Cedar Park' },
-      { '@type': 'City', name: 'Hutto' },
-      { '@type': 'City', name: 'Barton Creek' }
+      { '@type': 'City', name: 'Barton Creek' },
+      { '@type': 'City', name: 'Allandale' },
+      { '@type': 'City', name: 'Crestview' },
+      { '@type': 'City', name: 'Rollingwood' },
+      { '@type': 'City', name: 'West Lake Hills' },
+      { '@type': 'City', name: 'Circle C Ranch' },
+      { '@type': 'City', name: 'Northwest Hills' },
+      { '@type': 'City', name: 'Tarrytown' },
+      { '@type': 'City', name: 'Clarksville' },
+      { '@type': 'City', name: 'Lake Travis' },
+      { '@type': 'City', name: 'Steiner Ranch' },
+      { '@type': 'City', name: 'Pemberton Heights' },
+      { '@type': 'City', name: 'Westlake Highlands' }
     ],
     openingHours: 'Mo-Fr 08:00-17:00',
     sameAs: [

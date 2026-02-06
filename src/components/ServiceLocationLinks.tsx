@@ -26,10 +26,8 @@ const locations = [
   { name: 'Tarrytown', slug: 'tarrytown' },
   { name: 'Northwest Hills', slug: 'northwest-hills' },
   { name: 'West Lake Hills', slug: 'west-lake-hills' },
-  { name: 'West Lake Highlands', slug: 'west-lake-highlands' },
-  { name: 'Lakeway', slug: 'lakeway' },
-  { name: 'Cedar Park', slug: 'cedar-park' },
-  { name: 'Hutto', slug: 'hutto' }
+  { name: 'Westlake Highlands', slug: 'west-lake-highlands' },
+  { name: 'Lakeway', slug: 'lakeway' }
 ];
 
 const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, currentLocation }) => {

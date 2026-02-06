@@ -16,16 +16,15 @@ import CTABanner from '../components/sections/CTABanner';
 import PaintingCostsTable from '../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
 import NAPMapSection from '../components/NAPMapSection';
+
 const Home = () => {
   const serviceAreas = [
     { name: 'Austin', href: '/service-areas/austin' },
     { name: 'Tarrytown', href: '/service-areas/tarrytown' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
-    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
-    { name: 'Lakeway', href: '/service-areas/lakeway' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Hutto', href: '/service-areas/hutto' }
+    { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Lakeway', href: '/service-areas/lakeway' }
   ];
 
   const testimonials = [
@@ -55,7 +54,7 @@ const Home = () => {
   const faqs = [
     {
       question: 'What areas do you serve?',
-      answer: 'We serve Austin and the surrounding metro area, including Tarrytown, West Lake Hills, Northwest Hills, Lakeway, Cedar Park, Hutto, and other nearby neighborhoods.'
+      answer: 'We serve Austin and the surrounding metro area, including Tarrytown, West Lake Hills, Northwest Hills, Westlake Highlands, Lakeway, and other nearby neighborhoods.'
     },
     {
       question: 'Do you offer consultations?',
@@ -388,7 +387,7 @@ const Home = () => {
               Trusted Throughout Austin
             </h2>
             <p className="text-xl text-brand-gray-600 max-w-3xl mx-auto">
-              We bring the same level of care and professionalism to every project—whether it's a home in Tarrytown, a business in Cedar Park, or a property in West Lake Hills.
+              We bring the same level of care and professionalism to every project—whether it's a home in Tarrytown, West Lake Hills, or Northwest Hills.
             </p>
           </div>
 
@@ -415,7 +414,7 @@ const Home = () => {
 
             <div className="text-center">
               <p className="text-lg text-brand-gray-600 mb-6">
-                Serving: Austin, Tarrytown, West Lake Hills, Northwest Hills, West Lake Highlands, Lakeway, Cedar Park, Hutto, and surrounding communities
+                Serving: Austin, Tarrytown, West Lake Hills, Northwest Hills, Westlake Highlands, Lakeway, and surrounding communities
               </p>
             </div>
           </div>

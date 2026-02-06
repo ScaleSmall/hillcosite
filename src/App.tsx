@@ -23,12 +23,10 @@ const FAQ = safeLazy(() => import('./pages/FAQ'), "FAQ");
 const ServiceAreas = safeLazy(() => import('./pages/ServiceAreas'), "ServiceAreas");
 const Austin = safeLazy(() => import('./pages/service-areas/Austin'), "Austin");
 const WestLakeHills = safeLazy(() => import('./pages/service-areas/WestLakeHills'), "WestLakeHills");
-const CedarPark = safeLazy(() => import('./pages/service-areas/CedarPark'), "CedarPark");
 const Tarrytown = safeLazy(() => import('./pages/service-areas/Tarrytown'), "Tarrytown");
 const NorthwestHills = safeLazy(() => import('./pages/service-areas/NorthwestHills'), "NorthwestHills");
 const WestLakeHighlands = safeLazy(() => import('./pages/service-areas/WestLakeHighlands'), "WestLakeHighlands");
 const Lakeway = safeLazy(() => import('./pages/service-areas/Lakeway'), "Lakeway");
-const Hutto = safeLazy(() => import('./pages/service-areas/Hutto'), "Hutto");
 
 // GEO AREA PAGES (54 total: 9 hubs + 45 neighborhoods)
 const HubSteinerRanch78732 = safeLazy(() => import('./pages/areas/steiner-ranch-78732'), "HubSteinerRanch78732");
@@ -110,22 +108,18 @@ const InteriorPaintingTarrytown = safeLazy(() => import('./pages/locations/Inter
 const InteriorPaintingNorthwestHills = safeLazy(() => import('./pages/locations/InteriorPaintingNorthwestHills'), "InteriorPaintingNorthwestHills");
 const InteriorPaintingWestLakeHighlands = safeLazy(() => import('./pages/locations/InteriorPaintingWestLakeHighlands'), "InteriorPaintingWestLakeHighlands");
 const InteriorPaintingLakeway = safeLazy(() => import('./pages/locations/InteriorPaintingLakeway'), "InteriorPaintingLakeway");
-const InteriorPaintingHutto = safeLazy(() => import('./pages/locations/InteriorPaintingHutto'), "InteriorPaintingHutto");
 const ExteriorPaintingTarrytown = safeLazy(() => import('./pages/locations/ExteriorPaintingTarrytown'), "ExteriorPaintingTarrytown");
 const ExteriorPaintingNorthwestHills = safeLazy(() => import('./pages/locations/ExteriorPaintingNorthwestHills'), "ExteriorPaintingNorthwestHills");
 const ExteriorPaintingWestLakeHighlands = safeLazy(() => import('./pages/locations/ExteriorPaintingWestLakeHighlands'), "ExteriorPaintingWestLakeHighlands");
 const ExteriorPaintingLakeway = safeLazy(() => import('./pages/locations/ExteriorPaintingLakeway'), "ExteriorPaintingLakeway");
-const ExteriorPaintingHutto = safeLazy(() => import('./pages/locations/ExteriorPaintingHutto'), "ExteriorPaintingHutto");
 const CabinetRefinishingTarrytown = safeLazy(() => import('./pages/locations/CabinetRefinishingTarrytown'), "CabinetRefinishingTarrytown");
 const CabinetRefinishingNorthwestHills = safeLazy(() => import('./pages/locations/CabinetRefinishingNorthwestHills'), "CabinetRefinishingNorthwestHills");
 const CabinetRefinishingWestLakeHighlands = safeLazy(() => import('./pages/locations/CabinetRefinishingWestLakeHighlands'), "CabinetRefinishingWestLakeHighlands");
 const CabinetRefinishingLakeway = safeLazy(() => import('./pages/locations/CabinetRefinishingLakeway'), "CabinetRefinishingLakeway");
-const CabinetRefinishingHutto = safeLazy(() => import('./pages/locations/CabinetRefinishingHutto'), "CabinetRefinishingHutto");
 const CommercialPaintingTarrytown = safeLazy(() => import('./pages/locations/CommercialPaintingTarrytown'), "CommercialPaintingTarrytown");
 const CommercialPaintingNorthwestHills = safeLazy(() => import('./pages/locations/CommercialPaintingNorthwestHills'), "CommercialPaintingNorthwestHills");
 const CommercialPaintingWestLakeHighlands = safeLazy(() => import('./pages/locations/CommercialPaintingWestLakeHighlands'), "CommercialPaintingWestLakeHighlands");
 const CommercialPaintingLakeway = safeLazy(() => import('./pages/locations/CommercialPaintingLakeway'), "CommercialPaintingLakeway");
-const CommercialPaintingHutto = safeLazy(() => import('./pages/locations/CommercialPaintingHutto'), "CommercialPaintingHutto");
 
 // Loading fallback component
 const PageLoader = () => (
@@ -158,13 +152,11 @@ function App() {
               <Route path="/faq" element={<Trace name="/faq"><FAQ /></Trace>} />
               <Route path="/service-areas" element={<Trace name="/service-areas"><ServiceAreas /></Trace>} />
               <Route path="/service-areas/austin" element={<Trace name="/service-areas/austin"><Austin /></Trace>} />
-              <Route path="/service-areas/cedar-park" element={<Trace name="/service-areas/cedar-park"><CedarPark /></Trace>} />
               <Route path="/service-areas/west-lake-hills" element={<Trace name="/service-areas/west-lake-hills"><WestLakeHills /></Trace>} />
               <Route path="/service-areas/tarrytown" element={<Trace name="/service-areas/tarrytown"><Tarrytown /></Trace>} />
               <Route path="/service-areas/northwest-hills" element={<Trace name="/service-areas/northwest-hills"><NorthwestHills /></Trace>} />
               <Route path="/service-areas/west-lake-highlands" element={<Trace name="/service-areas/west-lake-highlands"><WestLakeHighlands /></Trace>} />
               <Route path="/service-areas/lakeway" element={<Trace name="/service-areas/lakeway"><Lakeway /></Trace>} />
-              <Route path="/service-areas/hutto" element={<Trace name="/service-areas/hutto"><Hutto /></Trace>} />
               <Route path="/color-consultation" element={<Trace name="/color-consultation"><ColorConsultation /></Trace>} />
               <Route path="/contact" element={<Trace name="/contact"><Contact /></Trace>} />
               <Route path="/financing" element={<Trace name="/financing"><Financing /></Trace>} />
@@ -244,22 +236,18 @@ function App() {
               <Route path="/interior-painting-northwest-hills" element={<Trace name="/interior-painting-northwest-hills"><InteriorPaintingNorthwestHills /></Trace>} />
               <Route path="/interior-painting-west-lake-highlands" element={<Trace name="/interior-painting-west-lake-highlands"><InteriorPaintingWestLakeHighlands /></Trace>} />
               <Route path="/interior-painting-lakeway" element={<Trace name="/interior-painting-lakeway"><InteriorPaintingLakeway /></Trace>} />
-              <Route path="/interior-painting-hutto" element={<Trace name="/interior-painting-hutto"><InteriorPaintingHutto /></Trace>} />
               <Route path="/exterior-painting-tarrytown" element={<Trace name="/exterior-painting-tarrytown"><ExteriorPaintingTarrytown /></Trace>} />
               <Route path="/exterior-painting-northwest-hills" element={<Trace name="/exterior-painting-northwest-hills"><ExteriorPaintingNorthwestHills /></Trace>} />
               <Route path="/exterior-painting-west-lake-highlands" element={<Trace name="/exterior-painting-west-lake-highlands"><ExteriorPaintingWestLakeHighlands /></Trace>} />
               <Route path="/exterior-painting-lakeway" element={<Trace name="/exterior-painting-lakeway"><ExteriorPaintingLakeway /></Trace>} />
-              <Route path="/exterior-painting-hutto" element={<Trace name="/exterior-painting-hutto"><ExteriorPaintingHutto /></Trace>} />
               <Route path="/cabinet-refinishing-tarrytown" element={<Trace name="/cabinet-refinishing-tarrytown"><CabinetRefinishingTarrytown /></Trace>} />
               <Route path="/cabinet-refinishing-northwest-hills" element={<Trace name="/cabinet-refinishing-northwest-hills"><CabinetRefinishingNorthwestHills /></Trace>} />
               <Route path="/cabinet-refinishing-west-lake-highlands" element={<Trace name="/cabinet-refinishing-west-lake-highlands"><CabinetRefinishingWestLakeHighlands /></Trace>} />
               <Route path="/cabinet-refinishing-lakeway" element={<Trace name="/cabinet-refinishing-lakeway"><CabinetRefinishingLakeway /></Trace>} />
-              <Route path="/cabinet-refinishing-hutto" element={<Trace name="/cabinet-refinishing-hutto"><CabinetRefinishingHutto /></Trace>} />
               <Route path="/commercial-painting-tarrytown" element={<Trace name="/commercial-painting-tarrytown"><CommercialPaintingTarrytown /></Trace>} />
               <Route path="/commercial-painting-northwest-hills" element={<Trace name="/commercial-painting-northwest-hills"><CommercialPaintingNorthwestHills /></Trace>} />
               <Route path="/commercial-painting-west-lake-highlands" element={<Trace name="/commercial-painting-west-lake-highlands"><CommercialPaintingWestLakeHighlands /></Trace>} />
               <Route path="/commercial-painting-lakeway" element={<Trace name="/commercial-painting-lakeway"><CommercialPaintingLakeway /></Trace>} />
-              <Route path="/commercial-painting-hutto" element={<Trace name="/commercial-painting-hutto"><CommercialPaintingHutto /></Trace>} />
 
               <Route path="*" element={<Trace name="*"><NotFound /></Trace>} />
             </Routes>

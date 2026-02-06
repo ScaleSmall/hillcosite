@@ -33,7 +33,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
+    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
     url: '/services/interior-painting'
   },
 
@@ -47,7 +47,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
+    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
     url: '/services/exterior-painting'
   },
 
@@ -61,7 +61,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
+    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
     url: '/services/cabinet-refinishing'
   },
 
@@ -75,7 +75,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Bee Cave', 'Cedar Park', 'Hutto', 'Barton Creek'],
+    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
     url: '/services/commercial-painting'
   }
 };

@@ -126,7 +126,7 @@ const InteriorPainting = () => {
         service={{
           name: 'Interior Painting',
           description: 'Professional interior painting services for homes and businesses in Austin, Texas.',
-          areaServed: ['Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'West Lake Highlands', 'Lakeway', 'Cedar Park', 'Hutto']
+          areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
         }}
         faq={faqs}
         product={productData}

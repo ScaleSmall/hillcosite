@@ -13,6 +13,7 @@
     "preview": "vite preview",
     "brand:guard": "node scripts/brand-guard.mjs",
     "contrast:verify": "node scripts/verify-contrast.mjs",
+    "validate:locations": "node scripts/validate-locations.mjs",
     "prebuild": "npm run brand:guard",
     "predev": "npm run brand:guard",
     "typecheck": "tsc -p tsconfig.json --noEmit",

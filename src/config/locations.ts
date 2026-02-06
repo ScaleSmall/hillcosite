@@ -139,48 +139,6 @@ export const locations: Record<string, LocationData> = {
       homeStyles: ['Lakefront estate', 'Hill Country contemporary', 'Mediterranean', 'Texas modern'],
       paintChallenges: ['Lake moisture exposure', 'Wind and weather', 'Quality material requirements']
     }
-  },
-  'cedar-park': {
-    name: 'Cedar Park',
-    slug: 'cedar-park',
-    zipCodes: ['78613', '78641'],
-    coordinates: { lat: 30.5052, lng: -97.8203 },
-    neighborhoods: ['Avery Ranch', 'Brushy Creek', 'Twin Creeks', 'Anderson Mill', 'Cypress Canyon', 'Vista Ridge'],
-    highlights: [
-      'Fast-growing community expertise',
-      'New construction specialists',
-      'Family-friendly scheduling',
-      'HOA compliance knowledge',
-      'Northwest Austin corridor',
-      'Cedar Park community expertise'
-    ],
-    serviceAreaSlug: 'cedar-park',
-    localInfo: {
-      climate: 'North Austin climate with variable terrain',
-      homeStyles: ['Modern suburban', 'Contemporary', 'Texas ranch', 'New construction'],
-      paintChallenges: ['New development standards', 'HOA requirements', 'Growing community needs']
-    }
-  },
-  'hutto': {
-    name: 'Hutto',
-    slug: 'hutto',
-    zipCodes: ['78634'],
-    coordinates: { lat: 30.5427, lng: -97.5467 },
-    neighborhoods: ['Star Ranch', 'Brushy Creek', 'Hutto Meadows', 'Emory Farms', 'Cottonwood Creek'],
-    highlights: [
-      'Rapid growth area specialists',
-      'New construction expertise',
-      'Family community scheduling',
-      'Tech corridor coverage',
-      'Modern home finishes',
-      'Northeast metro access'
-    ],
-    serviceAreaSlug: 'hutto',
-    localInfo: {
-      climate: 'Northeast Austin climate with prairie influence',
-      homeStyles: ['Modern suburban', 'New construction', 'Contemporary', 'Texas ranch'],
-      paintChallenges: ['New development quality', 'Rapid growth coordination', 'Modern finish standards']
-    }
   }
 };
 

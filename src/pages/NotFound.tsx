@@ -58,8 +58,6 @@ const NotFound = () => {
                 <span>• Northwest Hills</span>
                 <span>• West Lake Highlands</span>
                 <span>• Lakeway</span>
-                <span>• Cedar Park</span>
-                <span>• Hutto</span>
               </div>
             </div>
 

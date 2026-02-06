@@ -19,10 +19,8 @@ const ServiceAreas = () => {
     { name: 'Tarrytown', href: '/service-areas/tarrytown' },
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
-    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
-    { name: 'Lakeway', href: '/service-areas/lakeway' },
-    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
-    { name: 'Hutto', href: '/service-areas/hutto' }
+    { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Lakeway', href: '/service-areas/lakeway' }
   ];
 
   const featuredServices = [
@@ -56,7 +54,7 @@ const ServiceAreas = () => {
     <>
       <SEO
         title="Service Areas | Austin Metro Painting Services | Hill Country Painting"
-        description="Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, West Lake Highlands, Lakeway, Cedar Park, Hutto, and surrounding areas. Professional painting services throughout Greater Austin Area."
+        description="Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, Westlake Highlands, Lakeway, and surrounding areas. Professional painting services throughout Greater Austin Area."
         canonical="/service-areas"
         breadcrumbs={[
           { name: 'Home', url: '/' },
