@@ -129,17 +129,3 @@ export function getAreaServedList(): string[] {
 export function getAllowedSlugs(): string[] {
   return ALLOWED_SERVICE_AREAS.map(area => area.slug);
 }
-
-/**
- * DISALLOWED locations - these MUST NOT appear anywhere
- */
-export const DISALLOWED_LOCATIONS = [
-  'Cedar Park',
-  'Hutto',
-  'Round Rock',
-  'Georgetown',
-  'Leander',
-  'Pflugerville',
-  'Taylor',
-  'Wells Branch',
-];
