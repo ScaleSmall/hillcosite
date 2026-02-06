@@ -178,7 +178,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
           className="w-full bg-white text-brand-azureDark font-semibold py-4 px-6 rounded-lg hover:bg-brand-gray-100 transition-colors duration-200 flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 focus:ring-offset-brand-azureDark"
         >
           <Home className="w-5 h-5" aria-hidden="true" />
-          <span>Request Consultation</span>
+          <span>Request a Consultation</span>
         </button>
         <p className="text-center text-white/80 text-sm mt-3">
           We'll respond within one business day to schedule a visit

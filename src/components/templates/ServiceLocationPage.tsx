@@ -310,7 +310,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         title={`Ready for Professional ${service.name} in ${location.name}?`}
         subtitle={`Request a consultation from ${location.name}'s trusted painting professionals`}
         primaryCTA={{
-          text: `Request ${location.name} Consultation`,
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

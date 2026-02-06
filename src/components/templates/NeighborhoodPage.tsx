@@ -99,7 +99,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
               >
-                Request Consultation
+                Request a Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
@@ -272,7 +272,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 to="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-azure hover:bg-brand-gray-100 font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-azure"
               >
-                Request Consultation
+                Request a Consultation
               </Link>
               <a
                 href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}

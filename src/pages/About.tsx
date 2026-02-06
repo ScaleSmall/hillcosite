@@ -92,7 +92,7 @@ const About = () => {
         title="Ready to Discuss Your Project?"
         subtitle="We provide clear estimates and straightforward timelines for painting projects across Austin"
         primaryCTA={{
-          text: 'Request Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{

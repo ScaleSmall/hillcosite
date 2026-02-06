@@ -114,7 +114,7 @@ const BestPaintTexasHeat = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
-                Request Expert Consultation
+                Request a Consultation
               </Link>
               <Link to="/services/exterior-painting" className="btn-outline">
                 Exterior Painting Services

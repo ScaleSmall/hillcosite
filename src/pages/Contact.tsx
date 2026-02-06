@@ -272,7 +272,7 @@ const Contact = () => {
             <div className="card p-8 lg:p-12">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-brand-gray-900 mb-3">
-                  Request Your Consultation
+                  Request a Consultation
                 </h2>
                 <p className="text-brand-gray-600 max-w-2xl mx-auto">
                   Fill out the form below and we'll contact you within one business day to schedule a visit at your convenience. No obligation.

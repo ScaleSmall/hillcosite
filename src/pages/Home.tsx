@@ -153,7 +153,7 @@ const Home = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azureDark hover:bg-brand-azure text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Request Consultation
+                  Request a Consultation
                 </Link>
                 <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azureDark hover:bg-brand-azure text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                   <Phone className="w-5 h-5 mr-2" />
@@ -451,7 +451,7 @@ const Home = () => {
         title="Let's Talk About Your Project"
         subtitle="We'll assess your space, answer your questions, and provide a detailed estimate—no pressure, no obligation"
         primaryCTA={{
-          text: 'Request Consultation',
+          text: 'Request a Consultation',
           href: '/contact'
         }}
         secondaryCTA={{
