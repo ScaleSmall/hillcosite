@@ -15,6 +15,7 @@
     "contrast:verify": "node scripts/verify-contrast.mjs",
     "validate:locations": "node scripts/validate-locations.mjs",
     "validate:areas": "node scripts/validate-service-areas.mjs",
+    "validate:dist": "node scripts/validate-dist-whitelist.mjs",
     "prebuild": "npm run brand:guard",
     "predev": "npm run brand:guard",
     "typecheck": "tsc -p tsconfig.json --noEmit",

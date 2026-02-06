@@ -70,7 +70,7 @@ const routeMetadata = {
   },
   '/service-areas': {
     title: 'Service Areas — Hill Country Painting',
-    description: 'Serving Round Rock, Georgetown, Cedar Park, Leander, Pflugerville. Austin painting contractors. See all service areas.',
+    description: 'Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, Westlake Highlands, Lakeway, and surrounding areas. Professional painting services throughout Greater Austin Area.',
     h1: 'Our Service Areas in Austin',
     content: 'Professional painting services throughout Austin and surrounding areas. See all the communities we serve.'
   },
