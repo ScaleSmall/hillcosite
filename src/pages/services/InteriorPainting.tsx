@@ -179,13 +179,13 @@ const InteriorPainting = () => {
           <div className="relative z-10 text-center max-w-4xl mx-auto space-y-6">
             <div className="space-y-4">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-                Your Home, Refreshed Without the Disruption
+                Interior Painting, Handled with Care and Precision
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Interior painting that protects your belongings, respects your schedule, and keeps you informed at every step.
+                From detailed preparation to spotless daily cleanup, every step is managed with discipline and respect for your home—so the process feels calm, organized, and predictable.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
-                No surprises. No mess. Just a beautifully refreshed home.
+                For Austin homeowners who value craftsmanship, clear communication, and peace of mind.
               </div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
