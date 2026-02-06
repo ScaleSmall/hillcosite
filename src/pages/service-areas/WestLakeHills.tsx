@@ -148,7 +148,7 @@ const WestLakeHills = () => {
 
       <CTABanner
         title="Ready to Transform Your West Lake Hills Home?"
-        subtitle="Get a consultation from West Lake Hills' trusted luxury painting professionals"
+        subtitle="Request a consultation from West Lake Hills' trusted luxury painting professionals"
         primaryCTA={{
           text: "Request a Consultation",
           href: "/contact"

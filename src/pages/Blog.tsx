@@ -306,7 +306,7 @@ const Blog = () => {
       {/* CTA Banner */}
       <CTABanner
         title="Ready to Start Your Painting Project?"
-        subtitle="Get professional advice and a consultation for your Austin home"
+        subtitle="Request professional advice and a consultation for your Austin home"
         primaryCTA={{
           text: 'Request a Consultation',
           href: '/contact'

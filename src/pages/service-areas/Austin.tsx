@@ -274,7 +274,7 @@ const Austin = () => {
 
       <CTABanner
         title="Ready to Transform Your Austin Home?"
-        subtitle="Get a consultation from Austin's trusted painting professionals"
+        subtitle="Request a consultation from Austin's trusted painting professionals"
         primaryCTA={{
           text: "Request a Consultation",
           href: "/contact"

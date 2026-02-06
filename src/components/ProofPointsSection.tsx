@@ -84,7 +84,7 @@ const ProofPointsSection = ({ className = '', surface = 'coral' }: ProofPointsSe
             to="/contact"
             className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure text-white font-semibold rounded-lg hover:bg-brand-azureDark transition-colors duration-200"
           >
-            Get Consultation
+            Request Consultation
           </Link>
           <a
             href="tel:(512)240-2246"

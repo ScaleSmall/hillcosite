@@ -178,7 +178,7 @@ const Services = () => {
       {/* CTA Banner */}
       <CTABanner
         title="Ready to Start Your Project?"
-        subtitle="Get a consultation for any of our professional painting services"
+        subtitle="Request a consultation for any of our professional painting services"
         primaryCTA={{
           text: 'Request a Consultation',
           href: '/contact'
