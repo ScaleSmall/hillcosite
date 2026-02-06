@@ -59,7 +59,7 @@ const Gallery = () => {
 
   const featuredProjects = [
     {
-      image: '/hill-country-painting-austin-hero.jpeg',
+      image: '/hill-country-painting-austin-hero-cropped.jpeg',
       title: 'Hill Country Home',
       location: 'Austin'
     },
