@@ -128,7 +128,7 @@ const ExteriorPainting = () => {
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithGeo
-            src="/hill-country-home-exterior-painting.jpg"
+            src="/hill-country-home-exterior-painting.png"
             alt="Hill Country Painting professional exterior painting project in Austin"
             className="w-full h-full object-cover"
             width="1920"
@@ -275,7 +275,7 @@ const ExteriorPainting = () => {
           { text: 'Detailed trim, fascia, and accent work' },
           { text: 'Fully insured with 2-year warranty on all work' }
         ]}
-        image="/hill-country-home-exterior-painting.jpg"
+        image="/hill-country-home-exterior-painting.png"
         imageAlt="Hill Country Painting exterior work - Professional surface prep and application"
       />
 
