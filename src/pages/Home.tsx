@@ -92,7 +92,7 @@ const Home = () => {
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/hill-country-painting-austin-hero.jpg"
+            src="/hill-country-painting-austin-hero-scaled.jpg"
             alt="Hill Country Painting professional painter at work on Austin home"
             className="w-full h-full object-cover"
             loading="eager"
