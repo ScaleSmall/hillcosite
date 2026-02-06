@@ -136,18 +136,11 @@ const InteriorPainting = () => {
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
-          <ImageWithGeo
-            src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920"
-            alt="Interior painting background"
+          <img
+            src="/hill-country-painting-austin-interior-hero.jpg"
+            alt="Hill Country Painting interior painting services in Austin"
             className="w-full h-full object-cover"
-            width="1920"
-            height="1080"
-            location={{
-              name: 'Austin, TX',
-              latitude: 30.2672,
-              longitude: -97.7431,
-              region: 'Texas'
-            }}
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40"></div>
         </div>
