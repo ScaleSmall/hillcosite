@@ -100,7 +100,7 @@ export const ALLOWED_SERVICE_AREAS: ServiceArea[] = [
   },
   {
     displayName: 'Westlake Highlands',
-    slug: 'westlake-highlands',
+    slug: 'west-lake-highlands',
     fullAddress: 'Westlake Highlands, Austin, TX 78746, USA',
     zipCode: '78746',
   },
