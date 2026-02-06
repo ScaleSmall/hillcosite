@@ -280,7 +280,7 @@ const ColorConsultation = () => {
         title="Let's Talk About Your Project"
         subtitle="Request professional color consultation and expert painting services in Austin. Free consultation with all painting projects."
         primaryCTA={{
-          text: "Request a Color Consultation",
+          text: "Request a Consultation",
           href: "/contact"
         }}
         secondaryCTA={{
