@@ -59,9 +59,9 @@ const Gallery = () => {
 
   const featuredProjects = [
     {
-      image: '/kitchen-transformation-west-lake-hills.jpg',
-      title: 'Kitchen Transformation',
-      location: 'West Lake Hills'
+      image: '/hill-country-painting-austin-hero.jpeg',
+      title: 'Hill Country Home',
+      location: 'Austin'
     },
     {
       image: '/exterior-tarrytown.jpg',
