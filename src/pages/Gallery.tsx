@@ -59,17 +59,17 @@ const Gallery = () => {
 
   const featuredProjects = [
     {
-      image: '/kitchen-cabinet-painting-west-lake-hills.jpg',
+      image: '/kitchen-transformation-west-lake-hills.jpg',
       title: 'Kitchen Transformation',
       location: 'West Lake Hills'
     },
     {
-      image: '/exterior-house-painting-tarrytown-austin.jpg',
+      image: '/exterior-tarrytown.jpg',
       title: 'Exterior Refresh',
       location: 'Tarrytown'
     },
     {
-      image: '/interior-living-room-painting-central-austin.jpg',
+      image: '/living-room-update-central-austin.jpg',
       title: 'Living Room Update',
       location: 'Central Austin'
     },
@@ -84,19 +84,19 @@ const Gallery = () => {
     {
       title: 'Custom Kitchen Painting',
       description: 'Complete cabinet painting with custom color matching for a fresh modern look.',
-      image: '/circle-c-ranch-kitchen-painting-austin.jpg',
+      image: '/custom-kitchen-painting.jpg',
       link: '/contact'
     },
     {
       title: 'Classic Home Exterior',
       description: 'Professional exterior painting with weather-resistant finishes and detailed trim work for lasting protection.',
-      image: '/classic-exterior-home-painting-austin.jpg',
+      image: '/classic-home-exterior.jpg',
       link: '/contact'
     },
     {
       title: 'Modern Interior Design',
       description: 'Complete interior painting with custom accent walls and professional color consultation throughout.',
-      image: '/west-lake-hills-luxury-home-painting.jpg',
+      image: '/modern-interior-design.jpg',
       link: '/contact'
     },
     {
@@ -114,7 +114,7 @@ const Gallery = () => {
     {
       title: 'Traditional Home Exterior',
       description: 'Complete exterior painting with premium weather-resistant finishes designed for Texas climate conditions.',
-      image: '/traditional-exterior-painting-austin-tx.jpg',
+      image: '/traditional-home-exterior.jpg',
       link: '/contact'
     },
     {
@@ -334,7 +334,7 @@ const Gallery = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="aspect-w-16 aspect-h-10 lg:aspect-none">
                   <ImageWithGeo
-                    src="/circle-c-ranch-kitchen-painting-austin.jpg"
+                    src="/custom-kitchen-painting.jpg"
                     alt="Kitchen cabinet painting West Lake Hills - Hill Country Painting Austin featured project"
                     width="600"
                     height="400"
