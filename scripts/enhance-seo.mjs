@@ -7,6 +7,39 @@ const __dirname = dirname(__filename);
 
 const distPath = resolve(__dirname, '../dist');
 
+/**
+ * Load service areas from the TypeScript config file
+ * This ensures we use the single source of truth
+ */
+function loadServiceAreas() {
+  const configPath = resolve(__dirname, '../src/config/serviceAreaWhitelist.ts');
+  const configContent = readFileSync(configPath, 'utf-8');
+
+  // Extract displayName values from the ALLOWED_SERVICE_AREAS array
+  const displayNameMatches = [...configContent.matchAll(/displayName:\s*['"]([^'"]+)['"]/g)];
+  const areas = displayNameMatches.map(match => match[1]);
+
+  return areas;
+}
+
+function generateServiceAreasDescription() {
+  const areas = loadServiceAreas();
+
+  // Format: "Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, and surrounding areas."
+  if (areas.length === 0) {
+    return 'Hill Country Painting serves the Greater Austin area.';
+  }
+
+  // Take top areas (up to 6 for readability)
+  const topAreas = areas.slice(0, 6);
+  const areasList = topAreas.join(', ');
+
+  return `Hill Country Painting serves ${areasList}, and surrounding areas. Professional painting services throughout Greater Austin Area.`;
+}
+
+// Generate the service areas description dynamically from the whitelist
+const serviceAreasDescription = generateServiceAreasDescription();
+
 const routeMetadata = {
   '/': {
     title: 'Austin House Painters: Exterior, Interior, Cabinets | Commercial',
@@ -70,7 +103,7 @@ const routeMetadata = {
   },
   '/service-areas': {
     title: 'Service Areas — Hill Country Painting',
-    description: 'Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, Westlake Highlands, Lakeway, and surrounding areas. Professional painting services throughout Greater Austin Area.',
+    description: serviceAreasDescription,
     h1: 'Our Service Areas in Austin',
     content: 'Professional painting services throughout Austin and surrounding areas. See all the communities we serve.'
   },
