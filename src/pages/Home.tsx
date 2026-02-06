@@ -94,7 +94,7 @@ const Home = () => {
           <img
             src="/hill-country-painting-austin-homepage-hero.jpg"
             alt="Hill Country Painting professional painter at work on Austin home"
-            className="w-full h-full object-cover object-[center_35%]"
+            className="w-full h-full object-cover object-[center_60%]"
             loading="eager"
           />
           {/* Layered gradient overlays with brand colors */}
