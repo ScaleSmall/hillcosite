@@ -255,7 +255,7 @@ const PaintingFrequency = () => {
           { text: 'South and west-facing surfaces need more frequent attention' },
           { text: 'Professional application helps paint last longer in Texas heat' }
         ]}
-        image="/texas-sun-exterior-paint-maintenance.jpg"
+        image="/texas-climate-paint-maintenance-austin-professional-paint-longevity.jpg"
         imageAlt="Texas climate paint maintenance Austin - Professional painting longevity"
         imageLeft={true}
       />
