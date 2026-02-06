@@ -89,7 +89,7 @@ const InteriorPainting = () => {
     },
     {
       question: 'Do we need to move furniture ourselves?',
-      answer: 'If you want to move your furniture in advance, you can. If you would prefer for us to do it, we will. We will move what needs to be moved and protect everything else with drop cloths and plastic sheeting.'
+      answer: 'If you want to move your furniture in advance, you can. If you would prefer for us to do it, we will. We move what needs to be moved and protect everything else with drop cloths and plastic sheeting.'
     },
     {
       question: 'What paint do you use?',
