@@ -106,9 +106,9 @@ const Gallery = () => {
       link: '/contact'
     },
     {
-      title: 'Bright Kids Room Transformation',
-      description: 'Vibrant turquoise kids bedroom with playful accent walls and durable finishes perfect for active children.',
-      image: '/allandale-northwest-hills-home-painting-austin.jpg',
+      title: 'Dramatic Before & After Transformation',
+      description: 'Complete interior transformation showcasing the dramatic difference professional painting makes in refreshing your space.',
+      image: '/before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
       link: '/contact'
     },
     {
