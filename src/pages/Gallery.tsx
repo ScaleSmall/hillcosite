@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Phone, ChevronDown, ChevronUp } from 'lucide-react';
+import { Phone, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import ImageWithGeo from '../components/ImageWithGeo';
@@ -421,8 +421,8 @@ const Gallery = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">9</div>,
-            value: "100+",
+            icon: <CheckCircle className="w-8 h-8 text-brand-azureDark" />,
+            value: "3000+",
             label: "Projects Complete"
           },
           {
