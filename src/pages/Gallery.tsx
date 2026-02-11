@@ -213,7 +213,7 @@ const Gallery = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-4 space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
+              <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading whitespace-nowrap">
                 Our Work Gallery
               </h1>
               <p className="text-xl text-brand-gray-600 leading-body">
@@ -223,10 +223,10 @@ const Gallery = () => {
                 Clean prep. Crisp lines. Reliable schedules.
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/contact" className="btn-primary">
+                <Link to="/contact" className="btn-primary whitespace-nowrap">
                   Start Your Project
                 </Link>
-                <a href="tel:(512)240-2246" className="btn-outline">
+                <a href="tel:(512)240-2246" className="btn-outline whitespace-nowrap">
                   <Phone className="w-5 h-5 mr-2" />
                   Call (512) 240-2246
                 </a>
