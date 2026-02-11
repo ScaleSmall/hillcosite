@@ -210,9 +210,9 @@ const Gallery = () => {
       {/* Unique Hero Section */}
       <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
-            <div className="space-y-6">
+            <div className="lg:col-span-4 space-y-6">
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
                   Our Work Gallery
@@ -236,10 +236,10 @@ const Gallery = () => {
             </div>
 
             {/* Right Featured Projects Grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-4">
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
-                  <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-48"></div>
+                  <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-56 lg:h-64"></div>
                 ))
               ) : featuredPhotos.length > 0 ? (
                 featuredPhotos.slice(0, 6).map((photo, index) => (
@@ -259,7 +259,7 @@ const Gallery = () => {
                     <img
                       src={photo.image_url}
                       alt={photo.alt_text}
-                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:opacity-95"
+                      className="w-full h-56 lg:h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -277,10 +277,10 @@ const Gallery = () => {
                     <ImageWithGeo
                       src={project.image}
                       alt={project.title}
-                      width="300"
-                      height="200"
-                      className="w-full h-48 object-cover transition-transform duration-300"
-                      sizes="(max-width: 640px) 50vw, 300px"
+                      width="400"
+                      height="300"
+                      className="w-full h-56 lg:h-64 object-cover transition-transform duration-300"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
                       location={{
                         name: `${project.location}, Austin, TX`,
                         latitude: project.location === 'West Lake Hills' ? 30.2711 : 30.2672,
