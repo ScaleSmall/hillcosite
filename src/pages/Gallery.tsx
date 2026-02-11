@@ -212,17 +212,15 @@ const Gallery = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-4 space-y-6">
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
-                  Our Work Gallery
-                </h1>
-                <p className="text-xl text-brand-gray-600 leading-body">
-                  Explore our recent painting projects across Austin. From interior transformations to exterior makeovers and cabinet painting, see the quality that comes with clean prep, crisp lines, and professional execution.
-                </p>
-                <div className="text-brand-azureDark font-medium">
-                  Clean prep. Crisp lines. Reliable schedules.
-                </div>
+            <div className="lg:col-span-4 space-y-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
+                Our Work Gallery
+              </h1>
+              <p className="text-xl text-brand-gray-600 leading-body">
+                Explore our recent painting projects across Austin. From interior transformations to exterior makeovers and cabinet painting, see the quality that comes with clean prep, crisp lines, and professional execution.
+              </p>
+              <div className="text-brand-azureDark font-medium">
+                Clean prep. Crisp lines. Reliable schedules.
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/contact" className="btn-primary">
