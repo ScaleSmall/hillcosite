@@ -8,6 +8,8 @@ import ServicesGrid from '../components/sections/ServicesGrid';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
+import BeforeAfterSlider from '../components/BeforeAfterSlider';
+import ImageLightbox, { LightboxImage } from '../components/ImageLightbox';
 import { supabase } from '../lib/supabaseClient';
 
 interface GalleryPhoto {
@@ -18,12 +20,21 @@ interface GalleryPhoto {
   alt_text: string;
   display_order: number;
   created_at: string;
+  is_before_after: boolean;
+  category: string | null;
+  featured: boolean;
 }
 
 const Gallery = () => {
-  const [photos, setPhotos] = useState<GalleryPhoto[]>([]);
+  const [featuredPhotos, setFeaturedPhotos] = useState<GalleryPhoto[]>([]);
+  const [beforeAfterPhotos, setBeforeAfterPhotos] = useState<GalleryPhoto[]>([]);
+  const [regularPhotos, setRegularPhotos] = useState<GalleryPhoto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showMoreBeforeAfter, setShowMoreBeforeAfter] = useState(false);
   const [showOlderPhotos, setShowOlderPhotos] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState<LightboxImage[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     fetchGalleryPhotos();
@@ -40,7 +51,11 @@ const Gallery = () => {
       if (error) {
         console.error('Error fetching gallery photos:', error);
       } else {
-        setPhotos(data || []);
+        const allPhotos = data || [];
+
+        setFeaturedPhotos(allPhotos.filter(p => p.featured && !p.is_before_after));
+        setBeforeAfterPhotos(allPhotos.filter(p => p.is_before_after));
+        setRegularPhotos(allPhotos.filter(p => !p.is_before_after && !p.featured));
       }
     } catch (err) {
       console.error('Unexpected error fetching gallery photos:', err);
@@ -49,8 +64,20 @@ const Gallery = () => {
     }
   };
 
-  const recentPhotos = photos.slice(0, 12);
-  const olderPhotos = photos.slice(12);
+  const recentBeforeAfter = beforeAfterPhotos.slice(0, 6);
+  const olderBeforeAfter = beforeAfterPhotos.slice(6);
+  const recentRegularPhotos = regularPhotos.slice(0, 12);
+  const olderRegularPhotos = regularPhotos.slice(12);
+
+  const openLightbox = (images: LightboxImage[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -150,13 +177,14 @@ const Gallery = () => {
   ];
 
   // Generate ImageGallery schema markup
+  const allPhotos = [...featuredPhotos, ...beforeAfterPhotos, ...regularPhotos];
   const imageGallerySchema = {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',
     name: 'Hill Country Painting Gallery',
-    description: 'Gallery of professional painting projects by Hill Country Painting in Austin, TX',
+    description: 'Gallery of professional painting projects by Hill Country Painting in Austin, TX including before and after transformations',
     url: 'https://www.hillcopaint.com/gallery',
-    image: photos.length > 0 ? photos.map(photo => ({
+    image: allPhotos.length > 0 ? allPhotos.map(photo => ({
       '@type': 'ImageObject',
       contentUrl: photo.image_url,
       name: photo.title,
@@ -169,7 +197,7 @@ const Gallery = () => {
     <>
       <SEO
         title="Gallery — Hill Country Painting"
-        description="See Hill Country Painting's gallery of Austin interior, exterior, and cabinet painting projects. Quality workmanship, professional results. Consultations available."
+        description="View Hill Country Painting's gallery of before & after transformations and Austin interior, exterior, and cabinet painting projects. Interactive comparisons show our quality workmanship and professional results."
         canonical="/gallery"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -213,42 +241,202 @@ const Gallery = () => {
             </div>
 
             {/* Right Featured Projects Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {featuredProjects.map((project, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <ImageWithGeo
-                    src={project.image}
-                    alt={project.title}
-                    width="300"
-                    height="200"
-                    className="w-full h-48 object-cover transition-transform duration-300"
-                    sizes="(max-width: 640px) 50vw, 300px"
-                    location={{
-                      name: `${project.location}, Austin, TX`,
-                      latitude: project.location === 'West Lake Hills' ? 30.2711 : 30.2672,
-                      longitude: project.location === 'West Lake Hills' ? -97.8081 : -97.7431,
-                      region: 'Texas'
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              {loading ? (
+                Array.from({ length: 6 }).map((_, index) => (
+                  <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-48"></div>
+                ))
+              ) : featuredPhotos.length > 0 ? (
+                featuredPhotos.slice(0, 6).map((photo, index) => (
+                  <div
+                    key={photo.id}
+                    onClick={() => {
+                      const images: LightboxImage[] = featuredPhotos.map(p => ({
+                        src: p.image_url,
+                        alt: p.alt_text,
+                        title: p.title,
+                        description: p.description
+                      }));
+                      openLightbox(images, index);
                     }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="font-semibold text-sm mb-1">{project.title}</h3>
-                    <p className="text-xs text-white">{project.location}</p>
+                    className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  >
+                    <img
+                      src={photo.image_url}
+                      alt={photo.alt_text}
+                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:opacity-95"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <h3 className="font-semibold text-sm mb-1">{photo.title}</h3>
+                      {photo.category && (
+                        <p className="text-xs text-white capitalize">{photo.category}</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                featuredProjects.map((project, index) => (
+                  <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <ImageWithGeo
+                      src={project.image}
+                      alt={project.title}
+                      width="300"
+                      height="200"
+                      className="w-full h-48 object-cover transition-transform duration-300"
+                      sizes="(max-width: 640px) 50vw, 300px"
+                      location={{
+                        name: `${project.location}, Austin, TX`,
+                        latitude: project.location === 'West Lake Hills' ? 30.2711 : 30.2672,
+                        longitude: project.location === 'West Lake Hills' ? -97.8081 : -97.7431,
+                        region: 'Texas'
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <h3 className="font-semibold text-sm mb-1">{project.title}</h3>
+                      <p className="text-xs text-white">{project.location}</p>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Latest Projects from Zapier */}
-      {photos.length > 0 && (
+      {/* Before & After Transformations Section */}
+      {beforeAfterPhotos.length > 0 && (
         <section className="section-padding bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-                Latest Projects
+                Before & After Transformations
+              </h2>
+              <p className="text-xl text-brand-gray-600">
+                See the dramatic difference professional painting makes
+              </p>
+            </div>
+
+            {/* Recent Before/After Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {recentBeforeAfter.map((photo, index) => (
+                <div
+                  key={photo.id}
+                  onClick={() => {
+                    const images: LightboxImage[] = beforeAfterPhotos.map(p => ({
+                      src: p.image_url,
+                      alt: p.alt_text,
+                      title: p.title,
+                      description: p.description,
+                      isBeforeAfter: true,
+                      beforeImage: p.image_url,
+                      afterImage: p.image_url
+                    }));
+                    openLightbox(images, index);
+                  }}
+                  className="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                >
+                  <BeforeAfterSlider
+                    beforeImage={photo.image_url}
+                    afterImage={photo.image_url}
+                    alt={photo.alt_text}
+                    className="aspect-video"
+                  />
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-brand-gray-900 mb-2">
+                      {photo.title}
+                    </h3>
+                    {photo.description && (
+                      <p className="text-brand-gray-600 leading-body">
+                        {photo.description}
+                      </p>
+                    )}
+                    {photo.category && (
+                      <div className="mt-3">
+                        <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium capitalize">
+                          {photo.category}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Show More Button for Additional Before/After */}
+            {olderBeforeAfter.length > 0 && (
+              <div className="border-t border-brand-gray-200 pt-8">
+                <button
+                  onClick={() => setShowMoreBeforeAfter(!showMoreBeforeAfter)}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-brand-gray-100 hover:bg-brand-gray-200 text-brand-azureDark font-semibold rounded-lg transition-colors duration-200"
+                  aria-expanded={showMoreBeforeAfter}
+                  aria-controls="more-before-after"
+                >
+                  {showMoreBeforeAfter ? 'Hide' : 'Show'} More Transformations ({olderBeforeAfter.length})
+                  {showMoreBeforeAfter ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                </button>
+
+                {showMoreBeforeAfter && (
+                  <div id="more-before-after" className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                    {olderBeforeAfter.map((photo, index) => (
+                      <div
+                        key={photo.id}
+                        onClick={() => {
+                          const images: LightboxImage[] = beforeAfterPhotos.map(p => ({
+                            src: p.image_url,
+                            alt: p.alt_text,
+                            title: p.title,
+                            description: p.description,
+                            isBeforeAfter: true,
+                            beforeImage: p.image_url,
+                            afterImage: p.image_url
+                          }));
+                          openLightbox(images, recentBeforeAfter.length + index);
+                        }}
+                        className="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                      >
+                        <BeforeAfterSlider
+                          beforeImage={photo.image_url}
+                          afterImage={photo.image_url}
+                          alt={photo.alt_text}
+                          className="aspect-video"
+                        />
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold text-brand-gray-900 mb-2">
+                            {photo.title}
+                          </h3>
+                          {photo.description && (
+                            <p className="text-brand-gray-600 leading-body">
+                              {photo.description}
+                            </p>
+                          )}
+                          {photo.category && (
+                            <div className="mt-3">
+                              <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium capitalize">
+                                {photo.category}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Latest Projects from Zapier */}
+      {regularPhotos.length > 0 && (
+        <section className="section-padding bg-brand-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+                More Recent Projects
               </h2>
               <p className="text-xl text-brand-gray-600">
                 Fresh from our recent work across Austin
@@ -257,12 +445,24 @@ const Gallery = () => {
 
             {/* Recent Photos Grid (First 12) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {recentPhotos.map((photo) => (
-                <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              {recentRegularPhotos.map((photo, index) => (
+                <div
+                  key={photo.id}
+                  onClick={() => {
+                    const images: LightboxImage[] = regularPhotos.map(p => ({
+                      src: p.image_url,
+                      alt: p.alt_text,
+                      title: p.title,
+                      description: p.description
+                    }));
+                    openLightbox(images, index);
+                  }}
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                >
                   <img
                     src={photo.image_url}
                     alt={photo.alt_text}
-                    className="w-full h-64 object-cover transition-transform duration-300"
+                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -277,7 +477,7 @@ const Gallery = () => {
             </div>
 
             {/* Dropdown for Older Photos (After 12) */}
-            {olderPhotos.length > 0 && (
+            {olderRegularPhotos.length > 0 && (
               <div className="border-t border-brand-gray-200 pt-8">
                 <button
                   onClick={() => setShowOlderPhotos(!showOlderPhotos)}
@@ -285,18 +485,30 @@ const Gallery = () => {
                   aria-expanded={showOlderPhotos}
                   aria-controls="older-photos"
                 >
-                  {showOlderPhotos ? 'Hide' : 'Show'} Older Projects ({olderPhotos.length})
+                  {showOlderPhotos ? 'Hide' : 'Show'} Older Projects ({olderRegularPhotos.length})
                   {showOlderPhotos ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </button>
 
                 {showOlderPhotos && (
                   <div id="older-photos" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                    {olderPhotos.map((photo) => (
-                      <div key={photo.id} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    {olderRegularPhotos.map((photo, index) => (
+                      <div
+                        key={photo.id}
+                        onClick={() => {
+                          const images: LightboxImage[] = regularPhotos.map(p => ({
+                            src: p.image_url,
+                            alt: p.alt_text,
+                            title: p.title,
+                            description: p.description
+                          }));
+                          openLightbox(images, recentRegularPhotos.length + index);
+                        }}
+                        className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                      >
                         <img
                           src={photo.image_url}
                           alt={photo.alt_text}
-                          className="w-full h-64 object-cover transition-transform duration-300"
+                          className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
@@ -455,6 +667,14 @@ const Gallery = () => {
           text: 'View Services',
           href: '/services'
         }}
+      />
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={lightboxImages}
+        open={lightboxOpen}
+        currentIndex={lightboxIndex}
+        onClose={closeLightbox}
       />
     </>
   );
