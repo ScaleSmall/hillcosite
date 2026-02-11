@@ -115,7 +115,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-brand-azure text-white font-heading font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 min-h-touch;
+    @apply inline-flex items-center justify-center px-8 py-4 text-lg bg-brand-azure text-white font-heading font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 min-h-touch;
     transform: translateZ(0);
   }
 
@@ -129,7 +129,7 @@
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-brand-azureDark font-heading font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 min-h-touch;
+    @apply inline-flex items-center justify-center px-8 py-4 text-lg bg-white text-brand-azureDark font-heading font-semibold rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 min-h-touch;
     transform: translateZ(0);
   }
 
