@@ -357,7 +357,7 @@ const Gallery = () => {
                         </span>
                       </div>
                     )}
-                    <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
+                    <Link to="/contact" className="btn-primary w-full sm:w-auto">
                       Start Your Project
                     </Link>
                   </div>
@@ -481,7 +481,7 @@ const Gallery = () => {
                     {photo.description && (
                       <p className="text-brand-gray-600 leading-body mb-4 line-clamp-2">{photo.description}</p>
                     )}
-                    <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
+                    <Link to="/contact" className="btn-primary w-full sm:w-auto">
                       Start Your Project
                     </Link>
                   </div>
