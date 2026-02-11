@@ -341,7 +341,7 @@ const Gallery = () => {
                       className="aspect-video"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 lg:p-8">
                     <h3 className="text-xl font-bold text-brand-gray-900 mb-2">
                       {photo.title}
                     </h3>
@@ -357,7 +357,7 @@ const Gallery = () => {
                         </span>
                       </div>
                     )}
-                    <Link to="/contact" className="btn-primary inline-flex items-center">
+                    <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
                       Start Your Project
                     </Link>
                   </div>
@@ -407,7 +407,7 @@ const Gallery = () => {
                             className="aspect-video"
                           />
                         </div>
-                        <div className="p-6">
+                        <div className="p-6 lg:p-8">
                           <h3 className="text-xl font-bold text-brand-gray-900 mb-2">
                             {photo.title}
                           </h3>
@@ -423,7 +423,7 @@ const Gallery = () => {
                               </span>
                             </div>
                           )}
-                          <Link to="/contact" className="btn-primary inline-flex items-center">
+                          <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
                             Start Your Project
                           </Link>
                         </div>
@@ -476,12 +476,12 @@ const Gallery = () => {
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-6">
+                  <div className="p-6 lg:p-8">
                     <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{photo.title}</h3>
                     {photo.description && (
                       <p className="text-brand-gray-600 leading-body mb-4 line-clamp-2">{photo.description}</p>
                     )}
-                    <Link to="/contact" className="btn-primary inline-flex items-center">
+                    <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
                       Start Your Project
                     </Link>
                   </div>
@@ -528,12 +528,12 @@ const Gallery = () => {
                             loading="lazy"
                           />
                         </div>
-                        <div className="p-6">
+                        <div className="p-6 lg:p-8">
                           <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{photo.title}</h3>
                           {photo.description && (
                             <p className="text-brand-gray-600 leading-body mb-4 line-clamp-2">{photo.description}</p>
                           )}
-                          <Link to="/contact" className="btn-primary inline-flex items-center">
+                          <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
                             Start Your Project
                           </Link>
                         </div>
