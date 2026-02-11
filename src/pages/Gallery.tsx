@@ -86,11 +86,6 @@ const Gallery = () => {
 
   const featuredProjects = [
     {
-      image: '/hill-country-painting-austin-hero-cropped.jpeg',
-      title: 'Hill Country Home',
-      location: 'Austin'
-    },
-    {
       image: '/exterior-tarrytown.jpg',
       title: 'Exterior Refresh',
       location: 'Tarrytown'
