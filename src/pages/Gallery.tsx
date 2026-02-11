@@ -579,35 +579,39 @@ const Gallery = () => {
           </div>
 
           {/* Project Gallery */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-12">
             {portfolioProjects.slice(1, 7).map((project, index) => (
-              <div key={index} className="card overflow-hidden group">
-                <div className="aspect-w-16 aspect-h-10 overflow-hidden">
-                  <ImageWithGeo
-                    src={project.image}
-                    alt={project.title}
-                    width="400"
-                    height="250"
-                    className="w-full h-64 object-cover transition-transform duration-300"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    location={{
-                      name: 'Austin, TX',
-                      latitude: 30.2672,
-                      longitude: -97.7431,
-                      region: 'Texas'
-                    }}
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-brand-gray-600 mb-4 leading-body">
-                    {project.description}
-                  </p>
-                  <Link to="/contact" className="text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors">
-                    Get Similar Results →
-                  </Link>
+              <div key={index} className="card overflow-hidden">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                  {/* Image - Left for even indices, Right for odd indices */}
+                  <div className={`lg:aspect-none ${index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <ImageWithGeo
+                      src={project.image}
+                      alt={project.title}
+                      width="800"
+                      height="600"
+                      className="w-full h-full min-h-[400px] lg:min-h-[500px] object-cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      location={{
+                        name: 'Austin, TX',
+                        latitude: 30.2672,
+                        longitude: -97.7431,
+                        region: 'Texas'
+                      }}
+                    />
+                  </div>
+                  {/* Content - Right for even indices, Left for odd indices */}
+                  <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
+                      {project.title}
+                    </h3>
+                    <p className="text-brand-gray-600 mb-6 leading-body">
+                      {project.description}
+                    </p>
+                    <Link to="/contact" className="btn-primary inline-flex items-center w-fit">
+                      Start Your Project
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
