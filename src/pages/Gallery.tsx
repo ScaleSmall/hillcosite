@@ -317,42 +317,49 @@ const Gallery = () => {
               {recentBeforeAfter.map((photo, index) => (
                 <div
                   key={photo.id}
-                  onClick={() => {
-                    const images: LightboxImage[] = beforeAfterPhotos.map(p => ({
-                      src: p.image_url,
-                      alt: p.alt_text,
-                      title: p.title,
-                      description: p.description,
-                      isBeforeAfter: true,
-                      beforeImage: p.image_url,
-                      afterImage: p.image_url
-                    }));
-                    openLightbox(images, index);
-                  }}
-                  className="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                  className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300"
                 >
-                  <BeforeAfterSlider
-                    beforeImage={photo.image_url}
-                    afterImage={photo.image_url}
-                    alt={photo.alt_text}
-                    className="aspect-video"
-                  />
+                  <div
+                    onClick={() => {
+                      const images: LightboxImage[] = beforeAfterPhotos.map(p => ({
+                        src: p.image_url,
+                        alt: p.alt_text,
+                        title: p.title,
+                        description: p.description,
+                        isBeforeAfter: true,
+                        beforeImage: p.image_url,
+                        afterImage: p.image_url
+                      }));
+                      openLightbox(images, index);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    <BeforeAfterSlider
+                      beforeImage={photo.image_url}
+                      afterImage={photo.image_url}
+                      alt={photo.alt_text}
+                      className="aspect-video"
+                    />
+                  </div>
                   <div className="p-6">
                     <h3 className="text-xl font-bold text-brand-gray-900 mb-2">
                       {photo.title}
                     </h3>
                     {photo.description && (
-                      <p className="text-brand-gray-600 leading-body">
+                      <p className="text-brand-gray-600 leading-body mb-4">
                         {photo.description}
                       </p>
                     )}
                     {photo.category && (
-                      <div className="mt-3">
+                      <div className="mb-4">
                         <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium capitalize">
                           {photo.category}
                         </span>
                       </div>
                     )}
+                    <Link to="/contact" className="btn-primary inline-flex items-center">
+                      Start Your Project
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -376,42 +383,49 @@ const Gallery = () => {
                     {olderBeforeAfter.map((photo, index) => (
                       <div
                         key={photo.id}
-                        onClick={() => {
-                          const images: LightboxImage[] = beforeAfterPhotos.map(p => ({
-                            src: p.image_url,
-                            alt: p.alt_text,
-                            title: p.title,
-                            description: p.description,
-                            isBeforeAfter: true,
-                            beforeImage: p.image_url,
-                            afterImage: p.image_url
-                          }));
-                          openLightbox(images, recentBeforeAfter.length + index);
-                        }}
-                        className="card overflow-hidden group cursor-pointer hover:shadow-xl transition-shadow duration-300"
+                        className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300"
                       >
-                        <BeforeAfterSlider
-                          beforeImage={photo.image_url}
-                          afterImage={photo.image_url}
-                          alt={photo.alt_text}
-                          className="aspect-video"
-                        />
+                        <div
+                          onClick={() => {
+                            const images: LightboxImage[] = beforeAfterPhotos.map(p => ({
+                              src: p.image_url,
+                              alt: p.alt_text,
+                              title: p.title,
+                              description: p.description,
+                              isBeforeAfter: true,
+                              beforeImage: p.image_url,
+                              afterImage: p.image_url
+                            }));
+                            openLightbox(images, recentBeforeAfter.length + index);
+                          }}
+                          className="cursor-pointer"
+                        >
+                          <BeforeAfterSlider
+                            beforeImage={photo.image_url}
+                            afterImage={photo.image_url}
+                            alt={photo.alt_text}
+                            className="aspect-video"
+                          />
+                        </div>
                         <div className="p-6">
                           <h3 className="text-xl font-bold text-brand-gray-900 mb-2">
                             {photo.title}
                           </h3>
                           {photo.description && (
-                            <p className="text-brand-gray-600 leading-body">
+                            <p className="text-brand-gray-600 leading-body mb-4">
                               {photo.description}
                             </p>
                           )}
                           {photo.category && (
-                            <div className="mt-3">
+                            <div className="mb-4">
                               <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium capitalize">
                                 {photo.category}
                               </span>
                             </div>
                           )}
+                          <Link to="/contact" className="btn-primary inline-flex items-center">
+                            Start Your Project
+                          </Link>
                         </div>
                       </div>
                     ))}
@@ -441,29 +455,35 @@ const Gallery = () => {
               {recentRegularPhotos.map((photo, index) => (
                 <div
                   key={photo.id}
-                  onClick={() => {
-                    const images: LightboxImage[] = regularPhotos.map(p => ({
-                      src: p.image_url,
-                      alt: p.alt_text,
-                      title: p.title,
-                      description: p.description
-                    }));
-                    openLightbox(images, index);
-                  }}
-                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                  className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300"
                 >
-                  <img
-                    src={photo.image_url}
-                    alt={photo.alt_text}
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                    <h3 className="font-semibold text-base mb-1">{photo.title}</h3>
+                  <div
+                    onClick={() => {
+                      const images: LightboxImage[] = regularPhotos.map(p => ({
+                        src: p.image_url,
+                        alt: p.alt_text,
+                        title: p.title,
+                        description: p.description
+                      }));
+                      openLightbox(images, index);
+                    }}
+                    className="cursor-pointer"
+                  >
+                    <img
+                      src={photo.image_url}
+                      alt={photo.alt_text}
+                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{photo.title}</h3>
                     {photo.description && (
-                      <p className="text-sm text-white line-clamp-2">{photo.description}</p>
+                      <p className="text-brand-gray-600 leading-body mb-4 line-clamp-2">{photo.description}</p>
                     )}
+                    <Link to="/contact" className="btn-primary inline-flex items-center">
+                      Start Your Project
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -487,29 +507,35 @@ const Gallery = () => {
                     {olderRegularPhotos.map((photo, index) => (
                       <div
                         key={photo.id}
-                        onClick={() => {
-                          const images: LightboxImage[] = regularPhotos.map(p => ({
-                            src: p.image_url,
-                            alt: p.alt_text,
-                            title: p.title,
-                            description: p.description
-                          }));
-                          openLightbox(images, recentRegularPhotos.length + index);
-                        }}
-                        className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                        className="card overflow-hidden group hover:shadow-xl transition-shadow duration-300"
                       >
-                        <img
-                          src={photo.image_url}
-                          alt={photo.alt_text}
-                          className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                          <h3 className="font-semibold text-base mb-1">{photo.title}</h3>
+                        <div
+                          onClick={() => {
+                            const images: LightboxImage[] = regularPhotos.map(p => ({
+                              src: p.image_url,
+                              alt: p.alt_text,
+                              title: p.title,
+                              description: p.description
+                            }));
+                            openLightbox(images, recentRegularPhotos.length + index);
+                          }}
+                          className="cursor-pointer"
+                        >
+                          <img
+                            src={photo.image_url}
+                            alt={photo.alt_text}
+                            className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{photo.title}</h3>
                           {photo.description && (
-                            <p className="text-sm text-white line-clamp-2">{photo.description}</p>
+                            <p className="text-brand-gray-600 leading-body mb-4 line-clamp-2">{photo.description}</p>
                           )}
+                          <Link to="/contact" className="btn-primary inline-flex items-center">
+                            Start Your Project
+                          </Link>
                         </div>
                       </div>
                     ))}
