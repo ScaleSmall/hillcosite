@@ -90,7 +90,7 @@ const CTABanner = ({
             <div className={`w-8 h-8 ${badgeBgClass} rounded-full flex items-center justify-center shadow-md bg-gradient-to-br from-brand-azure20 to-brand-azureDark20`}>
               <span className={`text-sm font-bold ${isLightBg ? 'text-brand-azure' : 'text-brand-azure'}`}>★</span>
             </div>
-            <span className="text-sm font-semibold">350+ Projects</span>
+            <span className="text-sm font-semibold">3000+ Projects</span>
           </div>
         </div>
       </div>

@@ -16,7 +16,7 @@ const StatsAndTrust = ({ stats, surface = 'gray' }: StatsAndTrustProps) => {
   const defaultStats: Stat[] = [
     {
       icon: <Users className="w-8 h-8 text-brand-azureDark" />,
-      value: "350+",
+      value: "3000+",
       label: "Projects Completed"
     },
     {

@@ -188,7 +188,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
       <div className="mt-6 pt-6 border-t border-white/20">
         <div className="text-center">
           <div className="flex justify-center gap-4 text-white text-sm font-medium">
-            <span>350+ Projects</span>
+            <span>3000+ Projects</span>
             <span>Insured</span>
             <span>2-Year Warranty</span>
           </div>

@@ -1,5 +1,5 @@
 export const trustMetrics = {
-  jobCountMinimum: 350,
+  jobCountMinimum: 3000,
   timeframeMonthsMinimum: 24,
   serviceAreaLabel: 'Greater Austin',
 

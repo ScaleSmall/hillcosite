@@ -11,7 +11,7 @@ const ProofPointsSection = ({ className = '', surface = 'coral' }: ProofPointsSe
   const proofPoints = [
     {
       icon: <Users className="w-8 h-8 text-white" />,
-      value: "350+",
+      value: "3000+",
       label: "Projects Completed",
       description: "Trusted by homeowners across Austin"
     },
