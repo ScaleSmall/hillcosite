@@ -234,7 +234,7 @@ const Gallery = () => {
             </div>
 
             {/* Right Featured Projects Grid */}
-            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-4 ml-[1cm]">
+            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-4 ml-[2cm]">
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-56 lg:h-64"></div>
