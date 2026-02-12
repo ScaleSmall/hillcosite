@@ -10,8 +10,8 @@
   RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
   RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [L,R=301]
 
-  # Dynamic sitemap from Supabase Edge Function
-  RewriteRule ^sitemap\.xml$ sitemap.php [L]
+  # Serve static sitemap.xml directly (generated at build time)
+  # RewriteRule ^sitemap\.xml$ sitemap.php [L]  # Disabled: causes 500 if edge function fails
 
   # City-specific redirects
   RewriteRule ^austin/?$ /service-areas/austin [R=301,L]
