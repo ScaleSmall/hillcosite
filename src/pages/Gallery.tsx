@@ -596,7 +596,7 @@ const Gallery = () => {
                       Custom Finish
                     </span>
                   </div>
-                  <a href="/contact" className="btn-primary inline-flex items-center">
+                  <a href="/contact" className="btn-primary inline-flex items-center !text-sm !px-4 !py-2">
                     Start Your Project
                   </a>
                 </div>
