@@ -596,7 +596,7 @@ const Gallery = () => {
                       Custom Finish
                     </span>
                   </div>
-                  <a href="/contact" className="inline-flex items-center justify-center px-4 py-2 text-sm bg-brand-azure text-white font-heading font-semibold rounded-lg hover:bg-brand-azureDark focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
+                  <a href="/contact" className="btn-primary inline-flex items-center">
                     Start Your Project
                   </a>
                 </div>
@@ -608,7 +608,7 @@ const Gallery = () => {
           <div className="space-y-12">
             {portfolioProjects.slice(1, 7).map((project, index) => (
               <div key={index} className="card overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
                   {/* Image - Right for even indices, Left for odd indices */}
                   <div className={`lg:aspect-none ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                     <ImageWithGeo
