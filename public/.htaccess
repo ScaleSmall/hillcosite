@@ -36,6 +36,20 @@
   RewriteRule ^request-estimate/?$ /contact [R=301,L]
   RewriteRule ^free-estimate/?$ /contact [R=301,L]
 
+  # Legal page redirects (fix Soft 404s)
+  RewriteRule ^privacy-policy/?$ /privacy [R=301,L]
+  RewriteRule ^terms-of-service/?$ /terms [R=301,L]
+  RewriteRule ^terms-and-conditions/?$ /terms [R=301,L]
+
+  # Service area redirects (fix Soft 404s)
+  RewriteRule ^service-area/?$ /service-areas [R=301,L]
+
+  # Non-service area location redirects
+  RewriteRule ^interior-painting-leander/?$ /services/interior-painting [R=301,L]
+  RewriteRule ^exterior-painting-leander/?$ /services/exterior-painting [R=301,L]
+  RewriteRule ^cabinet-refinishing-leander/?$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^commercial-painting-leander/?$ /services/commercial [R=301,L]
+
   # Service redirects
   RewriteRule ^interior-painting/?$ /services/interior-painting [R=301,L]
   RewriteRule ^exterior-painting/?$ /services/exterior-painting [R=301,L]
