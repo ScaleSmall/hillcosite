@@ -423,7 +423,7 @@ const Gallery = () => {
                               </span>
                             </div>
                           )}
-                          <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
+                          <Link to="/contact" className="btn-primary w-full sm:w-auto">
                             Start Your Project
                           </Link>
                         </div>
@@ -533,7 +533,7 @@ const Gallery = () => {
                           {photo.description && (
                             <p className="text-brand-gray-600 leading-body mb-4 line-clamp-2">{photo.description}</p>
                           )}
-                          <Link to="/contact" className="btn-primary text-base w-full sm:w-auto">
+                          <Link to="/contact" className="btn-primary w-full sm:w-auto">
                             Start Your Project
                           </Link>
                         </div>
@@ -608,9 +608,9 @@ const Gallery = () => {
           <div className="space-y-12">
             {portfolioProjects.slice(1, 7).map((project, index) => (
               <div key={index} className="card overflow-hidden">
-                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                  {/* Image - Left for even indices, Right for odd indices */}
-                  <div className={`lg:aspect-none ${index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}`}>
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-0 ${index % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
+                  {/* Image - Right for even indices, Left for odd indices */}
+                  <div className={`lg:aspect-none ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
                     <ImageWithGeo
                       src={project.image}
                       alt={project.title}
@@ -626,8 +626,8 @@ const Gallery = () => {
                       }}
                     />
                   </div>
-                  {/* Content - Right for even indices, Left for odd indices */}
-                  <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}`}>
+                  {/* Content - Left for even indices, Right for odd indices */}
+                  <div className={`p-8 lg:p-12 flex flex-col justify-center ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}>
                     <h3 className="text-2xl font-bold text-brand-gray-900 mb-4">
                       {project.title}
                     </h3>
