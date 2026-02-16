@@ -60,25 +60,6 @@
   RewriteRule ^commercial/?$ /services/commercial [R=301,L]
   RewriteRule ^painting-services/?$ /services [R=301,L]
 
-  # Legacy non-service area redirects (Round Rock, Georgetown, Pflugerville, Hutto, Taylor)
-  RewriteRule ^round-rock/?$ /service-areas [R=301,L]
-  RewriteRule ^georgetown/?$ /service-areas [R=301,L]
-  RewriteRule ^pflugerville/?$ /service-areas [R=301,L]
-  RewriteRule ^hutto/?$ /service-areas [R=301,L]
-  RewriteRule ^taylor/?$ /service-areas [R=301,L]
-  RewriteRule ^.*-round-rock/?$ /services [R=301,L]
-  RewriteRule ^service-areas/(round-rock|georgetown|pflugerville|hutto|taylor)/?$ /service-areas [R=301,L]
-
-  # Legacy WordPress patterns (author pages, search)
-  RewriteRule ^author/.*$ /about [R=301,L]
-  RewriteRule ^search\?q=.*$ /contact [R=301,L]
-  RewriteRule ^\?s=.*$ /contact [R=301,L]
-
-  # Legacy hyper-specific service URLs
-  RewriteRule ^service/(garage|mobile-home|townhouse|retail-store|warehouse|industrial-facility)-.*$ /services [R=301,L]
-  RewriteRule ^service/(residential|commercial)-(wood-siding|aluminum-siding|stucco|concrete|fence|garage-door|shutter|window-frame|door|porch|nursery|kitchen|stairway|living-room)-.*$ /services [R=301,L]
-  RewriteRule ^service/parking-garage-.*$ /services/commercial [R=301,L]
-
   # Pattern-based service redirects (legacy URLs only - excludes valid service+location pages)
   RewriteRule ^residential-interior-.*$ /services/interior-painting [R=301,L]
   RewriteRule ^residential-exterior-.*$ /services/exterior-painting [R=301,L]
