@@ -111,7 +111,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   // LocalBusiness schema - only if requested (for homepage or service area pages)
   const localBusinessSchema = includeLocalBusiness ? {
     '@context': 'https://schema.org',
-    '@type': 'PaintingContractor',
+    '@type': ['LocalBusiness', 'PaintingContractor'],
     '@id': `${baseUrl}/#localbusiness`,
     name: 'Hill Country Painting',
     url: baseUrl,
