@@ -1,165 +1,101 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /
 
-  # === CANONICAL ORIGIN BLOCK ===
-  # Collapses HTTP upgrade + www canonicalization + trailing slash into a single 301 each.
-  # Rule evaluation order:
-  #   1. Non-www /service/* → full https://www. target (1 hop for https://hillcopaint.com/service/*)
-  #   2. HTTP + trailing slash → https://www. without slash (1 hop: HTTP + non-www + slash)
-  #   3. HTTP + no trailing slash → https://www. (1 hop: HTTP + non-www or HTTP + www)
-  #   4. HTTPS + non-www + trailing slash → https://www. without slash (1 hop)
-  #   5. HTTPS + non-www + no slash → https://www. (1 hop)
-  # After this block every request is guaranteed HTTPS + www + no trailing slash.
+  ###############################################################################
+  # 1) LEGACY / CONTENT REDIRECTS — ABSOLUTE CANONICAL TARGETS (ONE HOP)
+  # These rules MUST redirect directly to https://www.hillcopaint.com/... in 301.
+  # They MUST be above origin canonicalization so they work in one hop even for
+  # http://hillcopaint.com/... and https://hillcopaint.com/... and trailing slashes.
+  ###############################################################################
 
-  # Rule 1: non-www HTTPS /service/* → www canonical service targets
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^service/.*interior.*$ https://www.hillcopaint.com/services/interior-painting [L,R=301]
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^service/.*door-painting.*$ https://www.hillcopaint.com/services/interior-painting [L,R=301]
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^service/.*commercial.*$ https://www.hillcopaint.com/services/commercial [L,R=301]
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^service/.*window-frame.*$ https://www.hillcopaint.com/services/commercial [L,R=301]
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^service/.*cabinet.*$ https://www.hillcopaint.com/services/cabinet-refinishing [L,R=301]
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^service/.*$ https://www.hillcopaint.com/services/exterior-painting [L,R=301]
+  # --- Cities / old pages ---
+  RewriteRule ^pflugerville/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^georgetown/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^hutto/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^round-rock/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^round-rock-2/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^leander/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^cedar-park/?$ https://www.hillcopaint.com/service-areas [R=301,L]
 
-  # Rule 2: any HTTP + trailing slash → https://www. without slash (3 transforms, 1 hop)
-  RewriteCond %{HTTPS} off
+  # --- Old /service-areas subpaths that should collapse to hub ---
+  RewriteRule ^service-areas/round-rock.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^service-areas/leander.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^service-areas/taylor-hutto.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^service-areas/wells-branch.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+
+  # --- Broken area URL fix ---
+  RewriteRule ^areas/downtown-austin-luxury/old-west-austin/?$ https://www.hillcopaint.com/areas/downtown-austin-luxury/old-west-austin-central [R=301,L]
+
+  # --- Old commercial pattern ---
+  RewriteRule ^commercial-painting-.*$ https://www.hillcopaint.com/services/commercial [R=301,L]
+
+  # --- Old residential/commercial building patterns ---
+  RewriteRule ^residential-painting.*$ https://www.hillcopaint.com/services [R=301,L]
+  RewriteRule ^residential-building-painting.*$ https://www.hillcopaint.com/services [R=301,L]
+  RewriteRule ^commercial-building-painting.*$ https://www.hillcopaint.com/services/commercial [R=301,L]
+
+  # --- Old guide patterns ---
+  RewriteRule ^guides/painting-costs-round-rock.*$ https://www.hillcopaint.com/guides/painting-costs-austin [R=301,L]
+  RewriteRule ^guides/painting-costs-(?!austin).*$ https://www.hillcopaint.com/guides/painting-costs-austin [R=301,L]
+  RewriteRule ^guides/hoa-color-tips-(?!austin).*$ https://www.hillcopaint.com/guides/hoa-color-tips-austin [R=301,L]
+  RewriteRule ^guides/best-paint-texas-heat-.*$ https://www.hillcopaint.com/guides/best-paint-texas-heat [R=301,L]
+  RewriteRule ^guides/how-often-paint-(?!central-texas).*$ https://www.hillcopaint.com/guides/how-often-paint-central-texas [R=301,L]
+
+  # --- Legacy /service/* targeted routing ---
+  # Must route legacy /service/* directly to the correct canonical service page.
+  RewriteRule ^service/.*interior.*$ https://www.hillcopaint.com/services/interior-painting [R=301,L]
+  RewriteRule ^service/.*door-painting.*$ https://www.hillcopaint.com/services/interior-painting [R=301,L]
+  RewriteRule ^service/.*commercial.*$ https://www.hillcopaint.com/services/commercial [R=301,L]
+  RewriteRule ^service/.*window-frame.*$ https://www.hillcopaint.com/services/commercial [R=301,L]
+  RewriteRule ^service/.*cabinet.*$ https://www.hillcopaint.com/services/cabinet-refinishing [R=301,L]
+  RewriteRule ^service/.*$ https://www.hillcopaint.com/services/exterior-painting [R=301,L]
+
+
+  ###############################################################################
+  # 2) STRIP TRACKING PARAMS (?ref=) IN ONE HOP TO CANONICAL
+  # Must remove the query string entirely by using trailing '?' in the target.
+  ###############################################################################
+  RewriteCond %{QUERY_STRING} (^|&)ref= [NC]
+  RewriteRule ^(.*)$ https://www.hillcopaint.com/$1? [R=301,L]
+
+
+  ###############################################################################
+  # 3) ORIGIN CANONICALIZATION IN ONE HOP (http->https AND non-www->www)
+  #
+  # Split into two rules so a trailing slash on a non-canonical origin is stripped
+  # in the same hop — without this, http://hillcopaint.com/about/ would land on
+  # https://www.hillcopaint.com/about/ (slash intact), requiring a second hop from
+  # rule 4. Rule 3a strips the slash and canonicalizes in one redirect; rule 3b
+  # handles paths that already have no trailing slash.
+  ###############################################################################
+
+  # 3a: non-canonical origin + trailing slash → canonical URL without slash (1 hop)
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} !^www\.hillcopaint\.com$ [NC]
   RewriteRule ^(.+)/$ https://www.hillcopaint.com/$1 [R=301,L]
 
-  # Rule 3: any HTTP + no trailing slash → https://www. (2 transforms, 1 hop)
-  RewriteCond %{HTTPS} off
+  # 3b: non-canonical origin + no trailing slash → canonical URL (1 hop)
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} !^www\.hillcopaint\.com$ [NC]
   RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [R=301,L]
 
-  # Rule 4: HTTPS + non-www + trailing slash → https://www. without slash (2 transforms, 1 hop)
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
+
+  ###############################################################################
+  # 4) TRAILING SLASH CANONICALIZATION IN ONE HOP (EXCEPT ROOT)
+  # Only reaches this rule when origin is already https://www.hillcopaint.com
+  # (all non-canonical origins were handled by rule 3a above).
+  ###############################################################################
+  RewriteCond %{REQUEST_URI} !^/$
   RewriteRule ^(.+)/$ https://www.hillcopaint.com/$1 [R=301,L]
 
-  # Rule 5: HTTPS + non-www + no trailing slash → https://www. (1 transform, 1 hop)
-  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [R=301,L]
 
-  # Strip external referral tracking parameters (e.g. ?ref=homeservicebase.com)
-  # These cause "Alternate page with proper canonical tag" in Google Search Console
-  RewriteCond %{QUERY_STRING} ^ref=
-  RewriteRule ^(.*)$ /$1? [R=301,L]
-
-  # City-specific redirects (/?$ handles both trailing-slash and no-slash in one hop)
-  RewriteRule ^austin/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^west-lake-hills/?$ /service-areas/west-lake-hills [R=301,L]
-  RewriteRule ^westlake/?$ /service-areas/west-lake-hills [R=301,L]
-  RewriteRule ^tarrytown/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^rollingwood/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^hyde-park/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^clarksville/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^lakeway/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^bee-cave/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^dripping-springs/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^central-austin/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^east-austin/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^south-austin/?$ /service-areas/austin [R=301,L]
-  RewriteRule ^north-austin/?$ /service-areas/austin [R=301,L]
-
-  # Out-of-service-area city redirects (cities no longer served)
-  RewriteRule ^pflugerville/?$ /service-areas [R=301,L]
-  RewriteRule ^georgetown/?$ /service-areas [R=301,L]
-  RewriteRule ^hutto/?$ /service-areas [R=301,L]
-  RewriteRule ^round-rock/?$ /service-areas [R=301,L]
-  RewriteRule ^round-rock-2/?$ /service-areas [R=301,L]
-  RewriteRule ^leander/?$ /service-areas [R=301,L]
-  RewriteRule ^cedar-park/?$ /service-areas [R=301,L]
-
-  # Old service-area sub-paths (removed locations)
-  RewriteRule ^service-areas/round-rock.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/leander.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/georgetown.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/pflugerville.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/hutto.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/cedar-park.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/taylor-hutto.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/wells-branch.*$ /service-areas [R=301,L]
-
-  # Old geo area URL corrections
-  RewriteRule ^areas/downtown-austin-luxury/old-west-austin$ /areas/downtown-austin-luxury/old-west-austin-central [R=301,L]
-
-  # Estimate and quote redirects
-  RewriteRule ^get-a-free-estimate/?$ /contact [R=301,L]
-  RewriteRule ^estimate/?$ /contact [R=301,L]
-  RewriteRule ^quote/?$ /contact [R=301,L]
-  RewriteRule ^request-estimate/?$ /contact [R=301,L]
-  RewriteRule ^free-estimate/?$ /contact [R=301,L]
-
-  # Legal page redirects
-  RewriteRule ^privacy-policy/?$ /privacy [R=301,L]
-  RewriteRule ^terms-of-service/?$ /terms [R=301,L]
-  RewriteRule ^terms-and-conditions/?$ /terms [R=301,L]
-
-  # Service area redirects
-  RewriteRule ^service-area/?$ /service-areas [R=301,L]
-
-  # Non-service area location redirects
-  RewriteRule ^interior-painting-leander/?$ /services/interior-painting [R=301,L]
-  RewriteRule ^exterior-painting-leander/?$ /services/exterior-painting [R=301,L]
-  RewriteRule ^cabinet-refinishing-leander/?$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^commercial-painting-leander/?$ /services/commercial [R=301,L]
-
-  # Service redirects (/?$ handles trailing slash in one hop)
-  RewriteRule ^interior-painting/?$ /services/interior-painting [R=301,L]
-  RewriteRule ^exterior-painting/?$ /services/exterior-painting [R=301,L]
-  RewriteRule ^cabinet-refinishing/?$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^cabinet-painting/?$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^cabinet-staining/?$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^commercial-painting/?$ /services/commercial [R=301,L]
-  RewriteRule ^commercial-painting-.*$ /services/commercial [R=301,L]
-  RewriteRule ^commercial/?$ /services/commercial [R=301,L]
-  RewriteRule ^painting-services/?$ /services [R=301,L]
-
-  # Pattern-based service redirects (legacy URLs — .* captures trailing slashes too)
-  RewriteRule ^residential-interior-.*$ /services/interior-painting [R=301,L]
-  RewriteRule ^residential-exterior-.*$ /services/exterior-painting [R=301,L]
-  RewriteRule ^residential-cabinet-.*$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^residential-painting.*$ /services [R=301,L]
-  RewriteRule ^residential-building-painting.*$ /services [R=301,L]
-  RewriteRule ^commercial-interior-.*$ /services/commercial [R=301,L]
-  RewriteRule ^commercial-exterior-.*$ /services/commercial [R=301,L]
-  RewriteRule ^commercial-building-painting.*$ /services/commercial [R=301,L]
-  RewriteRule ^industrial-.*$ /services/commercial [R=301,L]
-  RewriteRule ^hotel-.*$ /services/commercial [R=301,L]
-  RewriteRule ^residential-(fence|deck|porch|garage|stucco)-.*$ /services/exterior-painting [R=301,L]
-  RewriteRule ^service/.*interior.*$ /services/interior-painting [R=301,L]
-  RewriteRule ^service/.*door-painting.*$ /services/interior-painting [R=301,L]
-  RewriteRule ^service/.*commercial.*$ /services/commercial [R=301,L]
-  RewriteRule ^service/.*window-frame.*$ /services/commercial [R=301,L]
-  RewriteRule ^service/.*cabinet.*$ /services/cabinet-refinishing [R=301,L]
-  RewriteRule ^service/.*$ /services/exterior-painting [R=301,L]
-  RewriteRule ^services/residential.*$ /services [R=301,L]
-  RewriteRule ^services/commercial[^-].*$ /services/commercial [R=301,L]
-
-  # Old guide URL redirects
-  RewriteRule ^guides/painting-costs-round-rock.*$ /guides/painting-costs-austin [R=301,L]
-  RewriteRule ^guides/painting-costs-(?!austin).*$ /guides/painting-costs-austin [R=301,L]
-  RewriteRule ^guides/hoa-color-tips-(?!austin).*$ /guides/hoa-color-tips-austin [R=301,L]
-  RewriteRule ^guides/best-paint-texas-heat-.*$ /guides/best-paint-texas-heat [R=301,L]
-  RewriteRule ^guides/how-often-paint-(?!central-texas).*$ /guides/how-often-paint-central-texas [R=301,L]
-
-  # Case variations
-  RewriteRule ^Austin/?$ /service-areas/austin [R=301,L,NC]
-  RewriteRule ^West-Lake-Hills/?$ /service-areas/west-lake-hills [R=301,L,NC]
-  RewriteRule ^Westlake/?$ /service-areas/west-lake-hills [R=301,L,NC]
-  RewriteRule ^Tarrytown/?$ /service-areas/austin [R=301,L,NC]
-
-  # === END REDIRECT RULES ===
-
-  RewriteCond %{REQUEST_URI} (.+)/$
-  RewriteRule ^(.+)/$ /$1 [R=301,L]
-
-  # SPA routing - must be last
+  ###############################################################################
+  # 5) SPA FALLBACK — MUST BE LAST
+  ###############################################################################
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^ index.html [L]
+  RewriteRule . /index.html [L]
+
 </IfModule>
 
 # Security headers
