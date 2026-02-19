@@ -104,24 +104,37 @@ const ServiceAreas = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {geoAreas.map((hub) => (
-              <Link
-                key={hub.slug}
-                to={`/areas/${hub.slug}`}
-                className="card p-6 hover:shadow-lg transition-shadow duration-200 group"
-              >
+              <div key={hub.slug} className="card p-6 hover:shadow-lg transition-shadow duration-200">
                 <div className="flex items-start gap-3 mb-3">
                   <MapPin className="w-6 h-6 text-brand-azure flex-shrink-0 mt-1" />
-                  <h3 className="text-xl font-bold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors">
+                  <Link
+                    to={`/areas/${hub.slug}`}
+                    className="text-xl font-bold text-brand-gray-900 hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
+                  >
                     {hub.name}
-                  </h3>
+                  </Link>
                 </div>
-                <p className="text-brand-gray-600 mb-4 leading-relaxed">
+                <p className="text-brand-gray-600 mb-4 leading-relaxed text-sm">
                   {hub.description}
                 </p>
-                <div className="text-sm text-brand-azure font-medium">
-                  View {hub.neighborhoods.length} neighborhoods →
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {hub.neighborhoods.map((n) => (
+                    <Link
+                      key={n.slug}
+                      to={`/areas/${hub.slug}/${n.slug}`}
+                      className="text-xs px-2 py-1 bg-brand-gray-100 text-brand-azureDark hover:bg-brand-azure hover:text-white rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure"
+                    >
+                      {n.name}
+                    </Link>
+                  ))}
                 </div>
-              </Link>
+                <Link
+                  to={`/areas/${hub.slug}`}
+                  className="text-sm text-brand-azure hover:text-brand-azureDark font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
+                >
+                  View all in {hub.name} →
+                </Link>
+              </div>
             ))}
           </div>
         </div>

@@ -12,6 +12,7 @@ export interface HubArea {
   specialization: string;
   heroImage: string;
   neighborhoods: Neighborhood[];
+  serviceLocationSlug?: string;
 }
 
 export const geoAreas: HubArea[] = [
@@ -53,6 +54,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'West Lake Hills & Rollingwood',
     slug: 'west-lake-hills-and-rollingwood',
+    serviceLocationSlug: 'west-lake-highlands',
     description: 'Professional painting services for West Lake Hills and Rollingwood properties. Expert craftsmanship for quality homes.',
     specialization: 'West Lake Hills and Rollingwood homes require high standards in finish quality, quality materials, and meticulous attention to architectural details that define these established communities.',
     heroImage: '/west-lake-hills-luxury-home-painting.jpg',
@@ -121,6 +123,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Tarrytown',
     slug: 'tarrytown',
+    serviceLocationSlug: 'tarrytown',
     description: 'Specialized painting for Tarrytown\'s historic homes. Honoring architectural heritage with careful techniques.',
     specialization: 'Tarrytown and surrounding historic neighborhoods require specialized techniques for preserving period details, meeting strict HOA standards, and honoring the architectural character that defines these areas.',
     heroImage: '/tarrytown-historic-home-painting-austin.jpg',
@@ -190,6 +193,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Allandale / Northwest Hills',
     slug: 'allandale-and-northwest-hills',
+    serviceLocationSlug: 'northwest-hills',
     description: 'Trusted painting services for Allandale and Northwest Hills\' distinctive homes. Quality work in established neighborhoods.',
     specialization: 'These established neighborhoods feature diverse architectural styles from mid-century modern to contemporary, requiring versatile expertise and respect for each home\'s unique character and community standards.',
     heroImage: '/allandale-northwest-hills-home-painting-austin.jpg',
@@ -224,6 +228,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Lakeway / Bee Cave / Lake Travis',
     slug: 'lakeway-bee-cave-and-lake-travis',
+    serviceLocationSlug: 'lakeway',
     description: 'Professional painting for Lake Travis area homes. Specialized expertise for lakefront properties and Hill Country homes.',
     specialization: 'Lake Travis area homes face unique challenges including intense sun exposure, humidity from the lake, and architectural standards that require specialized knowledge and high-performance materials.',
     heroImage: '/lakeway-lake-travis-home-painting.jpg',
@@ -292,6 +297,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Pemberton Heights / Old West Austin',
     slug: 'pemberton-heights-and-old-west-austin-historic-luxury',
+    serviceLocationSlug: 'tarrytown',
     description: 'Specialized services for Pemberton Heights and Old West Austin\'s historic homes. Preserving architectural heritage with careful craftsmanship.',
     specialization: 'These historic neighborhoods require careful craftsmanship, period-appropriate techniques, strict adherence to preservation standards, and quality finishes that respect architectural heritage.',
     heroImage: '/pemberton-heights-historic-luxury-painting-austin.jpg',

@@ -164,7 +164,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Link
-                to="/services/interior-painting"
+                to={hub.serviceLocationSlug ? `/interior-painting-${hub.serviceLocationSlug}` : '/services/interior-painting'}
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Interior Painting</h3>
@@ -173,7 +173,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 </p>
               </Link>
               <Link
-                to="/services/exterior-painting"
+                to={hub.serviceLocationSlug ? `/exterior-painting-${hub.serviceLocationSlug}` : '/services/exterior-painting'}
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Exterior Painting</h3>
@@ -182,7 +182,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 </p>
               </Link>
               <Link
-                to="/services/cabinet-refinishing"
+                to={hub.serviceLocationSlug ? `/cabinet-refinishing-${hub.serviceLocationSlug}` : '/services/cabinet-refinishing'}
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Cabinet Painting</h3>
@@ -191,13 +191,21 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 </p>
               </Link>
               <Link
-                to="/services/commercial"
+                to={hub.serviceLocationSlug ? `/commercial-painting-${hub.serviceLocationSlug}` : '/services/commercial'}
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
                 <p className="text-brand-gray-700">
                   Painting for offices, retail, and commercial properties with coordinated scheduling.
                 </p>
+              </Link>
+            </div>
+            <div className="mt-6 text-center">
+              <Link
+                to="/services"
+                className="text-brand-gray-700 hover:text-brand-azureDark font-medium underline underline-offset-2 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
+              >
+                View all painting services →
               </Link>
             </div>
           </div>

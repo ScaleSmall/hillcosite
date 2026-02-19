@@ -48,6 +48,47 @@ const Footer = () => {
   const guides = [
     { name: 'Best Paint for Texas Heat', href: '/guides/best-paint-texas-heat' },
     { name: 'How Often to Paint', href: '/guides/how-often-paint-central-texas' },
+    { name: 'Austin Painting Costs', href: '/guides/painting-costs-austin' },
+    { name: 'HOA Color Tips', href: '/guides/hoa-color-tips-austin' },
+  ];
+
+  const serviceLocationLinks = [
+    {
+      service: 'Interior Painting',
+      locations: [
+        { name: 'Tarrytown', href: '/interior-painting-tarrytown' },
+        { name: 'Northwest Hills', href: '/interior-painting-northwest-hills' },
+        { name: 'Westlake Highlands', href: '/interior-painting-west-lake-highlands' },
+        { name: 'Lakeway', href: '/interior-painting-lakeway' },
+      ]
+    },
+    {
+      service: 'Exterior Painting',
+      locations: [
+        { name: 'Tarrytown', href: '/exterior-painting-tarrytown' },
+        { name: 'Northwest Hills', href: '/exterior-painting-northwest-hills' },
+        { name: 'Westlake Highlands', href: '/exterior-painting-west-lake-highlands' },
+        { name: 'Lakeway', href: '/exterior-painting-lakeway' },
+      ]
+    },
+    {
+      service: 'Cabinet Refinishing',
+      locations: [
+        { name: 'Tarrytown', href: '/cabinet-refinishing-tarrytown' },
+        { name: 'Northwest Hills', href: '/cabinet-refinishing-northwest-hills' },
+        { name: 'Westlake Highlands', href: '/cabinet-refinishing-west-lake-highlands' },
+        { name: 'Lakeway', href: '/cabinet-refinishing-lakeway' },
+      ]
+    },
+    {
+      service: 'Commercial Painting',
+      locations: [
+        { name: 'Tarrytown', href: '/commercial-painting-tarrytown' },
+        { name: 'Northwest Hills', href: '/commercial-painting-northwest-hills' },
+        { name: 'Westlake Highlands', href: '/commercial-painting-west-lake-highlands' },
+        { name: 'Lakeway', href: '/commercial-painting-lakeway' },
+      ]
+    },
   ];
 
   const hubAreas = [
@@ -213,6 +254,30 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Location-Specific Services */}
+        <div className="border-t border-brand-coral/20 pt-8 mt-8">
+          <p className="text-brand-gray-400 text-xs uppercase tracking-wider font-medium mb-4">Services by Location</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {serviceLocationLinks.map((group) => (
+              <div key={group.service}>
+                <p className="text-brand-gray-300 text-xs font-semibold mb-2">{group.service}</p>
+                <ul className="space-y-1">
+                  {group.locations.map((loc) => (
+                    <li key={loc.href}>
+                      <Link
+                        to={loc.href}
+                        className="text-brand-gray-400 hover:text-brand-azure transition-colors text-xs focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
+                      >
+                        {loc.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
