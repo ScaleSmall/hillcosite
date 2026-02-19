@@ -10,16 +10,9 @@
   RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
   RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [L,R=301]
 
-  # Remove trailing slashes from URLs (canonical URLs have no trailing slash)
-  # This prevents duplicate content issues in Google Search Console
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_URI} (.+)/$
-  RewriteRule ^(.+)/$ /$1 [R=301,L]
+  # === ALL REDIRECT RULES (placed BEFORE trailing slash removal to minimize redirect hops) ===
 
-  # Serve static sitemap.xml directly (generated at build time)
-  # RewriteRule ^sitemap\.xml$ sitemap.php [L]  # Disabled: causes 500 if edge function fails
-
-  # City-specific redirects
+  # City-specific redirects (/?$ handles both trailing-slash and no-slash in one hop)
   RewriteRule ^austin/?$ /service-areas/austin [R=301,L]
   RewriteRule ^west-lake-hills/?$ /service-areas/west-lake-hills [R=301,L]
   RewriteRule ^westlake/?$ /service-areas/west-lake-hills [R=301,L]
@@ -51,6 +44,8 @@
   RewriteRule ^service-areas/pflugerville.*$ /service-areas [R=301,L]
   RewriteRule ^service-areas/hutto.*$ /service-areas [R=301,L]
   RewriteRule ^service-areas/cedar-park.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/taylor-hutto.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/wells-branch.*$ /service-areas [R=301,L]
 
   # Old geo area URL corrections
   RewriteRule ^areas/downtown-austin-luxury/old-west-austin$ /areas/downtown-austin-luxury/old-west-austin-central [R=301,L]
@@ -62,12 +57,12 @@
   RewriteRule ^request-estimate/?$ /contact [R=301,L]
   RewriteRule ^free-estimate/?$ /contact [R=301,L]
 
-  # Legal page redirects (fix Soft 404s)
+  # Legal page redirects
   RewriteRule ^privacy-policy/?$ /privacy [R=301,L]
   RewriteRule ^terms-of-service/?$ /terms [R=301,L]
   RewriteRule ^terms-and-conditions/?$ /terms [R=301,L]
 
-  # Service area redirects (fix Soft 404s)
+  # Service area redirects
   RewriteRule ^service-area/?$ /service-areas [R=301,L]
 
   # Non-service area location redirects
@@ -76,7 +71,7 @@
   RewriteRule ^cabinet-refinishing-leander/?$ /services/cabinet-refinishing [R=301,L]
   RewriteRule ^commercial-painting-leander/?$ /services/commercial [R=301,L]
 
-  # Service redirects
+  # Service redirects (/?$ handles trailing slash in one hop)
   RewriteRule ^interior-painting/?$ /services/interior-painting [R=301,L]
   RewriteRule ^exterior-painting/?$ /services/exterior-painting [R=301,L]
   RewriteRule ^cabinet-refinishing/?$ /services/cabinet-refinishing [R=301,L]
@@ -87,7 +82,7 @@
   RewriteRule ^commercial/?$ /services/commercial [R=301,L]
   RewriteRule ^painting-services/?$ /services [R=301,L]
 
-  # Pattern-based service redirects (legacy URLs only - excludes valid service+location pages)
+  # Pattern-based service redirects (legacy URLs — .* captures trailing slashes too)
   RewriteRule ^residential-interior-.*$ /services/interior-painting [R=301,L]
   RewriteRule ^residential-exterior-.*$ /services/exterior-painting [R=301,L]
   RewriteRule ^residential-cabinet-.*$ /services/cabinet-refinishing [R=301,L]
@@ -103,10 +98,6 @@
   RewriteRule ^services/residential.*$ /services [R=301,L]
   RewriteRule ^services/commercial[^-].*$ /services/commercial [R=301,L]
 
-  # Old service-area sub-paths not covered by city rules
-  RewriteRule ^service-areas/taylor-hutto.*$ /service-areas [R=301,L]
-  RewriteRule ^service-areas/wells-branch.*$ /service-areas [R=301,L]
-
   # Old guide URL redirects
   RewriteRule ^guides/painting-costs-round-rock.*$ /guides/painting-costs-austin [R=301,L]
   RewriteRule ^guides/painting-costs-(?!austin).*$ /guides/painting-costs-austin [R=301,L]
@@ -116,6 +107,13 @@
   RewriteRule ^West-Lake-Hills/?$ /service-areas/west-lake-hills [R=301,L,NC]
   RewriteRule ^Westlake/?$ /service-areas/west-lake-hills [R=301,L,NC]
   RewriteRule ^Tarrytown/?$ /service-areas/austin [R=301,L,NC]
+
+  # === END REDIRECT RULES ===
+
+  # Remove trailing slashes from valid SPA routes (fires only after no redirect rule matched above)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^(.+)/$ /$1 [R=301,L]
 
   # SPA routing - must be last
   RewriteCond %{REQUEST_FILENAME} !-f
