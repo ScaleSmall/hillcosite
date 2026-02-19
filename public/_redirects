@@ -1,0 +1,13 @@
+# -----------------------------------------------------------------------
+# DOMAIN CANONICALIZATION — single-hop for both HTTP and HTTPS apex
+# These rules are evaluated at the CDN edge before Netlify's built-in
+# force-HTTPS upgrade, so http://hillcopaint.com/* hits rule 1 directly
+# and never gets the intermediate https://hillcopaint.com/* hop.
+# -----------------------------------------------------------------------
+http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
+https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
+
+# -----------------------------------------------------------------------
+# SPA FALLBACK — must be last
+# -----------------------------------------------------------------------
+/*  /index.html  200
