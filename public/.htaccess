@@ -106,6 +106,9 @@
   # Old guide URL redirects
   RewriteRule ^guides/painting-costs-round-rock.*$ /guides/painting-costs-austin [R=301,L]
   RewriteRule ^guides/painting-costs-(?!austin).*$ /guides/painting-costs-austin [R=301,L]
+  RewriteRule ^guides/hoa-color-tips-(?!austin).*$ /guides/hoa-color-tips-austin [R=301,L]
+  RewriteRule ^guides/best-paint-texas-heat-.*$ /guides/best-paint-texas-heat [R=301,L]
+  RewriteRule ^guides/how-often-paint-(?!central-texas).*$ /guides/how-often-paint-central-texas [R=301,L]
 
   # Case variations
   RewriteRule ^Austin/?$ /service-areas/austin [R=301,L,NC]
