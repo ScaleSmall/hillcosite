@@ -12,6 +12,11 @@
 
   # === ALL REDIRECT RULES (placed BEFORE trailing slash removal to minimize redirect hops) ===
 
+  # Strip external referral tracking parameters (e.g. ?ref=homeservicebase.com)
+  # These cause "Alternate page with proper canonical tag" in Google Search Console
+  RewriteCond %{QUERY_STRING} ^ref=
+  RewriteRule ^(.*)$ /$1? [R=301,L]
+
   # City-specific redirects (/?$ handles both trailing-slash and no-slash in one hop)
   RewriteRule ^austin/?$ /service-areas/austin [R=301,L]
   RewriteRule ^west-lake-hills/?$ /service-areas/west-lake-hills [R=301,L]
