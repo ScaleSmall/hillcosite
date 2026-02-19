@@ -19,10 +19,10 @@ curl_close($ch);
 if ($httpCode === 200 && $response) {
     echo $response;
 } else {
-    http_response_code(500);
+    http_response_code(200);
     echo '<?xml version="1.0" encoding="UTF-8"?>';
     echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-    echo '<url><loc>https://hillcopaint.com/</loc></url>';
+    echo '<url><loc>https://www.hillcopaint.com/</loc></url>';
     echo '</urlset>';
 }
 ?>

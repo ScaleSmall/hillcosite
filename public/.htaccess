@@ -35,6 +35,26 @@
   RewriteRule ^south-austin/?$ /service-areas/austin [R=301,L]
   RewriteRule ^north-austin/?$ /service-areas/austin [R=301,L]
 
+  # Out-of-service-area city redirects (cities no longer served)
+  RewriteRule ^pflugerville/?$ /service-areas [R=301,L]
+  RewriteRule ^georgetown/?$ /service-areas [R=301,L]
+  RewriteRule ^hutto/?$ /service-areas [R=301,L]
+  RewriteRule ^round-rock/?$ /service-areas [R=301,L]
+  RewriteRule ^round-rock-2/?$ /service-areas [R=301,L]
+  RewriteRule ^leander/?$ /service-areas [R=301,L]
+  RewriteRule ^cedar-park/?$ /service-areas [R=301,L]
+
+  # Old service-area sub-paths (removed locations)
+  RewriteRule ^service-areas/round-rock.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/leander.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/georgetown.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/pflugerville.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/hutto.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/cedar-park.*$ /service-areas [R=301,L]
+
+  # Old geo area URL corrections
+  RewriteRule ^areas/downtown-austin-luxury/old-west-austin$ /areas/downtown-austin-luxury/old-west-austin-central [R=301,L]
+
   # Estimate and quote redirects
   RewriteRule ^get-a-free-estimate/?$ /contact [R=301,L]
   RewriteRule ^estimate/?$ /contact [R=301,L]
@@ -63,6 +83,7 @@
   RewriteRule ^cabinet-painting/?$ /services/cabinet-refinishing [R=301,L]
   RewriteRule ^cabinet-staining/?$ /services/cabinet-refinishing [R=301,L]
   RewriteRule ^commercial-painting/?$ /services/commercial [R=301,L]
+  RewriteRule ^commercial-painting-.*$ /services/commercial [R=301,L]
   RewriteRule ^commercial/?$ /services/commercial [R=301,L]
   RewriteRule ^painting-services/?$ /services [R=301,L]
 
