@@ -113,7 +113,6 @@
   RewriteRule ^industrial-.*$ /services/commercial [R=301,L]
   RewriteRule ^hotel-.*$ /services/commercial [R=301,L]
   RewriteRule ^residential-(fence|deck|porch|garage|stucco)-.*$ /services/exterior-painting [R=301,L]
-  # www /service/* targeted redirects
   RewriteRule ^service/.*interior.*$ /services/interior-painting [R=301,L]
   RewriteRule ^service/.*door-painting.*$ /services/interior-painting [R=301,L]
   RewriteRule ^service/.*commercial.*$ /services/commercial [R=301,L]
@@ -138,8 +137,6 @@
 
   # === END REDIRECT RULES ===
 
-  # Remove trailing slashes from valid SPA routes (fires only after no redirect rule matched above)
-  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_URI} (.+)/$
   RewriteRule ^(.+)/$ /$1 [R=301,L]
 
