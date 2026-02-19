@@ -21,7 +21,8 @@
     "prebuild": "npm run brand:guard",
     "predev": "npm run brand:guard",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "verify": "npm run brand:guard && npm run contrast:verify && npm run typecheck && npm run build"
+    "verify": "npm run brand:guard && npm run contrast:verify && npm run typecheck && npm run build",
+    "package:artifact": "node scripts/package-artifact.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
