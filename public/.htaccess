@@ -2,13 +2,17 @@
   RewriteEngine On
   RewriteBase /
 
-  # Force HTTPS
-  RewriteCond %{HTTPS} off
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # === CANONICAL ORIGIN BLOCK ===
+  # Collapses HTTP upgrade + www canonicalization + trailing slash into a single 301 each.
+  # Rule evaluation order:
+  #   1. Non-www /service/* → full https://www. target (1 hop for https://hillcopaint.com/service/*)
+  #   2. HTTP + trailing slash → https://www. without slash (1 hop: HTTP + non-www + slash)
+  #   3. HTTP + no trailing slash → https://www. (1 hop: HTTP + non-www or HTTP + www)
+  #   4. HTTPS + non-www + trailing slash → https://www. without slash (1 hop)
+  #   5. HTTPS + non-www + no slash → https://www. (1 hop)
+  # After this block every request is guaranteed HTTPS + www + no trailing slash.
 
-  # === ALL REDIRECT RULES (placed BEFORE www redirect to collapse /service/* into single hops) ===
-
-  # Single-hop: non-www /service/* → www specific service page (avoids double-redirect via www rule)
+  # Rule 1: non-www HTTPS /service/* → www canonical service targets
   RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
   RewriteRule ^service/.*interior.*$ https://www.hillcopaint.com/services/interior-painting [L,R=301]
   RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
@@ -22,9 +26,21 @@
   RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
   RewriteRule ^service/.*$ https://www.hillcopaint.com/services/exterior-painting [L,R=301]
 
-  # Force www (canonical domain is www.hillcopaint.com)
+  # Rule 2: any HTTP + trailing slash → https://www. without slash (3 transforms, 1 hop)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.+)/$ https://www.hillcopaint.com/$1 [R=301,L]
+
+  # Rule 3: any HTTP + no trailing slash → https://www. (2 transforms, 1 hop)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [R=301,L]
+
+  # Rule 4: HTTPS + non-www + trailing slash → https://www. without slash (2 transforms, 1 hop)
   RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
-  RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [L,R=301]
+  RewriteRule ^(.+)/$ https://www.hillcopaint.com/$1 [R=301,L]
+
+  # Rule 5: HTTPS + non-www + no trailing slash → https://www. (1 transform, 1 hop)
+  RewriteCond %{HTTP_HOST} ^hillcopaint\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.hillcopaint.com/$1 [R=301,L]
 
   # Strip external referral tracking parameters (e.g. ?ref=homeservicebase.com)
   # These cause "Alternate page with proper canonical tag" in Google Search Console
