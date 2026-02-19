@@ -17,7 +17,7 @@
     "validate:areas": "node scripts/validate-service-areas.mjs",
     "validate:dist": "node scripts/validate-dist-whitelist.mjs",
     "check:areas": "npm run validate:areas && npm run build && npm run validate:dist",
-    "postbuild": "node scripts/sync-htaccess.mjs",
+    "postbuild": "node scripts/sync-htaccess.mjs && node scripts/verify-htaccess.mjs",
     "prebuild": "npm run brand:guard",
     "predev": "npm run brand:guard",
     "typecheck": "tsc -p tsconfig.json --noEmit",
