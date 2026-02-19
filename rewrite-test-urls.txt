@@ -1,0 +1,45 @@
+# Canonical URLs (should return 200, no redirect)
+https://www.hillcopaint.com/
+https://www.hillcopaint.com/about
+https://www.hillcopaint.com/service-areas
+https://www.hillcopaint.com/services
+https://www.hillcopaint.com/services/commercial
+https://www.hillcopaint.com/guides/painting-costs-austin
+
+# Trailing slash variants (should 301 once)
+https://www.hillcopaint.com/about/
+https://www.hillcopaint.com/service-areas/
+https://www.hillcopaint.com/services/
+
+# Non-www origin (should 301 once)
+https://hillcopaint.com/about
+https://hillcopaint.com/service-areas
+
+# HTTP origin (should 301 once)
+http://www.hillcopaint.com/about
+http://hillcopaint.com/about
+
+# Legacy city routes (should 301 once to service-areas)
+http://hillcopaint.com/round-rock/
+https://www.hillcopaint.com/round-rock
+https://hillcopaint.com/pflugerville/
+
+# Legacy service routes (should 301 once to correct service page)
+http://hillcopaint.com/service/garage-painting/
+https://hillcopaint.com/service/interior-house-painting/
+https://www.hillcopaint.com/service/commercial-exterior/
+https://www.hillcopaint.com/service/cabinet-painting/
+
+# Old guide variants
+https://www.hillcopaint.com/guides/painting-costs-round-rock
+https://hillcopaint.com/guides/hoa-color-tips-dallas
+https://hillcopaint.com/guides/how-often-paint-austin-home
+
+# Query param stripping
+https://hillcopaint.com/?ref=homeservicebase.com
+https://www.hillcopaint.com/about?ref=xyz
+
+# Edge cases
+https://www.hillcopaint.com/services/interior-painting
+https://www.hillcopaint.com/services/interior-painting/
+https://www.hillcopaint.com/nonexistent-page
