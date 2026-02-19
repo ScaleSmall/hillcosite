@@ -91,14 +91,25 @@
   RewriteRule ^residential-interior-.*$ /services/interior-painting [R=301,L]
   RewriteRule ^residential-exterior-.*$ /services/exterior-painting [R=301,L]
   RewriteRule ^residential-cabinet-.*$ /services/cabinet-refinishing [R=301,L]
+  RewriteRule ^residential-painting.*$ /services [R=301,L]
+  RewriteRule ^residential-building-painting.*$ /services [R=301,L]
   RewriteRule ^commercial-interior-.*$ /services/commercial [R=301,L]
   RewriteRule ^commercial-exterior-.*$ /services/commercial [R=301,L]
+  RewriteRule ^commercial-building-painting.*$ /services/commercial [R=301,L]
   RewriteRule ^industrial-.*$ /services/commercial [R=301,L]
   RewriteRule ^hotel-.*$ /services/commercial [R=301,L]
   RewriteRule ^residential-(fence|deck|porch|garage|stucco)-.*$ /services [R=301,L]
   RewriteRule ^service/.*$ /services [R=301,L]
   RewriteRule ^services/residential.*$ /services [R=301,L]
   RewriteRule ^services/commercial[^-].*$ /services/commercial [R=301,L]
+
+  # Old service-area sub-paths not covered by city rules
+  RewriteRule ^service-areas/taylor-hutto.*$ /service-areas [R=301,L]
+  RewriteRule ^service-areas/wells-branch.*$ /service-areas [R=301,L]
+
+  # Old guide URL redirects
+  RewriteRule ^guides/painting-costs-round-rock.*$ /guides/painting-costs-austin [R=301,L]
+  RewriteRule ^guides/painting-costs-(?!austin).*$ /guides/painting-costs-austin [R=301,L]
 
   # Case variations
   RewriteRule ^Austin/?$ /service-areas/austin [R=301,L,NC]
