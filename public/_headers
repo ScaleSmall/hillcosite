@@ -5,7 +5,6 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Link: <https://www.hillcopaint.com>; rel="canonical"
 
 # Noindex utility pages via X-Robots-Tag (more reliable than meta tags)
 /search

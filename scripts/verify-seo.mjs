@@ -25,6 +25,26 @@ function run() {
   const passes = [];
   const failures = [];
 
+  const headersPath = resolve(__dirname, '../public/_headers');
+  if (!existsSync(headersPath)) {
+    failures.push('public/_headers not found');
+  } else {
+    const lines = readFileSync(headersPath, 'utf-8').split('\n');
+    const badLines = lines
+      .map((line, i) => ({ line, num: i + 1 }))
+      .filter(({ line }) => /rel=["']canonical["']/i.test(line));
+
+    if (badLines.length > 0) {
+      badLines.forEach(({ line, num }) =>
+        failures.push(
+          `public/_headers line ${num} contains a global canonical HTTP header — REMOVE IT: ${line.trim()}`
+        )
+      );
+    } else {
+      passes.push('public/_headers contains no Link rel="canonical" HTTP header (correct)');
+    }
+  }
+
   if (!existsSync(distPath)) {
     console.error('FAIL: dist/ not found — run npm run build first.');
     process.exit(1);
