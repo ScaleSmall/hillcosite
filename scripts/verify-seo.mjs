@@ -67,11 +67,11 @@ function run() {
     }
 
     if (hasStaticRobots) {
-      passes.push('Robots <meta name="robots"> found in static dist/index.html');
-    } else {
-      passes.push(
-        'INFO: No static robots meta in dist/index.html — runtime-inserted via react-helmet-async (expected)'
+      failures.push(
+        'dist/index.html contains a static <meta name="robots"> — this causes duplicate robots tags on every page. Remove it from index.html and let SEO.tsx control it.'
       );
+    } else {
+      passes.push('dist/index.html has no static robots meta — correctly controlled by SEO.tsx at runtime');
     }
   }
 

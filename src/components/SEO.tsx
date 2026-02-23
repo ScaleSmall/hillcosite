@@ -78,7 +78,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   // while still allowing the crawler to follow links.
   const robotsContent = hasRefParam
     ? 'noindex, follow'
-    : String(robots || 'index, follow');
+    : String(robots || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
 
   const organizationSchema = {
     '@context': 'https://schema.org',
