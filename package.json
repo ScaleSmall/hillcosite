@@ -23,7 +23,8 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "verify": "npm run brand:guard && npm run contrast:verify && npm run typecheck && npm run build",
     "package:artifact": "node scripts/package-artifact.mjs",
-    "export:clean": "node scripts/prepare-export.mjs && node scripts/verify-no-dist.mjs"
+    "export:clean": "node scripts/prepare-export.mjs && node scripts/verify-no-dist.mjs",
+    "verify:redirects": "node scripts/verify-redirects.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

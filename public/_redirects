@@ -8,44 +8,6 @@ http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
 https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 
 # -----------------------------------------------------------------------
-# TRAILING SLASH REMOVAL — canonical pages
-# React Router v6 does not normalise trailing slashes, so /about/ would
-# fall through to the NotFound component and produce a soft-404.
-# -----------------------------------------------------------------------
-/about/                                /about                                301
-/services/                             /services                             301
-/services/interior-painting/           /services/interior-painting           301
-/services/exterior-painting/           /services/exterior-painting           301
-/services/cabinet-refinishing/         /services/cabinet-refinishing         301
-/services/commercial/                  /services/commercial                  301
-/gallery/                              /gallery                              301
-/testimonials/                         /testimonials                         301
-/faq/                                  /faq                                  301
-/service-areas/                        /service-areas                        301
-/service-areas/austin/                 /service-areas/austin                 301
-/service-areas/west-lake-hills/        /service-areas/west-lake-hills        301
-/service-areas/tarrytown/              /service-areas/tarrytown              301
-/service-areas/northwest-hills/        /service-areas/northwest-hills        301
-/service-areas/west-lake-highlands/    /service-areas/west-lake-highlands    301
-/service-areas/lakeway/                /service-areas/lakeway                301
-/color-consultation/                   /color-consultation                   301
-/contact/                              /contact                              301
-/financing/                            /financing                            301
-/pre-approval/                         /pre-approval                         301
-/blog/                                 /blog                                 301
-/privacy/                              /privacy                              301
-/terms/                                /terms                                301
-/eula/                                 /eula                                 301
-/sitemap/                              /sitemap                              301
-/do-not-sell/                          /do-not-sell                          301
-/thank-you/                            /thank-you                            301
-/search/                               /search                               301
-/guides/painting-costs-austin/         /guides/painting-costs-austin         301
-/guides/best-paint-texas-heat/         /guides/best-paint-texas-heat         301
-/guides/hoa-color-tips-austin/         /guides/hoa-color-tips-austin         301
-/guides/how-often-paint-central-texas/ /guides/how-often-paint-central-texas 301
-
-# -----------------------------------------------------------------------
 # BROKEN AREA URL FIX
 # The old-west-austin slug was renamed to old-west-austin-central.
 # -----------------------------------------------------------------------

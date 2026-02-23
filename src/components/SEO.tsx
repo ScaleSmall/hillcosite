@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { businessConfig } from '../config/business';
+import { useRefParamGuard } from '../hooks/useRefParamGuard';
 
 interface SEOProps {
   title: string;
@@ -43,11 +44,15 @@ interface SEOProps {
 }
 
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating }: SEOProps) => {
+  const hasRefParam = useRefParamGuard();
   const baseUrl = 'https://www.hillcopaint.com';
-  // Ensure canonical URL matches sitemap format exactly (no trailing slash unless root)
-  // Only compute canonicalStr if canonical prop is provided
-  const canonicalStr = canonical
-    ? (canonical === '/' ? `${baseUrl}/` : `${baseUrl}${canonical}`)
+
+  // Build canonical from prop; if not supplied, derive from current pathname (no search/hash).
+  const resolvedCanonical = canonical ?? (
+    typeof window !== 'undefined' ? window.location.pathname : null
+  );
+  const canonicalStr = resolvedCanonical
+    ? (resolvedCanonical === '/' ? `${baseUrl}/` : `${baseUrl}${resolvedCanonical}`)
     : null;
 
   // Development mode: Check for duplicate canonical tags
@@ -69,8 +74,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   // Ensure description is optimized for length (150-155 chars ideal) - STRICT
   const optimizedDescription = String(description).length > 155 ? String(description).slice(0, 152) + '...' : String(description);
 
-  // Ensure robots is always a string
-  const robotsContent = String(robots || "index, follow");
+  // When a tracking ?ref= param is present, suppress indexing of this URL variant
+  // while still allowing the crawler to follow links.
+  const robotsContent = hasRefParam
+    ? 'noindex, follow'
+    : String(robots || 'index, follow');
 
   const organizationSchema = {
     '@context': 'https://schema.org',
