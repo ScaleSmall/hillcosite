@@ -1,6 +1,18 @@
-import { readFileSync, existsSync, readdirSync } from 'fs';
-import { resolve, dirname } from 'path';
+import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
+import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+
+function walkHtmlFiles(dir, results = []) {
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) {
+      walkHtmlFiles(full, results);
+    } else if (entry.endsWith('.html')) {
+      results.push(full);
+    }
+  }
+  return results;
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -56,7 +68,6 @@ function run() {
   } else {
     const html = readFileSync(indexHtml, 'utf-8');
     const hasStaticCanonical = /<link[^>]+rel=["']canonical["']/i.test(html);
-    const hasStaticRobots = /<meta[^>]+name=["']robots["']/i.test(html);
 
     if (hasStaticCanonical) {
       passes.push('Canonical <link rel="canonical"> found in static dist/index.html (SSR-injected)');
@@ -65,14 +76,25 @@ function run() {
         'INFO: No static canonical in dist/index.html — this SPA inserts canonical at runtime via react-helmet-async (expected)'
       );
     }
+  }
 
-    if (hasStaticRobots) {
-      failures.push(
-        'dist/index.html contains a static <meta name="robots"> — this causes duplicate robots tags on every page. Remove it from index.html and let SEO.tsx control it.'
-      );
-    } else {
-      passes.push('dist/index.html has no static robots meta — correctly controlled by SEO.tsx at runtime');
+  // Scan EVERY HTML file in dist/ for a static robots meta tag
+  const allHtmlFiles = walkHtmlFiles(distPath);
+  const robotsViolations = [];
+  for (const filePath of allHtmlFiles) {
+    const html = readFileSync(filePath, 'utf-8');
+    if (/<meta[^>]+name=["']robots["']/i.test(html)) {
+      const rel = filePath.replace(distPath, 'dist');
+      const line = html.split('\n').find(l => /<meta[^>]+name=["']robots["']/i.test(l)) || '';
+      robotsViolations.push(`  ${rel}: ${line.trim().slice(0, 120)}`);
     }
+  }
+  if (robotsViolations.length > 0) {
+    failures.push(
+      `${robotsViolations.length} HTML file(s) contain a static <meta name="robots"> — causes duplicate tags; remove from HTML and let SEO.tsx own it:\n${robotsViolations.join('\n')}`
+    );
+  } else {
+    passes.push(`All ${allHtmlFiles.length} dist HTML file(s) are free of static robots meta — correctly controlled by SEO.tsx at runtime`);
   }
 
   const jsDir = resolve(distPath, 'assets/js');
