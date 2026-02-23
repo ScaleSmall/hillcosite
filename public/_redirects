@@ -8,6 +8,193 @@ http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
 https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 
 # -----------------------------------------------------------------------
+# TRAILING SLASH REMOVAL — canonical pages
+# React Router v6 does not normalise trailing slashes, so /about/ would
+# fall through to the NotFound component and produce a soft-404.
+# -----------------------------------------------------------------------
+/about/                                /about                                301
+/services/                             /services                             301
+/services/interior-painting/           /services/interior-painting           301
+/services/exterior-painting/           /services/exterior-painting           301
+/services/cabinet-refinishing/         /services/cabinet-refinishing         301
+/services/commercial/                  /services/commercial                  301
+/gallery/                              /gallery                              301
+/testimonials/                         /testimonials                         301
+/faq/                                  /faq                                  301
+/service-areas/                        /service-areas                        301
+/service-areas/austin/                 /service-areas/austin                 301
+/service-areas/west-lake-hills/        /service-areas/west-lake-hills        301
+/service-areas/tarrytown/              /service-areas/tarrytown              301
+/service-areas/northwest-hills/        /service-areas/northwest-hills        301
+/service-areas/west-lake-highlands/    /service-areas/west-lake-highlands    301
+/service-areas/lakeway/                /service-areas/lakeway                301
+/color-consultation/                   /color-consultation                   301
+/contact/                              /contact                              301
+/financing/                            /financing                            301
+/pre-approval/                         /pre-approval                         301
+/blog/                                 /blog                                 301
+/privacy/                              /privacy                              301
+/terms/                                /terms                                301
+/eula/                                 /eula                                 301
+/sitemap/                              /sitemap                              301
+/do-not-sell/                          /do-not-sell                          301
+/thank-you/                            /thank-you                            301
+/search/                               /search                               301
+/guides/painting-costs-austin/         /guides/painting-costs-austin         301
+/guides/best-paint-texas-heat/         /guides/best-paint-texas-heat         301
+/guides/hoa-color-tips-austin/         /guides/hoa-color-tips-austin         301
+/guides/how-often-paint-central-texas/ /guides/how-often-paint-central-texas 301
+
+# -----------------------------------------------------------------------
+# BROKEN AREA URL FIX
+# The old-west-austin slug was renamed to old-west-austin-central.
+# -----------------------------------------------------------------------
+/areas/downtown-austin-luxury/old-west-austin    /areas/downtown-austin-luxury/old-west-austin-central  301
+/areas/downtown-austin-luxury/old-west-austin/   /areas/downtown-austin-luxury/old-west-austin-central  301
+
+# -----------------------------------------------------------------------
+# CITY / LEGACY CITY PAGE REDIRECTS → service areas hub
+# -----------------------------------------------------------------------
+/pflugerville      /service-areas  301
+/pflugerville/     /service-areas  301
+/georgetown        /service-areas  301
+/georgetown/       /service-areas  301
+/hutto             /service-areas  301
+/hutto/            /service-areas  301
+/round-rock        /service-areas  301
+/round-rock/       /service-areas  301
+/round-rock-2      /service-areas  301
+/round-rock-2/     /service-areas  301
+/leander           /service-areas  301
+/leander/          /service-areas  301
+/cedar-park        /service-areas  301
+/cedar-park/       /service-areas  301
+/austin            /service-areas/austin  301
+/austin/           /service-areas/austin  301
+
+# -----------------------------------------------------------------------
+# OLD /service-areas/* SUBPATHS → hub (cities not served as subpages)
+# -----------------------------------------------------------------------
+/service-area                              /service-areas  301
+/service-area/                             /service-areas  301
+/service-areas/round-rock                  /service-areas  301
+/service-areas/round-rock/                 /service-areas  301
+/service-areas/round-rock-georgetown       /service-areas  301
+/service-areas/round-rock-georgetown/      /service-areas  301
+/service-areas/leander                     /service-areas  301
+/service-areas/leander/                    /service-areas  301
+/service-areas/taylor-hutto                /service-areas  301
+/service-areas/taylor-hutto/               /service-areas  301
+/service-areas/wells-branch                /service-areas  301
+/service-areas/wells-branch/               /service-areas  301
+/service-areas/pflugerville                /service-areas  301
+/service-areas/pflugerville/               /service-areas  301
+/service-areas/pflugerville-wells-branch   /service-areas  301
+/service-areas/pflugerville-wells-branch/  /service-areas  301
+/service-areas/cedar-park                  /service-areas  301
+/service-areas/cedar-park/                 /service-areas  301
+
+# -----------------------------------------------------------------------
+# OLD /service/* PATTERNS (singular — legacy CMS paths)
+# Specific entries first so they win over the catch-all below.
+# -----------------------------------------------------------------------
+/service/living-room-painting                        /services/interior-painting  301
+/service/living-room-painting/                       /services/interior-painting  301
+/service/office-painting-round-rock                  /services/commercial  301
+/service/office-painting-round-rock/                 /services/commercial  301
+/service/commercial-kitchen-painting-round-rock      /services/commercial  301
+/service/commercial-kitchen-painting-round-rock/     /services/commercial  301
+/service/industrial-facility-painting-round-rock     /services/commercial  301
+/service/industrial-facility-painting-round-rock/    /services/commercial  301
+/service/hotel-painting-round-rock                   /services/commercial  301
+/service/hotel-painting-round-rock/                  /services/commercial  301
+/service/house-painting-round-rock                   /services  301
+/service/house-painting-round-rock/                  /services  301
+/service/residential-deck-painting-round-rock        /services/exterior-painting  301
+/service/residential-deck-painting-round-rock/       /services/exterior-painting  301
+/service/residential-deck-painting                   /services/exterior-painting  301
+/service/residential-deck-painting/                  /services/exterior-painting  301
+/service/residential-fence-painting-round-rock       /services/exterior-painting  301
+/service/residential-fence-painting-round-rock/      /services/exterior-painting  301
+/service/residential-fence-painting                  /services/exterior-painting  301
+/service/residential-fence-painting/                 /services/exterior-painting  301
+/service/residential-fence-staining-round-rock       /services/exterior-painting  301
+/service/residential-fence-staining-round-rock/      /services/exterior-painting  301
+/service/residential-fence-staining                  /services/exterior-painting  301
+/service/residential-fence-staining/                 /services/exterior-painting  301
+/service/residential-porch-painting-round-rock       /services/exterior-painting  301
+/service/residential-porch-painting-round-rock/      /services/exterior-painting  301
+/service/residential-garage-door-painting-round-rock /services  301
+/service/residential-garage-door-painting-round-rock/ /services  301
+/service/residential-stucco-painting                 /services/exterior-painting  301
+/service/residential-stucco-painting/                /services/exterior-painting  301
+/service/garage-painting-round-rock                  /services  301
+/service/garage-painting-round-rock/                 /services  301
+/service/mobile-home-painting-round-rock             /services  301
+/service/mobile-home-painting-round-rock/            /services  301
+/service/custom-home-painting                        /services  301
+/service/custom-home-painting/                       /services  301
+/service/*                                           /services  301
+
+# -----------------------------------------------------------------------
+# OLD SERVICE PAGE PATTERNS (no /services/ prefix, various legacy forms)
+# NOTE: /interior-painting-tarrytown etc. are VALID canonical routes and
+# are intentionally NOT listed here — the SPA fallback serves them.
+# -----------------------------------------------------------------------
+/interior-painting                               /services/interior-painting  301
+/interior-painting/                              /services/interior-painting  301
+/interior-painting-leander                       /services/interior-painting  301
+/interior-painting-leander/                      /services/interior-painting  301
+/exterior-painting                               /services/exterior-painting  301
+/exterior-painting/                              /services/exterior-painting  301
+/cabinet-painting                                /services/cabinet-refinishing  301
+/cabinet-painting/                               /services/cabinet-refinishing  301
+/commercial-painting                             /services/commercial  301
+/commercial-painting/                            /services/commercial  301
+/commercial-interior-painting                    /services/commercial  301
+/commercial-interior-painting/                   /services/commercial  301
+/residential-interior-painting                   /services/interior-painting  301
+/residential-interior-painting/                  /services/interior-painting  301
+/residential-exterior-painting                   /services/exterior-painting  301
+/residential-exterior-painting/                  /services/exterior-painting  301
+/residential-interior-painting-round-rock        /services/interior-painting  301
+/residential-interior-painting-round-rock/       /services/interior-painting  301
+/residential-exterior-painting-round-rock        /services/exterior-painting  301
+/residential-exterior-painting-round-rock/       /services/exterior-painting  301
+/residential-painting                            /services  301
+/residential-painting/                           /services  301
+/residential-painting-round-rock                 /services  301
+/residential-painting-round-rock/                /services  301
+/residential-building-painting                   /services  301
+/residential-building-painting/                  /services  301
+/residential-building-painting-round-rock        /services  301
+/residential-building-painting-round-rock/       /services  301
+/commercial-building-painting                    /services/commercial  301
+/commercial-building-painting/                   /services/commercial  301
+/commercial-building-painting-round-rock         /services/commercial  301
+/commercial-building-painting-round-rock/        /services/commercial  301
+/commercial-painting-round-rock                  /services/commercial  301
+/commercial-painting-round-rock/                 /services/commercial  301
+/commercial-interior-painting-round-rock         /services/commercial  301
+/commercial-interior-painting-round-rock/        /services/commercial  301
+
+# -----------------------------------------------------------------------
+# GUIDE VARIANT REDIRECTS → Austin canonical guides
+# -----------------------------------------------------------------------
+/guides/painting-costs-round-rock        /guides/painting-costs-austin  301
+/guides/painting-costs-round-rock/       /guides/painting-costs-austin  301
+
+# -----------------------------------------------------------------------
+# MISSING UTILITY PAGE REDIRECTS
+# -----------------------------------------------------------------------
+/privacy-policy              /privacy  301
+/privacy-policy/             /privacy  301
+/free-estimate               /contact  301
+/free-estimate/              /contact  301
+/get-a-free-estimate         /contact  301
+/get-a-free-estimate/        /contact  301
+
+# -----------------------------------------------------------------------
 # SPA FALLBACK — must be last
 # -----------------------------------------------------------------------
 /*  /index.html  200
