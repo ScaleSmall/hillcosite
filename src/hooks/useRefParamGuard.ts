@@ -5,15 +5,25 @@ export function useRefParamGuard(): boolean {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    if (params.has('ref')) {
-      setHasRefParam(true);
-      window.history.replaceState(
-        {},
-        '',
-        window.location.origin + window.location.pathname
-      );
-    }
+
+    const url = new URL(window.location.href);
+
+    const refKeys = [...url.searchParams.keys()].filter(
+      key => key.toLowerCase() === 'ref'
+    );
+
+    if (refKeys.length === 0) return;
+
+    refKeys.forEach(key => url.searchParams.delete(key));
+
+    const remaining = url.searchParams.toString();
+    const newUrl =
+      url.pathname +
+      (remaining ? '?' + remaining : '') +
+      url.hash;
+
+    window.history.replaceState({}, '', newUrl);
+    setHasRefParam(true);
   }, []);
 
   return hasRefParam;

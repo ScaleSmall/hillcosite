@@ -24,7 +24,8 @@
     "verify": "npm run brand:guard && npm run contrast:verify && npm run typecheck && npm run build",
     "package:artifact": "node scripts/package-artifact.mjs",
     "export:clean": "node scripts/prepare-export.mjs && node scripts/verify-no-dist.mjs",
-    "verify:redirects": "node scripts/verify-redirects.mjs"
+    "verify:redirects": "node scripts/verify-redirects.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",

@@ -9,6 +9,12 @@ import SkipLink from './components/SkipLink';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import { useTrailingSlashGuard } from './hooks/useTrailingSlashGuard';
+
+function RouteGuards() {
+  useTrailingSlashGuard();
+  return null;
+}
 
 // Lazy load non-critical pages for better performance
 const About = safeLazy(() => import('./pages/About'), "About");
@@ -133,6 +139,7 @@ function App() {
     <HelmetProvider>
       <Router>
         <ErrorBoundary>
+        <RouteGuards />
         <SkipLink />
         <ScrollToTop />
         <div className="min-h-screen bg-white">
