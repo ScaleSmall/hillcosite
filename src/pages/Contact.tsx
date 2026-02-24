@@ -746,7 +746,7 @@ const Contact = () => {
             <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Our Service Area</h3>
             <p className="text-brand-gray-600">Serving Austin and surrounding communities</p>
           </div>
-          <GoogleMapEmbed className="max-w-4xl mx-auto" />
+          <GoogleMapEmbed className="max-w-4xl mx-auto" query="5000 Plaza on the Lake, Suite 100 #415, Austin, TX 78746" />
         </div>
       </section>
 

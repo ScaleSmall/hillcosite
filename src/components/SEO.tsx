@@ -102,10 +102,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     email: 'info@hillcopaint.com',
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Austin',
-      addressRegion: 'TX',
-      postalCode: '78681',
-      addressCountry: 'US'
+      streetAddress: businessConfig.address.streetAddress,
+      addressLocality: businessConfig.address.addressLocality,
+      addressRegion: businessConfig.address.addressRegion,
+      postalCode: businessConfig.address.postalCode,
+      addressCountry: businessConfig.address.addressCountry
     },
     sameAs: [
       'https://www.facebook.com/Hillcopaint',
@@ -128,16 +129,16 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '',
-      addressLocality: 'Austin',
-      addressRegion: 'TX',
-      postalCode: '78681',
-      addressCountry: 'US'
+      streetAddress: businessConfig.address.streetAddress,
+      addressLocality: businessConfig.address.addressLocality,
+      addressRegion: businessConfig.address.addressRegion,
+      postalCode: businessConfig.address.postalCode,
+      addressCountry: businessConfig.address.addressCountry
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 30.2672,
-      longitude: -97.7431
+      latitude: parseFloat(businessConfig.geo.latitude),
+      longitude: parseFloat(businessConfig.geo.longitude)
     },
     areaServed: [
       { '@type': 'City', name: 'Austin' },
@@ -366,8 +367,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {/* GEO Meta Tags for Local SEO */}
       <meta name="geo.region" content="US-TX" />
       <meta name="geo.placename" content={geoPlacename || 'Austin'} />
-      <meta name="geo.position" content="30.2672;-97.7431" />
-      <meta name="ICBM" content="30.2672, -97.7431" />
+      <meta name="geo.position" content={`${businessConfig.geo.latitude};${businessConfig.geo.longitude}`} />
+      <meta name="ICBM" content={`${businessConfig.geo.latitude}, ${businessConfig.geo.longitude}`} />
 
       <script type="application/ld+json">
         {JSON.stringify(organizationSchema)}

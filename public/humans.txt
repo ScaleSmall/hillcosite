@@ -1,7 +1,7 @@
 /* TEAM */
 Hill Country Painting Team
 Site: https://www.hillcopaint.com
-Location: Austin, Texas
+Address: 5000 Plaza on the Lake, Suite 100 #415, Austin, TX 78746
 
 /* SITE */
 Last update: 2026/01/02

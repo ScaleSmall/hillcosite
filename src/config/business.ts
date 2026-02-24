@@ -12,13 +12,14 @@ export const businessConfig = {
   phone: '(512) 240-2246',
   email: 'info@hillcopaint.com',
 
-  // Address - City/State only (no street address per owner decision)
   address: {
+    streetAddress: '5000 Plaza on the Lake, Suite 100 #415',
     addressLocality: 'Austin',
     addressRegion: 'TX',
+    postalCode: '78746',
     addressCountry: 'US',
-    displayShort: 'Austin, TX',
-    displayFull: 'Austin, TX Metro Area'
+    displayShort: 'Austin, TX 78746',
+    displayFull: '5000 Plaza on the Lake, Ste 100 #415, Austin, TX 78746'
   },
 
   // Service Area
@@ -57,10 +58,9 @@ export const businessConfig = {
   logo: '/brand/hill-country-painting-logo-primary.png',
   googleBusinessProfileUrl: 'https://share.google/nnJ8rkOVgGiwe0ys3',
 
-  // Geo Coordinates (Austin, TX)
   geo: {
-    latitude: '30.2672',
-    longitude: '-97.7431'
+    latitude: '30.3337',
+    longitude: '-97.8166'
   }
 } as const;
 
@@ -82,10 +82,7 @@ export const hasValidRating = (ratingValue?: number | string) => {
  */
 export const getDisplayAddress = (format: 'short' | 'full' = 'short') => {
   if (format === 'full') {
-    // Return full address only if it's been configured
-    return businessConfig.address.displayFull.includes('[')
-      ? businessConfig.address.displayShort
-      : businessConfig.address.displayFull;
+    return businessConfig.address.displayFull;
   }
   return businessConfig.address.displayShort;
 };

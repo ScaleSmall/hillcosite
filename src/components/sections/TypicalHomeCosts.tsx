@@ -63,8 +63,10 @@ const TypicalHomeCosts = () => {
             "telephone": "(512) 240-2246",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "5000 Plaza on the Lake, Suite 100 #415",
               "addressLocality": "Austin",
               "addressRegion": "TX",
+              "postalCode": "78746",
               "addressCountry": "US"
             }
           },
@@ -96,8 +98,10 @@ const TypicalHomeCosts = () => {
             "telephone": "(512) 240-2246",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "5000 Plaza on the Lake, Suite 100 #415",
               "addressLocality": "Austin",
               "addressRegion": "TX",
+              "postalCode": "78746",
               "addressCountry": "US"
             }
           },
@@ -129,8 +133,10 @@ const TypicalHomeCosts = () => {
             "telephone": "(512) 240-2246",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "5000 Plaza on the Lake, Suite 100 #415",
               "addressLocality": "Austin",
               "addressRegion": "TX",
+              "postalCode": "78746",
               "addressCountry": "US"
             }
           },
@@ -162,8 +168,10 @@ const TypicalHomeCosts = () => {
             "telephone": "(512) 240-2246",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "5000 Plaza on the Lake, Suite 100 #415",
               "addressLocality": "Austin",
               "addressRegion": "TX",
+              "postalCode": "78746",
               "addressCountry": "US"
             }
           },
@@ -195,8 +203,10 @@ const TypicalHomeCosts = () => {
             "telephone": "(512) 240-2246",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "5000 Plaza on the Lake, Suite 100 #415",
               "addressLocality": "Austin",
               "addressRegion": "TX",
+              "postalCode": "78746",
               "addressCountry": "US"
             }
           },
@@ -228,8 +238,10 @@ const TypicalHomeCosts = () => {
             "telephone": "(512) 240-2246",
             "address": {
               "@type": "PostalAddress",
+              "streetAddress": "5000 Plaza on the Lake, Suite 100 #415",
               "addressLocality": "Austin",
               "addressRegion": "TX",
+              "postalCode": "78746",
               "addressCountry": "US"
             }
           },

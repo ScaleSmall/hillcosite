@@ -23,7 +23,7 @@ const NAPMapSection = () => {
                   <h3 className="font-semibold text-brand-gray-900 mb-1">Service Area</h3>
                   <p className="text-brand-gray-600">
                     {businessConfig.name}<br />
-                    Serving {businessConfig.address.displayFull}
+                    Serving {businessConfig.serviceArea}
                   </p>
                 </div>
               </div>
@@ -76,7 +76,7 @@ const NAPMapSection = () => {
 
           <div>
             <GoogleMapEmbed
-              query="Austin, TX"
+              query={`${businessConfig.address.streetAddress}, ${businessConfig.address.displayShort}`}
               title={`${businessConfig.name} - Service Area Map`}
               height="450"
             />
