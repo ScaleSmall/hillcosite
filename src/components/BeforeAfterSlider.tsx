@@ -25,6 +25,8 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({
         sliderLineColor="#0066B2"
         handleSize={40}
         hover={true}
+        leftImageCss={{ objectFit: 'contain' } as React.CSSProperties}
+        rightImageCss={{ objectFit: 'contain' } as React.CSSProperties}
       />
 
       {/* Before Label */}

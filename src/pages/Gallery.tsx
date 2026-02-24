@@ -257,7 +257,7 @@ const Gallery = () => {
                     <img
                       src={photo.image_url}
                       alt={photo.alt_text}
-                      className="w-full h-56 lg:h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
+                      className="w-full max-h-[320px] object-contain bg-brand-gray-50 transition-transform duration-300 group-hover:opacity-95"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -277,7 +277,7 @@ const Gallery = () => {
                       alt={project.title}
                       width="400"
                       height="300"
-                      className="w-full h-56 lg:h-64 object-cover transition-transform duration-300"
+                      className="w-full max-h-[320px] object-contain bg-brand-gray-50 transition-transform duration-300"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
                       location={{
                         name: `${project.location}, Austin, TX`,
@@ -338,7 +338,6 @@ const Gallery = () => {
                       beforeImage={photo.image_url}
                       afterImage={photo.image_url}
                       alt={photo.alt_text}
-                      className="aspect-video"
                     />
                   </div>
                   <div className="p-6 lg:p-8">
@@ -472,7 +471,7 @@ const Gallery = () => {
                     <img
                       src={photo.image_url}
                       alt={photo.alt_text}
-                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
+                      className="w-full max-h-[480px] object-contain bg-brand-gray-50 transition-transform duration-300 group-hover:opacity-95"
                       loading="lazy"
                     />
                   </div>
@@ -524,7 +523,7 @@ const Gallery = () => {
                           <img
                             src={photo.image_url}
                             alt={photo.alt_text}
-                            className="w-full h-64 object-cover transition-transform duration-300 group-hover:opacity-95"
+                            className="w-full max-h-[480px] object-contain bg-brand-gray-50 transition-transform duration-300 group-hover:opacity-95"
                             loading="lazy"
                           />
                         </div>
@@ -569,7 +568,7 @@ const Gallery = () => {
                     alt="Kitchen cabinet painting West Lake Hills - Hill Country Painting Austin featured project"
                     width="600"
                     height="400"
-                    className="w-full h-full object-cover"
+                    className="w-full object-contain bg-brand-gray-50"
                     location={{
                       name: 'West Lake Hills, Austin, TX',
                       latitude: 30.2711,
@@ -616,7 +615,7 @@ const Gallery = () => {
                       alt={project.title}
                       width="800"
                       height="600"
-                      className="w-full h-full min-h-[400px] lg:min-h-[500px] object-cover"
+                      className="w-full object-contain bg-brand-gray-50"
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       location={{
                         name: 'Austin, TX',
