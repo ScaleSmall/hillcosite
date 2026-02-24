@@ -74,7 +74,7 @@ const About = () => {
         description="Hill Country Painting was established to provide straightforward, professionally managed painting services to Austin homeowners and businesses. Over 15 years, we've built a process that removes uncertainty from painting projects—from initial consultation through final walkthrough."
         benefits={[
           { text: 'Austin-based with knowledge of local conditions and requirements' },
-          { text: '15+ years serving the Austin metro area' },
+          { text: '15+ years serving Austin, TX' },
           { text: 'Fully insured crew trained in proper procedures' },
           { text: '2-year warranty covering workmanship' },
           { text: 'Clear written estimates with no hidden costs' },

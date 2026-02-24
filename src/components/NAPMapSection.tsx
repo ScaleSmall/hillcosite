@@ -67,7 +67,7 @@ const NAPMapSection = () => {
 
               <div className="pt-6 border-t border-brand-gray-200">
                 <p className="text-brand-gray-600 leading-relaxed">
-                  Serving the Austin metro area with professional painting services.
+                  Serving Austin, TX with professional painting services.
                   Contact us today for a consultation on your project.
                 </p>
               </div>

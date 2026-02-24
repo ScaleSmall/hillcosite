@@ -46,7 +46,7 @@ const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, cu
             {serviceName} by Location
           </h2>
           <p className="text-brand-gray-600">
-            Professional {serviceName.toLowerCase()} services throughout the Austin metro area
+            Professional {serviceName.toLowerCase()} services throughout Austin, TX
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">

@@ -26,7 +26,7 @@ const ServiceAreas = () => {
   const featuredServices = [
     {
       title: 'Interior Painting',
-      description: 'Professional interior painting services available throughout the Austin metro area.',
+      description: 'Professional interior painting services available throughout Austin, TX.',
       image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
       link: '/services/interior-painting'
     },
@@ -70,7 +70,7 @@ const ServiceAreas = () => {
               Greater Austin Area Service Areas
             </h1>
             <p className="text-xl text-brand-gray-600 leading-body">
-              Hill Country Painting proudly serves the Austin metro area with professional residential and commercial painting services. Clean prep, crisp lines, reliable schedules for homes and businesses.
+              Hill Country Painting proudly serves Austin, TX with professional residential and commercial painting services. Clean prep, crisp lines, reliable schedules for homes and businesses.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
@@ -87,7 +87,7 @@ const ServiceAreas = () => {
       {/* Pattern H: Service Areas Grid */}
       <ServiceAreasSection
         title="Austin Areas We Serve"
-        subtitle="Professional painting services throughout the Austin metro area"
+        subtitle="Professional painting services throughout Austin, TX"
         areas={allServiceAreas}
       />
 

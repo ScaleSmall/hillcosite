@@ -23,7 +23,7 @@ export const businessConfig = {
   },
 
   // Service Area
-  serviceArea: 'Austin, TX Metro Area',
+  serviceArea: 'Austin, TX',
 
   // Ratings - Fetched live from GBP via Supabase
   // These static values are fallback only
@@ -34,7 +34,7 @@ export const businessConfig = {
   },
 
   // Business Details
-  description: 'Professional painting contractors serving Austin metro area. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.',
+  description: 'Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.',
   tagline: 'Clean prep. Crisp lines. Reliable schedules.',
 
   // Hours

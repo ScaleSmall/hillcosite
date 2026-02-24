@@ -67,7 +67,7 @@ const routeMetadata = {
   },
   '/services/exterior-painting': {
     title: 'Exterior Painting — Hill Country Painting',
-    description: 'Exterior painting Austin. Durable, weather-resistant finishes. Insured crew. 2-year warranty. Free estimates. Serving Austin metro areas.',
+    description: 'Exterior painting Austin. Durable, weather-resistant finishes. Insured crew. 2-year warranty. Free estimates. Serving Austin, TX.',
     h1: 'Exterior House Painters in Austin, TX',
     content: 'Protect and beautify your home with professional exterior painting. Weather-resistant finishes designed for Texas climate.'
   },
@@ -93,7 +93,7 @@ const routeMetadata = {
     title: 'Customer Reviews — Hill Country Painting',
     description: 'Real reviews from Austin homeowners. See why customers choose Hill Country Painting. 5-star painting contractor reviews.',
     h1: 'What Our Customers Say',
-    content: 'Read real reviews from satisfied customers throughout the Austin metro area. See why homeowners trust Hill Country Painting.'
+    content: 'Read real reviews from satisfied customers throughout Austin, TX. See why homeowners trust Hill Country Painting.'
   },
   '/faq': {
     title: 'FAQ — Hill Country Painting',

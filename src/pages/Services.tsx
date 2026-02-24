@@ -121,7 +121,7 @@ const Services = () => {
       {/* Service Areas */}
       <ServiceAreasSection
         title="Austin Areas We Serve"
-        subtitle="Professional painting services throughout the Austin metro area"
+        subtitle="Professional painting services throughout Austin, TX"
         areas={[
           { name: 'Austin', href: '/service-areas/austin' },
           { name: 'Tarrytown', href: '/service-areas/tarrytown' },
