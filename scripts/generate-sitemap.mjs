@@ -7,18 +7,22 @@ import { createClient } from '@supabase/supabase-js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const envPath = resolve(__dirname, '../.env');
-const envContent = readFileSync(envPath, 'utf-8');
 const envVars = {};
-envContent.split('\n').forEach(line => {
-  const [key, ...valueParts] = line.split('=');
-  if (key && valueParts.length) {
-    envVars[key.trim()] = valueParts.join('=').trim();
-  }
-});
+try {
+  const envPath = resolve(__dirname, '../.env');
+  const envContent = readFileSync(envPath, 'utf-8');
+  envContent.split('\n').forEach(line => {
+    const [key, ...valueParts] = line.split('=');
+    if (key && valueParts.length) {
+      envVars[key.trim()] = valueParts.join('=').trim();
+    }
+  });
+} catch {
+  // .env not present in CI — fall back to process.env
+}
 
-const supabaseUrl = envVars.VITE_SUPABASE_URL;
-const supabaseKey = envVars.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = envVars.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL;
+const supabaseKey = envVars.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
 
 const baseUrl = 'https://www.hillcopaint.com';
 
@@ -79,7 +83,6 @@ const routes = [
   { path: '/guides/hoa-color-tips-austin', changefreq: 'monthly', priority: '0.7' },
   { path: '/guides/how-often-paint-central-texas', changefreq: 'monthly', priority: '0.7' },
   { path: '/financing', changefreq: 'monthly', priority: '0.7' },
-  { path: '/pre-approval', changefreq: 'monthly', priority: '0.7' },
   { path: '/privacy', changefreq: 'yearly', priority: '0.3' },
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },

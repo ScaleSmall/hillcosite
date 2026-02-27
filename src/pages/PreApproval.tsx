@@ -9,6 +9,7 @@ const PreApproval = () => {
         title="Get Pre-Approved for Financing - Hill Country Painting"
         description="Check your financing options with no impact to your credit score. Get pre-approved in minutes for your painting project with Wisetack financing."
         canonical="/pre-approval"
+        robots="noindex, nofollow"
       />
 
       <style dangerouslySetInnerHTML={{ __html: `

@@ -43,21 +43,22 @@ const BlogPost = () => {
       }
 
       try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
         const { data, error } = await supabase
           .from('blog_posts')
           .select('*')
           .eq('slug', slug)
           .eq('published', true)
-          .single();
+          .maybeSingle();
+        clearTimeout(timeout);
 
         if (error || !data) {
-          console.error('Error fetching blog post:', error);
           setNotFound(true);
         } else {
           setPost(data);
         }
-      } catch (err) {
-        console.error('Error:', err);
+      } catch {
         setNotFound(true);
       } finally {
         setLoading(false);
@@ -94,6 +95,7 @@ const BlogPost = () => {
           title="Post Not Found | Hill Country Painting"
           description="The blog post you're looking for could not be found."
           canonical="/blog"
+          robots="noindex, nofollow"
         />
         <div className="min-h-screen flex items-center justify-center bg-brand-gray-50">
           <div className="text-center max-w-md mx-auto px-4">

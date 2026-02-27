@@ -157,6 +157,14 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 /get-a-free-estimate/        /contact  301
 
 # -----------------------------------------------------------------------
+# TRAILING SLASH CANONICALIZATION
+# Strip trailing slashes from all paths (except root "/") before
+# hitting the SPA fallback so Googlebot only indexes the clean URL.
+# Specific rules above take precedence over this catch-all.
+# -----------------------------------------------------------------------
+/:splat/  /:splat  301
+
+# -----------------------------------------------------------------------
 # SPA FALLBACK — must be last
 # -----------------------------------------------------------------------
 /*  /index.html  200
