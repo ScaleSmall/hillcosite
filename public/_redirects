@@ -157,6 +157,25 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 /get-a-free-estimate/        /contact  301
 
 # -----------------------------------------------------------------------
+# TRACKING PARAMETER STRIP (?ref=)
+# Netlify does not execute .htaccess. These rules replace the Apache
+# RewriteCond %{QUERY_STRING} ref= logic that was previously inert.
+# Covers the most common entry paths; all strip the ?ref= param and
+# force the canonical https://www.hillcopaint.com origin in one hop.
+# -----------------------------------------------------------------------
+/?ref=:ref                           https://www.hillcopaint.com/  301
+/about?ref=:ref                      https://www.hillcopaint.com/about  301
+/services?ref=:ref                   https://www.hillcopaint.com/services  301
+/gallery?ref=:ref                    https://www.hillcopaint.com/gallery  301
+/blog?ref=:ref                       https://www.hillcopaint.com/blog  301
+/contact?ref=:ref                    https://www.hillcopaint.com/contact  301
+/testimonials?ref=:ref               https://www.hillcopaint.com/testimonials  301
+/faq?ref=:ref                        https://www.hillcopaint.com/faq  301
+/financing?ref=:ref                  https://www.hillcopaint.com/financing  301
+/service-areas?ref=:ref              https://www.hillcopaint.com/service-areas  301
+/color-consultation?ref=:ref         https://www.hillcopaint.com/color-consultation  301
+
+# -----------------------------------------------------------------------
 # TRAILING SLASH CANONICALIZATION
 # Strip trailing slashes from all paths (except root "/") before
 # hitting the SPA fallback so Googlebot only indexes the clean URL.

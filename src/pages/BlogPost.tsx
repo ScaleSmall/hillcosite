@@ -42,14 +42,16 @@ const BlogPost = () => {
         return;
       }
 
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 8000);
+
       try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 8000);
         const { data, error } = await supabase
           .from('blog_posts')
           .select('*')
           .eq('slug', slug)
           .eq('published', true)
+          .abortSignal(controller.signal)
           .maybeSingle();
         clearTimeout(timeout);
 
@@ -59,6 +61,7 @@ const BlogPost = () => {
           setPost(data);
         }
       } catch {
+        clearTimeout(timeout);
         setNotFound(true);
       } finally {
         setLoading(false);

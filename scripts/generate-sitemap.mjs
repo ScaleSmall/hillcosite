@@ -26,6 +26,12 @@ const supabaseKey = envVars.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_
 
 const baseUrl = 'https://www.hillcopaint.com';
 
+const EXCLUDED_BLOG_SLUGS = new Set([
+  'when-to-repaint-your-austin-home-hill-country-painting',
+  'when-to-repaint-a-home-in-austin-hill-country-painting',
+  'exterior-painting-in-austin-pros-hill-country-painting',
+]);
+
 const geoAreas = [
   { hub: 'steiner-ranch-78732', neighborhoods: ['rob-roy', 'davenport-ranch', 'river-place', 'barclay-place', 'chaparral-cliffside'] },
   { hub: 'west-lake-hills-and-rollingwood', neighborhoods: ['rollingwood', 'west-lake-hills', 'spanish-oaks', 'davenport-ranch-west', 'lake-austin-hills'] },
@@ -115,12 +121,14 @@ async function fetchBlogPosts() {
       return [];
     }
 
-    return (data || []).map(post => ({
-      path: `/blog/${post.slug}`,
-      changefreq: 'weekly',
-      priority: '0.6',
-      lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null
-    }));
+    return (data || [])
+      .filter(post => !EXCLUDED_BLOG_SLUGS.has(post.slug))
+      .map(post => ({
+        path: `/blog/${post.slug}`,
+        changefreq: 'weekly',
+        priority: '0.6',
+        lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null
+      }));
   } catch (err) {
     console.log('  Error fetching blog posts:', err.message);
     return [];

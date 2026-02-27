@@ -25,6 +25,81 @@ interface GalleryPhoto {
   featured: boolean;
 }
 
+const FALLBACK_FEATURED: GalleryPhoto[] = [
+  {
+    id: 'fb-1',
+    image_url: '/exterior-tarrytown.jpg',
+    title: 'Exterior Refresh',
+    description: 'Full exterior repaint with premium weather-resistant finish.',
+    alt_text: 'Exterior house painting Tarrytown Austin by Hill Country Painting',
+    display_order: 1,
+    created_at: '',
+    is_before_after: false,
+    category: 'exterior',
+    featured: true,
+  },
+  {
+    id: 'fb-2',
+    image_url: '/living-room-update-central-austin.jpg',
+    title: 'Living Room Update',
+    description: 'Complete interior refresh with custom accent wall.',
+    alt_text: 'Interior painting living room Central Austin by Hill Country Painting',
+    display_order: 2,
+    created_at: '',
+    is_before_after: false,
+    category: 'interior',
+    featured: true,
+  },
+  {
+    id: 'fb-3',
+    image_url: '/custom-kitchen-painting.jpg',
+    title: 'Custom Kitchen Painting',
+    description: 'Cabinet painting with custom color matching for a fresh modern look.',
+    alt_text: 'Kitchen cabinet painting West Lake Hills Austin by Hill Country Painting',
+    display_order: 3,
+    created_at: '',
+    is_before_after: false,
+    category: 'cabinet',
+    featured: true,
+  },
+  {
+    id: 'fb-4',
+    image_url: '/classic-home-exterior.jpg',
+    title: 'Classic Home Exterior',
+    description: 'Professional exterior with weather-resistant finishes and detailed trim work.',
+    alt_text: 'Classic home exterior painting Austin by Hill Country Painting',
+    display_order: 4,
+    created_at: '',
+    is_before_after: false,
+    category: 'exterior',
+    featured: true,
+  },
+  {
+    id: 'fb-5',
+    image_url: '/modern-interior-design.jpg',
+    title: 'Modern Interior Design',
+    description: 'Complete interior painting with custom accent walls.',
+    alt_text: 'Modern interior painting Austin by Hill Country Painting',
+    display_order: 5,
+    created_at: '',
+    is_before_after: false,
+    category: 'interior',
+    featured: true,
+  },
+  {
+    id: 'fb-6',
+    image_url: '/traditional-home-exterior.jpg',
+    title: 'Traditional Home Exterior',
+    description: 'Complete exterior painting with premium weather-resistant finishes for Texas climate.',
+    alt_text: 'Traditional home exterior painting Austin by Hill Country Painting',
+    display_order: 6,
+    created_at: '',
+    is_before_after: false,
+    category: 'exterior',
+    featured: true,
+  },
+];
+
 const Gallery = () => {
   const [featuredPhotos, setFeaturedPhotos] = useState<GalleryPhoto[]>([]);
   const [beforeAfterPhotos, setBeforeAfterPhotos] = useState<GalleryPhoto[]>([]);
@@ -48,17 +123,16 @@ const Gallery = () => {
         .eq('is_visible', true)
         .order('display_order', { ascending: false });
 
-      if (error) {
-        console.error('Error fetching gallery photos:', error);
+      if (error || !data || data.length === 0) {
+        setFeaturedPhotos(FALLBACK_FEATURED);
       } else {
-        const allPhotos = data || [];
-
-        setFeaturedPhotos(allPhotos.filter(p => p.featured && !p.is_before_after));
-        setBeforeAfterPhotos(allPhotos.filter(p => p.is_before_after));
-        setRegularPhotos(allPhotos.filter(p => !p.is_before_after && !p.featured));
+        const featured = data.filter(p => p.featured && !p.is_before_after);
+        setFeaturedPhotos(featured.length > 0 ? featured : FALLBACK_FEATURED);
+        setBeforeAfterPhotos(data.filter(p => p.is_before_after));
+        setRegularPhotos(data.filter(p => !p.is_before_after && !p.featured));
       }
-    } catch (err) {
-      console.error('Unexpected error fetching gallery photos:', err);
+    } catch {
+      setFeaturedPhotos(FALLBACK_FEATURED);
     } finally {
       setLoading(false);
     }
@@ -84,23 +158,6 @@ const Gallery = () => {
     { label: 'Gallery' }
   ];
 
-  const featuredProjects = [
-    {
-      image: '/exterior-tarrytown.jpg',
-      title: 'Exterior Refresh',
-      location: 'Tarrytown'
-    },
-    {
-      image: '/living-room-update-central-austin.jpg',
-      title: 'Living Room Update',
-      location: 'Central Austin'
-    },
-    {
-      image: 'https://images.pexels.com/photos/2883049/pexels-photo-2883049.jpeg?auto=compress&cs=tinysrgb&w=600',
-      title: 'Professional Office',
-      location: 'Downtown'
-    }
-  ];
 
   const portfolioProjects = [
     {
@@ -239,7 +296,7 @@ const Gallery = () => {
                 Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-56 lg:h-64"></div>
                 ))
-              ) : featuredPhotos.length > 0 ? (
+              ) : (
                 featuredPhotos.slice(0, 6).map((photo, index) => (
                   <div
                     key={photo.id}
@@ -266,30 +323,6 @@ const Gallery = () => {
                       {photo.category && (
                         <p className="text-xs text-white capitalize">{photo.category}</p>
                       )}
-                    </div>
-                  </div>
-                ))
-              ) : (
-                featuredProjects.map((project, index) => (
-                  <div key={index} className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <ImageWithGeo
-                      src={project.image}
-                      alt={project.title}
-                      width="400"
-                      height="300"
-                      className="w-full max-h-[320px] object-contain bg-brand-gray-50 transition-transform duration-300"
-                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 400px"
-                      location={{
-                        name: `${project.location}, Austin, TX`,
-                        latitude: project.location === 'West Lake Hills' ? 30.2711 : 30.2672,
-                        longitude: project.location === 'West Lake Hills' ? -97.8081 : -97.7431,
-                        region: 'Texas'
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h3 className="font-semibold text-sm mb-1">{project.title}</h3>
-                      <p className="text-xs text-white">{project.location}</p>
                     </div>
                   </div>
                 ))
