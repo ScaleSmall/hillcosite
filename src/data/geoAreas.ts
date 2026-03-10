@@ -22,7 +22,7 @@ export const geoAreas: HubArea[] = [
     zipCode: '78732',
     description: 'Expert painting services for Steiner Ranch\'s distinctive Hill Country homes. Clean prep. Crisp lines. Reliable schedules.',
     specialization: 'Steiner Ranch homes require specialized knowledge of Hill Country architecture, HOA color requirements, and quality finishes that complement the area\'s natural beauty and architectural standards.',
-    heroImage: '/austin-professional-house-painting-hero.jpg',
+    heroImage: '/hill-country-painting-austin-homepage-hero.jpg',
     neighborhoods: [
       {
         name: 'Rob Roy',
@@ -57,7 +57,7 @@ export const geoAreas: HubArea[] = [
     serviceLocationSlug: 'west-lake-highlands',
     description: 'Professional painting services for West Lake Hills and Rollingwood properties. Expert craftsmanship for quality homes.',
     specialization: 'West Lake Hills and Rollingwood homes require high standards in finish quality, quality materials, and meticulous attention to architectural details that define these established communities.',
-    heroImage: '/west-lake-hills-luxury-home-painting.jpg',
+    heroImage: '/kitchen-transformation-west-lake-hills.jpg',
     neighborhoods: [
       {
         name: 'Rollingwood',
@@ -91,7 +91,7 @@ export const geoAreas: HubArea[] = [
     slug: 'barton-creek',
     description: 'Professional painting services for Barton Creek homes. Careful craftsmanship for quality properties.',
     specialization: 'Barton Creek homes require expert knowledge of quality finishes, professional materials, and the precision needed to maintain architectural standards.',
-    heroImage: '/barton-creek-estate-painting-austin.jpg',
+    heroImage: '/classic-home-exterior.jpg',
     neighborhoods: [
       {
         name: 'Barton Creek Country Club Estates',
@@ -126,7 +126,7 @@ export const geoAreas: HubArea[] = [
     serviceLocationSlug: 'tarrytown',
     description: 'Specialized painting for Tarrytown\'s historic homes. Honoring architectural heritage with careful techniques.',
     specialization: 'Tarrytown and surrounding historic neighborhoods require specialized techniques for preserving period details, meeting strict HOA standards, and honoring the architectural character that defines these areas.',
-    heroImage: '/tarrytown-historic-home-painting-austin.jpg',
+    heroImage: '/exterior-tarrytown.jpg',
     neighborhoods: [
       {
         name: 'Tarrytown',
@@ -161,7 +161,7 @@ export const geoAreas: HubArea[] = [
     zipCode: '78701',
     description: 'Professional painting services for downtown residences. Urban expertise with precision scheduling.',
     specialization: 'Downtown properties require coordinated scheduling, building compliance expertise, quality finishes for modern architecture, and minimal disruption to residents and neighbors in dense urban environments.',
-    heroImage: '/downtown-austin-luxury-residence-painting.jpg',
+    heroImage: '/living-room-update-central-austin.jpg',
     neighborhoods: [
       {
         name: 'Downtown Core / 78701',
@@ -196,7 +196,7 @@ export const geoAreas: HubArea[] = [
     serviceLocationSlug: 'northwest-hills',
     description: 'Trusted painting services for Allandale and Northwest Hills\' distinctive homes. Quality work in established neighborhoods.',
     specialization: 'These established neighborhoods feature diverse architectural styles from mid-century modern to contemporary, requiring versatile expertise and respect for each home\'s unique character and community standards.',
-    heroImage: '/allandale-northwest-hills-home-painting-austin.jpg',
+    heroImage: '/hill-country-painting-austin-interior-hero.jpg',
     neighborhoods: [
       {
         name: 'Allandale',
@@ -231,7 +231,7 @@ export const geoAreas: HubArea[] = [
     serviceLocationSlug: 'lakeway',
     description: 'Professional painting for Lake Travis area homes. Specialized expertise for lakefront properties and Hill Country homes.',
     specialization: 'Lake Travis area homes face unique challenges including intense sun exposure, humidity from the lake, and architectural standards that require specialized knowledge and high-performance materials.',
-    heroImage: '/lakeway-lake-travis-home-painting.jpg',
+    heroImage: '/traditional-home-exterior.jpg',
     neighborhoods: [
       {
         name: 'Lakeway',
@@ -265,7 +265,7 @@ export const geoAreas: HubArea[] = [
     slug: 'circle-c-ranch-and-southwest-austin',
     description: 'Professional painting services for Circle C Ranch and Southwest Austin communities. Quality craftsmanship you can trust.',
     specialization: 'Southwest Austin communities combine family-friendly neighborhoods with diverse architectural styles, requiring versatile expertise and understanding of HOA requirements across different subdivisions.',
-    heroImage: '/circle-c-ranch-kitchen-painting-austin.jpg',
+    heroImage: '/custom-kitchen-painting.jpg',
     neighborhoods: [
       {
         name: 'Circle C Ranch',
@@ -300,7 +300,7 @@ export const geoAreas: HubArea[] = [
     serviceLocationSlug: 'tarrytown',
     description: 'Specialized services for Pemberton Heights and Old West Austin\'s historic homes. Preserving architectural heritage with careful craftsmanship.',
     specialization: 'These historic neighborhoods require careful craftsmanship, period-appropriate techniques, strict adherence to preservation standards, and quality finishes that respect architectural heritage.',
-    heroImage: '/pemberton-heights-historic-luxury-painting-austin.jpg',
+    heroImage: '/hill-country-painting-austin-homepage-hero.jpg',
     neighborhoods: [
       {
         name: 'Pemberton Heights South',
