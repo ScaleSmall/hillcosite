@@ -1,0 +1,177 @@
+# Sitemap-to-Prerender Comparison
+# Generated: 2026-03-11
+# Sitemap total:  128 URLs
+# Prerendered:     98 routes (static HTML in dist/)
+# Dynamic (JS):    30 routes (blog posts — fetched from Supabase at runtime)
+#
+# PRERENDERED = static index.html exists in artifact dist/
+# DYNAMIC     = rendered client-side via React; content fetched from Supabase DB
+#               Requires JS to display content; no static HTML stub for the post body.
+#               The /blog index page IS prerendered; individual posts are not.
+#
+# Note: /blog/... posts intentionally omit static prerender because post content
+# is authored in Supabase and can change without a redeploy. The SPA shell at
+# dist/blog/index.html handles routing and hydration for all post URLs.
+# These are valid for GSC indexing only after JS execution.
+#
+# FORMAT: STATUS  /path
+
+# --- CORE PAGES (prerendered) ---
+PRERENDERED  /
+PRERENDERED  /about
+PRERENDERED  /blog
+PRERENDERED  /color-consultation
+PRERENDERED  /contact
+PRERENDERED  /do-not-sell
+PRERENDERED  /faq
+PRERENDERED  /financing
+PRERENDERED  /gallery
+PRERENDERED  /privacy
+PRERENDERED  /service-areas
+PRERENDERED  /services
+PRERENDERED  /terms
+PRERENDERED  /testimonials
+
+# --- SERVICE PAGES (prerendered) ---
+PRERENDERED  /services/cabinet-refinishing
+PRERENDERED  /services/commercial
+PRERENDERED  /services/exterior-painting
+PRERENDERED  /services/interior-painting
+
+# --- GUIDES (prerendered) ---
+PRERENDERED  /guides/best-paint-texas-heat
+PRERENDERED  /guides/hoa-color-tips-austin
+PRERENDERED  /guides/how-often-paint-central-texas
+PRERENDERED  /guides/painting-costs-austin
+
+# --- SERVICE AREAS HUB + CITY PAGES (prerendered) ---
+PRERENDERED  /service-areas/austin
+PRERENDERED  /service-areas/lakeway
+PRERENDERED  /service-areas/northwest-hills
+PRERENDERED  /service-areas/tarrytown
+PRERENDERED  /service-areas/west-lake-highlands
+PRERENDERED  /service-areas/west-lake-hills
+
+# --- LOCATION SERVICE PAGES (prerendered) ---
+PRERENDERED  /cabinet-refinishing-lakeway
+PRERENDERED  /cabinet-refinishing-northwest-hills
+PRERENDERED  /cabinet-refinishing-tarrytown
+PRERENDERED  /cabinet-refinishing-west-lake-highlands
+PRERENDERED  /commercial-painting-lakeway
+PRERENDERED  /commercial-painting-northwest-hills
+PRERENDERED  /commercial-painting-tarrytown
+PRERENDERED  /commercial-painting-west-lake-highlands
+PRERENDERED  /exterior-painting-lakeway
+PRERENDERED  /exterior-painting-northwest-hills
+PRERENDERED  /exterior-painting-tarrytown
+PRERENDERED  /exterior-painting-west-lake-highlands
+PRERENDERED  /interior-painting-lakeway
+PRERENDERED  /interior-painting-northwest-hills
+PRERENDERED  /interior-painting-tarrytown
+PRERENDERED  /interior-painting-west-lake-highlands
+
+# --- GEO AREA HUB PAGES (prerendered) ---
+PRERENDERED  /areas/allandale-and-northwest-hills
+PRERENDERED  /areas/barton-creek
+PRERENDERED  /areas/circle-c-ranch-and-southwest-austin
+PRERENDERED  /areas/downtown-austin-luxury
+PRERENDERED  /areas/lakeway-bee-cave-and-lake-travis
+PRERENDERED  /areas/pemberton-heights-and-old-west-austin-historic-luxury
+PRERENDERED  /areas/steiner-ranch-78732
+PRERENDERED  /areas/tarrytown
+PRERENDERED  /areas/west-lake-hills-and-rollingwood
+
+# --- ALLANDALE & NORTHWEST HILLS NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/allandale-and-northwest-hills/allandale
+PRERENDERED  /areas/allandale-and-northwest-hills/crestview
+PRERENDERED  /areas/allandale-and-northwest-hills/northwest-hills
+PRERENDERED  /areas/allandale-and-northwest-hills/quail-creek
+PRERENDERED  /areas/allandale-and-northwest-hills/triangle-north-lamar
+
+# --- BARTON CREEK NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/barton-creek/barton-creek-country-club-estates
+PRERENDERED  /areas/barton-creek/barton-creek-west
+PRERENDERED  /areas/barton-creek/fazio-foothills-cliffside
+PRERENDERED  /areas/barton-creek/lake-austin-west-estates
+PRERENDERED  /areas/barton-creek/spyglass-bartons-bluff
+
+# --- CIRCLE C RANCH NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/circle-c-ranch-and-southwest-austin/circle-c-ranch
+PRERENDERED  /areas/circle-c-ranch-and-southwest-austin/grey-rock
+PRERENDERED  /areas/circle-c-ranch-and-southwest-austin/lost-creek
+PRERENDERED  /areas/circle-c-ranch-and-southwest-austin/shady-hollow
+PRERENDERED  /areas/circle-c-ranch-and-southwest-austin/west-oak-hill
+
+# --- DOWNTOWN AUSTIN LUXURY NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/downtown-austin-luxury/clarksville-west
+PRERENDERED  /areas/downtown-austin-luxury/downtown-core-78701
+PRERENDERED  /areas/downtown-austin-luxury/old-west-austin-central
+PRERENDERED  /areas/downtown-austin-luxury/rainey-street-district
+PRERENDERED  /areas/downtown-austin-luxury/zilker
+
+# --- LAKEWAY / BEE CAVE NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/lakeway-bee-cave-and-lake-travis/bee-cave
+PRERENDERED  /areas/lakeway-bee-cave-and-lake-travis/lakeway
+PRERENDERED  /areas/lakeway-bee-cave-and-lake-travis/rough-hollow
+PRERENDERED  /areas/lakeway-bee-cave-and-lake-travis/serenity-hills
+PRERENDERED  /areas/lakeway-bee-cave-and-lake-travis/the-peninsula-at-rough-hollow
+
+# --- PEMBERTON HEIGHTS NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west
+PRERENDERED  /areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic
+PRERENDERED  /areas/pemberton-heights-and-old-west-austin-historic-luxury/old-enfield-west
+PRERENDERED  /areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic
+PRERENDERED  /areas/pemberton-heights-and-old-west-austin-historic-luxury/pemberton-heights-south
+
+# --- STEINER RANCH NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/steiner-ranch-78732/barclay-place
+PRERENDERED  /areas/steiner-ranch-78732/chaparral-cliffside
+PRERENDERED  /areas/steiner-ranch-78732/davenport-ranch
+PRERENDERED  /areas/steiner-ranch-78732/river-place
+PRERENDERED  /areas/steiner-ranch-78732/rob-roy
+
+# --- TARRYTOWN NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/tarrytown/bryker-woods
+PRERENDERED  /areas/tarrytown/clarksville
+PRERENDERED  /areas/tarrytown/old-enfield
+PRERENDERED  /areas/tarrytown/pemberton-heights
+PRERENDERED  /areas/tarrytown/tarrytown
+
+# --- WEST LAKE HILLS NEIGHBORHOOD PAGES (prerendered) ---
+PRERENDERED  /areas/west-lake-hills-and-rollingwood/davenport-ranch-west
+PRERENDERED  /areas/west-lake-hills-and-rollingwood/lake-austin-hills
+PRERENDERED  /areas/west-lake-hills-and-rollingwood/rollingwood
+PRERENDERED  /areas/west-lake-hills-and-rollingwood/spanish-oaks
+PRERENDERED  /areas/west-lake-hills-and-rollingwood/west-lake-hills
+
+# --- BLOG POSTS (dynamic — Supabase DB, JS required) ---
+DYNAMIC      /blog/austin-cabinet-paint-durability-hill-country-painting
+DYNAMIC      /blog/austin-exterior-paint-costs-prep-hill-country-painting
+DYNAMIC      /blog/austin-exterior-paint-humidity-guide-hill-country-painting
+DYNAMIC      /blog/austin-exterior-paint-longevity-hill-country-painting
+DYNAMIC      /blog/austin-exterior-paint-protection-hill-country-painting
+DYNAMIC      /blog/austin-exterior-painting-guide-hill-country-painting
+DYNAMIC      /blog/austin-interior-exterior-painting-hill-country-painting
+DYNAMIC      /blog/austin-interior-paint-drying-delays-hill-country-painting
+DYNAMIC      /blog/cabinet-painting-costs-in-austin-hill-country-painting
+DYNAMIC      /blog/cabinet-painting-in-austin-how-humidity-impacts-drying-times-hill-country-painting
+DYNAMIC      /blog/commercial-painting-costs-in-austin-hill-country-painting
+DYNAMIC      /blog/durable-austin-exterior-painting-hill-country-painting
+DYNAMIC      /blog/durable-exterior-painting-in-austin-hill-country-painting
+DYNAMIC      /blog/exterior-house-painting-in-austin-hill-country-painting
+DYNAMIC      /blog/exterior-paint-cost-timing-austin-hill-country-painting
+DYNAMIC      /blog/exterior-painting-costs-in-austin-hill-country-painting
+DYNAMIC      /blog/exterior-painting-in-austin-hill-country-painting
+DYNAMIC      /blog/guard-commercial-exteriors-in-austin-hill-country-painting
+DYNAMIC      /blog/house-painting-services-austin-hill-country-painting
+DYNAMIC      /blog/how-often-to-repaint-house-in-austin-hill-country-painting
+DYNAMIC      /blog/ideal-painting-solutions-for-kitchen-cabinets-in-austin-s-humid-climate-hill-country-painting
+DYNAMIC      /blog/interior-painting-costs-in-austin-hill-country-painting
+DYNAMIC      /blog/optimal-seasons-for-home-painting-in-austin-hill-country-painting
+DYNAMIC      /blog/optimal-timing-for-exterior-home-painting-in-austin-hill-country-painting
+DYNAMIC      /blog/paint-gallons-for-2-000-sqft-austin-hill-country-painting
+DYNAMIC      /blog/paint-to-boost-home-value-in-austin-hill-country-painting
+DYNAMIC      /blog/prime-before-painting-in-austin-hill-country-painting
+DYNAMIC      /blog/spray-vs-brush-cabinets-in-austin-hill-country-painting
+DYNAMIC      /blog/uv-proof-commercial-paint-in-austin-hill-country-painting
+DYNAMIC      /blog/when-to-repaint-austin-exteriors-hill-country-painting
