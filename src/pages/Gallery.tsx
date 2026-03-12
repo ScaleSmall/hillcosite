@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Phone, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -152,6 +152,21 @@ const Gallery = () => {
   const closeLightbox = () => {
     setLightboxOpen(false);
   };
+
+  const widgetContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = widgetContainerRef.current;
+    if (!container) return;
+    const script = document.createElement('script');
+    script.src = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js';
+    script.setAttribute('data-client', 'mhw1q2k4-l9c3zpvji3');
+    script.async = true;
+    container.appendChild(script);
+    return () => {
+      if (container.contains(script)) container.removeChild(script);
+    };
+  }, []);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -674,6 +689,9 @@ const Gallery = () => {
               </div>
             ))}
           </div>
+
+          {/* Widget: injected after Modern Condo Interior */}
+          <div ref={widgetContainerRef} className="mt-12" />
         </div>
       </section>
 
