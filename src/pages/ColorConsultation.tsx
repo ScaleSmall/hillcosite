@@ -91,10 +91,6 @@ const ColorConsultation = () => {
       answer: 'Yes, we provide free color consultation as part of all our interior and exterior painting projects to ensure you get the perfect results.'
     },
     {
-      question: 'Can I get color consultation without painting services?',
-      answer: 'Absolutely! We offer standalone color consultation services for homeowners who want professional guidance before starting their project.'
-    },
-    {
       question: 'How long does a color consultation take?',
       answer: 'Initial consultations typically take 30 minutes, depending on the size of your project and number of rooms being considered.'
     },
