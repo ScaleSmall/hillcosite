@@ -435,7 +435,7 @@ function enhanceIndexHTML() {
   for (const [route, metadata] of Object.entries(routeMetadata)) {
     const outputPath = route === '/'
       ? resolve(distPath, 'index.html')
-      : resolve(distPath, route.slice(1), 'index.html');
+      : resolve(distPath, route.slice(1) + '.html');
 
     let html = baseHTML;
 
