@@ -76,7 +76,7 @@ const NAPMapSection = () => {
 
           <div>
             <GoogleMapEmbed
-              query={`${businessConfig.address.streetAddress}, ${businessConfig.address.displayShort}`}
+              query={`${businessConfig.address.displayShort}, TX`}
               title={`${businessConfig.name} - Service Area Map`}
               height="450"
             />

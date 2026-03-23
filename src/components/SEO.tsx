@@ -102,10 +102,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     email: 'info@hillcopaint.com',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: businessConfig.address.streetAddress,
       addressLocality: businessConfig.address.addressLocality,
       addressRegion: businessConfig.address.addressRegion,
-      postalCode: businessConfig.address.postalCode,
       addressCountry: businessConfig.address.addressCountry
     },
     sameAs: [
@@ -129,10 +127,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: businessConfig.address.streetAddress,
       addressLocality: businessConfig.address.addressLocality,
       addressRegion: businessConfig.address.addressRegion,
-      postalCode: businessConfig.address.postalCode,
       addressCountry: businessConfig.address.addressCountry
     },
     geo: {

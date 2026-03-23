@@ -13,13 +13,13 @@ export const businessConfig = {
   email: 'info@hillcopaint.com',
 
   address: {
-    streetAddress: '5000 Plaza on the Lake, Suite 100 #415',
+    streetAddress: '',
     addressLocality: 'Austin',
     addressRegion: 'TX',
-    postalCode: '78746',
+    postalCode: '',
     addressCountry: 'US',
-    displayShort: 'Austin, TX 78746',
-    displayFull: '5000 Plaza on the Lake, Ste 100 #415, Austin, TX 78746'
+    displayShort: 'Greater Austin Area',
+    displayFull: 'Greater Austin Area'
   },
 
   // Service Area
