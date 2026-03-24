@@ -9,7 +9,12 @@ export const geoAreas = [
   { hub: 'allandale-and-northwest-hills', neighborhoods: ['allandale', 'northwest-hills', 'crestview', 'quail-creek', 'triangle-north-lamar'] },
   { hub: 'lakeway-bee-cave-and-lake-travis', neighborhoods: ['lakeway', 'rough-hollow', 'the-peninsula-at-rough-hollow', 'serenity-hills', 'bee-cave'] },
   { hub: 'circle-c-ranch-and-southwest-austin', neighborhoods: ['circle-c-ranch', 'grey-rock', 'lost-creek', 'shady-hollow', 'west-oak-hill'] },
-  { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] }
+  { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] },
+  { hub: 'leander', neighborhoods: ['crystal-falls', 'mason-hills', 'travisso', 'devine-lake', 'bryson'] },
+  { hub: 'georgetown', neighborhoods: ['sun-city', 'berry-creek', 'teravista', 'wolf-ranch', 'georgetown-square'] },
+  { hub: 'round-rock', neighborhoods: ['forest-creek', 'mayfield-ranch', 'brushy-creek', 'round-rock-ranch', 'vista-oaks'] },
+  { hub: 'cedar-park', neighborhoods: ['ranch-at-brushy-creek', 'buttercup-creek', 'lakeline', 'avery-ranch', 'twin-creeks'] },
+  { hub: 'north-austin', neighborhoods: ['the-domain', 'balcones', 'milwood', 'jollyville', 'anderson-mill'] }
 ];
 
 export const staticRoutes = [
@@ -30,6 +35,11 @@ export const staticRoutes = [
   { path: '/service-areas/west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/lakeway', changefreq: 'monthly', priority: '0.8' },
+  { path: '/service-areas/leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/service-areas/georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/service-areas/round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/service-areas/cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/service-areas/north-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/color-consultation', changefreq: 'monthly', priority: '0.7' },
   { path: '/contact', changefreq: 'monthly', priority: '0.9' },
   { path: '/blog', changefreq: 'weekly', priority: '0.8' },
@@ -63,6 +73,26 @@ export const staticRoutes = [
   { path: '/commercial-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-north-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-north-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-north-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-north-austin', changefreq: 'monthly', priority: '0.8' },
 ];
 
 export function getAllRoutes() {
@@ -100,4 +130,9 @@ export const locationRedirectPatterns = [
   { pattern: /west-lake-hills/i, target: '/service-areas/west-lake-hills' },
   { pattern: /west-lake-highlands/i, target: '/service-areas/west-lake-highlands' },
   { pattern: /lakeway/i, target: '/service-areas/lakeway' },
+  { pattern: /leander/i, target: '/service-areas/leander' },
+  { pattern: /georgetown/i, target: '/service-areas/georgetown' },
+  { pattern: /round-rock/i, target: '/service-areas/round-rock' },
+  { pattern: /cedar-park/i, target: '/service-areas/cedar-park' },
+  { pattern: /north-austin/i, target: '/service-areas/north-austin' },
 ];

@@ -139,6 +139,111 @@ export const locations: Record<string, LocationData> = {
       homeStyles: ['Lakefront estate', 'Hill Country contemporary', 'Mediterranean', 'Texas modern'],
       paintChallenges: ['Lake moisture exposure', 'Wind and weather', 'Quality material requirements']
     }
+  },
+  'leander': {
+    name: 'Leander',
+    slug: 'leander',
+    zipCodes: ['78641', '78646'],
+    coordinates: { lat: 30.5787, lng: -97.8531 },
+    neighborhoods: ['Crystal Falls', 'Mason Hills', 'Travisso', 'Devine Lake', 'Bryson'],
+    highlights: [
+      'Master-planned community specialists',
+      'New construction upgrade experts',
+      'HOA color compliance knowledge',
+      'Fast-growing suburb expertise',
+      'Central Texas climate coatings',
+      'Flexible scheduling for families'
+    ],
+    serviceAreaSlug: 'leander',
+    localInfo: {
+      climate: 'Central Texas limestone terrain with intense summer heat and seasonal temperature swings',
+      homeStyles: ['Master-planned new construction', 'Hill Country contemporary', 'Traditional family home', 'Craftsman'],
+      paintChallenges: ['Intense UV and heat exposure', 'New construction builder-grade upgrades', 'HOA color requirements']
+    }
+  },
+  'georgetown': {
+    name: 'Georgetown',
+    slug: 'georgetown',
+    zipCodes: ['78626', '78628', '78633'],
+    coordinates: { lat: 30.6328, lng: -97.6774 },
+    neighborhoods: ['Sun City Georgetown', 'Berry Creek', 'Teravista', 'Wolf Ranch', 'Georgetown Square'],
+    highlights: [
+      'Historic downtown preservation experts',
+      'Sun City Del Webb specialists',
+      'Williamson County coverage',
+      'Victorian-era color expertise',
+      'Active adult community experience',
+      'Master-planned HOA compliance'
+    ],
+    serviceAreaSlug: 'georgetown',
+    localInfo: {
+      climate: 'North of Austin with hot summers, limestone terrain, and open prairie wind exposure',
+      homeStyles: ['Victorian historic', 'Del Webb active adult', 'Hill Country contemporary', 'Master-planned traditional'],
+      paintChallenges: ['Historic preservation requirements', 'Wind exposure from open terrain', 'High UV in North Texas']
+    }
+  },
+  'round-rock': {
+    name: 'Round Rock',
+    slug: 'round-rock',
+    zipCodes: ['78664', '78665', '78681'],
+    coordinates: { lat: 30.5083, lng: -97.6789 },
+    neighborhoods: ['Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks'],
+    highlights: [
+      'Established neighborhood expertise',
+      'New construction specialists',
+      'Dell/tech campus scheduling',
+      'Diverse home style knowledge',
+      'Quality finishes for all budgets',
+      'Reliable Round Rock scheduling'
+    ],
+    serviceAreaSlug: 'round-rock',
+    localInfo: {
+      climate: 'Central Texas with hot summers, Blackland prairie soils, and limestone outcrops',
+      homeStyles: ['Established ranch', 'Golf community home', 'Master-planned contemporary', 'Traditional family home'],
+      paintChallenges: ['Varied age of housing stock', 'Intense heat and UV exposure', 'Busy suburban family scheduling']
+    }
+  },
+  'cedar-park': {
+    name: 'Cedar Park',
+    slug: 'cedar-park',
+    zipCodes: ['78613'],
+    coordinates: { lat: 30.5052, lng: -97.8203 },
+    neighborhoods: ['Ranch at Brushy Creek', 'Buttercup Creek', 'Lakeline', 'Avery Ranch', 'Twin Creeks'],
+    highlights: [
+      'Cedar Park community specialists',
+      'Master-planned HOA expertise',
+      'Growing suburb coverage',
+      'Quality new construction upgrades',
+      'Heat-resistant exterior coatings',
+      'Family-flexible scheduling'
+    ],
+    serviceAreaSlug: 'cedar-park',
+    localInfo: {
+      climate: 'Northwest of Austin with intense Central Texas heat and limestone terrain',
+      homeStyles: ['Master-planned subdivision', 'Golf community', 'Contemporary family home', 'Craftsman'],
+      paintChallenges: ['HOA color compliance across many communities', 'Intense UV exposure', 'New construction upgrades']
+    }
+  },
+  'north-austin': {
+    name: 'North Austin',
+    slug: 'north-austin',
+    zipCodes: ['78750', '78758', '78727', '78729'],
+    coordinates: { lat: 30.4070, lng: -97.7200 },
+    neighborhoods: ['The Domain Area', 'Balcones', 'Milwood', 'Jollyville', 'Anderson Mill'],
+    highlights: [
+      'Tech corridor scheduling experts',
+      'Mid-century modern specialists',
+      'Urban condo experience',
+      'North Austin coverage',
+      'Quality finishes for every style',
+      'Flexible tech-worker scheduling'
+    ],
+    serviceAreaSlug: 'north-austin',
+    localInfo: {
+      climate: 'North Austin urban heat island with mixed terrain from limestone to Blackland prairie',
+      homeStyles: ['Mid-century modern', 'Ranch style', 'Urban condo', 'Contemporary townhome'],
+      paintChallenges: ['Varied architectural eras', 'Urban heat retention', 'Scheduling around tech work schedules']
+    }
   }
 };
 

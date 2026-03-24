@@ -14,7 +14,12 @@ const geoAreas = [
   { hub: 'allandale-and-northwest-hills', neighborhoods: ['allandale', 'northwest-hills', 'crestview', 'quail-creek', 'triangle-north-lamar'] },
   { hub: 'lakeway-bee-cave-and-lake-travis', neighborhoods: ['lakeway', 'rough-hollow', 'the-peninsula-at-rough-hollow', 'serenity-hills', 'bee-cave'] },
   { hub: 'circle-c-ranch-and-southwest-austin', neighborhoods: ['circle-c-ranch', 'grey-rock', 'lost-creek', 'shady-hollow', 'west-oak-hill'] },
-  { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] }
+  { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] },
+  { hub: 'leander', neighborhoods: ['crystal-falls', 'mason-hills', 'travisso', 'devine-lake', 'bryson'] },
+  { hub: 'georgetown', neighborhoods: ['sun-city', 'berry-creek', 'teravista', 'wolf-ranch', 'georgetown-square'] },
+  { hub: 'round-rock', neighborhoods: ['forest-creek', 'mayfield-ranch', 'brushy-creek', 'round-rock-ranch', 'vista-oaks'] },
+  { hub: 'cedar-park', neighborhoods: ['ranch-at-brushy-creek', 'buttercup-creek', 'lakeline', 'avery-ranch', 'twin-creeks'] },
+  { hub: 'north-austin', neighborhoods: ['the-domain', 'balcones', 'milwood', 'jollyville', 'anderson-mill'] }
 ];
 
 const serviceLocationPages = [
@@ -62,6 +67,11 @@ const staticRoutes = [
   '/service-areas/west-lake-hills',
   '/service-areas/west-lake-highlands',
   '/service-areas/lakeway',
+  '/service-areas/leander',
+  '/service-areas/georgetown',
+  '/service-areas/round-rock',
+  '/service-areas/cedar-park',
+  '/service-areas/north-austin',
   '/color-consultation',
   '/contact',
   '/blog',

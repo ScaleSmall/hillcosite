@@ -33,6 +33,11 @@ const Tarrytown = safeLazy(() => import('./pages/service-areas/Tarrytown'), "Tar
 const NorthwestHills = safeLazy(() => import('./pages/service-areas/NorthwestHills'), "NorthwestHills");
 const WestLakeHighlands = safeLazy(() => import('./pages/service-areas/WestLakeHighlands'), "WestLakeHighlands");
 const Lakeway = safeLazy(() => import('./pages/service-areas/Lakeway'), "Lakeway");
+const Leander = safeLazy(() => import('./pages/service-areas/Leander'), "Leander");
+const Georgetown = safeLazy(() => import('./pages/service-areas/Georgetown'), "Georgetown");
+const RoundRock = safeLazy(() => import('./pages/service-areas/RoundRock'), "RoundRock");
+const CedarPark = safeLazy(() => import('./pages/service-areas/CedarPark'), "CedarPark");
+const NorthAustin = safeLazy(() => import('./pages/service-areas/NorthAustin'), "NorthAustin");
 
 // GEO AREA PAGES (54 total: 9 hubs + 45 neighborhoods)
 const HubSteinerRanch78732 = safeLazy(() => import('./pages/areas/steiner-ranch-78732'), "HubSteinerRanch78732");
@@ -89,6 +94,38 @@ const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield = saf
 const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods");
 const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville");
 const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin = safeLazy(() => import('./pages/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic'), "NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin");
+
+// NEW GEO HUB + NEIGHBORHOOD PAGES (5 hubs x 6 = 30 pages)
+const HubLeander = safeLazy(() => import('./pages/areas/leander'), "HubLeander");
+const NeighborhoodLeanderCrystalFalls = safeLazy(() => import('./pages/areas/leander/crystal-falls'), "NeighborhoodLeanderCrystalFalls");
+const NeighborhoodLeanderMasonHills = safeLazy(() => import('./pages/areas/leander/mason-hills'), "NeighborhoodLeanderMasonHills");
+const NeighborhoodLeanderTravisso = safeLazy(() => import('./pages/areas/leander/travisso'), "NeighborhoodLeanderTravisso");
+const NeighborhoodLeanderDevineLake = safeLazy(() => import('./pages/areas/leander/devine-lake'), "NeighborhoodLeanderDevineLake");
+const NeighborhoodLeanderBryson = safeLazy(() => import('./pages/areas/leander/bryson'), "NeighborhoodLeanderBryson");
+const HubGeorgetown = safeLazy(() => import('./pages/areas/georgetown'), "HubGeorgetown");
+const NeighborhoodGeorgetownSunCity = safeLazy(() => import('./pages/areas/georgetown/sun-city'), "NeighborhoodGeorgetownSunCity");
+const NeighborhoodGeorgetownBerryCreek = safeLazy(() => import('./pages/areas/georgetown/berry-creek'), "NeighborhoodGeorgetownBerryCreek");
+const NeighborhoodGeorgetownTeravista = safeLazy(() => import('./pages/areas/georgetown/teravista'), "NeighborhoodGeorgetownTeravista");
+const NeighborhoodGeorgetownWolfRanch = safeLazy(() => import('./pages/areas/georgetown/wolf-ranch'), "NeighborhoodGeorgetownWolfRanch");
+const NeighborhoodGeorgetownGeorgetownSquare = safeLazy(() => import('./pages/areas/georgetown/georgetown-square'), "NeighborhoodGeorgetownGeorgetownSquare");
+const HubRoundRock = safeLazy(() => import('./pages/areas/round-rock'), "HubRoundRock");
+const NeighborhoodRoundRockForestCreek = safeLazy(() => import('./pages/areas/round-rock/forest-creek'), "NeighborhoodRoundRockForestCreek");
+const NeighborhoodRoundRockMayfieldRanch = safeLazy(() => import('./pages/areas/round-rock/mayfield-ranch'), "NeighborhoodRoundRockMayfieldRanch");
+const NeighborhoodRoundRockBrushyCreek = safeLazy(() => import('./pages/areas/round-rock/brushy-creek'), "NeighborhoodRoundRockBrushyCreek");
+const NeighborhoodRoundRockRoundRockRanch = safeLazy(() => import('./pages/areas/round-rock/round-rock-ranch'), "NeighborhoodRoundRockRoundRockRanch");
+const NeighborhoodRoundRockVistaOaks = safeLazy(() => import('./pages/areas/round-rock/vista-oaks'), "NeighborhoodRoundRockVistaOaks");
+const HubCedarPark = safeLazy(() => import('./pages/areas/cedar-park'), "HubCedarPark");
+const NeighborhoodCedarParkRanchAtBrushyCreek = safeLazy(() => import('./pages/areas/cedar-park/ranch-at-brushy-creek'), "NeighborhoodCedarParkRanchAtBrushyCreek");
+const NeighborhoodCedarParkButtercupCreek = safeLazy(() => import('./pages/areas/cedar-park/buttercup-creek'), "NeighborhoodCedarParkButtercupCreek");
+const NeighborhoodCedarParkLakeline = safeLazy(() => import('./pages/areas/cedar-park/lakeline'), "NeighborhoodCedarParkLakeline");
+const NeighborhoodCedarParkAveryRanch = safeLazy(() => import('./pages/areas/cedar-park/avery-ranch'), "NeighborhoodCedarParkAveryRanch");
+const NeighborhoodCedarParkTwinCreeks = safeLazy(() => import('./pages/areas/cedar-park/twin-creeks'), "NeighborhoodCedarParkTwinCreeks");
+const HubNorthAustin = safeLazy(() => import('./pages/areas/north-austin'), "HubNorthAustin");
+const NeighborhoodNorthAustinTheDomain = safeLazy(() => import('./pages/areas/north-austin/the-domain'), "NeighborhoodNorthAustinTheDomain");
+const NeighborhoodNorthAustinBalcones = safeLazy(() => import('./pages/areas/north-austin/balcones'), "NeighborhoodNorthAustinBalcones");
+const NeighborhoodNorthAustinMilwood = safeLazy(() => import('./pages/areas/north-austin/milwood'), "NeighborhoodNorthAustinMilwood");
+const NeighborhoodNorthAustinJollyville = safeLazy(() => import('./pages/areas/north-austin/jollyville'), "NeighborhoodNorthAustinJollyville");
+const NeighborhoodNorthAustinAndersonMill = safeLazy(() => import('./pages/areas/north-austin/anderson-mill'), "NeighborhoodNorthAustinAndersonMill");
 
 const Contact = safeLazy(() => import('./pages/Contact'), "Contact");
 const Financing = safeLazy(() => import('./pages/Financing'), "Financing");
@@ -164,6 +201,11 @@ function App() {
               <Route path="/service-areas/northwest-hills" element={<Trace name="/service-areas/northwest-hills"><NorthwestHills /></Trace>} />
               <Route path="/service-areas/west-lake-highlands" element={<Trace name="/service-areas/west-lake-highlands"><WestLakeHighlands /></Trace>} />
               <Route path="/service-areas/lakeway" element={<Trace name="/service-areas/lakeway"><Lakeway /></Trace>} />
+              <Route path="/service-areas/leander" element={<Trace name="/service-areas/leander"><Leander /></Trace>} />
+              <Route path="/service-areas/georgetown" element={<Trace name="/service-areas/georgetown"><Georgetown /></Trace>} />
+              <Route path="/service-areas/round-rock" element={<Trace name="/service-areas/round-rock"><RoundRock /></Trace>} />
+              <Route path="/service-areas/cedar-park" element={<Trace name="/service-areas/cedar-park"><CedarPark /></Trace>} />
+              <Route path="/service-areas/north-austin" element={<Trace name="/service-areas/north-austin"><NorthAustin /></Trace>} />
               <Route path="/color-consultation" element={<Trace name="/color-consultation"><ColorConsultation /></Trace>} />
               <Route path="/contact" element={<Trace name="/contact"><Contact /></Trace>} />
               <Route path="/financing" element={<Trace name="/financing"><Financing /></Trace>} />
@@ -237,6 +279,38 @@ function App() {
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/bryker-woods-west"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryBrykerWoods /></Trace>} />
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/clarksville-historic"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryClarksville /></Trace>} />
               <Route path="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic" element={<Trace name="/areas/pemberton-heights-and-old-west-austin-historic-luxury/old-west-austin-historic"><NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldWestAustin /></Trace>} />
+
+              {/* NEW GEO AREA PAGES - 5 hubs + 25 neighborhoods */}
+              <Route path="/areas/leander" element={<Trace name="/areas/leander"><HubLeander /></Trace>} />
+              <Route path="/areas/leander/crystal-falls" element={<Trace name="/areas/leander/crystal-falls"><NeighborhoodLeanderCrystalFalls /></Trace>} />
+              <Route path="/areas/leander/mason-hills" element={<Trace name="/areas/leander/mason-hills"><NeighborhoodLeanderMasonHills /></Trace>} />
+              <Route path="/areas/leander/travisso" element={<Trace name="/areas/leander/travisso"><NeighborhoodLeanderTravisso /></Trace>} />
+              <Route path="/areas/leander/devine-lake" element={<Trace name="/areas/leander/devine-lake"><NeighborhoodLeanderDevineLake /></Trace>} />
+              <Route path="/areas/leander/bryson" element={<Trace name="/areas/leander/bryson"><NeighborhoodLeanderBryson /></Trace>} />
+              <Route path="/areas/georgetown" element={<Trace name="/areas/georgetown"><HubGeorgetown /></Trace>} />
+              <Route path="/areas/georgetown/sun-city" element={<Trace name="/areas/georgetown/sun-city"><NeighborhoodGeorgetownSunCity /></Trace>} />
+              <Route path="/areas/georgetown/berry-creek" element={<Trace name="/areas/georgetown/berry-creek"><NeighborhoodGeorgetownBerryCreek /></Trace>} />
+              <Route path="/areas/georgetown/teravista" element={<Trace name="/areas/georgetown/teravista"><NeighborhoodGeorgetownTeravista /></Trace>} />
+              <Route path="/areas/georgetown/wolf-ranch" element={<Trace name="/areas/georgetown/wolf-ranch"><NeighborhoodGeorgetownWolfRanch /></Trace>} />
+              <Route path="/areas/georgetown/georgetown-square" element={<Trace name="/areas/georgetown/georgetown-square"><NeighborhoodGeorgetownGeorgetownSquare /></Trace>} />
+              <Route path="/areas/round-rock" element={<Trace name="/areas/round-rock"><HubRoundRock /></Trace>} />
+              <Route path="/areas/round-rock/forest-creek" element={<Trace name="/areas/round-rock/forest-creek"><NeighborhoodRoundRockForestCreek /></Trace>} />
+              <Route path="/areas/round-rock/mayfield-ranch" element={<Trace name="/areas/round-rock/mayfield-ranch"><NeighborhoodRoundRockMayfieldRanch /></Trace>} />
+              <Route path="/areas/round-rock/brushy-creek" element={<Trace name="/areas/round-rock/brushy-creek"><NeighborhoodRoundRockBrushyCreek /></Trace>} />
+              <Route path="/areas/round-rock/round-rock-ranch" element={<Trace name="/areas/round-rock/round-rock-ranch"><NeighborhoodRoundRockRoundRockRanch /></Trace>} />
+              <Route path="/areas/round-rock/vista-oaks" element={<Trace name="/areas/round-rock/vista-oaks"><NeighborhoodRoundRockVistaOaks /></Trace>} />
+              <Route path="/areas/cedar-park" element={<Trace name="/areas/cedar-park"><HubCedarPark /></Trace>} />
+              <Route path="/areas/cedar-park/ranch-at-brushy-creek" element={<Trace name="/areas/cedar-park/ranch-at-brushy-creek"><NeighborhoodCedarParkRanchAtBrushyCreek /></Trace>} />
+              <Route path="/areas/cedar-park/buttercup-creek" element={<Trace name="/areas/cedar-park/buttercup-creek"><NeighborhoodCedarParkButtercupCreek /></Trace>} />
+              <Route path="/areas/cedar-park/lakeline" element={<Trace name="/areas/cedar-park/lakeline"><NeighborhoodCedarParkLakeline /></Trace>} />
+              <Route path="/areas/cedar-park/avery-ranch" element={<Trace name="/areas/cedar-park/avery-ranch"><NeighborhoodCedarParkAveryRanch /></Trace>} />
+              <Route path="/areas/cedar-park/twin-creeks" element={<Trace name="/areas/cedar-park/twin-creeks"><NeighborhoodCedarParkTwinCreeks /></Trace>} />
+              <Route path="/areas/north-austin" element={<Trace name="/areas/north-austin"><HubNorthAustin /></Trace>} />
+              <Route path="/areas/north-austin/the-domain" element={<Trace name="/areas/north-austin/the-domain"><NeighborhoodNorthAustinTheDomain /></Trace>} />
+              <Route path="/areas/north-austin/balcones" element={<Trace name="/areas/north-austin/balcones"><NeighborhoodNorthAustinBalcones /></Trace>} />
+              <Route path="/areas/north-austin/milwood" element={<Trace name="/areas/north-austin/milwood"><NeighborhoodNorthAustinMilwood /></Trace>} />
+              <Route path="/areas/north-austin/jollyville" element={<Trace name="/areas/north-austin/jollyville"><NeighborhoodNorthAustinJollyville /></Trace>} />
+              <Route path="/areas/north-austin/anderson-mill" element={<Trace name="/areas/north-austin/anderson-mill"><NeighborhoodNorthAustinAndersonMill /></Trace>} />
 
               {/* SERVICE + LOCATION PAGES - 20 total: 4 services x 5 locations */}
               <Route path="/interior-painting-tarrytown" element={<Trace name="/interior-painting-tarrytown"><InteriorPaintingTarrytown /></Trace>} />

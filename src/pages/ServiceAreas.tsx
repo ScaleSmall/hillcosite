@@ -20,7 +20,12 @@ const ServiceAreas = () => {
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
     { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
-    { name: 'Lakeway', href: '/service-areas/lakeway' }
+    { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Georgetown', href: '/service-areas/georgetown' },
+    { name: 'Round Rock', href: '/service-areas/round-rock' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'North Austin', href: '/service-areas/north-austin' }
   ];
 
   const featuredServices = [
@@ -54,7 +59,7 @@ const ServiceAreas = () => {
     <>
       <SEO
         title="Service Areas | Austin Metro Painting Services | Hill Country Painting"
-        description="Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, Westlake Highlands, Lakeway, and surrounding areas. Professional painting services throughout Greater Austin Area."
+        description="Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, Lakeway, Leander, Georgetown, Round Rock, Cedar Park, North Austin, and surrounding areas. Professional painting services throughout Greater Austin Area."
         canonical="/service-areas"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -199,7 +204,7 @@ const ServiceAreas = () => {
         stats={[
           {
             icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">15</div>,
-            value: "15+",
+            value: "20+",
             label: "Service Areas"
           },
           {
