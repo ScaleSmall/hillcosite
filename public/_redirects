@@ -15,36 +15,38 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 /areas/downtown-austin-luxury/old-west-austin/   /areas/downtown-austin-luxury/old-west-austin-central  301
 
 # -----------------------------------------------------------------------
-# CITY / LEGACY CITY PAGE REDIRECTS → service areas hub
+# CITY / LEGACY CITY PAGE REDIRECTS
+# Cities WITH dedicated service area pages → route to their page
+# Cities WITHOUT dedicated pages → route to /service-areas hub
 # -----------------------------------------------------------------------
 /pflugerville      /service-areas  301
 /pflugerville/     /service-areas  301
-/georgetown        /service-areas  301
-/georgetown/       /service-areas  301
+/georgetown        /service-areas/georgetown  301
+/georgetown/       /service-areas/georgetown  301
 /hutto             /service-areas  301
 /hutto/            /service-areas  301
-/round-rock        /service-areas  301
-/round-rock/       /service-areas  301
-/round-rock-2      /service-areas  301
-/round-rock-2/     /service-areas  301
-/leander           /service-areas  301
-/leander/          /service-areas  301
-/cedar-park        /service-areas  301
-/cedar-park/       /service-areas  301
+/round-rock        /service-areas/round-rock  301
+/round-rock/       /service-areas/round-rock  301
+/round-rock-2      /service-areas/round-rock  301
+/round-rock-2/     /service-areas/round-rock  301
+/leander           /service-areas/leander  301
+/leander/          /service-areas/leander  301
+/cedar-park        /service-areas/cedar-park  301
+/cedar-park/       /service-areas/cedar-park  301
+/north-austin      /service-areas/north-austin  301
+/north-austin/     /service-areas/north-austin  301
 /austin            /service-areas/austin  301
 /austin/           /service-areas/austin  301
 
 # -----------------------------------------------------------------------
-# OLD /service-areas/* SUBPATHS → hub (cities not served as subpages)
+# OLD /service-areas/* SUBPATHS → hub (cities that do NOT have dedicated pages)
+# NOTE: leander, georgetown, round-rock, cedar-park, north-austin NOW have
+# dedicated service area pages and are NOT listed here (SPA fallback serves them)
 # -----------------------------------------------------------------------
 /service-area                              /service-areas  301
 /service-area/                             /service-areas  301
-/service-areas/round-rock                  /service-areas  301
-/service-areas/round-rock/                 /service-areas  301
-/service-areas/round-rock-georgetown       /service-areas  301
-/service-areas/round-rock-georgetown/      /service-areas  301
-/service-areas/leander                     /service-areas  301
-/service-areas/leander/                    /service-areas  301
+/service-areas/round-rock-georgetown       /service-areas/round-rock  301
+/service-areas/round-rock-georgetown/      /service-areas/round-rock  301
 /service-areas/taylor-hutto                /service-areas  301
 /service-areas/taylor-hutto/               /service-areas  301
 /service-areas/wells-branch                /service-areas  301
@@ -53,8 +55,6 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 /service-areas/pflugerville/               /service-areas  301
 /service-areas/pflugerville-wells-branch   /service-areas  301
 /service-areas/pflugerville-wells-branch/  /service-areas  301
-/service-areas/cedar-park                  /service-areas  301
-/service-areas/cedar-park/                 /service-areas  301
 
 # -----------------------------------------------------------------------
 # OLD /service/* PATTERNS (singular — legacy CMS paths)
@@ -105,8 +105,6 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 # -----------------------------------------------------------------------
 /interior-painting                               /services/interior-painting  301
 /interior-painting/                              /services/interior-painting  301
-/interior-painting-leander                       /services/interior-painting  301
-/interior-painting-leander/                      /services/interior-painting  301
 /exterior-painting                               /services/exterior-painting  301
 /exterior-painting/                              /services/exterior-painting  301
 /cabinet-painting                                /services/cabinet-refinishing  301
@@ -160,8 +158,9 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 # TRACKING PARAMETER STRIP (?ref=)
 # Netlify does not execute .htaccess. These rules replace the Apache
 # RewriteCond %{QUERY_STRING} ref= logic that was previously inert.
-# Covers the most common entry paths; all strip the ?ref= param and
-# force the canonical https://www.hillcopaint.com origin in one hop.
+#
+# IMPORTANT: Specific paths first, then the universal catch-all last.
+# The catch-all strips ?ref= from ANY path in one hop.
 # -----------------------------------------------------------------------
 /?ref=:ref                           https://www.hillcopaint.com/  301
 /about?ref=:ref                      https://www.hillcopaint.com/about  301
@@ -174,6 +173,11 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 /financing?ref=:ref                  https://www.hillcopaint.com/financing  301
 /service-areas?ref=:ref              https://www.hillcopaint.com/service-areas  301
 /color-consultation?ref=:ref         https://www.hillcopaint.com/color-consultation  301
+/services/*?ref=:ref                 https://www.hillcopaint.com/services/:splat  301
+/service-areas/*?ref=:ref            https://www.hillcopaint.com/service-areas/:splat  301
+/areas/*?ref=:ref                    https://www.hillcopaint.com/areas/:splat  301
+/guides/*?ref=:ref                   https://www.hillcopaint.com/guides/:splat  301
+/blog/*?ref=:ref                     https://www.hillcopaint.com/blog/:splat  301
 
 # -----------------------------------------------------------------------
 # TRAILING SLASH CANONICALIZATION

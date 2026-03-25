@@ -8,20 +8,24 @@
   # http://hillcopaint.com/... and https://hillcopaint.com/... and trailing slashes.
   ###############################################################################
 
-  # --- Cities / old pages ---
+  # --- Cities / old pages → dedicated service area pages ---
+  # Cities WITH dedicated pages now route to their specific page
   RewriteRule ^pflugerville/?$ https://www.hillcopaint.com/service-areas [R=301,L]
-  RewriteRule ^georgetown/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^georgetown/?$ https://www.hillcopaint.com/service-areas/georgetown [R=301,L]
   RewriteRule ^hutto/?$ https://www.hillcopaint.com/service-areas [R=301,L]
-  RewriteRule ^round-rock/?$ https://www.hillcopaint.com/service-areas [R=301,L]
-  RewriteRule ^round-rock-2/?$ https://www.hillcopaint.com/service-areas [R=301,L]
-  RewriteRule ^leander/?$ https://www.hillcopaint.com/service-areas [R=301,L]
-  RewriteRule ^cedar-park/?$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^round-rock/?$ https://www.hillcopaint.com/service-areas/round-rock [R=301,L]
+  RewriteRule ^round-rock-2/?$ https://www.hillcopaint.com/service-areas/round-rock [R=301,L]
+  RewriteRule ^leander/?$ https://www.hillcopaint.com/service-areas/leander [R=301,L]
+  RewriteRule ^cedar-park/?$ https://www.hillcopaint.com/service-areas/cedar-park [R=301,L]
+  RewriteRule ^north-austin/?$ https://www.hillcopaint.com/service-areas/north-austin [R=301,L]
 
-  # --- Old /service-areas subpaths that should collapse to hub ---
-  RewriteRule ^service-areas/round-rock.*$ https://www.hillcopaint.com/service-areas [R=301,L]
-  RewriteRule ^service-areas/leander.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+  # --- Old /service-areas subpaths that do NOT have dedicated pages → hub ---
+  # NOTE: leander, georgetown, round-rock, cedar-park, north-austin have dedicated pages
+  # and are NOT redirected here (SPA fallback serves them)
   RewriteRule ^service-areas/taylor-hutto.*$ https://www.hillcopaint.com/service-areas [R=301,L]
   RewriteRule ^service-areas/wells-branch.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^service-areas/pflugerville.*$ https://www.hillcopaint.com/service-areas [R=301,L]
+  RewriteRule ^service-areas/round-rock-georgetown/?$ https://www.hillcopaint.com/service-areas/round-rock [R=301,L]
 
   # --- Broken area URL fix ---
   RewriteRule ^areas/downtown-austin-luxury/old-west-austin/?$ https://www.hillcopaint.com/areas/downtown-austin-luxury/old-west-austin-central [R=301,L]
