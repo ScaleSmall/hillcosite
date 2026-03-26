@@ -6,86 +6,83 @@
 
 ## Overview
 
-This document describes fixes made to ensure route inventory consistency across the codebase.
+This document describes the route inventory structure and validation.
 
 ---
 
-## Issues Found and Fixed
+## Route Data Architecture
 
-### 1. Duplicated Route Data
+**Single Source of Truth:** `src/config/routeData.mjs`
 
-**Problem:** Route data was duplicated across multiple files:
-- `src/config/routes.ts`
-- `scripts/generate-sitemap.mjs`
-- `scripts/validate-route-inventory.mjs`
+All route data is defined in this file. Other files import from it:
 
-**Fix:** Created `src/config/routeData.mjs` as the single source of truth. All other files now import from this canonical source.
+- `src/config/routes.ts` - Pure re-export layer for TypeScript
+- `scripts/generate-sitemap.mjs` - Sitemap generation
+- `scripts/validate-route-inventory.mjs` - Validation
+- `scripts/validate-redirects.mjs` - Redirect validation
 
-### 2. Phantom Routes Removed
+---
 
-**Problem:** Previous versions listed service-location pages for Leander, Georgetown, Round Rock, Cedar Park, and North Austin that had no backing page files.
+## Actually Verified
 
-**Fix:** These phantom routes were removed from the route inventory. Only the 24 service-location pages that have actual backing files are now included.
+The `npm run validate:routes` script checks:
 
-### 3. Unmounted Pages Now Mounted
+1. **Route Mounting:** All `routeData.mjs` paths exist in `App.tsx`
+2. **File Existence:** All service-location routes have backing `.tsx` files
+3. **Redirect Targets:** `_redirects` targets point to valid routes
+4. **Htaccess Targets:** `.htaccess` targets point to valid routes
+5. **Sitemap Consistency:** Non-blog sitemap URLs match mounted routes
+6. **Canonical State:** `canonicalMappings.ts` arrays are empty
+7. **No Duplication:** `routes.ts` has no hardcoded route arrays
 
-**Problem:** Austin and WestLakeHills location page files existed but were not mounted in App.tsx.
+---
 
-**Fix:** Added route entries and lazy imports for all 8 pages:
-- `/interior-painting-austin`
-- `/exterior-painting-austin`
-- `/cabinet-refinishing-austin`
-- `/commercial-painting-austin`
-- `/interior-painting-west-lake-hills`
-- `/exterior-painting-west-lake-hills`
-- `/cabinet-refinishing-west-lake-hills`
-- `/commercial-painting-west-lake-hills`
+## Not Verified by This Script
 
-### 4. Validation Script Created
+The script does NOT check:
 
-**Problem:** No automated check prevented route inventory drift.
-
-**Fix:** Created `scripts/validate-route-inventory.mjs` which:
-- Verifies all routeData paths are mounted in App.tsx
-- Verifies all service-location routes have backing files
-- Verifies redirect targets point to valid routes
-- Verifies canonicalMappings.ts state is documented accurately
+- Documentation accuracy (must be manually reviewed)
+- Whether files were modified in a specific branch
+- Blog post validity in sitemap
+- External redirect targets
 
 ---
 
 ## Redirect Configuration
 
-Redirects in `public/_redirects` and `public/.htaccess` were verified against live routes.
+**Status:** Redirect targets were verified valid. No changes made.
 
-**Result:** All redirect targets point to valid mounted routes. No changes were needed.
+Files checked:
+- `public/_redirects` - All internal targets valid
+- `public/.htaccess` - All internal targets valid
 
 ---
 
 ## Canonical Configuration
 
-**Current state:** No cross-page canonical consolidation is active.
+**Status:** No active mappings.
 
-All pages use self-referencing canonical URLs. The `canonicalMappings.ts` arrays are intentionally empty.
-
----
-
-## Validation Commands
-
-```bash
-npm run validate:routes   # Check route inventory consistency
-npm run verify:redirects  # Check redirect configuration
-npm run typecheck         # TypeScript type checking
-npm run build             # Full build with all validations
-```
+- `serviceAreaCanonicals` array is empty
+- `serviceLocationCanonicals` array is empty
+- All pages use self-referencing canonical URLs
 
 ---
 
-## Files Changed in This Fix
+## Route Counts
 
-1. `src/config/routeData.mjs` - New canonical route data source
-2. `src/config/routes.ts` - Updated to re-export from routeData.mjs
-3. `scripts/generate-sitemap.mjs` - Imports from routeData.mjs
-4. `scripts/validate-route-inventory.mjs` - Comprehensive validation
-5. `src/App.tsx` - Added 8 route entries for Austin/WestLakeHills locations
-6. `src/config/canonicalMappings.ts` - Documented empty state
-7. Documentation files - Updated to reflect actual state
+| Category | Count |
+|----------|-------|
+| routeData.mjs paths | 141 |
+| App.tsx mounted routes | 146 |
+| Service-location pages | 24 |
+| Location page files | 24 |
+
+---
+
+## Not Implemented
+
+The following do NOT exist in the codebase:
+
+- Service-location pages for Leander, Georgetown, Round Rock, Cedar Park, North Austin
+- Cedar Park to Leander canonical mapping
+- Hutto to Taylor canonical mapping

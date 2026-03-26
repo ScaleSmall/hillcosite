@@ -1,98 +1,37 @@
+#!/usr/bin/env node
+/**
+ * Redirect and Sitemap Validation
+ *
+ * Validates redirect targets and sitemap URLs against the canonical route inventory.
+ * Imports all route data from routeData.mjs - no local route arrays.
+ */
+
 import { readFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import {
+  geoAreas,
+  getStaticRoutes,
+  getServiceLocationPaths
+} from '../src/config/routeData.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const geoAreas = [
-  { hub: 'steiner-ranch-78732', neighborhoods: ['rob-roy', 'davenport-ranch', 'river-place', 'barclay-place', 'chaparral-cliffside'] },
-  { hub: 'west-lake-hills-and-rollingwood', neighborhoods: ['rollingwood', 'west-lake-hills', 'spanish-oaks', 'davenport-ranch-west', 'lake-austin-hills'] },
-  { hub: 'barton-creek', neighborhoods: ['barton-creek-country-club-estates', 'fazio-foothills-cliffside', 'spyglass-bartons-bluff', 'lake-austin-west-estates', 'barton-creek-west'] },
-  { hub: 'tarrytown', neighborhoods: ['tarrytown', 'old-enfield', 'pemberton-heights', 'bryker-woods', 'clarksville'] },
-  { hub: 'downtown-austin-luxury', neighborhoods: ['downtown-core-78701', 'rainey-street-district', 'old-west-austin-central', 'zilker', 'clarksville-west'] },
-  { hub: 'allandale-and-northwest-hills', neighborhoods: ['allandale', 'northwest-hills', 'crestview', 'quail-creek', 'triangle-north-lamar'] },
-  { hub: 'lakeway-bee-cave-and-lake-travis', neighborhoods: ['lakeway', 'rough-hollow', 'the-peninsula-at-rough-hollow', 'serenity-hills', 'bee-cave'] },
-  { hub: 'circle-c-ranch-and-southwest-austin', neighborhoods: ['circle-c-ranch', 'grey-rock', 'lost-creek', 'shady-hollow', 'west-oak-hill'] },
-  { hub: 'pemberton-heights-and-old-west-austin-historic-luxury', neighborhoods: ['pemberton-heights-south', 'old-enfield-west', 'bryker-woods-west', 'clarksville-historic', 'old-west-austin-historic'] },
-  { hub: 'leander', neighborhoods: ['crystal-falls', 'mason-hills', 'travisso', 'devine-lake', 'bryson'] },
-  { hub: 'georgetown', neighborhoods: ['sun-city', 'berry-creek', 'teravista', 'wolf-ranch', 'georgetown-square'] },
-  { hub: 'round-rock', neighborhoods: ['forest-creek', 'mayfield-ranch', 'brushy-creek', 'round-rock-ranch', 'vista-oaks'] },
-  { hub: 'cedar-park', neighborhoods: ['ranch-at-brushy-creek', 'buttercup-creek', 'lakeline', 'avery-ranch', 'twin-creeks'] },
-  { hub: 'north-austin', neighborhoods: ['the-domain', 'balcones', 'milwood', 'jollyville', 'anderson-mill'] }
-];
-
-const serviceLocationPages = [
-  '/interior-painting-austin',
-  '/interior-painting-tarrytown',
-  '/interior-painting-northwest-hills',
-  '/interior-painting-west-lake-hills',
-  '/interior-painting-west-lake-highlands',
-  '/interior-painting-lakeway',
-  '/exterior-painting-austin',
-  '/exterior-painting-tarrytown',
-  '/exterior-painting-northwest-hills',
-  '/exterior-painting-west-lake-hills',
-  '/exterior-painting-west-lake-highlands',
-  '/exterior-painting-lakeway',
-  '/cabinet-refinishing-austin',
-  '/cabinet-refinishing-tarrytown',
-  '/cabinet-refinishing-northwest-hills',
-  '/cabinet-refinishing-west-lake-hills',
-  '/cabinet-refinishing-west-lake-highlands',
-  '/cabinet-refinishing-lakeway',
-  '/commercial-painting-austin',
-  '/commercial-painting-tarrytown',
-  '/commercial-painting-northwest-hills',
-  '/commercial-painting-west-lake-hills',
-  '/commercial-painting-west-lake-highlands',
-  '/commercial-painting-lakeway',
-];
-
-const staticRoutes = [
-  '/',
-  '/about',
-  '/services',
-  '/services/interior-painting',
-  '/services/exterior-painting',
-  '/services/cabinet-refinishing',
-  '/services/commercial',
-  '/gallery',
-  '/testimonials',
-  '/faq',
-  '/service-areas',
-  '/service-areas/austin',
-  '/service-areas/tarrytown',
-  '/service-areas/northwest-hills',
-  '/service-areas/west-lake-hills',
-  '/service-areas/west-lake-highlands',
-  '/service-areas/lakeway',
-  '/service-areas/leander',
-  '/service-areas/georgetown',
-  '/service-areas/round-rock',
-  '/service-areas/cedar-park',
-  '/service-areas/north-austin',
-  '/color-consultation',
-  '/contact',
-  '/blog',
-  '/guides/painting-costs-austin',
-  '/guides/best-paint-texas-heat',
-  '/guides/hoa-color-tips-austin',
-  '/guides/how-often-paint-central-texas',
-  '/privacy',
-  '/terms',
-  '/do-not-sell',
-  '/financing',
+const additionalValidRoutes = [
   '/pre-approval',
   '/search',
   '/thank-you',
   '/eula',
   '/sitemap',
-  ...serviceLocationPages,
 ];
 
 function getAllValidRoutes() {
-  const routes = new Set(staticRoutes);
+  const routes = new Set();
+
+  getStaticRoutes().forEach(r => routes.add(r.path));
+
+  additionalValidRoutes.forEach(r => routes.add(r));
 
   geoAreas.forEach(area => {
     routes.add(`/areas/${area.hub}`);

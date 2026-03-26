@@ -8,7 +8,9 @@
  * 3. src/pages/locations/*.tsx (service-location page files)
  * 4. public/_redirects (redirect targets)
  * 5. public/.htaccess (redirect targets)
- * 6. src/config/canonicalMappings.ts (canonical mapping claims)
+ * 6. public/sitemap.xml (sitemap URLs)
+ * 7. src/config/canonicalMappings.ts (canonical mapping state)
+ * 8. src/config/routes.ts (must not duplicate route arrays)
  *
  * Fails the build if any mismatch is detected.
  */
@@ -18,7 +20,8 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import {
   getAllRoutePaths,
-  getServiceLocationPaths
+  getServiceLocationPaths,
+  geoAreas
 } from '../src/config/routeData.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -91,6 +94,16 @@ function extractHtaccessRedirectTargets(htaccessContent) {
   return targets;
 }
 
+function extractSitemapPaths(sitemapContent) {
+  const paths = [];
+  const locRegex = /<loc>https:\/\/www\.hillcopaint\.com([^<]+)<\/loc>/g;
+  let match;
+  while ((match = locRegex.exec(sitemapContent)) !== null) {
+    paths.push(match[1]);
+  }
+  return paths;
+}
+
 function getLocationFileNames() {
   const locationsDir = resolve(projectRoot, 'src/pages/locations');
   if (!existsSync(locationsDir)) return [];
@@ -129,12 +142,23 @@ function componentNameToPath(componentName) {
   return mapping[componentName] || null;
 }
 
+function getAllValidPaths(appTsxPaths) {
+  const paths = new Set(appTsxPaths);
+  geoAreas.forEach(area => {
+    paths.add(`/areas/${area.hub}`);
+    area.neighborhoods.forEach(n => paths.add(`/areas/${area.hub}/${n}`));
+  });
+  return paths;
+}
+
 console.log('\n=== Route Inventory Validation ===\n');
 
 const appTsxPath = resolve(projectRoot, 'src/App.tsx');
 const redirectsPath = resolve(projectRoot, 'public/_redirects');
 const htaccessPath = resolve(projectRoot, 'public/.htaccess');
+const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
 const canonicalMappingsPath = resolve(projectRoot, 'src/config/canonicalMappings.ts');
+const routesTsPath = resolve(projectRoot, 'src/config/routes.ts');
 
 if (!existsSync(appTsxPath)) {
   error(`App.tsx not found at ${appTsxPath}`);
@@ -178,11 +202,9 @@ if (existsSync(redirectsPath)) {
   const redirectsContent = readFileSync(redirectsPath, 'utf-8');
   const redirectTargets = extractRedirectTargets(redirectsContent);
 
-  const validTargetPaths = new Set([
-    ...appTsxPaths,
-    '/index.html',
-    '/',
-  ]);
+  const validTargetPaths = getAllValidPaths(appTsxPaths);
+  validTargetPaths.add('/');
+  validTargetPaths.add('/index.html');
 
   const invalidTargets = redirectTargets.filter(({ target }) => {
     if (target.includes(':splat')) return false;
@@ -192,7 +214,7 @@ if (existsSync(redirectsPath)) {
 
   if (invalidTargets.length > 0) {
     warn(`${invalidTargets.length} redirect targets may point to unmounted routes:`);
-    invalidTargets.forEach(({ target, line }) => console.log(`   - ${target}`));
+    invalidTargets.forEach(({ target }) => console.log(`   - ${target}`));
   } else {
     success(`All redirect targets in _redirects are valid`);
   }
@@ -205,9 +227,10 @@ if (existsSync(htaccessPath)) {
   const htaccessContent = readFileSync(htaccessPath, 'utf-8');
   const htaccessTargets = extractHtaccessRedirectTargets(htaccessContent);
 
+  const validTargetPaths = getAllValidPaths(appTsxPaths);
   const invalidHtaccessTargets = htaccessTargets.filter(({ target }) => {
     if (target === '/' || target === '/index.html') return false;
-    return !appTsxSet.has(target);
+    return !validTargetPaths.has(target);
   });
 
   if (invalidHtaccessTargets.length > 0) {
@@ -220,7 +243,29 @@ if (existsSync(htaccessPath)) {
   warn('.htaccess file not found');
 }
 
-console.log('\n5. Checking canonicalMappings.ts for false claims...');
+console.log('\n5. Checking sitemap.xml paths match mounted routes...');
+if (existsSync(sitemapPath)) {
+  const sitemapContent = readFileSync(sitemapPath, 'utf-8');
+  const sitemapPaths = extractSitemapPaths(sitemapContent);
+
+  const validPaths = getAllValidPaths(appTsxPaths);
+  const invalidSitemapPaths = sitemapPaths.filter(p => {
+    if (p.startsWith('/blog/')) return false;
+    return !validPaths.has(p);
+  });
+
+  if (invalidSitemapPaths.length > 0) {
+    error(`${invalidSitemapPaths.length} sitemap URLs do not match mounted routes:`);
+    invalidSitemapPaths.forEach(p => console.log(`   - ${p}`));
+  } else {
+    const nonBlogPaths = sitemapPaths.filter(p => !p.startsWith('/blog/'));
+    success(`All ${nonBlogPaths.length} non-blog sitemap URLs match mounted routes`);
+  }
+} else {
+  warn('sitemap.xml not found - will be generated during build');
+}
+
+console.log('\n6. Checking canonicalMappings.ts state...');
 if (existsSync(canonicalMappingsPath)) {
   const canonicalContent = readFileSync(canonicalMappingsPath, 'utf-8');
 
@@ -230,16 +275,48 @@ if (existsSync(canonicalMappingsPath)) {
   const serviceAreaEmpty = !serviceAreaMatch || serviceAreaMatch[1].trim() === '';
   const serviceLocationEmpty = !serviceLocationMatch || serviceLocationMatch[1].trim() === '';
 
+  const cedarParkToLeander = canonicalContent.includes('cedar-park') && canonicalContent.includes('leander');
+  const huttoToTaylor = canonicalContent.includes('hutto') && canonicalContent.includes('taylor');
+
+  if (cedarParkToLeander && serviceAreaEmpty) {
+    warn('Code mentions cedar-park/leander but arrays are empty - no active mapping');
+  }
+
+  if (huttoToTaylor && serviceAreaEmpty) {
+    warn('Code mentions hutto/taylor but arrays are empty - no active mapping');
+  }
+
   if (serviceAreaEmpty && serviceLocationEmpty) {
-    success('canonicalMappings.ts has empty arrays (no active mappings) - consistent with docs');
+    success('canonicalMappings.ts has empty arrays (no active mappings)');
   } else {
-    const hasContent = !serviceAreaEmpty || !serviceLocationEmpty;
-    if (hasContent) {
-      warn('canonicalMappings.ts has active mappings - ensure docs reflect this');
-    }
+    warn('canonicalMappings.ts has active mappings - ensure docs reflect this');
   }
 } else {
   warn('canonicalMappings.ts not found');
+}
+
+console.log('\n7. Checking routes.ts does not duplicate route inventory...');
+if (existsSync(routesTsPath)) {
+  const routesTsContent = readFileSync(routesTsPath, 'utf-8');
+
+  const hasStaticRoutesArray = /export\s+const\s+staticRoutes\s*=\s*\[/.test(routesTsContent);
+  const hasCoreStaticRoutesArray = /export\s+const\s+coreStaticRoutes\s*=\s*\[/.test(routesTsContent);
+  const hasServiceLocationArray = /export\s+const\s+serviceLocationPages\s*=\s*\[/.test(routesTsContent);
+  const hasGeoAreasArray = /export\s+const\s+geoAreas\s*=\s*\[/.test(routesTsContent);
+
+  const hasDuplication = hasStaticRoutesArray || hasCoreStaticRoutesArray || hasServiceLocationArray || hasGeoAreasArray;
+
+  if (hasDuplication) {
+    error('routes.ts contains hardcoded route arrays - must import from routeData.mjs');
+    if (hasStaticRoutesArray) console.log('   - Found: staticRoutes array');
+    if (hasCoreStaticRoutesArray) console.log('   - Found: coreStaticRoutes array');
+    if (hasServiceLocationArray) console.log('   - Found: serviceLocationPages array');
+    if (hasGeoAreasArray) console.log('   - Found: geoAreas array');
+  } else {
+    success('routes.ts is a pure re-export layer (no duplicated arrays)');
+  }
+} else {
+  warn('routes.ts not found');
 }
 
 console.log('\n=== Summary ===');
