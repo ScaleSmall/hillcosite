@@ -6,33 +6,31 @@
 
 ## Current State
 
-**Canonical Mappings Implemented: 0**
+**Active Canonical Mappings: 0**
 
-The `src/config/canonicalMappings.ts` file contains empty arrays. No cross-page canonical consolidation is currently active in this codebase. All pages use self-referencing canonical URLs.
+The `src/config/canonicalMappings.ts` file contains empty arrays. No cross-page canonical consolidation is active. All pages use self-referencing canonical URLs.
 
 ### What This Means
 
-- `/service-areas/cedar-park` canonicals to itself (`/service-areas/cedar-park`)
-- `/service-areas/leander` canonicals to itself (`/service-areas/leander`)
+- `/service-areas/cedar-park` canonicals to itself
+- `/service-areas/leander` canonicals to itself
 - All service-location pages canonical to themselves
-- No legacy → primary canonical redirects are in place
+- No legacy-to-primary canonical redirects are in place
 
 ---
 
-## Route Inventory (March 2026)
+## Route Inventory
+
+Computed from `src/config/routeData.mjs`:
+
+### Static Core Routes
+- Homepage, About, Services, Gallery, Testimonials, FAQ, Contact
+- 4 guide pages
+- Legal pages (Privacy, Terms, Do Not Sell)
 
 ### Service-Area Pages (11 total)
-- `/service-areas/austin`
-- `/service-areas/tarrytown`
-- `/service-areas/northwest-hills`
-- `/service-areas/west-lake-hills`
-- `/service-areas/west-lake-highlands`
-- `/service-areas/lakeway`
-- `/service-areas/leander`
-- `/service-areas/georgetown`
-- `/service-areas/round-rock`
-- `/service-areas/cedar-park`
-- `/service-areas/north-austin`
+- austin, tarrytown, northwest-hills, west-lake-hills, west-lake-highlands
+- lakeway, leander, georgetown, round-rock, cedar-park, north-austin
 
 ### Service-Location Pages (24 total)
 4 services x 6 locations:
@@ -47,34 +45,25 @@ The `src/config/canonicalMappings.ts` file contains empty arrays. No cross-page 
 
 ## Validation
 
-Run the route inventory validation to confirm consistency:
+Route inventory consistency is validated by:
 
 ```bash
 npm run validate:routes
 ```
 
 This script checks:
-1. All paths in `routes.ts` are mounted in `App.tsx`
-2. All service-location paths in sitemap are mounted
-3. Routes and sitemap are in sync
+1. All paths in routeData.mjs are mounted in App.tsx
+2. All service-location routes have backing page files
+3. All redirect targets point to valid mounted routes
+4. canonicalMappings.ts state matches documentation
 
 ---
 
-## If Canonical Consolidation Is Needed
+## Not Implemented
 
-To implement canonical consolidation in the future:
+The following are NOT implemented in this codebase:
+- Cedar Park to Leander canonical consolidation
+- Hutto to Taylor canonical consolidation
+- Any cross-page canonical mappings
 
-1. Add entries to `src/config/canonicalMappings.ts`:
-```typescript
-export const serviceAreaCanonicals: CanonicalMapping[] = [
-  {
-    legacyPath: '/service-areas/cedar-park',
-    canonicalTarget: '/service-areas/leander',
-    reason: 'Consolidate Cedar Park into Leander service area'
-  }
-];
-```
-
-2. Update the affected page components to use the canonical override
-3. Update this documentation with the new mappings
-4. Run validation scripts to confirm
+If such consolidation is needed, add entries to `src/config/canonicalMappings.ts` and update affected page components.
