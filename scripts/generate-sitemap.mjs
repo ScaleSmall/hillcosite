@@ -50,20 +50,28 @@ const geoAreas = [
 ];
 
 const serviceLocationPages = [
+  { path: '/interior-painting-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/interior-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/interior-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/interior-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/interior-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-lakeway', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
 ];

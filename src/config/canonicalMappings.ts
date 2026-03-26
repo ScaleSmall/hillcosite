@@ -1,11 +1,17 @@
 /**
  * SEO Canonical Consolidation Mappings
  *
- * This file defines legacy URL patterns and their approved canonical targets.
- * Used to consolidate SEO authority from deprecated location pages to primary pages.
+ * This file provides utility functions for canonical URL management.
  *
- * Legacy pages remain accessible for users and backlinks, but canonicals point
- * search engines to the approved primary page to prevent duplicate indexation.
+ * CURRENT STATE (March 2026):
+ * ----------------------------
+ * Both mapping arrays are INTENTIONALLY EMPTY in this codebase.
+ * All pages currently use self-referencing canonical URLs.
+ *
+ * No Cedar Park → Leander or Hutto → Taylor mappings are implemented.
+ * If such consolidation is needed in the future, add entries to the arrays below.
+ *
+ * The utility functions remain available for future canonical consolidation needs.
  */
 
 export interface CanonicalMapping {
@@ -16,11 +22,13 @@ export interface CanonicalMapping {
 
 /**
  * Service-area page canonical mappings
+ * Currently empty - all service-area pages are self-canonical
  */
 export const serviceAreaCanonicals: CanonicalMapping[] = [];
 
 /**
  * Service location page canonical mappings
+ * Currently empty - all service-location pages are self-canonical
  */
 export const serviceLocationCanonicals: CanonicalMapping[] = [];
 
