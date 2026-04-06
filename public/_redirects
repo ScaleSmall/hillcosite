@@ -154,8 +154,24 @@
 /:splat/  /:splat  301!
 
 # -----------------------------------------------------------------------
+# STATIC FILE PASSTHROUGH
+# Explicit identity rewrites so Cloudflare never falls through to the
+# SPA catch-all for real assets.
+# -----------------------------------------------------------------------
+/env.js /env.js 200
+/site.webmanifest /site.webmanifest 200
+/manifest.webmanifest /manifest.webmanifest 200
+/assets/* /assets/:splat 200
+/*.js /:splat 200
+/*.css /:splat 200
+/*.json /:splat 200
+/*.png /:splat 200
+/*.jpg /:splat 200
+/*.jpeg /:splat 200
+/*.svg /:splat 200
+/*.webp /:splat 200
+
+# -----------------------------------------------------------------------
 # SPA FALLBACK — must be last
-# No "!" so Cloudflare serves real static files (env.js, assets/*, etc.)
-# directly and only rewrites to index.html when no file matches.
 # -----------------------------------------------------------------------
 /*  /index.html  200
