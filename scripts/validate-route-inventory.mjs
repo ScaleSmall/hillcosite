@@ -7,8 +7,7 @@
  * 2. src/App.tsx (mounted routes)
  * 3. src/pages/locations/*.tsx (service-location page files)
  * 4. public/_redirects (redirect targets)
- * 5. public/.htaccess (redirect targets)
- * 6. public/sitemap.xml (sitemap URLs)
+ * 5. public/sitemap.xml (sitemap URLs)
  * 7. src/config/canonicalMappings.ts (canonical mapping state)
  * 8. src/config/routes.ts (must not duplicate route arrays)
  *
@@ -77,23 +76,6 @@ function extractRedirectTargets(redirectsContent) {
   return targets;
 }
 
-function extractHtaccessRedirectTargets(htaccessContent) {
-  const targets = [];
-  const lines = htaccessContent.split('\n');
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const rewriteMatch = trimmed.match(/RewriteRule\s+\S+\s+(\S+)/);
-    if (rewriteMatch) {
-      let target = rewriteMatch[1];
-      if (target.startsWith('/') && !target.includes('$') && !target.includes('%')) {
-        targets.push({ target, line: trimmed });
-      }
-    }
-  }
-  return targets;
-}
-
 function extractSitemapPaths(sitemapContent) {
   const paths = [];
   const locRegex = /<loc>https:\/\/www\.hillcopaint\.com([^<]+)<\/loc>/g;
@@ -155,7 +137,6 @@ console.log('\n=== Route Inventory Validation ===\n');
 
 const appTsxPath = resolve(projectRoot, 'src/App.tsx');
 const redirectsPath = resolve(projectRoot, 'public/_redirects');
-const htaccessPath = resolve(projectRoot, 'public/.htaccess');
 const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
 const canonicalMappingsPath = resolve(projectRoot, 'src/config/canonicalMappings.ts');
 const routesTsPath = resolve(projectRoot, 'src/config/routes.ts');
@@ -222,28 +203,7 @@ if (existsSync(redirectsPath)) {
   warn('_redirects file not found');
 }
 
-console.log('\n4. Checking redirect targets in .htaccess...');
-if (existsSync(htaccessPath)) {
-  const htaccessContent = readFileSync(htaccessPath, 'utf-8');
-  const htaccessTargets = extractHtaccessRedirectTargets(htaccessContent);
-
-  const validTargetPaths = getAllValidPaths(appTsxPaths);
-  const invalidHtaccessTargets = htaccessTargets.filter(({ target }) => {
-    if (target === '/' || target === '/index.html') return false;
-    return !validTargetPaths.has(target);
-  });
-
-  if (invalidHtaccessTargets.length > 0) {
-    warn(`${invalidHtaccessTargets.length} .htaccess redirect targets may be invalid:`);
-    invalidHtaccessTargets.forEach(({ target }) => console.log(`   - ${target}`));
-  } else {
-    success(`.htaccess redirect targets are valid (${htaccessTargets.length} checked)`);
-  }
-} else {
-  warn('.htaccess file not found');
-}
-
-console.log('\n5. Checking sitemap.xml paths match mounted routes...');
+console.log('\n4. Checking sitemap.xml paths match mounted routes...');
 if (existsSync(sitemapPath)) {
   const sitemapContent = readFileSync(sitemapPath, 'utf-8');
   const sitemapPaths = extractSitemapPaths(sitemapContent);
@@ -265,7 +225,7 @@ if (existsSync(sitemapPath)) {
   warn('sitemap.xml not found - will be generated during build');
 }
 
-console.log('\n6. Checking canonicalMappings.ts state...');
+console.log('\n5. Checking canonicalMappings.ts state...');
 if (existsSync(canonicalMappingsPath)) {
   const canonicalContent = readFileSync(canonicalMappingsPath, 'utf-8');
 
@@ -295,7 +255,7 @@ if (existsSync(canonicalMappingsPath)) {
   warn('canonicalMappings.ts not found');
 }
 
-console.log('\n7. Checking routes.ts does not duplicate route inventory...');
+console.log('\n6. Checking routes.ts does not duplicate route inventory...');
 if (existsSync(routesTsPath)) {
   const routesTsContent = readFileSync(routesTsPath, 'utf-8');
 

@@ -1,13 +1,4 @@
 # -----------------------------------------------------------------------
-# DOMAIN CANONICALIZATION — single-hop for both HTTP and HTTPS apex
-# These rules are evaluated at the CDN edge before Netlify's built-in
-# force-HTTPS upgrade, so http://hillcopaint.com/* hits rule 1 directly
-# and never gets the intermediate https://hillcopaint.com/* hop.
-# -----------------------------------------------------------------------
-http://hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
-https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
-
-# -----------------------------------------------------------------------
 # BROKEN AREA URL FIX
 # The old-west-austin slug was renamed to old-west-austin-central.
 # -----------------------------------------------------------------------
@@ -156,11 +147,8 @@ https://hillcopaint.com/*  https://www.hillcopaint.com/:splat  301!
 
 # -----------------------------------------------------------------------
 # TRACKING PARAMETER STRIP (?ref=)
-# Netlify does not execute .htaccess. These rules replace the Apache
-# RewriteCond %{QUERY_STRING} ref= logic that was previously inert.
-#
+# Removes tracking parameters from URLs for clean canonical indexing.
 # IMPORTANT: Specific paths first, then the universal catch-all last.
-# The catch-all strips ?ref= from ANY path in one hop.
 # -----------------------------------------------------------------------
 /?ref=:ref                           https://www.hillcopaint.com/  301
 /about?ref=:ref                      https://www.hillcopaint.com/about  301
