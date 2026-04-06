@@ -159,6 +159,8 @@ const Gallery = () => {
   };
 
   const widgetContainerRef = useRef<HTMLDivElement>(null);
+  const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const [widgetError, setWidgetError] = useState(false);
 
   useEffect(() => {
     const container = widgetContainerRef.current;
@@ -167,11 +169,19 @@ const Gallery = () => {
     script.src = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js';
     script.setAttribute('data-client', 'mhw1q2k4-l9c3zpvji3');
     script.async = true;
+    script.onload = () => setWidgetLoaded(true);
+    script.onerror = () => setWidgetError(true);
     container.appendChild(script);
+    const timeout = setTimeout(() => {
+      if (!widgetLoaded && container.children.length <= 1) {
+        setWidgetError(true);
+      }
+    }, 5000);
     return () => {
+      clearTimeout(timeout);
       if (container.contains(script)) container.removeChild(script);
     };
-  }, []);
+  }, [widgetLoaded]);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -696,7 +706,13 @@ const Gallery = () => {
           </div>
 
           {/* Widget: injected after Modern Condo Interior */}
-          <div ref={widgetContainerRef} className="mt-12" />
+          <div ref={widgetContainerRef} className="mt-12">
+            {widgetError && (
+              <div className="text-center py-8 text-brand-gray-500">
+                <p>Additional gallery content is temporarily unavailable.</p>
+              </div>
+            )}
+          </div>
         </div>
       </section>
 
