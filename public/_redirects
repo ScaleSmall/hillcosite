@@ -155,5 +155,7 @@
 
 # -----------------------------------------------------------------------
 # SPA FALLBACK — must be last
+# No "!" so Cloudflare serves real static files (env.js, assets/*, etc.)
+# directly and only rewrites to index.html when no file matches.
 # -----------------------------------------------------------------------
-/*  /index.html  200!
+/*  /index.html  200
