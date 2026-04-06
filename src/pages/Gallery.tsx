@@ -10,7 +10,7 @@ import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ImageLightbox, { LightboxImage } from '../components/ImageLightbox';
-import { supabase } from '../lib/supabaseClient';
+import { supabase } from '../lib/supabase';
 
 interface GalleryPhoto {
   id: string;
@@ -116,6 +116,11 @@ const Gallery = () => {
   }, []);
 
   const fetchGalleryPhotos = async () => {
+    if (!supabase) {
+      setFeaturedPhotos(FALLBACK_FEATURED);
+      setLoading(false);
+      return;
+    }
     try {
       const { data, error } = await supabase
         .from('gallery_photos')

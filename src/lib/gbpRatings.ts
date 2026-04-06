@@ -9,6 +9,7 @@ export async function getLatestRating(): Promise<{
   reviewCount: string;
   shouldDisplay: boolean;
 } | null> {
+  if (!supabase) return null;
   try {
     const { data, error } = await supabase
       .from('gbp_ratings')

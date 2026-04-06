@@ -92,29 +92,33 @@ const Search = () => {
         item.description.toLowerCase().includes(searchTerm)
       );
 
-      try {
-        const { data: blogPosts } = await supabase
-          .from('blog_posts')
-          .select('title, excerpt, slug, category')
-          .eq('published', true)
-          .or(`title.ilike.%${searchTerm}%,excerpt.ilike.%${searchTerm}%,content.ilike.%${searchTerm}%`)
-          .limit(10);
-
-        const blogResults: SearchResult[] = (blogPosts || []).map(post => ({
-          type: 'blog' as const,
-          title: post.title,
-          description: post.excerpt,
-          url: `/blog/${post.slug}`,
-          category: post.category
-        }));
-
-        setResults([...matchedStatic, ...blogResults]);
-      } catch (error) {
-        console.error('Search error:', error);
+      if (!supabase) {
         setResults(matchedStatic);
-      } finally {
-        setLoading(false);
+      } else {
+        try {
+          const { data: blogPosts } = await supabase
+            .from('blog_posts')
+            .select('title, excerpt, slug, category')
+            .eq('published', true)
+            .or(`title.ilike.%${searchTerm}%,excerpt.ilike.%${searchTerm}%,content.ilike.%${searchTerm}%`)
+            .limit(10);
+
+          const blogResults: SearchResult[] = (blogPosts || []).map(post => ({
+            type: 'blog' as const,
+            title: post.title,
+            description: post.excerpt,
+            url: `/blog/${post.slug}`,
+            category: post.category
+          }));
+
+          setResults([...matchedStatic, ...blogResults]);
+        } catch (error) {
+          console.error('Search error:', error);
+          setResults(matchedStatic);
+        }
       }
+
+      setLoading(false);
     };
 
     performSearch();
