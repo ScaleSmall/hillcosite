@@ -146,36 +146,14 @@
 /get-a-free-estimate/        /contact  301
 
 # -----------------------------------------------------------------------
-# TRACKING PARAMETER STRIP (?ref=)
-# Removes tracking parameters from URLs for clean canonical indexing.
-# IMPORTANT: Specific paths first, then the universal catch-all last.
-# -----------------------------------------------------------------------
-/?ref=:ref                           https://www.hillcopaint.com/  301
-/about?ref=:ref                      https://www.hillcopaint.com/about  301
-/services?ref=:ref                   https://www.hillcopaint.com/services  301
-/gallery?ref=:ref                    https://www.hillcopaint.com/gallery  301
-/blog?ref=:ref                       https://www.hillcopaint.com/blog  301
-/contact?ref=:ref                    https://www.hillcopaint.com/contact  301
-/testimonials?ref=:ref               https://www.hillcopaint.com/testimonials  301
-/faq?ref=:ref                        https://www.hillcopaint.com/faq  301
-/financing?ref=:ref                  https://www.hillcopaint.com/financing  301
-/service-areas?ref=:ref              https://www.hillcopaint.com/service-areas  301
-/color-consultation?ref=:ref         https://www.hillcopaint.com/color-consultation  301
-/services/*?ref=:ref                 https://www.hillcopaint.com/services/:splat  301
-/service-areas/*?ref=:ref            https://www.hillcopaint.com/service-areas/:splat  301
-/areas/*?ref=:ref                    https://www.hillcopaint.com/areas/:splat  301
-/guides/*?ref=:ref                   https://www.hillcopaint.com/guides/:splat  301
-/blog/*?ref=:ref                     https://www.hillcopaint.com/blog/:splat  301
-
-# -----------------------------------------------------------------------
 # TRAILING SLASH CANONICALIZATION
 # Strip trailing slashes from all paths (except root "/") before
 # hitting the SPA fallback so Googlebot only indexes the clean URL.
 # Specific rules above take precedence over this catch-all.
 # -----------------------------------------------------------------------
-/:splat/  /:splat  301
+/:splat/  /:splat  301!
 
 # -----------------------------------------------------------------------
 # SPA FALLBACK — must be last
 # -----------------------------------------------------------------------
-/*  /index.html  200
+/*  /index.html  200!
