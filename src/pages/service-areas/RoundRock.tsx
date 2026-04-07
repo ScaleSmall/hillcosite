@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, CheckCircle, MapPin, Home } from 'lucide-react';
+import { Phone, MapPin, Home, CheckCircle, Sun } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ImageWithGeo from '../../components/ImageWithGeo';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
@@ -12,60 +12,49 @@ import TestimonialsSection from '../../components/sections/TestimonialsSection';
 const RoundRock = () => {
   const roundRockFAQs = [
     {
-      question: 'Do you paint homes throughout Round Rock including Forest Creek and Mayfield Ranch?',
-      answer: 'Yes — we work throughout Round Rock including Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, Vista Oaks, and surrounding neighborhoods. Round Rock is one of our most active service areas, and we understand the varied home styles and HOA requirements across the city.'
+      question: 'Do you serve Forest Creek, Mayfield Ranch, and other Round Rock neighborhoods?',
+      answer: 'Yes — we work throughout Round Rock including Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks. We are familiar with the HOA requirements in these communities and handle color submission paperwork for homeowners who need exterior approval before starting.'
     },
     {
-      question: 'How do you handle scheduling for busy Round Rock families?',
-      answer: 'We understand that Round Rock families are busy — between work at Dell, Apple, or other nearby employers and active family schedules. We offer flexible scheduling including early start times and can often complete most projects within 1–3 days to minimize disruption to your household.'
+      question: 'What are the most common exterior painting issues for Round Rock homes?',
+      answer: 'Round Rock homes range from late 1990s construction in Forest Creek and Brushy Creek to newer builds in Mayfield Ranch and Vista Oaks. The early-2000s homes are starting to show their age — chalky or oxidized brick paint, peeling trim, failed caulk at window and door frames, and builder-grade coatings that have exceeded their service life. We assess every surface during the estimate visit and provide a clear prep and product plan before starting.'
     },
     {
-      question: 'Do you offer exterior painting services suited to Round Rock\'s climate?',
-      answer: 'Absolutely. Round Rock\'s hot summers and intense UV require exterior paints with high heat resistance. We use premium paints with UV inhibitors, apply proper primer systems, and ensure complete surface prep so the finish lasts for years rather than months.'
+      question: 'How do you schedule painting projects around busy family schedules in Round Rock?',
+      answer: 'Round Rock is a dense family community with school schedules, youth sports, and two-career households. We offer estimate appointments in the evenings and on weekends, and we plan project start times and schedules with minimal disruption as an explicit goal. Interior projects are sequenced room by room so your family always has functional space during the work.'
     },
     {
-      question: 'Can you do cabinet painting in Round Rock kitchens?',
-      answer: 'Yes — cabinet refinishing is one of our most popular services throughout Round Rock. We use a factory-applied process with spraying and light sanding between coats to achieve a smooth, durable finish that dramatically improves the look of your kitchen at a fraction of replacement cost.'
+      question: 'Do you handle HOA color approvals for exterior repaints in Round Rock communities?',
+      answer: 'Yes — Forest Creek, Brushy Creek, and other Round Rock communities with HOAs require exterior color approval. We prepare complete submissions and aim for first-pass approval. If your community requires a specific color palette, we work from those guidelines and recommend colors within the approved range.'
+    },
+    {
+      question: 'What is the difference between interior painting and cabinet refinishing in terms of cost?',
+      answer: 'Interior painting covers walls, ceilings, trim, and doors — typically the most impactful refresh for a home\'s overall look. Cabinet refinishing is a more targeted, precision service focused specifically on cabinet boxes, doors, and drawer fronts using spray-applied finish. Both are popular in Round Rock; cabinet refinishing is typically one-third to one-half the cost of a full kitchen replacement while delivering a dramatic result.'
     }
   ];
 
   const testimonials = [
     {
-      name: 'Chris & Amy W.',
+      name: 'Marcus & Tanya H.',
       location: 'Forest Creek, Round Rock',
       rating: 5,
-      text: 'Hill Country Painting did a full exterior repaint of our Forest Creek home. Excellent prep work — they caulked every gap and primed bare wood before painting. The finished result looks like a brand new house. Very pleased.',
-      initials: 'CW'
+      text: 'We had a full exterior repaint done by Hill Country Painting in Forest Creek. They prepped the older surfaces thoroughly, handled our HOA submission, and the job looked exactly like the estimate said it would. Timeline and price were both on target.',
+      initials: 'MH'
     },
     {
-      name: 'Michelle P.',
+      name: 'Laura B.',
       location: 'Mayfield Ranch, Round Rock',
       rating: 5,
-      text: 'We had our entire interior repainted including all the trim. The crew was professional, incredibly tidy, and the color advice they gave us was spot on. Our home feels completely transformed. Highly recommend to any Round Rock homeowner.',
-      initials: 'MP'
-    },
-    {
-      name: 'Kevin & Susan L.',
-      location: 'Round Rock',
-      rating: 5,
-      text: 'Cabinet painting in our kitchen and bathrooms. The finish is smooth and durable — looks like professional cabinet doors from a store. Far better quality than other painters we\'ve used. This is our go-to painting company.',
-      initials: 'KL'
+      text: 'Hill Country Painting repainted our kitchen cabinets and the entire interior. The cabinet finish is genuinely as good as new factory-painted cabinets — smooth, durable, and exactly the color I wanted. Interior walls were done clean and fast. Will use them again.',
+      initials: 'LB'
     }
-  ];
-
-  const neighborhoods = [
-    { name: 'Forest Creek', slug: 'forest-creek' },
-    { name: 'Mayfield Ranch', slug: 'mayfield-ranch' },
-    { name: 'Brushy Creek', slug: 'brushy-creek' },
-    { name: 'Round Rock Ranch', slug: 'round-rock-ranch' },
-    { name: 'Vista Oaks', slug: 'vista-oaks' },
   ];
 
   return (
     <>
       <SEO
-        title="Round Rock TX Painting Services | Hill Country Painting | Forest Creek & Mayfield Ranch"
-        description="Professional painting services in Round Rock, TX. Expert interior and exterior painting for Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks. Quality craftsmanship and reliable scheduling for Round Rock homeowners."
+        title="Round Rock TX Painting Services | HOA Specialists | Hill Country Painting"
+        description="Professional painting services in Round Rock, TX. Interior, exterior, and cabinet painting for Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks. HOA color approval experts."
         canonical="/service-areas/round-rock"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -73,56 +62,48 @@ const RoundRock = () => {
           { name: 'Round Rock', url: '/service-areas/round-rock' }
         ]}
         service={{
-          name: 'Round Rock Texas Painting Services',
-          description: 'Professional residential and commercial painting services throughout Round Rock, Texas. Expert interior and exterior painting for Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, Vista Oaks, and surrounding communities.',
-          areaServed: ['Round Rock', 'Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks', 'Georgetown', 'Cedar Park']
+          name: 'Round Rock TX Painting Services',
+          description: 'Professional interior and exterior painting throughout Round Rock, Texas. Serving Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks with interior repaints, exterior painting, and cabinet refinishing.',
+          areaServed: ['Round Rock', 'Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks']
         }}
-        faq={roundRockFAQs}
+        localBusiness={{
+          name: 'Hill Country Painting - Round Rock',
+          address: 'Round Rock, TX 78664',
+          telephone: '+15127601334'
+        }}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0">
           <ImageWithGeo
-            src="/classic-home-exterior.jpg"
-            alt="Professional Round Rock painting services for Forest Creek and Mayfield Ranch homes"
+            src="/austin-professional-house-painting-hero.jpg"
+            alt="Professional home painting in Round Rock Texas"
             className="w-full h-full object-cover"
-            width="1920"
-            height="1080"
-            loading="eager"
-            priority={true}
-            sizes="100vw"
-            location={{
-              name: 'Round Rock, TX',
-              latitude: 30.5083,
-              longitude: -97.6789,
-              region: 'Texas'
-            }}
+            location="Round Rock, TX"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-gray-900/85 via-brand-gray-900/60 to-transparent" />
         </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-                <MapPin className="w-4 h-4" />
-                Serving Round Rock, TX — 78664, 78665 & 78681
-              </div>
-              <h1 className="text-hero font-bold text-white leading-heading drop-shadow-lg">
-                Round Rock Painting Services
-              </h1>
-              <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Professional interior and exterior painting throughout Round Rock's neighborhoods. Reliable scheduling, quality finishes, and expert craftsmanship for every home from Forest Creek to Mayfield Ranch.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Request an Estimate
-                </Link>
-                <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold rounded-lg transition-colors duration-200 border border-white/40">
-                  <Phone className="w-5 h-5 mr-2" />
-                  (512) 240-2246
-                </a>
-              </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <MapPin className="w-5 h-5 text-brand-green-400" />
+              <span className="text-brand-green-400 font-medium">Round Rock, TX 78664 · 78665 · 78681</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Round Rock<br />
+              <span className="text-brand-green-400">Painting Services</span>
+            </h1>
+            <p className="text-xl text-brand-gray-200 mb-8 leading-relaxed">
+              Interior, exterior, and cabinet painting for Round Rock's established and growing neighborhoods. Reliable scheduling, HOA color approval handling, and professional results for every home in Forest Creek, Mayfield Ranch, and beyond.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-green-500 hover:bg-brand-green-600 text-white font-semibold rounded-lg transition-colors">
+                Get a Free Estimate
+              </Link>
+              <a href="tel:+15127601334" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
+                <Phone className="w-5 h-5" />
+                (512) 760-1334
+              </a>
             </div>
           </div>
         </div>
@@ -131,76 +112,76 @@ const RoundRock = () => {
       <StatsAndTrust />
 
       <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-6">
-                Why Round Rock Homeowners Choose Hill Country Painting
-              </h2>
-              <p className="text-lg text-brand-gray-600 mb-8 leading-body">
-                Round Rock has grown into one of Texas's most livable cities with a diverse mix of established neighborhoods and newer communities. We serve the full spectrum of Round Rock homes — from 1980s ranch homes in Vista Oaks to newer construction in Mayfield Ranch — with the same standard of quality.
-              </p>
-              <div className="space-y-4">
-                {[
-                  'Full service across all Round Rock zip codes (78664, 78665, 78681)',
-                  'Flexible scheduling around tech and corporate work schedules',
-                  'Thorough surface prep including caulking, patching, and priming',
-                  'Heat-resistant exterior paints for Central Texas summers',
-                  'Cabinet refinishing for kitchen and bathroom upgrades',
-                  'Detailed color consultation to select the right palette'
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-brand-azure flex-shrink-0 mt-0.5" />
-                    <span className="text-brand-gray-700">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-brand-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-6">Round Rock Neighborhoods We Serve</h3>
-              <div className="grid grid-cols-1 gap-3 mb-8">
-                {neighborhoods.map((n) => (
-                  <Link
-                    key={n.slug}
-                    to={`/areas/round-rock/${n.slug}`}
-                    className="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow group"
-                  >
-                    <Home className="w-5 h-5 text-brand-azure flex-shrink-0" />
-                    <span className="font-medium text-brand-gray-800 group-hover:text-brand-azureDark transition-colors">{n.name}</span>
-                    <span className="ml-auto text-brand-azure text-sm">→</span>
-                  </Link>
-                ))}
-              </div>
-              <Link to="/areas/round-rock" className="btn-primary w-full text-center block">
-                View All Round Rock Neighborhoods
-              </Link>
-            </div>
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
+            Painting Round Rock's Established Neighborhoods
+          </h2>
+          <div className="space-y-5 text-lg text-brand-gray-700">
+            <p>
+              Round Rock's major residential neighborhoods were built in waves: the late 1990s build-out in Forest Creek and Brushy Creek, mid-2000s growth in Round Rock Ranch and Vista Oaks, and more recent expansion in Mayfield Ranch. Each era has a distinct set of exterior characteristics — older homes in the 1990s wave are now showing the kind of surface wear that requires proper prep before repainting, not just a fresh coat over deteriorating surfaces.
+            </p>
+            <p>
+              Round Rock sits on Blackland prairie with hot summers and limited natural shade in the newer subdivisions. Exterior paint here faces direct UV exposure and the thermal cycling common to Central Texas. We use products rated for this environment and pay close attention to caulk joints at windows and doors, which are the most common early failure point on homes of this age.
+            </p>
           </div>
         </div>
       </section>
 
-      <ServicesGrid
-        title="Painting Services in Round Rock"
-        subtitle="Complete painting solutions for every Round Rock neighborhood"
-      />
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8">What We Paint in Round Rock</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { icon: Home, title: 'Established Neighborhood Exterior Repaints', description: 'Forest Creek and Brushy Creek homes from the late 1990s are entering their second or third repaint cycle. We assess surface condition, prep chalking or oxidized areas properly, and use products appropriate for older substrates.' },
+              { icon: Sun, title: 'UV-Resistant Exterior Coatings', description: 'Round Rock\'s open-terrain sun exposure means exterior paint needs real UV resistance. We recommend and use premium products — not builder-grade exterior lines — for repaints that hold their color and sheen for years rather than seasons.' },
+              { icon: CheckCircle, title: 'Full Interior Repaints', description: 'Interior repaints are the most common project in Round Rock — both color refreshes for long-term homeowners and full repaints for new buyers. We work efficiently around family schedules and deliver clean, precise results.' },
+              { icon: Home, title: 'Cabinet Refinishing', description: 'Cabinet refinishing transforms Round Rock kitchens at a fraction of replacement cost. We spray-apply multiple coats of premium cabinet finish for a result that looks new — popular in homes where the kitchen layout is good but the cabinets look dated.' }
+            ].map(({ icon: Icon, title, description }) => (
+              <div key={title} className="bg-white rounded-xl p-6 shadow-sm border border-brand-gray-100">
+                <Icon className="w-8 h-8 text-brand-green-500 mb-3" />
+                <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{title}</h3>
+                <p className="text-brand-gray-700">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <TestimonialsSection
-        title="What Round Rock Homeowners Say"
-        subtitle="Real feedback from Forest Creek, Mayfield Ranch, and Round Rock residents"
-        testimonials={testimonials}
-      />
+      <ServicesGrid />
 
-      <MiniFAQ
-        title="Round Rock Painting Questions"
-        faqs={roundRockFAQs}
-      />
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8">Round Rock Painting — Frequently Asked Questions</h2>
+          <MiniFAQ faqs={roundRockFAQs} />
+        </div>
+      </section>
 
-      <CTABanner
-        title="Ready to Refresh Your Round Rock Home?"
-        subtitle="Request a consultation today — serving all of Round Rock including Forest Creek, Mayfield Ranch, and Brushy Creek"
-        primaryCTA={{ text: 'Request a Consultation', href: '/contact' }}
-        secondaryCTA={{ text: 'View Our Work', href: '/gallery' }}
-      />
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-brand-gray-900 mb-6">Round Rock Neighborhoods and Nearby Areas</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+            {[
+              { label: 'Round Rock Area Hub', href: '/areas/round-rock' },
+              { label: 'Georgetown', href: '/service-areas/georgetown' },
+              { label: 'Cedar Park', href: '/service-areas/cedar-park' },
+              { label: 'Leander', href: '/service-areas/leander' },
+              { label: 'North Austin', href: '/service-areas/north-austin' },
+              { label: 'Austin Service Area', href: '/service-areas/austin' },
+            ].map(({ label, href }) => (
+              <Link key={href} to={href} className="text-brand-green-600 hover:text-brand-green-700 font-medium underline-offset-2 hover:underline">{label}</Link>
+            ))}
+          </div>
+          <h3 className="text-xl font-bold text-brand-gray-900 mb-4">Helpful Guides</h3>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/guides/painting-costs-austin" className="text-brand-green-600 hover:text-brand-green-700 font-medium hover:underline underline-offset-2">Austin Area Painting Costs</Link>
+            <Link to="/guides/best-paint-texas-heat" className="text-brand-green-600 hover:text-brand-green-700 font-medium hover:underline underline-offset-2">Best Paint for Texas Heat</Link>
+            <Link to="/guides/how-often-paint-central-texas" className="text-brand-green-600 hover:text-brand-green-700 font-medium hover:underline underline-offset-2">How Often to Paint in Central Texas</Link>
+          </div>
+        </div>
+      </section>
+
+      <TestimonialsSection testimonials={testimonials} />
+      <CTABanner />
     </>
   );
 };

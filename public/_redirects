@@ -14,54 +14,33 @@ https://hillcopaint.com/*      https://www.hillcopaint.com/:splat  301!
 /areas/downtown-austin-luxury/old-west-austin/   /areas/downtown-austin-luxury/old-west-austin-central  301
 
 # -----------------------------------------------------------------------
-# RETIRED LEANDER SERVICE-LOCATION PAGES
-# These legacy URLs resolve to the Leander service area page
+# RETIRED LEANDER SERVICE-LOCATION PAGES — now live canonical pages
 # -----------------------------------------------------------------------
-/interior-painting-leander       /service-areas/leander  301
-/interior-painting-leander/      /service-areas/leander  301
-/exterior-painting-leander       /service-areas/leander  301
-/exterior-painting-leander/      /service-areas/leander  301
-/cabinet-refinishing-leander     /service-areas/leander  301
-/cabinet-refinishing-leander/    /service-areas/leander  301
-/commercial-painting-leander     /service-areas/leander  301
-/commercial-painting-leander/    /service-areas/leander  301
+/interior-painting-leander       /index.html  200
+/exterior-painting-leander       /index.html  200
+/cabinet-refinishing-leander     /index.html  200
+/commercial-painting-leander     /index.html  200
 
 # -----------------------------------------------------------------------
-# RETIRED CEDAR PARK / GEORGETOWN / ROUND ROCK SERVICE-LOCATION PAGES
-# These legacy service-location URLs resolve to appropriate area pages
+# CEDAR PARK / GEORGETOWN / ROUND ROCK / NORTH AUSTIN SERVICE-LOCATION PAGES
+# Now live canonical pages — SPA rewrite (not redirects)
 # -----------------------------------------------------------------------
-/interior-painting-cedar-park       /service-areas/cedar-park  301
-/interior-painting-cedar-park/      /service-areas/cedar-park  301
-/exterior-painting-cedar-park       /service-areas/cedar-park  301
-/exterior-painting-cedar-park/      /service-areas/cedar-park  301
-/cabinet-refinishing-cedar-park     /service-areas/cedar-park  301
-/cabinet-refinishing-cedar-park/    /service-areas/cedar-park  301
-/commercial-painting-cedar-park     /service-areas/cedar-park  301
-/commercial-painting-cedar-park/    /service-areas/cedar-park  301
-/interior-painting-georgetown       /service-areas/georgetown  301
-/interior-painting-georgetown/      /service-areas/georgetown  301
-/exterior-painting-georgetown       /service-areas/georgetown  301
-/exterior-painting-georgetown/      /service-areas/georgetown  301
-/cabinet-refinishing-georgetown     /service-areas/georgetown  301
-/cabinet-refinishing-georgetown/    /service-areas/georgetown  301
-/commercial-painting-georgetown     /service-areas/georgetown  301
-/commercial-painting-georgetown/    /service-areas/georgetown  301
-/interior-painting-round-rock       /service-areas/round-rock  301
-/interior-painting-round-rock/      /service-areas/round-rock  301
-/exterior-painting-round-rock       /service-areas/round-rock  301
-/exterior-painting-round-rock/      /service-areas/round-rock  301
-/cabinet-refinishing-round-rock     /service-areas/round-rock  301
-/cabinet-refinishing-round-rock/    /service-areas/round-rock  301
-/commercial-painting-round-rock     /service-areas/round-rock  301
-/commercial-painting-round-rock/    /service-areas/round-rock  301
-/interior-painting-north-austin     /service-areas/north-austin  301
-/interior-painting-north-austin/    /service-areas/north-austin  301
-/exterior-painting-north-austin     /service-areas/north-austin  301
-/exterior-painting-north-austin/    /service-areas/north-austin  301
-/cabinet-refinishing-north-austin   /service-areas/north-austin  301
-/cabinet-refinishing-north-austin/  /service-areas/north-austin  301
-/commercial-painting-north-austin   /service-areas/north-austin  301
-/commercial-painting-north-austin/  /service-areas/north-austin  301
+/interior-painting-cedar-park       /index.html  200
+/exterior-painting-cedar-park       /index.html  200
+/cabinet-refinishing-cedar-park     /index.html  200
+/commercial-painting-cedar-park     /index.html  200
+/interior-painting-georgetown       /index.html  200
+/exterior-painting-georgetown       /index.html  200
+/cabinet-refinishing-georgetown     /index.html  200
+/commercial-painting-georgetown     /index.html  200
+/interior-painting-round-rock       /index.html  200
+/exterior-painting-round-rock       /index.html  200
+/cabinet-refinishing-round-rock     /index.html  200
+/commercial-painting-round-rock     /index.html  200
+/interior-painting-north-austin     /index.html  200
+/exterior-painting-north-austin     /index.html  200
+/cabinet-refinishing-north-austin   /index.html  200
+/commercial-painting-north-austin   /index.html  200
 
 # -----------------------------------------------------------------------
 # CITY / LEGACY CITY PAGE REDIRECTS

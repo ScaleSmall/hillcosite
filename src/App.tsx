@@ -171,6 +171,26 @@ const CommercialPaintingNorthwestHills = safeLazy(() => import('./pages/location
 const CommercialPaintingWestLakeHills = safeLazy(() => import('./pages/locations/CommercialPaintingWestLakeHills'), "CommercialPaintingWestLakeHills");
 const CommercialPaintingWestLakeHighlands = safeLazy(() => import('./pages/locations/CommercialPaintingWestLakeHighlands'), "CommercialPaintingWestLakeHighlands");
 const CommercialPaintingLakeway = safeLazy(() => import('./pages/locations/CommercialPaintingLakeway'), "CommercialPaintingLakeway");
+const InteriorPaintingLeander = safeLazy(() => import('./pages/locations/InteriorPaintingLeander'), "InteriorPaintingLeander");
+const ExteriorPaintingLeander = safeLazy(() => import('./pages/locations/ExteriorPaintingLeander'), "ExteriorPaintingLeander");
+const CabinetRefinishingLeander = safeLazy(() => import('./pages/locations/CabinetRefinishingLeander'), "CabinetRefinishingLeander");
+const CommercialPaintingLeander = safeLazy(() => import('./pages/locations/CommercialPaintingLeander'), "CommercialPaintingLeander");
+const InteriorPaintingGeorgetown = safeLazy(() => import('./pages/locations/InteriorPaintingGeorgetown'), "InteriorPaintingGeorgetown");
+const ExteriorPaintingGeorgetown = safeLazy(() => import('./pages/locations/ExteriorPaintingGeorgetown'), "ExteriorPaintingGeorgetown");
+const CabinetRefinishingGeorgetown = safeLazy(() => import('./pages/locations/CabinetRefinishingGeorgetown'), "CabinetRefinishingGeorgetown");
+const CommercialPaintingGeorgetown = safeLazy(() => import('./pages/locations/CommercialPaintingGeorgetown'), "CommercialPaintingGeorgetown");
+const InteriorPaintingRoundRock = safeLazy(() => import('./pages/locations/InteriorPaintingRoundRock'), "InteriorPaintingRoundRock");
+const ExteriorPaintingRoundRock = safeLazy(() => import('./pages/locations/ExteriorPaintingRoundRock'), "ExteriorPaintingRoundRock");
+const CabinetRefinishingRoundRock = safeLazy(() => import('./pages/locations/CabinetRefinishingRoundRock'), "CabinetRefinishingRoundRock");
+const CommercialPaintingRoundRock = safeLazy(() => import('./pages/locations/CommercialPaintingRoundRock'), "CommercialPaintingRoundRock");
+const InteriorPaintingCedarPark = safeLazy(() => import('./pages/locations/InteriorPaintingCedarPark'), "InteriorPaintingCedarPark");
+const ExteriorPaintingCedarPark = safeLazy(() => import('./pages/locations/ExteriorPaintingCedarPark'), "ExteriorPaintingCedarPark");
+const CabinetRefinishingCedarPark = safeLazy(() => import('./pages/locations/CabinetRefinishingCedarPark'), "CabinetRefinishingCedarPark");
+const CommercialPaintingCedarPark = safeLazy(() => import('./pages/locations/CommercialPaintingCedarPark'), "CommercialPaintingCedarPark");
+const InteriorPaintingNorthAustin = safeLazy(() => import('./pages/locations/InteriorPaintingNorthAustin'), "InteriorPaintingNorthAustin");
+const ExteriorPaintingNorthAustin = safeLazy(() => import('./pages/locations/ExteriorPaintingNorthAustin'), "ExteriorPaintingNorthAustin");
+const CabinetRefinishingNorthAustin = safeLazy(() => import('./pages/locations/CabinetRefinishingNorthAustin'), "CabinetRefinishingNorthAustin");
+const CommercialPaintingNorthAustin = safeLazy(() => import('./pages/locations/CommercialPaintingNorthAustin'), "CommercialPaintingNorthAustin");
 
 // Loading fallback component
 const PageLoader = () => (
@@ -345,6 +365,26 @@ function App() {
               <Route path="/commercial-painting-west-lake-hills" element={<Trace name="/commercial-painting-west-lake-hills"><CommercialPaintingWestLakeHills /></Trace>} />
               <Route path="/commercial-painting-west-lake-highlands" element={<Trace name="/commercial-painting-west-lake-highlands"><CommercialPaintingWestLakeHighlands /></Trace>} />
               <Route path="/commercial-painting-lakeway" element={<Trace name="/commercial-painting-lakeway"><CommercialPaintingLakeway /></Trace>} />
+              <Route path="/interior-painting-leander" element={<Trace name="/interior-painting-leander"><InteriorPaintingLeander /></Trace>} />
+              <Route path="/exterior-painting-leander" element={<Trace name="/exterior-painting-leander"><ExteriorPaintingLeander /></Trace>} />
+              <Route path="/cabinet-refinishing-leander" element={<Trace name="/cabinet-refinishing-leander"><CabinetRefinishingLeander /></Trace>} />
+              <Route path="/commercial-painting-leander" element={<Trace name="/commercial-painting-leander"><CommercialPaintingLeander /></Trace>} />
+              <Route path="/interior-painting-georgetown" element={<Trace name="/interior-painting-georgetown"><InteriorPaintingGeorgetown /></Trace>} />
+              <Route path="/exterior-painting-georgetown" element={<Trace name="/exterior-painting-georgetown"><ExteriorPaintingGeorgetown /></Trace>} />
+              <Route path="/cabinet-refinishing-georgetown" element={<Trace name="/cabinet-refinishing-georgetown"><CabinetRefinishingGeorgetown /></Trace>} />
+              <Route path="/commercial-painting-georgetown" element={<Trace name="/commercial-painting-georgetown"><CommercialPaintingGeorgetown /></Trace>} />
+              <Route path="/interior-painting-round-rock" element={<Trace name="/interior-painting-round-rock"><InteriorPaintingRoundRock /></Trace>} />
+              <Route path="/exterior-painting-round-rock" element={<Trace name="/exterior-painting-round-rock"><ExteriorPaintingRoundRock /></Trace>} />
+              <Route path="/cabinet-refinishing-round-rock" element={<Trace name="/cabinet-refinishing-round-rock"><CabinetRefinishingRoundRock /></Trace>} />
+              <Route path="/commercial-painting-round-rock" element={<Trace name="/commercial-painting-round-rock"><CommercialPaintingRoundRock /></Trace>} />
+              <Route path="/interior-painting-cedar-park" element={<Trace name="/interior-painting-cedar-park"><InteriorPaintingCedarPark /></Trace>} />
+              <Route path="/exterior-painting-cedar-park" element={<Trace name="/exterior-painting-cedar-park"><ExteriorPaintingCedarPark /></Trace>} />
+              <Route path="/cabinet-refinishing-cedar-park" element={<Trace name="/cabinet-refinishing-cedar-park"><CabinetRefinishingCedarPark /></Trace>} />
+              <Route path="/commercial-painting-cedar-park" element={<Trace name="/commercial-painting-cedar-park"><CommercialPaintingCedarPark /></Trace>} />
+              <Route path="/interior-painting-north-austin" element={<Trace name="/interior-painting-north-austin"><InteriorPaintingNorthAustin /></Trace>} />
+              <Route path="/exterior-painting-north-austin" element={<Trace name="/exterior-painting-north-austin"><ExteriorPaintingNorthAustin /></Trace>} />
+              <Route path="/cabinet-refinishing-north-austin" element={<Trace name="/cabinet-refinishing-north-austin"><CabinetRefinishingNorthAustin /></Trace>} />
+              <Route path="/commercial-painting-north-austin" element={<Trace name="/commercial-painting-north-austin"><CommercialPaintingNorthAustin /></Trace>} />
 
               <Route path="*" element={<Trace name="*"><NotFound /></Trace>} />
             </Routes>

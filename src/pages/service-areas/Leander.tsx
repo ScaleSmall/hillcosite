@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, CheckCircle, MapPin, Home } from 'lucide-react';
+import { Phone, MapPin, Home, Sun, CheckCircle } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ImageWithGeo from '../../components/ImageWithGeo';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
@@ -12,60 +12,49 @@ import TestimonialsSection from '../../components/sections/TestimonialsSection';
 const Leander = () => {
   const leanderFAQs = [
     {
-      question: 'Do you paint homes in Leander\'s master-planned communities like Crystal Falls and Travisso?',
-      answer: 'Yes — we work throughout Crystal Falls, Travisso, Mason Hills, Bryson, and Devine Lake regularly. We know the HOA color requirements and approval processes for these communities and can help guide color selection that meets guidelines while achieving the look you want.'
+      question: 'Do you serve all Leander neighborhoods including Crystal Falls, Travisso, and Mason Hills?',
+      answer: 'Yes — we work throughout Leander including Crystal Falls, Travisso, Mason Hills, Devine Lake, and Bryson. Each of these master-planned communities has its own HOA and architectural review process, and we have experience navigating all of them. We know which color families are generally pre-approved and which require a more detailed submission.'
     },
     {
-      question: 'Can you handle new construction paint upgrades in Leander?',
-      answer: 'Absolutely. Builder-grade paint is often low quality and designed to look good at closing — not to last. We specialize in upgrading new Leander homes with higher-sheen, better-coverage paints that hold up to Central Texas heat and UV exposure for years longer.'
+      question: 'What exterior coating do you recommend for new construction homes in Leander?',
+      answer: 'Most new construction in Leander uses builder-grade exterior paint that performs well for the first 3–5 years, then chalks and fades — especially on west and south elevations with Leander\'s intense sun exposure. We recommend upgrading to Sherwin-Williams Duration Exterior or Emerald Exterior, which provide significantly longer service life. The cost difference upfront is modest compared to the extra years between repaints.'
     },
     {
-      question: 'How do you handle the heat during Leander summers?',
-      answer: 'We schedule exterior work during early morning hours and avoid painting in direct afternoon sun above 90°F to ensure proper adhesion and cure times. We use heat-resistant primers and paints specifically rated for high-UV environments like Central Texas.'
+      question: 'How do HOA color approvals work in Leander master-planned communities?',
+      answer: 'Leander HOAs like Crystal Falls and Travisso require a formal color approval before exterior painting. We prepare complete submissions — color chips, product specs, description of surfaces — and submit on your behalf. We aim for first-pass approval by choosing colors that align with each community\'s published color palette guidelines. Approvals typically take 2–4 weeks, so we factor this into project scheduling.'
     },
     {
-      question: 'What areas near Leander do you also serve?',
-      answer: 'In addition to all of Leander, we regularly serve Cedar Park, Round Rock, Georgetown, and North Austin. For the full Austin metro and Hill Country service area, visit our service areas page.'
+      question: 'Can you match and repair areas of existing paint without doing a full repaint?',
+      answer: 'Yes, though it depends on the age and fade level of the existing paint. On newer homes (under 5 years) with limited sun damage, touch-up matching is often feasible. On homes where the exterior has chalked, faded, or shows significant UV shift, a full repaint is usually the more cost-effective approach because touch-ups will remain visible. We assess this during the estimate visit and give you an honest recommendation.'
+    },
+    {
+      question: 'Do you do interior painting for new construction upgrades in Leander?',
+      answer: 'Yes — this is one of the most popular services in Leander. Builders in Crystal Falls, Bryson, and other new communities use flat builder-grade interior paint across all walls. It looks fine initially but scuffs and marks easily. We upgrade to eggshell or satin finishes in high-traffic areas and repaint accent walls, trim, and built-ins to create the personalized interior the builder version didn\'t deliver.'
     }
   ];
 
   const testimonials = [
     {
-      name: 'Mark & Lisa T.',
+      name: 'Jason & Emily W.',
       location: 'Crystal Falls, Leander',
       rating: 5,
-      text: 'We had Hill Country Painting do our entire exterior in Crystal Falls. They navigated the HOA approval process with us, helped select a color that got approved on the first try, and finished the job ahead of schedule. Neighbors have asked us who did the work.',
-      initials: 'MT'
+      text: 'We had Hill Country Painting do our full exterior in Crystal Falls. They handled the HOA submission start to finish, got approved on the first try, and completed the job in three days. The crew was professional and the result is exactly what we wanted.',
+      initials: 'JW'
     },
     {
-      name: 'Jennifer K.',
+      name: 'Amanda P.',
       location: 'Travisso, Leander',
       rating: 5,
-      text: 'Hired them for a full interior repaint of our Travisso home. Exceptional prep work — they took their time on caulking and patching before a single drop of paint went on. The walls look flawless. Will be using them again for the exterior next spring.',
-      initials: 'JK'
-    },
-    {
-      name: 'David R.',
-      location: 'Mason Hills, Leander',
-      rating: 5,
-      text: 'Professional from start to finish. Accurate estimate, showed up on time every day, cleaned up completely each evening. The cabinet painting in our kitchen looks like a professional refinish from a showroom. Highly recommend.',
-      initials: 'DR'
+      text: 'Our builder-grade interior was starting to show wear everywhere. Hill Country Painting repainted the whole house with upgraded paint and it looks like a completely different home. They were respectful of our space and everything was cleaned up perfectly.',
+      initials: 'AP'
     }
-  ];
-
-  const neighborhoods = [
-    { name: 'Crystal Falls', slug: 'crystal-falls' },
-    { name: 'Mason Hills', slug: 'mason-hills' },
-    { name: 'Travisso', slug: 'travisso' },
-    { name: 'Devine Lake', slug: 'devine-lake' },
-    { name: 'Bryson', slug: 'bryson' },
   ];
 
   return (
     <>
       <SEO
-        title="Leander Painting Services | Hill Country Painting | Crystal Falls & Travisso"
-        description="Professional painting services in Leander, TX. Expert interior and exterior painting for Crystal Falls, Travisso, Mason Hills, Bryson, and Devine Lake. HOA color compliance, new construction upgrades, and quality finishes for Central Texas."
+        title="Leander TX Painting Services | HOA Specialists | Hill Country Painting"
+        description="Professional painting services in Leander, TX. Interior, exterior, and cabinet painting for Crystal Falls, Travisso, Mason Hills, Devine Lake, and Bryson. HOA color approval experts for Leander master-planned communities."
         canonical="/service-areas/leander"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -73,56 +62,48 @@ const Leander = () => {
           { name: 'Leander', url: '/service-areas/leander' }
         ]}
         service={{
-          name: 'Leander Painting Services',
-          description: 'Professional residential and commercial painting services throughout Leander, Texas. Expert interior and exterior painting for Crystal Falls, Travisso, Mason Hills, Bryson, Devine Lake, and surrounding communities. HOA color compliance and new construction upgrades.',
-          areaServed: ['Leander', 'Crystal Falls', 'Travisso', 'Mason Hills', 'Bryson', 'Devine Lake', 'Cedar Park', 'Georgetown']
+          name: 'Leander TX Painting Services',
+          description: 'Professional interior and exterior painting throughout Leander, Texas. Specialists in master-planned community HOA compliance, new construction upgrades, and premium exterior coatings for Crystal Falls, Travisso, Mason Hills, Devine Lake, and Bryson.',
+          areaServed: ['Leander', 'Crystal Falls', 'Travisso', 'Mason Hills', 'Devine Lake', 'Bryson']
         }}
-        faq={leanderFAQs}
+        localBusiness={{
+          name: 'Hill Country Painting - Leander',
+          address: 'Leander, TX 78641',
+          telephone: '+15127601334'
+        }}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0">
           <ImageWithGeo
-            src="/hill-country-painting-austin-homepage-hero.jpg"
-            alt="Professional Leander painting services for Crystal Falls and Travisso homes"
+            src="/austin-professional-house-painting-hero.jpg"
+            alt="Professional home painting in Leander Texas"
             className="w-full h-full object-cover"
-            width="1920"
-            height="1080"
-            loading="eager"
-            priority={true}
-            sizes="100vw"
-            location={{
-              name: 'Leander, TX',
-              latitude: 30.5787,
-              longitude: -97.8531,
-              region: 'Texas'
-            }}
+            location="Leander, TX"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-gray-900/85 via-brand-gray-900/60 to-transparent" />
         </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative z-10 text-center max-w-4xl mx-auto space-y-8">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium">
-                <MapPin className="w-4 h-4" />
-                Serving Leander, TX — 78641 & 78646
-              </div>
-              <h1 className="text-hero font-bold text-white leading-heading drop-shadow-lg">
-                Leander Painting Services
-              </h1>
-              <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                Professional interior and exterior painting for Leander's master-planned communities. HOA-compliant color selection, new construction upgrades, and quality finishes built for Central Texas.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 sm:px-0">
-                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
-                  Request an Estimate
-                </Link>
-                <a href="tel:(512)240-2246" className="inline-flex items-center justify-center px-8 py-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold rounded-lg transition-colors duration-200 border border-white/40">
-                  <Phone className="w-5 h-5 mr-2" />
-                  (512) 240-2246
-                </a>
-              </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <MapPin className="w-5 h-5 text-brand-green-400" />
+              <span className="text-brand-green-400 font-medium">Leander, TX 78641 · 78646</span>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Leander<br />
+              <span className="text-brand-green-400">Painting Services</span>
+            </h1>
+            <p className="text-xl text-brand-gray-200 mb-8 leading-relaxed">
+              Interior, exterior, and cabinet painting for Leander's fastest-growing master-planned communities. HOA color approval experts for Crystal Falls, Travisso, Mason Hills, and all Leander neighborhoods.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-green-500 hover:bg-brand-green-600 text-white font-semibold rounded-lg transition-colors">
+                Get a Free Estimate
+              </Link>
+              <a href="tel:+15127601334" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
+                <Phone className="w-5 h-5" />
+                (512) 760-1334
+              </a>
             </div>
           </div>
         </div>
@@ -131,76 +112,76 @@ const Leander = () => {
       <StatsAndTrust />
 
       <section className="section-padding bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-6">
-                Why Leander Homeowners Choose Hill Country Painting
-              </h2>
-              <p className="text-lg text-brand-gray-600 mb-8 leading-body">
-                Leander has grown into one of Central Texas's most sought-after communities, with master-planned neighborhoods, Hill Country views, and homes that reflect the area's high standards. We bring the same level of care and quality that Leander homeowners expect.
-              </p>
-              <div className="space-y-4">
-                {[
-                  'HOA color approval assistance for Crystal Falls, Travisso, and Bryson',
-                  'New construction upgrades beyond builder-grade paint',
-                  'Heat-resistant exterior coatings for Central Texas summers',
-                  'Interior painting with low-VOC options for families',
-                  'Reliable scheduling — we show up when we say we will',
-                  'Full cleanup and final walkthrough before payment'
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-brand-azure flex-shrink-0 mt-0.5" />
-                    <span className="text-brand-gray-700">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-brand-gray-50 rounded-2xl p-8">
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-6">Leander Neighborhoods We Serve</h3>
-              <div className="grid grid-cols-1 gap-3 mb-8">
-                {neighborhoods.map((n) => (
-                  <Link
-                    key={n.slug}
-                    to={`/areas/leander/${n.slug}`}
-                    className="flex items-center gap-3 p-3 bg-white rounded-lg hover:shadow-md transition-shadow group"
-                  >
-                    <Home className="w-5 h-5 text-brand-azure flex-shrink-0" />
-                    <span className="font-medium text-brand-gray-800 group-hover:text-brand-azureDark transition-colors">{n.name}</span>
-                    <span className="ml-auto text-brand-azure text-sm">→</span>
-                  </Link>
-                ))}
-              </div>
-              <Link to="/areas/leander" className="btn-primary w-full text-center block">
-                View All Leander Neighborhoods
-              </Link>
-            </div>
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">
+            Painting in Leander's Fast-Growing Communities
+          </h2>
+          <div className="space-y-5 text-lg text-brand-gray-700">
+            <p>
+              Leander has been one of the fastest-growing cities in the country for several consecutive years, and the housing stock reflects that — predominantly master-planned communities built in the last 10–15 years, with new phases still under construction in Bryson, Travisso, and Crystal Falls. This creates two distinct painting contexts: newer homes with builder-grade finishes ready for an upgrade, and slightly older homes from the early build-out phases showing weather wear.
+            </p>
+            <p>
+              Leander's position on Central Texas limestone terrain means significant UV intensity and temperature swings — over 100°F in summer, with occasional freeze events in winter. Exterior coatings here need to handle thermal cycling that can crack cheaper products at caulk joints and seams. We prep these areas carefully and use flexible, high-adhesion caulk before applying premium exterior paint.
+            </p>
           </div>
         </div>
       </section>
 
-      <ServicesGrid
-        title="Painting Services in Leander"
-        subtitle="Complete painting solutions for every Leander home and community"
-      />
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8">What We Paint in Leander</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { icon: Home, title: 'New Construction Exterior Upgrades', description: 'Builder-grade exterior paint starts showing fade and chalk faster than homeowners expect. We upgrade to premium UV-resistant coatings that significantly extend the time between repaints, with HOA color approval handled.' },
+              { icon: Sun, title: 'Heat and UV Resilient Exterior Coatings', description: 'Leander\'s sun exposure is real. We use products rated specifically for Central Texas heat — Sherwin-Williams Duration and Emerald Exterior being the most common — with higher opacity for better UV blocking on south and west elevations.' },
+              { icon: CheckCircle, title: 'Interior Builder-Grade Upgrades', description: 'Every Leander new construction home can benefit from upgraded interior paint. We replace flat builder paint with scrubbable finishes in living areas and premium sheen in kitchens and baths, with precise trim and ceiling work.' },
+              { icon: Home, title: 'Cabinet Refinishing', description: 'Kitchen cabinet refinishing is the single highest-impact update for most Leander homes. We spray-apply multiple coats of premium cabinet finish for a result that looks factory-painted at a fraction of replacement cost.' }
+            ].map(({ icon: Icon, title, description }) => (
+              <div key={title} className="bg-white rounded-xl p-6 shadow-sm border border-brand-gray-100">
+                <Icon className="w-8 h-8 text-brand-green-500 mb-3" />
+                <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{title}</h3>
+                <p className="text-brand-gray-700">{description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <TestimonialsSection
-        title="What Leander Homeowners Say"
-        subtitle="Real feedback from Leander, Crystal Falls, and Travisso residents"
-        testimonials={testimonials}
-      />
+      <ServicesGrid />
 
-      <MiniFAQ
-        title="Leander Painting Questions"
-        faqs={leanderFAQs}
-      />
+      <section className="section-padding bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-8">Leander Painting — Frequently Asked Questions</h2>
+          <MiniFAQ faqs={leanderFAQs} />
+        </div>
+      </section>
 
-      <CTABanner
-        title="Ready to Transform Your Leander Home?"
-        subtitle="Request a consultation today — we serve all of Leander including Crystal Falls, Travisso, and Bryson"
-        primaryCTA={{ text: 'Request a Consultation', href: '/contact' }}
-        secondaryCTA={{ text: 'View Our Work', href: '/gallery' }}
-      />
+      <section className="section-padding bg-brand-gray-50">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl font-bold text-brand-gray-900 mb-6">Leander Neighborhoods and Nearby Areas</h2>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+            {[
+              { label: 'Leander Area Hub', href: '/areas/leander' },
+              { label: 'Cedar Park', href: '/service-areas/cedar-park' },
+              { label: 'Round Rock', href: '/service-areas/round-rock' },
+              { label: 'Georgetown', href: '/service-areas/georgetown' },
+              { label: 'North Austin', href: '/service-areas/north-austin' },
+              { label: 'Austin Service Area', href: '/service-areas/austin' },
+            ].map(({ label, href }) => (
+              <Link key={href} to={href} className="text-brand-green-600 hover:text-brand-green-700 font-medium underline-offset-2 hover:underline">{label}</Link>
+            ))}
+          </div>
+          <h3 className="text-xl font-bold text-brand-gray-900 mb-4">Helpful Guides</h3>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/guides/hoa-color-tips-austin" className="text-brand-green-600 hover:text-brand-green-700 font-medium hover:underline underline-offset-2">HOA Color Approval Guide</Link>
+            <Link to="/guides/best-paint-texas-heat" className="text-brand-green-600 hover:text-brand-green-700 font-medium hover:underline underline-offset-2">Best Paint for Texas Heat</Link>
+            <Link to="/guides/how-often-paint-central-texas" className="text-brand-green-600 hover:text-brand-green-700 font-medium hover:underline underline-offset-2">How Often to Paint in Central Texas</Link>
+          </div>
+        </div>
+      </section>
+
+      <TestimonialsSection testimonials={testimonials} />
+      <CTABanner />
     </>
   );
 };

@@ -403,6 +403,131 @@ const routeMetadata = {
     h1: 'Commercial Painting in Lakeway',
     content: 'Professional commercial painting services for Lakeway businesses. Offices, retail spaces, and commercial properties with flexible scheduling.'
   },
+  // Leander service-location pages
+  '/interior-painting-leander': {
+    title: 'Interior Painting Leander TX — Hill Country Painting',
+    description: 'Professional interior painting in Leander, TX. Serving Crystal Falls, Travisso, Mason Hills, and all Leander neighborhoods. Free estimates.',
+    h1: 'Interior Painting in Leander',
+    content: 'Expert interior painting for Leander homes across Crystal Falls, Travisso, Mason Hills, Devine Lake, and Bryson. Premium paints, precise trim work, family-schedule friendly.'
+  },
+  '/exterior-painting-leander': {
+    title: 'Exterior Painting Leander TX — Hill Country Painting',
+    description: 'Professional exterior painting in Leander, TX. UV-resistant coatings and HOA color approval for Crystal Falls, Travisso, and all Leander communities.',
+    h1: 'Exterior Painting in Leander',
+    content: 'Premium exterior painting for Leander homes. UV-resistant products for Central Texas heat, HOA color approval handling, and thorough surface prep for lasting results.'
+  },
+  '/cabinet-refinishing-leander': {
+    title: 'Cabinet Refinishing Leander TX — Hill Country Painting',
+    description: 'Professional cabinet refinishing in Leander, TX. Factory-quality spray finish for Crystal Falls, Travisso, and Leander kitchens. Free estimates.',
+    h1: 'Cabinet Refinishing in Leander',
+    content: 'Transform your Leander kitchen with professional cabinet refinishing. Spray-applied premium finish on your existing cabinets at a fraction of replacement cost.'
+  },
+  '/commercial-painting-leander': {
+    title: 'Commercial Painting Leander TX — Hill Country Painting',
+    description: 'Professional commercial painting in Leander, TX. Interior and exterior painting for Leander businesses with after-hours scheduling. Free estimates.',
+    h1: 'Commercial Painting in Leander',
+    content: 'Commercial interior and exterior painting for Leander businesses. After-hours and weekend scheduling available to minimize operational disruption.'
+  },
+  // Georgetown service-location pages
+  '/interior-painting-georgetown': {
+    title: 'Interior Painting Georgetown TX — Hill Country Painting',
+    description: 'Professional interior painting in Georgetown, TX. Serving Sun City, Wolf Ranch, Berry Creek, and all Georgetown neighborhoods. Free estimates.',
+    h1: 'Interior Painting in Georgetown',
+    content: 'Expert interior painting for Georgetown homes from Sun City Del Webb to Wolf Ranch and historic Georgetown Square. Premium products and precise results.'
+  },
+  '/exterior-painting-georgetown': {
+    title: 'Exterior Painting Georgetown TX — Hill Country Painting',
+    description: 'Professional exterior painting in Georgetown, TX. UV-resistant coatings for Sun City, Berry Creek, Teravista, Wolf Ranch, and historic Georgetown homes.',
+    h1: 'Exterior Painting in Georgetown',
+    content: 'Premium exterior painting for Georgetown homes. UV-resistant products for open-terrain heat exposure, HOA compliance, and Victorian historic preservation.'
+  },
+  '/cabinet-refinishing-georgetown': {
+    title: 'Cabinet Refinishing Georgetown TX — Hill Country Painting',
+    description: 'Professional cabinet refinishing in Georgetown, TX. Factory-quality spray finish for Sun City, Wolf Ranch, and all Georgetown kitchens. Free estimates.',
+    h1: 'Cabinet Refinishing in Georgetown',
+    content: 'Transform your Georgetown kitchen with professional cabinet refinishing. Spray-applied premium finish at a fraction of new cabinet cost.'
+  },
+  '/commercial-painting-georgetown': {
+    title: 'Commercial Painting Georgetown TX — Hill Country Painting',
+    description: 'Professional commercial painting in Georgetown, TX. Interior and exterior for Georgetown businesses with after-hours scheduling. Free estimates.',
+    h1: 'Commercial Painting in Georgetown',
+    content: 'Commercial interior and exterior painting for Georgetown businesses. After-hours and weekend scheduling available to minimize disruption to operations.'
+  },
+  // Round Rock service-location pages
+  '/interior-painting-round-rock': {
+    title: 'Interior Painting Round Rock TX — Hill Country Painting',
+    description: 'Professional interior painting in Round Rock, TX. Serving Forest Creek, Mayfield Ranch, Brushy Creek, and all Round Rock neighborhoods. Free estimates.',
+    h1: 'Interior Painting in Round Rock',
+    content: 'Expert interior painting for Round Rock homes across Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks. Reliable scheduling, premium results.'
+  },
+  '/exterior-painting-round-rock': {
+    title: 'Exterior Painting Round Rock TX — Hill Country Painting',
+    description: 'Professional exterior painting in Round Rock, TX. UV-resistant coatings and HOA color approval for Forest Creek, Mayfield Ranch, and all Round Rock communities.',
+    h1: 'Exterior Painting in Round Rock',
+    content: 'Premium exterior painting for Round Rock homes. Proper prep for established neighborhoods, UV-resistant products, and HOA color approval handling.'
+  },
+  '/cabinet-refinishing-round-rock': {
+    title: 'Cabinet Refinishing Round Rock TX — Hill Country Painting',
+    description: 'Professional cabinet refinishing in Round Rock, TX. Factory-quality spray finish for Forest Creek, Mayfield Ranch, and Round Rock kitchens. Free estimates.',
+    h1: 'Cabinet Refinishing in Round Rock',
+    content: 'Transform your Round Rock kitchen with professional cabinet refinishing. Spray-applied premium finish on existing cabinets at a fraction of replacement cost.'
+  },
+  '/commercial-painting-round-rock': {
+    title: 'Commercial Painting Round Rock TX — Hill Country Painting',
+    description: 'Professional commercial painting in Round Rock, TX. Interior and exterior painting for Round Rock businesses with flexible scheduling. Free estimates.',
+    h1: 'Commercial Painting in Round Rock',
+    content: 'Commercial interior and exterior painting for Round Rock businesses. After-hours and weekend scheduling to minimize disruption to your operations.'
+  },
+  // Cedar Park service-location pages
+  '/interior-painting-cedar-park': {
+    title: 'Interior Painting Cedar Park TX — Hill Country Painting',
+    description: 'Professional interior painting in Cedar Park, TX. Serving Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, and all Cedar Park neighborhoods. Free estimates.',
+    h1: 'Interior Painting in Cedar Park',
+    content: 'Expert interior painting for Cedar Park homes across Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, Lakeline, and Twin Creeks. Premium paints and clean results.'
+  },
+  '/exterior-painting-cedar-park': {
+    title: 'Exterior Painting Cedar Park TX — Hill Country Painting',
+    description: 'Professional exterior painting in Cedar Park, TX. UV-resistant coatings and HOA color approval for Avery Ranch, Ranch at Brushy Creek, and all Cedar Park communities.',
+    h1: 'Exterior Painting in Cedar Park',
+    content: 'Premium exterior painting for Cedar Park homes. UV-resistant products for intense Central Texas sun, master-planned HOA compliance, and thorough prep for lasting results.'
+  },
+  '/cabinet-refinishing-cedar-park': {
+    title: 'Cabinet Refinishing Cedar Park TX — Hill Country Painting',
+    description: 'Professional cabinet refinishing in Cedar Park, TX. Factory-quality spray finish for Avery Ranch, Buttercup Creek, and Cedar Park kitchens. Free estimates.',
+    h1: 'Cabinet Refinishing in Cedar Park',
+    content: 'Transform your Cedar Park kitchen with professional cabinet refinishing. Spray-applied premium finish at a fraction of new cabinet replacement cost.'
+  },
+  '/commercial-painting-cedar-park': {
+    title: 'Commercial Painting Cedar Park TX — Hill Country Painting',
+    description: 'Professional commercial painting in Cedar Park, TX. Interior and exterior for Cedar Park businesses with after-hours scheduling available. Free estimates.',
+    h1: 'Commercial Painting in Cedar Park',
+    content: 'Commercial interior and exterior painting for Cedar Park businesses. Flexible scheduling including after-hours and weekends to minimize operational disruption.'
+  },
+  // North Austin service-location pages
+  '/interior-painting-north-austin': {
+    title: 'Interior Painting North Austin TX — Hill Country Painting',
+    description: 'Professional interior painting in North Austin, TX. Serving Balcones, Milwood, Jollyville, Anderson Mill, and the Domain area. Free estimates.',
+    h1: 'Interior Painting in North Austin',
+    content: 'Expert interior painting for North Austin homes and condos across Balcones, Milwood, Jollyville, Anderson Mill, and the Domain area. Flexible tech-schedule friendly service.'
+  },
+  '/exterior-painting-north-austin': {
+    title: 'Exterior Painting North Austin TX — Hill Country Painting',
+    description: 'Professional exterior painting in North Austin, TX. Mid-century home specialists for Balcones, Milwood, and all North Austin neighborhoods. Free estimates.',
+    h1: 'Exterior Painting in North Austin',
+    content: 'Premium exterior painting for North Austin homes. Specialists in mid-century ranch homes and newer construction across Balcones, Milwood, Jollyville, and Anderson Mill.'
+  },
+  '/cabinet-refinishing-north-austin': {
+    title: 'Cabinet Refinishing North Austin TX — Hill Country Painting',
+    description: 'Professional cabinet refinishing in North Austin, TX. Factory-quality spray finish for Balcones, Domain area, and all North Austin kitchens. Free estimates.',
+    h1: 'Cabinet Refinishing in North Austin',
+    content: 'Transform your North Austin kitchen with professional cabinet refinishing. Spray-applied premium finish for townhomes, condos, and ranch homes across North Austin.'
+  },
+  '/commercial-painting-north-austin': {
+    title: 'Commercial Painting North Austin TX — Hill Country Painting',
+    description: 'Professional commercial painting in North Austin, TX. Office and retail painting near The Domain and tech corridor. After-hours scheduling available. Free estimates.',
+    h1: 'Commercial Painting in North Austin',
+    content: 'Commercial interior and exterior painting for North Austin businesses. Tech-corridor offices, retail, and multi-family properties with after-hours and weekend scheduling.'
+  },
   '/privacy': {
     title: 'Privacy Policy — Hill Country Painting',
     description: 'Privacy Policy for HillCo Paint. How we collect, use, and protect your personal information. Compliant with Meta Ads, CCPA, GDPR requirements.',

@@ -10,7 +10,6 @@ import { writeFileSync, readFileSync } from 'fs';
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { createClient } from '@supabase/supabase-js';
 import {
   BASE_URL,
   getAllRoutes
@@ -49,6 +48,11 @@ async function fetchBlogPosts() {
   }
 
   try {
+    const { createClient } = await import('@supabase/supabase-js').catch(() => ({ createClient: null }));
+    if (!createClient) {
+      console.log('  @supabase/supabase-js not available - skipping blog posts');
+      return [];
+    }
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { data, error } = await supabase
       .from('blog_posts')

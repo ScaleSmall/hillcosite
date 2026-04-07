@@ -52,6 +52,31 @@ export const serviceLocationPages = [
   { path: '/commercial-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
+  // Leander service-location pages
+  { path: '/interior-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-leander', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-leander', changefreq: 'monthly', priority: '0.7' },
+  // Georgetown service-location pages
+  { path: '/interior-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-georgetown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-georgetown', changefreq: 'monthly', priority: '0.7' },
+  // Round Rock service-location pages
+  { path: '/interior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-round-rock', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-round-rock', changefreq: 'monthly', priority: '0.7' },
+  // Cedar Park service-location pages
+  { path: '/interior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-cedar-park', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-cedar-park', changefreq: 'monthly', priority: '0.7' },
+  // North Austin service-location pages
+  { path: '/interior-painting-north-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-north-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-north-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-north-austin', changefreq: 'monthly', priority: '0.7' },
 ];
 
 export const coreStaticRoutes = [
@@ -88,6 +113,8 @@ export const coreStaticRoutes = [
   { path: '/privacy', changefreq: 'yearly', priority: '0.3' },
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
+  { path: '/eula', changefreq: 'yearly', priority: '0.2' },
+  { path: '/pre-approval', changefreq: 'monthly', priority: '0.5' },
 ];
 
 export function getStaticRoutes() {
