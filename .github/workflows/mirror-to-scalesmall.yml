@@ -1,4 +1,4 @@
-name: Mirror to ScaleSmall/hillcosite
+name: Mirror to ScaleSmall
 
 on:
   push:
@@ -12,11 +12,9 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Mirror to ScaleSmall
+      - name: Mirror to ScaleSmall/hillcosite
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git remote add mirror https://github.com/ScaleSmall/hillcosite.git
+          git remote add mirror https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/ScaleSmall/hillcosite.git
           git push mirror main --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
