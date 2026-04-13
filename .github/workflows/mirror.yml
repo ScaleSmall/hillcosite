@@ -1,0 +1,22 @@
+name: Mirror to ScaleSmall/hillcosite
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Mirror to ScaleSmall
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git remote add mirror https://github.com/ScaleSmall/hillcosite.git
+          git push mirror main --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
