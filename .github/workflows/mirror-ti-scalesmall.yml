@@ -1,0 +1,22 @@
+name: Mirror to ScaleSmall
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    if: github.actor != 'ScaleSmall'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Mirror this repo to ScaleSmall/hillcosite
+        env:
+          SOURCE_REPO: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+          TARGET_REPO: https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/ScaleSmall/hillcosite.git
+        run: |
+          git clone --mirror "$SOURCE_REPO" repo.git
+          cd repo.git
+          git push --mirror "$TARGET_REPO"
