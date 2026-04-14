@@ -1,4 +1,4 @@
-himport React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Phone, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -173,7 +173,7 @@ const Gallery = () => {
     script.onerror = () => setWidgetError(true);
     container.appendChild(script);
     const timeout = setTimeout(() => {
-      if (!widgetLoaded && container.children.length <= 1) {
+      if (container.children.length <= 1) {
         setWidgetError(true);
       }
     }, 5000);
@@ -181,7 +181,7 @@ const Gallery = () => {
       clearTimeout(timeout);
       if (container.contains(script)) container.removeChild(script);
     };
-  }, [widgetLoaded]);
+  }, []);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
