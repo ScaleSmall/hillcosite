@@ -1,0 +1,22 @@
+name: Mirror to KrisHillCo
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    if: github.actor != 'KrisHillCo'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Mirror this repo to KrisHillCo/HillCoSite
+        env:
+          SOURCE_REPO: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
+          TARGET_REPO: https://x-access-token:${{ secrets.MIRROR_TOKEN }}@github.com/KrisHillCo/HillCoSite.git
+        run: |
+          git clone --mirror "$SOURCE_REPO" repo.git
+          cd repo.git
+          git push --mirror "$TARGET_REPO"
