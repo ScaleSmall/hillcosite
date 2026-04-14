@@ -1,4 +1,4 @@
-name: Mirror to ScaleSmall
+name: Mirror to Primary Account
 
 on:
   push:
@@ -6,16 +6,16 @@ on:
 
 jobs:
   mirror:
-    if: github.actor != 'ScaleSmall'
+    if: github.actor != 'YOUR_OTHER_ACCOUNT_USERNAME'
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     steps:
-      - name: Mirror this repo to ScaleSmall/hillcosite
+      - name: Mirror this repo back to primary account
         env:
           SOURCE_REPO: https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git
-          TARGET_REPO: https://x-access-token:${{ secrets.MIRROR_TO_SCALESMALL_TOKEN }}@github.com/ScaleSmall/hillcosite.git
+          TARGET_REPO: https://x-access-token:${{ secrets.MIRROR_TO_PRIMARY_TOKEN }}@github.com/YOUR_OTHER_ACCOUNT_USERNAME/hillcosite.git
         run: |
           git clone --mirror "$SOURCE_REPO" repo.git
           cd repo.git
