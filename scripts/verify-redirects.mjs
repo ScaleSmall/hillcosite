@@ -5,72 +5,64 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const CANONICAL_PAGES = [
-  'about', 'services', 'blog', 'faq', 'gallery',
-  'testimonials', 'contact', 'privacy'
-];
-
 function run() {
-  const redirectsPath = resolve(__dirname, '../public/_redirects');
-
-  if (!existsSync(redirectsPath)) {
-    console.error('FAIL: public/_redirects not found');
-    process.exit(1);
-  }
-
-  const content = readFileSync(redirectsPath, 'utf-8');
-  const lines = content.split('\n');
   const failures = [];
   const passes = [];
 
-  const activeLines = lines
-    .map((line, i) => ({ raw: line.trim(), num: i + 1 }))
-    .filter(({ raw }) => raw && !raw.startsWith('#'));
+  // Check 1: _redirects exists and has host normalization rules
+  const redirectsPath = resolve(__dirname, '../public/_redirects');
+  if (!existsSync(redirectsPath)) {
+    failures.push('public/_redirects not found');
+  } else {
+    const content = readFileSync(redirectsPath, 'utf-8');
+    const activeLines = content
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l && !l.startsWith('#'));
 
-  // Check 1: No trailing-slash strip rules for canonical pages.
-  // A trailing-slash strip rule matches: /page/ -> /page (same path, slash removed), 301.
-  activeLines.forEach(({ raw, num }) => {
-    const parts = raw.split(/\s+/);
-    if (parts.length < 3) return;
+    const hasHttpNonWww = activeLines.some(l => l.startsWith('http://hillcopaint.com/'));
+    const hasHttpWww = activeLines.some(l => l.startsWith('http://www.hillcopaint.com/'));
+    const hasHttpsNonWww = activeLines.some(l => l.startsWith('https://hillcopaint.com/'));
 
-    const from = parts[0];
-    const to = parts[1];
-    const status = parts[2].replace('!', '');
-
-    if (status !== '301') return;
-    if (!from.endsWith('/')) return;
-    if (from.startsWith('https://') || from.startsWith('http://')) return;
-
-    const fromWithoutSlash = from.slice(0, -1);
-    if (to !== fromWithoutSlash) return;
-
-    // It is a trailing-slash strip rule. Check if top-level segment is a canonical page.
-    const topSegment = fromWithoutSlash.replace(/^\//, '').split('/')[0];
-    if (CANONICAL_PAGES.includes(topSegment)) {
-      failures.push(
-        `Line ${num}: trailing-slash strip rule for canonical page "${topSegment}": ${from} -> ${to}`
-      );
+    if (hasHttpNonWww && hasHttpWww && hasHttpsNonWww) {
+      passes.push('Host/protocol normalization rules present in _redirects');
+    } else {
+      failures.push('Missing host/protocol normalization rules in _redirects');
     }
-  });
 
-  if (failures.length === 0) {
-    passes.push('No trailing-slash strip rules found for canonical pages (about, services, blog, faq, gallery, testimonials, contact, privacy)');
+    // Warn if SPA rewrites are still in _redirects (they should be in middleware now)
+    const hasSpaFallback = activeLines.some(l => l.includes('/index.html') && l.includes('200'));
+    if (hasSpaFallback) {
+      failures.push('SPA rewrite rules found in _redirects — these should be handled by functions/_middleware.ts');
+    } else {
+      passes.push('No SPA rewrite rules in _redirects (correctly handled by middleware)');
+    }
   }
 
-  // Check 2: SPA fallback must be the last active rule.
-  const last = activeLines[activeLines.length - 1];
-  const isSpaFallback =
-    last &&
-    last.raw.startsWith('/*') &&
-    last.raw.includes('/index.html') &&
-    last.raw.includes('200');
-
-  if (isSpaFallback) {
-    passes.push(`SPA fallback is the last active rule (line ${last.num}): ${last.raw}`);
+  // Check 2: Middleware exists and has SPA route handling
+  const middlewarePath = resolve(__dirname, '../functions/_middleware.ts');
+  if (!existsSync(middlewarePath)) {
+    failures.push('functions/_middleware.ts not found');
   } else {
-    failures.push(
-      `SPA fallback "/* /index.html 200" is NOT the last active rule. Found: "${last?.raw}" at line ${last?.num}`
-    );
+    const content = readFileSync(middlewarePath, 'utf-8');
+
+    if (content.includes('SPA_ROUTES') || content.includes('isSpaRoute')) {
+      passes.push('Middleware contains SPA route table');
+    } else {
+      failures.push('Middleware missing SPA route handling (SPA_ROUTES / isSpaRoute)');
+    }
+
+    if (content.includes('env.ASSETS.fetch')) {
+      passes.push('Middleware uses env.ASSETS.fetch for serving index.html');
+    } else {
+      failures.push('Middleware missing env.ASSETS.fetch — SPA routes may not be served');
+    }
+
+    if (content.includes('404')) {
+      passes.push('Middleware has 404 fallback handling');
+    } else {
+      failures.push('Middleware missing 404 fallback');
+    }
   }
 
   // Report
@@ -80,7 +72,7 @@ function run() {
     process.exit(1);
   }
 
-  console.log(`\nChecked ${activeLines.length} active redirect rules. All checks passed.`);
+  console.log('\nAll routing checks passed.');
 }
 
 run();
