@@ -118,6 +118,23 @@ const REDIRECTS: Record<string, string> = {
   '/cabinet-refinishing-west-lake-hills':  '/cabinet-refinishing-west-lake-highlands',
   '/exterior-painting-taylor':            '/services/exterior-painting',
   '/commercial-tarrytown':                '/commercial-painting-tarrytown',
+
+  // -- Explicit canonical slash-variants for live 301 coverage --
+  '/services/':                   '/services',
+  '/service-areas/':              '/service-areas',
+  '/blog/':                       '/blog',
+  '/contact/':                    '/contact',
+  '/about/':                      '/about',
+  '/faq/':                        '/faq',
+  '/gallery/':                    '/gallery',
+  '/testimonials/':               '/testimonials',
+  '/privacy/':                    '/privacy',
+  '/terms/':                      '/terms',
+  '/eula/':                       '/eula',
+  '/do-not-sell/':                '/do-not-sell',
+  '/financing/':                  '/financing',
+  '/pre-approval/':               '/pre-approval',
+  '/search/':                     '/search',
 };
 
 // ---------------------------------------------------------------------------
