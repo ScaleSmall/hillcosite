@@ -5,7 +5,7 @@
  *   1. Static asset pass-through (JS, CSS, images, fonts, etc.)
  *   2. Trailing-slash canonicalization (301)
  *   3. Legacy 301 redirects (old CMS paths → current canonical URLs)
- *   4. SPA rewrite (known React routes → /index.html with 200)
+ *   4. Static asset fallback for extensionless assets
  *   5. 404 fallback (/404.html with 404 status)
  *
  * This replaces the previous split between _middleware.ts (redirects only)
@@ -119,8 +119,9 @@ const REDIRECTS: Record<string, string> = {
 };
 
 // ---------------------------------------------------------------------------
-// 3. SPA ROUTE TABLE
-//    Exact-match set for all known React Router paths, plus prefix patterns.
+// 3. ROUTE TABLE
+//    Exact-match set for all known app paths, plus prefix patterns.
+//    These routes are allowed to fall through to static prerendered HTML.
 // ---------------------------------------------------------------------------
 const SPA_ROUTES: Set<string> = new Set([
   '/',
@@ -210,7 +211,8 @@ const SPA_ROUTES: Set<string> = new Set([
 ]);
 
 /**
- * Check if a path is a valid SPA route that should serve index.html.
+ * Check if a path is a valid app route that should be handled by the
+ * prerendered static HTML output in dist/.
  * Uses exact match for most routes, prefix match for /areas/* and /blog/*.
  */
 function isSpaRoute(path: string): boolean {
@@ -274,24 +276,19 @@ export async function onRequest(context: {
     return Response.redirect(new URL('/services', url.origin).toString(), 301);
   }
 
-  // ── D. SPA routes → serve /index.html with 200 ──────────────────────
-  if (isSpaRoute(path)) {
-    const assetUrl = new URL('/index.html', url.origin);
-    const assetRequest = new Request(assetUrl.toString(), {
-      method: 'GET',
-      headers: request.headers,
-    });
-    return env.ASSETS.fetch(assetRequest);
-  }
-
-  // ── E. Try static asset (for paths without file extensions that might
-  //       still be real files, e.g. extensionless assets) ───────────────
+  // ── D. Try static asset / prerendered HTML ──────────────────────────
   const response = await next();
   if (response.status < 400) {
     return response;
   }
 
-  // ── F. 404 fallback ──────────────────────────────────────────────────
+  // If this is a known app route, let Pages/static hosting resolve the
+  // matching prerendered HTML instead of forcing /index.html.
+  if (isSpaRoute(path)) {
+    return response;
+  }
+
+  // ── E. 404 fallback ──────────────────────────────────────────────────
   const notFoundUrl = new URL('/404.html', url.origin);
   const notFoundRequest = new Request(notFoundUrl.toString(), {
     method: 'GET',
