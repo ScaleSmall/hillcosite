@@ -38,7 +38,6 @@ export const serviceLocationPages = [
   { path: '/cabinet-refinishing-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-lakeway', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-austin', changefreq: 'monthly', priority: '0.8' },
-  { path: '/commercial-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
   // Leander service-location pages
   { path: '/interior-painting-leander', changefreq: 'monthly', priority: '0.8' },
@@ -80,7 +79,6 @@ export const coreStaticRoutes = [
   { path: '/faq', changefreq: 'monthly', priority: '0.7' },
   { path: '/service-areas', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/austin', changefreq: 'monthly', priority: '0.9' },
-  { path: '/service-areas/tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/lakeway', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/leander', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/georgetown', changefreq: 'monthly', priority: '0.8' },
