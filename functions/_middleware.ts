@@ -113,9 +113,11 @@ const REDIRECTS: Record<string, string> = {
   '/blog/exterior-painting-timeline-in-austin-hill-country-painting':        '/blog',
 
   // -- GSC 404 fixes: old service-location URLs that don't match current pattern --
-  '/exterior-painting-west-lake-hills':  '/exterior-painting-west-lake-highlands',
-  '/exterior-painting-taylor':           '/services/exterior-painting',
-  '/commercial-tarrytown':               '/commercial-painting-tarrytown',
+  '/exterior-painting-west-lake-hills':   '/exterior-painting-west-lake-highlands',
+  '/interior-painting-west-lake-hills':    '/interior-painting-west-lake-highlands',
+  '/cabinet-refinishing-west-lake-hills':  '/cabinet-refinishing-west-lake-highlands',
+  '/exterior-painting-taylor':            '/services/exterior-painting',
+  '/commercial-tarrytown':                '/commercial-painting-tarrytown',
 };
 
 // ---------------------------------------------------------------------------
