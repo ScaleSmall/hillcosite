@@ -131,11 +131,33 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Audit also shows many trailing-slash variants and utility URLs still surfacing.
 
 ## Next steps
-1. Fix the 3 missing live redirects.
-2. Remove redirecting/non-canonical URLs from sitemap generation.
-3. Audit internal links and wire canonical hubs.
-4. Review thin pages: expand, consolidate, or noindex.
-5. Fix title/meta mismatch.
+1. Internal-link audit for legacy/redirecting URLs.
+2. Thin-content triage: expand vs noindex vs keep.
+3. Fix title/meta mismatch if still present.
+4. Watch Ahrefs/GSC for stale residue only.
+
+## Keep / Expand / Noindex triage
+### Keep
+- Homepage
+- /about
+- /services
+- /service-areas
+- Core service pages
+- Core geo hub pages
+- Legal/public utility pages that must remain public
+
+### Expand
+- Thin service pages
+- Thin geo pages
+- Any blog posts too close to guide templates
+
+### Noindex
+- /search
+- /thank-you
+
+### Delete/Retire
+- Legacy URLs already pruned from sitemap and canonical routing
+- Any leftover URLs with no inbound value and no business use
 
 ## Notes
 - Treat Ahrefs/GSC as symptom reports, not truth.
