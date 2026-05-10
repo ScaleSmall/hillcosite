@@ -88,12 +88,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.hillcopaint.com/service-areas/west-lake-hills</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.hillcopaint.com/service-areas/west-lake-highlands</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
@@ -299,12 +293,6 @@
   </url>
   <url>
     <loc>https://www.hillcopaint.com/commercial-painting-northwest-hills</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.hillcopaint.com/commercial-painting-west-lake-hills</loc>
     <lastmod>2026-05-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

@@ -43,7 +43,6 @@ export const serviceLocationPages = [
   { path: '/commercial-painting-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
-  { path: '/commercial-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
   // Leander service-location pages
@@ -88,7 +87,6 @@ export const coreStaticRoutes = [
   { path: '/service-areas/austin', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/tarrytown', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/northwest-hills', changefreq: 'monthly', priority: '0.8' },
-  { path: '/service-areas/west-lake-hills', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/lakeway', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/leander', changefreq: 'monthly', priority: '0.8' },
