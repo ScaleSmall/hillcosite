@@ -75,7 +75,7 @@ const PaintingCosts = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Cost to Paint a House in Austin (2026)
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Complete pricing guide for Austin homeowners. Get accurate estimates for interior painting, exterior painting, and cabinet painting from local professionals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -120,7 +120,7 @@ const PaintingCosts = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Smart Ways to Save on Painting Costs
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Professional tips to maximize your painting investment
             </p>
           </div>
@@ -133,7 +133,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Bundle Interior & Exterior</h3>
-                  <p className="text-slate-600">Save 10-15% when combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> services in one project.</p>
+                  <p className="text-brand-gray-600">Save 10-15% when combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> services in one project.</p>
                 </div>
               </div>
               
@@ -143,7 +143,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Choose Standard Colors</h3>
-                  <p className="text-slate-600">Custom color matching adds 5-10% to material costs.</p>
+                  <p className="text-brand-gray-600">Custom color matching adds 5-10% to material costs.</p>
                 </div>
               </div>
               
@@ -153,7 +153,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Schedule Off-Season</h3>
-                  <p className="text-slate-600">Interior painting in summer may offer slight discounts.</p>
+                  <p className="text-brand-gray-600">Interior painting in summer may offer slight discounts.</p>
                 </div>
               </div>
             </div>
@@ -165,7 +165,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Clear Access</h3>
-                  <p className="text-slate-600">Easy access reduces labor time and setup costs.</p>
+                  <p className="text-brand-gray-600">Easy access reduces labor time and setup costs.</p>
                 </div>
               </div>
               
@@ -175,7 +175,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Address Repairs First</h3>
-                  <p className="text-slate-600">Fixing issues before painting prevents change orders.</p>
+                  <p className="text-brand-gray-600">Fixing issues before painting prevents change orders.</p>
                 </div>
               </div>
               
@@ -185,7 +185,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Maintain Your Paint</h3>
-                  <p className="text-slate-600">Regular cleaning and touch-ups extend paint life by 3-5 years.</p>
+                  <p className="text-brand-gray-600">Regular cleaning and touch-ups extend paint life by 3-5 years.</p>
                 </div>
               </div>
             </div>

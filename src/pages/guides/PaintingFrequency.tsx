@@ -139,7 +139,7 @@ const PaintingFrequency = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               How Often to Paint in Greater Austin Area
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Professional maintenance schedule for Austin homes. Learn when to repaint interior, exterior, and cabinets to protect your investment in Texas's demanding climate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -161,7 +161,7 @@ const PaintingFrequency = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Austin Painting Maintenance Schedule
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Based on Greater Austin Area climate and local Austin projects
             </p>
           </div>
@@ -179,16 +179,16 @@ const PaintingFrequency = () => {
               </thead>
               <tbody>
                 {paintingSchedule.map((item, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+                  <tr key={index} className={index % 2 === 0 ? 'bg-brand-gray-50' : 'bg-white'}>
                     <td className="px-6 py-4 font-semibold text-brand-gray-900">{item.surface}</td>
                     <td className="px-6 py-4 text-center">
                       <span className="px-3 py-1 bg-brand-azure10 text-brand-azure rounded-full font-medium">
                         {item.frequency}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-slate-600">{item.factors}</td>
-                    <td className="px-6 py-4 text-slate-600">{item.signs}</td>
-                    <td className="px-6 py-4 text-slate-600 italic">{item.roundRockNote}</td>
+                    <td className="px-6 py-4 text-brand-gray-600">{item.factors}</td>
+                    <td className="px-6 py-4 text-brand-gray-600">{item.signs}</td>
+                    <td className="px-6 py-4 text-brand-gray-600 italic">{item.roundRockNote}</td>
                   </tr>
                 ))}
               </tbody>
@@ -198,13 +198,13 @@ const PaintingFrequency = () => {
       </section>
 
       {/* Seasonal Considerations */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Best Times to Paint in Central Texas
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Seasonal factors affecting paint performance and application
             </p>
           </div>
@@ -226,15 +226,15 @@ const PaintingFrequency = () => {
                 <div className="space-y-3 text-sm">
                   <div>
                     <p className="font-medium text-brand-gray-900 mb-1">Exterior:</p>
-                    <p className="text-slate-600">{season.exterior}</p>
+                    <p className="text-brand-gray-600">{season.exterior}</p>
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900 mb-1">Interior:</p>
-                    <p className="text-slate-600">{season.interior}</p>
+                    <p className="text-brand-gray-600">{season.interior}</p>
                   </div>
-                  <div className="bg-slate-50 rounded-lg p-3 mt-4">
+                    <div className="bg-brand-gray-50 rounded-lg p-3 mt-4">
                     <p className="font-medium text-brand-gray-900 mb-1">Central Texas Tip:</p>
-                    <p className="text-slate-600">{season.roundRockTip}</p>
+                    <p className="text-brand-gray-600">{season.roundRockTip}</p>
                   </div>
                 </div>
               </div>
@@ -267,7 +267,7 @@ const PaintingFrequency = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               When to Schedule Repainting: Warning Signs
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Early detection saves money and protects your home
             </p>
           </div>
@@ -352,13 +352,13 @@ const PaintingFrequency = () => {
       </section>
 
       {/* Maintenance Tips */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Extend Paint Life in Texas Heat
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Simple maintenance steps to maximize your paint investment
             </p>
           </div>
@@ -373,7 +373,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Clean Exterior Surfaces</p>
-                    <p className="text-slate-600 text-sm">Pressure wash annually to remove dirt, mildew, and pollutants</p>
+                    <p className="text-brand-gray-600 text-sm">Pressure wash annually to remove dirt, mildew, and pollutants</p>
                   </div>
                 </div>
                 
@@ -383,7 +383,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Inspect for Damage</p>
-                    <p className="text-slate-600 text-sm">Check for cracks, peeling, or bare spots, especially on sun-exposed areas</p>
+                    <p className="text-brand-gray-600 text-sm">Check for cracks, peeling, or bare spots, especially on sun-exposed areas</p>
                   </div>
                 </div>
                 
@@ -393,7 +393,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Touch Up Early</p>
-                    <p className="text-slate-600 text-sm">Address minor issues before they become major problems</p>
+                    <p className="text-brand-gray-600 text-sm">Address minor issues before they become major problems</p>
                   </div>
                 </div>
                 
@@ -403,7 +403,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Maintain Caulking</p>
-                    <p className="text-slate-600 text-sm">Keep caulk around windows and trim in good condition to prevent moisture</p>
+                    <p className="text-brand-gray-600 text-sm">Keep caulk around windows and trim in good condition to prevent moisture</p>
                   </div>
                 </div>
               </div>
@@ -418,7 +418,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Trim Vegetation</p>
-                    <p className="text-slate-600 text-sm">Keep bushes and trees away from painted surfaces to improve air circulation</p>
+                    <p className="text-brand-gray-600 text-sm">Keep bushes and trees away from painted surfaces to improve air circulation</p>
                   </div>
                 </div>
                 
@@ -428,7 +428,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Clean Gutters</p>
-                    <p className="text-slate-600 text-sm">Ensure proper drainage to prevent water damage and staining</p>
+                    <p className="text-brand-gray-600 text-sm">Ensure proper drainage to prevent water damage and staining</p>
                   </div>
                 </div>
                 
@@ -438,7 +438,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Control Sprinklers</p>
-                    <p className="text-slate-600 text-sm">Avoid spraying painted surfaces with irrigation systems</p>
+                    <p className="text-brand-gray-600 text-sm">Avoid spraying painted surfaces with irrigation systems</p>
                   </div>
                 </div>
                 
@@ -448,7 +448,7 @@ const PaintingFrequency = () => {
                   </div>
                   <div>
                     <p className="font-medium text-brand-gray-900">Shade Planning</p>
-                    <p className="text-slate-600 text-sm">Consider awnings or strategic landscaping for extreme sun exposure</p>
+                    <p className="text-brand-gray-600 text-sm">Consider awnings or strategic landscaping for extreme sun exposure</p>
                   </div>
                 </div>
               </div>

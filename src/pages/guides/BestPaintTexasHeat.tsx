@@ -109,7 +109,7 @@ const BestPaintTexasHeat = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               Best Exterior Paint for Texas Heat
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Professional guide to choosing exterior paint that withstands Austin's intense heat and UV exposure. Keep your home protected and beautiful year-round.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -131,7 +131,7 @@ const BestPaintTexasHeat = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Paint Types for Texas Heat
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               How different paint types perform in Central Texas's climate
             </p>
           </div>
@@ -164,13 +164,13 @@ const BestPaintTexasHeat = () => {
                   </div>
                   
                   <div className="lg:col-span-2">
-                    <p className="text-slate-600 mb-4">{paint.description}</p>
+                    <p className="text-brand-gray-600 mb-4">{paint.description}</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <h4 className="font-semibold text-brand-azure mb-2">Pros:</h4>
                         <ul className="space-y-1">
                           {paint.pros.map((pro, i) => (
-                            <li key={i} className="text-sm text-slate-600 flex items-center">
+                            <li key={i} className="text-sm text-brand-gray-600 flex items-center">
                               <div className="w-2 h-2 bg-brand-azure50 rounded-full mr-2"></div>
                               {pro}
                             </li>
@@ -181,7 +181,7 @@ const BestPaintTexasHeat = () => {
                         <h4 className="font-semibold text-brand-azureDark mb-2">Cons:</h4>
                         <ul className="space-y-1">
                           {paint.cons.map((con, i) => (
-                            <li key={i} className="text-sm text-slate-600 flex items-center">
+                            <li key={i} className="text-sm text-brand-gray-600 flex items-center">
                               <div className="w-2 h-2 bg-brand-azureDark50 rounded-full mr-2"></div>
                               {con}
                             </li>
@@ -207,13 +207,13 @@ const BestPaintTexasHeat = () => {
       </section>
 
       {/* Color Selection Guide */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Color Selection for Texas Heat
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               How color choice affects heat reflection and paint longevity
             </p>
           </div>
@@ -242,7 +242,7 @@ const BestPaintTexasHeat = () => {
                     {color.recommendation}
                   </div>
                 </div>
-                <p className="text-slate-600">{color.details}</p>
+                <p className="text-brand-gray-600">{color.details}</p>
               </div>
             ))}
           </div>
@@ -272,7 +272,7 @@ const BestPaintTexasHeat = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Heat Protection Features to Look For
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Key paint technologies that protect against Texas sun
             </p>
           </div>
@@ -283,7 +283,7 @@ const BestPaintTexasHeat = () => {
                 <Shield className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">UV Blockers</h3>
-              <p className="text-slate-600 text-sm">Titanium dioxide and zinc oxide protect against harmful UV rays</p>
+              <p className="text-brand-gray-600 text-sm">Titanium dioxide and zinc oxide protect against harmful UV rays</p>
             </div>
 
             <div className="text-center">
@@ -291,7 +291,7 @@ const BestPaintTexasHeat = () => {
                 <Droplets className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Moisture Resistance</h3>
-              <p className="text-slate-600 text-sm">Advanced polymers resist humidity and prevent mold growth</p>
+              <p className="text-brand-gray-600 text-sm">Advanced polymers resist humidity and prevent mold growth</p>
             </div>
 
             <div className="text-center">
@@ -299,7 +299,7 @@ const BestPaintTexasHeat = () => {
                 <Sun className="w-8 h-8 text-brand-azureDark" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Reflective Pigments</h3>
-              <p className="text-slate-600 text-sm">Special pigments reflect infrared heat away from surfaces</p>
+              <p className="text-brand-gray-600 text-sm">Special pigments reflect infrared heat away from surfaces</p>
             </div>
 
             <div className="text-center">
@@ -307,7 +307,7 @@ const BestPaintTexasHeat = () => {
                 <Thermometer className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-lg font-bold text-brand-gray-900 mb-3">Temperature Flex</h3>
-              <p className="text-slate-600 text-sm">Flexible resins move with temperature changes without cracking</p>
+              <p className="text-brand-gray-600 text-sm">Flexible resins move with temperature changes without cracking</p>
             </div>
           </div>
         </div>

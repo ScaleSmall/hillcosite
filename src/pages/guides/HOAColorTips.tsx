@@ -132,7 +132,7 @@ const HOAColorTips = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
               HOA Color Tips for Austin Homes
             </h1>
-            <p className="text-xl text-slate-600 leading-body">
+            <p className="text-xl text-brand-gray-600 leading-body">
               Navigate Austin HOA paint requirements with confidence. Get approval tips, popular colors, and professional guidance to ensure your painting project meets all neighborhood guidelines.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -154,7 +154,7 @@ const HOAColorTips = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Common Austin HOA Paint Requirements
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Understanding what your HOA likely requires
             </p>
           </div>
@@ -191,9 +191,9 @@ const HOAColorTips = () => {
                         {req.status}
                       </span>
                     </div>
-                    <p className="text-slate-600 mb-3">{req.description}</p>
-                    <div className="bg-slate-50 rounded-lg p-3">
-                      <p className="text-sm text-slate-700">
+                    <p className="text-brand-gray-600 mb-3">{req.description}</p>
+                    <div className="bg-brand-gray-50 rounded-lg p-3">
+                      <p className="text-sm text-brand-gray-700">
                         <strong>Pro Tip:</strong> {req.tip}
                       </p>
                     </div>
@@ -206,13 +206,13 @@ const HOAColorTips = () => {
       </section>
 
       {/* Popular HOA Colors */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Popular HOA-Approved Colors in Austin
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Safe color choices commonly approved by Austin HOAs
             </p>
           </div>
@@ -224,13 +224,13 @@ const HOAColorTips = () => {
                   <Palette className="w-8 h-8 text-brand-azureDark" />
                   <h3 className="text-2xl font-bold text-brand-gray-900">{category.category}</h3>
                 </div>
-                <p className="text-slate-600 mb-6">{category.description}</p>
+                <p className="text-brand-gray-600 mb-6">{category.description}</p>
                 <div className="space-y-3">
                   {category.colors.map((color, colorIndex) => (
-                    <div key={colorIndex} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                    <div key={colorIndex} className="flex items-center justify-between p-3 bg-brand-gray-50 rounded-lg">
                       <span className="font-medium text-brand-gray-900">{color.name}</span>
                       <div
-                        className="w-8 h-8 rounded-full border-2 border-slate-300"
+                        className="w-8 h-8 rounded-full border-2 border-brand-gray-300"
                         style={{ backgroundColor: color.hex }}
                       ></div>
                     </div>
@@ -249,7 +249,7 @@ const HOAColorTips = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               HOA Paint Approval Process
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Step-by-step guide to getting your paint colors approved
             </p>
           </div>
@@ -307,7 +307,7 @@ const HOAColorTips = () => {
                         {item.timeline}
                       </span>
                     </div>
-                    <p className="text-slate-600">{item.description}</p>
+                    <p className="text-brand-gray-600">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -334,13 +334,13 @@ const HOAColorTips = () => {
       />
 
       {/* Common Mistakes to Avoid */}
-      <section className="section-padding bg-slate-50">
+      <section className="section-padding bg-brand-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
               Common HOA Approval Mistakes to Avoid
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-brand-gray-600">
               Learn from others' mistakes to speed your approval
             </p>
           </div>
@@ -349,34 +349,34 @@ const HOAColorTips = () => {
             <div className="space-y-6">
               <div className="card p-6 border-l-4 border-brand-azureDark">
                 <h3 className="text-lg font-bold text-brand-azureDark mb-2">❌ Don't Paint First</h3>
-                <p className="text-slate-600">Never start painting before getting HOA approval, even if you think the color is safe.</p>
+                <p className="text-brand-gray-600">Never start painting before getting HOA approval, even if you think the color is safe.</p>
               </div>
               
               <div className="card p-6 border-l-4 border-brand-azureDark">
                 <h3 className="text-lg font-bold text-brand-azureDark mb-2">❌ Don't Submit Tiny Samples</h3>
-                <p className="text-slate-600">Small paint chips don't show true color. Use large samples or painted boards.</p>
+                <p className="text-brand-gray-600">Small paint chips don't show true color. Use large samples or painted boards.</p>
               </div>
               
               <div className="card p-6 border-l-4 border-brand-azureDark">
                 <h3 className="text-lg font-bold text-brand-azureDark mb-2">❌ Don't Forget Trim Colors</h3>
-                <p className="text-slate-600">Include all colors in your submission - body, trim, shutters, doors, etc.</p>
+                <p className="text-brand-gray-600">Include all colors in your submission - body, trim, shutters, doors, etc.</p>
               </div>
             </div>
             
             <div className="space-y-6">
               <div className="card p-6 border-l-4 border-brand-azure">
                 <h3 className="text-lg font-bold text-brand-azure mb-2">✅ Submit Complete Applications</h3>
-                <p className="text-slate-600">Include all required forms, samples, and documentation in your initial submission.</p>
+                <p className="text-brand-gray-600">Include all required forms, samples, and documentation in your initial submission.</p>
               </div>
               
               <div className="card p-6 border-l-4 border-brand-azure">
                 <h3 className="text-lg font-bold text-brand-azure mb-2">✅ Plan for Processing Time</h3>
-                <p className="text-slate-600">Start the approval process 4-6 weeks before you want to begin painting.</p>
+                <p className="text-brand-gray-600">Start the approval process 4-6 weeks before you want to begin painting.</p>
               </div>
               
               <div className="card p-6 border-l-4 border-brand-azure">
                 <h3 className="text-lg font-bold text-brand-azure mb-2">✅ Follow Up Professionally</h3>
-                <p className="text-slate-600">Check on status respectfully and be prepared to provide additional information if needed.</p>
+                <p className="text-brand-gray-600">Check on status respectfully and be prepared to provide additional information if needed.</p>
               </div>
             </div>
           </div>
