@@ -114,6 +114,11 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - /service-areas/*
 - /guides/*
 
+#### Removed from sitemap / retired as legacy duplicates
+- /interior-painting-west-lake-hills
+- /exterior-painting-west-lake-hills
+- /cabinet-refinishing-west-lake-hills
+
 ## Evidence
 - Live redirects are still failing for the 3 West Lake Hills legacy URLs.
 - Sitemap audit showed large non-canonical/redirect leakage.
