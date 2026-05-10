@@ -28,6 +28,11 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - 404 cleanup
 - Some canonical pages and old redirect variants
 
+### Retired / removed entirely
+- /interior-painting-west-lake-hills
+- /exterior-painting-west-lake-hills
+- /cabinet-refinishing-west-lake-hills
+
 ### Still open
 #### Redirects not live yet
 - /exterior-painting-west-lake-hills
