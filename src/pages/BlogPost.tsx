@@ -253,18 +253,18 @@ const BlogPost = () => {
         </script>
       </Helmet>
 
-      {/* Hero Section with Featured Image */}
-      <section className="relative py-16 md:py-24 bg-brand-gray-50">
+      {/* Article Header */}
+      <section className="relative py-10 md:py-14 bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/blog"
-            className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium mb-8 transition-colors"
+            className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
           </Link>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-4 text-sm text-brand-gray-600">
               <div className="flex items-center space-x-2">
                 <Calendar className="w-4 h-4" />
@@ -297,13 +297,12 @@ const BlogPost = () => {
         </div>
       </section>
 
-
       {/* Content */}
-      <article className="section-padding bg-white">
+      <article className="pt-6 pb-16 md:pt-8 md:pb-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {post.tldr && (
             <section
-              className="mb-12 p-6 bg-brand-gray-50 border-l-4 border-brand-azureDark rounded-r-lg"
+              className="mb-8 p-5 bg-brand-gray-50 border-l-4 border-brand-azureDark rounded-r-lg"
               role="complementary"
               aria-label="Article summary"
               itemProp="abstract"
@@ -315,18 +314,17 @@ const BlogPost = () => {
           <div
             className="prose prose-lg prose-slate max-w-none
               prose-headings:font-bold prose-headings:text-brand-gray-900
-              prose-h1:text-4xl prose-h1:mt-20 prose-h1:mb-12 prose-h1:leading-tight
-              prose-h2:text-3xl prose-h2:mt-20 prose-h2:mb-10 prose-h2:leading-snug
-              prose-h3:text-2xl prose-h3:mt-16 prose-h3:mb-8 prose-h3:leading-snug
-              prose-p:text-brand-gray-700 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-10
+              prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:leading-snug
+              prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-3 prose-h3:leading-snug
+              prose-p:text-brand-gray-700 prose-p:text-lg prose-p:leading-relaxed prose-p:mb-5
               prose-a:text-brand-azureDark prose-a:font-medium prose-a:underline prose-a:underline-offset-2 hover:prose-a:text-brand-azureDark
               prose-strong:text-brand-gray-900 prose-strong:font-bold
-              prose-ul:my-10 prose-ul:space-y-4 prose-li:text-brand-gray-700 prose-li:leading-relaxed prose-li:mb-3
-              prose-ol:my-10 prose-ol:space-y-4
-              prose-blockquote:border-l-4 prose-blockquote:border-brand-azure prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-12 prose-blockquote:italic prose-blockquote:text-brand-gray-600 prose-blockquote:bg-brand-gray-50 prose-blockquote:rounded-r
-              prose-img:rounded-xl prose-img:shadow-lg prose-img:my-12
-              prose-code:text-brand-azureDark prose-code:bg-brand-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-              first:prose-p:text-xl first:prose-p:font-medium first:prose-p:text-brand-gray-900"
+              prose-ul:my-5 prose-ul:space-y-2 prose-li:text-brand-gray-700 prose-li:leading-relaxed prose-li:mb-2
+              prose-ol:my-5 prose-ol:space-y-2
+              prose-table:my-8 prose-th:bg-brand-gray-50 prose-th:text-brand-gray-900 prose-td:align-top
+              prose-blockquote:border-l-4 prose-blockquote:border-brand-azure prose-blockquote:pl-6 prose-blockquote:py-3 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:text-brand-gray-600 prose-blockquote:bg-brand-gray-50 prose-blockquote:rounded-r
+              prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
+              first:prose-p:text-xl first:prose-p:font-medium first:prose-p:text-brand-gray-900 first:prose-p:mb-6"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </div>
