@@ -93,6 +93,15 @@ const REDIRECTS: Record<string, string> = {
   '/painting-contractor-austin':                 '/services',
   '/painting-contractor-round-rock':             '/services',
   '/painting-company-austin':                    '/services',
+  '/services/wood-staining':                     '/services/exterior-painting',
+  '/services/masonry-priming':                   '/services/exterior-painting',
+  '/services/priming-and-prep':                  '/services/exterior-painting',
+  '/services/masonry-restoration':               '/services/exterior-painting',
+  '/services/masonry-painting':                  '/services/exterior-painting',
+  '/services/caulking-and-repair':               '/services/exterior-painting',
+  '/services/masonry-coatings':                  '/services/exterior-painting',
+  '/services/pressure-washing':                  '/services/exterior-painting',
+  '/services/lead-safe-painting':                '/services/exterior-painting',
 
   // -- Guide variant redirects --
   '/guides/painting-costs-round-rock': '/guides/painting-costs-austin',

@@ -14,6 +14,17 @@ const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
 const allowedNonSitemapLinks = new Set(['/pre-approval']);
+const internalRedirectTargets = new Map([
+  ['/services/wood-staining', '/services/exterior-painting'],
+  ['/services/masonry-priming', '/services/exterior-painting'],
+  ['/services/priming-and-prep', '/services/exterior-painting'],
+  ['/services/masonry-restoration', '/services/exterior-painting'],
+  ['/services/masonry-painting', '/services/exterior-painting'],
+  ['/services/caulking-and-repair', '/services/exterior-painting'],
+  ['/services/masonry-coatings', '/services/exterior-painting'],
+  ['/services/pressure-washing', '/services/exterior-painting'],
+  ['/services/lead-safe-painting', '/services/exterior-painting'],
+]);
 const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
 const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
 
@@ -138,6 +149,11 @@ function htmlFileForRoute(routePath) {
 
 function routeExists(routePath, sitemapSet) {
   return sitemapSet.has(routePath) || existsSync(htmlFileForRoute(routePath));
+}
+
+function redirectedRouteExists(routePath, sitemapSet) {
+  const targetRoute = internalRedirectTargets.get(routePath);
+  return targetRoute ? routeExists(targetRoute, sitemapSet) : false;
 }
 
 function extractSitemapPaths(xml) {
@@ -423,6 +439,10 @@ function run() {
       }
 
       if (!routeExists(targetRoute, sitemapSet)) {
+        if (redirectedRouteExists(targetRoute, sitemapSet)) {
+          continue;
+        }
+
         fail(`${routePath}: broken internal link to ${href}`);
         continue;
       }
