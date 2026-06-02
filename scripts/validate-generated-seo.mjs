@@ -14,8 +14,8 @@ const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
 const canonicalPhoneHref = 'tel:+15122402246';
-const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
-const allowedNonSitemapLinks = new Set(['/pre-approval']);
+const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you']);
+const allowedNonSitemapLinks = new Set(['/pre-approval', '/search', '/thank-you']);
 const internalRedirectTargets = new Map([
   ['/services/wood-staining', '/services/exterior-painting'],
   ['/services/masonry-priming', '/services/exterior-painting'],

@@ -114,6 +114,7 @@ export const coreStaticRoutes = [
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
   { path: '/eula', changefreq: 'yearly', priority: '0.2' },
+  { path: '/sitemap', changefreq: 'monthly', priority: '0.3' },
 ];
 
 export function getStaticRoutes() {
@@ -140,7 +141,7 @@ export function getAllRoutePaths() {
 }
 
 export function getPrerenderPaths() {
-  return [...getAllRoutePaths(), '/pre-approval'];
+  return [...getAllRoutePaths(), '/search', '/thank-you', '/pre-approval'];
 }
 
 export function getServiceLocationPaths() {

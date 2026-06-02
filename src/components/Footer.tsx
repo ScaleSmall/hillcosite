@@ -328,6 +328,8 @@ const Footer = () => {
               <span className="text-brand-gray-400">•</span>
               <Link to="/eula" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">EULA</Link>
               <span className="text-brand-gray-400">•</span>
+              <Link to="/sitemap" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Sitemap</Link>
+              <span className="text-brand-gray-400">•</span>
               <Link to="/financing" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Financing</Link>
             </div>
           </div>

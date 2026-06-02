@@ -208,6 +208,12 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://www.hillcopaint.com/sitemap</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://www.hillcopaint.com/interior-painting-austin</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>

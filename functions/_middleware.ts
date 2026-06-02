@@ -250,6 +250,12 @@ const SPA_ROUTES: Set<string> = new Set([
   '/commercial-painting-north-austin',
 ]);
 
+const NOINDEX_ROUTES: Record<string, string> = {
+  '/pre-approval': 'noindex, nofollow',
+  '/search': 'noindex, follow',
+  '/thank-you': 'noindex, follow',
+};
+
 /**
  * Check if a path is a valid app route that should be handled by the
  * prerendered static HTML output in dist/.
@@ -265,6 +271,17 @@ function isSpaRoute(path: string): boolean {
   if (path.startsWith('/blog/')) return true;
 
   return false;
+}
+
+function headersForRoute(sourceHeaders: Headers, path: string): Headers {
+  const headers = new Headers(sourceHeaders);
+  const robots = NOINDEX_ROUTES[path];
+
+  if (robots) {
+    headers.set('X-Robots-Tag', robots);
+  }
+
+  return headers;
 }
 
 // ---------------------------------------------------------------------------
@@ -357,7 +374,7 @@ export async function onRequest(context: {
     if (prerenderedResponse.status >= 200 && prerenderedResponse.status < 300) {
       return new Response(prerenderedResponse.body, {
         status: 200,
-        headers: prerenderedResponse.headers,
+        headers: headersForRoute(prerenderedResponse.headers, path),
       });
     }
 
@@ -376,7 +393,7 @@ export async function onRequest(context: {
     const indexResponse = await env.ASSETS.fetch(indexRequest);
     return new Response(indexResponse.body, {
       status: 200,
-      headers: indexResponse.headers,
+      headers: headersForRoute(indexResponse.headers, path),
     });
   }
 
