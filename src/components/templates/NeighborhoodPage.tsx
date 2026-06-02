@@ -52,6 +52,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           description: neighborhood.description,
           areaServed: [neighborhood.name]
         }}
+        includeLocalBusiness={true}
       />
 
       <div className="bg-white py-4 border-b">

@@ -61,6 +61,7 @@ const Tarrytown = () => {
           areaServed: ['Tarrytown', 'Old Enfield', 'Pemberton Heights', 'Bryker Woods', 'Clarksville']
         }}
         additionalSchema={faqSchema}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">

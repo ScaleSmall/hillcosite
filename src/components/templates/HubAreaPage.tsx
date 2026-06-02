@@ -54,6 +54,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
           description: hub.description,
           areaServed
         }}
+        includeLocalBusiness={true}
       />
 
       <div className="bg-white py-4 border-b">

@@ -21,7 +21,7 @@ const config: ServiceLocationConfig = {
       'Retail expertise',
       'Restaurant experience',
       'Tech office familiarity',
-      'Licensed and insured',
+      'Insured crew',
       'Competitive commercial rates'
     ],
     processSteps: [

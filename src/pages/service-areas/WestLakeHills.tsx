@@ -66,11 +66,7 @@ const WestLakeHills = () => {
           description: 'Professional luxury residential painting services throughout West Lake Hills, Texas. Specializing in high-end homes, premium finishes, hillside properties, and strict HOA compliance.',
           areaServed: ['West Lake Hills', 'Westlake', 'Rob Roy', 'Eanes', 'Rollingwood', 'Lost Creek', 'Davenport Ranch', 'Barton Creek']
         }}
-        localBusiness={{
-          name: 'Hill Country Painting - West Lake Hills',
-          address: 'West Lake Hills, TX 78746',
-          telephone: '+15127601334'
-        }}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
@@ -100,9 +96,9 @@ const WestLakeHills = () => {
               <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-green-500 hover:bg-brand-green-600 text-white font-semibold rounded-lg transition-colors">
                 Get a Free Estimate
               </Link>
-              <a href="tel:+15127601334" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
+              <a href="tel:+15122402246" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
                 <Phone className="w-5 h-5" />
-                (512) 760-1334
+                (512) 240-2246
               </a>
             </div>
           </div>

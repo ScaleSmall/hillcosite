@@ -21,7 +21,7 @@ const config: ServiceLocationConfig = {
       'Private club experience',
       'Premium finishes',
       'Discreet service',
-      'Licensed and insured',
+      'Insured crew',
       'Premium commercial standards'
     ],
     processSteps: [

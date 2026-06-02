@@ -41,9 +41,10 @@ interface SEOProps {
     ratingValue: number;
     reviewCount: number;
   };
+  additionalSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating }: SEOProps) => {
+const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating, additionalSchema }: SEOProps) => {
   const hasRefParam = useRefParamGuard();
   const baseUrl = 'https://www.hillcopaint.com';
   const defaultSocialImage = `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`;
@@ -116,15 +117,53 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     ]
   };
 
+  const localBusinessAreas = [
+    'Austin',
+    'West Lake Hills',
+    'Rollingwood',
+    'Tarrytown',
+    'Northwest Hills',
+    'West Lake Highlands',
+    'Lakeway',
+    'Bee Cave',
+    'Lake Travis',
+    'Steiner Ranch',
+    'Barton Creek',
+    'Circle C Ranch',
+    'Pemberton Heights',
+    'Old West Austin',
+    'Clarksville',
+    'Allandale',
+    'Crestview',
+    'Leander',
+    'Georgetown',
+    'Round Rock',
+    'Cedar Park',
+    'North Austin'
+  ];
+
+  const localBusinessServices = [
+    'Interior painting',
+    'Exterior painting',
+    'Cabinet painting',
+    'Cabinet refinishing',
+    'Commercial painting',
+    'Color consultation'
+  ];
+
   // LocalBusiness schema - only if requested (for homepage or service area pages)
   const localBusinessSchema = includeLocalBusiness ? {
     '@context': 'https://schema.org',
     '@type': ['LocalBusiness', 'PaintingContractor'],
     '@id': `${baseUrl}/#localbusiness`,
     name: 'Hill Country Painting',
+    legalName: businessConfig.legalName,
+    description: businessConfig.description,
+    slogan: businessConfig.tagline,
     url: baseUrl,
-    telephone: '(512) 240-2246',
-    email: 'info@hillcopaint.com',
+    telephone: businessConfig.phone,
+    email: businessConfig.email,
+    image: defaultSocialImage,
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
@@ -137,24 +176,37 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       latitude: parseFloat(businessConfig.geo.latitude),
       longitude: parseFloat(businessConfig.geo.longitude)
     },
-    areaServed: [
-      { '@type': 'City', name: 'Austin' },
-      { '@type': 'City', name: 'Lakeway' },
-      { '@type': 'City', name: 'Bee Cave' },
-      { '@type': 'City', name: 'Barton Creek' },
-      { '@type': 'City', name: 'Allandale' },
-      { '@type': 'City', name: 'Crestview' },
-      { '@type': 'City', name: 'Rollingwood' },
-      { '@type': 'City', name: 'West Lake Hills' },
-      { '@type': 'City', name: 'Circle C Ranch' },
-      { '@type': 'City', name: 'Northwest Hills' },
-      { '@type': 'City', name: 'Tarrytown' },
-      { '@type': 'City', name: 'Clarksville' },
-      { '@type': 'City', name: 'Lake Travis' },
-      { '@type': 'City', name: 'Steiner Ranch' },
-      { '@type': 'City', name: 'Pemberton Heights' },
-      { '@type': 'City', name: 'Westlake Highlands' }
+    areaServed: localBusinessAreas.map(area => ({
+      '@type': 'Place',
+      name: area
+    })),
+    knowsAbout: [
+      'Austin house painting',
+      'Central Texas exterior paint maintenance',
+      'HOA paint color approvals',
+      'Cabinet refinishing',
+      'Interior repainting',
+      'Commercial repaint scheduling'
     ],
+    hasMap: businessConfig.googleBusinessProfileUrl,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Austin Painting Services',
+      itemListElement: localBusinessServices.map(serviceName => ({
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: serviceName,
+          provider: {
+            '@id': `${baseUrl}/#localbusiness`
+          },
+          areaServed: localBusinessAreas.map(area => ({
+            '@type': 'Place',
+            name: area
+          }))
+        }
+      }))
+    },
     openingHours: 'Mo-Fr 08:00-17:00',
     sameAs: [
       'https://www.facebook.com/Hillcopaint',
@@ -392,6 +444,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {faqSchema && (
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
+        </script>
+      )}
+
+      {additionalSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(additionalSchema)}
         </script>
       )}
 

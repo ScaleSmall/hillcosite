@@ -66,11 +66,7 @@ const NorthAustin = () => {
           description: 'Professional interior and exterior painting throughout North Austin, Texas. Specialists in mid-century modern homes, tech corridor townhomes and condos, and commercial spaces near The Domain. Serving Balcones, Milwood, Jollyville, Anderson Mill, and the Domain area.',
           areaServed: ['North Austin', 'Balcones', 'Milwood', 'Jollyville', 'Anderson Mill', 'The Domain Area']
         }}
-        localBusiness={{
-          name: 'Hill Country Painting - North Austin',
-          address: 'North Austin, TX 78750',
-          telephone: '+15127601334'
-        }}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
@@ -100,9 +96,9 @@ const NorthAustin = () => {
               <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-green-500 hover:bg-brand-green-600 text-white font-semibold rounded-lg transition-colors">
                 Get a Free Estimate
               </Link>
-              <a href="tel:+15127601334" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
+              <a href="tel:+15122402246" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
                 <Phone className="w-5 h-5" />
-                (512) 760-1334
+                (512) 240-2246
               </a>
             </div>
           </div>

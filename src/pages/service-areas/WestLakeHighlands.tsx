@@ -61,6 +61,7 @@ const WestLakeHighlands = () => {
           areaServed: ['West Lake Highlands', 'Lake Pointe', 'Hill Country', 'Scenic Brook']
         }}
         additionalSchema={faqSchema}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">

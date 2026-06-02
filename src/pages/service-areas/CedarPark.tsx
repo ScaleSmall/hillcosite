@@ -66,11 +66,7 @@ const CedarPark = () => {
           description: 'Professional interior and exterior painting services throughout Cedar Park, Texas. HOA color compliance specialists for master-planned communities including Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, Lakeline, and Twin Creeks.',
           areaServed: ['Cedar Park', 'Avery Ranch', 'Ranch at Brushy Creek', 'Buttercup Creek', 'Lakeline', 'Twin Creeks']
         }}
-        localBusiness={{
-          name: 'Hill Country Painting - Cedar Park',
-          address: 'Cedar Park, TX 78613',
-          telephone: '+15127601334'
-        }}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
@@ -100,9 +96,9 @@ const CedarPark = () => {
               <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-brand-green-500 hover:bg-brand-green-600 text-white font-semibold rounded-lg transition-colors">
                 Get a Free Estimate
               </Link>
-              <a href="tel:+15127601334" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
+              <a href="tel:+15122402246" className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-brand-gray-900 font-semibold rounded-lg transition-colors">
                 <Phone className="w-5 h-5" />
-                (512) 760-1334
+                (512) 240-2246
               </a>
             </div>
           </div>

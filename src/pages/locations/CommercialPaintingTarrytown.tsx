@@ -20,7 +20,7 @@ const config: ServiceLocationConfig = {
       'Commercial durability',
       'Professional appearance',
       'Quick turnaround',
-      'Licensed and insured',
+      'Insured crew',
       'Free estimates',
       'Warranty coverage'
     ],

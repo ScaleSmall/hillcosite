@@ -20,7 +20,7 @@ const config: ServiceLocationConfig = {
       'Minimal disruption',
       'Commercial durability',
       'Resort area experience',
-      'Licensed and insured',
+      'Insured crew',
       'Free estimates',
       'Warranty coverage'
     ],

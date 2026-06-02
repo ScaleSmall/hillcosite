@@ -75,8 +75,8 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
   const { service, location, content, images, canonicalOverride } = config;
 
   const canonicalPath = canonicalOverride || `/${service.slug}-${location.slug}`;
-  const pageTitle = `${service.name} ${location.name} TX | Professional Painters | Hill Country Painting`;
-  const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Licensed, insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Consultations available.`;
+  const pageTitle = `${service.name} ${location.name}, TX | Hill Country Painting`;
+  const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Consultations available.`;
 
   const relatedServices = [
     service.type !== 'interior' && {
@@ -120,6 +120,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
           areaServed: [location.name, ...location.neighborhoods]
         }}
         faq={content.faqs}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
@@ -170,7 +171,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             <div className="flex flex-wrap justify-center gap-4 text-white text-sm font-medium">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4" />
-                <span>Licensed & Insured</span>
+                <span>Insured Crew</span>
               </div>
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4" />

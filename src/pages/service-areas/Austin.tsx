@@ -85,6 +85,7 @@ const Austin = () => {
           areaServed: ['Austin', 'Downtown Austin', 'West Lake Hills', 'Tarrytown', 'Clarksville', 'Travis Heights', 'South Congress', 'Zilker', 'Allandale', 'Crestview', 'Rosedale', 'Pemberton Heights', 'University of Texas Area', 'Barton Creek', 'Circle C Ranch']
         }}
         faq={austinSpecificFAQs}
+        includeLocalBusiness={true}
       />
 
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
