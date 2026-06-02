@@ -97,7 +97,7 @@ const About = () => {
         }}
         secondaryCTA={{
           text: 'Call (512) 240-2246',
-          href: 'tel:(512) 240-2246'
+          href: 'tel:+15122402246'
         }}
       />
     </>

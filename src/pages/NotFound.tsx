@@ -41,7 +41,7 @@ const NotFound = () => {
                 <Palette className="w-5 h-5 mr-2" />
                 Request a Consultation
               </Link>
-              <a href="tel:(512)240-2246" className="btn-outline">
+              <a href="tel:+15122402246" className="btn-outline">
                 <Phone className="w-5 h-5 mr-2" />
                 Call (512) 240-2246
               </a>

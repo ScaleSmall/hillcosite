@@ -87,7 +87,7 @@ const ProofPointsSection = ({ className = '', surface = 'coral' }: ProofPointsSe
             Request a Consultation
           </Link>
           <a
-            href="tel:(512)240-2246"
+            href="tel:+15122402246"
             className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-azureDark text-brand-azureDark font-semibold rounded-lg hover:bg-brand-azureDark hover:text-white transition-colors duration-200"
           >
             <Phone className="w-5 h-5 mr-2" />

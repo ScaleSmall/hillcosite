@@ -81,7 +81,7 @@ const ServiceAreas = () => {
               <Link to="/contact" className="btn-primary">
                 Request a Consultation
               </Link>
-              <a href="tel:(512)240-2246" className="btn-outline">
+              <a href="tel:+15122402246" className="btn-outline">
                 Call (512) 240-2246
               </a>
             </div>

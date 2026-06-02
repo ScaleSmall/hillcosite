@@ -191,7 +191,7 @@ const Header = () => {
             ))}
 
             <a
-              href="tel:(512)240-2246"
+              href="tel:+15122402246"
               className="flex items-center space-x-2 text-brand-gray-700 hover:text-brand-azureDark transition-colors text-base font-semibold whitespace-nowrap"
             >
               <Phone size={18} />
@@ -319,7 +319,7 @@ const Header = () => {
                 ))}
               </div>
               <a
-                href="tel:(512)240-2246"
+                href="tel:+15122402246"
                 className="flex items-center space-x-2 text-brand-gray-700 font-semibold py-2"
               >
                 <Phone size={18} />

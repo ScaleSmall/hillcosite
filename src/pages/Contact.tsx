@@ -707,7 +707,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900">Phone</h3>
-                  <a href="tel:(512)240-2246" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
+                  <a href="tel:+15122402246" className="text-brand-azureDark hover:text-brand-azureDark transition-colors">
                     (512) 240-2246
                   </a>
                   <p className="text-sm text-brand-gray-600">Prompt response</p>
@@ -782,7 +782,7 @@ const Contact = () => {
         subtitle="Contact us today for your consultation and let's transform your space"
         primaryCTA={{
           text: 'Call (512) 240-2246',
-          href: 'tel:(512) 240-2246'
+          href: 'tel:+15122402246'
         }}
         secondaryCTA={{
           text: 'View Gallery',

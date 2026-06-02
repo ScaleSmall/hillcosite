@@ -50,7 +50,7 @@ const NextStepsSection = ({
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <a
-                  href="tel:(512)240-2246"
+                  href="tel:+15122402246"
                   className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-azureDark text-brand-azureDark hover:bg-brand-azureDark hover:text-white font-semibold rounded-lg transition-colors"
                 >
                   <Phone className="mr-2 w-5 h-5" />

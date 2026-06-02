@@ -162,7 +162,7 @@ const ColorConsultation = () => {
                 <Palette className="w-5 h-5 mr-2" />
                 Request a Consultation
               </Link>
-              <a href="tel:(512)240-2246" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-azureDark transition-[background-color,color] duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
+              <a href="tel:+15122402246" className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-brand-azureDark transition-[background-color,color] duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
                 <Phone className="w-5 h-5 mr-2" />
                 Call (512) 240-2246
               </a>
@@ -221,7 +221,7 @@ const ColorConsultation = () => {
                 <Link to="/contact" className="btn-primary">
                   Request a Consultation
                 </Link>
-                <a href="tel:(512)240-2246" className="btn-secondary">
+                <a href="tel:+15122402246" className="btn-secondary">
                   Call (512) 240-2246
                 </a>
               </div>
@@ -281,7 +281,7 @@ const ColorConsultation = () => {
         }}
         secondaryCTA={{
           text: "Call (512) 240-2246",
-          href: "tel:(512)240-2246"
+          href: "tel:+15122402246"
         }}
         backgroundColor="coral"
       />

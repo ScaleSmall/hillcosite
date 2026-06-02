@@ -190,7 +190,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 Get Free {location.name} Estimate
               </Link>
               <a
-                href="tel:(512)240-2246"
+                href="tel:+15122402246"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold rounded-lg transition-colors duration-200 border border-white/30 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
               >
                 <Phone className="w-5 h-5 mr-2" />
@@ -316,7 +316,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         }}
         secondaryCTA={{
           text: 'Call (512) 240-2246',
-          href: 'tel:(512)240-2246'
+          href: 'tel:+15122402246'
         }}
       />
     </>

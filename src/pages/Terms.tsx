@@ -167,7 +167,7 @@ const Terms = () => {
             </p>
             <p>
               <strong>Hill Country Painting</strong><br />
-              Phone: <a href="tel:(512)240-2246">(512) 240-2246</a><br />
+              Phone: <a href="tel:+15122402246">(512) 240-2246</a><br />
               Email: <a href="mailto:info@hillcopaint.com">info@hillcopaint.com</a>
             </p>
 
@@ -176,7 +176,7 @@ const Terms = () => {
                 <Link to="/contact" className="btn-primary">
                   Request a Consultation
                 </Link>
-                <a href="tel:(512)240-2246" className="btn-outline">
+                <a href="tel:+15122402246" className="btn-outline">
                   Call (512) 240-2246
                 </a>
               </div>

@@ -113,7 +113,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.instagram.com/hill_country_painting_austin/',
       'https://x.com/Hill_Co_Paint',
       'https://www.youtube.com/@HillCountryPaintingAustin',
-      'https://www.tiktok.com/@hillco_painting_austin'
+      'https://www.tiktok.com/@hillco_painting_austin',
+      businessConfig.googleBusinessProfileUrl
     ]
   };
 
@@ -213,7 +214,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.instagram.com/hill_country_painting_austin/',
       'https://x.com/Hill_Co_Paint',
       'https://www.youtube.com/@HillCountryPaintingAustin',
-      'https://www.tiktok.com/@hillco_painting_austin'
+      'https://www.tiktok.com/@hillco_painting_austin',
+      businessConfig.googleBusinessProfileUrl
     ],
     aggregateRating: aggregateRating ? {
       '@type': 'AggregateRating',

@@ -177,7 +177,7 @@ const Footer = () => {
             </p>
             <div className="space-y-2 bg-gradient-to-br from-brand-azureDark80 to-brand-azureDark rounded-lg p-3 border border-brand-azure20">
               <a
-                href={`tel:${businessConfig.phone.replace(/[^0-9]/g, '')}`}
+                href={businessConfig.phoneHref}
                 className="flex items-center space-x-2 text-white hover:text-brand-azure transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
               >
                 <Phone size={16} />

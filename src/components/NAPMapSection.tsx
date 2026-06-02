@@ -37,7 +37,7 @@ const NAPMapSection = () => {
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-1">Phone</h3>
                   <a
-                    href={`tel:${businessConfig.phone}`}
+                    href={businessConfig.phoneHref}
                     className="text-brand-azure hover:text-brand-azureDark font-medium transition-colors"
                   >
                     {businessConfig.phone}

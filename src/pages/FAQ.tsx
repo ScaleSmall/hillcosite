@@ -84,7 +84,7 @@ const FAQ = () => {
               <Link to="/contact" className="btn-primary">
                 Request a Consultation
               </Link>
-              <a href="tel:(512)240-2246" className="btn-outline">
+              <a href="tel:+15122402246" className="btn-outline">
                 Call (512) 240-2246
               </a>
             </div>
@@ -122,7 +122,7 @@ const FAQ = () => {
         }}
         secondaryCTA={{
           text: 'Call Us Now',
-          href: 'tel:(512) 240-2246'
+          href: 'tel:+15122402246'
         }}
       />
     </>

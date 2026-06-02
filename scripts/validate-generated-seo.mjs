@@ -13,6 +13,7 @@ const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts'
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
+const canonicalPhoneHref = 'tel:+15122402246';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
 const allowedNonSitemapLinks = new Set(['/pre-approval']);
 const internalRedirectTargets = new Map([
@@ -472,6 +473,10 @@ function run() {
 
     for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
       const href = match[1].trim();
+      if (/^tel:/i.test(href) && href !== canonicalPhoneHref) {
+        fail(`${routePath}: non-canonical phone link ${href}; expected ${canonicalPhoneHref}`);
+      }
+
       const targetRoute = normalizeRoutePath(href, routePath);
       if (!targetRoute) {
         continue;

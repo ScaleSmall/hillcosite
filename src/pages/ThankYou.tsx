@@ -32,7 +32,7 @@ const ThankYou = () => {
                 <Home className="w-5 h-5 mr-2" />
                 Return Home
               </Link>
-              <a href="tel:(512)240-2246" className="btn-outline">
+              <a href="tel:+15122402246" className="btn-outline">
                 <Phone className="w-5 h-5 mr-2" />
                 Call Us: (512) 240-2246
               </a>

@@ -68,7 +68,7 @@ class ErrorBoundary extends Component<Props, State> {
                 Need immediate help?
               </h3>
               <div className="space-y-2">
-                <a href="tel:(512)240-2246" className="text-brand-azureDark hover:text-brand-azureDark block">
+                <a href="tel:+15122402246" className="text-brand-azureDark hover:text-brand-azureDark block">
                   Call (512) 240-2246
                 </a>
                 <a href="mailto:info@hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark block">

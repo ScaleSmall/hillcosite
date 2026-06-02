@@ -238,7 +238,7 @@ const Financing = () => {
       <section className="py-8 bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-brand-gray-600 mb-4">
-            Questions about financing? Call us at <a href="tel:(512)240-2246" className="text-brand-azureDark font-semibold hover:underline">(512) 240-2246</a>
+            Questions about financing? Call us at <a href="tel:+15122402246" className="text-brand-azureDark font-semibold hover:underline">(512) 240-2246</a>
           </p>
         </div>
       </section>

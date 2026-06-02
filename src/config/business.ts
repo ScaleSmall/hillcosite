@@ -10,6 +10,7 @@ export const businessConfig = {
   name: 'Hill Country Painting',
   legalName: 'Hill Country Painting LLC',
   phone: '(512) 240-2246',
+  phoneHref: 'tel:+15122402246',
   email: 'info@hillcopaint.com',
 
   address: {

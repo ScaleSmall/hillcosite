@@ -197,7 +197,7 @@ const QuickQuoteForm = ({ service = 'Painting Services', className = '' }: Quick
 
       <div className="text-center mt-4">
         <a
-          href="tel:(512)240-2246"
+          href="tel:+15122402246"
           className="inline-flex items-center text-white hover:text-white transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 focus:ring-offset-brand-azureDark rounded px-2 py-1"
         >
           <Phone className="w-4 h-4 mr-2" aria-hidden="true" />
