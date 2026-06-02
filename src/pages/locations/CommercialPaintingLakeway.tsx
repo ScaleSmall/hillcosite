@@ -8,7 +8,7 @@ const config: ServiceLocationConfig = {
   service: {
     type: 'commercial',
     name: 'Commercial Painting',
-    slug: 'commercial'
+    slug: 'commercial-painting'
   },
   location: location,
   content: {

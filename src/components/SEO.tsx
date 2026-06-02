@@ -158,6 +158,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     'Commercial painting',
     'Color consultation'
   ];
+  const localBusinessServiceOffers = [
+    { name: 'Interior painting', path: '/services/interior-painting' },
+    { name: 'Exterior painting', path: '/services/exterior-painting' },
+    { name: 'Cabinet painting and refinishing', path: '/services/cabinet-refinishing' },
+    { name: 'Commercial painting', path: '/services/commercial' },
+    { name: 'Color consultation', path: '/color-consultation' }
+  ];
 
   const weekdayHours = businessConfig.hours.weekday;
   const contactPoint = {
@@ -187,6 +194,10 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     telephone: businessConfig.phone,
     email: businessConfig.email,
     contactPoint,
+    serviceArea: {
+      '@type': 'AdministrativeArea',
+      name: 'Greater Austin Area'
+    },
     image: defaultSocialImage,
     priceRange: '$$',
     paymentAccepted: businessConfig.payment.methods,
@@ -216,6 +227,36 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'Commercial repaint scheduling'
     ],
     hasMap: businessConfig.googleBusinessProfileUrl,
+    mainEntityOfPage: {
+      '@id': `${baseUrl}/#website`
+    },
+    subjectOf: [
+      {
+        '@type': 'WebPage',
+        name: 'Hill Country Painting entity facts',
+        url: `${baseUrl}/entity-facts.json`
+      },
+      {
+        '@type': 'WebPage',
+        name: 'Hill Country Painting citation facts',
+        url: `${baseUrl}/citation-facts.json`
+      }
+    ],
+    makesOffer: localBusinessServiceOffers.map(offer => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        '@id': `${baseUrl}${offer.path}#service`,
+        name: offer.name,
+        provider: {
+          '@id': `${baseUrl}/#localbusiness`
+        },
+        areaServed: localBusinessAreas.map(area => ({
+          '@type': 'Place',
+          name: area
+        }))
+      }
+    })),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Austin Painting Services',
@@ -275,25 +316,40 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   } : null;
 
   // Service schema - only if service data is provided
-  const serviceSchema = service ? (() => {
+  const serviceSchema = service && canonicalStr ? (() => {
     // Build base service schema
+    const serviceAreas = service.areaServed.map(area => ({
+      '@type': 'Place',
+      name: area,
+      containedInPlace: {
+        '@type': 'AdministrativeArea',
+        name: 'Greater Austin Area'
+      }
+    }));
+
     const baseSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
       '@type': 'Service',
+      '@id': `${canonicalStr}#service`,
+      url: canonicalStr,
       name: service.name,
       description: service.description,
       provider: {
-        '@type': 'Organization',
-        name: 'Hill Country Painting',
-        telephone: '(512) 240-2246',
-        email: 'info@hillcopaint.com',
-        url: baseUrl
+        '@id': `${baseUrl}/#localbusiness`
       },
-      areaServed: service.areaServed.map(area => ({
-        '@type': 'City',
-        name: area
-      })),
+      areaServed: serviceAreas,
       serviceType: service.name,
+      category: 'Painting contractor',
+      audience: {
+        '@type': 'Audience',
+        audienceType: 'Homeowners, property managers, and commercial property owners in Greater Austin'
+      },
+      availableChannel: {
+        '@type': 'ServiceChannel',
+        serviceUrl: canonicalStr,
+        servicePhone: contactPoint,
+        availableLanguage: ['English']
+      },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: `${service.name} Services`,
@@ -301,7 +357,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: service.name
+            name: service.name,
+            provider: {
+              '@id': `${baseUrl}/#localbusiness`
+            },
+            areaServed: serviceAreas
           }
         }]
       }
@@ -377,6 +437,9 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     url: canonicalStr,
     name: optimizedTitle,
     description: optimizedDescription,
+    mainEntity: service && canonicalStr ? {
+      '@id': `${canonicalStr}#service`
+    } : undefined,
     isPartOf: {
       '@id': `${baseUrl}/#website`
     },

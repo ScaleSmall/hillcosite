@@ -680,12 +680,37 @@ function run() {
           '#organization',
           '#website',
           'hasOfferCatalog',
+          'makesOffer',
+          'serviceArea',
+          'subjectOf',
+          'entity-facts.json',
+          'citation-facts.json',
           '(512) 240-2246'
         ];
 
         for (const signal of requiredHomepageEntitySignals) {
           if (!html.includes(signal)) {
             fail(`${routePath}: homepage is missing required entity signal ${signal}`);
+          }
+        }
+      }
+
+      const isDetailedServiceRoute = routePath.startsWith('/services/')
+        || /^\/(interior-painting|exterior-painting|cabinet-refinishing|commercial-painting)-/.test(routePath);
+
+      if (isDetailedServiceRoute) {
+        const requiredServiceSignals = [
+          `${expectedCanonical(routePath)}#service`,
+          `${baseUrl}/#localbusiness`,
+          'availableChannel',
+          'servicePhone',
+          'mainEntity',
+          'Greater Austin Area'
+        ];
+
+        for (const signal of requiredServiceSignals) {
+          if (!html.includes(signal)) {
+            fail(`${routePath}: service page is missing required structured-data signal ${signal}`);
           }
         }
       }
