@@ -1,7 +1,8 @@
 # -----------------------------------------------------------------------
-# HOST / PROTOCOL NORMALIZATION — forced priority
-# These run BEFORE the Pages Function middleware.
+# Cloudflare Pages redirects
+#
+# Host/protocol canonicalization is handled in functions/_middleware.ts.
+# Keep this file free of active host-level rules; Cloudflare Pages only
+# accepts relative source paths here, and invalid absolute host rules are
+# ignored during deploy.
 # -----------------------------------------------------------------------
-http://hillcopaint.com/*       https://www.hillcopaint.com/:splat  301!
-http://www.hillcopaint.com/*   https://www.hillcopaint.com/:splat  301!
-https://hillcopaint.com/*      https://www.hillcopaint.com/:splat  301!

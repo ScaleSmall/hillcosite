@@ -9,7 +9,7 @@ function run() {
   const failures = [];
   const passes = [];
 
-  // Check 1: _redirects exists and has host normalization rules
+  // Check 1: _redirects exists and contains only Cloudflare Pages-valid rules.
   const redirectsPath = resolve(__dirname, '../public/_redirects');
   if (!existsSync(redirectsPath)) {
     failures.push('public/_redirects not found');
@@ -20,14 +20,11 @@ function run() {
       .map(l => l.trim())
       .filter(l => l && !l.startsWith('#'));
 
-    const hasHttpNonWww = activeLines.some(l => l.startsWith('http://hillcopaint.com/'));
-    const hasHttpWww = activeLines.some(l => l.startsWith('http://www.hillcopaint.com/'));
-    const hasHttpsNonWww = activeLines.some(l => l.startsWith('https://hillcopaint.com/'));
-
-    if (hasHttpNonWww && hasHttpWww && hasHttpsNonWww) {
-      passes.push('Host/protocol normalization rules present in _redirects');
+    const invalidHostRules = activeLines.filter(l => /^https?:\/\//i.test(l));
+    if (invalidHostRules.length > 0) {
+      failures.push(`Invalid absolute host rule(s) found in _redirects: ${invalidHostRules.join('; ')}`);
     } else {
-      failures.push('Missing host/protocol normalization rules in _redirects');
+      passes.push('No invalid absolute host rules in _redirects');
     }
 
     // Warn if SPA rewrites are still in _redirects (they should be in middleware now)
@@ -62,6 +59,16 @@ function run() {
       passes.push('Middleware has 404 fallback handling');
     } else {
       failures.push('Middleware missing 404 fallback');
+    }
+
+    if (
+      content.includes("url.hostname.toLowerCase() !== 'www.hillcopaint.com'") &&
+      content.includes("url.protocol = 'https'") &&
+      content.includes("url.hostname = 'www.hillcopaint.com'")
+    ) {
+      passes.push('Middleware handles host/protocol canonicalization');
+    } else {
+      failures.push('Middleware missing canonical https://www.hillcopaint.com redirect handling');
     }
   }
 
