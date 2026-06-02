@@ -427,6 +427,10 @@ function run() {
       if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) {
         fail(`${routePath}: missing H1`);
       }
+
+      if (/<h1\b[^>]*>\s*Something went wrong\s*<\/h1>/i.test(html) || /We're sorry, but something unexpected happened/i.test(html)) {
+        fail(`${routePath}: prerendered sitemap page contains the generic application error state`);
+      }
     } else if (!allowedInternalNoindexPaths.has(routePath) && !/noindex/i.test(robotsContent)) {
       fail(`${routePath}: generated non-sitemap page should be explicitly noindex or added to sitemap`);
     }

@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface CTABannerProps {
-  title: string;
+  title?: string;
   subtitle?: string;
-  primaryCTA: {
+  primaryCTA?: {
     text: string;
     href: string;
   };
@@ -16,10 +16,16 @@ interface CTABannerProps {
 }
 
 const CTABanner = ({
-  title,
-  subtitle,
-  primaryCTA,
-  secondaryCTA,
+  title = 'Ready for a Painting Project That Feels Easy?',
+  subtitle = 'Request a consultation from Hill Country Painting and get a clear scope, timeline, and written estimate.',
+  primaryCTA = {
+    text: 'Request a Consultation',
+    href: '/contact'
+  },
+  secondaryCTA = {
+    text: '(512) 240-2246',
+    href: 'tel:+15122402246'
+  },
   backgroundColor = 'primary'
 }: CTABannerProps) => {
   const bgClasses = {
