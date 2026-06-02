@@ -81,23 +81,23 @@
 
 /llms.txt
   Content-Type: text/plain
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=300, must-revalidate
 
 /llms-full.txt
   Content-Type: text/plain
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=300, must-revalidate
 
 /ai.txt
   Content-Type: text/plain
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=300, must-revalidate
 
 /entity-facts.json
   Content-Type: application/json
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=300, must-revalidate
 
 /citation-facts.json
   Content-Type: application/json
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=300, must-revalidate
 
 # Vary header for proper caching with different user agents
 /*

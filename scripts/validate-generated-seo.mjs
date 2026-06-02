@@ -18,6 +18,7 @@ const llmsFullPath = resolve(projectRoot, 'public/llms-full.txt');
 const aiPath = resolve(projectRoot, 'public/ai.txt');
 const entityFactsPath = resolve(projectRoot, 'public/entity-facts.json');
 const citationFactsPath = resolve(projectRoot, 'public/citation-facts.json');
+const headersPath = resolve(projectRoot, 'public/_headers');
 const baseUrl = 'https://www.hillcopaint.com';
 const canonicalPhoneHref = 'tel:+15122402246';
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
@@ -409,6 +410,7 @@ function run() {
   const aiText = readRequired(aiPath, 'ai.txt');
   const entityFactsText = readRequired(entityFactsPath, 'entity-facts.json');
   const citationFactsText = readRequired(citationFactsPath, 'citation-facts.json');
+  const headersText = readRequired(headersPath, '_headers');
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
@@ -429,6 +431,13 @@ function run() {
 
   if (!existsSync(distPath)) {
     fail(`dist is missing at ${distPath}`);
+  }
+
+  for (const aiManifestPath of ['/llms.txt', '/llms-full.txt', '/ai.txt', '/entity-facts.json', '/citation-facts.json']) {
+    const pattern = new RegExp(`${aiManifestPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+[\\s\\S]*?Cache-Control:\\s*public, max-age=300, must-revalidate`);
+    if (!pattern.test(headersText)) {
+      fail(`${aiManifestPath}: _headers should use short revalidation cache for AI/citation freshness`);
+    }
   }
 
   const sitemapPaths = extractSitemapPaths(sitemapXml);
