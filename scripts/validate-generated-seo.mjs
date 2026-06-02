@@ -1,0 +1,471 @@
+#!/usr/bin/env node
+import { existsSync, readFileSync, readdirSync, statSync } from 'fs';
+import { dirname, extname, join, relative, resolve } from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const projectRoot = resolve(__dirname, '..');
+const distPath = resolve(projectRoot, 'dist');
+const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
+const robotsPath = resolve(projectRoot, 'public/robots.txt');
+const baseUrl = 'https://www.hillcopaint.com';
+const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
+const allowedNonSitemapLinks = new Set(['/pre-approval']);
+const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
+const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
+
+const errors = [];
+const warnings = [];
+
+function fail(message) {
+  errors.push(message);
+}
+
+function warn(message) {
+  warnings.push(message);
+}
+
+function readRequired(filePath, label) {
+  if (!existsSync(filePath)) {
+    fail(`${label} is missing at ${filePath}`);
+    return '';
+  }
+  return readFileSync(filePath, 'utf8');
+}
+
+function walkFiles(dir, predicate, out = []) {
+  if (!existsSync(dir)) {
+    return out;
+  }
+
+  for (const name of readdirSync(dir)) {
+    const filePath = join(dir, name);
+    const stat = statSync(filePath);
+
+    if (stat.isDirectory()) {
+      walkFiles(filePath, predicate, out);
+    } else if (!predicate || predicate(filePath)) {
+      out.push(filePath);
+    }
+  }
+
+  return out;
+}
+
+function routeFromHtmlFile(filePath) {
+  const rel = relative(distPath, filePath).replace(/\\/g, '/');
+
+  if (rel === 'index.html') {
+    return '/';
+  }
+
+  if (rel === '404.html') {
+    return '/404';
+  }
+
+  if (rel.endsWith('/index.html')) {
+    return `/${rel.slice(0, -'/index.html'.length)}`;
+  }
+
+  return `/${rel.replace(/\.html$/, '')}`;
+}
+
+function attrs(tag) {
+  const result = {};
+
+  for (const match of tag.matchAll(/([\w:-]+)\s*=\s*(["'])(.*?)\2/g)) {
+    result[match[1].toLowerCase()] = match[3];
+  }
+
+  return result;
+}
+
+function stripQueryAndHash(value) {
+  return value.split('#')[0].split('?')[0];
+}
+
+function safeDecodePath(value) {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
+function isSkippedProtocol(value) {
+  return /^(mailto|tel|sms|data|blob|javascript):/i.test(value);
+}
+
+function isExternalUrl(value) {
+  return /^(https?:)?\/\//i.test(value) && !value.startsWith(baseUrl);
+}
+
+function normalizeRoutePath(value, currentRoute = '/') {
+  if (!value || value.startsWith('#') || isSkippedProtocol(value)) {
+    return '';
+  }
+
+  if (value.startsWith(baseUrl)) {
+    value = value.slice(baseUrl.length) || '/';
+  } else if (/^https?:\/\//i.test(value) || value.startsWith('//')) {
+    return '';
+  }
+
+  try {
+    const currentPath = currentRoute.endsWith('/') ? currentRoute : `${currentRoute}/`;
+    const url = new URL(value, `${baseUrl}${currentPath}`);
+    if (url.origin !== baseUrl) {
+      return '';
+    }
+    value = url.pathname;
+  } catch {
+    return '';
+  }
+
+  return stripQueryAndHash(value).replace(/\/$/, '') || '/';
+}
+
+function htmlFileForRoute(routePath) {
+  if (routePath === '/') {
+    return resolve(distPath, 'index.html');
+  }
+
+  return resolve(distPath, routePath.slice(1), 'index.html');
+}
+
+function routeExists(routePath, sitemapSet) {
+  return sitemapSet.has(routePath) || existsSync(htmlFileForRoute(routePath));
+}
+
+function extractSitemapPaths(xml) {
+  return [...xml.matchAll(/<loc>https:\/\/www\.hillcopaint\.com([^<]*)<\/loc>/g)]
+    .map(match => match[1] || '/');
+}
+
+function expectedCanonical(routePath) {
+  return routePath === '/' ? `${baseUrl}/` : `${baseUrl}${routePath}`;
+}
+
+function getMetaTags(html, selector) {
+  return [...html.matchAll(/<meta\b[^>]*>/gi)]
+    .map(match => match[0])
+    .filter(tag => selector(attrs(tag)));
+}
+
+function getLocalAssetPath(value) {
+  if (!value || isSkippedProtocol(value) || isExternalUrl(value)) {
+    return '';
+  }
+
+  if (value.startsWith(baseUrl)) {
+    value = value.slice(baseUrl.length) || '/';
+  } else if (/^https?:\/\//i.test(value) || value.startsWith('//')) {
+    return '';
+  }
+
+  if (!value.startsWith('/')) {
+    return '';
+  }
+
+  const cleanPath = safeDecodePath(stripQueryAndHash(value));
+  if (!cleanPath || cleanPath === '/') {
+    return '';
+  }
+
+  return cleanPath;
+}
+
+function assertLocalAssetExists(value, sourceRoute, sourceLabel) {
+  const localPath = getLocalAssetPath(value);
+  if (!localPath) {
+    return;
+  }
+
+  const ext = extname(localPath).toLowerCase();
+  if (ext && !assetExtensions.has(ext)) {
+    return;
+  }
+
+  if (!existsSync(resolve(distPath, localPath.slice(1)))) {
+    fail(`${sourceRoute}: missing local asset ${value} referenced by ${sourceLabel}`);
+  }
+}
+
+function collectAssetRefsFromHtml(html) {
+  const refs = [];
+
+  for (const match of html.matchAll(/<(img|script|source|video|audio|iframe)\b[^>]*(src|poster)=["']([^"']+)["'][^>]*>/gi)) {
+    refs.push({ value: match[3], label: `<${match[1]} ${match[2]}>` });
+  }
+
+  for (const match of html.matchAll(/<link\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
+    const tagAttrs = attrs(match[0]);
+    const rel = (tagAttrs.rel || '').toLowerCase();
+
+    if (/^(stylesheet|preload|modulepreload|icon|apple-touch-icon|manifest)$/.test(rel)) {
+      refs.push({ value: match[1], label: `<link rel="${rel}">` });
+    }
+  }
+
+  for (const match of html.matchAll(/\bsrcset=["']([^"']+)["']/gi)) {
+    for (const candidate of match[1].split(',')) {
+      const value = candidate.trim().split(/\s+/)[0];
+      refs.push({ value, label: 'srcset' });
+    }
+  }
+
+  for (const match of html.matchAll(/<meta\b[^>]*content=["']([^"']+)["'][^>]*>/gi)) {
+    const tagAttrs = attrs(match[0]);
+    const key = (tagAttrs.property || tagAttrs.name || '').toLowerCase();
+
+    if (key.includes('image') || key === 'og:logo') {
+      refs.push({ value: match[1], label: `<meta ${key}>` });
+    }
+  }
+
+  return refs;
+}
+
+function collectUrlsFromJsonLd(value, out = []) {
+  if (Array.isArray(value)) {
+    value.forEach(item => collectUrlsFromJsonLd(item, out));
+    return out;
+  }
+
+  if (value && typeof value === 'object') {
+    for (const [key, nestedValue] of Object.entries(value)) {
+      if (typeof nestedValue === 'string' && /^(url|contenturl|image|logo|thumbnailurl)$/i.test(key)) {
+        out.push(nestedValue);
+      } else {
+        collectUrlsFromJsonLd(nestedValue, out);
+      }
+    }
+  }
+
+  return out;
+}
+
+function extractDisallowRules(robotsText) {
+  return robotsText
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => /^disallow\s*:/i.test(line))
+    .map(line => line.replace(/^disallow\s*:/i, '').trim())
+    .filter(Boolean);
+}
+
+function robotsRuleBlocksPath(rule, routePath) {
+  if (rule === '/') {
+    return true;
+  }
+
+  const cleanRule = rule.replace(/\*.*$/, '').replace(/\$$/, '');
+  return cleanRule && routePath.startsWith(cleanRule);
+}
+
+function validateCssAssets(cssFiles) {
+  for (const filePath of cssFiles) {
+    const css = readFileSync(filePath, 'utf8');
+    const rel = relative(distPath, filePath).replace(/\\/g, '/');
+
+    for (const match of css.matchAll(/url\((["']?)([^"')]+)\1\)/gi)) {
+      const value = match[2].trim();
+      if (!value || isSkippedProtocol(value) || isExternalUrl(value) || /^https?:\/\//i.test(value)) {
+        continue;
+      }
+
+      const cleanValue = safeDecodePath(stripQueryAndHash(value));
+      const resolvedAsset = cleanValue.startsWith('/')
+        ? resolve(distPath, cleanValue.slice(1))
+        : resolve(dirname(filePath), cleanValue);
+
+      if (!existsSync(resolvedAsset)) {
+        fail(`${rel}: missing CSS asset ${value}`);
+      }
+    }
+  }
+}
+
+function run() {
+  console.log('\n=== Generated SEO Validation ===\n');
+
+  const sitemapXml = readRequired(sitemapPath, 'sitemap.xml');
+  const robotsText = readRequired(robotsPath, 'robots.txt');
+
+  if (!existsSync(distPath)) {
+    fail(`dist is missing at ${distPath}`);
+  }
+
+  const sitemapPaths = extractSitemapPaths(sitemapXml);
+  const sitemapSet = new Set(sitemapPaths);
+  const htmlFiles = walkFiles(distPath, filePath => filePath.endsWith('.html'));
+  const cssFiles = walkFiles(distPath, filePath => filePath.endsWith('.css'));
+  const pages = new Map(htmlFiles.map(filePath => [
+    routeFromHtmlFile(filePath),
+    { filePath, html: readFileSync(filePath, 'utf8') }
+  ]));
+
+  const inbound = new Map(sitemapPaths.map(routePath => [routePath, 0]));
+  const nonSitemapInternalLinks = new Map();
+  const disallowRules = extractDisallowRules(robotsText);
+
+  for (const routePath of sitemapPaths) {
+    if (!pages.has(routePath)) {
+      fail(`${routePath}: sitemap URL has no generated HTML file`);
+    }
+
+    const blockingRule = disallowRules.find(rule => robotsRuleBlocksPath(rule, routePath));
+    if (blockingRule) {
+      fail(`${routePath}: sitemap URL is blocked by robots.txt rule Disallow: ${blockingRule}`);
+    }
+  }
+
+  for (const [routePath, page] of pages) {
+    const { html } = page;
+    const isSitemapPage = sitemapSet.has(routePath);
+    const canonicalTags = [...html.matchAll(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi)].map(match => match[0]);
+    const robotsTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'robots');
+    const robotsContent = robotsTags.map(tag => attrs(tag).content || '').join(' ');
+    const titleTags = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
+    const descriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'description');
+    const ogDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.property || '').toLowerCase() === 'og:description');
+    const twitterDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'twitter:description');
+
+    if (isSitemapPage) {
+      if (canonicalTags.length !== 1) {
+        fail(`${routePath}: expected exactly one canonical tag, found ${canonicalTags.length}`);
+      } else {
+        const canonicalHref = attrs(canonicalTags[0]).href;
+        const expected = expectedCanonical(routePath);
+        if (canonicalHref !== expected) {
+          fail(`${routePath}: canonical ${canonicalHref || '(missing)'} should be ${expected}`);
+        }
+      }
+
+      if (/noindex/i.test(robotsContent)) {
+        fail(`${routePath}: sitemap URL is marked noindex`);
+      }
+
+      if (robotsTags.length > 1) {
+        fail(`${routePath}: duplicate robots meta tags found`);
+      }
+
+      if (titleTags.length !== 1 || !titleTags[0][1].trim()) {
+        fail(`${routePath}: expected one non-empty title tag, found ${titleTags.length}`);
+      } else {
+        const title = titleTags[0][1].replace(/\s+/g, ' ').trim();
+        if (title.length < 10 || title.length > 70) {
+          warn(`${routePath}: title length is ${title.length} characters`);
+        }
+      }
+
+      if (descriptionTags.length !== 1) {
+        fail(`${routePath}: expected one meta description, found ${descriptionTags.length}`);
+      } else {
+        const description = attrs(descriptionTags[0]).content || '';
+        if (description.trim().length < 50 || description.trim().length > 170) {
+          warn(`${routePath}: meta description length is ${description.trim().length} characters`);
+        }
+      }
+
+      if (ogDescriptionTags.length > 1) {
+        fail(`${routePath}: duplicate og:description tags found`);
+      }
+
+      if (twitterDescriptionTags.length > 1) {
+        fail(`${routePath}: duplicate twitter:description tags found`);
+      }
+
+      if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) {
+        fail(`${routePath}: missing H1`);
+      }
+    } else if (!allowedInternalNoindexPaths.has(routePath) && !/noindex/i.test(robotsContent)) {
+      fail(`${routePath}: generated non-sitemap page should be explicitly noindex or added to sitemap`);
+    }
+
+    for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
+      const href = match[1].trim();
+      const targetRoute = normalizeRoutePath(href, routePath);
+      if (!targetRoute) {
+        continue;
+      }
+
+      if (!routeExists(targetRoute, sitemapSet)) {
+        fail(`${routePath}: broken internal link to ${href}`);
+        continue;
+      }
+
+      if (sitemapSet.has(targetRoute) && targetRoute !== routePath) {
+        inbound.set(targetRoute, (inbound.get(targetRoute) || 0) + 1);
+      } else if (!sitemapSet.has(targetRoute)) {
+        nonSitemapInternalLinks.set(targetRoute, (nonSitemapInternalLinks.get(targetRoute) || 0) + 1);
+      }
+    }
+
+    for (const ref of collectAssetRefsFromHtml(html)) {
+      assertLocalAssetExists(ref.value, routePath, ref.label);
+    }
+
+    for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+      const jsonText = match[1].trim();
+      if (!jsonText) {
+        continue;
+      }
+
+      try {
+        const structuredData = JSON.parse(jsonText);
+        for (const url of collectUrlsFromJsonLd(structuredData)) {
+          const ext = extname(stripQueryAndHash(url)).toLowerCase();
+          if (imageExtensions.has(ext)) {
+            assertLocalAssetExists(url, routePath, 'JSON-LD image URL');
+          }
+        }
+      } catch (error) {
+        fail(`${routePath}: invalid JSON-LD (${error.message})`);
+      }
+    }
+  }
+
+  validateCssAssets(cssFiles);
+
+  for (const [routePath, count] of inbound) {
+    if (routePath === '/') {
+      continue;
+    }
+
+    if (count === 0) {
+      fail(`${routePath}: sitemap page has no internal inbound links`);
+    } else if (count < 2 && !['/privacy', '/terms', '/do-not-sell', '/eula'].includes(routePath)) {
+      warn(`${routePath}: low internal inbound link count (${count})`);
+    }
+  }
+
+  for (const [routePath, count] of nonSitemapInternalLinks) {
+    if (!allowedNonSitemapLinks.has(routePath)) {
+      fail(`${routePath}: internal non-sitemap route is linked ${count} time(s)`);
+    }
+  }
+
+  console.log(`HTML files checked: ${htmlFiles.length}`);
+  console.log(`Sitemap URLs checked: ${sitemapPaths.length}`);
+  console.log(`CSS files checked: ${cssFiles.length}`);
+  console.log(`Warnings: ${warnings.length}`);
+
+  if (warnings.length > 0) {
+    warnings.slice(0, 25).forEach(message => console.warn(`WARN: ${message}`));
+    if (warnings.length > 25) {
+      console.warn(`WARN: ${warnings.length - 25} additional warnings omitted`);
+    }
+  }
+
+  if (errors.length > 0) {
+    console.error('\nGenerated SEO validation FAILED:');
+    errors.forEach(message => console.error(`ERROR: ${message}`));
+    process.exit(1);
+  }
+
+  console.log('\nGenerated SEO validation PASSED.');
+}
+
+run();

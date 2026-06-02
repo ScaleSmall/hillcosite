@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/west-lake-hills-luxury-home-painting.jpg',
+    hero: '/living-room-update-central-austin.jpg',
     heroAlt: 'Luxury interior painting in West Lake Hills Texas',
     secondary: 'https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&w=800',
     secondaryAlt: 'West Lake Hills interior painting excellence'

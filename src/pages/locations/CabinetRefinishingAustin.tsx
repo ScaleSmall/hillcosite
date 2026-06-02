@@ -46,9 +46,9 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/kitchen-cabinet-refinishing-austin.jpg',
+    hero: '/custom-kitchen-painting.jpg',
     heroAlt: 'Cabinet refinishing in Austin Texas',
-    secondary: '/kitchen-cabinet-painting-west-lake-hills.jpg',
+    secondary: '/kitchen-transformation-west-lake-hills.jpg',
     secondaryAlt: 'Austin cabinet painting excellence'
   }
 };

@@ -48,7 +48,7 @@ const config: ServiceLocationConfig = {
   images: {
     hero: '/hill-country-painting-austin-homepage-hero.jpg',
     heroAlt: 'Interior painting in Lakeway Texas',
-    processImage: '/hill-country-home-exterior-painting.jpg'
+    processImage: '/hill-country-home-exterior-painting.png'
   }
 };
 

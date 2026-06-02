@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/commercial-painting-services-austin.jpg',
+    hero: '/modern-interior-design.jpg',
     heroAlt: 'Commercial painting in West Lake Hills Texas',
     secondary: 'https://images.pexels.com/photos/1170412/pexels-photo-1170412.jpeg?auto=compress&cs=tinysrgb&w=800',
     secondaryAlt: 'West Lake Hills commercial painting excellence'

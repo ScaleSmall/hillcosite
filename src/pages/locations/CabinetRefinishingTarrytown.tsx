@@ -48,7 +48,7 @@ const config: ServiceLocationConfig = {
   images: {
     hero: '/hill-country-painting-austin-homepage-hero.jpg',
     heroAlt: 'Cabinet refinishing in Tarrytown Austin Texas',
-    processImage: '/hill-country-home-exterior-painting.jpg'
+    processImage: '/hill-country-home-exterior-painting.png'
   }
 };
 

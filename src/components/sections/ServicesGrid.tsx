@@ -28,7 +28,7 @@ const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: Services
     {
       title: "Exterior Painting",
       description: "Protect and beautify your home's exterior with durable, weather-resistant finishes.",
-      image: "/hill-country-home-exterior-painting.jpg",
+      image: "/hill-country-home-exterior-painting.png",
       link: "/services/exterior-painting"
     },
     {

@@ -46,9 +46,9 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/west-lake-hills-luxury-home-painting.jpg',
+    hero: '/exterior-tarrytown.jpg',
     heroAlt: 'Luxury exterior painting in West Lake Hills Texas',
-    secondary: '/barton-creek-estate-painting-austin.jpg',
+    secondary: '/classic-home-exterior.jpg',
     secondaryAlt: 'West Lake Hills exterior painting excellence'
   }
 };

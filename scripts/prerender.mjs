@@ -30,6 +30,71 @@ function withSelfCanonical(html, route) {
   return withoutCanonicals.replace(/<\/head>/i, `${canonicalTag}\n</head>`);
 }
 
+function getAttribute(tag, attributeName) {
+  const attributeRegex = new RegExp(`\\b${attributeName}\\s*=\\s*["']([^"']+)["']`, 'i');
+  const match = tag.match(attributeRegex);
+  return match ? match[1].trim().toLowerCase() : '';
+}
+
+function getDedupeMetaKey(tag) {
+  const name = getAttribute(tag, 'name');
+  const property = getAttribute(tag, 'property');
+
+  if (name) {
+    return `name:${name}`;
+  }
+
+  if (property) {
+    return `property:${property}`;
+  }
+
+  return '';
+}
+
+function withDedupedHeadMeta(html) {
+  const dedupeKeys = new Set([
+    'name:description',
+    'name:keywords',
+    'name:robots',
+    'name:googlebot',
+    'name:bingbot',
+    'name:twitter:card',
+    'name:twitter:url',
+    'name:twitter:title',
+    'name:twitter:description',
+    'name:twitter:image',
+    'name:twitter:image:alt',
+    'property:og:type',
+    'property:og:url',
+    'property:og:title',
+    'property:og:description',
+    'property:og:image',
+    'property:og:image:width',
+    'property:og:image:height',
+    'property:og:image:alt',
+    'property:og:site_name',
+    'property:og:locale'
+  ]);
+
+  const metaRegex = /<meta\b[^>]*>\s*/gi;
+  const lastOffsetByKey = new Map();
+
+  for (const match of html.matchAll(metaRegex)) {
+    const key = getDedupeMetaKey(match[0]);
+    if (dedupeKeys.has(key)) {
+      lastOffsetByKey.set(key, match.index);
+    }
+  }
+
+  return html.replace(metaRegex, (tag, offset) => {
+    const key = getDedupeMetaKey(tag);
+    if (dedupeKeys.has(key) && lastOffsetByKey.get(key) !== offset) {
+      return '';
+    }
+    return tag;
+  });
+}
+
 async function startPreview() {
   const { spawn } = await import('child_process');
   const viteBin = path.resolve(__dirname, '../node_modules/vite/bin/vite.js');
@@ -110,7 +175,7 @@ async function prerender() {
           return document.body && document.body.textContent.trim().length > 500;
         }, { timeout: 5000 });
 
-        const html = withSelfCanonical(await page.content(), route);
+        const html = withSelfCanonical(withDedupedHeadMeta(await page.content()), route);
 
         if (!/<h1[\s>]/i.test(html)) {
           console.log(`  Warning: No H1 found for ${route}, continuing...`);

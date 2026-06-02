@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/hill-country-home-exterior-painting.jpg',
+    hero: '/hill-country-home-exterior-painting.png',
     heroAlt: 'Exterior painting in Tarrytown Austin Texas',
     processImage: '/hill-country-painting-austin-homepage-hero.jpg'
   }
