@@ -354,9 +354,12 @@ export async function onRequest(context: {
   // route-specific content, canonicals, headings, and internal links.
   if (isSpaRoute(path)) {
     const prerenderedPath = path === '/' ? '/index.html' : `${path}/index.html`;
-    const prerenderedResponse = await env.ASSETS.fetch(
-      new Request(new URL(prerenderedPath, url.origin).toString(), { method: 'GET' })
-    );
+    const prerenderedUrl = new URL(prerenderedPath, url.origin);
+    const prerenderedRequest = new Request(prerenderedUrl.toString(), {
+      method: 'GET',
+      headers: request.headers,
+    });
+    const prerenderedResponse = await env.ASSETS.fetch(prerenderedRequest);
 
     if (prerenderedResponse.status >= 200 && prerenderedResponse.status < 300) {
       return new Response(prerenderedResponse.body, {
@@ -372,9 +375,12 @@ export async function onRequest(context: {
 
     // If this is a known app route and its prerendered file is missing,
     // serve the SPA shell with 200 instead of letting Cloudflare emit a 404.
-    const indexResponse = await env.ASSETS.fetch(
-      new Request(new URL('/index.html', url.origin).toString(), { method: 'GET' })
-    );
+    const indexUrl = new URL('/index.html', url.origin);
+    const indexRequest = new Request(indexUrl.toString(), {
+      method: 'GET',
+      headers: request.headers,
+    });
+    const indexResponse = await env.ASSETS.fetch(indexRequest);
     return new Response(indexResponse.body, {
       status: 200,
       headers: indexResponse.headers,
@@ -388,9 +394,12 @@ export async function onRequest(context: {
   }
 
   // ── G. 404 fallback ──────────────────────────────────────────────────
-  const notFoundResponse = await env.ASSETS.fetch(
-    new Request(new URL('/404.html', url.origin).toString(), { method: 'GET' })
-  );
+  const notFoundUrl = new URL('/404.html', url.origin);
+  const notFoundRequest = new Request(notFoundUrl.toString(), {
+    method: 'GET',
+    headers: request.headers,
+  });
+  const notFoundResponse = await env.ASSETS.fetch(notFoundRequest);
   return new Response(notFoundResponse.body, {
     status: 404,
     headers: new Headers({
