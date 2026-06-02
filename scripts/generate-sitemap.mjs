@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import {
   BASE_URL,
-  getAllRoutes,
+  getSitemapRoutes,
   getPrerenderPaths
 } from '../src/config/routeData.mjs';
 
@@ -171,7 +171,7 @@ const generateSitemap = async () => {
   console.log('Generating sitemap...');
 
   const lastmod = new Date().toISOString().split('T')[0];
-  const staticRoutes = getAllRoutes();
+  const staticRoutes = getSitemapRoutes();
 
   let blogPosts = [];
   try {

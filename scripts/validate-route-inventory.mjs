@@ -19,6 +19,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import {
   getAllRoutePaths,
+  getSitemapRoutePaths,
   getServiceLocationPaths,
   geoAreas
 } from '../src/config/routeData.mjs';
@@ -253,7 +254,7 @@ if (existsSync(sitemapPath)) {
     if (p.startsWith('/blog/')) return false;
     return !validPaths.has(p);
   });
-  const expectedSitemapPaths = routeDataPaths.filter(p => !p.startsWith('/blog/'));
+  const expectedSitemapPaths = getSitemapRoutePaths().filter(p => !p.startsWith('/blog/'));
   const sitemapPathSet = new Set(sitemapPaths.filter(p => !p.startsWith('/blog/')));
   const missingFromSitemap = expectedSitemapPaths.filter(p => !sitemapPathSet.has(p));
 

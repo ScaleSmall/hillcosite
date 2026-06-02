@@ -138,6 +138,14 @@ export const coreStaticRoutes = [
   { path: '/sitemap', changefreq: 'monthly', priority: '0.3' },
 ];
 
+export const sitemapExcludedRoutePaths = new Set([
+  '/privacy',
+  '/terms',
+  '/do-not-sell',
+  '/eula',
+  '/sitemap'
+]);
+
 export function getStaticRoutes() {
   return [...coreStaticRoutes, ...serviceLocationPages];
 }
@@ -157,8 +165,16 @@ export function getAllRoutes() {
   return [...getStaticRoutes(), ...getGeoRoutes()];
 }
 
+export function getSitemapRoutes() {
+  return getAllRoutes().filter(route => !sitemapExcludedRoutePaths.has(route.path));
+}
+
 export function getAllRoutePaths() {
   return getAllRoutes().map(r => r.path);
+}
+
+export function getSitemapRoutePaths() {
+  return getSitemapRoutes().map(r => r.path);
 }
 
 export function getPrerenderPaths() {

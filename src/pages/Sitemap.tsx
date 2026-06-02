@@ -51,6 +51,7 @@ const Sitemap = () => {
         title="Site Map — Hill Country Painting"
         description="Complete site map of Hill Country Painting. Find all our services, service areas, guides, and resources in one place."
         canonical="/sitemap"
+        robots="noindex, follow"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Sitemap', url: '/sitemap' }

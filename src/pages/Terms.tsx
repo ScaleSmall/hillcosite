@@ -9,6 +9,7 @@ const Terms = () => {
         title="Terms of Service — Hill Country Painting"
         description="Terms of service for Hill Country Painting. Review our service terms, conditions, and policies for painting services in the Austin area."
         canonical="/terms"
+        robots="noindex, follow"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Terms of Service', url: '/terms' }

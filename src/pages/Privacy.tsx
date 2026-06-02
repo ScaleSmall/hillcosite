@@ -10,6 +10,7 @@ const Privacy = () => {
         title="Privacy Policy — Hill Country Painting"
         description="Privacy Policy for Hill Country Painting. How we collect, use, and protect your personal information. Compliant with Meta Ads, CCPA, GDPR requirements."
         canonical="/privacy"
+        robots="noindex, follow"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Privacy Policy', url: '/privacy' }

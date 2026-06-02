@@ -167,6 +167,11 @@ function redirect(location: string, origin: string): Response {
 const SPA_ROUTES: Set<string> = new Set(generatedSpaRoutes);
 
 const NOINDEX_ROUTES: Record<string, string> = {
+  '/privacy': 'noindex, follow',
+  '/terms': 'noindex, follow',
+  '/do-not-sell': 'noindex, follow',
+  '/eula': 'noindex, follow',
+  '/sitemap': 'noindex, follow',
   '/pre-approval': 'noindex, nofollow',
   '/search': 'noindex, follow',
   '/thank-you': 'noindex, follow',

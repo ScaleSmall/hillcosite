@@ -9,6 +9,7 @@ const EULA = () => {
         title="End User License Agreement — Hill Country Painting"
         description="End User License Agreement for Hill Country Painting website and services. Review our terms for website usage and digital services."
         canonical="/eula"
+        robots="noindex, follow"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'EULA', url: '/eula' }

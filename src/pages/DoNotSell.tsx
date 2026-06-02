@@ -8,6 +8,7 @@ const DoNotSell = () => {
         title="Do Not Sell or Share — Hill Country Painting"
         description="Opt out of the sale or sharing of your personal information for advertising purposes. Exercise your privacy rights under state privacy laws."
         canonical="/do-not-sell"
+        robots="noindex, follow"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Do Not Sell or Share', url: '/do-not-sell' }

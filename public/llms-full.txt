@@ -42,11 +42,6 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/guides/hoa-color-tips-austin
 - https://www.hillcopaint.com/guides/how-often-paint-central-texas
 - https://www.hillcopaint.com/financing
-- https://www.hillcopaint.com/privacy
-- https://www.hillcopaint.com/terms
-- https://www.hillcopaint.com/do-not-sell
-- https://www.hillcopaint.com/eula
-- https://www.hillcopaint.com/sitemap
 
 ## Service Location Pages
 
@@ -277,11 +272,6 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/guides/hoa-color-tips-austin
 - https://www.hillcopaint.com/guides/how-often-paint-central-texas
 - https://www.hillcopaint.com/financing
-- https://www.hillcopaint.com/privacy
-- https://www.hillcopaint.com/terms
-- https://www.hillcopaint.com/do-not-sell
-- https://www.hillcopaint.com/eula
-- https://www.hillcopaint.com/sitemap
 - https://www.hillcopaint.com/interior-painting-austin
 - https://www.hillcopaint.com/interior-painting-tarrytown
 - https://www.hillcopaint.com/interior-painting-northwest-hills
