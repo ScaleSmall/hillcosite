@@ -84,7 +84,6 @@ const REDIRECTS: Record<string, string> = {
   '/residential-building-painting-round-rock':   '/services',
   '/commercial-building-painting':               '/services/commercial',
   '/commercial-building-painting-round-rock':    '/services/commercial',
-  '/commercial-painting-round-rock':             '/services/commercial',
   '/commercial-interior-painting-round-rock':    '/services/commercial',
   '/commercial-exterior-painting-round-rock':    '/services/commercial',
   '/commercial-concrete-painting-round-rock':    '/services/commercial',
@@ -116,13 +115,7 @@ const REDIRECTS: Record<string, string> = {
   '/areas/downtown-austin-luxury/old-west-austin': '/areas/downtown-austin-luxury/old-west-austin-central',
 
   // -- GSC 404 fixes: old blog slugs that no longer exist --
-  '/blog/exterior-repaint-schedule-in-austin-hill-country-painting':         '/blog',
-  '/blog/austin-interior-exterior-painting-hill-country-painting':           '/blog',
-  '/blog/austin-exterior-painting-guide-hill-country-painting':              '/blog',
   '/blog/when-to-repaint-a-home-in-austin-hill-country-painting':            '/blog',
-  '/blog/house-painting-services-austin-hill-country-painting':              '/blog',
-  '/blog/austin-home-exterior-painting-guide-hill-country-painting':         '/blog',
-  '/blog/exterior-painting-timeline-in-austin-hill-country-painting':        '/blog',
 
   // -- GSC 404 fixes: old service-location URLs that don't match current pattern --
   '/exterior-painting-taylor':            '/services/exterior-painting',

@@ -10,6 +10,7 @@ const distPath = resolve(projectRoot, 'dist');
 const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
 const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
+const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
@@ -159,6 +160,16 @@ function redirectedRouteExists(routePath, sitemapSet) {
 function extractSitemapPaths(xml) {
   return [...xml.matchAll(/<loc>https:\/\/www\.hillcopaint\.com([^<]*)<\/loc>/g)]
     .map(match => match[1] || '/');
+}
+
+function extractMiddlewareRedirectPaths(source) {
+  const blockMatch = source.match(/const REDIRECTS[\s\S]*?=\s*{([\s\S]*?)\n};/);
+  if (!blockMatch) {
+    return [];
+  }
+
+  return [...blockMatch[1].matchAll(/^\s*['"]([^'"]+)['"]\s*:/gm)]
+    .map(match => match[1]);
 }
 
 function expectedCanonical(routePath) {
@@ -321,6 +332,7 @@ function run() {
   const sitemapXml = readRequired(sitemapPath, 'sitemap.xml');
   const distSitemapXml = readRequired(distSitemapPath, 'dist/sitemap.xml');
   const functionSitemapSource = readRequired(functionSitemapPath, 'functions/generatedSitemap.ts');
+  const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const robotsText = readRequired(robotsPath, 'robots.txt');
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
@@ -346,6 +358,7 @@ function run() {
 
   const sitemapPaths = extractSitemapPaths(sitemapXml);
   const sitemapSet = new Set(sitemapPaths);
+  const middlewareRedirectPaths = extractMiddlewareRedirectPaths(middlewareSource);
   const htmlFiles = walkFiles(distPath, filePath => filePath.endsWith('.html'));
   const cssFiles = walkFiles(distPath, filePath => filePath.endsWith('.css'));
   const pages = new Map(htmlFiles.map(filePath => [
@@ -365,6 +378,12 @@ function run() {
     const blockingRule = disallowRules.find(rule => robotsRuleBlocksPath(rule, routePath));
     if (blockingRule) {
       fail(`${routePath}: sitemap URL is blocked by robots.txt rule Disallow: ${blockingRule}`);
+    }
+  }
+
+  for (const routePath of middlewareRedirectPaths) {
+    if (sitemapSet.has(routePath)) {
+      fail(`${routePath}: sitemap URL is also listed in middleware redirects`);
     }
   }
 
