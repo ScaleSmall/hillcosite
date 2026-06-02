@@ -396,6 +396,8 @@ function run() {
   const inbound = new Map(sitemapPaths.map(routePath => [routePath, 0]));
   const nonSitemapInternalLinks = new Map();
   const disallowRules = extractDisallowRules(robotsText);
+  const sitemapTitles = new Map();
+  const sitemapH1s = new Map();
 
   if (generatedSpaRouteData.count !== generatedSpaRouteSet.size) {
     fail(`functions/generatedRoutes.ts route count ${generatedSpaRouteData.count} should be ${generatedSpaRouteSet.size}`);
@@ -580,6 +582,7 @@ function run() {
         fail(`${routePath}: expected one non-empty title tag, found ${titleTags.length}`);
       } else {
         const title = titleTags[0][1].replace(/\s+/g, ' ').trim();
+        sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), routePath]);
         if (title.length < 10 || title.length > 70) {
           warn(`${routePath}: title length is ${title.length} characters`);
         }
@@ -604,10 +607,34 @@ function run() {
 
       if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) {
         fail(`${routePath}: missing H1`);
+      } else {
+        const h1 = (html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '')
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+        sitemapH1s.set(h1, [...(sitemapH1s.get(h1) || []), routePath]);
+
+        if (routePath !== '/' && h1 === 'Austin House Painting Done Right') {
+          fail(`${routePath}: prerendered page is using the homepage fallback H1`);
+        }
       }
 
       if (/<h1\b[^>]*>\s*Something went wrong\s*<\/h1>/i.test(html) || /We're sorry, but something unexpected happened/i.test(html)) {
         fail(`${routePath}: prerendered sitemap page contains the generic application error state`);
+      }
+
+      const visibleWordCount = html
+        .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+        .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean)
+        .length;
+
+      if (visibleWordCount < 500) {
+        fail(`${routePath}: prerendered sitemap page is thin (${visibleWordCount} visible words)`);
       }
 
       if (routePath === '/') {
@@ -691,6 +718,18 @@ function run() {
       fail(`${routePath}: sitemap page has no internal inbound links`);
     } else if (count < 2 && !['/privacy', '/terms', '/do-not-sell', '/eula'].includes(routePath)) {
       warn(`${routePath}: low internal inbound link count (${count})`);
+    }
+  }
+
+  for (const [title, routes] of sitemapTitles) {
+    if (title && routes.length > 1) {
+      fail(`duplicate sitemap title "${title}" on ${routes.join(', ')}`);
+    }
+  }
+
+  for (const [h1, routes] of sitemapH1s) {
+    if (h1 && routes.length > 1) {
+      fail(`duplicate sitemap H1 "${h1}" on ${routes.join(', ')}`);
     }
   }
 

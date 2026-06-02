@@ -234,6 +234,34 @@ const Financing = () => {
         </div>
       </section>
 
+      <section className="py-10 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            Using Financing for Painting Projects
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-brand-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Exterior Repaints</h3>
+              <p className="text-brand-gray-700">
+                Financing can help homeowners handle full exterior preparation, trim repair, primer, and premium coatings at the right time instead of delaying until damage spreads.
+              </p>
+            </div>
+            <div className="bg-brand-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Interior Updates</h3>
+              <p className="text-brand-gray-700">
+                Larger interior projects often include multiple rooms, trim, doors, ceilings, and color changes. Payment options make it easier to complete the full scope in one organized project.
+              </p>
+            </div>
+            <div className="bg-brand-gray-50 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Cabinet Refinishing</h3>
+              <p className="text-brand-gray-700">
+                Cabinet refinishing is usually far less than replacement, and financing can spread the cost of a durable sprayed finish, hardware coordination, and careful reassembly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Quick Info Section */}
       <section className="py-8 bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

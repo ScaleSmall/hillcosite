@@ -147,6 +147,9 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                 <p className="text-lg text-brand-gray-700">
                   We approach every project with attention to what matters to homeowners here: thorough preparation, clean work areas, predictable schedules, and respect for homes and neighbors.
                 </p>
+                <p className="text-lg text-brand-gray-700">
+                  Our estimates in {hub.name} account for surface condition, sun exposure, access around landscaping, HOA expectations, and whether the scope includes interior painting, exterior painting, cabinet refinishing, or commercial repaint scheduling.
+                </p>
                 <div className="p-6 bg-brand-gray-50 rounded-lg border-l-4 border-brand-azure">
                   <p className="text-lg text-brand-gray-900">{hub.specialization}</p>
                 </div>
@@ -200,6 +203,14 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
                   Painting for offices, retail, and commercial properties with coordinated scheduling.
                 </p>
               </Link>
+            </div>
+            <div className="mt-8 p-6 bg-white rounded-lg border border-brand-gray-200">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                How We Protect Homes in {hub.name}
+              </h3>
+              <p className="text-brand-gray-700 leading-relaxed">
+                Crews protect floors, landscaping, driveways, fixtures, and adjacent surfaces before work begins. Exterior projects include washing, scraping, sanding, caulking, spot priming, and finish coats matched to Central Texas heat. Interior and cabinet projects are planned around containment, ventilation, clean lines, and daily cleanup.
+              </p>
             </div>
             <div className="mt-6 text-center">
               <Link

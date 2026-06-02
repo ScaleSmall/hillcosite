@@ -84,6 +84,31 @@ const About = () => {
         imageAlt="Austin painting professionals - Hill Country Painting experienced crew at work"
       />
 
+      <section className="section-padding bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">Local Austin Focus</h2>
+              <p className="text-brand-gray-700 leading-relaxed">
+                Our work is shaped by Central Texas weather, HOA expectations, mature landscaping, and the mix of historic, lake-area, and newer homes across Greater Austin.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">Clear Project Control</h2>
+              <p className="text-brand-gray-700 leading-relaxed">
+                Each estimate outlines prep, materials, access needs, scheduling, and cleanup so homeowners understand what is included before work begins.
+              </p>
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">Built for Durability</h2>
+              <p className="text-brand-gray-700 leading-relaxed">
+                Interior, exterior, cabinet, and commercial projects are planned around surface condition first, because lasting paint depends on prep before color.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pattern A: Years/Projects Stats */}
       <StatsAndTrust stats={aboutStats} />
 

@@ -119,7 +119,7 @@ const PaintingFrequency = () => {
     <>
       <SEO
         title="How Often to Paint in Greater Austin Area (2026) | Austin Paint Schedule"
-        description="Complete guide to painting frequency in Greater Austin Area. Learn when to repaint your Austin home interior, exterior, and cabinets for protection."
+        description="Complete 2026 guide to painting frequency in Greater Austin. Learn when to repaint Austin exteriors, interiors, trim, and cabinets for protection."
         canonical="/guides/how-often-paint-central-texas"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -137,7 +137,7 @@ const PaintingFrequency = () => {
               Texas Climate Guide 2026
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
-              How Often to Paint in Greater Austin Area
+              How Often to Paint Your Greater Austin Home
             </h1>
             <p className="text-xl text-brand-gray-600 leading-body">
               Professional maintenance schedule for Austin homes. Learn when to repaint interior, exterior, and cabinets to protect your investment in Texas's demanding climate.

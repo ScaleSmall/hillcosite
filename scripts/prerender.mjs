@@ -33,7 +33,13 @@ function expectedCanonicalUrl(route) {
     : `https://www.hillcopaint.com${route}`;
 }
 
-async function waitForHeadReady(page, route) {
+async function waitForHeadReady(page, route, requireIndexableHead) {
+  if (!requireIndexableHead) {
+    return;
+  }
+
+  await wait(500);
+
   if (route !== '/') {
     return;
   }
@@ -171,6 +177,7 @@ async function startPreview() {
 
 async function getRoutesToPrerender() {
   const routes = new Set(getPrerenderPaths());
+  const sitemapRoutes = new Set();
   const sitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
 
   try {
@@ -178,17 +185,21 @@ async function getRoutesToPrerender() {
     const locRegex = /<loc>https:\/\/www\.hillcopaint\.com([^<]*)<\/loc>/g;
 
     for (const match of sitemap.matchAll(locRegex)) {
-      routes.add(match[1] || '/');
+      const route = match[1] || '/';
+      routes.add(route);
+      sitemapRoutes.add(route);
     }
   } catch (error) {
     console.warn(`Warning: Could not read sitemap for prerender routes: ${error.message}`);
   }
 
-  return Array.from(routes).sort((a, b) => {
+  const sortedRoutes = Array.from(routes).sort((a, b) => {
     if (a === '/') return -1;
     if (b === '/') return 1;
     return a.localeCompare(b);
   });
+
+  return { routes: sortedRoutes, sitemapRoutes };
 }
 
 async function wait(ms) {
@@ -211,7 +222,7 @@ async function writeFileWithRetry(filePath, content, attempts = 5) {
 }
 
 async function prerender() {
-  const routes = await getRoutesToPrerender();
+  const { routes, sitemapRoutes } = await getRoutesToPrerender();
 
   console.log('Starting prerendering process...\n');
   console.log(`Found ${routes.length} routes to prerender\n`);
@@ -250,7 +261,7 @@ async function prerender() {
           const isLoading = /Loading (post|posts|projects|gallery|results)\.\.\./i.test(text);
           return !isLoading && (!requiresHeading || document.querySelector('h1')) && text.trim().length > 500;
         }, { timeout: 15000 }, requiresContentHeading);
-        await waitForHeadReady(page, route);
+        await waitForHeadReady(page, route, sitemapRoutes.has(route));
 
         const html = withSelfCanonical(withDedupedHeadMeta(await page.content()), route);
 

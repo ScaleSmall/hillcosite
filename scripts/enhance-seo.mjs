@@ -45,7 +45,7 @@ const geoAreasMeta = [
       { name: 'Rollingwood', slug: 'rollingwood', description: 'Professional painting services for Rollingwood residences.' },
       { name: 'West Lake Hills', slug: 'west-lake-hills', description: 'Expert painting for West Lake Hills core area homes.' },
       { name: 'Spanish Oaks', slug: 'spanish-oaks', description: 'Professional painting services for Spanish Oaks estates.' },
-      { name: 'Davenport Ranch', slug: 'davenport-ranch-west', description: 'Professional painting for Davenport Ranch West near 360 and Westlake.' },
+      { name: 'Davenport Ranch Westlake', slug: 'davenport-ranch-west', description: 'Professional painting for Davenport Ranch West near 360 and Westlake.' },
       { name: 'Lake Austin Hills', slug: 'lake-austin-hills', description: 'Professional painting for Lake Austin Hills residences.' }
     ]
   },
@@ -66,7 +66,7 @@ const geoAreasMeta = [
     slug: 'tarrytown',
     description: "Specialized painting for Tarrytown's historic homes. Honoring architectural heritage with careful techniques.",
     neighborhoods: [
-      { name: 'Tarrytown', slug: 'tarrytown', description: 'Historic home painting in the heart of Tarrytown.' },
+      { name: 'Central Tarrytown', slug: 'tarrytown', description: 'Historic home painting in Central Tarrytown near Lake Austin Boulevard, Windsor Road, and the neighborhood core.' },
       { name: 'Old Enfield', slug: 'old-enfield', description: "Preservation painting for Old Enfield's historic homes along Enfield Road." },
       { name: 'Pemberton Heights', slug: 'pemberton-heights', description: 'Professional painting for Pemberton Heights homes north of 29th Street.' },
       { name: 'Bryker Woods', slug: 'bryker-woods', description: 'Professional painting for Bryker Woods family homes and bungalows.' },

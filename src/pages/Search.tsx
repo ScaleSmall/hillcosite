@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { Search as SearchIcon, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import { supabase } from '../lib/supabase';
+import { generatedBlogPosts } from '../generated/blogPosts';
 
 interface SearchResult {
   type: 'service' | 'blog' | 'guide';
@@ -11,6 +12,8 @@ interface SearchResult {
   url: string;
   category?: string;
 }
+
+const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
 
 const staticContent = [
   {
@@ -103,13 +106,15 @@ const Search = () => {
             .or(`title.ilike.%${searchTerm}%,excerpt.ilike.%${searchTerm}%,content.ilike.%${searchTerm}%`)
             .limit(10);
 
-          const blogResults: SearchResult[] = (blogPosts || []).map(post => ({
-            type: 'blog' as const,
-            title: post.title,
-            description: post.excerpt,
-            url: `/blog/${post.slug}`,
-            category: post.category
-          }));
+          const blogResults: SearchResult[] = (blogPosts || [])
+            .filter(post => generatedBlogSlugs.has(post.slug))
+            .map(post => ({
+              type: 'blog' as const,
+              title: post.title,
+              description: post.excerpt,
+              url: `/blog/${post.slug}`,
+              category: post.category
+            }));
 
           setResults([...matchedStatic, ...blogResults]);
         } catch (error) {

@@ -139,6 +139,9 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
               <p className="text-brand-gray-700 mb-4">
                 Projects are organized to minimize disruption. Equipment stays contained, music stays off, and crews arrive and leave as scheduled. You'll know what to expect each day.
               </p>
+              <p className="text-brand-gray-700 mb-4">
+                For exterior painting, we evaluate sun exposure, trim condition, caulk failure, siding movement, masonry details, and landscaping access before recommending prep and coating systems. For interiors and cabinets, we focus on surface protection, dust control, clean edges, and finishes that stand up to daily use.
+              </p>
               <p className="text-brand-gray-700">
                 {hub.specialization}
               </p>
@@ -191,6 +194,14 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                   Painting for offices, retail, and commercial properties with coordinated scheduling.
                 </p>
               </Link>
+            </div>
+            <div className="mt-8 p-6 bg-white rounded-lg border border-brand-gray-200">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                Estimate Scope for {neighborhood.name}
+              </h3>
+              <p className="text-brand-gray-700 leading-relaxed">
+                A typical consultation reviews the condition of walls, trim, siding, fascia, doors, cabinets, and high-wear areas, then separates must-do prep from optional upgrades. That gives homeowners a clear plan for budget, scheduling, materials, and the areas most likely to affect long-term paint performance.
+              </p>
             </div>
             <div className="mt-6 text-center">
               <Link

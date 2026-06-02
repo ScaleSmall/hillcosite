@@ -75,7 +75,7 @@ export const geoAreas: HubArea[] = [
         description: 'Professional painting services for Spanish Oaks estates.'
       },
       {
-        name: 'Davenport Ranch',
+        name: 'Davenport Ranch Westlake',
         slug: 'davenport-ranch-west',
         description: 'Professional painting for Davenport Ranch West near 360 and Westlake. Quality finishes for established homes with mature landscaping and sophisticated architectural details.'
       },
@@ -129,9 +129,9 @@ export const geoAreas: HubArea[] = [
     heroImage: '/exterior-tarrytown.jpg',
     neighborhoods: [
       {
-        name: 'Tarrytown',
+        name: 'Central Tarrytown',
         slug: 'tarrytown',
-        description: 'Historic home painting in the heart of Tarrytown.'
+        description: 'Historic home painting in Central Tarrytown near Lake Austin Boulevard, Windsor Road, and the neighborhood core.'
       },
       {
         name: 'Old Enfield',
