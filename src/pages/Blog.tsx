@@ -19,19 +19,8 @@ interface BlogPost {
   author: string;
 }
 
-const liveRedirectedBlogSlugs = new Set([
-  'exterior-painting-timeline-in-austin-hill-country-painting',
-  'exterior-repaint-schedule-in-austin-hill-country-painting',
-  'austin-home-exterior-painting-guide-hill-country-painting',
-  'house-painting-services-austin-hill-country-painting',
-  'austin-interior-exterior-painting-hill-country-painting',
-  'austin-exterior-painting-guide-hill-country-painting',
-]);
-
-const isIndexableBlogPost = (post: BlogPost) => !liveRedirectedBlogSlugs.has(post.slug);
-
 const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts.filter(isIndexableBlogPost));
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);
   const [loading, setLoading] = useState(generatedBlogPosts.length === 0);
 
   const recentPosts = blogPosts.slice(0, 6);
@@ -55,7 +44,7 @@ const Blog = () => {
         if (error) {
           console.error('Error fetching blog posts:', error);
         } else {
-          setBlogPosts((data || []).filter(isIndexableBlogPost));
+          setBlogPosts(data || []);
         }
       } catch (err) {
         console.error('Error:', err);

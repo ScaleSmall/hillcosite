@@ -472,6 +472,12 @@ const routeMetadata = {
     h1: 'Cabinet Refinishing in Round Rock',
     content: 'Transform your Round Rock kitchen with professional cabinet refinishing. Spray-applied premium finish on existing cabinets at a fraction of replacement cost.'
   },
+  '/commercial-painting-round-rock': {
+    title: 'Commercial Painting Round Rock TX — Hill Country Painting',
+    description: 'Professional commercial painting in Round Rock, TX. Interior and exterior painting for Round Rock businesses with flexible scheduling. Free estimates.',
+    h1: 'Commercial Painting in Round Rock',
+    content: 'Commercial interior and exterior painting for Round Rock businesses. After-hours and weekend scheduling to minimize disruption to your operations.'
+  },
   // Cedar Park service-location pages
   '/interior-painting-cedar-park': {
     title: 'Interior Painting Cedar Park TX — Hill Country Painting',

@@ -32,11 +32,6 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
   const pageTitle = `Professional House Painting in ${neighborhood.name} | Hill Country Painting`;
   const mapQuery = `${neighborhood.name}, TX`;
   const canonical = `/areas/${hub.slug}/${neighborhood.slug}`;
-  const commercialLocationHref = hub.serviceLocationSlug === 'round-rock'
-    ? '/services/commercial'
-    : hub.serviceLocationSlug
-      ? `/commercial-painting-${hub.serviceLocationSlug}`
-      : '/services/commercial';
 
   return (
     <>
@@ -187,7 +182,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
                 </p>
               </Link>
               <Link
-                to={commercialLocationHref}
+                to={hub.serviceLocationSlug ? `/commercial-painting-${hub.serviceLocationSlug}` : '/services/commercial'}
                 className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-inset"
               >
                 <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Commercial Painting</h3>
