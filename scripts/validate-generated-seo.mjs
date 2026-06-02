@@ -9,6 +9,7 @@ const projectRoot = resolve(__dirname, '..');
 const distPath = resolve(projectRoot, 'dist');
 const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
 const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
+const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
@@ -288,15 +289,39 @@ function validateCssAssets(cssFiles) {
   }
 }
 
+function extractGeneratedFunctionSitemap(source) {
+  const countMatch = source.match(/generatedSitemapUrlCount\s*=\s*(\d+)/);
+  const xmlMatch = source.match(/generatedSitemapXml\s*=\s*("(?:\\.|[^"\\])*")/s);
+
+  return {
+    count: countMatch ? Number(countMatch[1]) : -1,
+    xml: xmlMatch ? JSON.parse(xmlMatch[1]) : ''
+  };
+}
+
 function run() {
   console.log('\n=== Generated SEO Validation ===\n');
 
   const sitemapXml = readRequired(sitemapPath, 'sitemap.xml');
   const distSitemapXml = readRequired(distSitemapPath, 'dist/sitemap.xml');
+  const functionSitemapSource = readRequired(functionSitemapPath, 'functions/generatedSitemap.ts');
   const robotsText = readRequired(robotsPath, 'robots.txt');
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
+  }
+
+  if (sitemapXml && functionSitemapSource) {
+    const functionSitemap = extractGeneratedFunctionSitemap(functionSitemapSource);
+    const publicUrlCount = (sitemapXml.match(/<loc>/g) || []).length;
+
+    if (functionSitemap.xml !== sitemapXml) {
+      fail('functions/generatedSitemap.ts must exactly match the generated public/sitemap.xml');
+    }
+
+    if (functionSitemap.count !== publicUrlCount) {
+      fail(`functions/generatedSitemap.ts URL count ${functionSitemap.count} should be ${publicUrlCount}`);
+    }
   }
 
   if (!existsSync(distPath)) {

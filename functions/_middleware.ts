@@ -13,6 +13,7 @@
  * because Cloudflare Pages does not reliably apply _redirects rewrite
  * rules after a middleware calls next().
  */
+import { generatedSitemapUrlCount, generatedSitemapXml } from './generatedSitemap';
 
 // ---------------------------------------------------------------------------
 // 1. STATIC ASSET DETECTION
@@ -290,6 +291,16 @@ export async function onRequest(context: {
     return new Response(null, {
       status: 301,
       headers: { Location: url.toString() },
+    });
+  }
+
+  if (pathname === '/sitemap.xml' && generatedSitemapUrlCount > 0) {
+    return new Response(generatedSitemapXml, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/xml; charset=utf-8',
+        'Cache-Control': 'public, max-age=300, must-revalidate',
+      },
     });
   }
 

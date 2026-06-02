@@ -80,6 +80,20 @@ export const generatedBlogPosts: GeneratedBlogPost[] = ${JSON.stringify(serializ
   console.log(`  Blog posts in module: ${serializablePosts.length}`);
 }
 
+function writeGeneratedSitemapFunction(sitemapXml, urlCount) {
+  const outputDir = resolve(__dirname, '../functions');
+  const outputPath = resolve(outputDir, 'generatedSitemap.ts');
+
+  mkdirSync(outputDir, { recursive: true });
+  writeFileSync(outputPath, `export const generatedSitemapUrlCount = ${urlCount};
+
+export const generatedSitemapXml = ${JSON.stringify(sitemapXml)};
+`, 'utf-8');
+
+  console.log(`Generated sitemap function module: ${outputPath}`);
+  console.log(`  Sitemap URLs in function module: ${urlCount}`);
+}
+
 async function fetchBlogPosts() {
   if (!supabaseUrl || !supabaseKey) {
     console.log('  Supabase credentials not found - skipping blog posts');
@@ -152,6 +166,7 @@ ${allRoutes.map(route => `  <url>
 
   const outputPath = resolve(__dirname, '../public/sitemap.xml');
   writeFileSync(outputPath, sitemapXml, 'utf-8');
+  writeGeneratedSitemapFunction(sitemapXml, allRoutes.length);
 
   console.log(`Sitemap generated: ${outputPath}`);
   console.log(`  Static pages: ${staticRoutes.length}`);
