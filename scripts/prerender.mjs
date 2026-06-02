@@ -213,9 +213,12 @@ async function prerender() {
           timeout: 30000
         });
 
-        await page.waitForFunction(() => {
-          return document.body && document.body.textContent.trim().length > 500;
-        }, { timeout: 5000 });
+        const requiresContentHeading = route === '/blog' || route.startsWith('/blog/');
+        await page.waitForFunction((requiresHeading) => {
+          const text = document.body?.textContent || '';
+          const isLoading = /Loading (post|posts|projects|gallery|results)\.\.\./i.test(text);
+          return !isLoading && (!requiresHeading || document.querySelector('h1')) && text.trim().length > 500;
+        }, { timeout: 15000 }, requiresContentHeading);
 
         const html = withSelfCanonical(withDedupedHeadMeta(await page.content()), route);
 

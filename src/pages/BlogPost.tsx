@@ -3,8 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import SEO from '../components/SEO';
 import CTABanner from '../components/sections/CTABanner';
-import { Calendar, ArrowLeft, Tag } from 'lucide-react';
+import { Calendar, ArrowLeft, ArrowRight, Tag } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
+import { generatedBlogPosts, type GeneratedBlogPost } from '../generated/blogPosts';
 
 interface BlogPostData {
   id: string;
@@ -25,6 +26,44 @@ interface BlogPostData {
   meta_keywords: string | null;
 }
 
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+
+const stripMarkdown = (value: string) =>
+  value
+    .replace(/^#+\s*/gm, '')
+    .replace(/\*\*(.*?)\*\*/g, '$1')
+    .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
+    .trim();
+
+const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
+  const excerpt = stripMarkdown(post.excerpt || post.title);
+
+  return {
+    id: post.id,
+    title: post.title,
+    slug: post.slug,
+    content: `<p>${escapeHtml(excerpt)}</p>`,
+    excerpt,
+    tldr: excerpt,
+    featured_image: post.featured_image,
+    featured_image_alt: post.title,
+    featured_image_title: post.title,
+    featured_image_caption: null,
+    published_at: post.published_at,
+    category: post.category,
+    author: post.author,
+    tags: [post.category, 'Austin painting', 'Hill Country Painting'],
+    meta_description: excerpt.slice(0, 155),
+    meta_keywords: null
+  };
+};
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<BlogPostData | null>(null);
@@ -37,7 +76,12 @@ const BlogPost = () => {
 
       if (!supabaseConfigured || !supabase) {
         console.warn('Supabase not configured');
-        setNotFound(true);
+        const generatedPost = generatedBlogPosts.find(item => item.slug === slug);
+        if (generatedPost) {
+          setPost(generatedToBlogPost(generatedPost));
+        } else {
+          setNotFound(true);
+        }
         setLoading(false);
         return;
       }
@@ -56,12 +100,23 @@ const BlogPost = () => {
         clearTimeout(timeout);
 
         if (error || !data) {
+          const generatedPost = generatedBlogPosts.find(item => item.slug === slug);
+          if (generatedPost) {
+            setPost(generatedToBlogPost(generatedPost));
+            return;
+          }
           setNotFound(true);
         } else {
           setPost(data);
         }
       } catch {
         clearTimeout(timeout);
+        const generatedPost = generatedBlogPosts.find(item => item.slug === slug);
+        if (generatedPost) {
+          setPost(generatedToBlogPost(generatedPost));
+          setLoading(false);
+          return;
+        }
         setNotFound(true);
       } finally {
         setLoading(false);
@@ -220,6 +275,36 @@ const BlogPost = () => {
     };
   };
 
+  const currentIndex = generatedBlogPosts.findIndex(item => item.slug === post.slug);
+  const relatedPosts = currentIndex >= 0
+    ? [1, 2, -1]
+        .map(offset => generatedBlogPosts[(currentIndex + offset + generatedBlogPosts.length) % generatedBlogPosts.length])
+        .filter((item, index, items) => item.slug !== post.slug && items.findIndex(other => other.slug === item.slug) === index)
+    : generatedBlogPosts.filter(item => item.slug !== post.slug).slice(0, 3);
+
+  const serviceLinks = [
+    {
+      title: 'Exterior Painting in Austin',
+      href: '/services/exterior-painting',
+      description: 'Prep, coatings, and weather-aware exterior painting for Central Texas homes.'
+    },
+    {
+      title: 'Interior Painting in Austin',
+      href: '/services/interior-painting',
+      description: 'Clean, careful interior painting for living spaces, trim, walls, and ceilings.'
+    },
+    {
+      title: 'Cabinet Refinishing',
+      href: '/services/cabinet-refinishing',
+      description: 'Durable cabinet painting and refinishing for kitchens, baths, and built-ins.'
+    },
+    {
+      title: 'Commercial Painting',
+      href: '/services/commercial',
+      description: 'Professional painting for offices, retail spaces, and commercial properties.'
+    }
+  ];
+
   return (
     <>
       <SEO
@@ -329,6 +414,63 @@ const BlogPost = () => {
           />
         </div>
       </article>
+
+      {(relatedPosts.length > 0 || serviceLinks.length > 0) && (
+        <section className="section-padding bg-brand-gray-50" aria-labelledby="related-painting-resources">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center mb-10">
+              <h2 id="related-painting-resources" className="text-3xl font-bold text-brand-gray-900 mb-4">
+                Related Austin Painting Resources
+              </h2>
+              <p className="text-brand-gray-600 leading-body">
+                Continue researching Austin painting costs, timing, coatings, and service options with Hill Country Painting.
+              </p>
+            </div>
+
+            {relatedPosts.length > 0 && (
+              <div className="mb-10">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-4">More Painting Articles</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {relatedPosts.map(related => (
+                    <Link
+                      key={related.slug}
+                      to={`/blog/${related.slug}`}
+                      className="card p-6 hover:shadow-lg transition-shadow duration-200 group"
+                    >
+                      <p className="text-sm text-brand-gray-500 mb-2">{related.category}</p>
+                      <h4 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-3">
+                        {related.title}
+                      </h4>
+                      <span className="inline-flex items-center text-brand-azureDark font-medium">
+                        Read article
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div>
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-4">Painting Services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {serviceLinks.map(service => (
+                  <Link
+                    key={service.href}
+                    to={service.href}
+                    className="card p-6 hover:shadow-lg transition-shadow duration-200 group"
+                  >
+                    <h4 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-2">
+                      {service.title}
+                    </h4>
+                    <p className="text-sm text-brand-gray-600 leading-body">{service.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Banner */}
       <CTABanner
