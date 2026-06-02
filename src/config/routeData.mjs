@@ -77,6 +77,27 @@ export const serviceLocationPages = [
   { path: '/exterior-painting-north-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-north-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-north-austin', changefreq: 'monthly', priority: '0.7' },
+  // High-value affluent Austin-area service-location pages
+  { path: '/interior-painting-rollingwood', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-rollingwood', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-rollingwood', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-rollingwood', changefreq: 'monthly', priority: '0.7' },
+  { path: '/interior-painting-bee-cave', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-bee-cave', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-bee-cave', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-bee-cave', changefreq: 'monthly', priority: '0.7' },
+  { path: '/interior-painting-barton-creek', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-barton-creek', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-barton-creek', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-barton-creek', changefreq: 'monthly', priority: '0.7' },
+  { path: '/interior-painting-steiner-ranch', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-steiner-ranch', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-steiner-ranch', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-steiner-ranch', changefreq: 'monthly', priority: '0.7' },
+  { path: '/interior-painting-circle-c-ranch', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-circle-c-ranch', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-circle-c-ranch', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-circle-c-ranch', changefreq: 'monthly', priority: '0.7' },
 ];
 
 export const coreStaticRoutes = [

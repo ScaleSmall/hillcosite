@@ -72,6 +72,11 @@ const Footer = () => {
         { name: 'Round Rock', href: '/interior-painting-round-rock' },
         { name: 'Cedar Park', href: '/interior-painting-cedar-park' },
         { name: 'North Austin', href: '/interior-painting-north-austin' },
+        { name: 'Rollingwood', href: '/interior-painting-rollingwood' },
+        { name: 'Bee Cave', href: '/interior-painting-bee-cave' },
+        { name: 'Barton Creek', href: '/interior-painting-barton-creek' },
+        { name: 'Steiner Ranch', href: '/interior-painting-steiner-ranch' },
+        { name: 'Circle C Ranch', href: '/interior-painting-circle-c-ranch' },
       ]
     },
     {
@@ -88,6 +93,11 @@ const Footer = () => {
         { name: 'Round Rock', href: '/exterior-painting-round-rock' },
         { name: 'Cedar Park', href: '/exterior-painting-cedar-park' },
         { name: 'North Austin', href: '/exterior-painting-north-austin' },
+        { name: 'Rollingwood', href: '/exterior-painting-rollingwood' },
+        { name: 'Bee Cave', href: '/exterior-painting-bee-cave' },
+        { name: 'Barton Creek', href: '/exterior-painting-barton-creek' },
+        { name: 'Steiner Ranch', href: '/exterior-painting-steiner-ranch' },
+        { name: 'Circle C Ranch', href: '/exterior-painting-circle-c-ranch' },
       ]
     },
     {
@@ -104,6 +114,11 @@ const Footer = () => {
         { name: 'Round Rock', href: '/cabinet-refinishing-round-rock' },
         { name: 'Cedar Park', href: '/cabinet-refinishing-cedar-park' },
         { name: 'North Austin', href: '/cabinet-refinishing-north-austin' },
+        { name: 'Rollingwood', href: '/cabinet-refinishing-rollingwood' },
+        { name: 'Bee Cave', href: '/cabinet-refinishing-bee-cave' },
+        { name: 'Barton Creek', href: '/cabinet-refinishing-barton-creek' },
+        { name: 'Steiner Ranch', href: '/cabinet-refinishing-steiner-ranch' },
+        { name: 'Circle C Ranch', href: '/cabinet-refinishing-circle-c-ranch' },
       ]
     },
     {
@@ -120,6 +135,11 @@ const Footer = () => {
         { name: 'Round Rock', href: '/commercial-painting-round-rock' },
         { name: 'Cedar Park', href: '/commercial-painting-cedar-park' },
         { name: 'North Austin', href: '/commercial-painting-north-austin' },
+        { name: 'Rollingwood', href: '/commercial-painting-rollingwood' },
+        { name: 'Bee Cave', href: '/commercial-painting-bee-cave' },
+        { name: 'Barton Creek', href: '/commercial-painting-barton-creek' },
+        { name: 'Steiner Ranch', href: '/commercial-painting-steiner-ranch' },
+        { name: 'Circle C Ranch', href: '/commercial-painting-circle-c-ranch' },
       ]
     },
   ];

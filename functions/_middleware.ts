@@ -203,7 +203,7 @@ const SPA_ROUTES: Set<string> = new Set([
   '/do-not-sell',
   '/thank-you',
 
-  // Service-location pages — 11 cities × 4 services = 44
+  // Service-location pages — 16 locations x 4 services = 64
   '/interior-painting-austin',
   '/interior-painting-tarrytown',
   '/interior-painting-northwest-hills',
@@ -248,6 +248,26 @@ const SPA_ROUTES: Set<string> = new Set([
   '/commercial-painting-round-rock',
   '/commercial-painting-cedar-park',
   '/commercial-painting-north-austin',
+  '/interior-painting-rollingwood',
+  '/exterior-painting-rollingwood',
+  '/cabinet-refinishing-rollingwood',
+  '/commercial-painting-rollingwood',
+  '/interior-painting-bee-cave',
+  '/exterior-painting-bee-cave',
+  '/cabinet-refinishing-bee-cave',
+  '/commercial-painting-bee-cave',
+  '/interior-painting-barton-creek',
+  '/exterior-painting-barton-creek',
+  '/cabinet-refinishing-barton-creek',
+  '/commercial-painting-barton-creek',
+  '/interior-painting-steiner-ranch',
+  '/exterior-painting-steiner-ranch',
+  '/cabinet-refinishing-steiner-ranch',
+  '/commercial-painting-steiner-ranch',
+  '/interior-painting-circle-c-ranch',
+  '/exterior-painting-circle-c-ranch',
+  '/cabinet-refinishing-circle-c-ranch',
+  '/commercial-painting-circle-c-ranch',
 ]);
 
 const NOINDEX_ROUTES: Record<string, string> = {

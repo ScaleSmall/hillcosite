@@ -244,6 +244,111 @@ export const locations: Record<string, LocationData> = {
       homeStyles: ['Mid-century modern', 'Ranch style', 'Urban condo', 'Contemporary townhome'],
       paintChallenges: ['Varied architectural eras', 'Urban heat retention', 'Scheduling around tech work schedules']
     }
+  },
+  'rollingwood': {
+    name: 'Rollingwood',
+    slug: 'rollingwood',
+    zipCodes: ['78746'],
+    coordinates: { lat: 30.2767, lng: -97.7911 },
+    neighborhoods: ['Rollingwood', 'Eanes', 'Zilker', 'Stratford Hills', 'Lake Austin', 'West Lake Hills'],
+    highlights: [
+      'Rollingwood luxury home specialists',
+      'Eanes ISD community experience',
+      'Careful prep for high-value properties',
+      'Low-disruption scheduling',
+      'Premium trim and cabinet finish standards',
+      'Westlake corridor HOA and design sensitivity'
+    ],
+    serviceAreaSlug: 'west-lake-hills',
+    localInfo: {
+      climate: 'Central Austin and Westlake transition zone with mature trees, limestone terrain, and high summer UV',
+      homeStyles: ['Luxury traditional', 'Modern estate', 'Renovated ranch', 'Architect-designed custom home'],
+      paintChallenges: ['Mature landscaping protection', 'Fine trim and millwork', 'High-value exterior materials']
+    }
+  },
+  'bee-cave': {
+    name: 'Bee Cave',
+    slug: 'bee-cave',
+    zipCodes: ['78738'],
+    coordinates: { lat: 30.3085, lng: -97.9450 },
+    neighborhoods: ['Bee Cave', 'Falconhead', 'Spanish Oaks', 'The Homestead', 'Uplands', 'Lake Pointe'],
+    highlights: [
+      'Bee Cave and 78738 specialists',
+      'Spanish Oaks and Falconhead experience',
+      'Hill Country Galleria corridor coverage',
+      'HOA color compliance support',
+      'Premium exterior products for Texas sun',
+      'Clean scheduling for busy households'
+    ],
+    serviceAreaSlug: 'lakeway',
+    localInfo: {
+      climate: 'Hill Country elevation with strong UV, limestone dust, and seasonal wind exposure',
+      homeStyles: ['Hill Country contemporary', 'Spanish Oaks estate', 'Master-planned traditional', 'Modern farmhouse'],
+      paintChallenges: ['HOA color review', 'UV exposure on west elevations', 'Stone, stucco, and wood detail transitions']
+    }
+  },
+  'barton-creek': {
+    name: 'Barton Creek',
+    slug: 'barton-creek',
+    zipCodes: ['78735'],
+    coordinates: { lat: 30.2919, lng: -97.8589 },
+    neighborhoods: ['Barton Creek', 'Barton Creek Country Club Estates', 'Fazio Foothills', 'Amarra', 'Lost Creek', 'Oak Hill'],
+    highlights: [
+      'Barton Creek luxury property experience',
+      'Country club estate standards',
+      'Stucco, stone, and wood detail expertise',
+      'Careful access planning for hillsides',
+      'Privacy-conscious crews',
+      'Premium prep for long-lasting finishes'
+    ],
+    serviceAreaSlug: 'west-lake-hills',
+    localInfo: {
+      climate: 'Limestone hills with elevated sun exposure, shaded ravines, and moisture variation near Barton Creek',
+      homeStyles: ['Luxury estate', 'Golf course home', 'Hill Country contemporary', 'Stucco and limestone residence'],
+      paintChallenges: ['Complex elevations', 'Premium substrate prep', 'Landscape and hardscape protection']
+    }
+  },
+  'steiner-ranch': {
+    name: 'Steiner Ranch',
+    slug: 'steiner-ranch',
+    zipCodes: ['78732'],
+    coordinates: { lat: 30.3824, lng: -97.8945 },
+    neighborhoods: ['Steiner Ranch', 'River Place', 'Rob Roy', 'Lake Austin', 'Davenport Ranch', 'Quinlan Park'],
+    highlights: [
+      'Steiner Ranch 78732 specialists',
+      'HOA color approval guidance',
+      'Lake Austin and Hill Country exposure expertise',
+      'Family-schedule friendly planning',
+      'Durable exterior coating recommendations',
+      'Cabinet and trim finish upgrades'
+    ],
+    serviceAreaSlug: 'austin',
+    localInfo: {
+      climate: 'Northwest Austin Hill Country with lake influence, intense summer sun, and wind exposure',
+      homeStyles: ['Hill Country traditional', 'Master-planned estate', 'Limestone and stucco home', 'Lake Austin custom home'],
+      paintChallenges: ['HOA restrictions', 'UV and wind exposure', 'Stucco and masonry transitions']
+    }
+  },
+  'circle-c-ranch': {
+    name: 'Circle C Ranch',
+    slug: 'circle-c-ranch',
+    zipCodes: ['78739'],
+    coordinates: { lat: 30.1816, lng: -97.9086 },
+    neighborhoods: ['Circle C Ranch', 'Grey Rock', 'Shady Hollow', 'Meridian', 'Avana', 'Southwest Austin'],
+    highlights: [
+      'Circle C and 78739 coverage',
+      'Master-planned HOA expertise',
+      'Family-home repaint scheduling',
+      'Exterior products for open-sun exposure',
+      'Cabinet refinishing for kitchen updates',
+      'Southwest Austin neighborhood familiarity'
+    ],
+    serviceAreaSlug: 'austin',
+    localInfo: {
+      climate: 'Southwest Austin open-sun exposure with heat, wind, and seasonal storm wear',
+      homeStyles: ['Master-planned traditional', 'Modern family home', 'Stone and stucco residence', 'Texas limestone exterior'],
+      paintChallenges: ['HOA color compliance', 'South and west elevation fading', 'Family scheduling and occupied-home workflow']
+    }
   }
 };
 

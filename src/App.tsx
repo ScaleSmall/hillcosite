@@ -146,7 +146,7 @@ const Search = safeLazy(() => import('./pages/Search'), "Search");
 const ThankYou = safeLazy(() => import('./pages/ThankYou'), "ThankYou");
 const NotFound = safeLazy(() => import('./pages/NotFound'), "NotFound");
 
-// SERVICE + LOCATION PAGES (24 total: 4 services x 6 locations)
+// SERVICE + LOCATION PAGES (64 total: 4 services x 16 locations)
 const InteriorPaintingAustin = safeLazy(() => import('./pages/locations/InteriorPaintingAustin'), "InteriorPaintingAustin");
 const InteriorPaintingTarrytown = safeLazy(() => import('./pages/locations/InteriorPaintingTarrytown'), "InteriorPaintingTarrytown");
 const InteriorPaintingNorthwestHills = safeLazy(() => import('./pages/locations/InteriorPaintingNorthwestHills'), "InteriorPaintingNorthwestHills");
@@ -191,6 +191,26 @@ const InteriorPaintingNorthAustin = safeLazy(() => import('./pages/locations/Int
 const ExteriorPaintingNorthAustin = safeLazy(() => import('./pages/locations/ExteriorPaintingNorthAustin'), "ExteriorPaintingNorthAustin");
 const CabinetRefinishingNorthAustin = safeLazy(() => import('./pages/locations/CabinetRefinishingNorthAustin'), "CabinetRefinishingNorthAustin");
 const CommercialPaintingNorthAustin = safeLazy(() => import('./pages/locations/CommercialPaintingNorthAustin'), "CommercialPaintingNorthAustin");
+const InteriorPaintingRollingwood = safeLazy(() => import('./pages/locations/InteriorPaintingRollingwood'), "InteriorPaintingRollingwood");
+const InteriorPaintingBeeCave = safeLazy(() => import('./pages/locations/InteriorPaintingBeeCave'), "InteriorPaintingBeeCave");
+const InteriorPaintingBartonCreek = safeLazy(() => import('./pages/locations/InteriorPaintingBartonCreek'), "InteriorPaintingBartonCreek");
+const InteriorPaintingSteinerRanch = safeLazy(() => import('./pages/locations/InteriorPaintingSteinerRanch'), "InteriorPaintingSteinerRanch");
+const InteriorPaintingCircleCRanch = safeLazy(() => import('./pages/locations/InteriorPaintingCircleCRanch'), "InteriorPaintingCircleCRanch");
+const ExteriorPaintingRollingwood = safeLazy(() => import('./pages/locations/ExteriorPaintingRollingwood'), "ExteriorPaintingRollingwood");
+const ExteriorPaintingBeeCave = safeLazy(() => import('./pages/locations/ExteriorPaintingBeeCave'), "ExteriorPaintingBeeCave");
+const ExteriorPaintingBartonCreek = safeLazy(() => import('./pages/locations/ExteriorPaintingBartonCreek'), "ExteriorPaintingBartonCreek");
+const ExteriorPaintingSteinerRanch = safeLazy(() => import('./pages/locations/ExteriorPaintingSteinerRanch'), "ExteriorPaintingSteinerRanch");
+const ExteriorPaintingCircleCRanch = safeLazy(() => import('./pages/locations/ExteriorPaintingCircleCRanch'), "ExteriorPaintingCircleCRanch");
+const CabinetRefinishingRollingwood = safeLazy(() => import('./pages/locations/CabinetRefinishingRollingwood'), "CabinetRefinishingRollingwood");
+const CabinetRefinishingBeeCave = safeLazy(() => import('./pages/locations/CabinetRefinishingBeeCave'), "CabinetRefinishingBeeCave");
+const CabinetRefinishingBartonCreek = safeLazy(() => import('./pages/locations/CabinetRefinishingBartonCreek'), "CabinetRefinishingBartonCreek");
+const CabinetRefinishingSteinerRanch = safeLazy(() => import('./pages/locations/CabinetRefinishingSteinerRanch'), "CabinetRefinishingSteinerRanch");
+const CabinetRefinishingCircleCRanch = safeLazy(() => import('./pages/locations/CabinetRefinishingCircleCRanch'), "CabinetRefinishingCircleCRanch");
+const CommercialPaintingRollingwood = safeLazy(() => import('./pages/locations/CommercialPaintingRollingwood'), "CommercialPaintingRollingwood");
+const CommercialPaintingBeeCave = safeLazy(() => import('./pages/locations/CommercialPaintingBeeCave'), "CommercialPaintingBeeCave");
+const CommercialPaintingBartonCreek = safeLazy(() => import('./pages/locations/CommercialPaintingBartonCreek'), "CommercialPaintingBartonCreek");
+const CommercialPaintingSteinerRanch = safeLazy(() => import('./pages/locations/CommercialPaintingSteinerRanch'), "CommercialPaintingSteinerRanch");
+const CommercialPaintingCircleCRanch = safeLazy(() => import('./pages/locations/CommercialPaintingCircleCRanch'), "CommercialPaintingCircleCRanch");
 
 // Loading fallback component
 const PageLoader = () => (
@@ -340,7 +360,7 @@ function App() {
               <Route path="/areas/north-austin/jollyville" element={<Trace name="/areas/north-austin/jollyville"><NeighborhoodNorthAustinJollyville /></Trace>} />
               <Route path="/areas/north-austin/anderson-mill" element={<Trace name="/areas/north-austin/anderson-mill"><NeighborhoodNorthAustinAndersonMill /></Trace>} />
 
-              {/* SERVICE + LOCATION PAGES - 24 total: 4 services x 6 locations */}
+              {/* SERVICE + LOCATION PAGES - 64 total: 4 services x 16 locations */}
               <Route path="/interior-painting-austin" element={<Trace name="/interior-painting-austin"><InteriorPaintingAustin /></Trace>} />
               <Route path="/interior-painting-tarrytown" element={<Trace name="/interior-painting-tarrytown"><InteriorPaintingTarrytown /></Trace>} />
               <Route path="/interior-painting-northwest-hills" element={<Trace name="/interior-painting-northwest-hills"><InteriorPaintingNorthwestHills /></Trace>} />
@@ -385,6 +405,26 @@ function App() {
               <Route path="/exterior-painting-north-austin" element={<Trace name="/exterior-painting-north-austin"><ExteriorPaintingNorthAustin /></Trace>} />
               <Route path="/cabinet-refinishing-north-austin" element={<Trace name="/cabinet-refinishing-north-austin"><CabinetRefinishingNorthAustin /></Trace>} />
               <Route path="/commercial-painting-north-austin" element={<Trace name="/commercial-painting-north-austin"><CommercialPaintingNorthAustin /></Trace>} />
+              <Route path="/interior-painting-rollingwood" element={<Trace name="/interior-painting-rollingwood"><InteriorPaintingRollingwood /></Trace>} />
+              <Route path="/interior-painting-bee-cave" element={<Trace name="/interior-painting-bee-cave"><InteriorPaintingBeeCave /></Trace>} />
+              <Route path="/interior-painting-barton-creek" element={<Trace name="/interior-painting-barton-creek"><InteriorPaintingBartonCreek /></Trace>} />
+              <Route path="/interior-painting-steiner-ranch" element={<Trace name="/interior-painting-steiner-ranch"><InteriorPaintingSteinerRanch /></Trace>} />
+              <Route path="/interior-painting-circle-c-ranch" element={<Trace name="/interior-painting-circle-c-ranch"><InteriorPaintingCircleCRanch /></Trace>} />
+              <Route path="/exterior-painting-rollingwood" element={<Trace name="/exterior-painting-rollingwood"><ExteriorPaintingRollingwood /></Trace>} />
+              <Route path="/exterior-painting-bee-cave" element={<Trace name="/exterior-painting-bee-cave"><ExteriorPaintingBeeCave /></Trace>} />
+              <Route path="/exterior-painting-barton-creek" element={<Trace name="/exterior-painting-barton-creek"><ExteriorPaintingBartonCreek /></Trace>} />
+              <Route path="/exterior-painting-steiner-ranch" element={<Trace name="/exterior-painting-steiner-ranch"><ExteriorPaintingSteinerRanch /></Trace>} />
+              <Route path="/exterior-painting-circle-c-ranch" element={<Trace name="/exterior-painting-circle-c-ranch"><ExteriorPaintingCircleCRanch /></Trace>} />
+              <Route path="/cabinet-refinishing-rollingwood" element={<Trace name="/cabinet-refinishing-rollingwood"><CabinetRefinishingRollingwood /></Trace>} />
+              <Route path="/cabinet-refinishing-bee-cave" element={<Trace name="/cabinet-refinishing-bee-cave"><CabinetRefinishingBeeCave /></Trace>} />
+              <Route path="/cabinet-refinishing-barton-creek" element={<Trace name="/cabinet-refinishing-barton-creek"><CabinetRefinishingBartonCreek /></Trace>} />
+              <Route path="/cabinet-refinishing-steiner-ranch" element={<Trace name="/cabinet-refinishing-steiner-ranch"><CabinetRefinishingSteinerRanch /></Trace>} />
+              <Route path="/cabinet-refinishing-circle-c-ranch" element={<Trace name="/cabinet-refinishing-circle-c-ranch"><CabinetRefinishingCircleCRanch /></Trace>} />
+              <Route path="/commercial-painting-rollingwood" element={<Trace name="/commercial-painting-rollingwood"><CommercialPaintingRollingwood /></Trace>} />
+              <Route path="/commercial-painting-bee-cave" element={<Trace name="/commercial-painting-bee-cave"><CommercialPaintingBeeCave /></Trace>} />
+              <Route path="/commercial-painting-barton-creek" element={<Trace name="/commercial-painting-barton-creek"><CommercialPaintingBartonCreek /></Trace>} />
+              <Route path="/commercial-painting-steiner-ranch" element={<Trace name="/commercial-painting-steiner-ranch"><CommercialPaintingSteinerRanch /></Trace>} />
+              <Route path="/commercial-painting-circle-c-ranch" element={<Trace name="/commercial-painting-circle-c-ranch"><CommercialPaintingCircleCRanch /></Trace>} />
 
               <Route path="*" element={<Trace name="*"><NotFound /></Trace>} />
             </Routes>
