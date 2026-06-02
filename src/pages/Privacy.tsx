@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { businessConfig } from '../config/business';
 
 const Privacy = () => {
   return (
     <>
       <SEO
         title="Privacy Policy — Hill Country Painting"
-        description="Privacy Policy for HillCo Paint. How we collect, use, and protect your personal information. Compliant with Meta Ads, CCPA, GDPR requirements."
+        description="Privacy Policy for Hill Country Painting. How we collect, use, and protect your personal information. Compliant with Meta Ads, CCPA, GDPR requirements."
         canonical="/privacy"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -20,7 +21,7 @@ const Privacy = () => {
           <div className="space-y-8">
             <div className="text-center">
               <h1 className="text-4xl font-bold text-brand-gray-900 mb-4">
-                Privacy Policy for HillCo Paint
+                Privacy Policy for Hill Country Painting
               </h1>
               <p className="text-lg text-brand-gray-600 mb-2">
                 Website: <a href="https://www.hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark">https://www.hillcopaint.com</a>
@@ -36,7 +37,7 @@ const Privacy = () => {
               <section>
                 <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">Who We Are</h2>
                 <p className="text-brand-gray-700 mb-4">
-                  HillCo Paint is a professional painting company serving Austin, Texas and surrounding areas. 
+                  Hill Country Painting is a professional painting company serving Austin, Texas and surrounding areas.
                   Our website is located at <a href="https://www.hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark">https://www.hillcopaint.com</a>.
                 </p>
                 <p className="text-brand-gray-700 mb-4">
@@ -324,7 +325,9 @@ const Privacy = () => {
                   If you have questions about this privacy policy or how we handle your information, please contact us:
                 </p>
                 <div className="space-y-2">
-                  <p className="text-brand-gray-700"><strong>HillCo Paint</strong></p>
+                  <p className="text-brand-gray-700"><strong>{businessConfig.name}</strong></p>
+                  <p className="text-brand-gray-700">Service Area: {businessConfig.address.displayFull}</p>
+                  <p className="text-brand-gray-700">Phone: <a href={businessConfig.phoneHref} className="text-brand-azureDark hover:text-brand-azureDark">{businessConfig.phone}</a></p>
                   <p className="text-brand-gray-700">Email: <a href="mailto:info@hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark">info@hillcopaint.com</a></p>
                   <p className="text-brand-gray-700">Website: <a href="https://www.hillcopaint.com" className="text-brand-azureDark hover:text-brand-azureDark">https://www.hillcopaint.com</a></p>
                 </div>

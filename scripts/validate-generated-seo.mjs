@@ -447,6 +447,10 @@ function run() {
     const twitterDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'twitter:description');
 
     if (isSitemapPage) {
+      if (html.includes('HillCo Paint')) {
+        fail(`${routePath}: uses non-canonical entity name "HillCo Paint"; expected Hill Country Painting`);
+      }
+
       if (canonicalTags.length !== 1) {
         fail(`${routePath}: expected exactly one canonical tag, found ${canonicalTags.length}`);
       } else {

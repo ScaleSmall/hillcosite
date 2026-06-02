@@ -530,13 +530,13 @@ const routeMetadata = {
   },
   '/privacy': {
     title: 'Privacy Policy — Hill Country Painting',
-    description: 'Privacy Policy for HillCo Paint. How we collect, use, and protect your personal information. Compliant with Meta Ads, CCPA, GDPR requirements.',
-    h1: 'Privacy Policy for HillCo Paint',
+    description: 'Privacy Policy for Hill Country Painting. How we collect, use, and protect your personal information. Compliant with Meta Ads, CCPA, GDPR requirements.',
+    h1: 'Privacy Policy for Hill Country Painting',
     content: 'Our commitment to protecting your privacy and personal information. Learn how we collect, use, and safeguard your data.'
   },
   '/terms': {
     title: 'Terms of Service — Hill Country Painting',
-    description: 'Terms of Service for HillCo Paint website and services. User agreements, warranty information, liability terms.',
+    description: 'Terms of Service for Hill Country Painting website and services. User agreements, warranty information, liability terms.',
     h1: 'Terms of Service',
     content: 'Terms and conditions for using the Hill Country Painting website and services. Important information about warranties and agreements.'
   },
