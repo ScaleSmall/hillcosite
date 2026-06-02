@@ -17,6 +17,7 @@ const llmsPath = resolve(projectRoot, 'public/llms.txt');
 const llmsFullPath = resolve(projectRoot, 'public/llms-full.txt');
 const aiPath = resolve(projectRoot, 'public/ai.txt');
 const entityFactsPath = resolve(projectRoot, 'public/entity-facts.json');
+const citationFactsPath = resolve(projectRoot, 'public/citation-facts.json');
 const baseUrl = 'https://www.hillcopaint.com';
 const canonicalPhoneHref = 'tel:+15122402246';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you']);
@@ -355,6 +356,7 @@ function run() {
   const llmsFullText = readRequired(llmsFullPath, 'llms-full.txt');
   const aiText = readRequired(aiPath, 'ai.txt');
   const entityFactsText = readRequired(entityFactsPath, 'entity-facts.json');
+  const citationFactsText = readRequired(citationFactsPath, 'citation-facts.json');
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
@@ -430,6 +432,10 @@ function run() {
     fail('AI manifest files must link to entity-facts.json');
   }
 
+  if (!llmsText.includes(`${baseUrl}/citation-facts.json`) || !aiText.includes(`${baseUrl}/citation-facts.json`)) {
+    fail('AI manifest files must link to citation-facts.json');
+  }
+
   for (const routePath of sitemapPaths) {
     const canonicalUrl = expectedCanonical(routePath);
     if (!llmsFullText.includes(canonicalUrl)) {
@@ -457,11 +463,44 @@ function run() {
     if (entityFacts.sitemapUrlCount !== sitemapPaths.length) {
       fail(`entity-facts.json sitemapUrlCount ${entityFacts.sitemapUrlCount} should be ${sitemapPaths.length}`);
     }
+    if (!Array.isArray(entityFacts.subjectOf) || !entityFacts.subjectOf.includes(`${baseUrl}/citation-facts.json`)) {
+      fail('entity-facts.json must reference citation-facts.json');
+    }
+    if (!Array.isArray(entityFacts.staleCitationWarnings) || entityFacts.staleCitationWarnings.length < 3) {
+      fail('entity-facts.json must include stale citation warnings for NAP cleanup');
+    }
   } catch (error) {
     fail(`entity-facts.json is invalid JSON (${error.message})`);
   }
 
-  for (const publicAsset of ['llms.txt', 'llms-full.txt', 'ai.txt', 'entity-facts.json']) {
+  try {
+    const citationFacts = JSON.parse(citationFactsText);
+    const identity = citationFacts.canonicalIdentity || {};
+
+    if (identity.name !== 'Hill Country Painting') {
+      fail('citation-facts.json must use the canonical business name');
+    }
+    if (identity.website !== baseUrl) {
+      fail(`citation-facts.json website should be ${baseUrl}`);
+    }
+    if (identity.telephone !== '(512) 240-2246') {
+      fail('citation-facts.json must include the canonical phone number');
+    }
+    if (identity.serviceAreaBusiness !== true) {
+      fail('citation-facts.json must identify Hill Country Painting as a service-area business');
+    }
+    if (!Array.isArray(identity.serviceAreas) || !identity.serviceAreas.includes('Rollingwood') || !identity.serviceAreas.includes('Bee Cave')) {
+      fail('citation-facts.json must include high-value Greater Austin service areas');
+    }
+    const warnings = JSON.stringify(citationFacts.staleCitationWarnings || []);
+    if (!warnings.includes('(512) 499-8450') || !warnings.includes('2808 Townes Lane')) {
+      fail('citation-facts.json must warn against known stale external NAP values');
+    }
+  } catch (error) {
+    fail(`citation-facts.json is invalid JSON (${error.message})`);
+  }
+
+  for (const publicAsset of ['llms.txt', 'llms-full.txt', 'ai.txt', 'entity-facts.json', 'citation-facts.json']) {
     if (!existsSync(resolve(distPath, publicAsset))) {
       fail(`${publicAsset} was not copied into the deployable dist artifact`);
     }

@@ -95,6 +95,10 @@
   Content-Type: application/json
   Cache-Control: public, max-age=3600
 
+/citation-facts.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+
 # Vary header for proper caching with different user agents
 /*
   Vary: Accept-Encoding
