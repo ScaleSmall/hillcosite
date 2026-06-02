@@ -6,7 +6,7 @@
  * Handles Supabase blog post fetching gracefully when unavailable.
  */
 
-import { writeFileSync, readFileSync } from 'fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'fs';
 import { resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -41,6 +41,45 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   'exterior-painting-in-austin-pros-hill-country-painting',
 ]);
 
+function sanitizeBlogPost(post) {
+  return {
+    id: post.id || post.slug,
+    title: post.title || post.slug,
+    slug: post.slug,
+    excerpt: post.excerpt || '',
+    featured_image: post.featured_image || null,
+    published_at: post.published_at || post.created_at || new Date().toISOString(),
+    category: post.category || 'Painting Tips',
+    author: post.author || 'Hill Country Painting',
+    updated_at: post.updated_at || null
+  };
+}
+
+function writeGeneratedBlogPosts(posts) {
+  const outputDir = resolve(__dirname, '../src/generated');
+  const outputPath = resolve(outputDir, 'blogPosts.ts');
+  const serializablePosts = posts.map(sanitizeBlogPost);
+
+  mkdirSync(outputDir, { recursive: true });
+  writeFileSync(outputPath, `export interface GeneratedBlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  featured_image: string | null;
+  published_at: string;
+  category: string;
+  author: string;
+  updated_at: string | null;
+}
+
+export const generatedBlogPosts: GeneratedBlogPost[] = ${JSON.stringify(serializablePosts, null, 2)};
+`, 'utf-8');
+
+  console.log(`Generated blog post module: ${outputPath}`);
+  console.log(`  Blog posts in module: ${serializablePosts.length}`);
+}
+
 async function fetchBlogPosts() {
   if (!supabaseUrl || !supabaseKey) {
     console.log('  Supabase credentials not found - skipping blog posts');
@@ -56,9 +95,9 @@ async function fetchBlogPosts() {
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { data, error } = await supabase
       .from('blog_posts')
-      .select('slug, updated_at')
+      .select('id, title, slug, excerpt, featured_image, published_at, category, author, updated_at, created_at')
       .eq('published', true)
-      .order('created_at', { ascending: false });
+      .order('published_at', { ascending: false });
 
     if (error) {
       console.log(`  Warning: Could not fetch blog posts: ${error.message}`);
@@ -66,13 +105,8 @@ async function fetchBlogPosts() {
     }
 
     return (data || [])
-      .filter(post => !EXCLUDED_BLOG_SLUGS.has(post.slug))
-      .map(post => ({
-        path: `/blog/${post.slug}`,
-        changefreq: 'weekly',
-        priority: '0.6',
-        lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null
-      }));
+      .filter(post => post.slug && !EXCLUDED_BLOG_SLUGS.has(post.slug))
+      .map(sanitizeBlogPost);
   } catch (err) {
     console.log(`  Warning: Error fetching blog posts: ${err.message}`);
     return [];
@@ -92,7 +126,16 @@ const generateSitemap = async () => {
     console.log(`  Warning: Blog fetch failed, continuing with static routes only`);
   }
 
-  const allRoutes = [...staticRoutes, ...blogPosts];
+  writeGeneratedBlogPosts(blogPosts);
+
+  const blogRoutes = blogPosts.map(post => ({
+    path: `/blog/${post.slug}`,
+    changefreq: 'weekly',
+    priority: '0.6',
+    lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null
+  }));
+
+  const allRoutes = [...staticRoutes, ...blogRoutes];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"

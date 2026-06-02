@@ -6,6 +6,7 @@ import CTABanner from '../components/sections/CTABanner';
 import SplitSection from '../components/sections/SplitSection';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
+import { generatedBlogPosts } from '../generated/blogPosts';
 
 interface BlogPost {
   id: string;
@@ -19,8 +20,8 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);
+  const [loading, setLoading] = useState(generatedBlogPosts.length === 0);
 
   const recentPosts = blogPosts.slice(0, 6);
   const pastPosts = blogPosts.slice(6);
