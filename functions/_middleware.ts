@@ -306,8 +306,10 @@ export async function onRequest(context: {
   const destination = REDIRECTS[cleanPath] || REDIRECTS[pathname];
   if (destination) return redirect(destination, url.origin);
 
-  for (const rule of PATTERN_REDIRECTS) {
-    if (rule.pattern.test(cleanPath)) return redirect(rule.target, url.origin);
+  if (!isSpaRoute(cleanPath)) {
+    for (const rule of PATTERN_REDIRECTS) {
+      if (rule.pattern.test(cleanPath)) return redirect(rule.target, url.origin);
+    }
   }
 
   // ── D. Trailing-slash canonicalization ────────────────────────────────
@@ -328,18 +330,33 @@ export async function onRequest(context: {
 
   // ── E. Try static asset / prerendered HTML ──────────────────────────
   const response = await next();
-  if (response.status < 400) {
+  if (response.status >= 200 && response.status < 300) {
     return response;
-  }
-
-  // Dynamic blog slugs must not become 200-status "post not found" pages.
-  if (path.startsWith('/blog/')) {
-    return redirect('/blog', url.origin);
   }
 
   // If this is a known app route and its prerendered file is missing,
   // serve the SPA shell with 200 instead of letting Cloudflare emit a 404.
   if (isSpaRoute(path)) {
+    const prerenderedPath = path === '/' ? '/index.html' : `${path}/index.html`;
+    const prerenderedUrl = new URL(prerenderedPath, url.origin);
+    const prerenderedRequest = new Request(prerenderedUrl.toString(), {
+      method: 'GET',
+      headers: request.headers,
+    });
+    const prerenderedResponse = await env.ASSETS.fetch(prerenderedRequest);
+
+    if (prerenderedResponse.status >= 200 && prerenderedResponse.status < 300) {
+      return new Response(prerenderedResponse.body, {
+        status: 200,
+        headers: prerenderedResponse.headers,
+      });
+    }
+
+    // Dynamic blog slugs must not become 200-status "post not found" pages.
+    if (path.startsWith('/blog/')) {
+      return redirect('/blog', url.origin);
+    }
+
     const indexUrl = new URL('/index.html', url.origin);
     const indexRequest = new Request(indexUrl.toString(), {
       method: 'GET',
