@@ -311,7 +311,7 @@ export async function onRequest(context: {
   // ── F. Try any remaining non-HTML static file fallback ───────────────
   const response = await next();
   const contentType = response.headers.get('content-type') || '';
-  if (response.status >= 200 && response.status < 300 && !contentType.includes('text/html')) {
+  if (response.status >= 200 && response.status < 300 && contentType && !contentType.includes('text/html')) {
     return response;
   }
 
