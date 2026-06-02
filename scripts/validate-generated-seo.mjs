@@ -569,6 +569,9 @@ function run() {
     if (!warnings.includes('(512) 499-8450') || !warnings.includes('2808 Townes Lane')) {
       fail('citation-facts.json must warn against known stale external NAP values');
     }
+    if (!warnings.includes('111 Craft Street') || !warnings.includes('1101 Satellite View') || !warnings.includes('/round-rock/') || !warnings.includes('8:00 AM-8:00 AM')) {
+      fail('citation-facts.json must warn against known stale directory address, URL, and hours variants');
+    }
   } catch (error) {
     fail(`citation-facts.json is invalid JSON (${error.message})`);
   }

@@ -690,6 +690,30 @@
       "note": "Do not use stale third-party street address data unless it matches the current Google Business Profile and public website."
     },
     {
+      "field": "address",
+      "staleValue": "111 Craft Street, Hutto, TX 78634",
+      "canonicalValue": "Service-area business serving the Greater Austin Area",
+      "note": "Directory listings may still show a historic Hutto address. Confirm and update external citations to match the current GBP/public website identity."
+    },
+    {
+      "field": "address",
+      "staleValue": "1101 Satellite View #202, Round Rock, TX 78665",
+      "canonicalValue": "Service-area business serving the Greater Austin Area",
+      "note": "Directory listings may still show a Round Rock office address and old service URL. Confirm and update external citations to match the current GBP/public website identity."
+    },
+    {
+      "field": "url",
+      "staleValue": "https://hillcopaint.com/round-rock/",
+      "canonicalValue": "https://www.hillcopaint.com/service-areas/round-rock",
+      "note": "Use the current canonical Round Rock service-area page for citations instead of old city landing page URLs."
+    },
+    {
+      "field": "hours",
+      "staleValue": "Monday-Friday 8:00 AM-5:00 PM or malformed Wednesday-Friday 8:00 AM-8:00 AM",
+      "canonicalValue": "Monday-Friday 08:00-18:00",
+      "note": "Directory hours should be reconciled against the current public website and Google Business Profile."
+    },
+    {
       "field": "name",
       "staleValue": "HillCo Paint",
       "canonicalValue": "Hill Country Painting",
