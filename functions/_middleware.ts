@@ -348,14 +348,10 @@ export async function onRequest(context: {
     return redirect('/services', url.origin);
   }
 
-  // ── E. Try static asset / prerendered HTML ──────────────────────────
-  const response = await next();
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  // If this is a known app route and its prerendered file is missing,
-  // serve the SPA shell with 200 instead of letting Cloudflare emit a 404.
+  // ── E. Known app routes → prefer exact prerendered HTML ──────────────
+  // Cloudflare's generic SPA fallback can return /index.html with 200 for
+  // deep routes. Fetch exact prerendered route files first so crawlers see
+  // route-specific content, canonicals, headings, and internal links.
   if (isSpaRoute(path)) {
     const prerenderedPath = path === '/' ? '/index.html' : `${path}/index.html`;
     const prerenderedUrl = new URL(prerenderedPath, url.origin);
@@ -377,6 +373,8 @@ export async function onRequest(context: {
       return redirect('/blog', url.origin);
     }
 
+    // If this is a known app route and its prerendered file is missing,
+    // serve the SPA shell with 200 instead of letting Cloudflare emit a 404.
     const indexUrl = new URL('/index.html', url.origin);
     const indexRequest = new Request(indexUrl.toString(), {
       method: 'GET',
@@ -389,7 +387,13 @@ export async function onRequest(context: {
     });
   }
 
-  // ── F. 404 fallback ──────────────────────────────────────────────────
+  // ── F. Try any remaining static file fallback ────────────────────────
+  const response = await next();
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  }
+
+  // ── G. 404 fallback ──────────────────────────────────────────────────
   const notFoundUrl = new URL('/404.html', url.origin);
   const notFoundRequest = new Request(notFoundUrl.toString(), {
     method: 'GET',
