@@ -160,6 +160,25 @@ async function getRoutesToPrerender() {
   });
 }
 
+async function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function writeFileWithRetry(filePath, content, attempts = 5) {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      await fs.writeFile(filePath, content, 'utf-8');
+      return;
+    } catch (error) {
+      if (!['EBUSY', 'EPERM', 'EACCES'].includes(error.code) || attempt === attempts) {
+        throw error;
+      }
+
+      await wait(attempt * 250);
+    }
+  }
+}
+
 async function prerender() {
   const routes = await getRoutesToPrerender();
 
@@ -209,7 +228,7 @@ async function prerender() {
           : path.join(distPath, route.slice(1), 'index.html');
 
         await fs.mkdir(path.dirname(outputPath), { recursive: true });
-        await fs.writeFile(outputPath, html, 'utf-8');
+        await writeFileWithRetry(outputPath, html);
 
         console.log(`  ✓ Saved to ${outputPath}`);
       } catch (error) {

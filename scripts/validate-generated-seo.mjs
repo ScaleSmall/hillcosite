@@ -8,6 +8,7 @@ const __dirname = dirname(__filename);
 const projectRoot = resolve(__dirname, '..');
 const distPath = resolve(projectRoot, 'dist');
 const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
+const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
@@ -291,7 +292,12 @@ function run() {
   console.log('\n=== Generated SEO Validation ===\n');
 
   const sitemapXml = readRequired(sitemapPath, 'sitemap.xml');
+  const distSitemapXml = readRequired(distSitemapPath, 'dist/sitemap.xml');
   const robotsText = readRequired(robotsPath, 'robots.txt');
+
+  if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
+    fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
+  }
 
   if (!existsSync(distPath)) {
     fail(`dist is missing at ${distPath}`);

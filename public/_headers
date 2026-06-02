@@ -73,7 +73,7 @@
 # Sitemap and robots
 /sitemap.xml
   Content-Type: application/xml
-  Cache-Control: public, max-age=3600
+  Cache-Control: public, max-age=300, must-revalidate
 
 /robots.txt
   Content-Type: text/plain
