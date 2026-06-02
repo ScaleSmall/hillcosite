@@ -24,6 +24,9 @@ const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', 
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
 const allowedNonSitemapLinks = new Set(['/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
 const internalRedirectTargets = new Map([
+  ['/project', '/gallery'],
+  ['/projects', '/gallery'],
+  ['/service/custom-home-painting-round-rock', '/services'],
   ['/services/wood-staining', '/services/exterior-painting'],
   ['/services/masonry-priming', '/services/exterior-painting'],
   ['/services/priming-and-prep', '/services/exterior-painting'],
@@ -33,6 +36,18 @@ const internalRedirectTargets = new Map([
   ['/services/masonry-coatings', '/services/exterior-painting'],
   ['/services/pressure-washing', '/services/exterior-painting'],
   ['/services/lead-safe-painting', '/services/exterior-painting'],
+]);
+const requiredLegacyRedirects = new Map([
+  ['/austin', '/service-areas/austin'],
+  ['/exterior-painting', '/services/exterior-painting'],
+  ['/projects', '/gallery'],
+  ['/project', '/gallery'],
+  ['/service-area', '/service-areas'],
+  ['/service/living-room-painting-round-rock', '/services/interior-painting'],
+  ['/service/residential-deck-painting-round-rock', '/services/exterior-painting'],
+  ['/service/residential-foyer-painting-round-rock', '/services/interior-painting'],
+  ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
+  ['/service/custom-home-painting-round-rock', '/services'],
 ]);
 const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
 const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
@@ -170,14 +185,17 @@ function extractSitemapPaths(xml) {
     .map(match => match[1] || '/');
 }
 
-function extractMiddlewareRedirectPaths(source) {
+function extractMiddlewareRedirects(source) {
   const blockMatch = source.match(/const REDIRECTS[\s\S]*?=\s*{([\s\S]*?)\n};/);
   if (!blockMatch) {
     return [];
   }
 
-  return [...blockMatch[1].matchAll(/^\s*['"]([^'"]+)['"]\s*:/gm)]
-    .map(match => match[1]);
+  return [...blockMatch[1].matchAll(/^\s*['"]([^'"]+)['"]\s*:\s*['"]([^'"]+)['"]\s*,?/gm)]
+    .map(match => ({
+      source: match[1],
+      target: match[2]
+    }));
 }
 
 function expectedCanonical(routePath) {
@@ -385,7 +403,8 @@ function run() {
   const generatedSpaRouteData = extractGeneratedSpaRoutes(functionRoutesSource);
   const generatedSpaRoutes = generatedSpaRouteData.routes;
   const generatedSpaRouteSet = new Set(generatedSpaRoutes);
-  const middlewareRedirectPaths = extractMiddlewareRedirectPaths(middlewareSource);
+  const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
+  const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
   const htmlFiles = walkFiles(distPath, filePath => filePath.endsWith('.html'));
   const cssFiles = walkFiles(distPath, filePath => filePath.endsWith('.css'));
   const pages = new Map(htmlFiles.map(filePath => [
@@ -538,7 +557,25 @@ function run() {
     }
   }
 
-  for (const routePath of middlewareRedirectPaths) {
+  for (const [legacyPath, expectedTarget] of requiredLegacyRedirects) {
+    const actualTarget = middlewareRedirectMap.get(legacyPath);
+    if (actualTarget !== expectedTarget) {
+      fail(`${legacyPath}: expected legacy redirect to ${expectedTarget}, found ${actualTarget || '(missing)'}`);
+    }
+  }
+
+  for (const { source, target } of middlewareRedirects) {
+    if (!target) {
+      fail(`${source}: middleware redirect target could not be parsed`);
+      continue;
+    }
+
+    if (!routeExists(target, sitemapSet) && !allowedNonSitemapLinks.has(target)) {
+      fail(`${source}: middleware redirect target ${target} is not a generated route`);
+    }
+  }
+
+  for (const { source: routePath } of middlewareRedirects) {
     if (sitemapSet.has(routePath)) {
       fail(`${routePath}: sitemap URL is also listed in middleware redirects`);
     }

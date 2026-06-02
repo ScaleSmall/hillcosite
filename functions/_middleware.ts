@@ -51,6 +51,7 @@ const REDIRECTS: Record<string, string> = {
 
   // -- Old /service/* singular CMS paths --
   '/service/living-room-painting':                        '/services/interior-painting',
+  '/service/living-room-painting-round-rock':             '/services/interior-painting',
   '/service/office-painting-round-rock':                  '/services/commercial',
   '/service/commercial-kitchen-painting-round-rock':      '/services/commercial',
   '/service/industrial-facility-painting-round-rock':     '/services/commercial',
@@ -68,6 +69,13 @@ const REDIRECTS: Record<string, string> = {
   '/service/garage-painting-round-rock':                  '/services',
   '/service/mobile-home-painting-round-rock':             '/services',
   '/service/custom-home-painting':                        '/services',
+  '/service/custom-home-painting-round-rock':             '/services',
+  '/service/residential-foyer-painting-round-rock':       '/services/interior-painting',
+  '/service/residential-hallway-painting-round-rock':     '/services/interior-painting',
+
+  // -- Old gallery/project URLs --
+  '/project':                                             '/gallery',
+  '/projects':                                            '/gallery',
 
   // -- Old service page patterns (no /services/ prefix) --
   '/interior-painting':                          '/services/interior-painting',
@@ -149,7 +157,7 @@ const PATTERN_REDIRECTS: Array<{ pattern: RegExp; target: string }> = [
   { pattern: /^\/commercial-exterior-/i, target: '/services/commercial' },
   { pattern: /^\/industrial-/i, target: '/services/commercial' },
   { pattern: /^\/hotel-/i, target: '/services/commercial' },
-  { pattern: /^\/service\/.*(interior|living-room|bedroom|nursery|kitchen).*painting/i, target: '/services/interior-painting' },
+  { pattern: /^\/service\/.*(interior|living-room|bedroom|nursery|kitchen|foyer|hallway|dining-room|bathroom|ceiling|trim|door).*painting/i, target: '/services/interior-painting' },
   { pattern: /^\/service\/.*(exterior|deck|fence|porch|stucco).*painting/i, target: '/services/exterior-painting' },
   { pattern: /^\/service\/.*cabinet/i, target: '/services/cabinet-refinishing' },
   { pattern: /^\/service\/.*commercial/i, target: '/services/commercial' },
