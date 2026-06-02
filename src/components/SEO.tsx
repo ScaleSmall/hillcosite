@@ -432,14 +432,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   // CollectionPage schema for index pages (only if canonical is provided)
   const collectionSchema = pageType === 'collection' && canonicalStr ? {
     '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
+    '@type': ['CollectionPage', 'WebPage'],
     '@id': `${canonicalStr}#webpage`,
     url: canonicalStr,
     name: optimizedTitle,
     description: optimizedDescription,
-    mainEntity: service && canonicalStr ? {
-      '@id': `${canonicalStr}#service`
-    } : undefined,
     isPartOf: {
       '@id': `${baseUrl}/#website`
     },
@@ -449,14 +446,18 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   } : null;
 
   // WebPage schema for standard pages (only if canonical is provided)
-  const webpageSchema = canonicalStr && ((pageType !== 'collection' && pageType !== 'website' && canonical !== '/') ||
-                        (pageType === 'service' || pageType === 'article')) ? {
+  const webpageSchema = canonicalStr && pageType !== 'collection' ? {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     '@id': `${canonicalStr}#webpage`,
     url: canonicalStr,
     name: optimizedTitle,
     description: optimizedDescription,
+    mainEntity: service && canonicalStr ? {
+      '@id': `${canonicalStr}#service`
+    } : pageType === 'website' ? {
+      '@id': `${baseUrl}/#localbusiness`
+    } : undefined,
     isPartOf: {
       '@id': `${baseUrl}/#website`
     },

@@ -118,6 +118,39 @@ function attrs(tag) {
   return result;
 }
 
+function jsonLdItems(html, routePath) {
+  const items = [];
+
+  for (const [index, match] of [...html.matchAll(/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)].entries()) {
+    const raw = match[1]
+      .replace(/&quot;/g, '"')
+      .replace(/&amp;/g, '&')
+      .replace(/&#x27;/g, "'");
+
+    try {
+      const parsed = JSON.parse(raw);
+      const roots = Array.isArray(parsed) ? parsed : [parsed];
+
+      for (const root of roots) {
+        if (Array.isArray(root?.['@graph'])) {
+          items.push(...root['@graph']);
+        } else {
+          items.push(root);
+        }
+      }
+    } catch (error) {
+      fail(`${routePath}: invalid JSON-LD block ${index + 1}: ${error.message}`);
+    }
+  }
+
+  return items;
+}
+
+function schemaTypeIncludes(item, typeName) {
+  const schemaType = item?.['@type'];
+  return Array.isArray(schemaType) ? schemaType.includes(typeName) : schemaType === typeName;
+}
+
 function stripQueryAndHash(value) {
   return value.split('#')[0].split('?')[0];
 }
@@ -591,6 +624,7 @@ function run() {
     const descriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'description');
     const ogDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.property || '').toLowerCase() === 'og:description');
     const twitterDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'twitter:description');
+    const schemaItems = jsonLdItems(html, routePath);
 
     if (isSitemapPage) {
       if (html.includes('HillCo Paint')) {
@@ -674,6 +708,10 @@ function run() {
         fail(`${routePath}: prerendered sitemap page is thin (${visibleWordCount} visible words)`);
       }
 
+      if (!schemaItems.some(item => schemaTypeIncludes(item, 'WebPage'))) {
+        fail(`${routePath}: sitemap page is missing WebPage structured data`);
+      }
+
       if (routePath === '/') {
         const requiredHomepageEntitySignals = [
           '#localbusiness',
@@ -712,6 +750,14 @@ function run() {
           if (!html.includes(signal)) {
             fail(`${routePath}: service page is missing required structured-data signal ${signal}`);
           }
+        }
+
+        const expectedServiceId = `${expectedCanonical(routePath)}#service`;
+        const expectedWebPageId = `${expectedCanonical(routePath)}#webpage`;
+        const serviceWebPage = schemaItems.find(item => schemaTypeIncludes(item, 'WebPage') && item?.['@id'] === expectedWebPageId);
+
+        if (serviceWebPage?.mainEntity?.['@id'] !== expectedServiceId) {
+          fail(`${routePath}: WebPage schema mainEntity should be ${expectedServiceId}`);
         }
       }
     } else if (!allowedInternalNoindexPaths.has(routePath) && !/noindex/i.test(robotsContent)) {
