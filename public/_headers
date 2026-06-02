@@ -83,8 +83,16 @@
   Content-Type: text/plain
   Cache-Control: public, max-age=3600
 
+/llms-full.txt
+  Content-Type: text/plain
+  Cache-Control: public, max-age=3600
+
 /ai.txt
   Content-Type: text/plain
+  Cache-Control: public, max-age=3600
+
+/entity-facts.json
+  Content-Type: application/json
   Cache-Control: public, max-age=3600
 
 # Vary header for proper caching with different user agents

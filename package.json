@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/clean-dist.mjs && node scripts/generate-sitemap.mjs && vite build --emptyOutDir false && node scripts/sync-sitemap-to-dist.mjs && node scripts/enhance-seo.mjs && node scripts/prerender.mjs && node scripts/validate-canonicals.mjs && node scripts/validate-redirects.mjs && node scripts/validate-generated-seo.mjs",
+    "build": "node scripts/clean-dist.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-ai-manifests.mjs && vite build --emptyOutDir false && node scripts/sync-sitemap-to-dist.mjs && node scripts/enhance-seo.mjs && node scripts/prerender.mjs && node scripts/validate-canonicals.mjs && node scripts/validate-redirects.mjs && node scripts/validate-generated-seo.mjs",
     "build:vite": "vite build",
     "prerender": "node scripts/prerender.mjs",
-    "sitemap": "node scripts/generate-sitemap.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs && node scripts/generate-ai-manifests.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "brand:guard": "node scripts/brand-guard.mjs",

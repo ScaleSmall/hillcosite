@@ -12,6 +12,10 @@ const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
+const llmsPath = resolve(projectRoot, 'public/llms.txt');
+const llmsFullPath = resolve(projectRoot, 'public/llms-full.txt');
+const aiPath = resolve(projectRoot, 'public/ai.txt');
+const entityFactsPath = resolve(projectRoot, 'public/entity-facts.json');
 const baseUrl = 'https://www.hillcopaint.com';
 const canonicalPhoneHref = 'tel:+15122402246';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you']);
@@ -335,6 +339,10 @@ function run() {
   const functionSitemapSource = readRequired(functionSitemapPath, 'functions/generatedSitemap.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const robotsText = readRequired(robotsPath, 'robots.txt');
+  const llmsText = readRequired(llmsPath, 'llms.txt');
+  const llmsFullText = readRequired(llmsFullPath, 'llms-full.txt');
+  const aiText = readRequired(aiPath, 'ai.txt');
+  const entityFactsText = readRequired(entityFactsPath, 'entity-facts.json');
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
@@ -370,6 +378,45 @@ function run() {
   const inbound = new Map(sitemapPaths.map(routePath => [routePath, 0]));
   const nonSitemapInternalLinks = new Map();
   const disallowRules = extractDisallowRules(robotsText);
+
+  if (!llmsText.includes(`${baseUrl}/llms-full.txt`)) {
+    fail('llms.txt must link to the full AI route index');
+  }
+
+  if (!llmsText.includes(`${baseUrl}/entity-facts.json`) || !aiText.includes(`${baseUrl}/entity-facts.json`)) {
+    fail('AI manifest files must link to entity-facts.json');
+  }
+
+  for (const routePath of sitemapPaths) {
+    const canonicalUrl = expectedCanonical(routePath);
+    if (!llmsFullText.includes(canonicalUrl)) {
+      fail(`llms-full.txt is missing sitemap URL ${canonicalUrl}`);
+    }
+  }
+
+  try {
+    const entityFacts = JSON.parse(entityFactsText);
+    if (entityFacts.name !== 'Hill Country Painting') {
+      fail('entity-facts.json must use the canonical business name');
+    }
+    if (entityFacts.url !== baseUrl) {
+      fail(`entity-facts.json URL should be ${baseUrl}`);
+    }
+    if (entityFacts.telephone !== '(512) 240-2246') {
+      fail('entity-facts.json must include the canonical phone number');
+    }
+    if (entityFacts.sitemapUrlCount !== sitemapPaths.length) {
+      fail(`entity-facts.json sitemapUrlCount ${entityFacts.sitemapUrlCount} should be ${sitemapPaths.length}`);
+    }
+  } catch (error) {
+    fail(`entity-facts.json is invalid JSON (${error.message})`);
+  }
+
+  for (const publicAsset of ['llms.txt', 'llms-full.txt', 'ai.txt', 'entity-facts.json']) {
+    if (!existsSync(resolve(distPath, publicAsset))) {
+      fail(`${publicAsset} was not copied into the deployable dist artifact`);
+    }
+  }
 
   for (const routePath of sitemapPaths) {
     if (!pages.has(routePath)) {
