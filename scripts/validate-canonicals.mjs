@@ -37,14 +37,17 @@ function validateCanonicals() {
     totalFiles++;
     const content = readFileSync(filePath, 'utf-8');
 
-    // Match all canonical link tags
-    const canonicalRegex = /<link\s+rel=["']canonical["']\s+href=["']([^"']+)["']\s*\/?>/gi;
+    // Match canonical links regardless of attribute order or extra attributes.
+    const canonicalRegex = /<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi;
     const matches = [...content.matchAll(canonicalRegex)];
 
     if (matches.length > 1) {
       hasErrors = true;
       const relativePath = filePath.replace(distPath, '');
-      const urls = matches.map(m => m[1]);
+      const urls = matches.map(m => {
+        const hrefMatch = m[0].match(/\bhref=["']([^"']+)["']/i);
+        return hrefMatch ? hrefMatch[1] : '(missing href)';
+      });
 
       filesWithDuplicates.push({
         file: relativePath,

@@ -76,7 +76,7 @@ const CedarPark = () => {
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithGeo
-            src="/austin-professional-house-painting-hero.jpg"
+            src="/hill-country-painting-austin-homepage-hero.jpg"
             alt="Professional home painting in Cedar Park Texas"
             className="w-full h-full object-cover"
             location="Cedar Park, TX"

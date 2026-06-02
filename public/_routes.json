@@ -1,19 +1,26 @@
 {
   "version": 1,
   "include": [
-    "/assets/*",
-    "/*.html",
-    "/",
-    "/sitemap.xml",
-    "/robots.txt",
-    "/site.webmanifest",
-    "/favicon.ico",
-    "/favicon-*.png",
-    "/apple-touch-icon.png",
-    "/_headers",
-    "/_redirects"
+    "/*"
   ],
   "exclude": [
+    "/assets/*",
+    "/*.js",
+    "/*.mjs",
+    "/*.css",
+    "/*.map",
+    "/*.ico",
+    "/*.png",
+    "/*.jpg",
+    "/*.jpeg",
+    "/*.gif",
+    "/*.svg",
+    "/*.webp",
+    "/*.avif",
+    "/*.woff",
+    "/*.woff2",
+    "/*.ttf",
+    "/*.webmanifest",
     "/functions/*",
     "/api/*"
   ]

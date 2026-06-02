@@ -90,7 +90,7 @@ const config: ServiceLocationConfig = {
 ]
   },
   images: {
-    hero: '/austin-professional-house-painting-hero.jpg',
+    hero: '/hill-country-painting-austin-homepage-hero.jpg',
     heroAlt: 'Cabinet Refinishing in North Austin Texas',
     secondary: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
     secondaryAlt: 'North Austin cabinet refinishing excellence'

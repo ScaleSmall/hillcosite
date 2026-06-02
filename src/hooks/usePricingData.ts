@@ -60,15 +60,21 @@ export function usePricingData(guide: string = 'painting-costs') {
       }
 
       try {
-        const { url } = getSupabaseConfig();
-        if (!url) {
-          setError('Supabase not configured');
+        const { url, key } = getSupabaseConfig();
+        const pricingApiEnabled = import.meta.env.VITE_ENABLE_PRICING_API === 'true';
+
+        if (!pricingApiEnabled || !url || !key) {
           setLoading(false);
           return;
         }
 
         const apiUrl = `${url}/functions/v1/get-pricing-data?guide=${guide}`;
-        const response = await fetch(apiUrl);
+        const response = await fetch(apiUrl, {
+          headers: {
+            Authorization: `Bearer ${key}`,
+            apikey: key
+          }
+        });
 
         if (!response.ok) {
           throw new Error('Failed to fetch pricing data');

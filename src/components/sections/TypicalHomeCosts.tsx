@@ -56,7 +56,7 @@ const TypicalHomeCosts = () => {
           "serviceType": "Interior Painting",
           "name": "Interior Painting - 1,500 sq ft Home Austin",
           "description": "Professional interior painting service for 1,500 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg",
+          "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
           "provider": {
             "@type": "Organization",
             "name": "Hill Country Painting",
@@ -89,7 +89,7 @@ const TypicalHomeCosts = () => {
           "serviceType": "Exterior Painting",
           "name": "Exterior Painting - 1,500 sq ft Home Austin",
           "description": "Professional exterior painting service for 1,500 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg",
+          "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
           "provider": {
             "@type": "Organization",
             "name": "Hill Country Painting",
@@ -122,7 +122,7 @@ const TypicalHomeCosts = () => {
           "serviceType": "Interior Painting",
           "name": "Interior Painting - 2,200 sq ft Home Austin",
           "description": "Professional interior painting service for 2,200 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg",
+          "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
           "provider": {
             "@type": "Organization",
             "name": "Hill Country Painting",
@@ -155,7 +155,7 @@ const TypicalHomeCosts = () => {
           "serviceType": "Exterior Painting",
           "name": "Exterior Painting - 2,200 sq ft Home Austin",
           "description": "Professional exterior painting service for 2,200 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg",
+          "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
           "provider": {
             "@type": "Organization",
             "name": "Hill Country Painting",
@@ -188,7 +188,7 @@ const TypicalHomeCosts = () => {
           "serviceType": "Interior Painting",
           "name": "Interior Painting - 3,000+ sq ft Home Austin",
           "description": "Professional interior painting service for 3,000+ sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg",
+          "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
           "provider": {
             "@type": "Organization",
             "name": "Hill Country Painting",
@@ -221,7 +221,7 @@ const TypicalHomeCosts = () => {
           "serviceType": "Exterior Painting",
           "name": "Exterior Painting - 3,000+ sq ft Home Austin",
           "description": "Professional exterior painting service for 3,000+ sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg",
+          "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
           "provider": {
             "@type": "Organization",
             "name": "Hill Country Painting",

@@ -95,7 +95,6 @@ export const coreStaticRoutes = [
   { path: '/terms', changefreq: 'yearly', priority: '0.3' },
   { path: '/do-not-sell', changefreq: 'yearly', priority: '0.3' },
   { path: '/eula', changefreq: 'yearly', priority: '0.2' },
-  { path: '/pre-approval', changefreq: 'monthly', priority: '0.5' },
 ];
 
 export function getStaticRoutes() {

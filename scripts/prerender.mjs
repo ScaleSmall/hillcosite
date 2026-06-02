@@ -12,28 +12,65 @@ const routes = getAllRoutePaths();
 const distPath = path.resolve(__dirname, '../dist');
 const port = 4173;
 
+function escapeAttribute(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function withSelfCanonical(html, route) {
+  const canonicalUrl = route === '/'
+    ? 'https://www.hillcopaint.com/'
+    : `https://www.hillcopaint.com${route}`;
+  const canonicalTag = `<link rel="canonical" href="${escapeAttribute(canonicalUrl)}">`;
+
+  const withoutCanonicals = html.replace(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>\s*/gi, '');
+  return withoutCanonicals.replace(/<\/head>/i, `${canonicalTag}\n</head>`);
+}
+
 async function startPreview() {
   const { spawn } = await import('child_process');
+  const viteBin = path.resolve(__dirname, '../node_modules/vite/bin/vite.js');
+  const preview = spawn(process.execPath, [viteBin, 'preview', '--port', String(port), '--strictPort'], {
+    stdio: 'pipe',
+    shell: false
+  });
+
+  preview.stdout.on('data', (data) => {
+    process.stdout.write(data.toString());
+  });
+
+  preview.stderr.on('data', (data) => {
+    console.error(`Preview error: ${data}`);
+  });
+
   return new Promise((resolve, reject) => {
-    const preview = spawn('npx', ['vite', 'preview', '--port', String(port), '--strictPort'], {
-      stdio: 'pipe',
-      shell: true
-    });
-
-    preview.stdout.on('data', (data) => {
-      const output = data.toString();
-      if (output.includes('Local:') || output.includes('localhost')) {
-        setTimeout(() => resolve(preview), 2000);
-      }
-    });
-
-    preview.stderr.on('data', (data) => {
-      console.error(`Preview error: ${data}`);
-    });
-
     preview.on('error', reject);
 
-    setTimeout(() => reject(new Error('Preview server timeout')), 30000);
+    const startedAt = Date.now();
+    const check = async () => {
+      try {
+        const response = await fetch(`http://127.0.0.1:${port}/`);
+        if (response.ok) {
+          setTimeout(() => resolve(preview), 500);
+          return;
+        }
+      } catch {
+        // Keep polling until timeout.
+      }
+
+      if (Date.now() - startedAt > 30000) {
+        preview.kill();
+        reject(new Error('Preview server timeout'));
+        return;
+      }
+
+      setTimeout(check, 500);
+    };
+
+    check();
   });
 }
 
@@ -57,6 +94,7 @@ async function prerender() {
     console.log('Browser launched\n');
 
     const page = await browser.newPage();
+    const failedRoutes = [];
 
     for (const route of routes) {
       const url = `http://localhost:${port}${route}`;
@@ -64,19 +102,19 @@ async function prerender() {
 
       try {
         await page.goto(url, {
-          waitUntil: 'networkidle0',
+          waitUntil: 'domcontentloaded',
           timeout: 30000
         });
 
         await page.waitForFunction(() => {
-          return document.querySelector('h1') !== null;
-        }, { timeout: 10000 }).catch(() => {
+          return document.body && document.body.textContent.trim().length > 500;
+        }, { timeout: 5000 });
+
+        const html = withSelfCanonical(await page.content(), route);
+
+        if (!/<h1[\s>]/i.test(html)) {
           console.log(`  Warning: No H1 found for ${route}, continuing...`);
-        });
-
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        const html = await page.content();
+        }
 
         const outputPath = route === '/'
           ? path.join(distPath, 'index.html')
@@ -88,13 +126,20 @@ async function prerender() {
         console.log(`  ✓ Saved to ${outputPath}`);
       } catch (error) {
         console.error(`  ✗ Failed to prerender ${route}:`, error.message);
+        failedRoutes.push({ route, error: error.message });
       }
+    }
+
+    if (failedRoutes.length > 0) {
+      console.error(`\n✗ ${failedRoutes.length} routes failed to prerender:`);
+      failedRoutes.forEach(({ route, error }) => console.error(`  - ${route}: ${error}`));
+      throw new Error('Prerender failed for one or more routes');
     }
 
     console.log('\n✓ Prerendering complete!');
   } catch (error) {
     console.error('Prerendering failed:', error);
-    process.exit(1);
+    process.exitCode = 1;
   } finally {
     if (browser) {
       await browser.close();

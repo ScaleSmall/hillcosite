@@ -46,6 +46,7 @@ interface SEOProps {
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating }: SEOProps) => {
   const hasRefParam = useRefParamGuard();
   const baseUrl = 'https://www.hillcopaint.com';
+  const defaultSocialImage = `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`;
 
   // Build canonical from prop; if not supplied, derive from current pathname (no search/hash).
   const resolvedCanonical = canonical ?? (
@@ -333,7 +334,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       <meta property="og:type" content={pageType === 'article' ? 'article' : 'website'} />
       {canonicalStr && <meta property="og:url" content={canonicalStr} />}
       <meta property="og:site_name" content="Hill Country Painting" />
-      <meta property="og:image" content={`${baseUrl}/og-image.jpg`} />
+      <meta property="og:image" content={defaultSocialImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content="Hill Country Painting - Professional Painting Services in Austin, TX" />
@@ -343,7 +344,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={optimizedTitle} />
       <meta name="twitter:description" content={optimizedDescription} />
-      <meta name="twitter:image" content={`${baseUrl}/og-image.jpg`} />
+      <meta name="twitter:image" content={defaultSocialImage} />
       <meta name="twitter:image:alt" content="Hill Country Painting - Professional Painting Services in Austin, TX" />
       
       {/* Additional Meta Tags */}

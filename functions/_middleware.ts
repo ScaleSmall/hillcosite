@@ -85,6 +85,8 @@ const REDIRECTS: Record<string, string> = {
   '/commercial-building-painting-round-rock':    '/services/commercial',
   '/commercial-painting-round-rock':             '/services/commercial',
   '/commercial-interior-painting-round-rock':    '/services/commercial',
+  '/commercial-exterior-painting-round-rock':    '/services/commercial',
+  '/commercial-concrete-painting-round-rock':    '/services/commercial',
   '/house-painting-austin':                      '/services',
   '/house-painting-round-rock':                  '/services',
   '/painting-contractor-austin':                 '/services',
@@ -133,6 +135,25 @@ const REDIRECTS: Record<string, string> = {
   '/pre-approval/':               '/pre-approval',
   '/search/':                     '/search',
 };
+
+const PATTERN_REDIRECTS: Array<{ pattern: RegExp; target: string }> = [
+  { pattern: /^\/residential-interior-/i, target: '/services/interior-painting' },
+  { pattern: /^\/residential-exterior-/i, target: '/services/exterior-painting' },
+  { pattern: /^\/residential-cabinet-/i, target: '/services/cabinet-refinishing' },
+  { pattern: /^\/commercial-.*painting/i, target: '/services/commercial' },
+  { pattern: /^\/commercial-interior-/i, target: '/services/commercial' },
+  { pattern: /^\/commercial-exterior-/i, target: '/services/commercial' },
+  { pattern: /^\/industrial-/i, target: '/services/commercial' },
+  { pattern: /^\/hotel-/i, target: '/services/commercial' },
+  { pattern: /^\/service\/.*(interior|living-room|bedroom|nursery|kitchen).*painting/i, target: '/services/interior-painting' },
+  { pattern: /^\/service\/.*(exterior|deck|fence|porch|stucco).*painting/i, target: '/services/exterior-painting' },
+  { pattern: /^\/service\/.*cabinet/i, target: '/services/cabinet-refinishing' },
+  { pattern: /^\/service\/.*commercial/i, target: '/services/commercial' },
+];
+
+function redirect(location: string, origin: string): Response {
+  return Response.redirect(new URL(location, origin).toString(), 301);
+}
 
 // ---------------------------------------------------------------------------
 // 3. ROUTE TABLE
@@ -260,51 +281,78 @@ export async function onRequest(context: {
   const { request, next, env } = context;
   const url = new URL(request.url);
   const pathname = url.pathname;
+  const forwardedProto = request.headers.get('x-forwarded-proto') || url.protocol.replace(':', '');
 
-  // ── A. Static assets → pass through immediately ──────────────────────
-  if (isStaticAsset(pathname)) {
-    return next();
-  }
-
-  // ── B. Trailing-slash canonicalization ────────────────────────────────
-  //    /about/ → 301 → /about   (but not / itself)
-  if (pathname.endsWith('/') && pathname !== '/') {
-    const clean = pathname.slice(0, -1);
-    url.pathname = clean;
+  // ── A. Host / protocol canonicalization ──────────────────────────────
+  if (url.hostname.toLowerCase() !== 'www.hillcopaint.com' || forwardedProto !== 'https') {
+    url.protocol = 'https';
+    url.hostname = 'www.hillcopaint.com';
     return new Response(null, {
       status: 301,
       headers: { Location: url.toString() },
     });
   }
 
-  // From here on, pathname has no trailing slash (except '/').
-  const path = pathname;
+  // ── B. Static assets → pass through immediately ──────────────────────
+  if (isStaticAsset(pathname)) {
+    return next();
+  }
+
+  const cleanPath = pathname.endsWith('/') && pathname !== '/'
+    ? pathname.replace(/\/+$/, '')
+    : pathname;
 
   // ── C. Legacy 301 redirects ──────────────────────────────────────────
-  const destination = REDIRECTS[path];
-  if (destination) {
-    const destUrl = new URL(destination, url.origin);
-    return Response.redirect(destUrl.toString(), 301);
+  const destination = REDIRECTS[cleanPath] || REDIRECTS[pathname];
+  if (destination) return redirect(destination, url.origin);
+
+  for (const rule of PATTERN_REDIRECTS) {
+    if (rule.pattern.test(cleanPath)) return redirect(rule.target, url.origin);
   }
+
+  // ── D. Trailing-slash canonicalization ────────────────────────────────
+  if (cleanPath !== pathname) {
+    url.pathname = cleanPath;
+    return new Response(null, {
+      status: 301,
+      headers: { Location: url.toString() },
+    });
+  }
+
+  const path = cleanPath;
 
   // /service/* catch-all — any unmatched /service/ path → /services
   if (path.startsWith('/service/')) {
-    return Response.redirect(new URL('/services', url.origin).toString(), 301);
+    return redirect('/services', url.origin);
   }
 
-  // ── D. Try static asset / prerendered HTML ──────────────────────────
+  // ── E. Try static asset / prerendered HTML ──────────────────────────
   const response = await next();
   if (response.status < 400) {
     return response;
   }
 
-  // If this is a known app route, let Pages/static hosting resolve the
-  // matching prerendered HTML instead of forcing /index.html.
-  if (isSpaRoute(path)) {
-    return response;
+  // Dynamic blog slugs must not become 200-status "post not found" pages.
+  if (path.startsWith('/blog/')) {
+    return redirect('/blog', url.origin);
   }
 
-  // ── E. 404 fallback ──────────────────────────────────────────────────
+  // If this is a known app route and its prerendered file is missing,
+  // serve the SPA shell with 200 instead of letting Cloudflare emit a 404.
+  if (isSpaRoute(path)) {
+    const indexUrl = new URL('/index.html', url.origin);
+    const indexRequest = new Request(indexUrl.toString(), {
+      method: 'GET',
+      headers: request.headers,
+    });
+    const indexResponse = await env.ASSETS.fetch(indexRequest);
+    return new Response(indexResponse.body, {
+      status: 200,
+      headers: indexResponse.headers,
+    });
+  }
+
+  // ── F. 404 fallback ──────────────────────────────────────────────────
   const notFoundUrl = new URL('/404.html', url.origin);
   const notFoundRequest = new Request(notFoundUrl.toString(), {
     method: 'GET',
@@ -313,6 +361,9 @@ export async function onRequest(context: {
   const notFoundResponse = await env.ASSETS.fetch(notFoundRequest);
   return new Response(notFoundResponse.body, {
     status: 404,
-    headers: notFoundResponse.headers,
+    headers: new Headers({
+      ...Object.fromEntries(notFoundResponse.headers.entries()),
+      'X-Robots-Tag': 'noindex, nofollow',
+    }),
   });
 }

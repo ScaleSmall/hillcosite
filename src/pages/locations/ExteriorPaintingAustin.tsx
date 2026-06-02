@@ -46,9 +46,9 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/austin-professional-house-painting-hero.jpg',
+    hero: '/hill-country-painting-austin-homepage-hero.jpg',
     heroAlt: 'Exterior painting in Austin Texas',
-    secondary: '/exterior-house-painting-tarrytown-austin.jpg',
+    secondary: '/classic-home-exterior.jpg',
     secondaryAlt: 'Austin exterior painting excellence'
   }
 };

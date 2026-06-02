@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/austin-professional-house-painting-hero.jpg',
+    hero: '/hill-country-painting-austin-homepage-hero.jpg',
     heroAlt: 'Cabinet refinishing in Northwest Hills Austin Texas',
     processImage: '/hill-country-home-exterior-painting.jpg'
   }

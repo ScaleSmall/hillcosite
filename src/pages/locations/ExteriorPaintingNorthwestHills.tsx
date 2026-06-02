@@ -48,7 +48,7 @@ const config: ServiceLocationConfig = {
   images: {
     hero: '/hill-country-home-exterior-painting.jpg',
     heroAlt: 'Exterior painting in Northwest Hills Austin Texas',
-    processImage: '/austin-professional-house-painting-hero.jpg'
+    processImage: '/hill-country-painting-austin-homepage-hero.jpg'
   }
 };
 

@@ -66,7 +66,7 @@ const PaintingCostsTable = () => {
                 "@type": "Service",
                 "name": "Interior House Painting - Austin TX",
                 "description": "Professional interior painting services for Austin homes",
-                "image": "https://www.hillcopaint.com/interior-living-room-painting-central-austin.jpg"
+                "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg"
               },
               "price": String(interiorPrice?.min || 2500),
               "priceCurrency": "USD",
@@ -85,7 +85,7 @@ const PaintingCostsTable = () => {
                 "@type": "Service",
                 "name": "Exterior House Painting - Austin TX",
                 "description": "Professional exterior painting services for Austin homes",
-                "image": "https://www.hillcopaint.com/exterior-house-painting-tarrytown-austin.jpg"
+                "image": "https://www.hillcopaint.com/classic-home-exterior.jpg"
               },
               "price": String(exteriorPrice?.min || 4000),
               "priceCurrency": "USD",
