@@ -41,6 +41,24 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   'exterior-painting-in-austin-pros-hill-country-painting',
 ]);
 
+function readGeneratedBlogPostsFallback() {
+  const fallbackPath = resolve(__dirname, '../src/generated/blogPosts.ts');
+
+  try {
+    const source = readFileSync(fallbackPath, 'utf-8');
+    const match = source.match(/export const generatedBlogPosts: GeneratedBlogPost\[\] = (\[[\s\S]*?\]);/);
+
+    if (!match) {
+      return [];
+    }
+
+    return JSON.parse(match[1]).map(sanitizeBlogPost);
+  } catch (error) {
+    console.log(`  Blog post fallback unavailable: ${error.message}`);
+    return [];
+  }
+}
+
 function sanitizeBlogPost(post) {
   return {
     id: post.id || post.slug,
@@ -96,15 +114,17 @@ export const generatedSitemapXml = ${JSON.stringify(sitemapXml)};
 
 async function fetchBlogPosts() {
   if (!supabaseUrl || !supabaseKey) {
-    console.log('  Supabase credentials not found - skipping blog posts');
-    return [];
+    const fallbackPosts = readGeneratedBlogPostsFallback();
+    console.log(`  Supabase credentials not found - using ${fallbackPosts.length} generated blog post fallback(s)`);
+    return fallbackPosts;
   }
 
   try {
     const { createClient } = await import('@supabase/supabase-js').catch(() => ({ createClient: null }));
     if (!createClient) {
-      console.log('  @supabase/supabase-js not available - skipping blog posts');
-      return [];
+      const fallbackPosts = readGeneratedBlogPostsFallback();
+      console.log(`  @supabase/supabase-js not available - using ${fallbackPosts.length} generated blog post fallback(s)`);
+      return fallbackPosts;
     }
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { data, error } = await supabase
@@ -114,16 +134,20 @@ async function fetchBlogPosts() {
       .order('published_at', { ascending: false });
 
     if (error) {
+      const fallbackPosts = readGeneratedBlogPostsFallback();
       console.log(`  Warning: Could not fetch blog posts: ${error.message}`);
-      return [];
+      console.log(`  Using ${fallbackPosts.length} generated blog post fallback(s)`);
+      return fallbackPosts;
     }
 
     return (data || [])
       .filter(post => post.slug && !EXCLUDED_BLOG_SLUGS.has(post.slug))
       .map(sanitizeBlogPost);
   } catch (err) {
+    const fallbackPosts = readGeneratedBlogPostsFallback();
     console.log(`  Warning: Error fetching blog posts: ${err.message}`);
-    return [];
+    console.log(`  Using ${fallbackPosts.length} generated blog post fallback(s)`);
+    return fallbackPosts;
   }
 }
 
