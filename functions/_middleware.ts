@@ -14,6 +14,7 @@
  * rules after a middleware calls next().
  */
 import { generatedSitemapUrlCount, generatedSitemapXml } from './generatedSitemap';
+import { generatedSpaRoutes } from './generatedRoutes';
 
 // ---------------------------------------------------------------------------
 // 1. STATIC ASSET DETECTION
@@ -160,115 +161,10 @@ function redirect(location: string, origin: string): Response {
 
 // ---------------------------------------------------------------------------
 // 3. ROUTE TABLE
-//    Exact-match set for all known app paths, plus prefix patterns.
-//    These routes are allowed to fall through to static prerendered HTML.
+//    Exact-match set generated from the same source as sitemap.xml.
+//    These routes are allowed to resolve to static prerendered HTML.
 // ---------------------------------------------------------------------------
-const SPA_ROUTES: Set<string> = new Set([
-  '/',
-  '/about',
-  '/services',
-  '/services/interior-painting',
-  '/services/exterior-painting',
-  '/services/cabinet-refinishing',
-  '/services/commercial',
-  '/gallery',
-  '/testimonials',
-  '/faq',
-  '/service-areas',
-  '/service-areas/austin',
-  '/service-areas/tarrytown',
-  '/service-areas/northwest-hills',
-  '/service-areas/west-lake-hills',
-  '/service-areas/west-lake-highlands',
-  '/service-areas/lakeway',
-  '/service-areas/leander',
-  '/service-areas/georgetown',
-  '/service-areas/round-rock',
-  '/service-areas/cedar-park',
-  '/service-areas/north-austin',
-  '/color-consultation',
-  '/contact',
-  '/financing',
-  '/pre-approval',
-  '/blog',
-  '/guides/painting-costs-austin',
-  '/guides/best-paint-texas-heat',
-  '/guides/hoa-color-tips-austin',
-  '/guides/how-often-paint-central-texas',
-  '/search',
-  '/privacy',
-  '/terms',
-  '/eula',
-  '/sitemap',
-  '/do-not-sell',
-  '/thank-you',
-
-  // Service-location pages — 16 locations x 4 services = 64
-  '/interior-painting-austin',
-  '/interior-painting-tarrytown',
-  '/interior-painting-northwest-hills',
-  '/interior-painting-west-lake-hills',
-  '/interior-painting-west-lake-highlands',
-  '/interior-painting-lakeway',
-  '/interior-painting-leander',
-  '/interior-painting-georgetown',
-  '/interior-painting-round-rock',
-  '/interior-painting-cedar-park',
-  '/interior-painting-north-austin',
-  '/exterior-painting-austin',
-  '/exterior-painting-tarrytown',
-  '/exterior-painting-northwest-hills',
-  '/exterior-painting-west-lake-hills',
-  '/exterior-painting-west-lake-highlands',
-  '/exterior-painting-lakeway',
-  '/exterior-painting-leander',
-  '/exterior-painting-georgetown',
-  '/exterior-painting-round-rock',
-  '/exterior-painting-cedar-park',
-  '/exterior-painting-north-austin',
-  '/cabinet-refinishing-austin',
-  '/cabinet-refinishing-tarrytown',
-  '/cabinet-refinishing-northwest-hills',
-  '/cabinet-refinishing-west-lake-hills',
-  '/cabinet-refinishing-west-lake-highlands',
-  '/cabinet-refinishing-lakeway',
-  '/cabinet-refinishing-leander',
-  '/cabinet-refinishing-georgetown',
-  '/cabinet-refinishing-round-rock',
-  '/cabinet-refinishing-cedar-park',
-  '/cabinet-refinishing-north-austin',
-  '/commercial-painting-austin',
-  '/commercial-painting-tarrytown',
-  '/commercial-painting-northwest-hills',
-  '/commercial-painting-west-lake-hills',
-  '/commercial-painting-west-lake-highlands',
-  '/commercial-painting-lakeway',
-  '/commercial-painting-leander',
-  '/commercial-painting-georgetown',
-  '/commercial-painting-round-rock',
-  '/commercial-painting-cedar-park',
-  '/commercial-painting-north-austin',
-  '/interior-painting-rollingwood',
-  '/exterior-painting-rollingwood',
-  '/cabinet-refinishing-rollingwood',
-  '/commercial-painting-rollingwood',
-  '/interior-painting-bee-cave',
-  '/exterior-painting-bee-cave',
-  '/cabinet-refinishing-bee-cave',
-  '/commercial-painting-bee-cave',
-  '/interior-painting-barton-creek',
-  '/exterior-painting-barton-creek',
-  '/cabinet-refinishing-barton-creek',
-  '/commercial-painting-barton-creek',
-  '/interior-painting-steiner-ranch',
-  '/exterior-painting-steiner-ranch',
-  '/cabinet-refinishing-steiner-ranch',
-  '/commercial-painting-steiner-ranch',
-  '/interior-painting-circle-c-ranch',
-  '/exterior-painting-circle-c-ranch',
-  '/cabinet-refinishing-circle-c-ranch',
-  '/commercial-painting-circle-c-ranch',
-]);
+const SPA_ROUTES: Set<string> = new Set(generatedSpaRoutes);
 
 const NOINDEX_ROUTES: Record<string, string> = {
   '/pre-approval': 'noindex, nofollow',
@@ -279,18 +175,11 @@ const NOINDEX_ROUTES: Record<string, string> = {
 /**
  * Check if a path is a valid app route that should be handled by the
  * prerendered static HTML output in dist/.
- * Uses exact match for most routes, prefix match for /areas/* and /blog/*.
+ * Uses exact match only to prevent unknown URLs from receiving a 200-status
+ * SPA fallback that search engines can classify as a soft 404.
  */
 function isSpaRoute(path: string): boolean {
-  if (SPA_ROUTES.has(path)) return true;
-
-  // /areas/* — all geo hub and neighborhood pages
-  if (path.startsWith('/areas/')) return true;
-
-  // /blog/:slug — dynamic blog post routes
-  if (path.startsWith('/blog/')) return true;
-
-  return false;
+  return SPA_ROUTES.has(path);
 }
 
 function headersForRoute(sourceHeaders: Headers, path: string): Headers {
@@ -311,6 +200,22 @@ interface Env {
   ASSETS: {
     fetch: (request: Request | string) => Promise<Response>;
   };
+}
+
+async function notFoundResponse(env: Env, request: Request, origin: string): Promise<Response> {
+  const notFoundUrl = new URL('/404.html', origin);
+  const notFoundRequest = new Request(notFoundUrl.toString(), {
+    method: 'GET',
+    headers: request.headers,
+  });
+  const notFoundResponse = await env.ASSETS.fetch(notFoundRequest);
+  return new Response(notFoundResponse.body, {
+    status: 404,
+    headers: new Headers({
+      ...Object.fromEntries(notFoundResponse.headers.entries()),
+      'X-Robots-Tag': 'noindex, nofollow',
+    }),
+  });
 }
 
 export async function onRequest(context: {
@@ -398,23 +303,9 @@ export async function onRequest(context: {
       });
     }
 
-    // Dynamic blog slugs must not become 200-status "post not found" pages.
-    if (path.startsWith('/blog/')) {
-      return redirect('/blog', url.origin);
-    }
-
-    // If this is a known app route and its prerendered file is missing,
-    // serve the SPA shell with 200 instead of letting Cloudflare emit a 404.
-    const indexUrl = new URL('/index.html', url.origin);
-    const indexRequest = new Request(indexUrl.toString(), {
-      method: 'GET',
-      headers: request.headers,
-    });
-    const indexResponse = await env.ASSETS.fetch(indexRequest);
-    return new Response(indexResponse.body, {
-      status: 200,
-      headers: headersForRoute(indexResponse.headers, path),
-    });
+    // A generated route without matching prerendered HTML is safer as a hard
+    // 404 than a 200-status homepage shell. The build validator prevents this.
+    return notFoundResponse(env, request, url.origin);
   }
 
   // ── F. Try any remaining static file fallback ────────────────────────
@@ -424,17 +315,5 @@ export async function onRequest(context: {
   }
 
   // ── G. 404 fallback ──────────────────────────────────────────────────
-  const notFoundUrl = new URL('/404.html', url.origin);
-  const notFoundRequest = new Request(notFoundUrl.toString(), {
-    method: 'GET',
-    headers: request.headers,
-  });
-  const notFoundResponse = await env.ASSETS.fetch(notFoundRequest);
-  return new Response(notFoundResponse.body, {
-    status: 404,
-    headers: new Headers({
-      ...Object.fromEntries(notFoundResponse.headers.entries()),
-      'X-Robots-Tag': 'noindex, nofollow',
-    }),
-  });
+  return notFoundResponse(env, request, url.origin);
 }

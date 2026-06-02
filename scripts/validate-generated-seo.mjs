@@ -10,6 +10,7 @@ const distPath = resolve(projectRoot, 'dist');
 const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
 const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
+const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const llmsPath = resolve(projectRoot, 'public/llms.txt');
@@ -331,12 +332,23 @@ function extractGeneratedFunctionSitemap(source) {
   };
 }
 
+function extractGeneratedSpaRoutes(source) {
+  const countMatch = source.match(/generatedSpaRouteCount\s*=\s*(\d+)/);
+  const routesMatch = source.match(/generatedSpaRoutes\s*=\s*(\[[\s\S]*?\])\s*as const/);
+
+  return {
+    count: countMatch ? Number(countMatch[1]) : -1,
+    routes: routesMatch ? JSON.parse(routesMatch[1]) : []
+  };
+}
+
 function run() {
   console.log('\n=== Generated SEO Validation ===\n');
 
   const sitemapXml = readRequired(sitemapPath, 'sitemap.xml');
   const distSitemapXml = readRequired(distSitemapPath, 'dist/sitemap.xml');
   const functionSitemapSource = readRequired(functionSitemapPath, 'functions/generatedSitemap.ts');
+  const functionRoutesSource = readRequired(functionRoutesPath, 'functions/generatedRoutes.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const robotsText = readRequired(robotsPath, 'robots.txt');
   const llmsText = readRequired(llmsPath, 'llms.txt');
@@ -367,6 +379,9 @@ function run() {
 
   const sitemapPaths = extractSitemapPaths(sitemapXml);
   const sitemapSet = new Set(sitemapPaths);
+  const generatedSpaRouteData = extractGeneratedSpaRoutes(functionRoutesSource);
+  const generatedSpaRoutes = generatedSpaRouteData.routes;
+  const generatedSpaRouteSet = new Set(generatedSpaRoutes);
   const middlewareRedirectPaths = extractMiddlewareRedirectPaths(middlewareSource);
   const htmlFiles = walkFiles(distPath, filePath => filePath.endsWith('.html'));
   const cssFiles = walkFiles(distPath, filePath => filePath.endsWith('.css'));
@@ -378,6 +393,34 @@ function run() {
   const inbound = new Map(sitemapPaths.map(routePath => [routePath, 0]));
   const nonSitemapInternalLinks = new Map();
   const disallowRules = extractDisallowRules(robotsText);
+
+  if (generatedSpaRouteData.count !== generatedSpaRouteSet.size) {
+    fail(`functions/generatedRoutes.ts route count ${generatedSpaRouteData.count} should be ${generatedSpaRouteSet.size}`);
+  }
+
+  if (generatedSpaRoutes.length !== generatedSpaRouteSet.size) {
+    fail('functions/generatedRoutes.ts contains duplicate routes');
+  }
+
+  if (!middlewareSource.includes("import { generatedSpaRoutes } from './generatedRoutes'")) {
+    fail('functions/_middleware.ts must import the generated SPA route allowlist');
+  }
+
+  if (/path\.startsWith\('\/areas\/'\)|path\.startsWith\('\/blog\/'\)/.test(middlewareSource)) {
+    fail('functions/_middleware.ts must not use broad /areas/* or /blog/* SPA fallbacks');
+  }
+
+  for (const routePath of sitemapPaths) {
+    if (!generatedSpaRouteSet.has(routePath)) {
+      fail(`${routePath}: sitemap URL is missing from generated Cloudflare SPA route allowlist`);
+    }
+  }
+
+  for (const utilityRoute of ['/search', '/thank-you', '/pre-approval']) {
+    if (!generatedSpaRouteSet.has(utilityRoute)) {
+      fail(`${utilityRoute}: utility prerender route is missing from generated Cloudflare SPA route allowlist`);
+    }
+  }
 
   if (!llmsText.includes(`${baseUrl}/llms-full.txt`)) {
     fail('llms.txt must link to the full AI route index');
@@ -391,6 +434,12 @@ function run() {
     const canonicalUrl = expectedCanonical(routePath);
     if (!llmsFullText.includes(canonicalUrl)) {
       fail(`llms-full.txt is missing sitemap URL ${canonicalUrl}`);
+    }
+  }
+
+  for (const routePath of generatedSpaRoutes) {
+    if (!existsSync(htmlFileForRoute(routePath))) {
+      fail(`${routePath}: generated Cloudflare SPA route has no prerendered HTML file`);
     }
   }
 

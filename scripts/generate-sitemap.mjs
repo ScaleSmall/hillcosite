@@ -12,7 +12,8 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import {
   BASE_URL,
-  getAllRoutes
+  getAllRoutes,
+  getPrerenderPaths
 } from '../src/config/routeData.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -112,6 +113,21 @@ export const generatedSitemapXml = ${JSON.stringify(sitemapXml)};
   console.log(`  Sitemap URLs in function module: ${urlCount}`);
 }
 
+function writeGeneratedSpaRoutes(routes) {
+  const outputDir = resolve(__dirname, '../functions');
+  const outputPath = resolve(outputDir, 'generatedRoutes.ts');
+  const uniqueRoutes = [...new Set(routes)].sort((a, b) => a.localeCompare(b));
+
+  mkdirSync(outputDir, { recursive: true });
+  writeFileSync(outputPath, `export const generatedSpaRouteCount = ${uniqueRoutes.length};
+
+export const generatedSpaRoutes = ${JSON.stringify(uniqueRoutes, null, 2)} as const;
+`, 'utf-8');
+
+  console.log(`Generated Cloudflare route module: ${outputPath}`);
+  console.log(`  SPA routes in function module: ${uniqueRoutes.length}`);
+}
+
 async function fetchBlogPosts() {
   if (!supabaseUrl || !supabaseKey) {
     const fallbackPosts = readGeneratedBlogPostsFallback();
@@ -174,6 +190,10 @@ const generateSitemap = async () => {
   }));
 
   const allRoutes = [...staticRoutes, ...blogRoutes];
+  const spaRoutes = [
+    ...getPrerenderPaths(),
+    ...blogRoutes.map(route => route.path),
+  ];
 
   const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -191,6 +211,7 @@ ${allRoutes.map(route => `  <url>
   const outputPath = resolve(__dirname, '../public/sitemap.xml');
   writeFileSync(outputPath, sitemapXml, 'utf-8');
   writeGeneratedSitemapFunction(sitemapXml, allRoutes.length);
+  writeGeneratedSpaRoutes(spaRoutes);
 
   console.log(`Sitemap generated: ${outputPath}`);
   console.log(`  Static pages: ${staticRoutes.length}`);
