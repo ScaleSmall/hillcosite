@@ -3,7 +3,7 @@ import NeighborhoodPage from '../../../components/templates/NeighborhoodPage';
 import { getNeighborhoodBySlug } from '../../../data/geoAreas';
 
 const NeighborhoodWestLakeHillsAndRollingwoodDavenportRanch = () => {
-  const data = getNeighborhoodBySlug('west-lake-hills-and-rollingwood', 'davenport-ranch');
+  const data = getNeighborhoodBySlug('west-lake-hills-and-rollingwood', 'davenport-ranch-west');
   if (!data) return null;
   return <NeighborhoodPage hub={data.hub} neighborhood={data.neighborhood} />;
 };

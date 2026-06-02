@@ -15,7 +15,7 @@
  */
 
 import { readFileSync, existsSync, readdirSync } from 'fs';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 import {
   getAllRoutePaths,
@@ -93,6 +93,30 @@ function getLocationFileNames() {
   return readdirSync(locationsDir)
     .filter(f => f.endsWith('.tsx'))
     .map(f => f.replace('.tsx', ''));
+}
+
+function getNeighborhoodPageFiles() {
+  const areasDir = resolve(projectRoot, 'src/pages/areas');
+  if (!existsSync(areasDir)) return [];
+
+  const files = [];
+  readdirSync(areasDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .forEach(hubEntry => {
+      const hubSlug = hubEntry.name;
+      const hubDir = resolve(areasDir, hubSlug);
+      readdirSync(hubDir, { withFileTypes: true })
+        .filter(entry => entry.isFile() && entry.name.endsWith('.tsx') && entry.name !== 'index.tsx')
+        .forEach(fileEntry => {
+          files.push({
+            hubSlug,
+            neighborhoodSlug: basename(fileEntry.name, '.tsx'),
+            filePath: resolve(hubDir, fileEntry.name)
+          });
+        });
+    });
+
+  return files;
 }
 
 function componentNameToPath(componentName) {
@@ -270,6 +294,50 @@ if (existsSync(sitemapPath)) {
   }
 } else {
   warn('sitemap.xml not found - will be generated during build');
+}
+
+console.log('\n4b. Checking neighborhood page data lookups match their URL slugs...');
+const neighborhoodPageFiles = getNeighborhoodPageFiles();
+const routeDataNeighborhoodPaths = new Set(
+  geoAreas.flatMap(area => area.neighborhoods.map(neighborhood => `/areas/${area.hub}/${neighborhood}`))
+);
+const missingNeighborhoodRouteData = [];
+const mismatchedNeighborhoodLookups = [];
+
+neighborhoodPageFiles.forEach(({ hubSlug, neighborhoodSlug, filePath }) => {
+  const expectedPath = `/areas/${hubSlug}/${neighborhoodSlug}`;
+  if (!routeDataNeighborhoodPaths.has(expectedPath)) {
+    missingNeighborhoodRouteData.push(expectedPath);
+  }
+
+  const content = readFileSync(filePath, 'utf-8');
+  const lookupMatch = content.match(/getNeighborhoodBySlug\(\s*['"]([^'"]+)['"]\s*,\s*['"]([^'"]+)['"]\s*\)/);
+
+  if (!lookupMatch) {
+    mismatchedNeighborhoodLookups.push(`${expectedPath} has no getNeighborhoodBySlug lookup`);
+    return;
+  }
+
+  const [, lookupHub, lookupNeighborhood] = lookupMatch;
+  if (lookupHub !== hubSlug || lookupNeighborhood !== neighborhoodSlug) {
+    mismatchedNeighborhoodLookups.push(
+      `${expectedPath} looks up ${lookupHub}/${lookupNeighborhood}`
+    );
+  }
+});
+
+if (missingNeighborhoodRouteData.length > 0) {
+  error(`${missingNeighborhoodRouteData.length} neighborhood page files are missing from routeData.mjs:`);
+  missingNeighborhoodRouteData.forEach(p => console.log(`   - ${p}`));
+}
+
+if (mismatchedNeighborhoodLookups.length > 0) {
+  error(`${mismatchedNeighborhoodLookups.length} neighborhood page files use mismatched data slugs:`);
+  mismatchedNeighborhoodLookups.forEach(p => console.log(`   - ${p}`));
+}
+
+if (missingNeighborhoodRouteData.length === 0 && mismatchedNeighborhoodLookups.length === 0) {
+  success(`All ${neighborhoodPageFiles.length} neighborhood page lookups match their URL slugs`);
 }
 
 console.log('\n5. Checking canonicalMappings.ts state...');

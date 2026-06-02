@@ -3,7 +3,7 @@ import NeighborhoodPage from '../../../components/templates/NeighborhoodPage';
 import { getNeighborhoodBySlug } from '../../../data/geoAreas';
 
 const NeighborhoodPembertonHeightsAndOldWestAustinHistoricLuxuryOldEnfield = () => {
-  const data = getNeighborhoodBySlug('pemberton-heights-and-old-west-austin-historic-luxury', 'old-enfield');
+  const data = getNeighborhoodBySlug('pemberton-heights-and-old-west-austin-historic-luxury', 'old-enfield-west');
   if (!data) return null;
   return <NeighborhoodPage hub={data.hub} neighborhood={data.neighborhood} />;
 };
