@@ -7,10 +7,9 @@ import { getPrerenderPaths } from '../src/config/routeData.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const routes = getPrerenderPaths();
-
 const distPath = path.resolve(__dirname, '../dist');
 const port = 4173;
+const previewHost = '127.0.0.1';
 
 function escapeAttribute(value) {
   return value
@@ -98,7 +97,7 @@ function withDedupedHeadMeta(html) {
 async function startPreview() {
   const { spawn } = await import('child_process');
   const viteBin = path.resolve(__dirname, '../node_modules/vite/bin/vite.js');
-  const preview = spawn(process.execPath, [viteBin, 'preview', '--port', String(port), '--strictPort'], {
+  const preview = spawn(process.execPath, [viteBin, 'preview', '--host', previewHost, '--port', String(port), '--strictPort'], {
     stdio: 'pipe',
     shell: false
   });
@@ -117,7 +116,7 @@ async function startPreview() {
     const startedAt = Date.now();
     const check = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:${port}/`);
+        const response = await fetch(`http://${previewHost}:${port}/`);
         if (response.ok) {
           setTimeout(() => resolve(preview), 500);
           return;
@@ -139,7 +138,31 @@ async function startPreview() {
   });
 }
 
+async function getRoutesToPrerender() {
+  const routes = new Set(getPrerenderPaths());
+  const sitemapPath = path.resolve(__dirname, '../public/sitemap.xml');
+
+  try {
+    const sitemap = await fs.readFile(sitemapPath, 'utf-8');
+    const locRegex = /<loc>https:\/\/www\.hillcopaint\.com([^<]*)<\/loc>/g;
+
+    for (const match of sitemap.matchAll(locRegex)) {
+      routes.add(match[1] || '/');
+    }
+  } catch (error) {
+    console.warn(`Warning: Could not read sitemap for prerender routes: ${error.message}`);
+  }
+
+  return Array.from(routes).sort((a, b) => {
+    if (a === '/') return -1;
+    if (b === '/') return 1;
+    return a.localeCompare(b);
+  });
+}
+
 async function prerender() {
+  const routes = await getRoutesToPrerender();
+
   console.log('Starting prerendering process...\n');
   console.log(`Found ${routes.length} routes to prerender\n`);
 
@@ -162,7 +185,7 @@ async function prerender() {
     const failedRoutes = [];
 
     for (const route of routes) {
-      const url = `http://localhost:${port}${route}`;
+      const url = `http://${previewHost}:${port}${route}`;
       console.log(`Prerendering: ${route}`);
 
       try {
