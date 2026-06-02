@@ -460,6 +460,15 @@ function run() {
     if (entityFacts.telephone !== '(512) 240-2246') {
       fail('entity-facts.json must include the canonical phone number');
     }
+    if (entityFacts.contactPoint?.telephone !== '(512) 240-2246') {
+      fail('entity-facts.json must include a canonical customer service contactPoint');
+    }
+    if (entityFacts.openingHoursSpecification?.opens !== '08:00' || entityFacts.openingHoursSpecification?.closes !== '18:00') {
+      fail('entity-facts.json must include canonical weekday opening hours');
+    }
+    if (entityFacts.paymentAccepted !== 'Cash, Check, Credit Card' || entityFacts.currenciesAccepted !== 'USD') {
+      fail('entity-facts.json must include canonical payment and currency details');
+    }
     if (entityFacts.sitemapUrlCount !== sitemapPaths.length) {
       fail(`entity-facts.json sitemapUrlCount ${entityFacts.sitemapUrlCount} should be ${sitemapPaths.length}`);
     }
@@ -485,6 +494,15 @@ function run() {
     }
     if (identity.telephone !== '(512) 240-2246') {
       fail('citation-facts.json must include the canonical phone number');
+    }
+    if (identity.contactPoint?.telephone !== '(512) 240-2246') {
+      fail('citation-facts.json must include a canonical customer service contactPoint');
+    }
+    if (identity.openingHoursSpecification?.opens !== '08:00' || identity.openingHoursSpecification?.closes !== '18:00') {
+      fail('citation-facts.json must include canonical weekday opening hours');
+    }
+    if (identity.paymentAccepted !== 'Cash, Check, Credit Card' || identity.currenciesAccepted !== 'USD') {
+      fail('citation-facts.json must include canonical payment and currency details');
     }
     if (identity.serviceAreaBusiness !== true) {
       fail('citation-facts.json must identify Hill Country Painting as a service-area business');

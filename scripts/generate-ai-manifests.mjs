@@ -32,6 +32,22 @@ const businessFacts = {
   website: BASE_URL,
   googleBusinessProfile: 'https://share.google/nnJ8rkOVgGiwe0ys3',
   primaryServiceArea: 'Austin, TX and the Greater Austin area',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '(512) 240-2246',
+    contactType: 'customer service',
+    areaServed: 'US-TX',
+    availableLanguage: ['English']
+  },
+  openingHours: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '18:00'
+  },
+  paymentAccepted: 'Cash, Check, Credit Card',
+  currenciesAccepted: 'USD',
+  availableLanguage: ['English'],
   services: [
     'Interior painting',
     'Exterior painting',
@@ -173,6 +189,8 @@ ${section('Business Facts', [
   `Email: ${businessFacts.email}`,
   `Website: ${businessFacts.website}`,
   `Primary service area: ${businessFacts.primaryServiceArea}`,
+  `Hours: Monday-Friday ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
+  `Payment accepted: ${businessFacts.paymentAccepted}`,
   `Core services: ${businessFacts.services.join(', ')}`,
   'Warranty: 2-year warranty on painting work',
   'Insurance: insured painting crew',
@@ -222,6 +240,7 @@ Last updated: ${today}
 - Contact: ${businessFacts.email}
 - Website: ${BASE_URL}
 - Phone: ${businessFacts.phone}
+- Hours: Monday-Friday ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}
 - Sitemap: ${BASE_URL}/sitemap.xml
 - Full AI route index: ${BASE_URL}/llms-full.txt
 - Structured entity facts: ${BASE_URL}/entity-facts.json
@@ -280,9 +299,13 @@ const entityFacts = {
   url: BASE_URL,
   telephone: businessFacts.phone,
   email: businessFacts.email,
+  contactPoint: businessFacts.contactPoint,
   description: 'Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.',
   slogan: 'Clean prep. Crisp lines. Reliable schedules.',
   priceRange: '$$',
+  paymentAccepted: businessFacts.paymentAccepted,
+  currenciesAccepted: businessFacts.currenciesAccepted,
+  availableLanguage: businessFacts.availableLanguage,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Austin',
@@ -290,6 +313,8 @@ const entityFacts = {
     addressCountry: 'US'
   },
   areaServed: serviceAreas.map(name => ({ '@type': 'Place', name })),
+  openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
+  openingHoursSpecification: businessFacts.openingHours,
   sameAs: socialProfiles,
   hasMap: businessFacts.googleBusinessProfile,
   knowsAbout: [
@@ -350,10 +375,16 @@ const citationFacts = {
     telephone: businessFacts.phone,
     telephoneHref: businessFacts.phoneHref,
     email: businessFacts.email,
+    contactPoint: businessFacts.contactPoint,
     website: BASE_URL,
     googleBusinessProfile: businessFacts.googleBusinessProfile,
     businessType: ['PaintingContractor', 'LocalBusiness'],
     serviceAreaBusiness: true,
+    openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
+    openingHoursSpecification: businessFacts.openingHours,
+    paymentAccepted: businessFacts.paymentAccepted,
+    currenciesAccepted: businessFacts.currenciesAccepted,
+    availableLanguage: businessFacts.availableLanguage,
     publicAddress: {
       addressLocality: 'Austin',
       addressRegion: 'TX',

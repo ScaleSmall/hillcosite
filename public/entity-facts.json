@@ -10,9 +10,23 @@
   "url": "https://www.hillcopaint.com",
   "telephone": "(512) 240-2246",
   "email": "info@hillcopaint.com",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "(512) 240-2246",
+    "contactType": "customer service",
+    "areaServed": "US-TX",
+    "availableLanguage": [
+      "English"
+    ]
+  },
   "description": "Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.",
   "slogan": "Clean prep. Crisp lines. Reliable schedules.",
   "priceRange": "$$",
+  "paymentAccepted": "Cash, Check, Credit Card",
+  "currenciesAccepted": "USD",
+  "availableLanguage": [
+    "English"
+  ],
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Austin",
@@ -109,6 +123,19 @@
       "name": "North Austin"
     }
   ],
+  "openingHours": "Mo-Fr 08:00-18:00",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
   "sameAs": [
     "https://www.facebook.com/Hillcopaint",
     "https://www.instagram.com/hill_country_painting_austin/",

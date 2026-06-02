@@ -102,6 +102,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     },
     telephone: '(512) 240-2246',
     email: 'info@hillcopaint.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: businessConfig.phone,
+      contactType: 'customer service',
+      areaServed: 'US-TX',
+      availableLanguage: ['English']
+    },
     address: {
       '@type': 'PostalAddress',
       addressLocality: businessConfig.address.addressLocality,
@@ -152,6 +159,21 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     'Color consultation'
   ];
 
+  const weekdayHours = businessConfig.hours.weekday;
+  const contactPoint = {
+    '@type': 'ContactPoint',
+    telephone: businessConfig.phone,
+    contactType: 'customer service',
+    areaServed: 'US-TX',
+    availableLanguage: ['English']
+  };
+  const openingHoursSpecification = {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: weekdayHours.days,
+    opens: weekdayHours.opens,
+    closes: weekdayHours.closes
+  };
+
   // LocalBusiness schema - only if requested (for homepage or service area pages)
   const localBusinessSchema = includeLocalBusiness ? {
     '@context': 'https://schema.org',
@@ -164,8 +186,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     url: baseUrl,
     telephone: businessConfig.phone,
     email: businessConfig.email,
+    contactPoint,
     image: defaultSocialImage,
     priceRange: '$$',
+    paymentAccepted: businessConfig.payment.methods,
+    currenciesAccepted: businessConfig.payment.currencies,
+    availableLanguage: ['English'],
     address: {
       '@type': 'PostalAddress',
       addressLocality: businessConfig.address.addressLocality,
@@ -208,7 +234,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         }
       }))
     },
-    openingHours: 'Mo-Fr 08:00-17:00',
+    openingHours: `Mo-Fr ${weekdayHours.opens}-${weekdayHours.closes}`,
+    openingHoursSpecification,
     sameAs: [
       'https://www.facebook.com/Hillcopaint',
       'https://www.instagram.com/hill_country_painting_austin/',

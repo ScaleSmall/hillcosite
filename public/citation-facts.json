@@ -16,6 +16,15 @@
     "telephone": "(512) 240-2246",
     "telephoneHref": "tel:+15122402246",
     "email": "info@hillcopaint.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "(512) 240-2246",
+      "contactType": "customer service",
+      "areaServed": "US-TX",
+      "availableLanguage": [
+        "English"
+      ]
+    },
     "website": "https://www.hillcopaint.com",
     "googleBusinessProfile": "https://share.google/nnJ8rkOVgGiwe0ys3",
     "businessType": [
@@ -23,6 +32,24 @@
       "LocalBusiness"
     ],
     "serviceAreaBusiness": true,
+    "openingHours": "Mo-Fr 08:00-18:00",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "08:00",
+      "closes": "18:00"
+    },
+    "paymentAccepted": "Cash, Check, Credit Card",
+    "currenciesAccepted": "USD",
+    "availableLanguage": [
+      "English"
+    ],
     "publicAddress": {
       "addressLocality": "Austin",
       "addressRegion": "TX",

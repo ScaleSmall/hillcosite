@@ -10,6 +10,7 @@ Last updated: 2026-06-02
 - Contact: info@hillcopaint.com
 - Website: https://www.hillcopaint.com
 - Phone: (512) 240-2246
+- Hours: Monday-Friday 08:00-18:00
 - Sitemap: https://www.hillcopaint.com/sitemap.xml
 - Full AI route index: https://www.hillcopaint.com/llms-full.txt
 - Structured entity facts: https://www.hillcopaint.com/entity-facts.json
