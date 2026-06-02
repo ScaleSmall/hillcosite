@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import SEO from '../components/SEO';
 import CTABanner from '../components/sections/CTABanner';
 import SplitSection from '../components/sections/SplitSection';
-import { Calendar, ArrowRight, ChevronDown } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 
 interface BlogPost {
@@ -21,7 +21,6 @@ interface BlogPost {
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
-  const [showPastArticles, setShowPastArticles] = useState(false);
 
   const recentPosts = blogPosts.slice(0, 6);
   const pastPosts = blogPosts.slice(6);
@@ -234,51 +233,36 @@ const Blog = () => {
 
               {pastPosts.length > 0 && (
                 <div className="mt-12 max-w-3xl mx-auto">
-                  <button
-                    onClick={() => setShowPastArticles(!showPastArticles)}
-                    className="w-full flex items-center justify-between p-4 bg-brand-gray-50 hover:bg-brand-gray-100 rounded-lg transition-colors"
-                    aria-expanded={showPastArticles}
-                    aria-controls="past-articles"
-                  >
-                    <span className="text-lg font-semibold text-brand-gray-900">
-                      Past Articles ({pastPosts.length})
-                    </span>
-                    <ChevronDown
-                      className={`w-5 h-5 text-brand-azureDark transition-transform ${
-                        showPastArticles ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-
-                  {showPastArticles && (
-                    <div id="past-articles" className="mt-4 bg-white rounded-lg border border-brand-gray-200 divide-y divide-brand-gray-200">
-                      {pastPosts.map((post) => (
-                        <Link
-                          key={post.id}
-                          to={`/blog/${post.slug}`}
-                          className="block p-4 hover:bg-brand-gray-50 transition-colors group"
-                        >
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex-1">
-                              <h3 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-1">
-                                {post.title}
-                              </h3>
-                              <div className="flex items-center space-x-4 text-sm text-brand-gray-500">
-                                <div className="flex items-center space-x-1">
-                                  <Calendar className="w-3 h-3" />
-                                  <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
-                                </div>
-                                <span className="px-2 py-0.5 bg-brand-gray-100 text-brand-azureDark rounded text-xs font-medium">
-                                  {post.category}
-                                </span>
+                  <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">
+                    Article Archive
+                  </h2>
+                  <div id="past-articles" className="bg-white rounded-lg border border-brand-gray-200 divide-y divide-brand-gray-200">
+                    {pastPosts.map((post) => (
+                      <Link
+                        key={post.id}
+                        to={`/blog/${post.slug}`}
+                        className="block p-4 hover:bg-brand-gray-50 transition-colors group"
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-1">
+                              {post.title}
+                            </h3>
+                            <div className="flex items-center space-x-4 text-sm text-brand-gray-500">
+                              <div className="flex items-center space-x-1">
+                                <Calendar className="w-3 h-3" />
+                                <time dateTime={post.published_at}>{formatDate(post.published_at)}</time>
                               </div>
+                              <span className="px-2 py-0.5 bg-brand-gray-100 text-brand-azureDark rounded text-xs font-medium">
+                                {post.category}
+                              </span>
                             </div>
-                            <ArrowRight className="w-5 h-5 text-brand-azureDark group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1" />
                           </div>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                          <ArrowRight className="w-5 h-5 text-brand-azureDark group-hover:translate-x-1 transition-transform flex-shrink-0 mt-1" />
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </>
