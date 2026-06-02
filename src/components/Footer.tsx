@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Youtube, Facebook } from 'lucide-react';
 import { businessConfig } from '../config/business';
 
 const TikTokIcon = ({ size = 20 }: { size?: number }) => (
@@ -147,7 +147,7 @@ const Footer = () => {
     { name: 'YouTube', href: 'https://www.youtube.com/@HillCountryPaintingAustin', icon: Youtube, ariaLabel: 'Subscribe on YouTube' },
     { name: 'X (Twitter)', href: 'https://x.com/Hill_Co_Paint', icon: XIcon, ariaLabel: 'Follow us on X' },
     { name: 'Facebook', href: 'https://www.facebook.com/Hillcopaint', icon: Facebook, ariaLabel: 'Like us on Facebook' },
-    { name: 'LinkedIn', href: 'https://hillcopaint.com', icon: Linkedin, ariaLabel: 'Connect on LinkedIn' },
+    { name: 'Google Business Profile', href: businessConfig.googleBusinessProfileUrl, icon: MapPin, ariaLabel: 'View our Google Business Profile' },
   ];
 
   return (

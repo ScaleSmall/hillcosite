@@ -450,6 +450,22 @@ function run() {
       if (/<h1\b[^>]*>\s*Something went wrong\s*<\/h1>/i.test(html) || /We're sorry, but something unexpected happened/i.test(html)) {
         fail(`${routePath}: prerendered sitemap page contains the generic application error state`);
       }
+
+      if (routePath === '/') {
+        const requiredHomepageEntitySignals = [
+          '#localbusiness',
+          '#organization',
+          '#website',
+          'hasOfferCatalog',
+          '(512) 240-2246'
+        ];
+
+        for (const signal of requiredHomepageEntitySignals) {
+          if (!html.includes(signal)) {
+            fail(`${routePath}: homepage is missing required entity signal ${signal}`);
+          }
+        }
+      }
     } else if (!allowedInternalNoindexPaths.has(routePath) && !/noindex/i.test(robotsContent)) {
       fail(`${routePath}: generated non-sitemap page should be explicitly noindex or added to sitemap`);
     }

@@ -20,13 +20,44 @@ function escapeAttribute(value) {
 }
 
 function withSelfCanonical(html, route) {
-  const canonicalUrl = route === '/'
-    ? 'https://www.hillcopaint.com/'
-    : `https://www.hillcopaint.com${route}`;
+  const canonicalUrl = expectedCanonicalUrl(route);
   const canonicalTag = `<link rel="canonical" href="${escapeAttribute(canonicalUrl)}">`;
 
   const withoutCanonicals = html.replace(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>\s*/gi, '');
   return withoutCanonicals.replace(/<\/head>/i, `${canonicalTag}\n</head>`);
+}
+
+function expectedCanonicalUrl(route) {
+  return route === '/'
+    ? 'https://www.hillcopaint.com/'
+    : `https://www.hillcopaint.com${route}`;
+}
+
+async function waitForHeadReady(page, route) {
+  if (route !== '/') {
+    return;
+  }
+
+  const canonicalUrl = expectedCanonicalUrl(route);
+
+  await page.waitForFunction((expectedCanonical) => {
+    const canonical = document.querySelector('link[rel="canonical"]')?.href || '';
+    const description = document.querySelector('meta[name="description"]')?.content || '';
+    const title = document.title || '';
+
+    if (canonical !== expectedCanonical || description.trim().length < 50 || title.trim().length < 10) {
+      return false;
+    }
+
+    const jsonLdText = Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
+      .map(script => script.textContent || '')
+      .join('\n');
+
+    return jsonLdText.includes('#localbusiness')
+      && jsonLdText.includes('#organization')
+      && jsonLdText.includes('#website')
+      && jsonLdText.includes('hasOfferCatalog');
+  }, { timeout: 15000 }, canonicalUrl);
 }
 
 function getAttribute(tag, attributeName) {
@@ -219,6 +250,7 @@ async function prerender() {
           const isLoading = /Loading (post|posts|projects|gallery|results)\.\.\./i.test(text);
           return !isLoading && (!requiresHeading || document.querySelector('h1')) && text.trim().length > 500;
         }, { timeout: 15000 }, requiresContentHeading);
+        await waitForHeadReady(page, route);
 
         const html = withSelfCanonical(withDedupedHeadMeta(await page.content()), route);
 

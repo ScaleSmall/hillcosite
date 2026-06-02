@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, ChevronDown, Instagram, Youtube, Facebook, Linkedin } from 'lucide-react';
+import { Menu, X, Phone, ChevronDown, Instagram, Youtube, Facebook, MapPin } from 'lucide-react';
+import { businessConfig } from '../config/business';
 
 const TikTokIcon = ({ size = 20, className = '' }: { size?: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -48,7 +49,7 @@ const Header = () => {
     { name: 'YouTube', href: 'https://www.youtube.com/@HillCountryPaintingAustin', icon: Youtube, ariaLabel: 'Subscribe on YouTube' },
     { name: 'X (Twitter)', href: 'https://x.com/Hill_Co_Paint', icon: XIcon, ariaLabel: 'Follow us on X' },
     { name: 'Facebook', href: 'https://www.facebook.com/Hillcopaint', icon: Facebook, ariaLabel: 'Like us on Facebook' },
-    { name: 'LinkedIn', href: 'https://hillcopaint.com', icon: Linkedin, ariaLabel: 'Connect on LinkedIn' },
+    { name: 'Google Business Profile', href: businessConfig.googleBusinessProfileUrl, icon: MapPin, ariaLabel: 'View our Google Business Profile' },
   ];
 
   useEffect(() => {
