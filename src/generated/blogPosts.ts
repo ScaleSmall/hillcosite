@@ -89,39 +89,6 @@ export const generatedBlogPosts: GeneratedBlogPost[] = [
     "updated_at": "2026-04-14T06:07:49.698579+00:00"
   },
   {
-    "id": "054da047-17c3-4700-9c7e-792564644cfa",
-    "title": "Exterior Painting Timeline in Austin — Hill Country Painting",
-    "slug": "exterior-painting-timeline-in-austin-hill-country-painting",
-    "excerpt": "How long does exterior house painting take in Austin? Overview: why timelines in Austin vary We plan projects around local conditions: rapid sun/rain shifts, strong UV swings that fade finishes, and s...",
-    "featured_image": null,
-    "published_at": "2026-04-07T06:07:18.404+00:00",
-    "category": "Industry Insights",
-    "author": "Hill Country Painting",
-    "updated_at": "2026-04-07T06:07:18.850905+00:00"
-  },
-  {
-    "id": "d1be912a-e353-46d7-bcfe-68fcf1160908",
-    "title": "Exterior Repaint Schedule in Austin — Hill Country Painting",
-    "slug": "exterior-repaint-schedule-in-austin-hill-country-painting",
-    "excerpt": "How often should I repaint my house exterior in Austin? Why Austin needs a different repaint schedule Austin’s sun, rapid weather swings, and local allergens change how paint ages. Strong UV swings an...",
-    "featured_image": null,
-    "published_at": "2026-04-06T19:00:49.801+00:00",
-    "category": "Industry Insights",
-    "author": "Hill Country Painting",
-    "updated_at": "2026-04-06T19:00:50.361278+00:00"
-  },
-  {
-    "id": "09664ad9-17cb-4c26-b8a0-802e2d72e136",
-    "title": "Austin Home Exterior Painting Guide — Hill Country Painting",
-    "slug": "austin-home-exterior-painting-guide-hill-country-painting",
-    "excerpt": "TL;DR — Painting a home in Austin needs local know-how: UV swings, cedar pollen, limestone dust and sudden sun/rain shifts change timing and product choice. We use 100% acrylic exterior paints, elasto...",
-    "featured_image": null,
-    "published_at": "2026-04-06T18:32:36.021+00:00",
-    "category": "Industry Insights",
-    "author": "Hill Country Painting",
-    "updated_at": "2026-04-06T18:32:36.40209+00:00"
-  },
-  {
     "id": "92273cbc-e09c-4f50-83c5-97227855082b",
     "title": "When to Repaint Austin Exteriors — Hill Country Painting",
     "slug": "when-to-repaint-austin-exteriors-hill-country-painting",
@@ -276,28 +243,6 @@ export const generatedBlogPosts: GeneratedBlogPost[] = [
     "updated_at": "2025-12-19T08:31:00.596115+00:00"
   },
   {
-    "id": "86fb58e8-ec21-47ce-8da5-e39cd156dd16",
-    "title": "House Painting Services Austin — Hill Country Painting",
-    "slug": "house-painting-services-austin-hill-country-painting",
-    "excerpt": "Yes — Hill Country Painting provides professional house painting services in Austin Exterior house painting that stands up to Austin weather Exterior paint in Austin faces wide UV swings, heavy limest...",
-    "featured_image": null,
-    "published_at": "2025-12-05T07:32:17.869+00:00",
-    "category": "Industry Insights",
-    "author": "Hill Country Painting",
-    "updated_at": "2025-12-05T07:32:18.551219+00:00"
-  },
-  {
-    "id": "e48cee0c-7df8-4fff-9b4a-0990f2e47e21",
-    "title": "Austin Interior & Exterior Painting — Hill Country Painting",
-    "slug": "austin-interior-exterior-painting-hill-country-painting",
-    "excerpt": "We’re ready to help with interior, exterior, and cabinet painting in Austin Where we work and how we schedule We serve Austin and nearby neighborhoods—Round Rock, West Lake Hills, Bee Cave, Lakeway an...",
-    "featured_image": null,
-    "published_at": "2025-12-01T18:50:32.488+00:00",
-    "category": "Industry Insights",
-    "author": "Hill Country Painting",
-    "updated_at": "2025-12-01T18:50:32.668407+00:00"
-  },
-  {
     "id": "418d4e2f-9a32-44f7-af7a-ec7e4c6305e9",
     "title": "Optimal Seasons for Home Painting in Austin — Hill Country Painting",
     "slug": "optimal-seasons-for-home-painting-in-austin-hill-country-painting",
@@ -307,17 +252,6 @@ export const generatedBlogPosts: GeneratedBlogPost[] = [
     "category": "Industry Insights",
     "author": "Hill Country Painting",
     "updated_at": "2025-11-21T07:31:55.360006+00:00"
-  },
-  {
-    "id": "0c9e4b32-1764-47e9-a981-02d0463f4e1f",
-    "title": "Austin Exterior Painting Guide — Hill Country Painting",
-    "slug": "austin-exterior-painting-guide-hill-country-painting",
-    "excerpt": "TL;DR: In Austin, timing, materials, and pro-grade prep matter more than a quick weekend paint job. We use 100% acrylic exterior paints, elastomeric caulk, appropriate primers, and two thin coats appl...",
-    "featured_image": null,
-    "published_at": "2025-11-14T07:31:47.146+00:00",
-    "category": "Industry Insights",
-    "author": "Hill Country Painting",
-    "updated_at": "2025-11-14T07:31:47.913528+00:00"
   },
   {
     "id": "387d9796-47ad-46c2-b883-da4d9bb3a8fd",

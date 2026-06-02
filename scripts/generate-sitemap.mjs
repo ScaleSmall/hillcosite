@@ -39,7 +39,19 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   'when-to-repaint-your-austin-home-hill-country-painting',
   'when-to-repaint-a-home-in-austin-hill-country-painting',
   'exterior-painting-in-austin-pros-hill-country-painting',
+  // These live URLs are currently forced to /blog by the Cloudflare edge
+  // zone outside this Pages project. Keep them out of submitted index URLs.
+  'exterior-painting-timeline-in-austin-hill-country-painting',
+  'exterior-repaint-schedule-in-austin-hill-country-painting',
+  'austin-home-exterior-painting-guide-hill-country-painting',
+  'house-painting-services-austin-hill-country-painting',
+  'austin-interior-exterior-painting-hill-country-painting',
+  'austin-exterior-painting-guide-hill-country-painting',
 ]);
+
+function isIndexableBlogPost(post) {
+  return post.slug && !EXCLUDED_BLOG_SLUGS.has(post.slug);
+}
 
 function readGeneratedBlogPostsFallback() {
   const fallbackPath = resolve(__dirname, '../src/generated/blogPosts.ts');
@@ -52,7 +64,9 @@ function readGeneratedBlogPostsFallback() {
       return [];
     }
 
-    return JSON.parse(match[1]).map(sanitizeBlogPost);
+    return JSON.parse(match[1])
+      .filter(isIndexableBlogPost)
+      .map(sanitizeBlogPost);
   } catch (error) {
     console.log(`  Blog post fallback unavailable: ${error.message}`);
     return [];
@@ -141,7 +155,7 @@ async function fetchBlogPosts() {
     }
 
     return (data || [])
-      .filter(post => post.slug && !EXCLUDED_BLOG_SLUGS.has(post.slug))
+      .filter(isIndexableBlogPost)
       .map(sanitizeBlogPost);
   } catch (err) {
     const fallbackPosts = readGeneratedBlogPostsFallback();

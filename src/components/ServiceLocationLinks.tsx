@@ -38,6 +38,13 @@ const locations = [
 const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, currentLocation }) => {
   const serviceName = serviceNames[service];
   const serviceSlug = serviceSlugs[service];
+  const getLocationHref = (locationSlug: string) => {
+    if (service === 'commercial' && locationSlug === 'round-rock') {
+      return '/services/commercial';
+    }
+
+    return `/${serviceSlug}-${locationSlug}`;
+  };
 
   const filteredLocations = currentLocation
     ? locations.filter(loc => loc.slug !== currentLocation)
@@ -58,7 +65,7 @@ const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, cu
           {filteredLocations.map((location) => (
             <Link
               key={location.slug}
-              to={`/${serviceSlug}-${location.slug}`}
+              to={getLocationHref(location.slug)}
               className="flex items-center gap-2 px-4 py-3 bg-white rounded-lg border border-brand-gray-200 hover:border-brand-gray-300 hover:bg-brand-gray-50 transition-colors group"
             >
               <MapPin className="w-4 h-4 text-brand-azure flex-shrink-0" />

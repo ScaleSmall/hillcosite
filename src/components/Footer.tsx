@@ -117,7 +117,7 @@ const Footer = () => {
         { name: 'Lakeway', href: '/commercial-painting-lakeway' },
         { name: 'Leander', href: '/commercial-painting-leander' },
         { name: 'Georgetown', href: '/commercial-painting-georgetown' },
-        { name: 'Round Rock', href: '/commercial-painting-round-rock' },
+        { name: 'Round Rock', href: '/service-areas/round-rock' },
         { name: 'Cedar Park', href: '/commercial-painting-cedar-park' },
         { name: 'North Austin', href: '/commercial-painting-north-austin' },
       ]

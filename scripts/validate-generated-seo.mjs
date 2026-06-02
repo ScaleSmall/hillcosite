@@ -15,6 +15,15 @@ const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const baseUrl = 'https://www.hillcopaint.com';
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval']);
 const allowedNonSitemapLinks = new Set(['/pre-approval']);
+const liveRedirectedPaths = new Set([
+  '/commercial-painting-round-rock',
+  '/blog/exterior-painting-timeline-in-austin-hill-country-painting',
+  '/blog/exterior-repaint-schedule-in-austin-hill-country-painting',
+  '/blog/austin-home-exterior-painting-guide-hill-country-painting',
+  '/blog/house-painting-services-austin-hill-country-painting',
+  '/blog/austin-interior-exterior-painting-hill-country-painting',
+  '/blog/austin-exterior-painting-guide-hill-country-painting',
+]);
 const internalRedirectTargets = new Map([
   ['/services/wood-staining', '/services/exterior-painting'],
   ['/services/masonry-priming', '/services/exterior-painting'],
@@ -371,6 +380,10 @@ function run() {
   const disallowRules = extractDisallowRules(robotsText);
 
   for (const routePath of sitemapPaths) {
+    if (liveRedirectedPaths.has(routePath)) {
+      fail(`${routePath}: live URL currently redirects and must not be submitted in sitemap`);
+    }
+
     if (!pages.has(routePath)) {
       fail(`${routePath}: sitemap URL has no generated HTML file`);
     }
@@ -458,6 +471,11 @@ function run() {
       const href = match[1].trim();
       const targetRoute = normalizeRoutePath(href, routePath);
       if (!targetRoute) {
+        continue;
+      }
+
+      if (liveRedirectedPaths.has(targetRoute)) {
+        fail(`${routePath}: internal link points to live-redirected URL ${href}`);
         continue;
       }
 

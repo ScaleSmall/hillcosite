@@ -66,7 +66,6 @@ export const serviceLocationPages = [
   { path: '/interior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-round-rock', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-round-rock', changefreq: 'monthly', priority: '0.8' },
-  { path: '/commercial-painting-round-rock', changefreq: 'monthly', priority: '0.7' },
   // Cedar Park service-location pages
   { path: '/interior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-cedar-park', changefreq: 'monthly', priority: '0.8' },
