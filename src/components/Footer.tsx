@@ -43,6 +43,11 @@ const Footer = () => {
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
     { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
     { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Georgetown', href: '/service-areas/georgetown' },
+    { name: 'Round Rock', href: '/service-areas/round-rock' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'North Austin', href: '/service-areas/north-austin' },
   ];
 
   const guides = [
@@ -56,37 +61,65 @@ const Footer = () => {
     {
       service: 'Interior Painting',
       locations: [
+        { name: 'Austin', href: '/interior-painting-austin' },
         { name: 'Tarrytown', href: '/interior-painting-tarrytown' },
         { name: 'Northwest Hills', href: '/interior-painting-northwest-hills' },
+        { name: 'West Lake Hills', href: '/interior-painting-west-lake-hills' },
         { name: 'Westlake Highlands', href: '/interior-painting-west-lake-highlands' },
         { name: 'Lakeway', href: '/interior-painting-lakeway' },
+        { name: 'Leander', href: '/interior-painting-leander' },
+        { name: 'Georgetown', href: '/interior-painting-georgetown' },
+        { name: 'Round Rock', href: '/interior-painting-round-rock' },
+        { name: 'Cedar Park', href: '/interior-painting-cedar-park' },
+        { name: 'North Austin', href: '/interior-painting-north-austin' },
       ]
     },
     {
       service: 'Exterior Painting',
       locations: [
+        { name: 'Austin', href: '/exterior-painting-austin' },
         { name: 'Tarrytown', href: '/exterior-painting-tarrytown' },
         { name: 'Northwest Hills', href: '/exterior-painting-northwest-hills' },
+        { name: 'West Lake Hills', href: '/exterior-painting-west-lake-hills' },
         { name: 'Westlake Highlands', href: '/exterior-painting-west-lake-highlands' },
         { name: 'Lakeway', href: '/exterior-painting-lakeway' },
+        { name: 'Leander', href: '/exterior-painting-leander' },
+        { name: 'Georgetown', href: '/exterior-painting-georgetown' },
+        { name: 'Round Rock', href: '/exterior-painting-round-rock' },
+        { name: 'Cedar Park', href: '/exterior-painting-cedar-park' },
+        { name: 'North Austin', href: '/exterior-painting-north-austin' },
       ]
     },
     {
       service: 'Cabinet Refinishing',
       locations: [
+        { name: 'Austin', href: '/cabinet-refinishing-austin' },
         { name: 'Tarrytown', href: '/cabinet-refinishing-tarrytown' },
         { name: 'Northwest Hills', href: '/cabinet-refinishing-northwest-hills' },
+        { name: 'West Lake Hills', href: '/cabinet-refinishing-west-lake-hills' },
         { name: 'Westlake Highlands', href: '/cabinet-refinishing-west-lake-highlands' },
         { name: 'Lakeway', href: '/cabinet-refinishing-lakeway' },
+        { name: 'Leander', href: '/cabinet-refinishing-leander' },
+        { name: 'Georgetown', href: '/cabinet-refinishing-georgetown' },
+        { name: 'Round Rock', href: '/cabinet-refinishing-round-rock' },
+        { name: 'Cedar Park', href: '/cabinet-refinishing-cedar-park' },
+        { name: 'North Austin', href: '/cabinet-refinishing-north-austin' },
       ]
     },
     {
       service: 'Commercial Painting',
       locations: [
+        { name: 'Austin', href: '/commercial-painting-austin' },
         { name: 'Tarrytown', href: '/commercial-painting-tarrytown' },
         { name: 'Northwest Hills', href: '/commercial-painting-northwest-hills' },
+        { name: 'West Lake Hills', href: '/commercial-painting-west-lake-hills' },
         { name: 'Westlake Highlands', href: '/commercial-painting-west-lake-highlands' },
         { name: 'Lakeway', href: '/commercial-painting-lakeway' },
+        { name: 'Leander', href: '/commercial-painting-leander' },
+        { name: 'Georgetown', href: '/commercial-painting-georgetown' },
+        { name: 'Round Rock', href: '/commercial-painting-round-rock' },
+        { name: 'Cedar Park', href: '/commercial-painting-cedar-park' },
+        { name: 'North Austin', href: '/commercial-painting-north-austin' },
       ]
     },
   ];
@@ -96,8 +129,13 @@ const Footer = () => {
     { name: 'Barton Creek', href: '/areas/barton-creek' },
     { name: 'Circle C Ranch / Southwest Austin', href: '/areas/circle-c-ranch-and-southwest-austin' },
     { name: 'Downtown Austin', href: '/areas/downtown-austin-luxury' },
+    { name: 'Cedar Park', href: '/areas/cedar-park' },
+    { name: 'Georgetown', href: '/areas/georgetown' },
     { name: 'Lakeway / Bee Cave / Lake Travis', href: '/areas/lakeway-bee-cave-and-lake-travis' },
+    { name: 'Leander', href: '/areas/leander' },
+    { name: 'North Austin', href: '/areas/north-austin' },
     { name: 'Pemberton Heights / Old West Austin', href: '/areas/pemberton-heights-and-old-west-austin-historic-luxury' },
+    { name: 'Round Rock', href: '/areas/round-rock' },
     { name: 'Steiner Ranch', href: '/areas/steiner-ranch-78732' },
     { name: 'Tarrytown', href: '/areas/tarrytown' },
     { name: 'West Lake Hills & Rollingwood', href: '/areas/west-lake-hills-and-rollingwood' },

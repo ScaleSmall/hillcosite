@@ -30,14 +30,28 @@ export const geoAreas = [
 export const serviceLocationPages = [
   { path: '/interior-painting-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/interior-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/interior-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/interior-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/exterior-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-tarrytown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/cabinet-refinishing-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
   { path: '/cabinet-refinishing-lakeway', changefreq: 'monthly', priority: '0.8' },
   { path: '/commercial-painting-austin', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-tarrytown', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-northwest-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-west-lake-hills', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-west-lake-highlands', changefreq: 'monthly', priority: '0.8' },
+  { path: '/commercial-painting-lakeway', changefreq: 'monthly', priority: '0.8' },
   // Leander service-location pages
   { path: '/interior-painting-leander', changefreq: 'monthly', priority: '0.8' },
   { path: '/exterior-painting-leander', changefreq: 'monthly', priority: '0.8' },
@@ -78,6 +92,11 @@ export const coreStaticRoutes = [
   { path: '/faq', changefreq: 'monthly', priority: '0.7' },
   { path: '/service-areas', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/austin', changefreq: 'monthly', priority: '0.9' },
+  { path: '/service-areas/west-lake-hills', changefreq: 'monthly', priority: '0.9' },
+  { path: '/service-areas/tarrytown', changefreq: 'monthly', priority: '0.9' },
+  { path: '/service-areas/northwest-hills', changefreq: 'monthly', priority: '0.9' },
+  { path: '/service-areas/west-lake-highlands', changefreq: 'monthly', priority: '0.9' },
+  { path: '/service-areas/lakeway', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/leander', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/georgetown', changefreq: 'monthly', priority: '0.8' },
   { path: '/service-areas/round-rock', changefreq: 'monthly', priority: '0.8' },
@@ -118,6 +137,10 @@ export function getAllRoutes() {
 
 export function getAllRoutePaths() {
   return getAllRoutes().map(r => r.path);
+}
+
+export function getPrerenderPaths() {
+  return [...getAllRoutePaths(), '/pre-approval'];
 }
 
 export function getServiceLocationPaths() {

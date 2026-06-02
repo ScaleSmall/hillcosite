@@ -233,13 +233,19 @@ if (existsSync(sitemapPath)) {
     if (p.startsWith('/blog/')) return false;
     return !validPaths.has(p);
   });
+  const expectedSitemapPaths = routeDataPaths.filter(p => !p.startsWith('/blog/'));
+  const sitemapPathSet = new Set(sitemapPaths.filter(p => !p.startsWith('/blog/')));
+  const missingFromSitemap = expectedSitemapPaths.filter(p => !sitemapPathSet.has(p));
 
   if (invalidSitemapPaths.length > 0) {
     error(`${invalidSitemapPaths.length} sitemap URLs do not match mounted routes:`);
     invalidSitemapPaths.forEach(p => console.log(`   - ${p}`));
+  } else if (missingFromSitemap.length > 0) {
+    error(`${missingFromSitemap.length} routeData paths are missing from sitemap.xml:`);
+    missingFromSitemap.forEach(p => console.log(`   - ${p}`));
   } else {
     const nonBlogPaths = sitemapPaths.filter(p => !p.startsWith('/blog/'));
-    success(`All ${nonBlogPaths.length} non-blog sitemap URLs match mounted routes`);
+    success(`All ${nonBlogPaths.length} non-blog sitemap URLs match mounted routeData paths`);
   }
 } else {
   warn('sitemap.xml not found - will be generated during build');

@@ -27,7 +27,12 @@ const locations = [
   { name: 'Northwest Hills', slug: 'northwest-hills' },
   { name: 'West Lake Hills', slug: 'west-lake-hills' },
   { name: 'Westlake Highlands', slug: 'west-lake-highlands' },
-  { name: 'Lakeway', slug: 'lakeway' }
+  { name: 'Lakeway', slug: 'lakeway' },
+  { name: 'Leander', slug: 'leander' },
+  { name: 'Georgetown', slug: 'georgetown' },
+  { name: 'Round Rock', slug: 'round-rock' },
+  { name: 'Cedar Park', slug: 'cedar-park' },
+  { name: 'North Austin', slug: 'north-austin' }
 ];
 
 const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, currentLocation }) => {

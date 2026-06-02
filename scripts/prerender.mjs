@@ -2,12 +2,12 @@ import puppeteer from 'puppeteer';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { getAllRoutePaths } from '../src/config/routeData.mjs';
+import { getPrerenderPaths } from '../src/config/routeData.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const routes = getAllRoutePaths();
+const routes = getPrerenderPaths();
 
 const distPath = path.resolve(__dirname, '../dist');
 const port = 4173;
