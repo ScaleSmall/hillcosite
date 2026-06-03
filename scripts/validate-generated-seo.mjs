@@ -137,6 +137,19 @@ const requiredGeoHubServiceLocationSlugs = new Map([
   ['/areas/barton-creek', 'barton-creek'],
   ['/areas/circle-c-ranch-and-southwest-austin', 'circle-c-ranch']
 ]);
+const requiredServiceAreaServiceLocationSlugs = new Map([
+  ['/service-areas/austin', 'austin'],
+  ['/service-areas/tarrytown', 'tarrytown'],
+  ['/service-areas/northwest-hills', 'northwest-hills'],
+  ['/service-areas/west-lake-hills', 'west-lake-hills'],
+  ['/service-areas/west-lake-highlands', 'west-lake-highlands'],
+  ['/service-areas/lakeway', 'lakeway'],
+  ['/service-areas/leander', 'leander'],
+  ['/service-areas/georgetown', 'georgetown'],
+  ['/service-areas/round-rock', 'round-rock'],
+  ['/service-areas/cedar-park', 'cedar-park'],
+  ['/service-areas/north-austin', 'north-austin']
+]);
 
 const errors = [];
 const warnings = [];
@@ -791,6 +804,23 @@ function run() {
         if (!pageLinksToRoute(page, routePath, expectedRoute)) {
           fail(`${routePath}: high-value local area page should link to ${expectedRoute}`);
         }
+      }
+    }
+  }
+
+  for (const [serviceAreaRoute, serviceLocationSlug] of requiredServiceAreaServiceLocationSlugs) {
+    const page = pages.get(serviceAreaRoute);
+
+    if (!page) {
+      fail(`${serviceAreaRoute}: missing generated HTML for service-area local service link validation`);
+      continue;
+    }
+
+    for (const prefix of localServicePrefixes) {
+      const expectedRoute = `${prefix}${serviceLocationSlug}`;
+
+      if (!pageLinksToRoute(page, serviceAreaRoute, expectedRoute)) {
+        fail(`${serviceAreaRoute}: service-area page should link to local service page ${expectedRoute}`);
       }
     }
   }

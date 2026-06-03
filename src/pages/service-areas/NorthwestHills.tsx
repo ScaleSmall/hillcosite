@@ -5,6 +5,7 @@ import SEO from '../../components/SEO';
 import ImageWithGeo from '../../components/ImageWithGeo';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import ServicesGrid from '../../components/sections/ServicesGrid';
+import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 
 const NorthwestHills = () => {
@@ -253,6 +254,7 @@ const NorthwestHills = () => {
 
       <StatsAndTrust />
       <ServicesGrid />
+      <LocalServiceLinks locationName="Northwest Hills" locationSlug="northwest-hills" />
       <CTABanner />
     </>
   );

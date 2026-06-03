@@ -5,6 +5,7 @@ import SEO from '../../components/SEO';
 import ImageWithGeo from '../../components/ImageWithGeo';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import ServicesGrid from '../../components/sections/ServicesGrid';
+import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
@@ -165,6 +166,8 @@ const WestLakeHills = () => {
       </section>
 
       <ServicesGrid />
+
+      <LocalServiceLinks locationName="West Lake Hills" locationSlug="west-lake-hills" />
 
       <section className="section-padding bg-white">
         <div className="max-w-4xl mx-auto px-4">

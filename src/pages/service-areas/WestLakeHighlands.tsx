@@ -5,6 +5,7 @@ import SEO from '../../components/SEO';
 import ImageWithGeo from '../../components/ImageWithGeo';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import ServicesGrid from '../../components/sections/ServicesGrid';
+import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 
 const WestLakeHighlands = () => {
@@ -253,6 +254,7 @@ const WestLakeHighlands = () => {
 
       <StatsAndTrust />
       <ServicesGrid />
+      <LocalServiceLinks locationName="West Lake Highlands" locationSlug="west-lake-highlands" />
       <CTABanner />
     </>
   );
