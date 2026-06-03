@@ -438,6 +438,14 @@ function run() {
     if (!pattern.test(headersText)) {
       fail(`${aiManifestPath}: _headers should use short revalidation cache for AI/citation freshness`);
     }
+
+    if (!middlewareSource.includes(`'${aiManifestPath}'`)) {
+      fail(`${aiManifestPath}: middleware should explicitly serve AI/citation assets with short cache headers`);
+    }
+  }
+
+  if (!middlewareSource.includes("headers.set('Cache-Control', 'public, max-age=300, must-revalidate')")) {
+    fail('functions/_middleware.ts must enforce short revalidation cache headers for AI/citation assets');
   }
 
   const sitemapPaths = extractSitemapPaths(sitemapXml);

@@ -206,6 +206,32 @@ function headersForRoute(sourceHeaders: Headers, path: string): Headers {
   return headers;
 }
 
+const AI_MANIFEST_HEADERS: Record<string, string> = {
+  '/llms.txt': 'text/plain; charset=utf-8',
+  '/llms-full.txt': 'text/plain; charset=utf-8',
+  '/ai.txt': 'text/plain; charset=utf-8',
+  '/entity-facts.json': 'application/json; charset=utf-8',
+  '/citation-facts.json': 'application/json; charset=utf-8',
+};
+
+async function aiManifestResponse(env: Env, request: Request, origin: string, path: string): Promise<Response> {
+  const assetUrl = new URL(path, origin);
+  const assetRequest = new Request(assetUrl.toString(), {
+    method: 'GET',
+    headers: request.headers,
+  });
+  const assetResponse = await env.ASSETS.fetch(assetRequest);
+  const headers = new Headers(assetResponse.headers);
+
+  headers.set('Content-Type', AI_MANIFEST_HEADERS[path]);
+  headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
+
+  return new Response(assetResponse.body, {
+    status: assetResponse.status,
+    headers,
+  });
+}
+
 // ---------------------------------------------------------------------------
 // 4. MIDDLEWARE ENTRY POINT
 // ---------------------------------------------------------------------------
@@ -259,6 +285,10 @@ export async function onRequest(context: {
         'Cache-Control': 'public, max-age=300, must-revalidate',
       },
     });
+  }
+
+  if (AI_MANIFEST_HEADERS[pathname]) {
+    return aiManifestResponse(env, request, url.origin, pathname);
   }
 
   // ── B. Static assets → pass through immediately ──────────────────────
