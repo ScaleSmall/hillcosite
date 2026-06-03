@@ -12,6 +12,13 @@ const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
 const canonicalPhoneHref = 'tel:+15122402246';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
+const canonicalSocialProfileUrls = [
+  'https://www.facebook.com/Hillcopaint',
+  'https://www.instagram.com/hill_country_painting_austin/',
+  'https://x.com/Hill_Co_Paint',
+  'https://www.youtube.com/@HillCountryPaintingAustin',
+  'https://www.tiktok.com/@hillco_painting_austin',
+];
 const minimumAggregateRatingValue = 4.5;
 const minimumAggregateReviewCount = 100;
 const greaterAustinServiceCounties = [
@@ -645,6 +652,10 @@ function hasAllValues(values, expectedValues) {
   return expectedValues.every(value => values.includes(value));
 }
 
+function hasCanonicalSocialProfiles(values) {
+  return hasAllValues(asArray(values), canonicalSocialProfileUrls);
+}
+
 function hasValidAggregateRating(schema) {
   const aggregateRating = schema?.aggregateRating || {};
   const ratingValue = Number(aggregateRating.ratingValue);
@@ -752,6 +763,7 @@ async function checkCrawlerEntityAssets() {
     const areaServed = asArray(entityFacts.areaServed).map(area => area?.name || area).filter(Boolean);
     const serviceArea = asArray(entityFacts.serviceArea).map(area => area?.name || area).filter(Boolean);
     const knowsAbout = asArray(entityFacts.knowsAbout);
+    const sameAs = asArray(entityFacts.sameAs);
 
     if (
       entityFacts.name !== 'Hill Country Painting' ||
@@ -764,10 +776,12 @@ async function checkCrawlerEntityAssets() {
       !hasAllValues(areaServed, greaterAustinServiceCounties) ||
       !hasAllValues(serviceArea, greaterAustinServiceCounties) ||
       !hasAllValues(knowsAbout, priorityLocalSearchTopics) ||
+      !sameAs.includes(googleBusinessProfileUrl) ||
+      !hasCanonicalSocialProfiles(sameAs) ||
       !hasValidAggregateRating(entityFacts) ||
       entityFacts.sitemapUrlCount !== 182
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, Austin service counties, priority topics, aggregate rating, or sitemap count.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, or sitemap count.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -778,6 +792,7 @@ async function checkCrawlerEntityAssets() {
     const citationIdentity = citationFacts.canonicalIdentity || {};
     const citationTopics = asArray(citationIdentity.priorityLocalSearchTopics);
     const citationCounties = asArray(citationIdentity.serviceCounties);
+    const sameAs = asArray(citationFacts.sameAs);
 
     if (
       citationIdentity.name !== 'Hill Country Painting' ||
@@ -786,11 +801,13 @@ async function checkCrawlerEntityAssets() {
       citationIdentity.serviceAreaBusiness !== true ||
       citationIdentity.googleKnowledgeGraphId !== googleKnowledgeGraphId ||
       citationIdentity.googleBusinessProfile !== googleBusinessProfileUrl ||
+      !sameAs.includes(googleBusinessProfileUrl) ||
+      !hasCanonicalSocialProfiles(sameAs) ||
       !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
       !hasAllValues(citationCounties, greaterAustinServiceCounties)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, aggregate rating, service counties, or priority topics.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, or priority topics.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
@@ -1129,13 +1146,20 @@ async function checkGoogleEntityIdentifier() {
     schema.identifier?.value === googleKnowledgeGraphId &&
     schema.identifier?.url === googleBusinessProfileUrl
   );
+  const schemasWithProfiles = entitySchemas.filter(schema =>
+    asArray(schema.sameAs).includes(googleBusinessProfileUrl) &&
+    hasCanonicalSocialProfiles(schema.sameAs)
+  );
+  const homepageLinksCanonicalProfiles = canonicalSocialProfileUrls.every(profileUrl =>
+    html.includes(`href="${profileUrl}"`)
+  );
 
-  if (response.status !== 200 || schemasWithIdentifier.length < 2) {
-    fail('/: live Organization and LocalBusiness schema should both include the Google Knowledge Graph ID identifier.');
+  if (response.status !== 200 || schemasWithIdentifier.length < 2 || schemasWithProfiles.length < 2 || !homepageLinksCanonicalProfiles) {
+    fail('/: live Organization and LocalBusiness schema should include kgmid plus canonical sameAs social/GBP profiles, and the homepage should link the canonical social profiles.');
     return;
   }
 
-  console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid');
+  console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid and canonical sameAs profiles');
 }
 
 async function checkContactPageSchema() {
