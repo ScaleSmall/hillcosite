@@ -775,6 +775,46 @@ async function checkSitemapPages() {
   }
 }
 
+async function checkSitemapTrailingSlashRedirects() {
+  const { response, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+
+  if (response.status !== 200) {
+    fail(`sitemap.xml returned ${response.status} during trailing-slash redirect validation`);
+    return;
+  }
+
+  const routes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(match => routePathFromUrl(match[1]))
+    .filter(route => route !== '/');
+  let nextIndex = 0;
+  let passed = 0;
+
+  async function worker() {
+    while (nextIndex < routes.length) {
+      const route = routes[nextIndex++];
+      const response = await fetch(`${baseUrl}${route}/?v=${Date.now()}`, {
+        redirect: 'manual',
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+        },
+      });
+      const location = response.headers.get('location') || '';
+      const normalized = normalizeRedirectLocation(location);
+
+      if (response.status !== 301 || normalized.host !== 'www.hillcopaint.com' || normalized.route !== route) {
+        fail(`${route}/: expected live trailing-slash 301 redirect to ${route}, found status ${response.status} location ${location || '(missing)'}`);
+        continue;
+      }
+
+      passed += 1;
+    }
+  }
+
+  await Promise.all(Array.from({ length: 8 }, worker));
+  console.log(`Live sitemap trailing-slash redirects checked: ${passed}/${routes.length}`);
+}
+
 function hasAllValues(values, expectedValues) {
   return expectedValues.every(value => values.includes(value));
 }
@@ -1521,6 +1561,7 @@ if (pageIndexingMode) {
 
 await checkCanonicalHostRoutes();
 await checkSitemapPages();
+await checkSitemapTrailingSlashRedirects();
 await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
 await checkSupabaseFeed();
