@@ -190,6 +190,100 @@ const AUSTIN_SERVICE_SCHEMA_SIGNALS: Record<string, string> = {
   '/cabinet-refinishing-austin': 'Austin cabinet painting',
   '/commercial-painting-austin': 'Austin commercial painters',
 };
+const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answer: string }>> = {
+  '/guides/best-paint-texas-heat': [
+    {
+      question: 'What is the best exterior paint for Texas heat?',
+      answer: '100% acrylic latex paint is the best choice for Texas heat. It offers superior UV resistance, flexibility with temperature changes, and excellent color retention even in extreme temperatures.',
+    },
+    {
+      question: 'Should I choose light or dark colors for my Central Texas home?',
+      answer: 'Light colors are generally better for Texas heat as they reflect sunlight and stay cooler. However, high-quality paints allow for medium and even some dark colors if properly applied.',
+    },
+    {
+      question: 'How often should I repaint my house exterior in Texas?',
+      answer: "With quality paint and proper preparation, exterior paint should last 7-12 years in Texas. Signs it's time to repaint include fading, chalking, or peeling paint.",
+    },
+    {
+      question: 'Does paint brand matter in Texas heat?',
+      answer: 'Yes, brand quality matters significantly in Texas. Premium brands like Sherwin Williams, Benjamin Moore, and PPG offer superior heat and UV resistance compared to budget options.',
+    },
+    {
+      question: 'Can I paint my house in summer in Central Texas?',
+      answer: 'Yes, but timing matters. Early morning or late afternoon painting is best. Professional painters know how to work safely and effectively in Texas heat with proper techniques.',
+    },
+  ],
+  '/guides/hoa-color-tips-austin': [
+    {
+      question: 'Do I need HOA approval to paint my Austin home?',
+      answer: 'Most Austin neighborhoods with HOAs require approval for exterior paint colors. Check your HOA covenants or contact your HOA management company to confirm requirements and get the approval process started.',
+    },
+    {
+      question: 'How long does HOA paint approval take in Austin?',
+      answer: 'Typical approval time is 2-4 weeks, but can vary by HOA. Submit your paint color request early in your planning process to avoid delays. Some HOAs meet monthly, which can extend the timeline.',
+    },
+    {
+      question: 'What happens if I paint without HOA approval?',
+      answer: "Painting without approval can result in fines, forced repainting at your expense, or legal action. It's always better to get approval first, even if it delays your project slightly.",
+    },
+    {
+      question: 'Can Hill Country Painting help with HOA approval?',
+      answer: "Yes! We're familiar with Austin HOA requirements and can help you choose pre-approved colors, prepare submission materials, and work within HOA guidelines for your painting project.",
+    },
+    {
+      question: "What if my desired color isn't on the HOA approved list?",
+      answer: "You can sometimes request approval for non-listed colors by submitting a detailed proposal. We can help prepare color samples and justification for your HOA's consideration.",
+    },
+  ],
+  '/guides/how-often-paint-central-texas': [
+    {
+      question: 'How often should I paint my house exterior in Austin?',
+      answer: "In Austin's hot climate, most homes need exterior painting every 7-10 years with quality paint, or 5-7 years with standard paint. South and west-facing sides may need attention sooner due to intense sun exposure.",
+    },
+    {
+      question: "What are the signs it's time to repaint my Austin home?",
+      answer: 'Look for fading colors, chalking (powdery residue), peeling or cracking paint, bare wood showing through, or paint that feels brittle. In Texas, these signs often appear first on sun-exposed surfaces.',
+    },
+    {
+      question: "Do I need to paint more often because of Austin's climate?",
+      answer: 'Yes, Texas heat, intense UV rays, and humidity can accelerate paint deterioration. Quality paint and proper preparation help extend the time between repaints, but expect slightly more frequent maintenance than cooler climates.',
+    },
+    {
+      question: "What's the best time of year to paint in Austin?",
+      answer: 'Spring (March-May) and fall (October-November) offer the best conditions. Summer can work for interior projects or early morning exterior work, but avoid painting in direct sunlight or temperatures above 85°F.',
+    },
+    {
+      question: 'How can I make paint last longer in Texas heat?',
+      answer: 'Use high-quality 100% acrylic paint, ensure proper surface preparation, choose lighter colors that reflect heat, and maintain your home (clean gutters, trim vegetation) to reduce moisture and damage.',
+    },
+    {
+      question: 'Should I paint all sides of my house at the same time?',
+      answer: 'Ideally yes, for color consistency and efficiency. However, you can prioritize the most sun-damaged sides (usually south and west) first if budget requires staged painting.',
+    },
+  ],
+  '/guides/painting-costs-austin': [
+    {
+      question: 'How much does it cost to paint a 2,000 sq ft house in Austin?',
+      answer: 'For a typical 2,000 sq ft Austin home, interior painting ranges from $4,000-$8,000, exterior painting from $6,000-$12,000. Final cost depends on paint quality, prep work needed, and number of stories.',
+    },
+    {
+      question: 'What factors affect painting costs in Austin?',
+      answer: "Key factors include home size, paint quality, surface preparation needs, number of colors, accessibility, and timeline. Austin's climate also affects exterior prep requirements.",
+    },
+    {
+      question: 'Is it cheaper to paint in winter in Austin?',
+      answer: "Interior painting rates are consistent year-round. Exterior painting may have slight seasonal pricing, but weather windows are more important than minor savings in Austin's variable climate.",
+    },
+    {
+      question: 'Do Austin painting contractors charge more for two-story homes?',
+      answer: 'Yes, two-story homes typically cost 20-40% more due to additional equipment, safety requirements, and time needed for scaffolding and ladder work.',
+    },
+    {
+      question: "What's included in a professional painting estimate?",
+      answer: 'Quality estimates include materials, labor, surface prep, priming, cleanup, and warranty. At Hill Country Painting, we provide clear written estimates with no hidden fees.',
+    },
+  ],
+};
 
 const NOINDEX_ROUTES: Record<string, string> = {
   '/privacy': 'noindex, follow',
@@ -329,6 +423,32 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
     : `${updatedHtml}${supplementalScript}`;
 }
 
+function withGuideFaqSchemaFallback(html: string, path: string): string {
+  const faqs = GUIDE_FAQ_SCHEMA_FALLBACKS[path];
+
+  if (!faqs || /"@type"\s*:\s*"FAQPage"/.test(html)) {
+    return html;
+  }
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  };
+  const supplementalScript = `<script type="application/ld+json">${JSON.stringify(faqSchema)}</script>`;
+
+  return html.includes('</head>')
+    ? html.replace('</head>', `${supplementalScript}</head>`)
+    : `${html}${supplementalScript}`;
+}
+
 async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
   let html = await response.text();
 
@@ -337,6 +457,7 @@ async function htmlResponseForRoute(response: Response, path: string): Promise<R
   }
 
   html = withAustinServiceSchemaSignals(html, path);
+  html = withGuideFaqSchemaFallback(html, path);
 
   return new Response(html, {
     status: 200,
