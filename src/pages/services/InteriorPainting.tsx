@@ -14,6 +14,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
+import { greaterAustinServiceAreas } from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const InteriorPainting = () => {
@@ -124,9 +125,9 @@ const InteriorPainting = () => {
           { name: 'Interior Painting', url: '/services/interior-painting' }
         ]}
         service={{
-          name: 'Interior Painting',
-          description: 'Professional interior painting services for homes and businesses in Austin, Texas.',
-          areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
+          name: 'Austin Interior Painting',
+          description: 'Professional interior painting services for homes and businesses across Austin and the Greater Austin area.',
+          areaServed: greaterAustinServiceAreas
         }}
         faq={faqs}
         product={productData}

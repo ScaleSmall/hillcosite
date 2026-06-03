@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { businessConfig } from '../config/business';
+import { greaterAustinServiceAreas } from '../config/localSeo';
 import { useRefParamGuard } from '../hooks/useRefParamGuard';
 
 interface SEOProps {
@@ -16,7 +17,7 @@ interface SEOProps {
   service?: {
     name: string;
     description: string;
-    areaServed: string[];
+    areaServed: readonly string[];
   };
   faq?: Array<{
     question: string;
@@ -154,30 +155,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     ]
   };
 
-  const localBusinessAreas = [
-    'Austin',
-    'West Lake Hills',
-    'Rollingwood',
-    'Tarrytown',
-    'Northwest Hills',
-    'West Lake Highlands',
-    'Lakeway',
-    'Bee Cave',
-    'Lake Travis',
-    'Steiner Ranch',
-    'Barton Creek',
-    'Circle C Ranch',
-    'Pemberton Heights',
-    'Old West Austin',
-    'Clarksville',
-    'Allandale',
-    'Crestview',
-    'Leander',
-    'Georgetown',
-    'Round Rock',
-    'Cedar Park',
-    'North Austin'
-  ];
+  const localBusinessAreas = greaterAustinServiceAreas;
 
   const localBusinessServices = [
     'Interior painting',

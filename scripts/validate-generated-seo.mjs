@@ -12,6 +12,8 @@ const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
 const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
+const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
+const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const llmsPath = resolve(projectRoot, 'public/llms.txt');
 const llmsFullPath = resolve(projectRoot, 'public/llms-full.txt');
@@ -435,6 +437,17 @@ function extractGeneratedSpaRoutes(source) {
   };
 }
 
+function extractStringArrayConst(source, constName) {
+  const pattern = new RegExp(`const\\s+${constName}\\s*=\\s*\\[([\\s\\S]*?)\\](?:\\s+as\\s+const)?`);
+  const match = source.match(pattern);
+
+  if (!match) {
+    return [];
+  }
+
+  return [...match[1].matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]);
+}
+
 function run() {
   console.log('\n=== Generated SEO Validation ===\n');
 
@@ -443,6 +456,8 @@ function run() {
   const functionSitemapSource = readRequired(functionSitemapPath, 'functions/generatedSitemap.ts');
   const functionRoutesSource = readRequired(functionRoutesPath, 'functions/generatedRoutes.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
+  const localSeoSource = readRequired(localSeoPath, 'src/config/localSeo.ts');
+  const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const robotsText = readRequired(robotsPath, 'robots.txt');
   const llmsText = readRequired(llmsPath, 'llms.txt');
   const llmsFullText = readRequired(llmsFullPath, 'llms-full.txt');
@@ -494,6 +509,8 @@ function run() {
   const generatedSpaRouteData = extractGeneratedSpaRoutes(functionRoutesSource);
   const generatedSpaRoutes = generatedSpaRouteData.routes;
   const generatedSpaRouteSet = new Set(generatedSpaRoutes);
+  const configuredGreaterAustinAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
+  const manifestServiceAreas = extractStringArrayConst(aiManifestGeneratorSource, 'serviceAreas');
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
   const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
   const staticRedirects = extractStaticRedirects(redirectsText);
@@ -517,6 +534,20 @@ function run() {
 
   if (generatedSpaRoutes.length !== generatedSpaRouteSet.size) {
     fail('functions/generatedRoutes.ts contains duplicate routes');
+  }
+
+  if (configuredGreaterAustinAreas.length === 0) {
+    fail('src/config/localSeo.ts must export greaterAustinServiceAreas');
+  }
+
+  if (JSON.stringify(configuredGreaterAustinAreas) !== JSON.stringify(manifestServiceAreas)) {
+    fail('scripts/generate-ai-manifests.mjs serviceAreas must match src/config/localSeo.ts greaterAustinServiceAreas');
+  }
+
+  for (const requiredArea of ['Austin', 'Leander', 'Georgetown', 'Round Rock', 'Cedar Park', 'North Austin']) {
+    if (!configuredGreaterAustinAreas.includes(requiredArea)) {
+      fail(`greaterAustinServiceAreas is missing priority area ${requiredArea}`);
+    }
   }
 
   if (!middlewareSource.includes("import { generatedSpaRoutes } from './generatedRoutes'")) {
@@ -857,6 +888,19 @@ function run() {
 
         if (serviceWebPage?.mainEntity?.['@id'] !== expectedServiceId) {
           fail(`${routePath}: WebPage schema mainEntity should be ${expectedServiceId}`);
+        }
+
+        if (routePath.startsWith('/services/')) {
+          const serviceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
+          const areaNames = (serviceSchema?.areaServed || [])
+            .map(area => area?.name)
+            .filter(Boolean);
+
+          for (const requiredArea of ['Austin', 'Leander', 'Georgetown', 'Round Rock', 'Cedar Park', 'North Austin']) {
+            if (!areaNames.includes(requiredArea)) {
+              fail(`${routePath}: core service schema areaServed is missing ${requiredArea}`);
+            }
+          }
         }
       }
     } else if (!allowedInternalNoindexPaths.has(routePath) && !/noindex/i.test(robotsContent)) {

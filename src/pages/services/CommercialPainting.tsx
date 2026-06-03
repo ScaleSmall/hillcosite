@@ -13,6 +13,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
+import { greaterAustinServiceAreas } from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const CommercialPainting = () => {
@@ -112,9 +113,9 @@ const CommercialPainting = () => {
           { name: 'Commercial Painting', url: '/services/commercial' }
         ]}
         service={{
-          name: 'Commercial Painting',
-          description: 'Professional commercial painting services for businesses in Austin, Texas.',
-          areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
+          name: 'Austin Commercial Painting',
+          description: 'Professional commercial painting services for businesses across Austin and the Greater Austin area.',
+          areaServed: greaterAustinServiceAreas
         }}
         faq={faqs}
         product={productData}

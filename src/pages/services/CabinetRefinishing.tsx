@@ -14,6 +14,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
+import { greaterAustinServiceAreas } from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const CabinetRefinishing = () => {
@@ -145,9 +146,9 @@ const CabinetRefinishing = () => {
           { name: 'Cabinet Painting', url: '/services/cabinet-refinishing' }
         ]}
         service={{
-          name: 'Cabinet Painting',
-          description: 'Professional cabinet painting services for kitchens and bathrooms in Austin, Texas.',
-          areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
+          name: 'Austin Cabinet Painting',
+          description: 'Professional cabinet painting and refinishing services for kitchens and bathrooms across Austin and the Greater Austin area.',
+          areaServed: greaterAustinServiceAreas
         }}
         faq={faqs}
         product={productData}
