@@ -1054,6 +1054,12 @@ function run() {
     { filePath, html: readFileWithRetry(filePath) }
   ]));
 
+  for (const [routePath, page] of pages) {
+    if (/greater undefined|undefined area|undefined,\s*TX/i.test(page.html)) {
+      fail(`${routePath}: generated local SEO copy contains undefined area text`);
+    }
+  }
+
   const inbound = new Map(sitemapPaths.map(routePath => [routePath, 0]));
   const nonSitemapInternalLinks = new Map();
   const disallowRules = extractDisallowRules(robotsText);

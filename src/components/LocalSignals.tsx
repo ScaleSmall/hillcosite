@@ -1,18 +1,20 @@
 import React from 'react';
 
 type LocalSignalsProps = {
-  city: string;
+  city?: string;
   state?: string;
   areaName: string;
+  pageType?: 'service' | 'area' | 'neighborhood';
   zipCodes?: string[];
   nearbyAreas?: string[];
   serviceKeywords?: string[];
 };
 
 const LocalSignals: React.FC<LocalSignalsProps> = ({
-  city,
+  city = 'Austin',
   state = 'TX',
   areaName,
+  pageType = 'area',
   zipCodes,
   nearbyAreas,
   serviceKeywords
@@ -21,14 +23,19 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
                      (nearbyAreas && nearbyAreas.length > 0) ||
                      (serviceKeywords && serviceKeywords.length > 0);
 
+  const heading = pageType === 'service'
+    ? `${areaName} Painting Service Area Details`
+    : 'Local Service Area Details';
+  const areaLabel = `${city}, ${state}`;
+
   if (!hasAnyData) {
     return (
       <section className="py-12 bg-brand-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">Local Service Area Details</h2>
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">{heading}</h2>
             <p className="text-lg text-brand-gray-700">
-              We serve the greater {city} area, including {areaName} and nearby communities.
+              Hill Country Painting serves {areaName} as part of our Greater Austin service area, with painting crews available for homes, cabinets, interiors, exteriors, and commercial properties throughout {areaLabel} and nearby communities.
             </p>
           </div>
         </div>
@@ -40,7 +47,10 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
     <section className="py-12 bg-brand-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">Local Service Area Details</h2>
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">{heading}</h2>
+          <p className="text-lg text-brand-gray-700 mb-6">
+            Hill Country Painting serves {areaName} within the Greater Austin painting service area, helping homeowners and property managers compare local crews, service availability, nearby neighborhoods, and common project scopes.
+          </p>
 
           <div className="space-y-6">
             {zipCodes && zipCodes.length > 0 && (
