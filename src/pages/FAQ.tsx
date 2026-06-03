@@ -68,6 +68,7 @@ const FAQ = () => {
           { name: 'FAQ', url: '/faq' }
         ]}
         faq={allFAQs}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}

@@ -1177,11 +1177,15 @@ function run() {
       }
 
       const localBusinessSchemaRequiredRoutes = new Set([
+        '/about',
         '/services',
         '/services/interior-painting',
         '/services/exterior-painting',
         '/services/cabinet-refinishing',
         '/services/commercial',
+        '/gallery',
+        '/testimonials',
+        '/faq',
         '/color-consultation',
         '/contact',
         '/exterior-painting-austin',

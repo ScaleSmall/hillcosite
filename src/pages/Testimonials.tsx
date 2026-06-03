@@ -113,6 +113,7 @@ const Testimonials = () => {
           { name: 'Home', url: '/' },
           { name: 'Testimonials', url: '/testimonials' }
         ]}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}

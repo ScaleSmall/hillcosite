@@ -269,6 +269,15 @@ const Gallery = () => {
     name: 'Hill Country Painting Gallery',
     description: 'Gallery of professional painting projects by Hill Country Painting in Austin, TX including before and after transformations',
     url: 'https://www.hillcopaint.com/gallery',
+    provider: {
+      '@id': 'https://www.hillcopaint.com/#localbusiness'
+    },
+    publisher: {
+      '@id': 'https://www.hillcopaint.com/#organization'
+    },
+    about: {
+      '@id': 'https://www.hillcopaint.com/#localbusiness'
+    },
     image: allPhotos.length > 0 ? allPhotos.map(photo => ({
       '@type': 'ImageObject',
       contentUrl: photo.image_url,
@@ -288,6 +297,7 @@ const Gallery = () => {
           { name: 'Home', url: '/' },
           { name: 'Gallery', url: '/gallery' }
         ]}
+        includeLocalBusiness={true}
       />
 
       {/* ImageGallery Schema */}

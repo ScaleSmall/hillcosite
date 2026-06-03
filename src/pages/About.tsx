@@ -44,6 +44,7 @@ const About = () => {
           { name: 'Home', url: '/' },
           { name: 'About Us', url: '/about' }
         ]}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}
