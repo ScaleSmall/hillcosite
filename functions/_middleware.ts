@@ -330,16 +330,29 @@ export async function onRequest(context: {
     return redirect('/services', url.origin);
   }
 
-  // ── E. Known app routes → pass through to prerendered static HTML ────
-  // Known routes are allowlisted before pass-through so unknown URLs cannot
-  // receive a 200-status SPA fallback that search engines classify as soft 404.
+  // ── E. Known app routes → prefer exact prerendered HTML ──────────────
+  // Cloudflare's generic SPA fallback can return /index.html with 200 for
+  // deep routes. Fetch exact prerendered route files first so crawlers see
+  // route-specific content, canonicals, headings, and internal links.
   if (isSpaRoute(path)) {
-    const response = await next();
-
-    return new Response(response.body, {
-      status: response.status,
-      headers: headersForRoute(response.headers, path),
+    const prerenderedPath = path === '/' ? '/index.html' : `${path}/index.html`;
+    const prerenderedUrl = new URL(prerenderedPath, url.origin);
+    const prerenderedRequest = new Request(prerenderedUrl.toString(), {
+      method: 'GET',
+      headers: request.headers,
     });
+    const prerenderedResponse = await env.ASSETS.fetch(prerenderedRequest);
+
+    if (prerenderedResponse.status >= 200 && prerenderedResponse.status < 300) {
+      return new Response(prerenderedResponse.body, {
+        status: 200,
+        headers: headersForRoute(prerenderedResponse.headers, path),
+      });
+    }
+
+    // A generated route without matching prerendered HTML is safer as a hard
+    // 404 than a 200-status homepage shell. The build validator prevents this.
+    return notFoundResponse(env, request, url.origin);
   }
 
   // ── F. Try any remaining non-HTML static file fallback ───────────────
