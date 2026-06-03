@@ -64,6 +64,16 @@ const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
+const stalePublicIdentitySignals = [
+  'HillCo Paint',
+  '5000 Plaza on the Lake',
+  '5000 Plaza',
+  '2808 Townes Lane',
+  '111 Craft Street',
+  '1101 Satellite View',
+  '(512) 499-8450',
+  '512-499-8450',
+];
 const canonicalSocialProfileSignals = [
   'facebook',
   'instagram',
@@ -1796,12 +1806,13 @@ function run() {
     const ogDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.property || '').toLowerCase() === 'og:description');
     const twitterDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'twitter:description');
     const schemaItems = jsonLdItems(html, routePath);
+    const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
+
+    if (staleIdentitySignal) {
+      fail(`${routePath}: generated HTML contains stale NAP/brand signal "${staleIdentitySignal}"`);
+    }
 
     if (isSitemapPage) {
-      if (html.includes('HillCo Paint')) {
-        fail(`${routePath}: uses non-canonical entity name "HillCo Paint"; expected Hill Country Painting`);
-      }
-
       if (canonicalTags.length !== 1) {
         fail(`${routePath}: expected exactly one canonical tag, found ${canonicalTags.length}`);
       } else {
