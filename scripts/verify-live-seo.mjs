@@ -1081,17 +1081,18 @@ async function checkGuideFaqSchema() {
 
 async function checkVisibleLocalTrustSections() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
-  const serviceLocationTrustRoutes = sitemapResponse.status === 200
+  const sitemapRoutes = sitemapResponse.status === 200
     ? [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
         .map(match => routePathFromUrl(match[1]))
-        .filter(routeIsServiceLocation)
     : [];
+  const serviceLocationTrustRoutes = sitemapRoutes.filter(routeIsServiceLocation);
+  const geoAreaTrustRoutes = sitemapRoutes.filter(route => route.startsWith('/areas/'));
 
   if (sitemapResponse.status !== 200) {
-    fail('live sitemap could not be fetched for service-location trust-section validation.');
+    fail('live sitemap could not be fetched for visible local trust-section validation.');
   }
 
-  const routes = [...new Set([...visibleLocalTrustRoutes, ...serviceLocationTrustRoutes])];
+  const routes = [...new Set([...visibleLocalTrustRoutes, ...serviceLocationTrustRoutes, ...geoAreaTrustRoutes])];
   let passed = 0;
 
   for (const route of routes) {

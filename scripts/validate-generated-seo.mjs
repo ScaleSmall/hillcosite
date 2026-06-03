@@ -1037,6 +1037,19 @@ function run() {
     }
   }
 
+  for (const routePath of sitemapPaths.filter(route => route.startsWith('/areas/'))) {
+    const page = pages.get(routePath);
+
+    if (!page) {
+      fail(`${routePath}: missing generated HTML for geo-area visible local trust validation`);
+      continue;
+    }
+
+    if (!pageHasVisibleLocalTrustSection(page)) {
+      fail(`${routePath}: geo-area page should include the visible NAP/map/Google Business Profile trust section`);
+    }
+  }
+
   for (const [serviceAreaRoute, serviceLocationSlug] of requiredServiceAreaServiceLocationSlugs) {
     const page = pages.get(serviceAreaRoute);
 

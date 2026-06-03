@@ -19,6 +19,7 @@ import { Phone, MapPin, ArrowLeft, Paintbrush, ExternalLink, Home } from 'lucide
 import SEO from '../SEO';
 import GoogleMapEmbed from '../GoogleMapEmbed';
 import LocalSignals from '../LocalSignals';
+import NAPMapSection from '../NAPMapSection';
 import Breadcrumbs from '../Breadcrumbs';
 import { businessConfig } from '../../config/business';
 import type { HubArea, Neighborhood } from '../../data/geoAreas';
@@ -283,6 +284,8 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           </div>
         </div>
       </section>
+
+      <NAPMapSection />
 
       <section className="py-16 bg-brand-azure">
         <div className="container mx-auto px-4">
