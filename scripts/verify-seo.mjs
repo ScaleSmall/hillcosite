@@ -14,6 +14,26 @@ function walkHtmlFiles(dir, results = []) {
   return results;
 }
 
+function routeFromHtmlFile(filePath, distPath) {
+  const rel = filePath.replace(distPath, '').replace(/\\/g, '/').replace(/^\/+/, '');
+
+  if (rel === 'index.html') return '/';
+  if (rel === '404.html') return '/404';
+  if (rel.endsWith('/index.html')) return `/${rel.slice(0, -'/index.html'.length)}`;
+
+  return `/${rel.replace(/\.html$/, '')}`;
+}
+
+function attrs(tag) {
+  const result = {};
+
+  for (const match of tag.matchAll(/([\w:-]+)\s*=\s*(["'])(.*?)\2/g)) {
+    result[match[1].toLowerCase()] = match[3];
+  }
+
+  return result;
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -78,23 +98,42 @@ function run() {
     }
   }
 
-  // Scan EVERY HTML file in dist/ for a static robots meta tag
+  // Scan EVERY HTML file in dist/ for one SEO-owned robots tag. The site is
+  // prerendered, so a static robots tag is expected; duplicates are not.
   const allHtmlFiles = walkHtmlFiles(distPath);
   const robotsViolations = [];
+  const allowedNoindexRoutes = new Set(['/404', '/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap', '/pre-approval', '/search', '/thank-you']);
   for (const filePath of allHtmlFiles) {
     const html = readFileSync(filePath, 'utf-8');
-    if (/<meta[^>]+name=["']robots["']/i.test(html)) {
-      const rel = filePath.replace(distPath, 'dist');
-      const line = html.split('\n').find(l => /<meta[^>]+name=["']robots["']/i.test(l)) || '';
-      robotsViolations.push(`  ${rel}: ${line.trim().slice(0, 120)}`);
+    const rel = filePath.replace(distPath, 'dist');
+    const route = routeFromHtmlFile(filePath, distPath);
+    const robotsTags = [...html.matchAll(/<meta\b[^>]*>/gi)]
+      .map(match => match[0])
+      .filter(tag => (attrs(tag).name || '').toLowerCase() === 'robots');
+
+    if (robotsTags.length !== 1) {
+      robotsViolations.push(`  ${rel}: expected exactly one robots meta tag, found ${robotsTags.length}`);
+      continue;
+    }
+
+    const content = attrs(robotsTags[0]).content || '';
+    const isNoindex = /noindex/i.test(content);
+    const isIndexable = /index,\s*follow/i.test(content) && /max-image-preview:large/i.test(content);
+
+    if (allowedNoindexRoutes.has(route)) {
+      if (!isNoindex) {
+        robotsViolations.push(`  ${rel}: allowed utility route should be noindex, found "${content}"`);
+      }
+    } else if (!isIndexable || isNoindex) {
+      robotsViolations.push(`  ${rel}: indexable route has invalid robots content "${content}"`);
     }
   }
   if (robotsViolations.length > 0) {
     failures.push(
-      `${robotsViolations.length} HTML file(s) contain a static <meta name="robots"> — causes duplicate tags; remove from HTML and let SEO.tsx own it:\n${robotsViolations.join('\n')}`
+      `${robotsViolations.length} HTML file(s) have invalid robots metadata:\n${robotsViolations.join('\n')}`
     );
   } else {
-    passes.push(`All ${allHtmlFiles.length} dist HTML file(s) are free of static robots meta — correctly controlled by SEO.tsx at runtime`);
+    passes.push(`All ${allHtmlFiles.length} dist HTML file(s) have exactly one correct SEO-owned robots meta tag`);
   }
 
   const jsDir = resolve(distPath, 'assets/js');

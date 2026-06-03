@@ -226,6 +226,47 @@ async function writeFileWithRetry(filePath, content, attempts = 5) {
   }
 }
 
+function shouldRetryPrerender(error) {
+  return /detached|target closed|session closed|browser has disconnected|navigation failed/i.test(error?.message || '');
+}
+
+async function prerenderRoute(browser, route, sitemapRoutes) {
+  const url = `http://${previewHost}:${port}${route}`;
+  const page = await browser.newPage();
+
+  try {
+    await page.goto(url, {
+      waitUntil: 'domcontentloaded',
+      timeout: 30000
+    });
+
+    const requiresContentHeading = route === '/blog' || route.startsWith('/blog/');
+    await page.waitForFunction((requiresHeading) => {
+      const text = document.body?.textContent || '';
+      const isLoading = /Loading (post|posts|projects|gallery|results)\.\.\./i.test(text);
+      return !isLoading && (!requiresHeading || document.querySelector('h1')) && text.trim().length > 500;
+    }, { timeout: 15000 }, requiresContentHeading);
+    await waitForHeadReady(page, route, sitemapRoutes.has(route));
+
+    const html = withSelfCanonical(withDedupedHeadMeta(await page.content()), route);
+
+    if (!/<h1[\s>]/i.test(html)) {
+      console.log(`  Warning: No H1 found for ${route}, continuing...`);
+    }
+
+    const outputPath = route === '/'
+      ? path.join(distPath, 'index.html')
+      : path.join(distPath, route.slice(1), 'index.html');
+
+    await fs.mkdir(path.dirname(outputPath), { recursive: true });
+    await writeFileWithRetry(outputPath, html);
+
+    return outputPath;
+  } finally {
+    await page.close().catch(() => {});
+  }
+}
+
 async function prerender() {
   const { routes, sitemapRoutes } = await getRoutesToPrerender();
 
@@ -247,40 +288,25 @@ async function prerender() {
     });
     console.log('Browser launched\n');
 
-    const page = await browser.newPage();
     const failedRoutes = [];
 
     for (const route of routes) {
-      const url = `http://${previewHost}:${port}${route}`;
       console.log(`Prerendering: ${route}`);
 
       try {
-        await page.goto(url, {
-          waitUntil: 'domcontentloaded',
-          timeout: 30000
-        });
-
-        const requiresContentHeading = route === '/blog' || route.startsWith('/blog/');
-        await page.waitForFunction((requiresHeading) => {
-          const text = document.body?.textContent || '';
-          const isLoading = /Loading (post|posts|projects|gallery|results)\.\.\./i.test(text);
-          return !isLoading && (!requiresHeading || document.querySelector('h1')) && text.trim().length > 500;
-        }, { timeout: 15000 }, requiresContentHeading);
-        await waitForHeadReady(page, route, sitemapRoutes.has(route));
-
-        const html = withSelfCanonical(withDedupedHeadMeta(await page.content()), route);
-
-        if (!/<h1[\s>]/i.test(html)) {
-          console.log(`  Warning: No H1 found for ${route}, continuing...`);
+        let outputPath;
+        for (let attempt = 1; attempt <= 2; attempt++) {
+          try {
+            outputPath = await prerenderRoute(browser, route, sitemapRoutes);
+            break;
+          } catch (error) {
+            if (attempt === 2 || !shouldRetryPrerender(error)) {
+              throw error;
+            }
+            console.log(`  Retrying ${route} after prerender page reset: ${error.message}`);
+            await wait(500);
+          }
         }
-
-        const outputPath = route === '/'
-          ? path.join(distPath, 'index.html')
-          : path.join(distPath, route.slice(1), 'index.html');
-
-        await fs.mkdir(path.dirname(outputPath), { recursive: true });
-        await writeFileWithRetry(outputPath, html);
-
         console.log(`  ✓ Saved to ${outputPath}`);
       } catch (error) {
         console.error(`  ✗ Failed to prerender ${route}:`, error.message);
