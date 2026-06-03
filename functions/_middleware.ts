@@ -190,6 +190,19 @@ const AUSTIN_SERVICE_SCHEMA_SIGNALS: Record<string, string> = {
   '/cabinet-refinishing-austin': 'Austin cabinet painting',
   '/commercial-painting-austin': 'Austin commercial painters',
 };
+const APPROVED_HERO_IMAGE = 'hill-country-painting-austin-homepage-hero.jpg';
+const BANNED_HERO_IMAGE_FILENAMES = [
+  'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
+  'before_and_after-5-nov_14_2025_11_37am-nahg.jpg',
+  'before_and_after-6-sep_12_2025_11_32am-vj7w.jpg',
+  'classic-home-exterior.jpg',
+  'custom-kitchen-painting.jpg',
+  'exterior-tarrytown.jpg',
+  'kitchen-transformation-west-lake-hills.jpg',
+  'living-room-update-central-austin.jpg',
+  'modern-interior-design.jpg',
+  'traditional-home-exterior.jpg',
+];
 const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answer: string }>> = {
   '/guides/best-paint-texas-heat': [
     {
@@ -449,6 +462,26 @@ function withGuideFaqSchemaFallback(html: string, path: string): string {
     : `${html}${supplementalScript}`;
 }
 
+function withSafeHeroImages(html: string): string {
+  const firstSectionIndex = html.search(/<section\b/i);
+
+  if (firstSectionIndex === -1) {
+    return html;
+  }
+
+  const sectionCloseIndex = html.indexOf('</section>', firstSectionIndex);
+  const endIndex = sectionCloseIndex === -1 ? firstSectionIndex + 30000 : sectionCloseIndex + '</section>'.length;
+  const beforeHero = html.slice(0, firstSectionIndex);
+  let heroHtml = html.slice(firstSectionIndex, endIndex);
+  const afterHero = html.slice(endIndex);
+
+  for (const image of BANNED_HERO_IMAGE_FILENAMES) {
+    heroHtml = heroHtml.replaceAll(image, APPROVED_HERO_IMAGE);
+  }
+
+  return `${beforeHero}${heroHtml}${afterHero}`;
+}
+
 async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
   let html = await response.text();
 
@@ -458,6 +491,7 @@ async function htmlResponseForRoute(response: Response, path: string): Promise<R
 
   html = withAustinServiceSchemaSignals(html, path);
   html = withGuideFaqSchemaFallback(html, path);
+  html = withSafeHeroImages(html);
 
   return new Response(html, {
     status: 200,
