@@ -38,6 +38,12 @@ export const businessConfig = {
 
   // Business Details
   description: 'Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.',
+  disambiguatingDescription: 'Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.',
+  alternateNames: [
+    'Hill Country Painting LLC',
+    'Hill Country Painting Austin',
+    'Hill Country Painting of Austin'
+  ],
   tagline: 'Clean prep. Crisp lines. Reliable schedules.',
 
   // Hours

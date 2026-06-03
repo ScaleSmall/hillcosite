@@ -8,6 +8,11 @@
   "@id": "https://www.hillcopaint.com/#localbusiness",
   "name": "Hill Country Painting",
   "legalName": "Hill Country Painting LLC",
+  "alternateName": [
+    "Hill Country Painting LLC",
+    "Hill Country Painting Austin",
+    "Hill Country Painting of Austin"
+  ],
   "url": "https://www.hillcopaint.com",
   "telephone": "(512) 240-2246",
   "email": "info@hillcopaint.com",
@@ -28,6 +33,7 @@
     "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
   },
   "description": "Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.",
+  "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
   "slogan": "Clean prep. Crisp lines. Reliable schedules.",
   "priceRange": "$$",
   "paymentAccepted": "Cash, Check, Credit Card",

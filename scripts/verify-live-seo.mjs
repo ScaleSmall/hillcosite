@@ -12,6 +12,12 @@ const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
 const canonicalPhoneHref = 'tel:+15122402246';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
+const businessDisambiguatingDescription = 'Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.';
+const businessAlternateNames = [
+  'Hill Country Painting LLC',
+  'Hill Country Painting Austin',
+  'Hill Country Painting of Austin',
+];
 const canonicalSocialProfileUrls = [
   'https://www.facebook.com/Hillcopaint',
   'https://www.instagram.com/hill_country_painting_austin/',
@@ -1123,10 +1129,13 @@ async function checkCrawlerEntityAssets() {
     const serviceArea = asArray(entityFacts.serviceArea).map(area => area?.name || area).filter(Boolean);
     const knowsAbout = asArray(entityFacts.knowsAbout);
     const sameAs = asArray(entityFacts.sameAs);
+    const alternateNames = asArray(entityFacts.alternateName);
     const staleWarnings = JSON.stringify(entityFacts.staleCitationWarnings || []);
 
     if (
       entityFacts.name !== 'Hill Country Painting' ||
+      !hasAllValues(alternateNames, businessAlternateNames) ||
+      entityFacts.disambiguatingDescription !== businessDisambiguatingDescription ||
       entityFacts.url !== baseUrl ||
       entityFacts.telephone !== '(512) 240-2246' ||
       entityFacts.hasMap !== googleBusinessProfileUrl ||
@@ -1151,7 +1160,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, alternate names, disambiguating description, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -1163,10 +1172,13 @@ async function checkCrawlerEntityAssets() {
     const citationTopics = asArray(citationIdentity.priorityLocalSearchTopics);
     const citationCounties = asArray(citationIdentity.serviceCounties);
     const sameAs = asArray(citationFacts.sameAs);
+    const alternateNames = asArray(citationIdentity.alternateName);
     const staleWarnings = JSON.stringify(citationFacts.staleCitationWarnings || []);
 
     if (
       citationIdentity.name !== 'Hill Country Painting' ||
+      !hasAllValues(alternateNames, businessAlternateNames) ||
+      citationIdentity.disambiguatingDescription !== businessDisambiguatingDescription ||
       citationIdentity.website !== baseUrl ||
       citationIdentity.telephone !== '(512) 240-2246' ||
       citationIdentity.serviceAreaBusiness !== true ||
@@ -1188,7 +1200,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, alternate names, disambiguating description, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
@@ -1460,6 +1472,7 @@ async function checkPriorityLocalBusinessSchema() {
     const localBusinessAreaNames = asArray(localBusinessSchema.areaServed).map(area => area?.name).filter(Boolean);
     const localBusinessServiceAreaNames = asArray(localBusinessSchema.serviceArea).map(area => area?.name).filter(Boolean);
     const localBusinessKnowsAbout = JSON.stringify(localBusinessSchema.knowsAbout || []);
+    const localBusinessAlternateNames = asArray(localBusinessSchema.alternateName);
     const hasCountySignals = greaterAustinServiceCounties.every(county =>
       localBusinessAreaNames.includes(county) &&
       localBusinessServiceAreaNames.includes(county)
@@ -1467,9 +1480,12 @@ async function checkPriorityLocalBusinessSchema() {
     const hasPriorityTopics = priorityLocalSearchTopics.every(topic => localBusinessKnowsAbout.includes(topic));
     const hasAggregateRating = hasValidAggregateRating(localBusinessSchema);
     const hasEstimateAction = hasPaintingEstimateAction(localBusinessSchema);
+    const hasEntityDisambiguation =
+      hasAllValues(localBusinessAlternateNames, businessAlternateNames) &&
+      localBusinessSchema.disambiguatingDescription === businessDisambiguatingDescription;
 
-    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating || !hasEstimateAction) {
-      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, county service areas, priority local search topics, aggregate rating, or estimate QuoteAction.`);
+    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating || !hasEstimateAction || !hasEntityDisambiguation) {
+      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, alternate names, disambiguating description, county service areas, priority local search topics, aggregate rating, or estimate QuoteAction.`);
       continue;
     }
 

@@ -13,6 +13,11 @@
   "canonicalIdentity": {
     "name": "Hill Country Painting",
     "legalName": "Hill Country Painting LLC",
+    "alternateName": [
+      "Hill Country Painting LLC",
+      "Hill Country Painting Austin",
+      "Hill Country Painting of Austin"
+    ],
     "telephone": "(512) 240-2246",
     "telephoneHref": "tel:+15122402246",
     "email": "info@hillcopaint.com",
@@ -35,6 +40,7 @@
       "painting contractor"
     ],
     "serviceAreaBusiness": true,
+    "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
     "openingHours": "Mo-Fr 08:00-18:00",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",

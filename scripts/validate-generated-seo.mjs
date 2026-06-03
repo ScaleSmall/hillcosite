@@ -381,6 +381,10 @@ function asArray(value) {
   return Array.isArray(value) ? value : [value];
 }
 
+function hasAllValues(values, requiredValues) {
+  return requiredValues.every(value => values.includes(value));
+}
+
 function isServiceLocationRoute(routePath) {
   return localServicePrefixes.some(prefix => routePath.startsWith(prefix));
 }
@@ -418,6 +422,16 @@ function extractStringProperty(source, name) {
   const match = source.match(new RegExp(`${name}:\\s*'([^']*)'`));
 
   return match?.[1] || '';
+}
+
+function extractBusinessStringArrayProperty(source, name) {
+  const match = source.match(new RegExp(`${name}:\\s*\\[([\\s\\S]*?)\\]`));
+
+  if (!match) {
+    return [];
+  }
+
+  return [...match[1].matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]);
 }
 
 function extractNumberProperty(source, name) {
@@ -1070,6 +1084,8 @@ function run() {
     phoneHref: extractStringProperty(businessConfigSource, 'phoneHref'),
     email: extractStringProperty(businessConfigSource, 'email'),
     serviceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
+    disambiguatingDescription: extractStringProperty(businessConfigSource, 'disambiguatingDescription'),
+    alternateNames: extractBusinessStringArrayProperty(businessConfigSource, 'alternateNames'),
     googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
     googleBusinessProfileUrl: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
     ratingValue: extractNumberProperty(businessConfigSource, 'ratingValue'),
@@ -1537,6 +1553,9 @@ function run() {
     if (entityFacts.legalName !== configuredBusinessFacts.legalName) {
       fail('entity-facts.json must use the canonical legal business name');
     }
+    if (!hasAllValues(asArray(entityFacts.alternateName), configuredBusinessFacts.alternateNames) || entityFacts.disambiguatingDescription !== configuredBusinessFacts.disambiguatingDescription) {
+      fail('entity-facts.json must include canonical business alternate names and disambiguating description');
+    }
     if (entityFacts.url !== baseUrl) {
       fail(`entity-facts.json URL should be ${baseUrl}`);
     }
@@ -1623,6 +1642,9 @@ function run() {
     }
     if (identity.legalName !== configuredBusinessFacts.legalName) {
       fail('citation-facts.json must use the canonical legal business name');
+    }
+    if (!hasAllValues(asArray(identity.alternateName), configuredBusinessFacts.alternateNames) || identity.disambiguatingDescription !== configuredBusinessFacts.disambiguatingDescription) {
+      fail('citation-facts.json must include canonical business alternate names and disambiguating description');
     }
     if (identity.website !== baseUrl) {
       fail(`citation-facts.json website should be ${baseUrl}`);
@@ -2069,9 +2091,14 @@ function run() {
         } else {
           const identifier = localBusinessSchema.identifier;
           const sameAs = Array.isArray(localBusinessSchema.sameAs) ? localBusinessSchema.sameAs : [];
+          const alternateNames = asArray(localBusinessSchema.alternateName);
 
           if (localBusinessSchema.hasMap !== googleBusinessProfileUrl || !sameAs.includes(googleBusinessProfileUrl)) {
             fail(`${routePath}: LocalBusiness schema must include the canonical Google Business Profile URL`);
+          }
+
+          if (!hasAllValues(alternateNames, configuredBusinessFacts.alternateNames) || localBusinessSchema.disambiguatingDescription !== configuredBusinessFacts.disambiguatingDescription) {
+            fail(`${routePath}: LocalBusiness schema must include canonical alternate names and disambiguating description`);
           }
 
           if (identifier?.propertyID !== 'kgmid' || identifier?.value !== googleKnowledgeGraphId || identifier?.url !== googleBusinessProfileUrl) {

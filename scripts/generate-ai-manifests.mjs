@@ -62,6 +62,16 @@ function extractStringProperty(source, name) {
   return match[1];
 }
 
+function extractBusinessStringArrayProperty(source, name) {
+  const match = source.match(new RegExp(`${name}:\\s*\\[([\\s\\S]*?)\\]`));
+
+  if (!match) {
+    throw new Error(`Could not find ${name} in src/config/business.ts`);
+  }
+
+  return [...match[1].matchAll(/'([^']+)'/g)].map(item => item[1]);
+}
+
 function extractNumberProperty(source, name) {
   const match = source.match(new RegExp(`${name}:\\s*([\\d.]+)`));
 
@@ -130,6 +140,8 @@ const businessFacts = {
   googleBusinessProfile: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
   primaryServiceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
   description: extractStringProperty(businessConfigSource, 'description'),
+  disambiguatingDescription: extractStringProperty(businessConfigSource, 'disambiguatingDescription'),
+  alternateNames: extractBusinessStringArrayProperty(businessConfigSource, 'alternateNames'),
   tagline: extractStringProperty(businessConfigSource, 'tagline'),
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -442,6 +454,7 @@ const entityFacts = {
   '@id': `${BASE_URL}/#localbusiness`,
   name: businessFacts.name,
   legalName: businessFacts.legalName,
+  alternateName: businessFacts.alternateNames,
   url: BASE_URL,
   telephone: businessFacts.phone,
   email: businessFacts.email,
@@ -454,6 +467,7 @@ const entityFacts = {
     url: businessFacts.googleBusinessProfile
   },
   description: `Professional painting contractors serving ${businessFacts.primaryServiceArea}. Services include ${joinNaturalList(businessFacts.services.map(sentenceCase))}.`,
+  disambiguatingDescription: businessFacts.disambiguatingDescription,
   slogan: businessFacts.tagline,
   priceRange: '$$',
   paymentAccepted: businessFacts.paymentAccepted,
@@ -554,6 +568,7 @@ const citationFacts = {
   canonicalIdentity: {
     name: businessFacts.name,
     legalName: businessFacts.legalName,
+    alternateName: businessFacts.alternateNames,
     telephone: businessFacts.phone,
     telephoneHref: businessFacts.phoneHref,
     email: businessFacts.email,
@@ -563,6 +578,7 @@ const citationFacts = {
     googleBusinessProfile: businessFacts.googleBusinessProfile,
     businessType: ['HousePainter', 'HomeAndConstructionBusiness', 'LocalBusiness', 'painting contractor'],
     serviceAreaBusiness: true,
+    disambiguatingDescription: businessFacts.disambiguatingDescription,
     openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
     openingHoursSpecification: businessFacts.openingHours,
     aggregateRating: businessFacts.aggregateRating,
