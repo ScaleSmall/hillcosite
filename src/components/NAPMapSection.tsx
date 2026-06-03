@@ -4,6 +4,22 @@ import GoogleMapEmbed from './GoogleMapEmbed';
 import { businessConfig } from '../config/business';
 
 const NAPMapSection = () => {
+  const priorityServiceAreas = [
+    'Austin',
+    'West Lake Hills',
+    'Rollingwood',
+    'Tarrytown',
+    'Lakeway',
+    'Bee Cave',
+    'Barton Creek',
+    'Circle C Ranch',
+    'Northwest Hills',
+    'Cedar Park',
+    'Round Rock',
+    'Georgetown',
+    'Leander'
+  ];
+
   return (
     <section className="section-padding bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,6 +40,9 @@ const NAPMapSection = () => {
                   <p className="text-brand-gray-600">
                     {businessConfig.name}<br />
                     Serving {businessConfig.serviceArea}
+                  </p>
+                  <p className="text-sm text-brand-gray-500 mt-2 leading-relaxed">
+                    Interior painting, exterior painting, cabinet refinishing, and commercial painting across the Austin metro.
                   </p>
                 </div>
               </div>
@@ -67,16 +86,27 @@ const NAPMapSection = () => {
 
               <div className="pt-6 border-t border-brand-gray-200">
                 <p className="text-brand-gray-600 leading-relaxed">
-                  Serving Austin, TX with professional painting services.
+                  Serving Greater Austin homeowners, HOAs, property managers, and businesses with professional painting services.
                   Contact us today for a consultation on your project.
                 </p>
+                <p className="text-sm text-brand-gray-500 mt-3 leading-relaxed">
+                  Priority service areas include {priorityServiceAreas.join(', ')}.
+                </p>
+                <a
+                  href={businessConfig.googleBusinessProfileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex mt-4 text-brand-azure hover:text-brand-azureDark font-medium transition-colors"
+                >
+                  View Hill Country Painting on Google
+                </a>
               </div>
             </div>
           </div>
 
           <div>
             <GoogleMapEmbed
-              query={`${businessConfig.address.displayShort}, TX`}
+              query={`${businessConfig.name} Austin TX`}
               title={`${businessConfig.name} - Service Area Map`}
               height="450"
             />

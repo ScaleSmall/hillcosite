@@ -24,7 +24,7 @@ export const businessConfig = {
   },
 
   // Service Area
-  serviceArea: 'Austin, TX',
+  serviceArea: 'Austin, TX and the Greater Austin area',
 
   // Ratings - Fetched live from GBP via Supabase
   // These static values are fallback only
