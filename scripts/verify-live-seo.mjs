@@ -280,6 +280,7 @@ const googleCrawlerAccessRoutes = [
   '/testimonials',
   '/contact',
 ];
+const crawlerChallengePattern = /Attention Required|Just a moment|Checking your browser|cf-browser-verification|cf-chl-widget|Access denied/i;
 
 const failures = [];
 
@@ -595,7 +596,6 @@ async function checkCanonicalHostRoutes() {
 
 async function checkGoogleCrawlerAccess() {
   let passed = 0;
-  const challengePattern = /Attention Required|Just a moment|Checking your browser|cf-browser-verification|cf-chl-widget|Access denied/i;
 
   for (const { label, userAgent } of googleCrawlerUserAgents) {
     const assetChecks = [
@@ -608,8 +608,8 @@ async function checkGoogleCrawlerAccess() {
         'User-Agent': userAgent,
       });
 
-      if (response.status !== 200 || !text.includes(requiredText) || challengePattern.test(text)) {
-        fail(`${route}: ${label} must receive a clean live crawler asset response; found status ${response.status}, required text ${text.includes(requiredText)}, challenge ${challengePattern.test(text)}`);
+      if (response.status !== 200 || !text.includes(requiredText) || crawlerChallengePattern.test(text)) {
+        fail(`${route}: ${label} must receive a clean live crawler asset response; found status ${response.status}, required text ${text.includes(requiredText)}, challenge ${crawlerChallengePattern.test(text)}`);
         continue;
       }
 
@@ -631,7 +631,7 @@ async function checkGoogleCrawlerAccess() {
       const expectedCanonical = route === '/' ? `${baseUrl}/` : `${baseUrl}${route}`;
       const hasExpectedCanonical = canonicalHrefs.length === 1 && canonicalHrefs[0] === expectedCanonical;
       const isIndexable = /index,\s*follow/i.test(robotsContent) && !/noindex/i.test(robotsContent);
-      const hasChallenge = challengePattern.test(html);
+      const hasChallenge = crawlerChallengePattern.test(html);
 
       if (
         response.status !== 200 ||
@@ -649,6 +649,80 @@ async function checkGoogleCrawlerAccess() {
   }
 
   console.log(`Live Google crawler access checked: ${passed}/${googleCrawlerUserAgents.length * (googleCrawlerAccessRoutes.length + 2)}`);
+}
+
+async function checkGooglebotSitemapAccess() {
+  const googlebot = googleCrawlerUserAgents.find(agent => agent.label === 'Googlebot smartphone');
+  const { response, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`, {
+    'User-Agent': googlebot.userAgent,
+  });
+
+  if (response.status !== 200 || crawlerChallengePattern.test(sitemapXml)) {
+    fail(`sitemap.xml: Googlebot smartphone must receive a clean sitemap response; found status ${response.status}, challenge ${crawlerChallengePattern.test(sitemapXml)}`);
+    return;
+  }
+
+  const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+  const problems = [];
+  let passed = 0;
+  let nextIndex = 0;
+
+  async function worker() {
+    while (nextIndex < urls.length) {
+      const url = urls[nextIndex++];
+      const page = await fetch(`${url}?v=${Date.now()}`, {
+        redirect: 'manual',
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+          'User-Agent': googlebot.userAgent,
+        },
+      });
+      const html = await page.text();
+      const canonicalTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
+      const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+      const robotsTags = [...html.matchAll(/<meta\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).name || '').toLowerCase() === 'robots');
+      const robotsContent = robotsTags.map(tag => attrs(tag).content || '').join(' ');
+      const hasExpectedCanonical = canonicalHrefs.length === 1 && canonicalHrefs[0] === url;
+      const isIndexable =
+        robotsTags.length === 1 &&
+        /index,\s*follow/i.test(robotsContent) &&
+        /max-image-preview:large/i.test(robotsContent) &&
+        !/noindex/i.test(robotsContent);
+      const hasChallenge = crawlerChallengePattern.test(html);
+      const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
+
+      if (page.status !== 200 || !hasExpectedCanonical || !isIndexable || hasChallenge || staleIdentitySignal) {
+        problems.push({
+          url,
+          status: page.status,
+          canonicalHrefs,
+          robotsContent,
+          hasChallenge,
+          staleIdentitySignal,
+        });
+        continue;
+      }
+
+      passed += 1;
+    }
+  }
+
+  await Promise.all(Array.from({ length: 8 }, worker));
+
+  for (const problem of problems.slice(0, 10)) {
+    fail(`${problem.url}: Googlebot smartphone must see clean indexable sitemap HTML; found status ${problem.status}, canonical ${problem.canonicalHrefs.join(', ') || '(none)'}, robots ${problem.robotsContent || '(missing)'}, challenge ${problem.hasChallenge}, stale identity ${problem.staleIdentitySignal || 'none'}`);
+  }
+
+  if (problems.length > 10) {
+    fail(`${problems.length - 10} additional Googlebot sitemap access problems not shown.`);
+  }
+
+  console.log(`Live Googlebot sitemap access checked: ${passed}/${urls.length}`);
 }
 
 async function checkSitemapPages() {
@@ -1685,6 +1759,7 @@ if (pageIndexingMode) {
 
 await checkCanonicalHostRoutes();
 await checkGoogleCrawlerAccess();
+await checkGooglebotSitemapAccess();
 await checkSitemapPages();
 await checkSitemapTrailingSlashRedirects();
 await checkCrawlerEntityAssets();
