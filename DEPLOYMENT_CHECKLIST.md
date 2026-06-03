@@ -26,6 +26,14 @@ npm run verify:live
 
 The live verifier should only fail on the known external DNS/custom-domain condition until `www.hillcopaint.com` is CNAMEd to `hillcosite.pages.dev`.
 
+For Google Search Console page/indexing validation while the DNS change is still pending, run:
+
+```bash
+npm run verify:live:pages
+```
+
+This mode keeps the live sitemap, metadata, canonical, internal-link discovery, schema, Supabase feed, hero-image, redirect, noindex, and crawler/entity checks enabled, but skips only the external DNS/custom-domain checks.
+
 ## ✅ Completed Steps
 
 ### 1. Fixed Duplicate Content Issue (18 Pages)

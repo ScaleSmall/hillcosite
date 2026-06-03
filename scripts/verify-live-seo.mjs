@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import { resolve4, resolveCname, resolveNs } from 'dns/promises';
 
+const args = new Set(process.argv.slice(2));
+const pageIndexingMode = args.has('--page-indexing');
 const baseUrl = 'https://www.hillcopaint.com';
 const pagesProjectName = 'hillcosite';
 const pagesTarget = 'hillcosite.pages.dev';
@@ -961,8 +963,13 @@ async function checkGoogleEntityIdentifier() {
   console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid');
 }
 
-await checkDns();
-await checkPagesDomain();
+if (pageIndexingMode) {
+  console.log('Live DNS/custom-domain checks skipped for page-indexing validation mode.');
+} else {
+  await checkDns();
+  await checkPagesDomain();
+}
+
 await checkCanonicalHostRoutes();
 await checkSitemapPages();
 await checkCrawlerEntityAssets();
@@ -983,4 +990,6 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('\nLive SEO verification PASSED.');
+console.log(pageIndexingMode
+  ? '\nLive page-indexing SEO verification PASSED.'
+  : '\nLive SEO verification PASSED.');
