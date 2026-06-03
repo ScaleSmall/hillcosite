@@ -85,6 +85,8 @@ const REDIRECTS: Record<string, string> = {
   // -- Old service page patterns (no /services/ prefix) --
   '/interior-painting':                          '/services/interior-painting',
   '/exterior-painting':                          '/services/exterior-painting',
+  '/cabinet-refinishing':                        '/services/cabinet-refinishing',
+  '/cabinet-refinishing-pflugerville':           '/services/cabinet-refinishing',
   '/cabinet-painting':                           '/services/cabinet-refinishing',
   '/commercial-painting':                        '/services/commercial',
   '/commercial-interior-painting':               '/services/commercial',

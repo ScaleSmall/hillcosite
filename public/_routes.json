@@ -35,6 +35,10 @@
     "/service/garage-painting",
     "/service/townhouse-painting-round-rock/",
     "/service/townhouse-painting-round-rock",
+    "/cabinet-refinishing/",
+    "/cabinet-refinishing",
+    "/cabinet-refinishing-pflugerville/",
+    "/cabinet-refinishing-pflugerville",
     "/functions/*",
     "/api/*"
   ]

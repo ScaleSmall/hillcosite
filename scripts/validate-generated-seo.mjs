@@ -43,6 +43,8 @@ const internalRedirectTargets = new Map([
 const requiredLegacyRedirects = new Map([
   ['/austin', '/service-areas/austin'],
   ['/exterior-painting', '/services/exterior-painting'],
+  ['/cabinet-refinishing', '/services/cabinet-refinishing'],
+  ['/cabinet-refinishing-pflugerville', '/services/cabinet-refinishing'],
   ['/projects', '/gallery'],
   ['/project', '/gallery'],
   ['/service-area', '/service-areas'],
@@ -71,6 +73,10 @@ const staticLegacyRedirects = new Map([
   ['/service/garage-painting', `${baseUrl}/services`],
   ['/service/townhouse-painting-round-rock/', `${baseUrl}/services`],
   ['/service/townhouse-painting-round-rock', `${baseUrl}/services`],
+  ['/cabinet-refinishing/', `${baseUrl}/services/cabinet-refinishing`],
+  ['/cabinet-refinishing', `${baseUrl}/services/cabinet-refinishing`],
+  ['/cabinet-refinishing-pflugerville/', `${baseUrl}/services/cabinet-refinishing`],
+  ['/cabinet-refinishing-pflugerville', `${baseUrl}/services/cabinet-refinishing`],
 ]);
 const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
 const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
