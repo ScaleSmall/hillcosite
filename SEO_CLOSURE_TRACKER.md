@@ -18,7 +18,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Thin page / geo page scaffolding exists
 
 ### Fixed live
-- Production deployment `0712181` is canonical on Cloudflare Pages.
+- Latest checked production deployment is canonical and successful on Cloudflare Pages.
 - All 218 sitemap URLs return 200, expose exactly one canonical tag, and are indexable.
 - Live H1/title/meta audit across all 218 sitemap URLs reports 0 issues.
 - Live internal-link crawl found 417 unique internal links/assets and 0 redirect or broken-link targets.
@@ -104,7 +104,8 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 
 ## Evidence
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
-- Safe Cloudflare project check confirmed canonical production commit `0712181` with status `success`.
+- Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
+- Safe Cloudflare project check confirmed the latest production deployment had status `success`.
 - Live sitemap crawl: 218 sitemap URLs, 218 clean indexable 200 responses, 0 problems.
 - Live H1/meta crawl: 218 pages checked, 0 issues for duplicate/missing H1, hard-cut ellipses, overlong titles, or overlong descriptions.
 - Live internal-link crawl: 218 pages crawled, 417 unique internal links/assets checked, 0 broken or redirecting internal targets.
