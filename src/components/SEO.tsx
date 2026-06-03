@@ -289,6 +289,26 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     opens: weekdayHours.opens,
     closes: weekdayHours.closes
   };
+  const requestEstimateAction = {
+    '@type': 'QuoteAction',
+    name: 'Request a painting estimate',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${baseUrl}/contact`,
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform'
+      ]
+    },
+    provider: {
+      '@id': `${baseUrl}/#localbusiness`
+    },
+    object: {
+      '@type': 'Service',
+      name: 'Painting estimate for Greater Austin homes and businesses',
+      serviceType: 'Interior painting, exterior painting, cabinet painting, and commercial painting'
+    }
+  };
 
   // LocalBusiness schema - only if requested (for homepage or service area pages)
   const localBusinessSchema = includeLocalBusiness ? {
@@ -352,6 +372,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     mainEntityOfPage: {
       '@id': `${baseUrl}/#website`
     },
+    potentialAction: requestEstimateAction,
     subjectOf: [
       {
         '@type': 'WebPage',

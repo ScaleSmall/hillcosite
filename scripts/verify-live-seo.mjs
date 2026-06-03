@@ -584,6 +584,28 @@ function hasValidAggregateRating(schema) {
   );
 }
 
+function hasPaintingEstimateAction(schema) {
+  return asArray(schema?.potentialAction).some(action => {
+    const target = action?.target || {};
+    const object = action?.object || {};
+    const serviceType = String(object.serviceType || '');
+
+    return (
+      schemaTypeIncludes(action, 'QuoteAction') &&
+      action?.name === 'Request a painting estimate' &&
+      action?.provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+      target?.urlTemplate === `${baseUrl}/contact` &&
+      schemaTypeIncludes(target, 'EntryPoint') &&
+      schemaTypeIncludes(object, 'Service') &&
+      object?.name === 'Painting estimate for Greater Austin homes and businesses' &&
+      serviceType.includes('Interior painting') &&
+      serviceType.includes('exterior painting') &&
+      serviceType.includes('cabinet painting') &&
+      serviceType.includes('commercial painting')
+    );
+  });
+}
+
 async function checkCrawlerEntityAssets() {
   const assetText = new Map();
   let passed = 0;
@@ -817,9 +839,10 @@ async function checkPriorityLocalBusinessSchema() {
     );
     const hasPriorityTopics = priorityLocalSearchTopics.every(topic => localBusinessKnowsAbout.includes(topic));
     const hasAggregateRating = hasValidAggregateRating(localBusinessSchema);
+    const hasEstimateAction = hasPaintingEstimateAction(localBusinessSchema);
 
-    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating) {
-      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, county service areas, priority local search topics, or aggregate rating.`);
+    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating || !hasEstimateAction) {
+      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, county service areas, priority local search topics, aggregate rating, or estimate QuoteAction.`);
       continue;
     }
 

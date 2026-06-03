@@ -349,6 +349,28 @@ function hasValidAggregateRating(schema) {
   );
 }
 
+function hasPaintingEstimateAction(schema) {
+  return asArray(schema?.potentialAction).some(action => {
+    const target = action?.target || {};
+    const object = action?.object || {};
+    const serviceType = String(object.serviceType || '');
+
+    return (
+      schemaTypeIncludes(action, 'QuoteAction') &&
+      action?.name === 'Request a painting estimate' &&
+      action?.provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+      target?.urlTemplate === `${baseUrl}/contact` &&
+      schemaTypeIncludes(target, 'EntryPoint') &&
+      schemaTypeIncludes(object, 'Service') &&
+      object?.name === 'Painting estimate for Greater Austin homes and businesses' &&
+      serviceType.includes('Interior painting') &&
+      serviceType.includes('exterior painting') &&
+      serviceType.includes('cabinet painting') &&
+      serviceType.includes('commercial painting')
+    );
+  });
+}
+
 function stripQueryAndHash(value) {
   return value.split('#')[0].split('?')[0];
 }
@@ -1541,6 +1563,10 @@ function run() {
 
           if (!hasValidAggregateRating(localBusinessSchema)) {
             fail(`${routePath}: LocalBusiness schema must include a valid aggregate rating signal`);
+          }
+
+          if (!hasPaintingEstimateAction(localBusinessSchema)) {
+            fail(`${routePath}: LocalBusiness schema must include a QuoteAction for requesting a painting estimate`);
           }
 
           const localBusinessAreaNames = asArray(localBusinessSchema.areaServed).map(area => area?.name).filter(Boolean);
