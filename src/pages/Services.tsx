@@ -10,6 +10,7 @@ import { ArrowRight } from 'lucide-react';
 import LocalSearchLinks from '../components/LocalSearchLinks';
 
 const Services = () => {
+  const baseUrl = 'https://www.hillcopaint.com';
   const allServices = [
     {
       title: 'Interior Painting',
@@ -41,6 +42,63 @@ const Services = () => {
     }
   ];
 
+  const serviceHubItemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${baseUrl}/services#servicelist`,
+    name: 'Austin painting services',
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    itemListElement: [
+      ...allServices.map((service, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: service.title,
+        url: `${baseUrl}${service.link}`,
+        item: {
+          '@type': 'WebPage',
+          '@id': `${baseUrl}${service.link}#webpage`,
+          url: `${baseUrl}${service.link}`,
+          name: `${service.title} in Austin`,
+          about: {
+            '@type': 'Service',
+            name: service.title,
+            provider: {
+              '@id': `${baseUrl}/#localbusiness`
+            }
+          }
+        }
+      })),
+      ...[
+        ['Austin interior painters', '/interior-painting-austin'],
+        ['Austin exterior house painters', '/exterior-painting-austin'],
+        ['Austin cabinet painting', '/cabinet-refinishing-austin'],
+        ['Austin commercial painters', '/commercial-painting-austin']
+      ].map(([name, link], index) => ({
+        '@type': 'ListItem',
+        position: allServices.length + index + 1,
+        name,
+        url: `${baseUrl}${link}`,
+        item: {
+          '@type': 'WebPage',
+          '@id': `${baseUrl}${link}#webpage`,
+          url: `${baseUrl}${link}`,
+          name,
+          about: {
+            '@type': 'Service',
+            name,
+            areaServed: {
+              '@type': 'City',
+              name: 'Austin'
+            },
+            provider: {
+              '@id': `${baseUrl}/#localbusiness`
+            }
+          }
+        }
+      }))
+    ]
+  };
+
   return (
     <>
       <SEO
@@ -53,6 +111,7 @@ const Services = () => {
           { name: 'Services', url: '/services' }
         ]}
         includeLocalBusiness={true}
+        additionalSchema={serviceHubItemList}
       />
 
       {/* Hero */}

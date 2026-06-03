@@ -372,6 +372,12 @@ function hasPaintingEstimateAction(schema) {
   });
 }
 
+function itemListUrls(schema) {
+  return asArray(schema?.itemListElement)
+    .map(item => item?.url || item?.item?.url)
+    .filter(Boolean);
+}
+
 function stripQueryAndHash(value) {
   return value.split('#')[0].split('?')[0];
 }
@@ -1562,6 +1568,66 @@ function run() {
 
           if (!hasBusinessEntity || !hasContactPoint || !hasPaintingEstimateAction(contactPageSchema)) {
             fail(`${routePath}: ContactPage schema must connect the LocalBusiness, canonical phone, and estimate QuoteAction`);
+          }
+        }
+      }
+
+      if (routePath === '/services') {
+        const servicesItemList = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ItemList') &&
+          item?.['@id'] === `${baseUrl}/services#servicelist`
+        );
+        const serviceListUrls = itemListUrls(servicesItemList);
+
+        if (!servicesItemList) {
+          fail(`${routePath}: services hub is missing ItemList structured data`);
+        }
+
+        for (const requiredServiceUrl of [
+          `${baseUrl}/services/interior-painting`,
+          `${baseUrl}/services/exterior-painting`,
+          `${baseUrl}/services/cabinet-refinishing`,
+          `${baseUrl}/services/commercial`,
+          `${baseUrl}/interior-painting-austin`,
+          `${baseUrl}/exterior-painting-austin`,
+          `${baseUrl}/cabinet-refinishing-austin`,
+          `${baseUrl}/commercial-painting-austin`
+        ]) {
+          if (!serviceListUrls.includes(requiredServiceUrl)) {
+            fail(`${routePath}: services hub ItemList is missing ${requiredServiceUrl}`);
+          }
+        }
+      }
+
+      if (routePath === '/service-areas') {
+        const serviceAreasCollection = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'CollectionPage') &&
+          item?.['@id'] === `${baseUrl}/service-areas#webpage`
+        );
+        const areasItemList = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ItemList') &&
+          item?.['@id'] === `${baseUrl}/service-areas#arealist`
+        );
+        const areaListUrls = itemListUrls(areasItemList);
+
+        if (!serviceAreasCollection) {
+          fail(`${routePath}: service-area hub should use CollectionPage structured data`);
+        }
+
+        if (!areasItemList) {
+          fail(`${routePath}: service-area hub is missing ItemList structured data`);
+        }
+
+        for (const requiredAreaUrl of [
+          `${baseUrl}/service-areas/austin`,
+          `${baseUrl}/service-areas/west-lake-hills`,
+          `${baseUrl}/service-areas/northwest-hills`,
+          `${baseUrl}/service-areas/lakeway`,
+          `${baseUrl}/areas/west-lake-hills-and-rollingwood`,
+          `${baseUrl}/areas/lakeway-bee-cave-and-lake-travis`
+        ]) {
+          if (!areaListUrls.includes(requiredAreaUrl)) {
+            fail(`${routePath}: service-area hub ItemList is missing ${requiredAreaUrl}`);
           }
         }
       }

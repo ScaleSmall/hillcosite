@@ -10,6 +10,7 @@ import { geoAreas } from '../data/geoAreas';
 import LocalSearchLinks from '../components/LocalSearchLinks';
 
 const ServiceAreas = () => {
+  const baseUrl = 'https://www.hillcopaint.com';
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Service Areas' }
@@ -56,17 +57,61 @@ const ServiceAreas = () => {
     }
   ];
 
+  const serviceAreaHubItemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${baseUrl}/service-areas#arealist`,
+    name: 'Greater Austin painting service areas',
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    itemListElement: [
+      ...allServiceAreas.map((area, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: area.name,
+        url: `${baseUrl}${area.href}`,
+        item: {
+          '@type': 'WebPage',
+          '@id': `${baseUrl}${area.href}#webpage`,
+          url: `${baseUrl}${area.href}`,
+          name: `${area.name} painting services`,
+          about: {
+            '@type': 'Place',
+            name: area.name
+          }
+        }
+      })),
+      ...geoAreas.map((hub, index) => ({
+        '@type': 'ListItem',
+        position: allServiceAreas.length + index + 1,
+        name: hub.name,
+        url: `${baseUrl}/areas/${hub.slug}`,
+        item: {
+          '@type': 'WebPage',
+          '@id': `${baseUrl}/areas/${hub.slug}#webpage`,
+          url: `${baseUrl}/areas/${hub.slug}`,
+          name: `${hub.name} painting services`,
+          about: {
+            '@type': 'Place',
+            name: hub.name
+          }
+        }
+      }))
+    ]
+  };
+
   return (
     <>
       <SEO
         title="Service Areas | Austin Metro Painting Services | Hill Country Painting"
         description="Hill Country Painting serves Austin, Tarrytown, Northwest Hills, West Lake Hills, Lakeway, Leander, Georgetown, Round Rock, Cedar Park, North Austin, and surrounding areas. Professional painting services throughout Greater Austin Area."
         canonical="/service-areas"
+        pageType="collection"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Service Areas', url: '/service-areas' }
         ]}
         includeLocalBusiness={true}
+        additionalSchema={serviceAreaHubItemList}
       />
 
       {/* Hero */}
