@@ -9,6 +9,7 @@ const pagesTarget = 'hillcosite.pages.dev';
 const accountId = '7b68f149b6054718ad2c6ff0634ae145';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
+const canonicalPhoneHref = 'tel:+15122402246';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
 const minimumAggregateRatingValue = 4.5;
@@ -151,6 +152,12 @@ const liveUnknownRoutes = [
   '/does-not-exist-gsc-test',
   '/areas/not-a-real-area-gsc-test',
 ];
+const allowedInternalNoindexRoutes = new Set(
+  liveNoindexRoutes.map(([route]) => route.split('?')[0])
+);
+const liveLegacyRedirectSources = new Set(
+  liveLegacyRedirects.map(([source]) => source.replace(/\/+$/, '') || '/')
+);
 const canonicalHostRoutes = [
   'http://hillcopaint.com/',
   'https://hillcopaint.com/',
@@ -429,6 +436,8 @@ async function checkSitemapPages() {
   const sitemapTitles = new Map();
   const sitemapDescriptions = new Map();
   const sitemapH1s = new Map();
+  const unexpectedInternalLinks = new Map();
+  const nonCanonicalPhoneLinks = new Map();
   let nextIndex = 0;
   const problems = [];
   const heroImageProblems = [];
@@ -496,10 +505,26 @@ async function checkSitemapPages() {
       }
 
       for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
-        const targetRoute = normalizeInternalRoute(match[1]);
+        const href = match[1].trim();
 
-        if (targetRoute && targetRoute !== route && sitemapRouteSet.has(targetRoute)) {
+        if (/^tel:/i.test(href) && href !== canonicalPhoneHref) {
+          nonCanonicalPhoneLinks.set(href, [...(nonCanonicalPhoneLinks.get(href) || []), route]);
+        }
+
+        const targetRoute = normalizeInternalRoute(href);
+
+        if (!targetRoute) {
+          continue;
+        }
+
+        if (targetRoute !== route && sitemapRouteSet.has(targetRoute)) {
           inboundSources.get(targetRoute)?.add(route);
+        } else if (
+          !sitemapRouteSet.has(targetRoute) &&
+          !allowedInternalNoindexRoutes.has(targetRoute) &&
+          !liveLegacyRedirectSources.has(targetRoute)
+        ) {
+          unexpectedInternalLinks.set(targetRoute, [...(unexpectedInternalLinks.get(targetRoute) || []), route]);
         }
       }
 
@@ -584,6 +609,34 @@ async function checkSitemapPages() {
 
   if (weakInternalLinkRoutes.length === 0) {
     console.log('Live internal discovery guard: all sitemap pages have 2+ inbound source pages');
+  }
+
+  const unexpectedInternalLinkProblems = [...unexpectedInternalLinks.entries()];
+
+  for (const [targetRoute, sourceRoutes] of unexpectedInternalLinkProblems.slice(0, 10)) {
+    fail(`${baseUrl}${targetRoute}: live internal link target is not in sitemap, noindex allowlist, or legacy redirect list; linked from ${[...new Set(sourceRoutes)].slice(0, 5).join(', ')}`);
+  }
+
+  if (unexpectedInternalLinkProblems.length > 10) {
+    fail(`${unexpectedInternalLinkProblems.length - 10} additional unexpected live internal link targets not shown.`);
+  }
+
+  if (unexpectedInternalLinkProblems.length === 0) {
+    console.log('Live internal link target guard: no unexpected non-sitemap links found');
+  }
+
+  const phoneLinkProblems = [...nonCanonicalPhoneLinks.entries()];
+
+  for (const [href, sourceRoutes] of phoneLinkProblems.slice(0, 10)) {
+    fail(`${href}: live phone link must use canonical ${canonicalPhoneHref}; found on ${[...new Set(sourceRoutes)].slice(0, 5).join(', ')}`);
+  }
+
+  if (phoneLinkProblems.length > 10) {
+    fail(`${phoneLinkProblems.length - 10} additional non-canonical live phone links not shown.`);
+  }
+
+  if (phoneLinkProblems.length === 0) {
+    console.log('Live phone link guard: all tel links use the canonical phone number');
   }
 }
 
