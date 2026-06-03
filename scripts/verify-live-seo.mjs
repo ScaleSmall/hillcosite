@@ -82,6 +82,12 @@ const localServicePrefixes = [
   '/cabinet-refinishing-',
   '/commercial-painting-',
 ];
+const serviceLocationServiceIntents = new Map([
+  ['/interior-painting-', 'interior painters'],
+  ['/exterior-painting-', 'exterior house painters'],
+  ['/cabinet-refinishing-', 'cabinet painting'],
+  ['/commercial-painting-', 'commercial painters'],
+]);
 const coreServiceLocationGridRoutes = new Map([
   ['/services/interior-painting', '/interior-painting-'],
   ['/services/exterior-painting', '/exterior-painting-'],
@@ -284,6 +290,25 @@ function itemListUrls(schema) {
 
 function routeIsServiceLocation(route) {
   return localServicePrefixes.some(prefix => route.startsWith(prefix));
+}
+
+function titleCaseSlug(slug) {
+  return slug
+    .split('-')
+    .filter(Boolean)
+    .map(part => part.length === 1 ? part.toUpperCase() : `${part[0].toUpperCase()}${part.slice(1)}`)
+    .join(' ');
+}
+
+function expectedServiceLocationPhrase(route) {
+  for (const [prefix, intent] of serviceLocationServiceIntents) {
+    if (route.startsWith(prefix)) {
+      const locationName = titleCaseSlug(route.slice(prefix.length));
+      return `${locationName} ${intent}`;
+    }
+  }
+
+  return null;
 }
 
 function routeNeedsLocalBusinessSchema(route) {
@@ -1000,6 +1025,59 @@ async function checkAustinSchema() {
   console.log(`Live Austin service schema pages checked: ${passed}/${austinServiceSignals.size}`);
 }
 
+async function checkServiceLocationServiceSchema() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+
+  if (sitemapResponse.status !== 200) {
+    fail('live sitemap could not be fetched for service-location Service schema validation.');
+    return;
+  }
+
+  const routes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(match => routePathFromUrl(match[1]))
+    .filter(routeIsServiceLocation);
+  let passed = 0;
+
+  for (const route of routes) {
+    const expectedPhrase = expectedServiceLocationPhrase(route);
+
+    if (!expectedPhrase) {
+      fail(`${route}: could not derive expected local service phrase.`);
+      continue;
+    }
+
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const serviceId = `${baseUrl}${route}#service`;
+    const serviceSchemas = scripts.filter(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === serviceId);
+    const hasSignal = serviceSchemas.some(schema =>
+      Array.isArray(schema.alternateName) &&
+      schema.alternateName.includes(expectedPhrase) &&
+      Array.isArray(schema.keywords) &&
+      schema.keywords.includes(expectedPhrase) &&
+      String(schema.serviceOutput || '').includes(expectedPhrase)
+    );
+    const hasServiceAreaCounties = serviceSchemas.some(schema => {
+      const serviceAreaNames = asArray(schema.serviceArea).map(area => area?.name).filter(Boolean);
+
+      return greaterAustinServiceCounties.every(county => serviceAreaNames.includes(county));
+    });
+    const hasServiceEstimateAction = serviceSchemas.some(schema => hasPaintingEstimateAction(schema));
+    const hasServicePageConnection = serviceSchemas.some(schema =>
+      schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
+    );
+
+    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection) {
+      fail(`${route}: live Service schema is missing the ${expectedPhrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, or WebPage connection signal.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live service-location Service schema pages checked: ${passed}/${routes.length}`);
+}
+
 async function checkHubItemListSchema() {
   const hubs = [
     {
@@ -1420,6 +1498,7 @@ await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
+await checkServiceLocationServiceSchema();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
 await checkPriorityLocalBusinessSchema();

@@ -142,15 +142,36 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
   const austinServiceIntent = location.slug === 'austin'
     ? austinServiceIntents[service.type]
     : null;
-  const austinStructuredDataAliases = austinServiceIntent
-    ? [
-        austinServiceIntent.phrase,
-        'painting contractors Austin',
-        'house painters Austin',
-        `${service.name} Austin TX`,
-        `${service.name} near me in Austin`
-      ]
-    : undefined;
+  const localServiceIntentPhrase = {
+    exterior: `${location.name} exterior house painters`,
+    interior: `${location.name} interior painters`,
+    cabinet: `${location.name} cabinet painting`,
+    commercial: `${location.name} commercial painters`
+  }[service.type];
+  const locationStructuredDataAliases = [
+    localServiceIntentPhrase,
+    `${service.name} ${location.name} TX`,
+    `${service.name} in ${location.name}`,
+    `${service.name.toLowerCase()} ${location.name}`,
+    `${service.name.toLowerCase()} contractor ${location.name}`,
+    `painting contractors ${location.name}`,
+    `house painters ${location.name}`,
+    `${service.name} Greater Austin`
+  ];
+  const structuredDataAliases = [
+    ...new Set([
+      ...locationStructuredDataAliases,
+      ...(austinServiceIntent
+        ? [
+            austinServiceIntent.phrase,
+            'painting contractors Austin',
+            'house painters Austin',
+            `${service.name} Austin TX`,
+            `${service.name} near me in Austin`
+          ]
+        : [])
+    ])
+  ];
 
   return (
     <>
@@ -169,11 +190,9 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
           name: `${service.name} ${location.name}`,
           description: `Professional ${service.name.toLowerCase()} services in ${location.name}, Texas. Serving ${location.neighborhoods.join(', ')} and surrounding areas.`,
           areaServed: [location.name, ...location.neighborhoods],
-          alternateName: austinStructuredDataAliases,
-          keywords: austinStructuredDataAliases,
-          serviceOutput: austinServiceIntent
-            ? `${austinServiceIntent.phrase} service for homes, businesses, and property managers in Austin, TX`
-            : undefined
+          alternateName: structuredDataAliases,
+          keywords: structuredDataAliases,
+          serviceOutput: `${localServiceIntentPhrase} service for homes, businesses, and property managers in ${location.name}, TX`
         }}
         faq={content.faqs}
         includeLocalBusiness={true}
