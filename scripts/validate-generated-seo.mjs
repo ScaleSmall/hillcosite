@@ -776,6 +776,20 @@ function run() {
     fail('functions/_middleware.ts must enforce short revalidation cache headers for AI/citation assets');
   }
 
+  const hostCanonicalizationSignals = [
+    "url.hostname.toLowerCase() !== 'www.hillcopaint.com'",
+    "forwardedProto !== 'https'",
+    "url.protocol = 'https'",
+    "url.hostname = 'www.hillcopaint.com'",
+    'status: 301'
+  ];
+
+  for (const signal of hostCanonicalizationSignals) {
+    if (!middlewareSource.includes(signal)) {
+      fail(`functions/_middleware.ts must preserve host/protocol canonicalization signal: ${signal}`);
+    }
+  }
+
   const sitemapPaths = extractSitemapPaths(sitemapXml);
   const sitemapSet = new Set(sitemapPaths);
   const generatedSpaRouteData = extractGeneratedSpaRoutes(functionRoutesSource);

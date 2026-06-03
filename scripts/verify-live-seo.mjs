@@ -129,6 +129,13 @@ const liveUnknownRoutes = [
   '/does-not-exist-gsc-test',
   '/areas/not-a-real-area-gsc-test',
 ];
+const canonicalHostRoutes = [
+  'http://hillcopaint.com/',
+  'https://hillcopaint.com/',
+  'http://www.hillcopaint.com/',
+  'https://www.hillcopaint.com/',
+  'https://hillcopaint.com/sitemap.xml',
+];
 
 const failures = [];
 
@@ -201,6 +208,17 @@ function normalizeRedirectLocation(location) {
   const route = parsed.pathname.replace(/\/+$/, '') || '/';
 
   return { host: parsed.host, route };
+}
+
+function sameCanonicalUrl(left, right) {
+  const leftUrl = new URL(left);
+  const rightUrl = new URL(right);
+
+  return (
+    leftUrl.protocol === rightUrl.protocol &&
+    leftUrl.host === rightUrl.host &&
+    (leftUrl.pathname.replace(/\/+$/, '') || '/') === (rightUrl.pathname.replace(/\/+$/, '') || '/')
+  );
 }
 
 function normalizeInternalRoute(href) {
@@ -295,6 +313,57 @@ async function checkPagesDomain() {
     const message = domain.verification_data?.error_message || domain.validation_data?.status || 'pending validation';
     fail(`www.hillcopaint.com Pages custom domain is ${domain.status}: ${message}`);
   }
+}
+
+async function checkCanonicalHostRoutes() {
+  let passed = 0;
+
+  for (const startUrl of canonicalHostRoutes) {
+    let currentUrl = startUrl;
+    const seen = new Set();
+    const chain = [];
+    let finalResponse = null;
+
+    for (let hop = 0; hop < 4; hop += 1) {
+      if (seen.has(currentUrl)) {
+        fail(`${startUrl}: canonical host redirect loop detected at ${currentUrl}`);
+        break;
+      }
+
+      seen.add(currentUrl);
+      const response = await fetch(currentUrl, {
+        redirect: 'manual',
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+        },
+      });
+      const location = response.headers.get('location');
+      chain.push(`${response.status}${location ? ` -> ${location}` : ''}`);
+
+      if (response.status >= 300 && response.status < 400 && location) {
+        currentUrl = new URL(location, currentUrl).toString();
+        continue;
+      }
+
+      finalResponse = response;
+      break;
+    }
+
+    const expectedUrl = new URL(startUrl);
+    expectedUrl.protocol = 'https:';
+    expectedUrl.host = 'www.hillcopaint.com';
+    const finalUrl = currentUrl;
+
+    if (!finalResponse || finalResponse.status !== 200 || !sameCanonicalUrl(finalUrl, expectedUrl.toString())) {
+      fail(`${startUrl}: expected canonical host chain to end at ${expectedUrl.toString()} with 200; found ${chain.join(' | ')}`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live canonical host routes checked: ${passed}/${canonicalHostRoutes.length}`);
 }
 
 async function checkSitemapPages() {
@@ -839,6 +908,7 @@ async function checkGoogleEntityIdentifier() {
 
 await checkDns();
 await checkPagesDomain();
+await checkCanonicalHostRoutes();
 await checkSitemapPages();
 await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
