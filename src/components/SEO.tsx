@@ -211,6 +211,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     disambiguatingDescription: businessConfig.disambiguatingDescription,
     description: businessConfig.description,
     slogan: businessConfig.tagline,
+    naics: businessConfig.industry.naics,
+    industry: businessConfig.industry.naicsDescription,
     url: baseUrl,
     logo: {
       '@type': 'ImageObject',
@@ -323,6 +325,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     disambiguatingDescription: businessConfig.disambiguatingDescription,
     description: businessConfig.description,
     slogan: businessConfig.tagline,
+    naics: businessConfig.industry.naics,
+    industry: businessConfig.industry.naicsDescription,
     url: baseUrl,
     telephone: businessConfig.phone,
     email: businessConfig.email,

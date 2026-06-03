@@ -1086,6 +1086,8 @@ function run() {
     serviceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
     disambiguatingDescription: extractStringProperty(businessConfigSource, 'disambiguatingDescription'),
     alternateNames: extractBusinessStringArrayProperty(businessConfigSource, 'alternateNames'),
+    naics: extractStringProperty(businessConfigSource, 'naics'),
+    naicsDescription: extractStringProperty(businessConfigSource, 'naicsDescription'),
     googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
     googleBusinessProfileUrl: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
     ratingValue: extractNumberProperty(businessConfigSource, 'ratingValue'),
@@ -1556,6 +1558,9 @@ function run() {
     if (!hasAllValues(asArray(entityFacts.alternateName), configuredBusinessFacts.alternateNames) || entityFacts.disambiguatingDescription !== configuredBusinessFacts.disambiguatingDescription) {
       fail('entity-facts.json must include canonical business alternate names and disambiguating description');
     }
+    if (entityFacts.naics !== configuredBusinessFacts.naics || entityFacts.industry !== configuredBusinessFacts.naicsDescription) {
+      fail('entity-facts.json must include canonical NAICS painting contractor classification');
+    }
     if (entityFacts.url !== baseUrl) {
       fail(`entity-facts.json URL should be ${baseUrl}`);
     }
@@ -1645,6 +1650,9 @@ function run() {
     }
     if (!hasAllValues(asArray(identity.alternateName), configuredBusinessFacts.alternateNames) || identity.disambiguatingDescription !== configuredBusinessFacts.disambiguatingDescription) {
       fail('citation-facts.json must include canonical business alternate names and disambiguating description');
+    }
+    if (identity.naics !== configuredBusinessFacts.naics || identity.industry !== configuredBusinessFacts.naicsDescription) {
+      fail('citation-facts.json must include canonical NAICS painting contractor classification');
     }
     if (identity.website !== baseUrl) {
       fail(`citation-facts.json website should be ${baseUrl}`);
@@ -2099,6 +2107,10 @@ function run() {
 
           if (!hasAllValues(alternateNames, configuredBusinessFacts.alternateNames) || localBusinessSchema.disambiguatingDescription !== configuredBusinessFacts.disambiguatingDescription) {
             fail(`${routePath}: LocalBusiness schema must include canonical alternate names and disambiguating description`);
+          }
+
+          if (localBusinessSchema.naics !== configuredBusinessFacts.naics || localBusinessSchema.industry !== configuredBusinessFacts.naicsDescription) {
+            fail(`${routePath}: LocalBusiness schema must include canonical NAICS painting contractor classification`);
           }
 
           if (identifier?.propertyID !== 'kgmid' || identifier?.value !== googleKnowledgeGraphId || identifier?.url !== googleBusinessProfileUrl) {

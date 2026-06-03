@@ -41,6 +41,8 @@
     ],
     "serviceAreaBusiness": true,
     "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+    "naics": "238320",
+    "industry": "Painting and Wall Covering Contractors",
     "openingHours": "Mo-Fr 08:00-18:00",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",

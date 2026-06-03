@@ -44,6 +44,10 @@ export const businessConfig = {
     'Hill Country Painting Austin',
     'Hill Country Painting of Austin'
   ],
+  industry: {
+    naics: '238320',
+    naicsDescription: 'Painting and Wall Covering Contractors'
+  },
   tagline: 'Clean prep. Crisp lines. Reliable schedules.',
 
   // Hours

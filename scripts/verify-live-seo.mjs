@@ -18,6 +18,8 @@ const businessAlternateNames = [
   'Hill Country Painting Austin',
   'Hill Country Painting of Austin',
 ];
+const businessNaicsCode = '238320';
+const businessNaicsDescription = 'Painting and Wall Covering Contractors';
 const canonicalSocialProfileUrls = [
   'https://www.facebook.com/Hillcopaint',
   'https://www.instagram.com/hill_country_painting_austin/',
@@ -1136,6 +1138,8 @@ async function checkCrawlerEntityAssets() {
       entityFacts.name !== 'Hill Country Painting' ||
       !hasAllValues(alternateNames, businessAlternateNames) ||
       entityFacts.disambiguatingDescription !== businessDisambiguatingDescription ||
+      entityFacts.naics !== businessNaicsCode ||
+      entityFacts.industry !== businessNaicsDescription ||
       entityFacts.url !== baseUrl ||
       entityFacts.telephone !== '(512) 240-2246' ||
       entityFacts.hasMap !== googleBusinessProfileUrl ||
@@ -1160,7 +1164,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, alternate names, disambiguating description, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -1179,6 +1183,8 @@ async function checkCrawlerEntityAssets() {
       citationIdentity.name !== 'Hill Country Painting' ||
       !hasAllValues(alternateNames, businessAlternateNames) ||
       citationIdentity.disambiguatingDescription !== businessDisambiguatingDescription ||
+      citationIdentity.naics !== businessNaicsCode ||
+      citationIdentity.industry !== businessNaicsDescription ||
       citationIdentity.website !== baseUrl ||
       citationIdentity.telephone !== '(512) 240-2246' ||
       citationIdentity.serviceAreaBusiness !== true ||
@@ -1200,7 +1206,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, alternate names, disambiguating description, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
@@ -1483,9 +1489,12 @@ async function checkPriorityLocalBusinessSchema() {
     const hasEntityDisambiguation =
       hasAllValues(localBusinessAlternateNames, businessAlternateNames) &&
       localBusinessSchema.disambiguatingDescription === businessDisambiguatingDescription;
+    const hasNaicsClassification =
+      localBusinessSchema.naics === businessNaicsCode &&
+      localBusinessSchema.industry === businessNaicsDescription;
 
-    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating || !hasEstimateAction || !hasEntityDisambiguation) {
-      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, alternate names, disambiguating description, county service areas, priority local search topics, aggregate rating, or estimate QuoteAction.`);
+    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating || !hasEstimateAction || !hasEntityDisambiguation || !hasNaicsClassification) {
+      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, alternate names, disambiguating description, NAICS classification, county service areas, priority local search topics, aggregate rating, or estimate QuoteAction.`);
       continue;
     }
 

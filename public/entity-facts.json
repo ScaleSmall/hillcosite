@@ -35,6 +35,8 @@
   "description": "Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.",
   "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
   "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+  "naics": "238320",
+  "industry": "Painting and Wall Covering Contractors",
   "priceRange": "$$",
   "paymentAccepted": "Cash, Check, Credit Card",
   "currenciesAccepted": "USD",
