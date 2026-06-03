@@ -6,6 +6,7 @@ import CTABanner from '../components/sections/CTABanner';
 import { Calendar, ArrowLeft, ArrowRight, Tag } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 import { generatedBlogPosts, type GeneratedBlogPost } from '../generated/blogPosts';
+import { cleanBlogDisplayText } from '../lib/blogText';
 
 interface BlogPostData {
   id: string;
@@ -196,6 +197,8 @@ const BlogPost = () => {
     const postPath = blogPostPath(post.slug);
     const plainText = normalizeArticleContent(post.content).replace(/<[^>]*>/g, '').trim();
     const wordCount = plainText.split(/\s+/).length;
+    const displayTitle = cleanBlogDisplayText(post.title);
+    const displayDescription = cleanBlogDisplayText(post.meta_description || post.excerpt);
 
     return {
       '@context': 'https://schema.org',
@@ -203,15 +206,15 @@ const BlogPost = () => {
         {
           '@type': 'BlogPosting',
           '@id': `${baseUrl}${postPath}#article`,
-          headline: post.title,
-          description: post.meta_description || post.excerpt,
-          abstract: post.tldr || post.excerpt,
+          headline: displayTitle,
+          description: displayDescription,
+          abstract: cleanBlogDisplayText(post.tldr || post.excerpt),
           articleBody: plainText.substring(0, 500) + '...',
           wordCount: wordCount,
           image: post.featured_image ? {
             '@type': 'ImageObject',
             url: post.featured_image,
-            caption: post.featured_image_caption || post.title,
+            caption: cleanBlogDisplayText(post.featured_image_caption || post.title),
             width: 1200,
             height: 630
           } : undefined,
@@ -275,7 +278,7 @@ const BlogPost = () => {
             {
               '@type': 'ListItem',
               position: 3,
-              name: post.title
+              name: displayTitle
             }
           ]
         },
@@ -283,8 +286,8 @@ const BlogPost = () => {
           '@type': 'WebPage',
           '@id': `${baseUrl}${postPath}#webpage`,
           url: `${baseUrl}${postPath}`,
-          name: `${post.title} | Hill Country Painting Blog`,
-          description: post.meta_description || post.excerpt,
+          name: `${displayTitle} | Hill Country Painting Blog`,
+          description: displayDescription,
           breadcrumb: {
             '@id': `${baseUrl}${postPath}#breadcrumb`
           },
@@ -328,18 +331,20 @@ const BlogPost = () => {
     }
   ];
   const articleContent = normalizeArticleContent(post.content);
+  const displayTitle = cleanBlogDisplayText(post.title);
+  const displayDescription = cleanBlogDisplayText(post.meta_description || post.excerpt);
 
   return (
     <>
       <SEO
-        title={`${post.title} — Hill Country Painting`}
-        description={post.meta_description || post.excerpt}
+        title={`${displayTitle} — Hill Country Painting`}
+        description={displayDescription}
         canonical={blogPostPath(post.slug)}
         pageType="article"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Blog', url: '/blog' },
-          { name: post.title, url: blogPostPath(post.slug) }
+          { name: displayTitle, url: blogPostPath(post.slug) }
         ]}
       />
 
@@ -386,7 +391,7 @@ const BlogPost = () => {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
-              {post.title}
+              {displayTitle}
             </h1>
 
             {post.tags && post.tags.length > 0 && (
@@ -417,7 +422,7 @@ const BlogPost = () => {
               itemProp="abstract"
             >
               <h2 className="text-xl font-bold text-brand-gray-900 mb-3">TL;DR</h2>
-              <p className="text-brand-gray-700 text-lg leading-relaxed">{post.tldr}</p>
+              <p className="text-brand-gray-700 text-lg leading-relaxed">{cleanBlogDisplayText(post.tldr)}</p>
             </section>
           )}
           <div
@@ -463,7 +468,7 @@ const BlogPost = () => {
                     >
                       <p className="text-sm text-brand-gray-500 mb-2">{related.category}</p>
                       <h4 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-3">
-                        {related.title}
+                        {cleanBlogDisplayText(related.title)}
                       </h4>
                       <span className="inline-flex items-center text-brand-azureDark font-medium">
                         Read article

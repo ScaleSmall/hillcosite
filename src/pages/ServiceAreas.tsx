@@ -9,6 +9,7 @@ import CTABanner from '../components/sections/CTABanner';
 import { geoAreas } from '../data/geoAreas';
 import LocalSearchLinks from '../components/LocalSearchLinks';
 import NAPMapSection from '../components/NAPMapSection';
+import PaintingGuideLinks from '../components/PaintingGuideLinks';
 
 const ServiceAreas = () => {
   const baseUrl = 'https://www.hillcopaint.com';
@@ -145,6 +146,8 @@ const ServiceAreas = () => {
       />
 
       <LocalSearchLinks variant="areas" surface="white" />
+
+      <PaintingGuideLinks surface="gray" />
 
       {/* Hub Areas Section */}
       <section className="section-padding bg-brand-gray-50">

@@ -14,6 +14,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
+import PaintingGuideLinks from '../../components/PaintingGuideLinks';
 import { greaterAustinServiceAreas } from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
@@ -359,6 +360,8 @@ const ExteriorPainting = () => {
           }
         ]}
       />
+
+      <PaintingGuideLinks surface="gray" />
 
       <ServiceLocationLinks service="exterior" />
 

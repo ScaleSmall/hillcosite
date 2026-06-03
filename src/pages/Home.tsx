@@ -17,6 +17,7 @@ import PaintingCostsTable from '../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
 import NAPMapSection from '../components/NAPMapSection';
 import LocalSearchLinks from '../components/LocalSearchLinks';
+import PaintingGuideLinks from '../components/PaintingGuideLinks';
 import { businessConfig } from '../config/business';
 
 const Home = () => {
@@ -345,6 +346,8 @@ const Home = () => {
       </section>
 
       <LocalSearchLinks variant="home" surface="white" />
+
+      <PaintingGuideLinks surface="gray" />
 
       {/* Financing Section */}
       <section className="section-padding bg-brand-gray-50">

@@ -8,6 +8,7 @@ import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
 import { ArrowRight } from 'lucide-react';
 import LocalSearchLinks from '../components/LocalSearchLinks';
+import PaintingGuideLinks from '../components/PaintingGuideLinks';
 
 const Services = () => {
   const baseUrl = 'https://www.hillcopaint.com';
@@ -180,6 +181,8 @@ const Services = () => {
       </section>
 
       <LocalSearchLinks variant="services" surface="white" />
+
+      <PaintingGuideLinks surface="gray" />
 
       {/* Service Areas */}
       <ServiceAreasSection
