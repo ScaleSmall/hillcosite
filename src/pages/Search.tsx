@@ -4,6 +4,7 @@ import { Search as SearchIcon, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import { supabase } from '../lib/supabase';
 import { generatedBlogPosts } from '../generated/blogPosts';
+import { cleanBlogDisplayText } from '../lib/blogText';
 
 interface SearchResult {
   type: 'service' | 'blog' | 'guide';
@@ -118,8 +119,8 @@ const Search = () => {
             .filter(post => generatedBlogSlugs.has(post.slug))
             .map(post => ({
               type: 'blog' as const,
-              title: post.title,
-              description: post.excerpt,
+              title: cleanBlogDisplayText(post.title),
+              description: cleanBlogDisplayText(post.excerpt),
               url: blogPostPath(post.slug),
               category: post.category
             }));
