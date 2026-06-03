@@ -26,7 +26,8 @@
     "package:artifact": "node scripts/package-artifact.mjs",
     "export:clean": "node scripts/prepare-export.mjs && node scripts/verify-no-dist.mjs",
     "verify:redirects": "node scripts/verify-redirects.mjs",
-    "verify:seo": "node scripts/verify-seo.mjs"
+    "verify:seo": "node scripts/verify-seo.mjs",
+    "verify:live": "node scripts/verify-live-seo.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
