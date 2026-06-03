@@ -1541,7 +1541,7 @@ function run() {
     if (count === 0) {
       fail(`${routePath}: sitemap page has no internal inbound links`);
     } else if (count < 2 && !['/privacy', '/terms', '/do-not-sell', '/eula'].includes(routePath)) {
-      warn(`${routePath}: low internal inbound link count (${count})`);
+      fail(`${routePath}: sitemap page has weak internal inbound link count (${count}); add contextual crawl paths before indexing`);
     }
   }
 

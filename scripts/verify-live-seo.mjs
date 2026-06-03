@@ -112,6 +112,29 @@ function firstHeroSectionHtml(html) {
   return html.slice(firstSectionIndex, endIndex);
 }
 
+function routePathFromUrl(url) {
+  const parsed = new URL(url, baseUrl);
+  const path = parsed.pathname.replace(/\/+$/, '');
+
+  return path || '/';
+}
+
+function normalizeInternalRoute(href) {
+  if (!href || /^(tel:|mailto:|sms:|javascript:)/i.test(href)) {
+    return null;
+  }
+
+  const parsed = new URL(href, baseUrl);
+
+  if (parsed.origin !== baseUrl) {
+    return null;
+  }
+
+  const path = parsed.pathname.replace(/\/+$/, '');
+
+  return path || '/';
+}
+
 function parseJsonLd(html, route) {
   const scripts = [];
 
@@ -199,6 +222,9 @@ async function checkSitemapPages() {
   }
 
   const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+  const sitemapRoutes = urls.map(routePathFromUrl);
+  const sitemapRouteSet = new Set(sitemapRoutes);
+  const inboundSources = new Map(sitemapRoutes.map(route => [route, new Set()]));
   let nextIndex = 0;
   const problems = [];
   const heroImageProblems = [];
@@ -206,6 +232,7 @@ async function checkSitemapPages() {
   async function worker() {
     while (nextIndex < urls.length) {
       const url = urls[nextIndex++];
+      const route = routePathFromUrl(url);
       const page = await fetch(url, {
         redirect: 'manual',
         headers: {
@@ -240,6 +267,14 @@ async function checkSitemapPages() {
 
       if (bannedHeroImage) {
         heroImageProblems.push({ url, image: bannedHeroImage });
+      }
+
+      for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
+        const targetRoute = normalizeInternalRoute(match[1]);
+
+        if (targetRoute && targetRoute !== route && sitemapRouteSet.has(targetRoute)) {
+          inboundSources.get(targetRoute)?.add(route);
+        }
       }
 
       if (page.status !== 200 || canonicalCount !== 1 || !canonicalMatchesSelf || robotsCount !== 1 || !robotsIndexable || h1Count !== 1 || noindex || hasError) {
@@ -281,6 +316,22 @@ async function checkSitemapPages() {
 
   if (heroImageProblems.length === 0) {
     console.log('Live hero image guard: no banned before/after-style hero images found');
+  }
+
+  const weakInternalLinkRoutes = [...inboundSources.entries()]
+    .filter(([route, sources]) => route !== '/' && sources.size < 2)
+    .map(([route, sources]) => ({ route, sources: [...sources] }));
+
+  for (const item of weakInternalLinkRoutes.slice(0, 10)) {
+    fail(`${baseUrl}${item.route}: live sitemap page has weak internal discovery (${item.sources.length} inbound source page(s))`);
+  }
+
+  if (weakInternalLinkRoutes.length > 10) {
+    fail(`${weakInternalLinkRoutes.length - 10} additional live sitemap pages have weak internal discovery.`);
+  }
+
+  if (weakInternalLinkRoutes.length === 0) {
+    console.log('Live internal discovery guard: all sitemap pages have 2+ inbound source pages');
   }
 }
 
