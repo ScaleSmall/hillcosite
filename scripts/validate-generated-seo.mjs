@@ -987,6 +987,21 @@ function run() {
     fail(`functions/_middleware.ts must point CURRENT_SUPABASE_URL at ${currentSupabaseUrl}`);
   }
 
+  for (const signal of [
+    'GREATER_AUSTIN_COUNTY_SERVICE_AREAS',
+    'Travis County',
+    'Williamson County',
+    'Hays County',
+    'schema.serviceArea = countyServiceAreas',
+    'schema.mainEntityOfPage',
+    'schema.potentialAction = requestEstimateAction',
+    "name: 'Request a painting estimate'"
+  ]) {
+    if (!middlewareSource.includes(signal)) {
+      fail(`functions/_middleware.ts Austin service schema repair must preserve ${signal}`);
+    }
+  }
+
   if (googleMapEmbedSource.includes('maps/embed?pb=')) {
     fail('src/components/GoogleMapEmbed.tsx must not use the old hard-coded Google Maps pb embed fallback');
   }

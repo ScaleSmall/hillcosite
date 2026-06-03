@@ -190,6 +190,11 @@ const AUSTIN_SERVICE_SCHEMA_SIGNALS: Record<string, string> = {
   '/cabinet-refinishing-austin': 'Austin cabinet painting',
   '/commercial-painting-austin': 'Austin commercial painters',
 };
+const GREATER_AUSTIN_COUNTY_SERVICE_AREAS = [
+  'Travis County',
+  'Williamson County',
+  'Hays County',
+];
 const APPROVED_HERO_IMAGE = 'hill-country-painting-austin-homepage-hero.jpg';
 const BANNED_HERO_IMAGE_FILENAMES = [
   'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
@@ -375,7 +380,38 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
   }
 
   const serviceId = `https://www.hillcopaint.com${path}#service`;
+  const webpageId = `https://www.hillcopaint.com${path}#webpage`;
   const additions = [exactPhrase, 'painting contractors Austin', 'house painters Austin'];
+  const countyServiceAreas = [
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Greater Austin Area',
+    },
+    ...GREATER_AUSTIN_COUNTY_SERVICE_AREAS.map(county => ({
+      '@type': 'AdministrativeArea',
+      name: county,
+    })),
+  ];
+  const requestEstimateAction = {
+    '@type': 'QuoteAction',
+    name: 'Request a painting estimate',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://www.hillcopaint.com/contact',
+      actionPlatform: [
+        'http://schema.org/DesktopWebPlatform',
+        'http://schema.org/MobileWebPlatform',
+      ],
+    },
+    provider: {
+      '@id': 'https://www.hillcopaint.com/#localbusiness',
+    },
+    object: {
+      '@type': 'Service',
+      name: 'Painting estimate for Greater Austin homes and businesses',
+      serviceType: 'Interior painting, exterior painting, cabinet painting, and commercial painting',
+    },
+  };
   let updatedHtml = html;
 
   updatedHtml = updatedHtml.replace(
@@ -391,6 +427,11 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
         schema.alternateName = withUniqueValues(schema.alternateName, additions);
         schema.keywords = withUniqueValues(schema.keywords, additions);
         schema.serviceOutput = String(schema.serviceOutput || `${exactPhrase} service for homes, businesses, and property managers in Austin, TX`);
+        schema.serviceArea = countyServiceAreas;
+        schema.mainEntityOfPage = {
+          '@id': webpageId,
+        };
+        schema.potentialAction = requestEstimateAction;
 
         if (!schema.serviceOutput.includes(exactPhrase)) {
           schema.serviceOutput = `${schema.serviceOutput} ${exactPhrase}`;
@@ -418,6 +459,11 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
     provider: {
       '@id': 'https://www.hillcopaint.com/#localbusiness',
     },
+    serviceArea: countyServiceAreas,
+    mainEntityOfPage: {
+      '@id': webpageId,
+    },
+    potentialAction: requestEstimateAction,
     areaServed: [
       {
         '@type': 'Place',
