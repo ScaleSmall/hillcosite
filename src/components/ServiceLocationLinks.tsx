@@ -21,6 +21,29 @@ const serviceSlugs = {
   commercial: 'commercial-painting'
 };
 
+const austinIntentLinks = {
+  interior: {
+    label: 'Austin interior painters',
+    href: '/interior-painting-austin',
+    description: 'Interior painting scope, prep notes, FAQs, and estimate options for Austin homes.'
+  },
+  exterior: {
+    label: 'Austin exterior house painters',
+    href: '/exterior-painting-austin',
+    description: 'Exterior prep, weather exposure, siding, stucco, and finish planning for Austin homes.'
+  },
+  cabinet: {
+    label: 'Austin cabinet painting',
+    href: '/cabinet-refinishing-austin',
+    description: 'Cabinet painting and refinishing details for Austin kitchens, baths, islands, and built-ins.'
+  },
+  commercial: {
+    label: 'Austin commercial painters',
+    href: '/commercial-painting-austin',
+    description: 'Commercial painting scheduling, site planning, and finish guidance for Austin businesses.'
+  }
+} as const;
+
 const locations = [
   { name: 'Austin', slug: 'austin' },
   { name: 'Tarrytown', slug: 'tarrytown' },
@@ -38,6 +61,8 @@ const locations = [
 const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, currentLocation }) => {
   const serviceName = serviceNames[service];
   const serviceSlug = serviceSlugs[service];
+  const austinIntentLink = austinIntentLinks[service];
+  const showAustinIntentLink = currentLocation !== 'austin';
 
   const filteredLocations = currentLocation
     ? locations.filter(loc => loc.slug !== currentLocation)
@@ -54,6 +79,24 @@ const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, cu
             Professional {serviceName.toLowerCase()} services throughout Austin, TX
           </p>
         </div>
+
+        {showAustinIntentLink && (
+          <div className="mb-6">
+            <Link
+              to={austinIntentLink.href}
+              className="flex flex-col gap-2 rounded-lg border border-brand-azure bg-white p-5 text-brand-gray-900 hover:border-brand-azureDark hover:bg-brand-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
+            >
+              <span className="inline-flex items-center gap-2 font-semibold text-brand-azureDark">
+                <MapPin className="w-4 h-4" aria-hidden="true" />
+                {austinIntentLink.label}
+              </span>
+              <span className="text-sm text-brand-gray-600">
+                {austinIntentLink.description}
+              </span>
+            </Link>
+          </div>
+        )}
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {filteredLocations.map((location) => (
             <Link
