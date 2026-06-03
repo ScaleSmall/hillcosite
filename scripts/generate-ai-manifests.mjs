@@ -57,6 +57,13 @@ const businessFacts = {
   googleKnowledgeGraphId: '/g/11frssbq6p',
   googleBusinessProfile: 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p',
   primaryServiceArea: 'Austin, TX and the Greater Austin area',
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: 4.9,
+    reviewCount: 127,
+    bestRating: 5,
+    worstRating: 1
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '(512) 240-2246',
@@ -226,6 +233,7 @@ ${section('Business Facts', [
   `Hours: Monday-Friday ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
   `Payment accepted: ${businessFacts.paymentAccepted}`,
   `Core services: ${businessFacts.services.join(', ')}`,
+  `Google rating summary: ${businessFacts.aggregateRating.ratingValue}/5 from ${businessFacts.aggregateRating.reviewCount} reviews`,
   'Warranty: 2-year warranty on painting work',
   'Insurance: insured painting crew',
   'Experience: 15+ years serving Austin-area homeowners',
@@ -367,6 +375,7 @@ const entityFacts = {
   areaServed: localAreaServed(),
   openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
   openingHoursSpecification: businessFacts.openingHours,
+  aggregateRating: businessFacts.aggregateRating,
   sameAs: socialProfiles,
   hasMap: businessFacts.googleBusinessProfile,
   knowsAbout: [
@@ -451,6 +460,7 @@ const citationFacts = {
     serviceAreaBusiness: true,
     openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
     openingHoursSpecification: businessFacts.openingHours,
+    aggregateRating: businessFacts.aggregateRating,
     paymentAccepted: businessFacts.paymentAccepted,
     currenciesAccepted: businessFacts.currenciesAccepted,
     availableLanguage: businessFacts.availableLanguage,

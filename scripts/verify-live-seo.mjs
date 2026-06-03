@@ -9,6 +9,8 @@ const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
+const minimumAggregateRatingValue = 4.5;
+const minimumAggregateReviewCount = 100;
 const greaterAustinServiceCounties = [
   'Travis County',
   'Williamson County',
@@ -421,6 +423,25 @@ function hasAllValues(values, expectedValues) {
   return expectedValues.every(value => values.includes(value));
 }
 
+function hasValidAggregateRating(schema) {
+  const aggregateRating = schema?.aggregateRating || {};
+  const ratingValue = Number(aggregateRating.ratingValue);
+  const reviewCount = Number(aggregateRating.reviewCount);
+  const bestRating = Number(aggregateRating.bestRating);
+  const worstRating = Number(aggregateRating.worstRating);
+
+  return (
+    schemaTypeIncludes(aggregateRating, 'AggregateRating') &&
+    Number.isFinite(ratingValue) &&
+    ratingValue >= minimumAggregateRatingValue &&
+    ratingValue <= 5 &&
+    Number.isFinite(reviewCount) &&
+    reviewCount >= minimumAggregateReviewCount &&
+    bestRating === 5 &&
+    worstRating === 1
+  );
+}
+
 async function checkCrawlerEntityAssets() {
   const assetText = new Map();
   let passed = 0;
@@ -499,9 +520,10 @@ async function checkCrawlerEntityAssets() {
       !hasAllValues(areaServed, greaterAustinServiceCounties) ||
       !hasAllValues(serviceArea, greaterAustinServiceCounties) ||
       !hasAllValues(knowsAbout, priorityLocalSearchTopics) ||
+      !hasValidAggregateRating(entityFacts) ||
       entityFacts.sitemapUrlCount !== 182
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, Austin service counties, priority topics, or sitemap count.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, Austin service counties, priority topics, aggregate rating, or sitemap count.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -520,10 +542,11 @@ async function checkCrawlerEntityAssets() {
       citationIdentity.serviceAreaBusiness !== true ||
       citationIdentity.googleKnowledgeGraphId !== googleKnowledgeGraphId ||
       citationIdentity.googleBusinessProfile !== googleBusinessProfileUrl ||
+      !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
       !hasAllValues(citationCounties, greaterAustinServiceCounties)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, service counties, or priority topics.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, aggregate rating, service counties, or priority topics.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
@@ -641,9 +664,10 @@ async function checkPriorityLocalBusinessSchema() {
       localBusinessServiceAreaNames.includes(county)
     );
     const hasPriorityTopics = priorityLocalSearchTopics.every(topic => localBusinessKnowsAbout.includes(topic));
+    const hasAggregateRating = hasValidAggregateRating(localBusinessSchema);
 
-    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics) {
-      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, county service areas, or priority local search topics.`);
+    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics || !hasAggregateRating) {
+      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, county service areas, priority local search topics, or aggregate rating.`);
       continue;
     }
 

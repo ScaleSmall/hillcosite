@@ -173,6 +173,13 @@
     "opens": "08:00",
     "closes": "18:00"
   },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.9,
+    "reviewCount": 127,
+    "bestRating": 5,
+    "worstRating": 1
+  },
   "sameAs": [
     "https://www.facebook.com/Hillcopaint",
     "https://www.instagram.com/hill_country_painting_austin/",

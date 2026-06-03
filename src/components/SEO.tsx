@@ -153,6 +153,10 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const hasRefParam = useRefParamGuard();
   const baseUrl = 'https://www.hillcopaint.com';
   const defaultSocialImage = `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`;
+  const resolvedAggregateRating = aggregateRating ?? {
+    ratingValue: businessConfig.aggregateRating.ratingValue,
+    reviewCount: businessConfig.aggregateRating.reviewCount
+  };
 
   // Build canonical from prop; if not supplied, derive from current pathname (no search/hash).
   const resolvedCanonical = canonical ?? (
@@ -397,12 +401,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.tiktok.com/@hillco_painting_austin',
       businessConfig.googleBusinessProfileUrl
     ],
-    aggregateRating: aggregateRating ? {
+    aggregateRating: resolvedAggregateRating ? {
       '@type': 'AggregateRating',
-      ratingValue: aggregateRating.ratingValue,
-      reviewCount: aggregateRating.reviewCount,
-      bestRating: 5,
-      worstRating: 1
+      ratingValue: resolvedAggregateRating.ratingValue,
+      reviewCount: resolvedAggregateRating.reviewCount,
+      bestRating: businessConfig.aggregateRating.bestRating,
+      worstRating: businessConfig.aggregateRating.worstRating
     } : undefined
   } : null;
 

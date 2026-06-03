@@ -17,6 +17,7 @@ import PaintingCostsTable from '../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
 import NAPMapSection from '../components/NAPMapSection';
 import LocalSearchLinks from '../components/LocalSearchLinks';
+import { businessConfig } from '../config/business';
 
 const Home = () => {
   const serviceAreas = [
@@ -84,8 +85,8 @@ const Home = () => {
         faq={faqs}
         includeLocalBusiness={true}
         aggregateRating={{
-          ratingValue: 4.9,
-          reviewCount: 127
+          ratingValue: businessConfig.aggregateRating.ratingValue,
+          reviewCount: businessConfig.aggregateRating.reviewCount
         }}
       />
       

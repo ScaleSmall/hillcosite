@@ -26,11 +26,13 @@ export const businessConfig = {
   // Service Area
   serviceArea: 'Austin, TX and the Greater Austin area',
 
-  // Ratings - Fetched live from GBP via Supabase
-  // These static values are fallback only
+  // Ratings - canonical public GBP summary used as the schema fallback.
+  // Live display components can still replace these values when verified data is available.
   aggregateRating: {
-    bestRating: '5',
-    worstRating: '1',
+    ratingValue: 4.9,
+    reviewCount: 127,
+    bestRating: 5,
+    worstRating: 1,
     useLiveData: true // Use live data from Supabase gbp_ratings table
   },
 
