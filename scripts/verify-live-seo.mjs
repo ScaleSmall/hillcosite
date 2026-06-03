@@ -416,8 +416,15 @@ async function checkDns() {
   }
 
   if (!cnameRecords.includes(pagesTarget)) {
-    const aRecords = await resolve4('www.hillcopaint.com').catch(() => []);
-    fail(`www.hillcopaint.com should CNAME to ${pagesTarget}; current CNAME records: ${cnameRecords.join(', ') || 'none'}; A records: ${aRecords.join(', ') || 'none'}`);
+    const [aRecords, pagesTargetARecords] = await Promise.all([
+      resolve4('www.hillcopaint.com').catch(() => []),
+      resolve4(pagesTarget).catch(() => []),
+    ]);
+    const pointsAtPagesTarget = aRecords.length > 0 && aRecords.every(record => pagesTargetARecords.includes(record));
+
+    if (!pointsAtPagesTarget) {
+      fail(`www.hillcopaint.com should CNAME to ${pagesTarget} or resolve to its proxied Pages IPs; current CNAME records: ${cnameRecords.join(', ') || 'none'}; A records: ${aRecords.join(', ') || 'none'}; ${pagesTarget} A records: ${pagesTargetARecords.join(', ') || 'none'}`);
+    }
   }
 }
 
