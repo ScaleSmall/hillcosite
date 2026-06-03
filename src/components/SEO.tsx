@@ -463,6 +463,16 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         name: 'Greater Austin Area'
       }
     }));
+    const serviceAreaRegions = [
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Greater Austin Area'
+      },
+      ...localBusinessCounties.map(county => ({
+        '@type': 'AdministrativeArea',
+        name: county
+      }))
+    ];
 
     const baseSchema: Record<string, unknown> = {
       '@context': 'https://schema.org',
@@ -476,10 +486,14 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         '@id': `${baseUrl}/#localbusiness`
       },
       areaServed: serviceAreas,
+      serviceArea: serviceAreaRegions,
       serviceType: service.name,
       keywords: service.keywords,
       serviceOutput: service.serviceOutput,
       category: 'Painting contractor',
+      mainEntityOfPage: {
+        '@id': `${canonicalStr}#webpage`
+      },
       audience: {
         '@type': 'Audience',
         audienceType: 'Homeowners, property managers, and commercial property owners in Greater Austin'
@@ -490,6 +504,19 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         servicePhone: contactPoint,
         availableLanguage: ['English']
       },
+      potentialAction: requestEstimateAction,
+      subjectOf: [
+        {
+          '@type': 'WebPage',
+          name: 'Hill Country Painting entity facts',
+          url: `${baseUrl}/entity-facts.json`
+        },
+        {
+          '@type': 'WebPage',
+          name: 'Hill Country Painting citation facts',
+          url: `${baseUrl}/citation-facts.json`
+        }
+      ],
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: `${service.name} Services`,

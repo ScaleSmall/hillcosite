@@ -1735,6 +1735,7 @@ function run() {
           const serviceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
           const alternateNames = Array.isArray(serviceSchema?.alternateName) ? serviceSchema.alternateName : [];
           const keywords = Array.isArray(serviceSchema?.keywords) ? serviceSchema.keywords : [];
+          const serviceAreaNames = asArray(serviceSchema?.serviceArea).map(area => area?.name).filter(Boolean);
 
           for (const signal of [expectedAustinServiceAlias, 'painting contractors Austin', 'house painters Austin']) {
             if (!alternateNames.includes(signal)) {
@@ -1748,6 +1749,20 @@ function run() {
 
           if (!String(serviceSchema?.serviceOutput || '').includes(expectedAustinServiceAlias)) {
             fail(`${routePath}: Service schema serviceOutput should include ${expectedAustinServiceAlias}`);
+          }
+
+          if (serviceSchema?.mainEntityOfPage?.['@id'] !== expectedWebPageId) {
+            fail(`${routePath}: Service schema mainEntityOfPage should be ${expectedWebPageId}`);
+          }
+
+          if (!hasPaintingEstimateAction(serviceSchema)) {
+            fail(`${routePath}: Service schema must include a QuoteAction for requesting a painting estimate`);
+          }
+
+          for (const requiredCounty of configuredGreaterAustinCounties) {
+            if (!serviceAreaNames.includes(requiredCounty)) {
+              fail(`${routePath}: Service schema serviceArea is missing county signal ${requiredCounty}`);
+            }
           }
         }
       }

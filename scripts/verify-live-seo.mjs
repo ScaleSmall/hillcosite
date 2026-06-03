@@ -860,9 +860,18 @@ async function checkAustinSchema() {
       schema.keywords.includes(phrase) &&
       String(schema.serviceOutput || '').includes(phrase)
     );
+    const hasServiceAreaCounties = serviceSchemas.some(schema => {
+      const serviceAreaNames = asArray(schema.serviceArea).map(area => area?.name).filter(Boolean);
 
-    if (response.status !== 200 || !hasSignal) {
-      fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, or serviceOutput signal.`);
+      return greaterAustinServiceCounties.every(county => serviceAreaNames.includes(county));
+    });
+    const hasServiceEstimateAction = serviceSchemas.some(schema => hasPaintingEstimateAction(schema));
+    const hasServicePageConnection = serviceSchemas.some(schema =>
+      schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
+    );
+
+    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection) {
+      fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, or WebPage connection signal.`);
     } else {
       passed += 1;
     }
