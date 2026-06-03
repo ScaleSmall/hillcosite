@@ -409,12 +409,12 @@ const CabinetRefinishing = () => {
           {
             title: 'Interior Painting',
             description: 'Professional interior painting services to complement your newly painted cabinets.',
-            href: '/services/interior-painting'
+            href: '/interior-painting-austin'
           },
           {
             title: 'Exterior Painting',
             description: 'Weather-resistant exterior painting designed for Austin climate.',
-            href: '/services/exterior-painting'
+            href: '/exterior-painting-austin'
           },
           {
             title: 'Color Consultation',

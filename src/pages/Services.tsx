@@ -163,17 +163,22 @@ const Services = () => {
           {
             title: 'Interior Painting Austin',
             description: 'Professional interior house painting services throughout Austin and surrounding areas.',
-            href: '/services/interior-painting'
+            href: '/interior-painting-austin'
           },
           {
             title: 'Exterior Painting Austin',
             description: 'Weather-resistant exterior painting designed for Austin\'s climate conditions.',
-            href: '/services/exterior-painting'
+            href: '/exterior-painting-austin'
           },
           {
             title: 'Cabinet Painting Austin',
             description: 'Kitchen and bathroom cabinet painting services at a fraction of replacement cost.',
-            href: '/services/cabinet-refinishing'
+            href: '/cabinet-refinishing-austin'
+          },
+          {
+            title: 'Commercial Painting Austin',
+            description: 'Interior and exterior commercial painting for Austin offices, retail spaces, and property managers.',
+            href: '/commercial-painting-austin'
           }
         ]}
       />

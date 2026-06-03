@@ -352,12 +352,12 @@ const CommercialPainting = () => {
           {
             title: 'Interior Painting Austin',
             description: 'Professional interior painting for commercial and residential properties.',
-            href: '/services/interior-painting'
+            href: '/interior-painting-austin'
           },
           {
             title: 'Exterior Painting Austin',
             description: 'Weather-resistant exterior painting for commercial buildings.',
-            href: '/services/exterior-painting'
+            href: '/exterior-painting-austin'
           },
           {
             title: 'Color Consultation Austin',

@@ -328,6 +328,36 @@ function assertExactAnchorTargets(pages, expectedText, expectedRoute) {
   }
 }
 
+function assertAnchorPrefixTargets(pages, expectedText, expectedRoute) {
+  const mismatches = [];
+  let matches = 0;
+  const normalizedExpected = expectedText.toLowerCase();
+
+  for (const [sourceRoute, page] of pages) {
+    for (const match of page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+      const targetRoute = normalizeRoutePath(match[1].trim(), sourceRoute);
+      const anchorText = normalizeAnchorText(match[2]);
+      const normalizedAnchorText = anchorText.toLowerCase();
+
+      if (normalizedAnchorText === normalizedExpected || normalizedAnchorText.startsWith(`${normalizedExpected} `)) {
+        matches += 1;
+
+        if (targetRoute !== expectedRoute) {
+          mismatches.push(`${sourceRoute} links "${expectedText}"-labeled anchor to ${targetRoute}`);
+        }
+      }
+    }
+  }
+
+  if (matches === 0) {
+    fail(`missing Austin-labeled local-search anchor prefix "${expectedText}" to ${expectedRoute}`);
+  }
+
+  for (const mismatch of mismatches) {
+    fail(`${mismatch}; Austin-labeled service anchors should point to ${expectedRoute}`);
+  }
+}
+
 function assertPageContains(pages, sourceRoute, expectedText) {
   const page = pages.get(sourceRoute);
 
@@ -714,6 +744,18 @@ function run() {
     ['painting contractors Austin', '/services']
   ].forEach(([expectedText, expectedRoute]) => {
     assertExactAnchorTargets(pages, expectedText, expectedRoute);
+  });
+
+  [
+    ['Exterior Painting in Austin', '/exterior-painting-austin'],
+    ['Interior Painting in Austin', '/interior-painting-austin'],
+    ['exterior painting in Austin', '/exterior-painting-austin'],
+    ['Exterior Painting Austin', '/exterior-painting-austin'],
+    ['Interior Painting Austin', '/interior-painting-austin'],
+    ['Cabinet Painting Austin', '/cabinet-refinishing-austin'],
+    ['Commercial Painting Austin', '/commercial-painting-austin']
+  ].forEach(([expectedText, expectedRoute]) => {
+    assertAnchorPrefixTargets(pages, expectedText, expectedRoute);
   });
 
   [

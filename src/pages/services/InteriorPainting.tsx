@@ -446,12 +446,12 @@ const InteriorPainting = () => {
           {
             title: 'Exterior Painting Austin',
             description: 'Weather-resistant exterior house painting services for Austin homes.',
-            href: '/services/exterior-painting'
+            href: '/exterior-painting-austin'
           },
           {
             title: 'Cabinet Painting Austin',
             description: 'Transform your kitchen cabinets with professional painting services.',
-            href: '/services/cabinet-refinishing'
+            href: '/cabinet-refinishing-austin'
           },
           {
             title: 'Color Consultation Austin',

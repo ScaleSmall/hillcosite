@@ -302,12 +302,12 @@ const BlogPost = () => {
   const serviceLinks = [
     {
       title: 'Exterior Painting in Austin',
-      href: '/services/exterior-painting',
+      href: '/exterior-painting-austin',
       description: 'Prep, coatings, and weather-aware exterior painting for Central Texas homes.'
     },
     {
       title: 'Interior Painting in Austin',
-      href: '/services/interior-painting',
+      href: '/interior-painting-austin',
       description: 'Clean, careful interior painting for living spaces, trim, walls, and ceilings.'
     },
     {
