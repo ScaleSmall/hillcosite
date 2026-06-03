@@ -33,6 +33,19 @@ const priorityLocalBusinessRoutes = [
   '/cabinet-refinishing-austin',
   '/commercial-painting-austin',
 ];
+const serviceAreaFaqSchemaRoutes = [
+  '/service-areas/austin',
+  '/service-areas/cedar-park',
+  '/service-areas/georgetown',
+  '/service-areas/lakeway',
+  '/service-areas/leander',
+  '/service-areas/north-austin',
+  '/service-areas/northwest-hills',
+  '/service-areas/round-rock',
+  '/service-areas/tarrytown',
+  '/service-areas/west-lake-highlands',
+  '/service-areas/west-lake-hills',
+];
 
 const failures = [];
 
@@ -309,6 +322,38 @@ async function checkPriorityLocalBusinessSchema() {
   console.log(`Live priority LocalBusiness schema pages checked: ${passed}/${priorityLocalBusinessRoutes.length}`);
 }
 
+async function checkServiceAreaFaqSchema() {
+  let passed = 0;
+
+  for (const route of serviceAreaFaqSchemaRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
+
+    if (response.status !== 200 || !faqSchema) {
+      fail(`${route}: live service-area FAQPage schema is missing.`);
+      continue;
+    }
+
+    const questions = Array.isArray(faqSchema.mainEntity) ? faqSchema.mainEntity : [];
+    const hasValidQuestionAnswer = questions.some(item =>
+      schemaTypeIncludes(item, 'Question') &&
+      item.name &&
+      schemaTypeIncludes(item.acceptedAnswer, 'Answer') &&
+      item.acceptedAnswer?.text
+    );
+
+    if (!hasValidQuestionAnswer) {
+      fail(`${route}: live service-area FAQPage schema has no valid Question/Answer entries.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live service-area FAQ schema pages checked: ${passed}/${serviceAreaFaqSchemaRoutes.length}`);
+}
+
 async function checkGoogleEntityIdentifier() {
   const { response, text: html } = await fetchText(`${baseUrl}/?v=${Date.now()}`);
   const scripts = parseJsonLd(html, '/');
@@ -333,6 +378,7 @@ await checkSitemapPages();
 await checkSupabaseFeed();
 await checkAustinSchema();
 await checkPriorityLocalBusinessSchema();
+await checkServiceAreaFaqSchema();
 await checkGoogleEntityIdentifier();
 
 if (failures.length) {
