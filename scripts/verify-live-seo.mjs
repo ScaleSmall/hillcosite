@@ -211,6 +211,14 @@ const liveNoindexRoutes = [
 const liveUnknownRoutes = [
   '/does-not-exist-gsc-test',
   '/areas/not-a-real-area-gsc-test',
+  '/functions/v1/fetch-gbp-rating',
+  '/functions/v1/fetch-cpi-data',
+  '/functions/v1/annual-pricing-automation',
+  '/functions/v1/test-pricing-automation',
+  '/functions/v1/send-pricing-notification',
+  '/functions/v1/send-rating-alert',
+  '/api/fetch-gbp-rating',
+  '/api/pricing',
 ];
 const allowedInternalNoindexRoutes = new Set(
   liveNoindexRoutes.map(([route]) => route.split('?')[0])

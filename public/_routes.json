@@ -39,8 +39,6 @@
     "/cabinet-refinishing/",
     "/cabinet-refinishing",
     "/cabinet-refinishing-pflugerville/",
-    "/cabinet-refinishing-pflugerville",
-    "/functions/*",
-    "/api/*"
+    "/cabinet-refinishing-pflugerville"
   ]
 }
