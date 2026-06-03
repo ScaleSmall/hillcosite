@@ -1,6 +1,6 @@
 # Hill Country Painting SEO Closure Tracker
 
-Last updated: 2026-05-10
+Last updated: 2026-06-03
 
 ## Goal
 Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitemap leakage, internal-link gaps, and thin/duplicate page issues.
@@ -18,47 +18,25 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Thin page / geo page scaffolding exists
 
 ### Fixed live
-- Homepage
-- /services
-- /service-areas
-- /blog
-- /contact
-- robots.txt
-- sitemap.xml
-- 404 cleanup
-- Some canonical pages and old redirect variants
-
-### Retired / removed entirely
-- /interior-painting-west-lake-hills
-- /exterior-painting-west-lake-hills
-- /cabinet-refinishing-west-lake-hills
+- Production deployment `0712181` is canonical on Cloudflare Pages.
+- All 218 sitemap URLs return 200, expose exactly one canonical tag, and are indexable.
+- Live H1/title/meta audit across all 218 sitemap URLs reports 0 issues.
+- Live internal-link crawl found 417 unique internal links/assets and 0 redirect or broken-link targets.
+- robots.txt, sitemap.xml, ai.txt, llms.txt, llms-full.txt, entity-facts.json, citation-facts.json, humans.txt, security.txt, and site.webmanifest are live with expected content types.
+- Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 
 ### Still open
-#### Redirects not live yet
-- /exterior-painting-west-lake-hills
-- /interior-painting-west-lake-hills
-- /cabinet-refinishing-west-lake-hills
-- trailing-slash canonical variants on core pages
+#### External validation
+- Submit or re-submit `https://www.hillcopaint.com/sitemap.xml` in Google Search Console.
+- Run URL Inspection on representative repaired URLs and request indexing where available.
+- Wait for GSC validation states to clear after Google recrawls. Live site checks are clean, but GSC status cannot be marked 100% resolved until Google reports it.
+- Verify Google Business Profile ranking and Maps-pack position from neutral/localized searches. A #1 Maps outcome cannot be proven from repo or Cloudflare evidence alone.
 
-#### Sitemap leakage / duplicate exposure
-- Non-canonical pages in sitemap
-- Redirects in sitemap
-- Pages in multiple sitemaps
-- Trailing-slash variants in sitemap
-- Non-canonical service-area / blog / utility variants still surfaced
+#### Citation and local SEO follow-through
+- Clean stale third-party NAP/citation listings identified in `citation-facts.json`.
+- Confirm Google Business Profile name, phone, website, address/service-area settings, categories, services, photos, posts, and review response cadence.
 
-#### Internal linking / orphans
-- Orphan pages
-- Redirected pages with no incoming internal links
-- Canonical URL with no incoming internal links
-
-#### Thin content / duplication
-- Low-word-count page family
-- Not-indexable low-word-count family
-- Title/SERP mismatch on at least one page
-- Shared template/title pattern across many service and area pages
-
-#### URL families seen in the audit that need review
+#### Historical URL families reviewed during repair
 - /services/
 - /service-areas/
 - /blog/
@@ -119,22 +97,24 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - /service-areas/*
 - /guides/*
 
-#### Removed from sitemap / retired as legacy duplicates
+#### Removed from sitemap / handled as legacy duplicates
 - /interior-painting-west-lake-hills
 - /exterior-painting-west-lake-hills
 - /cabinet-refinishing-west-lake-hills
 
 ## Evidence
-- Live redirects are still failing for the 3 West Lake Hills legacy URLs.
-- Sitemap audit showed large non-canonical/redirect leakage.
-- Sitewide route families exist for service-area and neighborhood pages.
-- Audit also shows many trailing-slash variants and utility URLs still surfacing.
+- Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
+- Safe Cloudflare project check confirmed canonical production commit `0712181` with status `success`.
+- Live sitemap crawl: 218 sitemap URLs, 218 clean indexable 200 responses, 0 problems.
+- Live H1/meta crawl: 218 pages checked, 0 issues for duplicate/missing H1, hard-cut ellipses, overlong titles, or overlong descriptions.
+- Live internal-link crawl: 218 pages crawled, 417 unique internal links/assets checked, 0 broken or redirecting internal targets.
+- Live file checks confirmed expected public discovery files are available.
 
 ## Next steps
-1. Internal-link audit for legacy/redirecting URLs.
-2. Thin-content triage: expand vs noindex vs keep.
-3. Fix title/meta mismatch if still present.
-4. Watch Ahrefs/GSC for stale residue only.
+1. Submit sitemap and run representative URL Inspection checks in GSC.
+2. Watch Ahrefs/GSC for stale residue only, separating old sampled URLs from current live behavior.
+3. Clean third-party citation/NAP inconsistencies that are outside the repo.
+4. Continue content expansion through additive service, neighborhood, project, and case-study content.
 
 ## Keep / Expand / Noindex triage
 ### Keep
