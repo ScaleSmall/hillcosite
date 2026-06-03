@@ -223,13 +223,8 @@ const AI_MANIFEST_HEADERS: Record<string, string> = {
   '/citation-facts.json': 'application/json; charset=utf-8',
 };
 
-async function aiManifestResponse(env: Env, request: Request, origin: string, path: string): Promise<Response> {
-  const assetUrl = new URL(path, origin);
-  const assetRequest = new Request(assetUrl.toString(), {
-    method: 'GET',
-    headers: request.headers,
-  });
-  const assetResponse = await env.ASSETS.fetch(assetRequest);
+async function aiManifestResponse(next: () => Promise<Response>, path: string): Promise<Response> {
+  const assetResponse = await next();
   const headers = new Headers(assetResponse.headers);
 
   headers.set('Content-Type', AI_MANIFEST_HEADERS[path]);
@@ -297,7 +292,7 @@ export async function onRequest(context: {
   }
 
   if (AI_MANIFEST_HEADERS[pathname]) {
-    return aiManifestResponse(env, request, url.origin, pathname);
+    return aiManifestResponse(next, pathname);
   }
 
   // ── B. Static assets → pass through immediately ──────────────────────
@@ -333,6 +328,14 @@ export async function onRequest(context: {
   // /service/* catch-all — any unmatched /service/ path → /services
   if (path.startsWith('/service/')) {
     return redirect('/services', url.origin);
+  }
+
+  if (path === '/') {
+    const response = await next();
+    return new Response(response.body, {
+      status: response.status,
+      headers: headersForRoute(response.headers, path),
+    });
   }
 
   // ── E. Known app routes → prefer exact prerendered HTML ──────────────
