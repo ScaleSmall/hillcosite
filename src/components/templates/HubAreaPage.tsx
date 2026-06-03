@@ -30,7 +30,7 @@ interface HubAreaPageProps {
 
 const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
   const pageTitle = `Professional House Painting in ${hub.name} | Hill Country Painting`;
-  const mapQuery = `${hub.name}, TX`;
+  const mapQuery = `${businessConfig.name} painting service area ${hub.name} TX`;
   const canonical = `/areas/${hub.slug}`;
 
   const areaServed = [hub.name, ...hub.neighborhoods.map(n => n.name)];

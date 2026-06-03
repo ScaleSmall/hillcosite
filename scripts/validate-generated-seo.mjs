@@ -16,6 +16,7 @@ const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
 const locationsConfigPath = resolve(projectRoot, 'src/config/locations.ts');
 const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts');
 const colorConsultationPath = resolve(projectRoot, 'src/pages/ColorConsultation.tsx');
+const googleMapEmbedPath = resolve(projectRoot, 'src/components/GoogleMapEmbed.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
@@ -774,6 +775,7 @@ function run() {
   const locationsConfigSource = readRequired(locationsConfigPath, 'src/config/locations.ts');
   const serviceProductsSource = readRequired(serviceProductsPath, 'src/config/serviceProducts.ts');
   const colorConsultationSource = readRequired(colorConsultationPath, 'src/pages/ColorConsultation.tsx');
+  const googleMapEmbedSource = readRequired(googleMapEmbedPath, 'src/components/GoogleMapEmbed.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
@@ -977,6 +979,14 @@ function run() {
 
   if (!middlewareSource.includes(`const CURRENT_SUPABASE_URL = '${currentSupabaseUrl}';`)) {
     fail(`functions/_middleware.ts must point CURRENT_SUPABASE_URL at ${currentSupabaseUrl}`);
+  }
+
+  if (googleMapEmbedSource.includes('maps/embed?pb=')) {
+    fail('src/components/GoogleMapEmbed.tsx must not use the old hard-coded Google Maps pb embed fallback');
+  }
+
+  if (!googleMapEmbedSource.includes('maps?q=') || !googleMapEmbedSource.includes('output=embed')) {
+    fail('src/components/GoogleMapEmbed.tsx must use a query-based Google Maps fallback embed');
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {
