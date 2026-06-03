@@ -93,7 +93,7 @@ const Blog = () => {
           description: 'Expert painting tips, color guides, and home improvement advice from Austin\'s trusted painting professionals.',
           publisher: {
             '@type': 'Organization',
-            '@id': `${baseUrl}#organization`,
+            '@id': `${baseUrl}/#organization`,
             name: 'Hill Country Painting',
             url: baseUrl,
             logo: {
@@ -129,20 +129,7 @@ const Blog = () => {
           name: 'Painting Blog | Austin Home Improvement Tips',
           description: 'Expert painting tips, color guides, and home improvement advice from Austin\'s trusted painting professionals.',
           breadcrumb: {
-            '@type': 'BreadcrumbList',
-            itemListElement: [
-              {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'Home',
-                item: baseUrl
-              },
-              {
-                '@type': 'ListItem',
-                position: 2,
-                name: 'Blog'
-              }
-            ]
+            '@id': `${baseUrl}/blog#breadcrumb`
           }
         }
       ]

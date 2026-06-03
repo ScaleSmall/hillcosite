@@ -422,9 +422,10 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   } : null;
 
   // BreadcrumbList schema
-  const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 ? {
+  const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0 && canonicalStr ? {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    '@id': `${canonicalStr}#breadcrumb`,
     itemListElement: breadcrumbs.map((crumb, index) => {
       const isLastItem = index === breadcrumbs.length - 1;
       const item: Record<string, unknown> = {

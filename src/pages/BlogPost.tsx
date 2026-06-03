@@ -264,7 +264,7 @@ const BlogPost = () => {
               '@type': 'ListItem',
               position: 1,
               name: 'Home',
-              item: baseUrl
+              item: `${baseUrl}/`
             },
             {
               '@type': 'ListItem',

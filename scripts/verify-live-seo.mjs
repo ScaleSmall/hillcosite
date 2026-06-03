@@ -1224,12 +1224,13 @@ async function checkBreadcrumbSchema() {
     if (
       response.status !== 200 ||
       !breadcrumbSchema ||
+      breadcrumbSchema?.['@id'] !== `${baseUrl}${route}#breadcrumb` ||
       items.length < 2 ||
       !positionsAreSequential ||
       !hasHomeStart ||
       !hasCurrentLastItem
     ) {
-      fail(`${route}: live BreadcrumbList schema should start at Home, use sequential positions, and leave the current page as the final item.`);
+      fail(`${route}: live BreadcrumbList schema should have a canonical @id, start at Home, use sequential positions, and leave the current page as the final item.`);
       continue;
     }
 

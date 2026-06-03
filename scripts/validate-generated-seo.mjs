@@ -596,6 +596,52 @@ function expectedCanonical(routePath) {
   return routePath === '/' ? `${baseUrl}/` : `${baseUrl}${routePath}`;
 }
 
+function validateBreadcrumbReferences(routePath, schemaItems) {
+  const breadcrumbRefs = schemaItems
+    .flatMap(item => asArray(item?.breadcrumb))
+    .map(breadcrumb => breadcrumb?.['@id'])
+    .filter(Boolean);
+
+  for (const breadcrumbId of new Set(breadcrumbRefs)) {
+    const breadcrumbSchema = schemaItems.find(item =>
+      schemaTypeIncludes(item, 'BreadcrumbList') &&
+      item?.['@id'] === breadcrumbId
+    );
+    const items = asArray(breadcrumbSchema?.itemListElement);
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+    const positionsAreSequential = items.every((item, index) => item?.position === index + 1);
+    const expectedBreadcrumbId = `${expectedCanonical(routePath)}#breadcrumb`;
+    const isHomepageBreadcrumb =
+      routePath === '/' &&
+      items.length === 1 &&
+      positionsAreSequential &&
+      firstItem?.name === 'Home' &&
+      !firstItem?.item;
+    const isInteriorBreadcrumb =
+      routePath !== '/' &&
+      items.length >= 2 &&
+      positionsAreSequential &&
+      firstItem?.name === 'Home' &&
+      firstItem?.item === `${baseUrl}/` &&
+      lastItem?.name &&
+      !lastItem?.item;
+
+    if (!breadcrumbSchema) {
+      fail(`${routePath}: schema references ${breadcrumbId} but no matching BreadcrumbList exists`);
+      continue;
+    }
+
+    if (breadcrumbId !== expectedBreadcrumbId) {
+      fail(`${routePath}: BreadcrumbList @id ${breadcrumbId} should be ${expectedBreadcrumbId}`);
+    }
+
+    if (!isHomepageBreadcrumb && !isInteriorBreadcrumb) {
+      fail(`${routePath}: BreadcrumbList should start at Home, use sequential positions, and leave the current page as the final item`);
+    }
+  }
+}
+
 function getMetaTags(html, selector) {
   return [...html.matchAll(/<meta\b[^>]*>/gi)]
     .map(match => match[0])
@@ -1611,6 +1657,8 @@ function run() {
       if (!schemaItems.some(item => schemaTypeIncludes(item, 'WebPage'))) {
         fail(`${routePath}: sitemap page is missing WebPage structured data`);
       }
+
+      validateBreadcrumbReferences(routePath, schemaItems);
 
       if (routePath === '/') {
         const requiredHomepageEntitySignals = [
