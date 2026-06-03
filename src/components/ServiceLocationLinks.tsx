@@ -10,7 +10,7 @@ interface ServiceLocationLinksProps {
 const serviceNames = {
   interior: 'Interior Painting',
   exterior: 'Exterior Painting',
-  cabinet: 'Cabinet Refinishing',
+  cabinet: 'Cabinet Painting',
   commercial: 'Commercial Painting'
 };
 

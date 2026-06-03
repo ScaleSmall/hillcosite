@@ -227,6 +227,39 @@ function normalizeRoutePath(value, currentRoute = '/') {
   return stripQueryAndHash(value).replace(/\/$/, '') || '/';
 }
 
+function normalizeAnchorText(value) {
+  return value
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute) {
+  const page = pages.get(sourceRoute);
+
+  if (!page) {
+    fail(`${sourceRoute}: missing page for priority local-search anchor validation`);
+    return;
+  }
+
+  for (const match of page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+    const targetRoute = normalizeRoutePath(match[1].trim(), sourceRoute);
+    const anchorText = normalizeAnchorText(match[2]);
+
+    if (targetRoute === expectedRoute && anchorText.includes(expectedText)) {
+      return;
+    }
+  }
+
+  fail(`${sourceRoute}: missing priority local-search anchor "${expectedText}" to ${expectedRoute}`);
+}
+
 function htmlFileForRoute(routePath) {
   if (routePath === '/') {
     return resolve(distPath, 'index.html');
@@ -527,6 +560,21 @@ function run() {
   const disallowRules = extractDisallowRules(robotsText);
   const sitemapTitles = new Map();
   const sitemapH1s = new Map();
+
+  [
+    ['/', 'Austin house painters', '/service-areas/austin'],
+    ['/', 'Austin exterior house painters', '/services/exterior-painting'],
+    ['/', 'Austin interior painters', '/services/interior-painting'],
+    ['/', 'Austin cabinet painting', '/services/cabinet-refinishing'],
+    ['/services', 'Austin exterior house painters', '/services/exterior-painting'],
+    ['/services', 'Austin commercial painters', '/services/commercial'],
+    ['/service-areas', 'Round Rock house painters', '/service-areas/round-rock'],
+    ['/service-areas', 'Cedar Park house painters', '/service-areas/cedar-park'],
+    ['/service-areas', 'Georgetown house painters', '/service-areas/georgetown'],
+    ['/service-areas', 'Leander house painters', '/service-areas/leander']
+  ].forEach(([sourceRoute, expectedText, expectedRoute]) => {
+    assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute);
+  });
 
   if (generatedSpaRouteData.count !== generatedSpaRouteSet.size) {
     fail(`functions/generatedRoutes.ts route count ${generatedSpaRouteData.count} should be ${generatedSpaRouteSet.size}`);

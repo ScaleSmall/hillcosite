@@ -7,6 +7,7 @@ import ServicesGrid from '../components/sections/ServicesGrid';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
 import { geoAreas } from '../data/geoAreas';
+import LocalSearchLinks from '../components/LocalSearchLinks';
 
 const ServiceAreas = () => {
   const breadcrumbItems = [
@@ -95,6 +96,8 @@ const ServiceAreas = () => {
         subtitle="Professional painting services throughout Austin, TX"
         areas={allServiceAreas}
       />
+
+      <LocalSearchLinks variant="areas" surface="white" />
 
       {/* Hub Areas Section */}
       <section className="section-padding bg-brand-gray-50">

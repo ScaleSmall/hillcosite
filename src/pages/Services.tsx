@@ -7,6 +7,7 @@ import ServiceAreasSection from '../components/sections/ServiceAreasSection';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
 import { ArrowRight } from 'lucide-react';
+import LocalSearchLinks from '../components/LocalSearchLinks';
 
 const Services = () => {
   const allServices = [
@@ -117,6 +118,8 @@ const Services = () => {
           </div>
         </div>
       </section>
+
+      <LocalSearchLinks variant="services" surface="white" />
 
       {/* Service Areas */}
       <ServiceAreasSection

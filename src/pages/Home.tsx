@@ -16,6 +16,7 @@ import CTABanner from '../components/sections/CTABanner';
 import PaintingCostsTable from '../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../components/sections/TypicalHomeCosts';
 import NAPMapSection from '../components/NAPMapSection';
+import LocalSearchLinks from '../components/LocalSearchLinks';
 
 const Home = () => {
   const serviceAreas = [
@@ -341,6 +342,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <LocalSearchLinks variant="home" surface="white" />
 
       {/* Financing Section */}
       <section className="section-padding bg-brand-gray-50">
