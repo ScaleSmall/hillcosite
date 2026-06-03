@@ -67,6 +67,7 @@ const Georgetown = () => {
           description: 'Professional residential and commercial painting throughout Georgetown, Texas. Specialists in Sun City Del Webb HOA compliance, historic Victorian preservation, and master-planned community exteriors in Wolf Ranch, Berry Creek, and Teravista.',
           areaServed: ['Georgetown', 'Sun City Georgetown', 'Berry Creek', 'Teravista', 'Wolf Ranch', 'Georgetown Square']
         }}
+        faq={georgetownFAQs}
         includeLocalBusiness={true}
       />
 

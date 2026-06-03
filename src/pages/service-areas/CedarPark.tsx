@@ -67,6 +67,7 @@ const CedarPark = () => {
           description: 'Professional interior and exterior painting services throughout Cedar Park, Texas. HOA color compliance specialists for master-planned communities including Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, Lakeline, and Twin Creeks.',
           areaServed: ['Cedar Park', 'Avery Ranch', 'Ranch at Brushy Creek', 'Buttercup Creek', 'Lakeline', 'Twin Creeks']
         }}
+        faq={cedarParkFAQs}
         includeLocalBusiness={true}
       />
 

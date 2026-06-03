@@ -150,6 +150,19 @@ const requiredServiceAreaServiceLocationSlugs = new Map([
   ['/service-areas/cedar-park', 'cedar-park'],
   ['/service-areas/north-austin', 'north-austin']
 ]);
+const requiredServiceAreaFaqSchemaRoutes = [
+  '/service-areas/austin',
+  '/service-areas/cedar-park',
+  '/service-areas/georgetown',
+  '/service-areas/lakeway',
+  '/service-areas/leander',
+  '/service-areas/north-austin',
+  '/service-areas/northwest-hills',
+  '/service-areas/round-rock',
+  '/service-areas/tarrytown',
+  '/service-areas/west-lake-highlands',
+  '/service-areas/west-lake-hills'
+];
 
 const errors = [];
 const warnings = [];
@@ -822,6 +835,19 @@ function run() {
       if (!pageLinksToRoute(page, serviceAreaRoute, expectedRoute)) {
         fail(`${serviceAreaRoute}: service-area page should link to local service page ${expectedRoute}`);
       }
+    }
+  }
+
+  for (const serviceAreaRoute of requiredServiceAreaFaqSchemaRoutes) {
+    const page = pages.get(serviceAreaRoute);
+
+    if (!page) {
+      fail(`${serviceAreaRoute}: missing generated HTML for service-area FAQ schema validation`);
+      continue;
+    }
+
+    if (!/"@type"\s*:\s*"FAQPage"/.test(page.html)) {
+      fail(`${serviceAreaRoute}: service-area page with visible FAQs should include FAQPage schema`);
     }
   }
 

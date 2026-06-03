@@ -67,6 +67,7 @@ const RoundRock = () => {
           description: 'Professional interior and exterior painting throughout Round Rock, Texas. Serving Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks with interior repaints, exterior painting, and cabinet refinishing.',
           areaServed: ['Round Rock', 'Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks']
         }}
+        faq={roundRockFAQs}
         includeLocalBusiness={true}
       />
 

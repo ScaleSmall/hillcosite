@@ -67,6 +67,7 @@ const WestLakeHills = () => {
           description: 'Professional luxury residential painting services throughout West Lake Hills, Texas. Specializing in high-end homes, premium finishes, hillside properties, and strict HOA compliance.',
           areaServed: ['West Lake Hills', 'Westlake', 'Rob Roy', 'Eanes', 'Rollingwood', 'Lost Creek', 'Davenport Ranch', 'Barton Creek']
         }}
+        faq={westLakeHillsFAQs}
         includeLocalBusiness={true}
       />
 

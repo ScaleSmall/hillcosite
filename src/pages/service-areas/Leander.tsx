@@ -67,6 +67,7 @@ const Leander = () => {
           description: 'Professional interior and exterior painting throughout Leander, Texas. Specialists in master-planned community HOA compliance, new construction upgrades, and premium exterior coatings for Crystal Falls, Travisso, Mason Hills, Devine Lake, and Bryson.',
           areaServed: ['Leander', 'Crystal Falls', 'Travisso', 'Mason Hills', 'Devine Lake', 'Bryson']
         }}
+        faq={leanderFAQs}
         includeLocalBusiness={true}
       />
 

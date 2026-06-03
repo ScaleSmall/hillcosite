@@ -67,6 +67,7 @@ const NorthAustin = () => {
           description: 'Professional interior and exterior painting throughout North Austin, Texas. Specialists in mid-century modern homes, tech corridor townhomes and condos, and commercial spaces near The Domain. Serving Balcones, Milwood, Jollyville, Anderson Mill, and the Domain area.',
           areaServed: ['North Austin', 'Balcones', 'Milwood', 'Jollyville', 'Anderson Mill', 'The Domain Area']
         }}
+        faq={northAustinFAQs}
         includeLocalBusiness={true}
       />
 
