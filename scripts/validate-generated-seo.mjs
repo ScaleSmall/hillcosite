@@ -551,6 +551,10 @@ function run() {
     fail('AI manifest files must link to citation-facts.json');
   }
 
+  if (!llmsText.includes('Austin house painters') || !aiText.includes('Austin house painters')) {
+    fail('AI manifest files must include priority Greater Austin local search topics');
+  }
+
   for (const routePath of sitemapPaths) {
     const canonicalUrl = expectedCanonical(routePath);
     if (!llmsFullText.includes(canonicalUrl)) {
@@ -593,6 +597,9 @@ function run() {
     if (!Array.isArray(entityFacts.staleCitationWarnings) || entityFacts.staleCitationWarnings.length < 3) {
       fail('entity-facts.json must include stale citation warnings for NAP cleanup');
     }
+    if (!Array.isArray(entityFacts.priorityLocalSearchTopics) || !entityFacts.priorityLocalSearchTopics.includes('Austin house painters')) {
+      fail('entity-facts.json must include priority Greater Austin local search topics');
+    }
   } catch (error) {
     fail(`entity-facts.json is invalid JSON (${error.message})`);
   }
@@ -631,6 +638,9 @@ function run() {
     }
     if (!warnings.includes('111 Craft Street') || !warnings.includes('1101 Satellite View') || !warnings.includes('/round-rock/') || !warnings.includes('8:00 AM-8:00 AM')) {
       fail('citation-facts.json must warn against known stale directory address, URL, and hours variants');
+    }
+    if (!Array.isArray(identity.priorityLocalSearchTopics) || !identity.priorityLocalSearchTopics.includes('Austin house painters')) {
+      fail('citation-facts.json must include priority Greater Austin local search topics');
     }
   } catch (error) {
     fail(`citation-facts.json is invalid JSON (${error.message})`);
