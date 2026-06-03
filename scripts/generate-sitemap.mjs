@@ -92,6 +92,15 @@ function sanitizeBlogPost(post) {
   };
 }
 
+function blogPathSlug(slug) {
+  return slug
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 function writeGeneratedBlogPosts(posts) {
   const outputDir = resolve(__dirname, '../src/generated');
   const outputPath = resolve(outputDir, 'blogPosts.ts');
@@ -201,7 +210,7 @@ const generateSitemap = async () => {
   writeGeneratedBlogPosts(blogPosts);
 
   const blogRoutes = blogPosts.map(post => ({
-    path: `/blog/${encodeURIComponent(post.slug)}`,
+    path: `/blog/${blogPathSlug(post.slug)}`,
     changefreq: 'weekly',
     priority: '0.6',
     lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null

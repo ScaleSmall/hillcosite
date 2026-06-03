@@ -20,7 +20,14 @@ interface BlogPost {
 }
 
 const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
-const blogPostPath = (slug: string) => `/blog/${encodeURIComponent(slug)}`;
+const blogPathSlug = (slug: string) =>
+  slug
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+const blogPostPath = (slug: string) => `/blog/${blogPathSlug(slug)}`;
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);

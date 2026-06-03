@@ -212,6 +212,25 @@ function assetPathForPrerenderedRoute(path: string): string {
   return `${path.replace(/%/g, '%25')}/index.html`;
 }
 
+function blogPathSlug(slug: string): string {
+  return slug
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function cleanBlogPath(path: string): string {
+  const prefix = '/blog/';
+
+  if (!path.startsWith(prefix)) {
+    return path;
+  }
+
+  return `${prefix}${blogPathSlug(decodeURIComponent(path.slice(prefix.length)))}`;
+}
+
 function headersForRoute(sourceHeaders: Headers, path: string): Headers {
   const headers = new Headers(sourceHeaders);
   const robots = NOINDEX_ROUTES[path];
@@ -315,6 +334,11 @@ export async function onRequest(context: {
   // ── C. Legacy 301 redirects ──────────────────────────────────────────
   const destination = REDIRECTS[cleanPath] || REDIRECTS[pathname];
   if (destination) return redirect(destination, url.origin);
+
+  const cleanBlogRoute = cleanBlogPath(cleanPath);
+  if (cleanBlogRoute !== cleanPath && isSpaRoute(cleanBlogRoute)) {
+    return redirect(cleanBlogRoute, url.origin);
+  }
 
   if (!isSpaRoute(cleanPath)) {
     for (const rule of PATTERN_REDIRECTS) {

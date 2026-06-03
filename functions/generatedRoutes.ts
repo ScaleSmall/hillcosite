@@ -88,7 +88,7 @@ export const generatedSpaRoutes = [
   "/areas/west-lake-hills-and-rollingwood/spanish-oaks",
   "/areas/west-lake-hills-and-rollingwood/west-lake-hills",
   "/blog",
-  "/blog/how-to-deterimine%20the-best-austin-exterior-house%20painters",
+  "/blog/how-to-deterimine-the-best-austin-exterior-house-painters",
   "/blog/is-october-too-late-to-paint-outside",
   "/blog/recommendations-on-home-exterior-painters",
   "/blog/what-are-the-4-types-of-paint",

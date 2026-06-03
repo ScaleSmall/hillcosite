@@ -46,7 +46,14 @@ const normalizeArticleContent = (value: string) =>
     .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
     .replace(/<\/h1>/gi, '</h2>');
 
-const blogPostPath = (postSlug: string) => `/blog/${encodeURIComponent(postSlug)}`;
+const blogPathSlug = (postSlug: string) =>
+  postSlug
+    .trim()
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+const blogPostPath = (postSlug: string) => `/blog/${blogPathSlug(postSlug)}`;
 
 const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
   const excerpt = stripMarkdown(post.excerpt || post.title);
@@ -81,12 +88,15 @@ const BlogPost = () => {
     const fetchPost = async () => {
       if (!slug) return;
       const requestedSlug = decodeURIComponent(slug);
+      const generatedPostForRoute = generatedBlogPosts.find(item =>
+        item.slug === requestedSlug || blogPathSlug(item.slug) === requestedSlug
+      );
+      const supabaseSlug = generatedPostForRoute?.slug || requestedSlug;
 
       if (!supabaseConfigured || !supabase) {
         console.warn('Supabase not configured');
-        const generatedPost = generatedBlogPosts.find(item => item.slug === requestedSlug);
-        if (generatedPost) {
-          setPost(generatedToBlogPost(generatedPost));
+        if (generatedPostForRoute) {
+          setPost(generatedToBlogPost(generatedPostForRoute));
         } else {
           setNotFound(true);
         }
@@ -101,16 +111,15 @@ const BlogPost = () => {
         const { data, error } = await supabase
           .from('blog_posts')
           .select('*')
-          .eq('slug', requestedSlug)
+          .eq('slug', supabaseSlug)
           .eq('published', true)
           .abortSignal(controller.signal)
           .maybeSingle();
         clearTimeout(timeout);
 
         if (error || !data) {
-          const generatedPost = generatedBlogPosts.find(item => item.slug === requestedSlug);
-          if (generatedPost) {
-            setPost(generatedToBlogPost(generatedPost));
+          if (generatedPostForRoute) {
+            setPost(generatedToBlogPost(generatedPostForRoute));
             return;
           }
           setNotFound(true);
@@ -119,9 +128,8 @@ const BlogPost = () => {
         }
       } catch {
         clearTimeout(timeout);
-        const generatedPost = generatedBlogPosts.find(item => item.slug === requestedSlug);
-        if (generatedPost) {
-          setPost(generatedToBlogPost(generatedPost));
+        if (generatedPostForRoute) {
+          setPost(generatedToBlogPost(generatedPostForRoute));
           setLoading(false);
           return;
         }
