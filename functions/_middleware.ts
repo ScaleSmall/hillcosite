@@ -184,6 +184,12 @@ function redirect(location: string, origin: string): Response {
 const SPA_ROUTES: Set<string> = new Set(generatedSpaRoutes);
 const CURRENT_SUPABASE_URL = 'https://ndggkorglcaznukkhapz.supabase.co';
 const RETIRED_SUPABASE_URLS = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
+const AUSTIN_SERVICE_SCHEMA_SIGNALS: Record<string, string> = {
+  '/exterior-painting-austin': 'Austin exterior house painters',
+  '/interior-painting-austin': 'Austin interior painters',
+  '/cabinet-refinishing-austin': 'Austin cabinet painting',
+  '/commercial-painting-austin': 'Austin commercial painters',
+};
 
 const NOINDEX_ROUTES: Record<string, string> = {
   '/privacy': 'noindex, follow',
@@ -244,12 +250,60 @@ function headersForRoute(sourceHeaders: Headers, path: string): Headers {
   return headers;
 }
 
+function schemaTypeIncludes(item: Record<string, any>, typeName: string): boolean {
+  const schemaType = item?.['@type'];
+  return Array.isArray(schemaType) ? schemaType.includes(typeName) : schemaType === typeName;
+}
+
+function withUniqueValues(existing: unknown, additions: string[]): string[] {
+  const values = Array.isArray(existing) ? existing.filter(value => typeof value === 'string') : [];
+  return [...new Set([...values, ...additions])];
+}
+
+function withAustinServiceSchemaSignals(html: string, path: string): string {
+  const exactPhrase = AUSTIN_SERVICE_SCHEMA_SIGNALS[path];
+
+  if (!exactPhrase) {
+    return html;
+  }
+
+  const serviceId = `https://www.hillcopaint.com${path}#service`;
+  const additions = [exactPhrase, 'painting contractors Austin', 'house painters Austin'];
+
+  return html.replace(
+    /<script\b([^>]*)type=["']application\/ld\+json["']([^>]*)>([\s\S]*?)<\/script>/gi,
+    (tag, beforeType, afterType, json) => {
+      try {
+        const schema = JSON.parse(json);
+
+        if (!schemaTypeIncludes(schema, 'Service') || schema?.['@id'] !== serviceId) {
+          return tag;
+        }
+
+        schema.alternateName = withUniqueValues(schema.alternateName, additions);
+        schema.keywords = withUniqueValues(schema.keywords, additions);
+        schema.serviceOutput = String(schema.serviceOutput || `${exactPhrase} service for homes, businesses, and property managers in Austin, TX`);
+
+        if (!schema.serviceOutput.includes(exactPhrase)) {
+          schema.serviceOutput = `${schema.serviceOutput} ${exactPhrase}`;
+        }
+
+        return `<script${beforeType}type="application/ld+json"${afterType}>${JSON.stringify(schema)}</script>`;
+      } catch {
+        return tag;
+      }
+    }
+  );
+}
+
 async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
   let html = await response.text();
 
   for (const retiredUrl of RETIRED_SUPABASE_URLS) {
     html = html.replaceAll(retiredUrl, CURRENT_SUPABASE_URL);
   }
+
+  html = withAustinServiceSchemaSignals(html, path);
 
   return new Response(html, {
     status: 200,
