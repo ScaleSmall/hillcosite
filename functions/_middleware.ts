@@ -508,6 +508,38 @@ function withGuideFaqSchemaFallback(html: string, path: string): string {
     : `${html}${supplementalScript}`;
 }
 
+function withBreadcrumbSchemaIds(html: string, path: string): string {
+  const breadcrumbId = `https://www.hillcopaint.com${path === '/' ? '/' : path}#breadcrumb`;
+
+  return html.replace(
+    /<script\b([^>]*)type=["']application\/ld\+json["']([^>]*)>([\s\S]*?)<\/script>/gi,
+    (tag, beforeType, afterType, json) => {
+      try {
+        const schema = JSON.parse(json);
+        let changed = false;
+        const addBreadcrumbId = (item: Record<string, any>) => {
+          if (schemaTypeIncludes(item, 'BreadcrumbList') && !item?.['@id']) {
+            item['@id'] = breadcrumbId;
+            changed = true;
+          }
+        };
+
+        if (Array.isArray(schema?.['@graph'])) {
+          schema['@graph'].forEach(addBreadcrumbId);
+        } else {
+          addBreadcrumbId(schema);
+        }
+
+        return changed
+          ? `<script${beforeType}type="application/ld+json"${afterType}>${JSON.stringify(schema)}</script>`
+          : tag;
+      } catch {
+        return tag;
+      }
+    }
+  );
+}
+
 function withSafeHeroImages(html: string): string {
   const firstSectionIndex = html.search(/<section\b/i);
 
@@ -537,6 +569,7 @@ async function htmlResponseForRoute(response: Response, path: string): Promise<R
 
   html = withAustinServiceSchemaSignals(html, path);
   html = withGuideFaqSchemaFallback(html, path);
+  html = withBreadcrumbSchemaIds(html, path);
   html = withSafeHeroImages(html);
 
   return new Response(html, {

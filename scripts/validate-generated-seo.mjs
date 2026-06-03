@@ -597,10 +597,18 @@ function expectedCanonical(routePath) {
 }
 
 function validateBreadcrumbReferences(routePath, schemaItems) {
+  const unnamedBreadcrumbs = schemaItems.filter(item =>
+    schemaTypeIncludes(item, 'BreadcrumbList') &&
+    !item?.['@id']
+  );
   const breadcrumbRefs = schemaItems
     .flatMap(item => asArray(item?.breadcrumb))
     .map(breadcrumb => breadcrumb?.['@id'])
     .filter(Boolean);
+
+  if (unnamedBreadcrumbs.length > 0) {
+    fail(`${routePath}: BreadcrumbList schema must include a canonical @id`);
+  }
 
   for (const breadcrumbId of new Set(breadcrumbRefs)) {
     const breadcrumbSchema = schemaItems.find(item =>
@@ -1085,6 +1093,10 @@ function run() {
 
   if (!middlewareSource.includes(`const CURRENT_SUPABASE_URL = '${currentSupabaseUrl}';`)) {
     fail(`functions/_middleware.ts must point CURRENT_SUPABASE_URL at ${currentSupabaseUrl}`);
+  }
+
+  if (!middlewareSource.includes('function withBreadcrumbSchemaIds') || !middlewareSource.includes('withBreadcrumbSchemaIds(html, path)')) {
+    fail('functions/_middleware.ts must preserve request-time BreadcrumbList @id repair for live crawler responses');
   }
 
   for (const signal of [
