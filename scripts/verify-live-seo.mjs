@@ -1539,11 +1539,13 @@ async function checkVisibleLocalTrustSections() {
       html.includes(`href="${googleBusinessProfileUrl.replace(/&/g, '&amp;')}"`);
     const hasCanonicalPhoneLink = html.includes(`href="${canonicalPhoneHref}"`);
     const hasMapSignal = html.includes('Hill Country Painting - Service Area Map');
-    const hasVisibleGbpText = html.includes('View Hill Country Painting on Google');
+    const hasVisibleGbpText = html.includes('Google Business Profile');
+    const hasVisibleGoogleReviewsText = html.includes('Google reviews');
+    const hasVisibleGoogleDirectionsText = html.includes('Directions on Google Maps');
     const hasServiceAreaText = html.includes('Serving Austin, TX and the Greater Austin area');
 
-    if (response.status !== 200 || !hasGoogleProfileLink || !hasCanonicalPhoneLink || !hasMapSignal || !hasVisibleGbpText || !hasServiceAreaText) {
-      fail(`${route}: live page is missing the visible NAP/map/Google Business Profile trust section.`);
+    if (response.status !== 200 || !hasGoogleProfileLink || !hasCanonicalPhoneLink || !hasMapSignal || !hasVisibleGbpText || !hasVisibleGoogleReviewsText || !hasVisibleGoogleDirectionsText || !hasServiceAreaText) {
+      fail(`${route}: live page is missing the visible NAP/map/Google Business Profile, Google reviews, or Google Maps directions trust section.`);
       continue;
     }
 

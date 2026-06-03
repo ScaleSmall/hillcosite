@@ -952,7 +952,9 @@ function pageHasVisibleLocalTrustSection(page) {
   return (
     pageLinksToHref(page, googleBusinessProfileUrl) &&
     pageLinksToHref(page, canonicalPhoneHref) &&
-    page.html.includes('View Hill Country Painting on Google') &&
+    page.html.includes('Google Business Profile') &&
+    page.html.includes('Google reviews') &&
+    page.html.includes('Directions on Google Maps') &&
     page.html.includes('Hill Country Painting - Service Area Map') &&
     page.html.includes('Serving Austin, TX and the Greater Austin area')
   );

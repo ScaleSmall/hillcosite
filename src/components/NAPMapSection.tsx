@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { ExternalLink, Mail, MapPin, Navigation, Phone, Star } from 'lucide-react';
 import GoogleMapEmbed from './GoogleMapEmbed';
 import { businessConfig } from '../config/business';
 
@@ -18,6 +18,23 @@ const NAPMapSection = () => {
     'Round Rock',
     'Georgetown',
     'Leander'
+  ];
+  const googleTrustLinks = [
+    {
+      label: 'Google Business Profile',
+      description: 'Confirm our Austin painting service details on Google.',
+      icon: ExternalLink
+    },
+    {
+      label: 'Google reviews',
+      description: 'Read customer feedback from local painting projects.',
+      icon: Star
+    },
+    {
+      label: 'Directions on Google Maps',
+      description: 'Open the service-area map and profile listing.',
+      icon: Navigation
+    }
   ];
 
   return (
@@ -92,14 +109,25 @@ const NAPMapSection = () => {
                 <p className="text-sm text-brand-gray-500 mt-3 leading-relaxed">
                   Priority service areas include {priorityServiceAreas.join(', ')}.
                 </p>
-                <a
-                  href={businessConfig.googleBusinessProfileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex mt-4 text-brand-azure hover:text-brand-azureDark font-medium transition-colors"
-                >
-                  View Hill Country Painting on Google
-                </a>
+                <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {googleTrustLinks.map(({ label, description, icon: Icon }) => (
+                    <a
+                      key={label}
+                      href={businessConfig.googleBusinessProfileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group rounded-lg border border-brand-gray-200 bg-white p-4 text-left transition-colors hover:border-brand-azure focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
+                    >
+                      <span className="flex items-center gap-2 text-sm font-semibold text-brand-gray-900 group-hover:text-brand-azureDark">
+                        <Icon className="h-4 w-4 text-brand-azure" aria-hidden="true" />
+                        {label}
+                      </span>
+                      <span className="mt-2 block text-sm leading-relaxed text-brand-gray-500">
+                        {description}
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
