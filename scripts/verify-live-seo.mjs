@@ -36,6 +36,24 @@ const austinServiceSignals = new Map([
   ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
   ['/commercial-painting-austin', 'Austin commercial painters'],
 ]);
+const servicesHubItemListRoutes = [
+  '/services/interior-painting',
+  '/services/exterior-painting',
+  '/services/cabinet-refinishing',
+  '/services/commercial',
+  '/interior-painting-austin',
+  '/exterior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
+];
+const serviceAreasHubItemListRoutes = [
+  '/service-areas/austin',
+  '/service-areas/west-lake-hills',
+  '/service-areas/northwest-hills',
+  '/service-areas/lakeway',
+  '/areas/west-lake-hills-and-rollingwood',
+  '/areas/lakeway-bee-cave-and-lake-travis',
+];
 const coreLocalBusinessRoutes = [
   '/',
   '/about',
@@ -181,6 +199,12 @@ function asArray(value) {
   }
 
   return Array.isArray(value) ? value : [value];
+}
+
+function itemListUrls(schema) {
+  return asArray(schema?.itemListElement)
+    .map(item => item?.url || item?.item?.url)
+    .filter(Boolean);
 }
 
 function routeIsServiceLocation(route) {
@@ -794,6 +818,58 @@ async function checkAustinSchema() {
   console.log(`Live Austin service schema pages checked: ${passed}/${austinServiceSignals.size}`);
 }
 
+async function checkHubItemListSchema() {
+  const hubs = [
+    {
+      route: '/services',
+      itemListId: `${baseUrl}/services#servicelist`,
+      requiredRoutes: servicesHubItemListRoutes,
+      label: 'services hub',
+    },
+    {
+      route: '/service-areas',
+      itemListId: `${baseUrl}/service-areas#arealist`,
+      requiredRoutes: serviceAreasHubItemListRoutes,
+      label: 'service-area hub',
+      requiredPageType: 'CollectionPage',
+      requiredPageId: `${baseUrl}/service-areas#webpage`,
+    },
+  ];
+  let passed = 0;
+
+  for (const hub of hubs) {
+    const { response, text: html } = await fetchText(`${baseUrl}${hub.route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, hub.route);
+    const itemList = scripts.find(item =>
+      schemaTypeIncludes(item, 'ItemList') &&
+      item?.['@id'] === hub.itemListId
+    );
+    const urls = itemListUrls(itemList);
+    const hasRequiredRoutes = hub.requiredRoutes.every(route => urls.includes(`${baseUrl}${route}`));
+
+    if (response.status !== 200 || !itemList || !hasRequiredRoutes) {
+      fail(`${hub.route}: live ${hub.label} ItemList is missing or does not include all priority local SEO links.`);
+      continue;
+    }
+
+    if (hub.requiredPageType) {
+      const pageSchema = scripts.find(item =>
+        schemaTypeIncludes(item, hub.requiredPageType) &&
+        item?.['@id'] === hub.requiredPageId
+      );
+
+      if (!pageSchema) {
+        fail(`${hub.route}: live ${hub.label} is missing ${hub.requiredPageType} schema.`);
+        continue;
+      }
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live hub ItemList schema pages checked: ${passed}/${hubs.length}`);
+}
+
 async function checkPriorityLocalBusinessSchema() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml`);
 
@@ -998,6 +1074,7 @@ await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
+await checkHubItemListSchema();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
 await checkGuideFaqSchema();
