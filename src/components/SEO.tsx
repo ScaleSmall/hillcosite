@@ -36,7 +36,7 @@ interface SEOProps {
     priceCurrency: string;
     availability: string;
     warranty: string;
-    areaServed: string[];
+    areaServed: readonly string[];
     url: string;
   };
   geoPlacename?: string;

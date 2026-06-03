@@ -8,6 +8,8 @@
  * These are hardcoded values that can be updated when GHL integration is ready.
  */
 
+import { greaterAustinServiceAreas } from './localSeo';
+
 export interface ServiceProduct {
   name: string;
   description: string;
@@ -18,7 +20,7 @@ export interface ServiceProduct {
   priceCurrency: string;
   availability: string;
   warranty: string;
-  areaServed: string[];
+  areaServed: readonly string[];
   url: string;
 }
 
@@ -33,7 +35,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
+    areaServed: greaterAustinServiceAreas,
     url: '/services/interior-painting'
   },
 
@@ -47,7 +49,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
+    areaServed: greaterAustinServiceAreas,
     url: '/services/exterior-painting'
   },
 
@@ -61,7 +63,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
+    areaServed: greaterAustinServiceAreas,
     url: '/services/cabinet-refinishing'
   },
 
@@ -75,7 +77,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',
-    areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands'],
+    areaServed: greaterAustinServiceAreas,
     url: '/services/commercial'
   }
 };

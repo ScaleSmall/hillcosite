@@ -13,6 +13,8 @@ const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts'
 const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
+const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts');
+const colorConsultationPath = resolve(projectRoot, 'src/pages/ColorConsultation.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const galleryPagePath = resolve(projectRoot, 'src/pages/Gallery.tsx');
@@ -601,6 +603,8 @@ function run() {
   const functionRoutesSource = readRequired(functionRoutesPath, 'functions/generatedRoutes.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const localSeoSource = readRequired(localSeoPath, 'src/config/localSeo.ts');
+  const serviceProductsSource = readRequired(serviceProductsPath, 'src/config/serviceProducts.ts');
+  const colorConsultationSource = readRequired(colorConsultationPath, 'src/pages/ColorConsultation.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const galleryPageSource = readRequired(galleryPagePath, 'src/pages/Gallery.tsx');
@@ -785,6 +789,22 @@ function run() {
 
   if (JSON.stringify(configuredGreaterAustinAreas) !== JSON.stringify(manifestServiceAreas)) {
     fail('scripts/generate-ai-manifests.mjs serviceAreas must match src/config/localSeo.ts greaterAustinServiceAreas');
+  }
+
+  if (!serviceProductsSource.includes("import { greaterAustinServiceAreas } from './localSeo'")) {
+    fail('src/config/serviceProducts.ts must import the canonical greaterAustinServiceAreas list');
+  }
+
+  if ((serviceProductsSource.match(/areaServed:\s*greaterAustinServiceAreas/g) || []).length < 4) {
+    fail('src/config/serviceProducts.ts service products must use greaterAustinServiceAreas for areaServed');
+  }
+
+  if (!colorConsultationSource.includes("import { greaterAustinServiceAreas } from '../config/localSeo'")) {
+    fail('src/pages/ColorConsultation.tsx must import the canonical greaterAustinServiceAreas list');
+  }
+
+  if (!/areaServed:\s*greaterAustinServiceAreas/.test(colorConsultationSource)) {
+    fail('src/pages/ColorConsultation.tsx service schema must use greaterAustinServiceAreas for areaServed');
   }
 
   for (const requiredArea of ['Austin', 'Leander', 'Georgetown', 'Round Rock', 'Cedar Park', 'North Austin']) {

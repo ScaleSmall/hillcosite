@@ -7,6 +7,7 @@ import StatsAndTrust from '../components/sections/StatsAndTrust';
 import TestimonialsSection from '../components/sections/TestimonialsSection';
 import MiniFAQ from '../components/sections/MiniFAQ';
 import CTABanner from '../components/sections/CTABanner';
+import { greaterAustinServiceAreas } from '../config/localSeo';
 
 const ColorConsultation = () => {
 
@@ -117,7 +118,7 @@ const ColorConsultation = () => {
         service={{
           name: 'Color Consultation',
           description: 'Professional color consultation and paint color selection services for homes and businesses in Austin, Texas.',
-          areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
+          areaServed: greaterAustinServiceAreas
         }}
         faq={faqs}
         includeLocalBusiness={true}
