@@ -131,6 +131,15 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
   const austinServiceIntent = location.slug === 'austin'
     ? austinServiceIntents[service.type]
     : null;
+  const austinStructuredDataAliases = austinServiceIntent
+    ? [
+        austinServiceIntent.phrase,
+        'painting contractors Austin',
+        'house painters Austin',
+        `${service.name} Austin TX`,
+        `${service.name} near me in Austin`
+      ]
+    : undefined;
 
   return (
     <>
@@ -148,7 +157,12 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         service={{
           name: `${service.name} ${location.name}`,
           description: `Professional ${service.name.toLowerCase()} services in ${location.name}, Texas. Serving ${location.neighborhoods.join(', ')} and surrounding areas.`,
-          areaServed: [location.name, ...location.neighborhoods]
+          areaServed: [location.name, ...location.neighborhoods],
+          alternateName: austinStructuredDataAliases,
+          keywords: austinStructuredDataAliases,
+          serviceOutput: austinServiceIntent
+            ? `${austinServiceIntent.phrase} service for homes, businesses, and property managers in Austin, TX`
+            : undefined
         }}
         faq={content.faqs}
         includeLocalBusiness={true}

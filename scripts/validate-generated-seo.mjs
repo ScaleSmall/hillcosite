@@ -1101,6 +1101,34 @@ function run() {
             }
           }
         }
+
+        const austinServiceSchemaSignals = new Map([
+          ['/exterior-painting-austin', 'Austin exterior house painters'],
+          ['/interior-painting-austin', 'Austin interior painters'],
+          ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
+          ['/commercial-painting-austin', 'Austin commercial painters']
+        ]);
+        const expectedAustinServiceAlias = austinServiceSchemaSignals.get(routePath);
+
+        if (expectedAustinServiceAlias) {
+          const serviceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
+          const alternateNames = Array.isArray(serviceSchema?.alternateName) ? serviceSchema.alternateName : [];
+          const keywords = Array.isArray(serviceSchema?.keywords) ? serviceSchema.keywords : [];
+
+          for (const signal of [expectedAustinServiceAlias, 'painting contractors Austin', 'house painters Austin']) {
+            if (!alternateNames.includes(signal)) {
+              fail(`${routePath}: Service schema alternateName is missing ${signal}`);
+            }
+
+            if (!keywords.includes(signal)) {
+              fail(`${routePath}: Service schema keywords are missing ${signal}`);
+            }
+          }
+
+          if (!String(serviceSchema?.serviceOutput || '').includes(expectedAustinServiceAlias)) {
+            fail(`${routePath}: Service schema serviceOutput should include ${expectedAustinServiceAlias}`);
+          }
+        }
       }
     } else if (!allowedInternalNoindexPaths.has(routePath) && !/noindex/i.test(robotsContent)) {
       fail(`${routePath}: generated non-sitemap page should be explicitly noindex or added to sitemap`);

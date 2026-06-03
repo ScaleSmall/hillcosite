@@ -18,6 +18,9 @@ interface SEOProps {
     name: string;
     description: string;
     areaServed: readonly string[];
+    alternateName?: readonly string[];
+    keywords?: readonly string[];
+    serviceOutput?: string;
   };
   faq?: Array<{
     question: string;
@@ -353,12 +356,15 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       '@id': `${canonicalStr}#service`,
       url: canonicalStr,
       name: service.name,
+      alternateName: service.alternateName,
       description: service.description,
       provider: {
         '@id': `${baseUrl}/#localbusiness`
       },
       areaServed: serviceAreas,
       serviceType: service.name,
+      keywords: service.keywords,
+      serviceOutput: service.serviceOutput,
       category: 'Painting contractor',
       audience: {
         '@type': 'Audience',
