@@ -1096,12 +1096,13 @@ async function checkPriorityLocalBusinessSchema() {
     const scripts = parseJsonLd(html, route);
     const localBusinessSchema = scripts.find(item =>
       schemaTypeIncludes(item, 'LocalBusiness') &&
-      schemaTypeIncludes(item, 'PaintingContractor') &&
+      schemaTypeIncludes(item, 'HomeAndConstructionBusiness') &&
+      schemaTypeIncludes(item, 'HousePainter') &&
       item?.['@id'] === `${baseUrl}/#localbusiness`
     );
 
     if (response.status !== 200 || !localBusinessSchema) {
-      fail(`${route}: live LocalBusiness/PaintingContractor schema is missing.`);
+      fail(`${route}: live LocalBusiness/HomeAndConstructionBusiness/HousePainter schema is missing.`);
       continue;
     }
 

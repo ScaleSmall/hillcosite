@@ -2,7 +2,8 @@
   "@context": "https://schema.org",
   "@type": [
     "LocalBusiness",
-    "PaintingContractor"
+    "HomeAndConstructionBusiness",
+    "HousePainter"
   ],
   "@id": "https://www.hillcopaint.com/#localbusiness",
   "name": "Hill Country Painting",
@@ -214,11 +215,16 @@
     "Georgetown painters",
     "Leander painters",
     "Austin house painting",
+    "Austin house painters",
     "Austin exterior painting",
+    "Austin exterior house painters",
     "Austin interior painting",
     "Cabinet painting",
     "Cabinet refinishing",
     "Commercial painting",
+    "Austin painting contractors",
+    "painting contractors Austin",
+    "house painters Austin",
     "HOA color approvals",
     "Texas heat paint maintenance",
     "Central Texas repaint timing"

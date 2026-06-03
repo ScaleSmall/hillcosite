@@ -1962,12 +1962,13 @@ function run() {
       if (isLocalBusinessSchemaRoute(routePath)) {
         const localBusinessSchema = schemaItems.find(item =>
           schemaTypeIncludes(item, 'LocalBusiness') &&
-          schemaTypeIncludes(item, 'PaintingContractor') &&
+          schemaTypeIncludes(item, 'HomeAndConstructionBusiness') &&
+          schemaTypeIncludes(item, 'HousePainter') &&
           item?.['@id'] === `${baseUrl}/#localbusiness`
         );
 
         if (!localBusinessSchema) {
-          fail(`${routePath}: priority local SEO page is missing LocalBusiness/PaintingContractor schema`);
+          fail(`${routePath}: priority local SEO page is missing LocalBusiness/HomeAndConstructionBusiness/HousePainter schema`);
         } else {
           const identifier = localBusinessSchema.identifier;
           const sameAs = Array.isArray(localBusinessSchema.sameAs) ? localBusinessSchema.sameAs : [];

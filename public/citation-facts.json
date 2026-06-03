@@ -29,8 +29,10 @@
     "googleKnowledgeGraphId": "/g/11frssbq6p",
     "googleBusinessProfile": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
     "businessType": [
-      "PaintingContractor",
-      "LocalBusiness"
+      "HousePainter",
+      "HomeAndConstructionBusiness",
+      "LocalBusiness",
+      "painting contractor"
     ],
     "serviceAreaBusiness": true,
     "openingHours": "Mo-Fr 08:00-18:00",

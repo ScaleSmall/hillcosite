@@ -346,7 +346,7 @@ For questions about AI usage or crawling, contact: ${businessFacts.email}.`;
 
 const entityFacts = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'PaintingContractor'],
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
   '@id': `${BASE_URL}/#localbusiness`,
   name: businessFacts.name,
   legalName: businessFacts.legalName,
@@ -389,11 +389,16 @@ const entityFacts = {
   knowsAbout: [
     ...priorityLocalSearchTopics,
     'Austin house painting',
+    'Austin house painters',
     'Austin exterior painting',
+    'Austin exterior house painters',
     'Austin interior painting',
     'Cabinet painting',
     'Cabinet refinishing',
     'Commercial painting',
+    'Austin painting contractors',
+    'painting contractors Austin',
+    'house painters Austin',
     'HOA color approvals',
     'Texas heat paint maintenance',
     'Central Texas repaint timing'
@@ -464,7 +469,7 @@ const citationFacts = {
     website: BASE_URL,
     googleKnowledgeGraphId: businessFacts.googleKnowledgeGraphId,
     googleBusinessProfile: businessFacts.googleBusinessProfile,
-    businessType: ['PaintingContractor', 'LocalBusiness'],
+    businessType: ['HousePainter', 'HomeAndConstructionBusiness', 'LocalBusiness', 'painting contractor'],
     serviceAreaBusiness: true,
     openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
     openingHoursSpecification: businessFacts.openingHours,
