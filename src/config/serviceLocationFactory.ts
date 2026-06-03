@@ -9,7 +9,7 @@ const serviceDefinitions = {
     verb: 'refreshing interiors',
     surfaceFocus: 'walls, ceilings, trim, doors, and detailed millwork',
     proof: 'clean prep, crisp cut lines, low-odor products, and careful room-by-room sequencing',
-    heroImage: '/living-room-update-central-austin.jpg',
+    heroImage: '/hill-country-painting-austin-interior-hero.jpg',
     secondaryImage: 'https://images.pexels.com/photos/1571471/pexels-photo-1571471.jpeg?auto=compress&cs=tinysrgb&w=800'
   },
   exterior: {
@@ -29,7 +29,7 @@ const serviceDefinitions = {
     verb: 'upgrading kitchens and built-ins',
     surfaceFocus: 'cabinet doors, drawer fronts, frames, islands, vanities, and built-ins',
     proof: 'degreasing, sanding, bonding primer, controlled spray application, and durable enamel systems',
-    heroImage: '/custom-kitchen-painting.jpg',
+    heroImage: '/hill-country-painting-austin-interior-hero.jpg',
     secondaryImage: '/kitchen-transformation-west-lake-hills.jpg'
   },
   commercial: {
@@ -39,7 +39,7 @@ const serviceDefinitions = {
     verb: 'maintaining professional spaces',
     surfaceFocus: 'offices, retail suites, restaurants, medical spaces, multi-family areas, and tenant improvements',
     proof: 'phased scheduling, after-hours options, clean job sites, and clear communication with managers',
-    heroImage: '/modern-interior-design.jpg',
+    heroImage: '/hill-country-painting-austin-interior-hero.jpg',
     secondaryImage: 'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=800'
   }
 } as const;

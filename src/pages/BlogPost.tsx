@@ -46,6 +46,8 @@ const normalizeArticleContent = (value: string) =>
     .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
     .replace(/<\/h1>/gi, '</h2>');
 
+const blogPostPath = (postSlug: string) => `/blog/${encodeURIComponent(postSlug)}`;
+
 const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
   const excerpt = stripMarkdown(post.excerpt || post.title);
 
@@ -78,10 +80,11 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       if (!slug) return;
+      const requestedSlug = decodeURIComponent(slug);
 
       if (!supabaseConfigured || !supabase) {
         console.warn('Supabase not configured');
-        const generatedPost = generatedBlogPosts.find(item => item.slug === slug);
+        const generatedPost = generatedBlogPosts.find(item => item.slug === requestedSlug);
         if (generatedPost) {
           setPost(generatedToBlogPost(generatedPost));
         } else {
@@ -98,14 +101,14 @@ const BlogPost = () => {
         const { data, error } = await supabase
           .from('blog_posts')
           .select('*')
-          .eq('slug', slug)
+          .eq('slug', requestedSlug)
           .eq('published', true)
           .abortSignal(controller.signal)
           .maybeSingle();
         clearTimeout(timeout);
 
         if (error || !data) {
-          const generatedPost = generatedBlogPosts.find(item => item.slug === slug);
+          const generatedPost = generatedBlogPosts.find(item => item.slug === requestedSlug);
           if (generatedPost) {
             setPost(generatedToBlogPost(generatedPost));
             return;
@@ -116,7 +119,7 @@ const BlogPost = () => {
         }
       } catch {
         clearTimeout(timeout);
-        const generatedPost = generatedBlogPosts.find(item => item.slug === slug);
+        const generatedPost = generatedBlogPosts.find(item => item.slug === requestedSlug);
         if (generatedPost) {
           setPost(generatedToBlogPost(generatedPost));
           setLoading(false);
@@ -176,6 +179,7 @@ const BlogPost = () => {
 
   const generateStructuredData = () => {
     const baseUrl = 'https://www.hillcopaint.com';
+    const postPath = blogPostPath(post.slug);
     const plainText = normalizeArticleContent(post.content).replace(/<[^>]*>/g, '').trim();
     const wordCount = plainText.split(/\s+/).length;
 
@@ -184,7 +188,7 @@ const BlogPost = () => {
       '@graph': [
         {
           '@type': 'BlogPosting',
-          '@id': `${baseUrl}/blog/${post.slug}#article`,
+          '@id': `${baseUrl}${postPath}#article`,
           headline: post.title,
           description: post.meta_description || post.excerpt,
           abstract: post.tldr || post.excerpt,
@@ -223,7 +227,7 @@ const BlogPost = () => {
           },
           mainEntityOfPage: {
             '@type': 'WebPage',
-            '@id': `${baseUrl}/blog/${post.slug}`
+            '@id': `${baseUrl}${postPath}`
           },
           articleSection: post.category,
           keywords: post.tags.join(', '),
@@ -240,7 +244,7 @@ const BlogPost = () => {
         },
         {
           '@type': 'BreadcrumbList',
-          '@id': `${baseUrl}/blog/${post.slug}#breadcrumb`,
+          '@id': `${baseUrl}${postPath}#breadcrumb`,
           itemListElement: [
             {
               '@type': 'ListItem',
@@ -263,17 +267,17 @@ const BlogPost = () => {
         },
         {
           '@type': 'WebPage',
-          '@id': `${baseUrl}/blog/${post.slug}#webpage`,
-          url: `${baseUrl}/blog/${post.slug}`,
+          '@id': `${baseUrl}${postPath}#webpage`,
+          url: `${baseUrl}${postPath}`,
           name: `${post.title} | Hill Country Painting Blog`,
           description: post.meta_description || post.excerpt,
           breadcrumb: {
-            '@id': `${baseUrl}/blog/${post.slug}#breadcrumb`
+            '@id': `${baseUrl}${postPath}#breadcrumb`
           },
           inLanguage: 'en-US',
           potentialAction: {
             '@type': 'ReadAction',
-            target: [`${baseUrl}/blog/${post.slug}`]
+            target: [`${baseUrl}${postPath}`]
           }
         }
       ]
@@ -316,12 +320,12 @@ const BlogPost = () => {
       <SEO
         title={`${post.title} — Hill Country Painting`}
         description={post.meta_description || post.excerpt}
-        canonical={`/blog/${post.slug}`}
+        canonical={blogPostPath(post.slug)}
         pageType="article"
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Blog', url: '/blog' },
-          { name: post.title, url: `/blog/${post.slug}` }
+          { name: post.title, url: blogPostPath(post.slug) }
         ]}
       />
 
@@ -440,7 +444,7 @@ const BlogPost = () => {
                   {relatedPosts.map(related => (
                     <Link
                       key={related.slug}
-                      to={`/blog/${related.slug}`}
+                      to={blogPostPath(related.slug)}
                       className="card p-6 hover:shadow-lg transition-shadow duration-200 group"
                     >
                       <p className="text-sm text-brand-gray-500 mb-2">{related.category}</p>

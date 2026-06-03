@@ -83,6 +83,18 @@ const staticLegacyRedirects = new Map([
 ]);
 const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
 const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
+const bannedHeroBackgroundImages = [
+  'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
+  'before_and_after-5-nov_14_2025_11_37am-nahg.jpg',
+  'before_and_after-6-sep_12_2025_11_32am-vj7w.jpg',
+  'classic-home-exterior.jpg',
+  'custom-kitchen-painting.jpg',
+  'exterior-tarrytown.jpg',
+  'kitchen-transformation-west-lake-hills.jpg',
+  'living-room-update-central-austin.jpg',
+  'modern-interior-design.jpg',
+  'traditional-home-exterior.jpg'
+];
 
 const errors = [];
 const warnings = [];
@@ -120,6 +132,28 @@ function walkFiles(dir, predicate, out = []) {
   }
 
   return out;
+}
+
+function validateHeroBackgroundImageSources() {
+  const sourceFiles = walkFiles(resolve(projectRoot, 'src'), filePath => /\.(tsx?|mts|mjs|jsx?)$/.test(filePath));
+  const bannedPattern = bannedHeroBackgroundImages.map(image => image.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const heroFieldPattern = new RegExp(`\\b(heroImage|hero)\\s*:\\s*["']/(${bannedPattern})["']`, 'g');
+  const heroSrcPattern = new RegExp(`src=["']/(${bannedPattern})["']`, 'g');
+
+  for (const filePath of sourceFiles) {
+    const source = readFileSync(filePath, 'utf8');
+    const relativePath = relative(projectRoot, filePath).replace(/\\/g, '/');
+
+    for (const match of source.matchAll(heroFieldPattern)) {
+      fail(`${relativePath}: hero background uses banned before/after image /${match[2]}`);
+    }
+
+    if (relativePath.startsWith('src/pages/service-areas/')) {
+      for (const match of source.matchAll(heroSrcPattern)) {
+        fail(`${relativePath}: hero image src uses banned before/after image /${match[1]}`);
+      }
+    }
+  }
 }
 
 function routeFromHtmlFile(filePath) {
@@ -502,6 +536,8 @@ function run() {
   const redirectsText = readRequired(redirectsPath, '_redirects');
   const routesConfigText = readRequired(routesConfigPath, '_routes.json');
 
+  validateHeroBackgroundImageSources();
+
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
   }
@@ -567,8 +603,15 @@ function run() {
     ['/', 'Austin exterior house painters', '/services/exterior-painting'],
     ['/', 'Austin interior painters', '/services/interior-painting'],
     ['/', 'Austin cabinet painting', '/services/cabinet-refinishing'],
+    ['/', 'Austin commercial painters', '/services/commercial'],
     ['/services', 'Austin exterior house painters', '/services/exterior-painting'],
+    ['/services', 'Austin interior painters', '/services/interior-painting'],
+    ['/services', 'Austin cabinet painting', '/services/cabinet-refinishing'],
     ['/services', 'Austin commercial painters', '/services/commercial'],
+    ['/service-areas/austin', 'Austin exterior house painters', '/exterior-painting-austin'],
+    ['/service-areas/austin', 'Austin interior painters', '/interior-painting-austin'],
+    ['/service-areas/austin', 'Austin cabinet painting', '/cabinet-refinishing-austin'],
+    ['/service-areas/austin', 'Austin commercial painters', '/commercial-painting-austin'],
     ['/service-areas', 'Round Rock house painters', '/service-areas/round-rock'],
     ['/service-areas', 'Cedar Park house painters', '/service-areas/cedar-park'],
     ['/service-areas', 'Georgetown house painters', '/service-areas/georgetown'],

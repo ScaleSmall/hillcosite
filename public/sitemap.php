@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/xml; charset=utf-8');
 
-$supabaseUrl = 'https://jsliktxrbzwhxrtcyoxv.supabase.co';
+$supabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 $edgeFunctionUrl = $supabaseUrl . '/functions/v1/generate-sitemap';
 
 $ch = curl_init();

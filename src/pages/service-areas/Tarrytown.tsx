@@ -67,7 +67,7 @@ const Tarrytown = () => {
       <section className="relative py-32 md:py-40 lg:py-48 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <ImageWithGeo
-            src="/exterior-tarrytown.jpg"
+            src="/hill-country-home-exterior-painting.png"
             alt="Professional Tarrytown painting services"
             className="w-full h-full object-cover"
             width="1920"

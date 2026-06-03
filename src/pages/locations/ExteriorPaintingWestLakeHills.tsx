@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/exterior-tarrytown.jpg',
+    hero: '/hill-country-home-exterior-painting.png',
     heroAlt: 'Luxury exterior painting in West Lake Hills Texas',
     secondary: '/classic-home-exterior.jpg',
     secondaryAlt: 'West Lake Hills exterior painting excellence'

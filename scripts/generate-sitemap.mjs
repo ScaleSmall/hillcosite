@@ -33,8 +33,26 @@ try {
   console.log('  .env not found - using process.env');
 }
 
-const supabaseUrl = envVars.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-const supabaseKey = envVars.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY;
+function readPublicRuntimeEnv() {
+  const envPath = resolve(__dirname, '../public/env.js');
+
+  try {
+    const source = readFileSync(envPath, 'utf-8');
+    const urlMatch = source.match(/VITE_SUPABASE_URL:\s*["']([^"']+)["']/);
+    const keyMatch = source.match(/VITE_SUPABASE_ANON_KEY:\s*["']([^"']+)["']/);
+
+    return {
+      VITE_SUPABASE_URL: urlMatch?.[1] || '',
+      VITE_SUPABASE_ANON_KEY: keyMatch?.[1] || ''
+    };
+  } catch {
+    return {};
+  }
+}
+
+const runtimeEnvVars = readPublicRuntimeEnv();
+const supabaseUrl = envVars.VITE_SUPABASE_URL || process.env.VITE_SUPABASE_URL || runtimeEnvVars.VITE_SUPABASE_URL;
+const supabaseKey = envVars.VITE_SUPABASE_ANON_KEY || process.env.VITE_SUPABASE_ANON_KEY || runtimeEnvVars.VITE_SUPABASE_ANON_KEY;
 
 const EXCLUDED_BLOG_SLUGS = new Set([
   'when-to-repaint-your-austin-home-hill-country-painting',
@@ -183,7 +201,7 @@ const generateSitemap = async () => {
   writeGeneratedBlogPosts(blogPosts);
 
   const blogRoutes = blogPosts.map(post => ({
-    path: `/blog/${post.slug}`,
+    path: `/blog/${encodeURIComponent(post.slug)}`,
     changefreq: 'weekly',
     priority: '0.6',
     lastmod: post.updated_at ? new Date(post.updated_at).toISOString().split('T')[0] : null

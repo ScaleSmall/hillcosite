@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/kitchen-transformation-west-lake-hills.jpg',
+    hero: '/hill-country-painting-austin-interior-hero.jpg',
     heroAlt: 'Luxury cabinet refinishing in West Lake Hills Texas',
     secondary: '/custom-kitchen-painting.jpg',
     secondaryAlt: 'West Lake Hills cabinet painting excellence'

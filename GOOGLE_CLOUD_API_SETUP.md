@@ -114,7 +114,7 @@ Now that you have both keys:
 
 ### Go to Supabase Dashboard
 
-https://supabase.com/dashboard/project/jsliktxrbzwhxrtcyoxv/settings/functions
+https://supabase.com/dashboard/project/ndggkorglcaznukkhapz/settings/functions
 
 ### Add Secrets
 

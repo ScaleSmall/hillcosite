@@ -59,7 +59,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
 
       <div className="bg-white py-4 border-b">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto flex items-center gap-4">
+          <div className="max-w-4xl mx-auto flex flex-wrap items-center gap-4">
             <Link
               to="/service-areas"
               className="inline-flex items-center gap-2 text-brand-azure hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"

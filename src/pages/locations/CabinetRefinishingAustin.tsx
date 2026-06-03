@@ -46,7 +46,7 @@ const config: ServiceLocationConfig = {
     ]
   },
   images: {
-    hero: '/custom-kitchen-painting.jpg',
+    hero: '/hill-country-painting-austin-interior-hero.jpg',
     heroAlt: 'Cabinet refinishing in Austin Texas',
     secondary: '/kitchen-transformation-west-lake-hills.jpg',
     secondaryAlt: 'Austin cabinet painting excellence'

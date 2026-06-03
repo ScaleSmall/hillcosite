@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Music, Landmark, Briefcase, MapPin, Home } from 'lucide-react';
+import { Phone, Music, Landmark, Briefcase, MapPin, Home, ArrowRight } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ImageWithGeo from '../../components/ImageWithGeo';
 import StatsAndTrust from '../../components/sections/StatsAndTrust';
@@ -19,6 +19,29 @@ const Austin = () => {
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
     { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
     { name: 'Lakeway', href: '/service-areas/lakeway' }
+  ];
+
+  const austinServiceLinks = [
+    {
+      label: 'Austin exterior house painters',
+      href: '/exterior-painting-austin',
+      description: 'Exterior prep, repairs, and coatings selected for Austin sun, heat, and sudden storms.'
+    },
+    {
+      label: 'Austin interior painters',
+      href: '/interior-painting-austin',
+      description: 'Interior wall, trim, ceiling, and room painting with careful protection and daily cleanup.'
+    },
+    {
+      label: 'Austin cabinet painting',
+      href: '/cabinet-refinishing-austin',
+      description: 'Kitchen, bath, and built-in cabinet painting with durable finishes for daily use.'
+    },
+    {
+      label: 'Austin commercial painters',
+      href: '/commercial-painting-austin',
+      description: 'Painting for Austin offices, retail spaces, and commercial properties with coordinated scheduling.'
+    }
   ];
 
   const realTestimonials = [
@@ -164,6 +187,39 @@ const Austin = () => {
         title="Austin Painting Services"
         subtitle="Professional craftsmanship for every Austin neighborhood"
       />
+
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+              Austin House Painting by Service
+            </h2>
+            <p className="text-xl text-brand-gray-600 leading-body">
+              Choose the Austin painting service that fits the project, from exterior repainting and interior updates to cabinet finishes and commercial spaces.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {austinServiceLinks.map((service) => (
+              <Link
+                key={service.href}
+                to={service.href}
+                className="card p-6 hover:shadow-lg transition-shadow duration-200 group"
+              >
+                <h3 className="text-xl font-bold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-3">
+                  {service.label}
+                </h3>
+                <p className="text-brand-gray-600 leading-body mb-4">
+                  {service.description}
+                </p>
+                <span className="inline-flex items-center text-brand-azureDark font-medium">
+                  Explore Austin service
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <SplitSection
         title="Austin's Diverse Neighborhoods Demand Expert Painters"

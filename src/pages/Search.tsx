@@ -14,6 +14,7 @@ interface SearchResult {
 }
 
 const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
+const blogPostPath = (slug: string) => `/blog/${encodeURIComponent(slug)}`;
 
 const staticContent = [
   {
@@ -112,7 +113,7 @@ const Search = () => {
               type: 'blog' as const,
               title: post.title,
               description: post.excerpt,
-              url: `/blog/${post.slug}`,
+              url: blogPostPath(post.slug),
               category: post.category
             }));
 

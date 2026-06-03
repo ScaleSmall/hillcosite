@@ -14,28 +14,32 @@ interface BreadcrumbsProps {
 
 const Breadcrumbs = ({ items, className = '' }: BreadcrumbsProps) => {
   // Note: Structured data is handled by SEO component to avoid duplicates
+  const visibleItems = items[0]?.href === '/' && items[0]?.label.toLowerCase() === 'home'
+    ? items.slice(1)
+    : items;
+
   return (
     <>
-      <nav aria-label="Breadcrumb" className={`text-sm ${className}`}>
-        <ol className="flex items-center space-x-2 text-brand-gray-600">
-          <li>
+      <nav aria-label="Breadcrumb" className={`min-w-0 text-sm ${className}`}>
+        <ol className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1 text-brand-gray-600">
+          <li className="flex-shrink-0">
             <Link to="/" className="flex items-center hover:text-brand-azureDark transition-colors">
               <Home className="w-4 h-4" />
               <span className="sr-only">Home</span>
             </Link>
           </li>
-          {items.map((item, index) => (
-            <li key={index} className="flex items-center">
-              <ChevronRight className="w-4 h-4 mx-2 text-brand-gray-400" />
-              {item.href && index < items.length - 1 ? (
+          {visibleItems.map((item, index) => (
+            <li key={index} className="flex min-w-0 items-center">
+              <ChevronRight className="mx-1 h-4 w-4 flex-shrink-0 text-brand-gray-400" />
+              {item.href && index < visibleItems.length - 1 ? (
                 <Link
                   to={String(item.href)}
-                  className="hover:text-brand-azureDark transition-colors"
+                  className="min-w-0 break-words hover:text-brand-azureDark transition-colors"
                 >
                   {String(item.label)}
                 </Link>
               ) : (
-                <span className="text-brand-gray-800 font-medium" aria-current="page">
+                <span className="min-w-0 break-words font-medium text-brand-gray-800" aria-current="page">
                   {String(item.label)}
                 </span>
               )}

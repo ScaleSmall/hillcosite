@@ -29,7 +29,7 @@
 
 ### Step 1: Set Supabase Edge Function Secrets
 
-**Go to:** [Supabase Dashboard](https://supabase.com/dashboard/project/jsliktxrbzwhxrtcyoxv/settings/functions)
+**Go to:** [Supabase Dashboard](https://supabase.com/dashboard/project/ndggkorglcaznukkhapz/settings/functions)
 
 Navigate to: **Project Settings → Edge Functions → Secrets**
 
@@ -101,7 +101,7 @@ netlify deploy --prod --dir=dist
 **Option B: If using another platform:**
 1. Upload the `dist` folder to your hosting
 2. Ensure environment variables are set:
-   - `VITE_SUPABASE_URL=https://jsliktxrbzwhxrtcyoxv.supabase.co`
+   - `VITE_SUPABASE_URL=https://ndggkorglcaznukkhapz.supabase.co`
    - `VITE_SUPABASE_ANON_KEY=eyJhbGc...` (from .env file)
 
 ### Step 4: Verify Production Site

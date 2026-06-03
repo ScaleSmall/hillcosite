@@ -20,6 +20,7 @@ interface BlogPost {
 }
 
 const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
+const blogPostPath = (slug: string) => `/blog/${encodeURIComponent(slug)}`;
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);
@@ -102,10 +103,10 @@ const Blog = () => {
           },
           blogPost: blogPosts.map(post => ({
             '@type': 'BlogPosting',
-            '@id': `${baseUrl}/blog/${post.slug}#article`,
+            '@id': `${baseUrl}${blogPostPath(post.slug)}#article`,
             headline: post.title,
             description: post.excerpt,
-            url: `${baseUrl}/blog/${post.slug}`,
+            url: `${baseUrl}${blogPostPath(post.slug)}`,
             datePublished: post.published_at,
             author: {
               '@type': 'Organization',
@@ -227,7 +228,7 @@ const Blog = () => {
                         {post.excerpt}
                       </p>
                       <Link
-                        to={`/blog/${post.slug}`}
+                        to={blogPostPath(post.slug)}
                         className="inline-flex items-center text-brand-azureDark hover:text-brand-gray-800 font-medium transition-colors group"
                       >
                         Read More
@@ -247,7 +248,7 @@ const Blog = () => {
                     {pastPosts.map((post) => (
                       <Link
                         key={post.id}
-                        to={`/blog/${post.slug}`}
+                        to={blogPostPath(post.slug)}
                         className="block p-4 hover:bg-brand-gray-50 transition-colors group"
                       >
                         <div className="flex items-start justify-between gap-4">

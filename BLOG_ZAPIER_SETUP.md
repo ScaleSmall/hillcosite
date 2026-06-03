@@ -7,7 +7,7 @@ Your website now has a complete blog system integrated with Supabase database. Y
 
 ## Zapier Webhook URL
 
-**POST to:** `https://jsliktxrbzwhxrtcyoxv.supabase.co/functions/v1/create-blog-post`
+**POST to:** `https://ndggkorglcaznukkhapz.supabase.co/functions/v1/create-blog-post`
 
 **Headers:**
 - `Content-Type: application/json`
@@ -107,7 +107,7 @@ The system will automatically:
 ### Option 2: Test with Postman/cURL
 
 ```bash
-curl -X POST https://jsliktxrbzwhxrtcyoxv.supabase.co/functions/v1/create-blog-post \
+curl -X POST https://ndggkorglcaznukkhapz.supabase.co/functions/v1/create-blog-post \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Test Post",
@@ -182,7 +182,7 @@ This blog system works great with:
 ## Support
 
 If you need to manage posts manually:
-- Access Supabase dashboard at: https://jsliktxrbzwhxrtcyoxv.supabase.co
+- Access Supabase dashboard at: https://ndggkorglcaznukkhapz.supabase.co
 - Navigate to Table Editor → blog_posts
 - You can view, edit, or delete posts directly
 

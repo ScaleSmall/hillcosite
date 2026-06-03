@@ -8,7 +8,7 @@ Your edge functions require these environment variables to be set in **Supabase 
 ```
 GOOGLE_API_KEY=your_google_api_key_here
 GOOGLE_PLACE_ID=your_google_business_place_id
-SUPABASE_URL=https://jsliktxrbzwhxrtcyoxv.supabase.co
+SUPABASE_URL=https://ndggkorglcaznukkhapz.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
@@ -16,7 +16,7 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 BLS_API_KEY=your_bls_api_key (optional, has fallback)
 FRED_API_KEY=your_fred_api_key (optional fallback)
-SUPABASE_URL=https://jsliktxrbzwhxrtcyoxv.supabase.co
+SUPABASE_URL=https://ndggkorglcaznukkhapz.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
@@ -68,7 +68,7 @@ Test each function individually from Supabase Dashboard:
 Your hosting platform (Netlify, Vercel, etc.) needs these:
 
 ```
-VITE_SUPABASE_URL=https://jsliktxrbzwhxrtcyoxv.supabase.co
+VITE_SUPABASE_URL=https://ndggkorglcaznukkhapz.supabase.co
 VITE_SUPABASE_ANON_KEY=your_anon_key_here
 ```
 
