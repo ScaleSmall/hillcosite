@@ -1162,6 +1162,34 @@ async function checkGoogleEntityIdentifier() {
   console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid and canonical sameAs profiles');
 }
 
+async function checkWebsiteSearchActionSchema() {
+  const { response, text: html } = await fetchText(`${baseUrl}/?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, '/');
+  const websiteSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'WebSite') &&
+    item?.['@id'] === `${baseUrl}/#website`
+  );
+  const searchAction = websiteSchema?.potentialAction;
+  const target = searchAction?.target || {};
+
+  if (
+    response.status !== 200 ||
+    !websiteSchema ||
+    websiteSchema.name !== 'Hill Country Painting' ||
+    websiteSchema.url !== baseUrl ||
+    websiteSchema.publisher?.['@id'] !== `${baseUrl}/#organization` ||
+    !schemaTypeIncludes(searchAction, 'SearchAction') ||
+    !schemaTypeIncludes(target, 'EntryPoint') ||
+    target.urlTemplate !== `${baseUrl}/search?q={search_term_string}` ||
+    searchAction?.['query-input'] !== 'required name=search_term_string'
+  ) {
+    fail('/: live WebSite schema should include canonical publisher identity and SearchAction for on-site search.');
+    return;
+  }
+
+  console.log('Live WebSite schema includes canonical publisher and SearchAction');
+}
+
 async function checkContactPageSchema() {
   const { response, text: html } = await fetchText(`${baseUrl}/contact?v=${Date.now()}`);
   const scripts = parseJsonLd(html, '/contact');
@@ -1228,6 +1256,7 @@ await checkGuideFaqSchema();
 await checkVisibleLocalTrustSections();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
+await checkWebsiteSearchActionSchema();
 await checkContactPageSchema();
 await checkTestimonialsTrustSignals();
 
