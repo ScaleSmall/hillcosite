@@ -151,9 +151,15 @@ async function checkSupabaseFeed() {
   if (html.includes(retiredSupabaseUrl)) {
     fail(`/gallery still includes retired Supabase project ${retiredSupabaseUrl}`);
   }
+
+  if (response.status === 200 && html.includes(currentSupabaseUrl) && !html.includes(retiredSupabaseUrl)) {
+    console.log('Live Supabase gallery feed: current project present, retired project absent');
+  }
 }
 
 async function checkAustinSchema() {
+  let passed = 0;
+
   for (const [route, phrase] of austinServiceSignals) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
     const scripts = [];
@@ -182,8 +188,12 @@ async function checkAustinSchema() {
 
     if (response.status !== 200 || !hasSignal) {
       fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, or serviceOutput signal.`);
+    } else {
+      passed += 1;
     }
   }
+
+  console.log(`Live Austin service schema pages checked: ${passed}/${austinServiceSignals.size}`);
 }
 
 await checkDns();
