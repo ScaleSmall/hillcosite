@@ -28,6 +28,7 @@ import CTABanner from '../sections/CTABanner';
 import NAPMapSection from '../NAPMapSection';
 import LocalSignals from '../LocalSignals';
 import RelatedServices from '../RelatedServices';
+import { geoAreas } from '../../data/geoAreas';
 
 export interface ServiceLocationConfig {
   service: {
@@ -77,6 +78,16 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
   const canonicalPath = canonicalOverride || `/${service.slug}-${location.slug}`;
   const pageTitle = `${service.name} ${location.name}, TX | Hill Country Painting`;
   const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Consultations available.`;
+  const serviceAreaHref = `/service-areas/${location.serviceAreaSlug}`;
+  const normalizeAreaName = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const areaLinkByName = new Map<string, string>();
+
+  geoAreas.forEach((hub) => {
+    areaLinkByName.set(normalizeAreaName(hub.name), `/areas/${hub.slug}`);
+    hub.neighborhoods.forEach((neighborhood) => {
+      areaLinkByName.set(normalizeAreaName(neighborhood.name), `/areas/${hub.slug}/${neighborhood.slug}`);
+    });
+  });
 
   const relatedServices = [
     service.type !== 'interior' && {
@@ -271,15 +282,31 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 <h3 className="text-xl font-semibold text-brand-gray-900 mb-4">
                   {location.name} Areas We Serve
                 </h3>
+                <Link
+                  to={serviceAreaHref}
+                  className="mb-4 inline-flex items-center rounded-lg border border-brand-azure/30 bg-brand-gray-50 px-4 py-2 text-sm font-semibold text-brand-azureDark transition-colors hover:border-brand-azure hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
+                >
+                  View the {location.name} service area page
+                </Link>
                 <div className="flex flex-wrap gap-2">
-                  {location.neighborhoods.map((neighborhood, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-brand-gray-100 text-brand-gray-700 rounded-full text-sm"
-                    >
-                      {neighborhood}
-                    </span>
-                  ))}
+                  {location.neighborhoods.map((neighborhood, idx) => {
+                    const neighborhoodHref = areaLinkByName.get(normalizeAreaName(neighborhood));
+                    const pillClassName = 'px-3 py-1 bg-brand-gray-100 text-brand-gray-700 rounded-full text-sm';
+
+                    return neighborhoodHref ? (
+                      <Link
+                        key={idx}
+                        to={neighborhoodHref}
+                        className={`${pillClassName} hover:bg-white hover:text-brand-azureDark focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2`}
+                      >
+                        {neighborhood}
+                      </Link>
+                    ) : (
+                      <span key={idx} className={pillClassName}>
+                        {neighborhood}
+                      </span>
+                    );
+                  })}
                 </div>
                 <p className="mt-4 text-sm text-brand-gray-500">
                   ZIP Codes: {location.zipCodes.join(', ')}

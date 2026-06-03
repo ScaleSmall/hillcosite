@@ -13,6 +13,7 @@ const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts'
 const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
+const locationsConfigPath = resolve(projectRoot, 'src/config/locations.ts');
 const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts');
 const colorConsultationPath = resolve(projectRoot, 'src/pages/ColorConsultation.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
@@ -594,6 +595,28 @@ function extractStringArrayConst(source, constName) {
   return [...match[1].matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]);
 }
 
+function extractLocationServiceAreaSlugs(source) {
+  const result = new Map();
+
+  for (const match of source.matchAll(/['"]([^'"]+)['"]\s*:\s*{[\s\S]*?serviceAreaSlug:\s*['"]([^'"]+)['"]/g)) {
+    result.set(match[1], match[2]);
+  }
+
+  return result;
+}
+
+function serviceLocationSlugFromRoute(routePath) {
+  const prefixes = [
+    '/interior-painting-',
+    '/exterior-painting-',
+    '/cabinet-refinishing-',
+    '/commercial-painting-'
+  ];
+  const prefix = prefixes.find(item => routePath.startsWith(item));
+
+  return prefix ? routePath.slice(prefix.length) : '';
+}
+
 function run() {
   console.log('\n=== Generated SEO Validation ===\n');
 
@@ -603,6 +626,7 @@ function run() {
   const functionRoutesSource = readRequired(functionRoutesPath, 'functions/generatedRoutes.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const localSeoSource = readRequired(localSeoPath, 'src/config/localSeo.ts');
+  const locationsConfigSource = readRequired(locationsConfigPath, 'src/config/locations.ts');
   const serviceProductsSource = readRequired(serviceProductsPath, 'src/config/serviceProducts.ts');
   const colorConsultationSource = readRequired(colorConsultationPath, 'src/pages/ColorConsultation.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
@@ -664,6 +688,7 @@ function run() {
   const generatedSpaRoutes = generatedSpaRouteData.routes;
   const generatedSpaRouteSet = new Set(generatedSpaRoutes);
   const configuredGreaterAustinAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
+  const locationServiceAreaSlugs = extractLocationServiceAreaSlugs(locationsConfigSource);
   const manifestServiceAreas = extractStringArrayConst(aiManifestGeneratorSource, 'serviceAreas');
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
   const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
@@ -682,6 +707,35 @@ function run() {
   const disallowRules = extractDisallowRules(robotsText);
   const sitemapTitles = new Map();
   const sitemapH1s = new Map();
+
+  for (const routePath of sitemapPaths) {
+    const locationSlug = serviceLocationSlugFromRoute(routePath);
+
+    if (!locationSlug) {
+      continue;
+    }
+
+    const serviceAreaSlug = locationServiceAreaSlugs.get(locationSlug);
+    const expectedServiceAreaRoute = serviceAreaSlug ? `/service-areas/${serviceAreaSlug}` : '';
+    const page = pages.get(routePath);
+
+    if (!serviceAreaSlug) {
+      fail(`${routePath}: service-location page has no matching serviceAreaSlug in src/config/locations.ts`);
+      continue;
+    }
+
+    if (!page) {
+      fail(`${routePath}: missing generated HTML for service-area link validation`);
+      continue;
+    }
+
+    const linksToServiceArea = [...page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
+      .some(match => normalizeRoutePath(match[1].trim(), routePath) === expectedServiceAreaRoute);
+
+    if (!linksToServiceArea) {
+      fail(`${routePath}: service-location page should link to local service-area hub ${expectedServiceAreaRoute}`);
+    }
+  }
 
   if (!publicEnvSource.includes(`VITE_SUPABASE_URL: "${currentSupabaseUrl}"`)) {
     fail(`public/env.js must point VITE_SUPABASE_URL at ${currentSupabaseUrl}`);
