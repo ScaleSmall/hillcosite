@@ -1,5 +1,31 @@
 # Deployment Checklist - Fix Google Search Console Issues
 
+## Current Cloudflare Pages Deployment
+
+This site is currently deployed through Cloudflare Pages project `hillcosite`.
+
+Use the project script below for production deploys so the build is regenerated and Cloudflare does not reuse stale uploaded HTML/assets:
+
+```bash
+npm run deploy:pages
+```
+
+If the `dist` folder was already built and validated in the same workspace, this deploy-only command is also available:
+
+```bash
+npm run deploy:pages:dist
+```
+
+Both commands include `--skip-caching`. Keep that flag in place; a stale asset cache can make a fresh Pages deployment serve old schema, old Supabase feed references, or old hero markup even when the local `dist` folder is correct.
+
+After deployment, run:
+
+```bash
+npm run verify:live
+```
+
+The live verifier should only fail on the known external DNS/custom-domain condition until `www.hillcopaint.com` is CNAMEd to `hillcosite.pages.dev`.
+
 ## ✅ Completed Steps
 
 ### 1. Fixed Duplicate Content Issue (18 Pages)

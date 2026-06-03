@@ -1,5 +1,7 @@
 # CRITICAL: Redirect Configuration for Netlify Deployment
 
+> Current status: this note is historical. The active production path is Cloudflare Pages project `hillcosite`. Use `npm run deploy:pages`, which builds the site and deploys `dist` with Wrangler's `--skip-caching` flag so the live site does not reuse stale HTML or schema assets.
+
 **⚠️ IMPORTANT**: The redirect loop you're experiencing is likely because you're testing in a **preview/development environment** (like Bolt's preview) which doesn't properly handle Netlify-specific redirect rules.
 
 ## The Solution

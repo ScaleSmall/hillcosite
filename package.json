@@ -27,7 +27,9 @@
     "export:clean": "node scripts/prepare-export.mjs && node scripts/verify-no-dist.mjs",
     "verify:redirects": "node scripts/verify-redirects.mjs",
     "verify:seo": "node scripts/verify-seo.mjs",
-    "verify:live": "node scripts/verify-live-seo.mjs"
+    "verify:live": "node scripts/verify-live-seo.mjs",
+    "deploy:pages": "npm run build && npx wrangler pages deploy dist --project-name hillcosite --branch main --skip-caching",
+    "deploy:pages:dist": "npx wrangler pages deploy dist --project-name hillcosite --branch main --skip-caching"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
