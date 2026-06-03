@@ -309,6 +309,9 @@ async function checkSitemapPages() {
   const sitemapRoutes = urls.map(routePathFromUrl);
   const sitemapRouteSet = new Set(sitemapRoutes);
   const inboundSources = new Map(sitemapRoutes.map(route => [route, new Set()]));
+  const sitemapTitles = new Map();
+  const sitemapDescriptions = new Map();
+  const sitemapH1s = new Map();
   let nextIndex = 0;
   const problems = [];
   const heroImageProblems = [];
@@ -342,12 +345,34 @@ async function checkSitemapPages() {
         /index,\s*follow/i.test(robotsContent) &&
         /max-image-preview:large/i.test(robotsContent) &&
         !/noindex/i.test(robotsContent);
-      const h1Count = [...html.matchAll(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi)].length;
+      const titleTags = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
+      const title = titleTags.length === 1 ? titleTags[0][1].replace(/\s+/g, ' ').trim() : '';
+      const descriptionTags = [...html.matchAll(/<meta\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).name || '').toLowerCase() === 'description');
+      const description = descriptionTags.length === 1 ? (attrs(descriptionTags[0]).content || '').replace(/\s+/g, ' ').trim() : '';
+      const h1Matches = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
+      const h1Count = h1Matches.length;
+      const h1 = h1Count === 1
+        ? h1Matches[0][1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+        : '';
       const xRobotsTag = page.headers.get('x-robots-tag') || '';
       const noindex = /noindex/i.test(robotsContent) || /noindex/i.test(xRobotsTag);
       const hasError = /Something went wrong|Post Not Found|404 Not Found/i.test(html);
       const heroHtml = firstHeroSectionHtml(html);
       const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
+
+      if (title) {
+        sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), route]);
+      }
+
+      if (description) {
+        sitemapDescriptions.set(description, [...(sitemapDescriptions.get(description) || []), route]);
+      }
+
+      if (h1) {
+        sitemapH1s.set(h1, [...(sitemapH1s.get(h1) || []), route]);
+      }
 
       if (bannedHeroImage) {
         heroImageProblems.push({ url, image: bannedHeroImage });
@@ -361,7 +386,7 @@ async function checkSitemapPages() {
         }
       }
 
-      if (page.status !== 200 || canonicalCount !== 1 || !canonicalMatchesSelf || robotsCount !== 1 || !robotsIndexable || h1Count !== 1 || noindex || hasError) {
+      if (page.status !== 200 || canonicalCount !== 1 || !canonicalMatchesSelf || robotsCount !== 1 || !robotsIndexable || titleTags.length !== 1 || descriptionTags.length !== 1 || h1Count !== 1 || noindex || hasError) {
         problems.push({
           url,
           status: page.status,
@@ -370,6 +395,8 @@ async function checkSitemapPages() {
           canonicalMatchesSelf,
           robotsCount,
           robotsContents,
+          titleCount: titleTags.length,
+          descriptionCount: descriptionTags.length,
           h1Count,
           noindex,
           hasError,
@@ -383,7 +410,7 @@ async function checkSitemapPages() {
   console.log(`Live sitemap pages checked: ${urls.length}`);
 
   for (const problem of problems.slice(0, 10)) {
-    fail(`${problem.url}: status ${problem.status}, canonicals ${problem.canonicalCount}, canonicalSelf ${problem.canonicalMatchesSelf}, robots ${problem.robotsCount}, H1s ${problem.h1Count}, noindex ${problem.noindex}, error ${problem.hasError}`);
+    fail(`${problem.url}: status ${problem.status}, canonicals ${problem.canonicalCount}, canonicalSelf ${problem.canonicalMatchesSelf}, robots ${problem.robotsCount}, titles ${problem.titleCount}, descriptions ${problem.descriptionCount}, H1s ${problem.h1Count}, noindex ${problem.noindex}, error ${problem.hasError}`);
   }
 
   if (problems.length > 10) {
@@ -400,6 +427,30 @@ async function checkSitemapPages() {
 
   if (heroImageProblems.length === 0) {
     console.log('Live hero image guard: no banned before/after-style hero images found');
+  }
+
+  const duplicateMetadataProblems = [
+    ...[...sitemapTitles.entries()]
+      .filter(([value, routes]) => value && routes.length > 1)
+      .map(([value, routes]) => `duplicate live sitemap title "${value}" on ${routes.join(', ')}`),
+    ...[...sitemapDescriptions.entries()]
+      .filter(([value, routes]) => value && routes.length > 1)
+      .map(([value, routes]) => `duplicate live sitemap meta description "${value}" on ${routes.join(', ')}`),
+    ...[...sitemapH1s.entries()]
+      .filter(([value, routes]) => value && routes.length > 1)
+      .map(([value, routes]) => `duplicate live sitemap H1 "${value}" on ${routes.join(', ')}`)
+  ];
+
+  for (const problem of duplicateMetadataProblems.slice(0, 10)) {
+    fail(problem);
+  }
+
+  if (duplicateMetadataProblems.length > 10) {
+    fail(`${duplicateMetadataProblems.length - 10} additional live duplicate metadata problems not shown.`);
+  }
+
+  if (duplicateMetadataProblems.length === 0) {
+    console.log('Live metadata uniqueness guard: titles, descriptions, and H1s are unique');
   }
 
   const weakInternalLinkRoutes = [...inboundSources.entries()]

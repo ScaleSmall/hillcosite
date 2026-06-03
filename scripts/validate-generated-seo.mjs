@@ -56,6 +56,8 @@ const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
+const minimumAggregateRatingValue = 4.5;
+const minimumAggregateReviewCount = 100;
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
 const allowedNonSitemapLinks = new Set(['/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
@@ -297,6 +299,25 @@ function asArray(value) {
   }
 
   return Array.isArray(value) ? value : [value];
+}
+
+function hasValidAggregateRating(schema) {
+  const aggregateRating = schema?.aggregateRating || {};
+  const ratingValue = Number(aggregateRating.ratingValue);
+  const reviewCount = Number(aggregateRating.reviewCount);
+  const bestRating = Number(aggregateRating.bestRating);
+  const worstRating = Number(aggregateRating.worstRating);
+
+  return (
+    schemaTypeIncludes(aggregateRating, 'AggregateRating') &&
+    Number.isFinite(ratingValue) &&
+    ratingValue >= minimumAggregateRatingValue &&
+    ratingValue <= 5 &&
+    Number.isFinite(reviewCount) &&
+    reviewCount >= minimumAggregateReviewCount &&
+    bestRating === 5 &&
+    worstRating === 1
+  );
 }
 
 function stripQueryAndHash(value) {
@@ -780,6 +801,7 @@ function run() {
   const nonSitemapInternalLinks = new Map();
   const disallowRules = extractDisallowRules(robotsText);
   const sitemapTitles = new Map();
+  const sitemapDescriptions = new Map();
   const sitemapH1s = new Map();
 
   for (const routePath of sitemapPaths) {
@@ -1142,6 +1164,9 @@ function run() {
     if (entityFacts.identifier?.propertyID !== 'kgmid' || entityFacts.identifier?.value !== googleKnowledgeGraphId || entityFacts.identifier?.url !== googleBusinessProfileUrl) {
       fail('entity-facts.json must include the Google Knowledge Graph ID as a PropertyValue identifier');
     }
+    if (!hasValidAggregateRating(entityFacts)) {
+      fail('entity-facts.json must include a valid Google aggregate rating summary');
+    }
   } catch (error) {
     fail(`entity-facts.json is invalid JSON (${error.message})`);
   }
@@ -1205,6 +1230,9 @@ function run() {
     }
     if (identity.googleKnowledgeGraphId !== googleKnowledgeGraphId) {
       fail('citation-facts.json must include the Google Knowledge Graph ID');
+    }
+    if (!hasValidAggregateRating(identity)) {
+      fail('citation-facts.json must include a valid Google aggregate rating summary');
     }
   } catch (error) {
     fail(`citation-facts.json is invalid JSON (${error.message})`);
@@ -1320,9 +1348,10 @@ function run() {
       if (descriptionTags.length !== 1) {
         fail(`${routePath}: expected one meta description, found ${descriptionTags.length}`);
       } else {
-        const description = attrs(descriptionTags[0]).content || '';
-        if (description.trim().length < 50 || description.trim().length > 170) {
-          warn(`${routePath}: meta description length is ${description.trim().length} characters`);
+        const description = (attrs(descriptionTags[0]).content || '').replace(/\s+/g, ' ').trim();
+        sitemapDescriptions.set(description, [...(sitemapDescriptions.get(description) || []), routePath]);
+        if (description.length < 50 || description.length > 170) {
+          warn(`${routePath}: meta description length is ${description.length} characters`);
         }
       }
 
@@ -1466,6 +1495,10 @@ function run() {
 
           if (!String(localBusinessSchema.telephone || '').includes('(512) 240-2246')) {
             fail(`${routePath}: LocalBusiness schema must include the canonical phone number`);
+          }
+
+          if (!hasValidAggregateRating(localBusinessSchema)) {
+            fail(`${routePath}: LocalBusiness schema must include a valid aggregate rating signal`);
           }
 
           const localBusinessAreaNames = asArray(localBusinessSchema.areaServed).map(area => area?.name).filter(Boolean);
@@ -1626,6 +1659,12 @@ function run() {
   for (const [title, routes] of sitemapTitles) {
     if (title && routes.length > 1) {
       fail(`duplicate sitemap title "${title}" on ${routes.join(', ')}`);
+    }
+  }
+
+  for (const [description, routes] of sitemapDescriptions) {
+    if (description && routes.length > 1) {
+      fail(`duplicate sitemap meta description "${description}" on ${routes.join(', ')}`);
     }
   }
 
