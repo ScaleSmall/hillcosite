@@ -295,6 +295,19 @@ function assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute) {
   fail(`${sourceRoute}: missing priority local-search anchor "${expectedText}" to ${expectedRoute}`);
 }
 
+function assertPageContains(pages, sourceRoute, expectedText) {
+  const page = pages.get(sourceRoute);
+
+  if (!page) {
+    fail(`${sourceRoute}: missing page for priority local-search text validation`);
+    return;
+  }
+
+  if (!normalizeAnchorText(page.html).includes(expectedText)) {
+    fail(`${sourceRoute}: missing priority local-search text "${expectedText}"`);
+  }
+}
+
 function htmlFileForRoute(routePath) {
   if (routePath === '/') {
     return resolve(distPath, 'index.html');
@@ -618,6 +631,19 @@ function run() {
     ['/service-areas', 'Leander house painters', '/service-areas/leander']
   ].forEach(([sourceRoute, expectedText, expectedRoute]) => {
     assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute);
+  });
+
+  [
+    ['/exterior-painting-austin', 'Austin exterior house painters'],
+    ['/interior-painting-austin', 'Austin interior painters'],
+    ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
+    ['/commercial-painting-austin', 'Austin commercial painters'],
+    ['/exterior-painting-austin', 'painting contractors Austin'],
+    ['/interior-painting-austin', 'painting contractors Austin'],
+    ['/cabinet-refinishing-austin', 'painting contractors Austin'],
+    ['/commercial-painting-austin', 'painting contractors Austin']
+  ].forEach(([sourceRoute, expectedText]) => {
+    assertPageContains(pages, sourceRoute, expectedText);
   });
 
   if (generatedSpaRouteData.count !== generatedSpaRouteSet.size) {

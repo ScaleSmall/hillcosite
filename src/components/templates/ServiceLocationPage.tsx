@@ -100,6 +100,37 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
       href: `/commercial-painting-${location.slug}`
     }
   ].filter(Boolean) as Array<{ title: string; description: string; href: string }>;
+  const austinServiceIntents = {
+    exterior: {
+      heading: 'Austin Exterior House Painters for Central Texas Homes',
+      phrase: 'Austin exterior house painters',
+      copy: 'Austin exterior house painters need to plan around UV exposure, shaded elevations, older siding, stucco movement, and neighborhood color expectations. Hill Country Painting builds exterior scopes for Austin homes with prep-first protection, product guidance, and clear scheduling.'
+    },
+    interior: {
+      heading: 'Austin Interior Painters for Occupied Homes',
+      phrase: 'Austin interior painters',
+      copy: 'Austin interior painters need to protect floors, furniture, trim, cabinetry, and day-to-day routines while still delivering crisp lines and consistent finishes. Hill Country Painting plans interior painting around lived-in Austin homes, condos, and high-value properties.'
+    },
+    cabinet: {
+      heading: 'Austin Cabinet Painting and Refinishing',
+      phrase: 'Austin cabinet painting',
+      copy: 'Austin cabinet painting calls for surface prep, bonding primer, smooth enamel systems, and careful reassembly. Hill Country Painting helps homeowners update kitchens, baths, built-ins, and islands without the disruption of full cabinet replacement.'
+    },
+    commercial: {
+      heading: 'Austin Commercial Painters for Active Businesses',
+      phrase: 'Austin commercial painters',
+      copy: 'Austin commercial painters need to work around customers, tenants, staff, and operating hours. Hill Country Painting supports offices, retail suites, restaurants, medical spaces, and property managers with clean job sites and phased scheduling.'
+    }
+  } as const;
+  const austinServiceLinks = [
+    { label: 'Austin exterior house painters', href: '/exterior-painting-austin' },
+    { label: 'Austin interior painters', href: '/interior-painting-austin' },
+    { label: 'Austin cabinet painting', href: '/cabinet-refinishing-austin' },
+    { label: 'Austin commercial painters', href: '/commercial-painting-austin' }
+  ];
+  const austinServiceIntent = location.slug === 'austin'
+    ? austinServiceIntents[service.type]
+    : null;
 
   return (
     <>
@@ -247,6 +278,46 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
           </div>
         </div>
       </section>
+
+      {austinServiceIntent && (
+        <section className="section-padding bg-white" aria-labelledby="austin-service-intent">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto text-center mb-10">
+              <p className="text-sm font-semibold uppercase tracking-wide text-brand-azure">
+                Austin Painting Contractor Focus
+              </p>
+              <h2 id="austin-service-intent" className="mt-3 text-3xl md:text-4xl font-bold text-brand-gray-900">
+                {austinServiceIntent.heading}
+              </h2>
+              <p className="mt-5 text-lg text-brand-gray-600 leading-body">
+                {austinServiceIntent.copy}
+              </p>
+              <p className="mt-4 text-base text-brand-gray-600 leading-body">
+                Homeowners and property managers comparing painting contractors Austin wide can use this page alongside the related Austin service pages below to match the right crew, prep scope, and finish plan to the project.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {austinServiceLinks.map(link => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`rounded-lg border p-5 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 ${
+                    link.label === austinServiceIntent.phrase
+                      ? 'border-brand-azure bg-brand-gray-50 text-brand-gray-900'
+                      : 'border-brand-gray-200 bg-white text-brand-gray-700 hover:border-brand-azure hover:text-brand-azureDark'
+                  }`}
+                >
+                  <span className="block text-base font-semibold">{link.label}</span>
+                  <span className="mt-2 block text-sm text-brand-gray-500">
+                    View local scope, prep notes, FAQs, and estimate options.
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Warm Surface - Process section with cards */}
       <section className="section-padding bg-brand-coral">
