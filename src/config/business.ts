@@ -59,6 +59,13 @@ export const businessConfig = {
   // Social & Web
   website: 'https://www.hillcopaint.com',
   logo: '/brand/hill-country-painting-logo-primary.png',
+  socialProfiles: {
+    facebook: 'https://www.facebook.com/Hillcopaint',
+    instagram: 'https://www.instagram.com/hill_country_painting_austin/',
+    x: 'https://x.com/Hill_Co_Paint',
+    youtube: 'https://www.youtube.com/@HillCountryPaintingAustin',
+    tiktok: 'https://www.tiktok.com/@hillco_painting_austin'
+  },
   googleKnowledgeGraphId: '/g/11frssbq6p',
   googleBusinessProfileUrl: 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p',
 

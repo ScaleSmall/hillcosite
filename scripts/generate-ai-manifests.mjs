@@ -23,6 +23,7 @@ const __dirname = dirname(__filename);
 const projectRoot = resolve(__dirname, '..');
 const publicDir = resolve(projectRoot, 'public');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
+const businessConfigPath = resolve(projectRoot, 'src/config/business.ts');
 const today = new Date().toISOString().split('T')[0];
 
 function extractStringArrayConst(source, name) {
@@ -36,9 +37,20 @@ function extractStringArrayConst(source, name) {
 }
 
 const localSeoSource = readFileSync(localSeoPath, 'utf8');
+const businessConfigSource = readFileSync(businessConfigPath, 'utf8');
 const serviceAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
 const serviceCounties = extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties');
 const priorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
+
+function extractBusinessSocialProfiles(source) {
+  const match = source.match(/socialProfiles:\s*\{([\s\S]*?)\n\s*\},\n\s*googleKnowledgeGraphId:/);
+
+  if (!match) {
+    throw new Error('Could not find socialProfiles in src/config/business.ts');
+  }
+
+  return [...match[1].matchAll(/:\s*'([^']+)'/g)].map(item => item[1]);
+}
 
 function localAreaServed() {
   return [
@@ -155,11 +167,7 @@ const priorityServicePages = [
 ];
 
 const socialProfiles = [
-  'https://www.facebook.com/Hillcopaint',
-  'https://www.instagram.com/hill_country_painting_austin/',
-  'https://x.com/Hill_Co_Paint',
-  'https://www.youtube.com/@HillCountryPaintingAustin',
-  'https://www.tiktok.com/@hillco_painting_austin',
+  ...extractBusinessSocialProfiles(businessConfigSource),
   businessFacts.googleBusinessProfile
 ];
 

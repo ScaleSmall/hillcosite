@@ -12,12 +12,16 @@ const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
 const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
+const businessConfigPath = resolve(projectRoot, 'src/config/business.ts');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
 const locationsConfigPath = resolve(projectRoot, 'src/config/locations.ts');
 const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts');
 const colorConsultationPath = resolve(projectRoot, 'src/pages/ColorConsultation.tsx');
 const googleMapEmbedPath = resolve(projectRoot, 'src/components/GoogleMapEmbed.tsx');
 const gbpRatingHookPath = resolve(projectRoot, 'src/hooks/useGBPRating.ts');
+const headerPath = resolve(projectRoot, 'src/components/Header.tsx');
+const footerPath = resolve(projectRoot, 'src/components/Footer.tsx');
+const seoComponentPath = resolve(projectRoot, 'src/components/SEO.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
@@ -59,6 +63,20 @@ const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
+const canonicalSocialProfileSignals = [
+  'facebook',
+  'instagram',
+  'x',
+  'youtube',
+  'tiktok'
+];
+const canonicalSocialProfileUrls = [
+  'https://www.facebook.com/Hillcopaint',
+  'https://www.instagram.com/hill_country_painting_austin/',
+  'https://x.com/Hill_Co_Paint',
+  'https://www.youtube.com/@HillCountryPaintingAustin',
+  'https://www.tiktok.com/@hillco_painting_austin'
+];
 const minimumAggregateRatingValue = 4.5;
 const minimumAggregateReviewCount = 100;
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
@@ -793,12 +811,16 @@ function run() {
   const functionSitemapSource = readRequired(functionSitemapPath, 'functions/generatedSitemap.ts');
   const functionRoutesSource = readRequired(functionRoutesPath, 'functions/generatedRoutes.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
+  const businessConfigSource = readRequired(businessConfigPath, 'src/config/business.ts');
   const localSeoSource = readRequired(localSeoPath, 'src/config/localSeo.ts');
   const locationsConfigSource = readRequired(locationsConfigPath, 'src/config/locations.ts');
   const serviceProductsSource = readRequired(serviceProductsPath, 'src/config/serviceProducts.ts');
   const colorConsultationSource = readRequired(colorConsultationPath, 'src/pages/ColorConsultation.tsx');
   const googleMapEmbedSource = readRequired(googleMapEmbedPath, 'src/components/GoogleMapEmbed.tsx');
   const gbpRatingHookSource = readRequired(gbpRatingHookPath, 'src/hooks/useGBPRating.ts');
+  const headerSource = readRequired(headerPath, 'src/components/Header.tsx');
+  const footerSource = readRequired(footerPath, 'src/components/Footer.tsx');
+  const seoComponentSource = readRequired(seoComponentPath, 'src/components/SEO.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
@@ -1052,6 +1074,35 @@ function run() {
     gbpRatingHookSource.includes('Using placeholder values until client provides live API credentials')
   ) {
     fail('src/hooks/useGBPRating.ts must not carry stale placeholder Google review data');
+  }
+
+  for (const profileSignal of canonicalSocialProfileSignals) {
+    if (!businessConfigSource.includes(`${profileSignal}:`)) {
+      fail(`src/config/business.ts socialProfiles is missing ${profileSignal}`);
+    }
+
+    for (const [label, source] of [
+      ['src/components/Header.tsx', headerSource],
+      ['src/components/Footer.tsx', footerSource]
+    ]) {
+      if (!source.includes(`businessConfig.socialProfiles.${profileSignal}`)) {
+        fail(`${label} must use businessConfig.socialProfiles.${profileSignal} for canonical entity profile links`);
+      }
+    }
+  }
+
+  for (const canonicalSocialProfileUrl of canonicalSocialProfileUrls) {
+    if (!businessConfigSource.includes(canonicalSocialProfileUrl)) {
+      fail(`src/config/business.ts socialProfiles is missing ${canonicalSocialProfileUrl}`);
+    }
+  }
+
+  if (!seoComponentSource.includes('Object.values(businessConfig.socialProfiles)')) {
+    fail('src/components/SEO.tsx sameAs schema must use businessConfig.socialProfiles for canonical entity profile links');
+  }
+
+  if (!aiManifestGeneratorSource.includes('extractBusinessSocialProfiles(businessConfigSource)')) {
+    fail('scripts/generate-ai-manifests.mjs must derive AI/citation sameAs social profiles from src/config/business.ts');
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {

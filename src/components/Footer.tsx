@@ -162,11 +162,11 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'TikTok', href: 'https://www.tiktok.com/@hillco_painting_austin', icon: TikTokIcon, ariaLabel: 'Follow us on TikTok' },
-    { name: 'Instagram', href: 'https://www.instagram.com/hill_country_painting_austin/', icon: Instagram, ariaLabel: 'Follow us on Instagram' },
-    { name: 'YouTube', href: 'https://www.youtube.com/@HillCountryPaintingAustin', icon: Youtube, ariaLabel: 'Subscribe on YouTube' },
-    { name: 'X (Twitter)', href: 'https://x.com/Hill_Co_Paint', icon: XIcon, ariaLabel: 'Follow us on X' },
-    { name: 'Facebook', href: 'https://www.facebook.com/Hillcopaint', icon: Facebook, ariaLabel: 'Like us on Facebook' },
+    { name: 'TikTok', href: businessConfig.socialProfiles.tiktok, icon: TikTokIcon, ariaLabel: 'Follow us on TikTok' },
+    { name: 'Instagram', href: businessConfig.socialProfiles.instagram, icon: Instagram, ariaLabel: 'Follow us on Instagram' },
+    { name: 'YouTube', href: businessConfig.socialProfiles.youtube, icon: Youtube, ariaLabel: 'Subscribe on YouTube' },
+    { name: 'X (Twitter)', href: businessConfig.socialProfiles.x, icon: XIcon, ariaLabel: 'Follow us on X' },
+    { name: 'Facebook', href: businessConfig.socialProfiles.facebook, icon: Facebook, ariaLabel: 'Like us on Facebook' },
     { name: 'Google Business Profile', href: businessConfig.googleBusinessProfileUrl, icon: MapPin, ariaLabel: 'View our Google Business Profile' },
   ];
 

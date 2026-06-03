@@ -190,6 +190,10 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     value: businessConfig.googleKnowledgeGraphId,
     url: businessConfig.googleBusinessProfileUrl
   };
+  const sameAsProfiles = [
+    ...Object.values(businessConfig.socialProfiles),
+    businessConfig.googleBusinessProfileUrl
+  ];
 
   // When a tracking ?ref= param is present, suppress indexing of this URL variant
   // while still allowing the crawler to follow links.
@@ -230,14 +234,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       addressRegion: businessConfig.address.addressRegion,
       addressCountry: businessConfig.address.addressCountry
     },
-    sameAs: [
-      'https://www.facebook.com/Hillcopaint',
-      'https://www.instagram.com/hill_country_painting_austin/',
-      'https://x.com/Hill_Co_Paint',
-      'https://www.youtube.com/@HillCountryPaintingAustin',
-      'https://www.tiktok.com/@hillco_painting_austin',
-      businessConfig.googleBusinessProfileUrl
-    ],
+    sameAs: sameAsProfiles,
     identifier: googleBusinessIdentifier
   };
 
@@ -414,14 +411,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     },
     openingHours: `Mo-Fr ${weekdayHours.opens}-${weekdayHours.closes}`,
     openingHoursSpecification,
-    sameAs: [
-      'https://www.facebook.com/Hillcopaint',
-      'https://www.instagram.com/hill_country_painting_austin/',
-      'https://x.com/Hill_Co_Paint',
-      'https://www.youtube.com/@HillCountryPaintingAustin',
-      'https://www.tiktok.com/@hillco_painting_austin',
-      businessConfig.googleBusinessProfileUrl
-    ],
+    sameAs: sameAsProfiles,
     aggregateRating: resolvedAggregateRating ? {
       '@type': 'AggregateRating',
       ratingValue: resolvedAggregateRating.ratingValue,
