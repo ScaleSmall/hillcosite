@@ -269,8 +269,9 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
 
   const serviceId = `https://www.hillcopaint.com${path}#service`;
   const additions = [exactPhrase, 'painting contractors Austin', 'house painters Austin'];
+  let updatedHtml = html;
 
-  return html.replace(
+  updatedHtml = updatedHtml.replace(
     /<script\b([^>]*)type=["']application\/ld\+json["']([^>]*)>([\s\S]*?)<\/script>/gi,
     (tag, beforeType, afterType, json) => {
       try {
@@ -294,6 +295,38 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
       }
     }
   );
+
+  if (updatedHtml.includes(`"alternateName":`) && updatedHtml.includes(exactPhrase)) {
+    return updatedHtml;
+  }
+
+  const supplementalServiceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': serviceId,
+    name: exactPhrase,
+    alternateName: additions,
+    keywords: additions,
+    serviceOutput: `${exactPhrase} service for homes, businesses, and property managers in Austin, TX`,
+    provider: {
+      '@id': 'https://www.hillcopaint.com/#localbusiness',
+    },
+    areaServed: [
+      {
+        '@type': 'Place',
+        name: 'Austin',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Greater Austin Area',
+      },
+    ],
+  };
+  const supplementalScript = `<script type="application/ld+json">${JSON.stringify(supplementalServiceSchema)}</script>`;
+
+  return updatedHtml.includes('</head>')
+    ? updatedHtml.replace('</head>', `${supplementalScript}</head>`)
+    : `${updatedHtml}${supplementalScript}`;
 }
 
 async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
