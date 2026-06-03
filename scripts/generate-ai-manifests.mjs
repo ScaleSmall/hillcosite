@@ -208,6 +208,30 @@ const staleCitationWarnings = [
   },
   {
     field: 'url',
+    staleValue: `${BASE_URL}/austin/`,
+    canonicalValue: `${BASE_URL}/service-areas/austin`,
+    note: 'Use the current Austin service-area page for local citations and search snippets instead of stale slash city URLs.'
+  },
+  {
+    field: 'url',
+    staleValue: `${BASE_URL}/exterior-painting/`,
+    canonicalValue: `${BASE_URL}/services/exterior-painting`,
+    note: 'Use the current exterior painting service overview URL instead of stale slash service URLs.'
+  },
+  {
+    field: 'url',
+    staleValue: `${BASE_URL}/cabinet-refinishing/`,
+    canonicalValue: `${BASE_URL}/services/cabinet-refinishing`,
+    note: 'Use the current cabinet refinishing service overview URL instead of stale slash service URLs.'
+  },
+  {
+    field: 'url',
+    staleValue: `${BASE_URL}/commercial-painting/`,
+    canonicalValue: `${BASE_URL}/services/commercial`,
+    note: 'Use the current commercial painting service overview URL instead of stale slash service URLs.'
+  },
+  {
+    field: 'url',
     staleValue: 'https://request.hillcopaint.com/',
     canonicalValue: `${BASE_URL}/contact`,
     note: 'Do not use the request subdomain as the canonical website or citation URL. Use the main hillcopaint.com contact page for public business citations and search snippets.'

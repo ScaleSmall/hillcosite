@@ -1648,6 +1648,18 @@ function run() {
     if (!warnings.includes('111 Craft Street') || !warnings.includes('1101 Satellite View') || !warnings.includes('/round-rock/') || !warnings.includes('8:00 AM-8:00 AM')) {
       fail('citation-facts.json must warn against known stale directory address, URL, and hours variants');
     }
+    if (
+      !warnings.includes(`${baseUrl}/austin/`) ||
+      !warnings.includes(`${baseUrl}/service-areas/austin`) ||
+      !warnings.includes(`${baseUrl}/exterior-painting/`) ||
+      !warnings.includes(`${baseUrl}/services/exterior-painting`) ||
+      !warnings.includes(`${baseUrl}/cabinet-refinishing/`) ||
+      !warnings.includes(`${baseUrl}/services/cabinet-refinishing`) ||
+      !warnings.includes(`${baseUrl}/commercial-painting/`) ||
+      !warnings.includes(`${baseUrl}/services/commercial`)
+    ) {
+      fail('citation-facts.json must warn against known stale slash city and service URLs');
+    }
     if (!warnings.includes('https://request.hillcopaint.com/') || !warnings.includes(`${baseUrl}/contact`)) {
       fail('citation-facts.json must warn against using the request subdomain as a canonical citation URL');
     }

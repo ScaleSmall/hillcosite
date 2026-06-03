@@ -1461,6 +1461,30 @@
     },
     {
       "field": "url",
+      "staleValue": "https://www.hillcopaint.com/austin/",
+      "canonicalValue": "https://www.hillcopaint.com/service-areas/austin",
+      "note": "Use the current Austin service-area page for local citations and search snippets instead of stale slash city URLs."
+    },
+    {
+      "field": "url",
+      "staleValue": "https://www.hillcopaint.com/exterior-painting/",
+      "canonicalValue": "https://www.hillcopaint.com/services/exterior-painting",
+      "note": "Use the current exterior painting service overview URL instead of stale slash service URLs."
+    },
+    {
+      "field": "url",
+      "staleValue": "https://www.hillcopaint.com/cabinet-refinishing/",
+      "canonicalValue": "https://www.hillcopaint.com/services/cabinet-refinishing",
+      "note": "Use the current cabinet refinishing service overview URL instead of stale slash service URLs."
+    },
+    {
+      "field": "url",
+      "staleValue": "https://www.hillcopaint.com/commercial-painting/",
+      "canonicalValue": "https://www.hillcopaint.com/services/commercial",
+      "note": "Use the current commercial painting service overview URL instead of stale slash service URLs."
+    },
+    {
+      "field": "url",
       "staleValue": "https://request.hillcopaint.com/",
       "canonicalValue": "https://www.hillcopaint.com/contact",
       "note": "Do not use the request subdomain as the canonical website or citation URL. Use the main hillcopaint.com contact page for public business citations and search snippets."

@@ -154,10 +154,15 @@ const liveLegacyRedirects = [
   ['/service/garage-painting', '/services'],
   ['/service/townhouse-painting-round-rock', '/services'],
   ['/cabinet-refinishing', '/services/cabinet-refinishing'],
+  ['/cabinet-refinishing/', '/services/cabinet-refinishing'],
   ['/cabinet-refinishing-pflugerville', '/services/cabinet-refinishing'],
+  ['/austin/', '/service-areas/austin'],
   ['/round-rock', '/service-areas/round-rock'],
+  ['/round-rock/', '/service-areas/round-rock'],
   ['/round-rock-2', '/service-areas/round-rock'],
   ['/austin', '/service-areas/austin'],
+  ['/exterior-painting/', '/services/exterior-painting'],
+  ['/commercial-painting/', '/services/commercial'],
   ['/service-area', '/service-areas'],
   ['/project', '/gallery'],
   ['/projects', '/gallery'],
@@ -908,10 +913,18 @@ async function checkCrawlerEntityAssets() {
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasValidAggregateRating(entityFacts) ||
       entityFacts.sitemapUrlCount !== 182 ||
+      !staleWarnings.includes(`${baseUrl}/austin/`) ||
+      !staleWarnings.includes(`${baseUrl}/service-areas/austin`) ||
+      !staleWarnings.includes(`${baseUrl}/exterior-painting/`) ||
+      !staleWarnings.includes(`${baseUrl}/services/exterior-painting`) ||
+      !staleWarnings.includes(`${baseUrl}/cabinet-refinishing/`) ||
+      !staleWarnings.includes(`${baseUrl}/services/cabinet-refinishing`) ||
+      !staleWarnings.includes(`${baseUrl}/commercial-painting/`) ||
+      !staleWarnings.includes(`${baseUrl}/services/commercial`) ||
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -937,10 +950,18 @@ async function checkCrawlerEntityAssets() {
       !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
       !hasAllValues(citationCounties, greaterAustinServiceCounties) ||
+      !staleWarnings.includes(`${baseUrl}/austin/`) ||
+      !staleWarnings.includes(`${baseUrl}/service-areas/austin`) ||
+      !staleWarnings.includes(`${baseUrl}/exterior-painting/`) ||
+      !staleWarnings.includes(`${baseUrl}/services/exterior-painting`) ||
+      !staleWarnings.includes(`${baseUrl}/cabinet-refinishing/`) ||
+      !staleWarnings.includes(`${baseUrl}/services/cabinet-refinishing`) ||
+      !staleWarnings.includes(`${baseUrl}/commercial-painting/`) ||
+      !staleWarnings.includes(`${baseUrl}/services/commercial`) ||
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
