@@ -27,6 +27,27 @@ function run() {
       passes.push('No invalid absolute host rules in _redirects');
     }
 
+    const legacyRedirectRules = activeLines
+      .map((line, index) => ({ line, index: index + 1, parts: line.split(/\s+/) }))
+      .filter(({ parts }) => parts.length >= 3 && parts[2] === '301');
+
+    if (legacyRedirectRules.length < 18) {
+      failures.push(`Expected at least 18 explicit legacy 301 rules in _redirects, found ${legacyRedirectRules.length}`);
+    } else {
+      passes.push(`Explicit legacy 301 rules present in _redirects (${legacyRedirectRules.length})`);
+    }
+
+    const badLegacyTargets = legacyRedirectRules.filter(({ parts }) => {
+      const target = parts[1];
+      return !target.startsWith('https://www.hillcopaint.com/');
+    });
+
+    if (badLegacyTargets.length > 0) {
+      failures.push(`Legacy redirect target(s) must stay on https://www.hillcopaint.com: ${badLegacyTargets.map(item => item.line).join(', ')}`);
+    } else {
+      passes.push('Legacy redirect targets stay on the canonical host');
+    }
+
     // Warn if SPA rewrites are still in _redirects (they should be in middleware now)
     const hasSpaFallback = activeLines.some(l => l.includes('/index.html') && l.includes('200'));
     if (hasSpaFallback) {
@@ -38,6 +59,7 @@ function run() {
 
   // Check 2: Middleware exists and has SPA route handling
   const middlewarePath = resolve(__dirname, '../functions/_middleware.ts');
+  const routesConfigPath = resolve(__dirname, '../public/_routes.json');
   if (!existsSync(middlewarePath)) {
     failures.push('functions/_middleware.ts not found');
   } else {
@@ -69,6 +91,27 @@ function run() {
       passes.push('Middleware handles host/protocol canonicalization');
     } else {
       failures.push('Middleware missing canonical https://www.hillcopaint.com redirect handling');
+    }
+  }
+
+  if (!existsSync(routesConfigPath)) {
+    failures.push('public/_routes.json not found');
+  } else if (existsSync(redirectsPath)) {
+    const redirectsContent = readFileSync(redirectsPath, 'utf-8');
+    const routesConfig = JSON.parse(readFileSync(routesConfigPath, 'utf-8'));
+    const excludedRoutes = new Set(routesConfig.exclude || []);
+    const staticRedirectSources = redirectsContent
+      .split('\n')
+      .map(l => l.trim())
+      .filter(l => l && !l.startsWith('#'))
+      .map(line => line.split(/\s+/)[0])
+      .filter(Boolean);
+    const missingExclusions = staticRedirectSources.filter(source => !excludedRoutes.has(source));
+
+    if (missingExclusions.length > 0) {
+      failures.push(`Static redirect source(s) missing from _routes.json exclude: ${missingExclusions.join(', ')}`);
+    } else {
+      passes.push('Static redirect sources are excluded from Functions routing');
     }
   }
 

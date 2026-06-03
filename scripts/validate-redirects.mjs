@@ -30,6 +30,7 @@ function getAllValidRoutes() {
   const routes = new Set();
 
   getStaticRoutes().forEach(r => routes.add(r.path));
+  getServiceLocationPaths().forEach(path => routes.add(path));
 
   additionalValidRoutes.forEach(r => routes.add(r));
 
@@ -59,23 +60,39 @@ function parseRedirectsFile(filePath) {
     const parts = trimmed.split(/\s+/);
     if (parts.length >= 2) {
       const from = parts[0];
-      let to = parts[1];
-
-      if (to.startsWith('https://') || to.startsWith('http://')) {
-        return;
-      }
+      const rawTo = parts[1];
+      const code = parts[2] || '';
+      let to = rawTo;
 
       if (from.includes('*') || from.includes(':splat')) {
         return;
       }
 
-      to = to.replace(/\s+\d+!?$/, '');
+      if (/^https?:\/\//i.test(to)) {
+        const targetUrl = new URL(to);
+
+        if (targetUrl.hostname !== 'www.hillcopaint.com') {
+          redirects.push({
+            from,
+            to,
+            line: index + 1,
+            file: filePath,
+            code,
+            external: true
+          });
+          return;
+        }
+
+        to = targetUrl.pathname.replace(/\/+$/, '') || '/';
+      }
 
       redirects.push({
         from,
         to,
         line: index + 1,
-        file: filePath
+        file: filePath,
+        code,
+        external: false
       });
     }
   });
@@ -86,7 +103,12 @@ function parseRedirectsFile(filePath) {
 function validateRedirects() {
   const validRoutes = getAllValidRoutes();
   const redirectsPath = resolve(__dirname, '../public/_redirects');
+  const routesConfigPath = resolve(__dirname, '../public/_routes.json');
   const redirects = parseRedirectsFile(redirectsPath);
+  const routesConfig = existsSync(routesConfigPath)
+    ? JSON.parse(readFileSync(routesConfigPath, 'utf-8'))
+    : { exclude: [] };
+  const excludedRoutes = new Set(routesConfig.exclude || []);
 
   const errors = [];
   const warnings = [];
@@ -95,6 +117,37 @@ function validateRedirects() {
     const target = redirect.to;
 
     if (target === '/index.html') return;
+
+    if (redirect.external) {
+      errors.push({
+        type: 'EXTERNAL_TARGET',
+        message: `Redirect target "${target}" must stay on https://www.hillcopaint.com or use a relative path`,
+        from: redirect.from,
+        line: redirect.line,
+        file: redirect.file
+      });
+      return;
+    }
+
+    if (redirect.code && redirect.code !== '301') {
+      errors.push({
+        type: 'NON_301_REDIRECT',
+        message: `Legacy redirect should use 301, found "${redirect.code}"`,
+        from: redirect.from,
+        line: redirect.line,
+        file: redirect.file
+      });
+    }
+
+    if (!excludedRoutes.has(redirect.from)) {
+      errors.push({
+        type: 'FUNCTIONS_NOT_EXCLUDED',
+        message: `Static redirect source "${redirect.from}" must be excluded in public/_routes.json so Pages _redirects can run before Functions`,
+        from: redirect.from,
+        line: redirect.line,
+        file: redirect.file
+      });
+    }
 
     if (!validRoutes.has(target)) {
       const isServicePath = target.startsWith('/services');
