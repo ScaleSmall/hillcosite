@@ -2086,6 +2086,17 @@ function run() {
             fail(`${routePath}: service-area hub ItemList is missing ${requiredAreaUrl}`);
           }
         }
+
+        for (const requiredVisibleServiceRoute of [
+          '/exterior-painting-austin',
+          '/interior-painting-austin',
+          '/cabinet-refinishing-austin',
+          '/commercial-painting-austin'
+        ]) {
+          if (!html.includes(`href="${requiredVisibleServiceRoute}"`)) {
+            fail(`${routePath}: service-area hub local-search links are missing ${requiredVisibleServiceRoute}`);
+          }
+        }
       }
 
       if (isLocalBusinessSchemaRoute(routePath)) {

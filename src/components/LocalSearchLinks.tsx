@@ -59,6 +59,12 @@ const linkGroups = {
       { label: 'Georgetown house painters', href: '/service-areas/georgetown' },
       { label: 'Leander house painters', href: '/service-areas/leander' },
       { label: 'North Austin house painters', href: '/service-areas/north-austin' }
+    ],
+    directAustinLinks: [
+      { label: 'Austin exterior house painters', href: '/exterior-painting-austin' },
+      { label: 'Austin interior painters', href: '/interior-painting-austin' },
+      { label: 'Austin cabinet painting', href: '/cabinet-refinishing-austin' },
+      { label: 'Austin commercial painters', href: '/commercial-painting-austin' }
     ]
   }
 } as const;

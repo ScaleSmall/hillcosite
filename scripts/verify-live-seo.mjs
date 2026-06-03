@@ -70,6 +70,12 @@ const serviceAreasHubItemListRoutes = [
   '/areas/west-lake-hills-and-rollingwood',
   '/areas/lakeway-bee-cave-and-lake-travis',
 ];
+const serviceAreasHubVisibleServiceRoutes = [
+  '/exterior-painting-austin',
+  '/interior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
+];
 const coreLocalBusinessRoutes = [
   '/',
   '/about',
@@ -1365,6 +1371,7 @@ async function checkHubItemListSchema() {
       label: 'service-area hub',
       requiredPageType: 'CollectionPage',
       requiredPageId: `${baseUrl}/service-areas#webpage`,
+      requiredVisibleRoutes: serviceAreasHubVisibleServiceRoutes,
     },
   ];
   let passed = 0;
@@ -1392,6 +1399,15 @@ async function checkHubItemListSchema() {
 
       if (!pageSchema) {
         fail(`${hub.route}: live ${hub.label} is missing ${hub.requiredPageType} schema.`);
+        continue;
+      }
+    }
+
+    if (hub.requiredVisibleRoutes) {
+      const hasVisibleRoutes = hub.requiredVisibleRoutes.every(route => html.includes(`href="${route}"`));
+
+      if (!hasVisibleRoutes) {
+        fail(`${hub.route}: live ${hub.label} is missing visible links to the priority Austin service-location pages.`);
         continue;
       }
     }
