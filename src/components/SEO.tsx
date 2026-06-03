@@ -108,6 +108,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const optimizedTitle = optimizeTitle(String(title));
 
   const optimizedDescription = truncateAtWordBoundary(String(description), 160);
+  const googleBusinessIdentifier = {
+    '@type': 'PropertyValue',
+    name: 'Google Knowledge Graph ID',
+    propertyID: 'kgmid',
+    value: businessConfig.googleKnowledgeGraphId,
+    url: businessConfig.googleBusinessProfileUrl
+  };
 
   // When a tracking ?ref= param is present, suppress indexing of this URL variant
   // while still allowing the crawler to follow links.
@@ -155,7 +162,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'https://www.youtube.com/@HillCountryPaintingAustin',
       'https://www.tiktok.com/@hillco_painting_austin',
       businessConfig.googleBusinessProfileUrl
-    ]
+    ],
+    identifier: googleBusinessIdentifier
   };
 
   const localBusinessAreas = greaterAustinServiceAreas;
@@ -250,6 +258,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'Commercial repaint scheduling'
     ],
     hasMap: businessConfig.googleBusinessProfileUrl,
+    identifier: googleBusinessIdentifier,
     mainEntityOfPage: {
       '@id': `${baseUrl}/#website`
     },

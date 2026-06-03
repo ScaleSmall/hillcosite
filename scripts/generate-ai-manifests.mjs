@@ -31,6 +31,7 @@ const businessFacts = {
   phoneHref: 'tel:+15122402246',
   email: 'info@hillcopaint.com',
   website: BASE_URL,
+  googleKnowledgeGraphId: '/g/11frssbq6p',
   googleBusinessProfile: 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p',
   primaryServiceArea: 'Austin, TX and the Greater Austin area',
   contactPoint: {
@@ -358,6 +359,13 @@ const entityFacts = {
   telephone: businessFacts.phone,
   email: businessFacts.email,
   contactPoint: businessFacts.contactPoint,
+  identifier: {
+    '@type': 'PropertyValue',
+    name: 'Google Knowledge Graph ID',
+    propertyID: 'kgmid',
+    value: businessFacts.googleKnowledgeGraphId,
+    url: businessFacts.googleBusinessProfile
+  },
   description: 'Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.',
   slogan: 'Clean prep. Crisp lines. Reliable schedules.',
   priceRange: '$$',
@@ -456,6 +464,7 @@ const citationFacts = {
     email: businessFacts.email,
     contactPoint: businessFacts.contactPoint,
     website: BASE_URL,
+    googleKnowledgeGraphId: businessFacts.googleKnowledgeGraphId,
     googleBusinessProfile: businessFacts.googleBusinessProfile,
     businessType: ['PaintingContractor', 'LocalBusiness'],
     serviceAreaBusiness: true,

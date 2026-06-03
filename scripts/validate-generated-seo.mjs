@@ -27,6 +27,7 @@ const redirectsPath = resolve(projectRoot, 'public/_redirects');
 const routesConfigPath = resolve(projectRoot, 'public/_routes.json');
 const baseUrl = 'https://www.hillcopaint.com';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
+const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
@@ -798,6 +799,9 @@ function run() {
     if (entityFacts.hasMap !== googleBusinessProfileUrl || !Array.isArray(entityFacts.sameAs) || !entityFacts.sameAs.includes(googleBusinessProfileUrl)) {
       fail('entity-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
     }
+    if (entityFacts.identifier?.propertyID !== 'kgmid' || entityFacts.identifier?.value !== googleKnowledgeGraphId || entityFacts.identifier?.url !== googleBusinessProfileUrl) {
+      fail('entity-facts.json must include the Google Knowledge Graph ID as a PropertyValue identifier');
+    }
   } catch (error) {
     fail(`entity-facts.json is invalid JSON (${error.message})`);
   }
@@ -845,6 +849,9 @@ function run() {
     }
     if (identity.googleBusinessProfile !== googleBusinessProfileUrl || !Array.isArray(citationFacts.sameAs) || !citationFacts.sameAs.includes(googleBusinessProfileUrl)) {
       fail('citation-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
+    }
+    if (identity.googleKnowledgeGraphId !== googleKnowledgeGraphId) {
+      fail('citation-facts.json must include the Google Knowledge Graph ID');
     }
   } catch (error) {
     fail(`citation-facts.json is invalid JSON (${error.message})`);
@@ -1026,6 +1033,9 @@ function run() {
           'subjectOf',
           'entity-facts.json',
           'citation-facts.json',
+          'Google Knowledge Graph ID',
+          'propertyID',
+          'kgmid',
           '/exterior-painting-austin',
           '/interior-painting-austin',
           '/cabinet-refinishing-austin',

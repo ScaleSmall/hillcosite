@@ -19,6 +19,13 @@
       "English"
     ]
   },
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Google Knowledge Graph ID",
+    "propertyID": "kgmid",
+    "value": "/g/11frssbq6p",
+    "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+  },
   "description": "Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.",
   "slogan": "Clean prep. Crisp lines. Reliable schedules.",
   "priceRange": "$$",
