@@ -258,7 +258,13 @@ function parseJsonLd(html, route) {
 
   for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
-      const parsed = JSON.parse(match[1]);
+      const rawJsonLd = match[1]
+        .replace(/&quot;/g, '"')
+        .replace(/&amp;/g, '&')
+        .replace(/&#x27;/g, "'")
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>');
+      const parsed = JSON.parse(rawJsonLd);
       const roots = Array.isArray(parsed) ? parsed : [parsed];
 
       for (const root of roots) {
