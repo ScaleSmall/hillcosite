@@ -967,6 +967,20 @@ function run() {
     fail(`robots.txt should explicitly allow SEO and AI/GEO crawlers: missing ${missingRobotsAllowAgents.join(', ')}`);
   }
 
+  if (!middlewareSource.includes("pathname === '/robots.txt'")) {
+    fail('functions/_middleware.ts should explicitly serve /robots.txt to avoid stale crawler directives');
+  }
+
+  if (!middlewareSource.includes(`Sitemap: ${baseUrl}/sitemap.xml`)) {
+    fail('functions/_middleware.ts robots response should include the canonical sitemap URL');
+  }
+
+  const middlewareMissingRobotsAgents = requiredRobotsAllowAgents.filter(agent => !middlewareSource.includes(`User-agent: ${agent}`));
+
+  if (middlewareMissingRobotsAgents.length > 0) {
+    fail(`functions/_middleware.ts robots response should explicitly allow SEO and AI/GEO crawlers: missing ${middlewareMissingRobotsAgents.join(', ')}`);
+  }
+
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
   }

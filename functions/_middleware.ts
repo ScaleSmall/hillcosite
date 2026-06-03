@@ -195,6 +195,91 @@ const GREATER_AUSTIN_COUNTY_SERVICE_AREAS = [
   'Williamson County',
   'Hays County',
 ];
+const ROBOTS_TXT = `User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+User-agent: GoogleOther-Video
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-AdsBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+Sitemap: https://www.hillcopaint.com/sitemap.xml
+`;
 const APPROVED_HERO_IMAGE = 'hill-country-painting-austin-homepage-hero.jpg';
 const BANNED_HERO_IMAGE_FILENAMES = [
   'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
@@ -656,6 +741,16 @@ export async function onRequest(context: {
 
   if (pathname === '/sitemap.php') {
     return redirect('/sitemap.xml', url.origin);
+  }
+
+  if (pathname === '/robots.txt') {
+    return new Response(ROBOTS_TXT, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Cache-Control': 'public, max-age=60, must-revalidate',
+      },
+    });
   }
 
   if (AI_MANIFEST_HEADERS[pathname]) {
