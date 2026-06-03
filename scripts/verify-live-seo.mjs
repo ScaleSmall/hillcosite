@@ -102,6 +102,23 @@ const guideFaqSchemaRoutes = [
   '/guides/how-often-paint-central-texas',
   '/guides/painting-costs-austin',
 ];
+const breadcrumbRoutes = [
+  '/services',
+  '/services/interior-painting',
+  '/services/exterior-painting',
+  '/services/cabinet-refinishing',
+  '/services/commercial',
+  '/interior-painting-austin',
+  '/exterior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
+  '/service-areas',
+  ...serviceAreaFaqSchemaRoutes,
+  ...guideFaqSchemaRoutes,
+  '/gallery',
+  '/testimonials',
+  '/contact',
+];
 const bannedHeroBackgroundImages = [
   'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
   'before_and_after-5-nov_14_2025_11_37am-nahg.jpg',
@@ -1190,6 +1207,38 @@ async function checkWebsiteSearchActionSchema() {
   console.log('Live WebSite schema includes canonical publisher and SearchAction');
 }
 
+async function checkBreadcrumbSchema() {
+  let passed = 0;
+
+  for (const route of breadcrumbRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const breadcrumbSchema = scripts.find(item => schemaTypeIncludes(item, 'BreadcrumbList'));
+    const items = asArray(breadcrumbSchema?.itemListElement);
+    const firstItem = items[0];
+    const lastItem = items[items.length - 1];
+    const positionsAreSequential = items.every((item, index) => item?.position === index + 1);
+    const hasHomeStart = firstItem?.name === 'Home' && firstItem?.item === `${baseUrl}/`;
+    const hasCurrentLastItem = Boolean(lastItem?.name) && !lastItem?.item;
+
+    if (
+      response.status !== 200 ||
+      !breadcrumbSchema ||
+      items.length < 2 ||
+      !positionsAreSequential ||
+      !hasHomeStart ||
+      !hasCurrentLastItem
+    ) {
+      fail(`${route}: live BreadcrumbList schema should start at Home, use sequential positions, and leave the current page as the final item.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live breadcrumb schema pages checked: ${passed}/${breadcrumbRoutes.length}`);
+}
+
 async function checkContactPageSchema() {
   const { response, text: html } = await fetchText(`${baseUrl}/contact?v=${Date.now()}`);
   const scripts = parseJsonLd(html, '/contact');
@@ -1257,6 +1306,7 @@ await checkVisibleLocalTrustSections();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
 await checkWebsiteSearchActionSchema();
+await checkBreadcrumbSchema();
 await checkContactPageSchema();
 await checkTestimonialsTrustSignals();
 
