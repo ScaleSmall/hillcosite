@@ -613,6 +613,8 @@ function run() {
 
   [
     ['/', 'Austin house painters', '/service-areas/austin'],
+    ['/', 'house painters Austin', '/service-areas/austin'],
+    ['/', 'painting contractors Austin', '/services'],
     ['/', 'Austin exterior house painters', '/services/exterior-painting'],
     ['/', 'Austin interior painters', '/services/interior-painting'],
     ['/', 'Austin cabinet painting', '/services/cabinet-refinishing'],
@@ -621,6 +623,8 @@ function run() {
     ['/services', 'Austin interior painters', '/services/interior-painting'],
     ['/services', 'Austin cabinet painting', '/services/cabinet-refinishing'],
     ['/services', 'Austin commercial painters', '/services/commercial'],
+    ['/services', 'house painters Austin', '/service-areas/austin'],
+    ['/services', 'painting contractors Austin', '/services'],
     ['/service-areas/austin', 'Austin exterior house painters', '/exterior-painting-austin'],
     ['/service-areas/austin', 'Austin interior painters', '/interior-painting-austin'],
     ['/service-areas/austin', 'Austin cabinet painting', '/cabinet-refinishing-austin'],
