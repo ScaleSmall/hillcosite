@@ -52,6 +52,18 @@ const guideFaqSchemaRoutes = [
   '/guides/how-often-paint-central-texas',
   '/guides/painting-costs-austin',
 ];
+const bannedHeroBackgroundImages = [
+  'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
+  'before_and_after-5-nov_14_2025_11_37am-nahg.jpg',
+  'before_and_after-6-sep_12_2025_11_32am-vj7w.jpg',
+  'classic-home-exterior.jpg',
+  'custom-kitchen-painting.jpg',
+  'exterior-tarrytown.jpg',
+  'kitchen-transformation-west-lake-hills.jpg',
+  'living-room-update-central-austin.jpg',
+  'modern-interior-design.jpg',
+  'traditional-home-exterior.jpg',
+];
 
 const failures = [];
 
@@ -85,6 +97,19 @@ async function fetchText(url) {
 function schemaTypeIncludes(item, typeName) {
   const schemaType = item?.['@type'];
   return Array.isArray(schemaType) ? schemaType.includes(typeName) : schemaType === typeName;
+}
+
+function firstHeroSectionHtml(html) {
+  const firstSectionIndex = html.search(/<section\b/i);
+
+  if (firstSectionIndex === -1) {
+    return html.slice(0, 30000);
+  }
+
+  const sectionCloseIndex = html.indexOf('</section>', firstSectionIndex);
+  const endIndex = sectionCloseIndex === -1 ? firstSectionIndex + 30000 : sectionCloseIndex + '</section>'.length;
+
+  return html.slice(firstSectionIndex, endIndex);
 }
 
 function parseJsonLd(html, route) {
@@ -176,6 +201,7 @@ async function checkSitemapPages() {
   const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
   let nextIndex = 0;
   const problems = [];
+  const heroImageProblems = [];
 
   async function worker() {
     while (nextIndex < urls.length) {
@@ -209,6 +235,12 @@ async function checkSitemapPages() {
       const xRobotsTag = page.headers.get('x-robots-tag') || '';
       const noindex = /noindex/i.test(robotsContent) || /noindex/i.test(xRobotsTag);
       const hasError = /Something went wrong|Post Not Found|404 Not Found/i.test(html);
+      const heroHtml = firstHeroSectionHtml(html);
+      const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
+
+      if (bannedHeroImage) {
+        heroImageProblems.push({ url, image: bannedHeroImage });
+      }
 
       if (page.status !== 200 || canonicalCount !== 1 || !canonicalMatchesSelf || robotsCount !== 1 || !robotsIndexable || h1Count !== 1 || noindex || hasError) {
         problems.push({
@@ -237,6 +269,18 @@ async function checkSitemapPages() {
 
   if (problems.length > 10) {
     fail(`${problems.length - 10} additional sitemap page problems not shown.`);
+  }
+
+  for (const problem of heroImageProblems.slice(0, 10)) {
+    fail(`${problem.url}: live hero section uses banned before/after-style image ${problem.image}`);
+  }
+
+  if (heroImageProblems.length > 10) {
+    fail(`${heroImageProblems.length - 10} additional live hero image problems not shown.`);
+  }
+
+  if (heroImageProblems.length === 0) {
+    console.log('Live hero image guard: no banned before/after-style hero images found');
   }
 }
 

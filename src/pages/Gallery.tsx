@@ -26,11 +26,27 @@ interface GalleryPhoto {
   featured: boolean;
 }
 
+const BANNED_HERO_IMAGE_FILENAMES = [
+  'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
+  'before_and_after-5-nov_14_2025_11_37am-nahg.jpg',
+  'before_and_after-6-sep_12_2025_11_32am-vj7w.jpg',
+  'classic-home-exterior.jpg',
+  'custom-kitchen-painting.jpg',
+  'exterior-tarrytown.jpg',
+  'kitchen-transformation-west-lake-hills.jpg',
+  'living-room-update-central-austin.jpg',
+  'modern-interior-design.jpg',
+  'traditional-home-exterior.jpg',
+];
+
+const isBannedHeroImage = (imageUrl: string) =>
+  BANNED_HERO_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
+
 const FALLBACK_FEATURED: GalleryPhoto[] = [
   {
     id: 'fb-1',
-    image_url: '/exterior-tarrytown.jpg',
-    title: 'Exterior Refresh',
+    image_url: '/hill-country-painting-austin-homepage-hero.jpg',
+    title: 'Austin Exterior Painting',
     description: 'Full exterior repaint with premium weather-resistant finish.',
     alt_text: 'Exterior house painting Tarrytown Austin by Hill Country Painting',
     display_order: 1,
@@ -41,8 +57,8 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-2',
-    image_url: '/living-room-update-central-austin.jpg',
-    title: 'Living Room Update',
+    image_url: '/hill-country-painting-austin-interior-hero.jpg',
+    title: 'Austin Interior Painting',
     description: 'Complete interior refresh with custom accent wall.',
     alt_text: 'Interior painting living room Central Austin by Hill Country Painting',
     display_order: 2,
@@ -53,8 +69,8 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-3',
-    image_url: '/custom-kitchen-painting.jpg',
-    title: 'Custom Kitchen Painting',
+    image_url: '/hill-country-painting-austin-homepage-hero.jpg',
+    title: 'Cabinet Painting Finish',
     description: 'Cabinet painting with custom color matching for a fresh modern look.',
     alt_text: 'Kitchen cabinet painting West Lake Hills Austin by Hill Country Painting',
     display_order: 3,
@@ -65,8 +81,8 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-4',
-    image_url: '/classic-home-exterior.jpg',
-    title: 'Classic Home Exterior',
+    image_url: '/hill-country-home-exterior-painting.png',
+    title: 'Hill Country Exterior Finish',
     description: 'Professional exterior with weather-resistant finishes and detailed trim work.',
     alt_text: 'Classic home exterior painting Austin by Hill Country Painting',
     display_order: 4,
@@ -77,8 +93,8 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-5',
-    image_url: '/modern-interior-design.jpg',
-    title: 'Modern Interior Design',
+    image_url: '/hill-country-painting-austin-interior-hero.jpg',
+    title: 'Modern Interior Painting',
     description: 'Complete interior painting with custom accent walls.',
     alt_text: 'Modern interior painting Austin by Hill Country Painting',
     display_order: 5,
@@ -89,8 +105,8 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-6',
-    image_url: '/traditional-home-exterior.jpg',
-    title: 'Traditional Home Exterior',
+    image_url: '/hill-country-home-exterior-painting.png',
+    title: 'Traditional Exterior Painting',
     description: 'Complete exterior painting with premium weather-resistant finishes for Texas climate.',
     alt_text: 'Traditional home exterior painting Austin by Hill Country Painting',
     display_order: 6,
@@ -148,6 +164,10 @@ const Gallery = () => {
   const olderBeforeAfter = beforeAfterPhotos.slice(6);
   const recentRegularPhotos = regularPhotos.slice(0, 12);
   const olderRegularPhotos = regularPhotos.slice(12);
+  const safeHeroFeaturedPhotos = featuredPhotos.filter(photo => !isBannedHeroImage(photo.image_url));
+  const heroFeaturedPhotos = [...safeHeroFeaturedPhotos, ...FALLBACK_FEATURED]
+    .filter((photo, index, photos) => photos.findIndex(item => item.image_url === photo.image_url && item.title === photo.title) === index)
+    .slice(0, 6);
 
   const openLightbox = (images: LightboxImage[], index: number) => {
     setLightboxImages(images);
@@ -340,11 +360,11 @@ const Gallery = () => {
                   <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-56 lg:h-64"></div>
                 ))
               ) : (
-                featuredPhotos.slice(0, 6).map((photo, index) => (
+                heroFeaturedPhotos.map((photo, index) => (
                   <div
                     key={photo.id}
                     onClick={() => {
-                      const images: LightboxImage[] = featuredPhotos.map(p => ({
+                      const images: LightboxImage[] = heroFeaturedPhotos.map(p => ({
                         src: p.image_url,
                         alt: p.alt_text,
                         title: p.title,
