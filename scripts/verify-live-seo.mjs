@@ -1006,9 +1006,21 @@ async function checkGuideFaqSchema() {
 }
 
 async function checkVisibleLocalTrustSections() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+  const serviceLocationTrustRoutes = sitemapResponse.status === 200
+    ? [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+        .map(match => routePathFromUrl(match[1]))
+        .filter(routeIsServiceLocation)
+    : [];
+
+  if (sitemapResponse.status !== 200) {
+    fail('live sitemap could not be fetched for service-location trust-section validation.');
+  }
+
+  const routes = [...new Set([...visibleLocalTrustRoutes, ...serviceLocationTrustRoutes])];
   let passed = 0;
 
-  for (const route of visibleLocalTrustRoutes) {
+  for (const route of routes) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
     const hasGoogleProfileLink =
       html.includes(`href="${googleBusinessProfileUrl}"`) ||
@@ -1026,7 +1038,7 @@ async function checkVisibleLocalTrustSections() {
     passed += 1;
   }
 
-  console.log(`Live visible local trust sections checked: ${passed}/${visibleLocalTrustRoutes.length}`);
+  console.log(`Live visible local trust sections checked: ${passed}/${routes.length}`);
 }
 
 async function checkFaqSchemaRoutes(routes, label) {

@@ -921,6 +921,10 @@ function run() {
     if (!linksToServiceArea) {
       fail(`${routePath}: service-location page should link to local service-area hub ${expectedServiceAreaRoute}`);
     }
+
+    if (!pageHasVisibleLocalTrustSection(page)) {
+      fail(`${routePath}: service-location page should include the visible NAP/map/Google Business Profile trust section`);
+    }
   }
 
   for (const [hubRoute, serviceLocationSlug] of requiredGeoHubServiceLocationSlugs) {
