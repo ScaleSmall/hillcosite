@@ -204,6 +204,14 @@ function isSpaRoute(path: string): boolean {
   return SPA_ROUTES.has(path);
 }
 
+function assetPathForPrerenderedRoute(path: string): string {
+  if (path === '/') {
+    return '/index.html';
+  }
+
+  return `${path.replace(/%/g, '%25')}/index.html`;
+}
+
 function headersForRoute(sourceHeaders: Headers, path: string): Headers {
   const headers = new Headers(sourceHeaders);
   const robots = NOINDEX_ROUTES[path];
@@ -335,7 +343,7 @@ export async function onRequest(context: {
   // deep routes. Fetch exact prerendered route files first so crawlers see
   // route-specific content, canonicals, headings, and internal links.
   if (isSpaRoute(path)) {
-    const prerenderedPath = path === '/' ? '/index.html' : `${path}/index.html`;
+    const prerenderedPath = assetPathForPrerenderedRoute(path);
     const prerenderedUrl = new URL(prerenderedPath, url.origin);
     const prerenderedRequest = new Request(prerenderedUrl.toString(), {
       method: 'GET',
