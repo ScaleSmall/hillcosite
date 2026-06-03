@@ -19,6 +19,8 @@ const aiPath = resolve(projectRoot, 'public/ai.txt');
 const entityFactsPath = resolve(projectRoot, 'public/entity-facts.json');
 const citationFactsPath = resolve(projectRoot, 'public/citation-facts.json');
 const headersPath = resolve(projectRoot, 'public/_headers');
+const redirectsPath = resolve(projectRoot, 'public/_redirects');
+const routesConfigPath = resolve(projectRoot, 'public/_routes.json');
 const baseUrl = 'https://www.hillcopaint.com';
 const canonicalPhoneHref = 'tel:+15122402246';
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
@@ -50,6 +52,16 @@ const requiredLegacyRedirects = new Map([
   ['/service/residential-foyer-painting-round-rock', '/services/interior-painting'],
   ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
   ['/service/custom-home-painting-round-rock', '/services'],
+]);
+const staticConcreteRedirects = new Map([
+  ['/service/residential-concrete-painting-round-rock/', `${baseUrl}/services/exterior-painting`],
+  ['/service/residential-concrete-painting-round-rock', `${baseUrl}/services/exterior-painting`],
+  ['/service/residential-concrete-painting/', `${baseUrl}/services/exterior-painting`],
+  ['/service/residential-concrete-painting', `${baseUrl}/services/exterior-painting`],
+  ['/residential-concrete-painting-round-rock/', `${baseUrl}/services/exterior-painting`],
+  ['/residential-concrete-painting-round-rock', `${baseUrl}/services/exterior-painting`],
+  ['/residential-concrete-painting/', `${baseUrl}/services/exterior-painting`],
+  ['/residential-concrete-painting', `${baseUrl}/services/exterior-painting`],
 ]);
 const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
 const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
@@ -233,6 +245,17 @@ function extractMiddlewareRedirects(source) {
     }));
 }
 
+function extractStaticRedirects(source) {
+  return source
+    .split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('#'))
+    .map(line => {
+      const [sourcePath, target, code] = line.split(/\s+/);
+      return { source: sourcePath, target, code };
+    });
+}
+
 function expectedCanonical(routePath) {
   return routePath === '/' ? `${baseUrl}/` : `${baseUrl}${routePath}`;
 }
@@ -412,6 +435,8 @@ function run() {
   const entityFactsText = readRequired(entityFactsPath, 'entity-facts.json');
   const citationFactsText = readRequired(citationFactsPath, 'citation-facts.json');
   const headersText = readRequired(headersPath, '_headers');
+  const redirectsText = readRequired(redirectsPath, '_redirects');
+  const routesConfigText = readRequired(routesConfigPath, '_routes.json');
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');
@@ -456,6 +481,8 @@ function run() {
   const generatedSpaRouteSet = new Set(generatedSpaRoutes);
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
   const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
+  const staticRedirects = extractStaticRedirects(redirectsText);
+  const staticRedirectMap = new Map(staticRedirects.map(redirect => [redirect.source, redirect]));
   const htmlFiles = walkFiles(distPath, filePath => filePath.endsWith('.html'));
   const cssFiles = walkFiles(distPath, filePath => filePath.endsWith('.css'));
   const pages = new Map(htmlFiles.map(filePath => [
@@ -616,6 +643,27 @@ function run() {
     if (actualTarget !== expectedTarget) {
       fail(`${legacyPath}: expected legacy redirect to ${expectedTarget}, found ${actualTarget || '(missing)'}`);
     }
+  }
+
+  try {
+    const routesConfig = JSON.parse(routesConfigText);
+    const excludedRoutes = new Set(routesConfig.exclude || []);
+
+    for (const [legacyPath, expectedTarget] of staticConcreteRedirects) {
+      const staticRedirect = staticRedirectMap.get(legacyPath);
+
+      if (!staticRedirect) {
+        fail(`${legacyPath}: missing static _redirects rule for direct concrete-painting legacy redirect`);
+      } else if (staticRedirect.target !== expectedTarget || staticRedirect.code !== '301') {
+        fail(`${legacyPath}: expected static 301 redirect to ${expectedTarget}, found ${staticRedirect.target || '(missing)'} ${staticRedirect.code || '(default)'}`);
+      }
+
+      if (!excludedRoutes.has(legacyPath)) {
+        fail(`${legacyPath}: _routes.json must exclude this legacy path so Cloudflare Pages _redirects can run before Functions`);
+      }
+    }
+  } catch (error) {
+    fail(`_routes.json is invalid JSON (${error.message})`);
   }
 
   for (const { source, target } of middlewareRedirects) {

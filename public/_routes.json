@@ -21,6 +21,14 @@
     "/*.woff2",
     "/*.ttf",
     "/*.webmanifest",
+    "/service/residential-concrete-painting-round-rock/",
+    "/service/residential-concrete-painting-round-rock",
+    "/service/residential-concrete-painting/",
+    "/service/residential-concrete-painting",
+    "/residential-concrete-painting-round-rock/",
+    "/residential-concrete-painting-round-rock",
+    "/residential-concrete-painting/",
+    "/residential-concrete-painting",
     "/functions/*",
     "/api/*"
   ]
