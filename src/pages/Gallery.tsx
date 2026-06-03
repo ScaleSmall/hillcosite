@@ -11,6 +11,7 @@ import CTABanner from '../components/sections/CTABanner';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ImageLightbox, { LightboxImage } from '../components/ImageLightbox';
 import { supabase } from '../lib/supabase';
+import { getSupabaseConfig } from '../lib/env';
 
 interface GalleryPhoto {
   id: string;
@@ -165,8 +166,10 @@ const Gallery = () => {
   useEffect(() => {
     const container = widgetContainerRef.current;
     if (!container) return;
+    const { url } = getSupabaseConfig();
+    const widgetBaseUrl = url || 'https://ndggkorglcaznukkhapz.supabase.co';
     const script = document.createElement('script');
-    script.src = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js';
+    script.src = `${widgetBaseUrl}/functions/v1/widget-gallery?format=js`;
     script.setAttribute('data-client', 'mhw1q2k4-l9c3zpvji3');
     script.async = true;
     script.onload = () => setWidgetLoaded(true);

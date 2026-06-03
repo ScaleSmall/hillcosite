@@ -14,6 +14,8 @@ const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
+const publicEnvPath = resolve(projectRoot, 'public/env.js');
+const galleryPagePath = resolve(projectRoot, 'src/pages/Gallery.tsx');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const llmsPath = resolve(projectRoot, 'public/llms.txt');
 const llmsFullPath = resolve(projectRoot, 'public/llms-full.txt');
@@ -26,6 +28,8 @@ const routesConfigPath = resolve(projectRoot, 'public/_routes.json');
 const baseUrl = 'https://www.hillcopaint.com';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
+const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
+const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
 const allowedNonSitemapLinks = new Set(['/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
@@ -539,6 +543,8 @@ function run() {
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const localSeoSource = readRequired(localSeoPath, 'src/config/localSeo.ts');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
+  const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
+  const galleryPageSource = readRequired(galleryPagePath, 'src/pages/Gallery.tsx');
   const robotsText = readRequired(robotsPath, 'robots.txt');
   const llmsText = readRequired(llmsPath, 'llms.txt');
   const llmsFullText = readRequired(llmsFullPath, 'llms-full.txt');
@@ -600,6 +606,7 @@ function run() {
   const staticRedirectMap = new Map(staticRedirects.map(redirect => [redirect.source, redirect]));
   const htmlFiles = walkFiles(distPath, filePath => filePath.endsWith('.html'));
   const cssFiles = walkFiles(distPath, filePath => filePath.endsWith('.css'));
+  const jsFiles = walkFiles(distPath, filePath => filePath.endsWith('.js'));
   const pages = new Map(htmlFiles.map(filePath => [
     routeFromHtmlFile(filePath),
     { filePath, html: readFileSync(filePath, 'utf8') }
@@ -610,6 +617,23 @@ function run() {
   const disallowRules = extractDisallowRules(robotsText);
   const sitemapTitles = new Map();
   const sitemapH1s = new Map();
+
+  if (!publicEnvSource.includes(`VITE_SUPABASE_URL: "${currentSupabaseUrl}"`)) {
+    fail(`public/env.js must point VITE_SUPABASE_URL at ${currentSupabaseUrl}`);
+  }
+
+  for (const retiredSupabaseUrl of retiredSupabaseUrls) {
+    if (galleryPageSource.includes(retiredSupabaseUrl)) {
+      fail(`src/pages/Gallery.tsx must not load retired Supabase project ${retiredSupabaseUrl}`);
+    }
+
+    for (const filePath of [...htmlFiles, ...jsFiles]) {
+      const source = readFileSync(filePath, 'utf8');
+      if (source.includes(retiredSupabaseUrl)) {
+        fail(`${relative(projectRoot, filePath)} contains retired Supabase project ${retiredSupabaseUrl}`);
+      }
+    }
+  }
 
   [
     ['/', 'Austin house painters', '/service-areas/austin'],
@@ -1168,6 +1192,7 @@ function run() {
   console.log(`HTML files checked: ${htmlFiles.length}`);
   console.log(`Sitemap URLs checked: ${sitemapPaths.length}`);
   console.log(`CSS files checked: ${cssFiles.length}`);
+  console.log(`JS files checked: ${jsFiles.length}`);
   console.log(`Warnings: ${warnings.length}`);
 
   if (warnings.length > 0) {
