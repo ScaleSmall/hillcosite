@@ -147,6 +147,9 @@ const priorityLocalSearchTopics = [
   'Austin cabinet painting',
   'Austin cabinet refinishing',
   'Austin commercial painters',
+  'house painters Austin',
+  'painting contractors Austin',
+  'Austin painting contractors',
   'Greater Austin painting contractor',
   'West Lake Hills painters',
   'Tarrytown painters',
@@ -156,6 +159,14 @@ const priorityLocalSearchTopics = [
   'Cedar Park painters',
   'Georgetown painters',
   'Leander painters'
+];
+
+const priorityServicePages = [
+  { name: 'Austin house painters', url: `${BASE_URL}/service-areas/austin` },
+  { name: 'Austin exterior house painters', url: `${BASE_URL}/exterior-painting-austin` },
+  { name: 'Austin interior painters', url: `${BASE_URL}/interior-painting-austin` },
+  { name: 'Austin cabinet painting', url: `${BASE_URL}/cabinet-refinishing-austin` },
+  { name: 'Austin commercial painters', url: `${BASE_URL}/commercial-painting-austin` }
 ];
 
 const socialProfiles = [
@@ -368,6 +379,12 @@ const entityFacts = {
     'Austin house painting',
     'Austin exterior painting',
     'Austin interior painting',
+    'Austin exterior house painters',
+    'Austin interior painters',
+    'Austin cabinet painting',
+    'Austin commercial painters',
+    'painting contractors Austin',
+    'house painters Austin',
     'Cabinet painting',
     'Cabinet refinishing',
     'Commercial painting',
@@ -376,6 +393,20 @@ const entityFacts = {
     'Central Texas repaint timing'
   ],
   priorityLocalSearchTopics,
+  priorityServicePages,
+  makesOffer: priorityServicePages.map(page => ({
+    '@type': 'Offer',
+    url: page.url,
+    itemOffered: {
+      '@type': 'Service',
+      name: page.name,
+      url: page.url,
+      provider: {
+        '@id': `${BASE_URL}/#localbusiness`
+      },
+      areaServed: serviceAreas.map(areaName => ({ '@type': 'Place', name: areaName }))
+    }
+  })),
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'Austin Painting Services',
@@ -441,6 +472,7 @@ const citationFacts = {
     },
     services: businessFacts.services,
     priorityLocalSearchTopics,
+    priorityServicePages,
     serviceAreas
   },
   sameAs: socialProfiles,

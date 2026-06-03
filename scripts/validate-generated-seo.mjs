@@ -749,6 +749,12 @@ function run() {
     if (!Array.isArray(entityFacts.priorityLocalSearchTopics) || !entityFacts.priorityLocalSearchTopics.includes('Austin house painters')) {
       fail('entity-facts.json must include priority Greater Austin local search topics');
     }
+    if (!Array.isArray(entityFacts.priorityServicePages) || !entityFacts.priorityServicePages.some(page => page?.name === 'Austin exterior house painters' && page?.url === `${baseUrl}/exterior-painting-austin`)) {
+      fail('entity-facts.json must include Austin priority service pages');
+    }
+    if (!Array.isArray(entityFacts.makesOffer) || !JSON.stringify(entityFacts.makesOffer).includes(`${baseUrl}/cabinet-refinishing-austin`)) {
+      fail('entity-facts.json must connect priority Austin service pages to LocalBusiness offers');
+    }
     if (entityFacts.hasMap !== googleBusinessProfileUrl || !Array.isArray(entityFacts.sameAs) || !entityFacts.sameAs.includes(googleBusinessProfileUrl)) {
       fail('entity-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
     }
@@ -793,6 +799,9 @@ function run() {
     }
     if (!Array.isArray(identity.priorityLocalSearchTopics) || !identity.priorityLocalSearchTopics.includes('Austin house painters')) {
       fail('citation-facts.json must include priority Greater Austin local search topics');
+    }
+    if (!Array.isArray(identity.priorityServicePages) || !identity.priorityServicePages.some(page => page?.name === 'Austin commercial painters' && page?.url === `${baseUrl}/commercial-painting-austin`)) {
+      fail('citation-facts.json must include Austin priority service pages');
     }
     if (identity.googleBusinessProfile !== googleBusinessProfileUrl || !Array.isArray(citationFacts.sameAs) || !citationFacts.sameAs.includes(googleBusinessProfileUrl)) {
       fail('citation-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
@@ -977,6 +986,10 @@ function run() {
           'subjectOf',
           'entity-facts.json',
           'citation-facts.json',
+          '/exterior-painting-austin',
+          '/interior-painting-austin',
+          '/cabinet-refinishing-austin',
+          '/commercial-painting-austin',
           '(512) 240-2246'
         ];
 

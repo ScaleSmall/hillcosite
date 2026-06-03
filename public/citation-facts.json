@@ -70,6 +70,9 @@
       "Austin cabinet painting",
       "Austin cabinet refinishing",
       "Austin commercial painters",
+      "house painters Austin",
+      "painting contractors Austin",
+      "Austin painting contractors",
       "Greater Austin painting contractor",
       "West Lake Hills painters",
       "Tarrytown painters",
@@ -79,6 +82,28 @@
       "Cedar Park painters",
       "Georgetown painters",
       "Leander painters"
+    ],
+    "priorityServicePages": [
+      {
+        "name": "Austin house painters",
+        "url": "https://www.hillcopaint.com/service-areas/austin"
+      },
+      {
+        "name": "Austin exterior house painters",
+        "url": "https://www.hillcopaint.com/exterior-painting-austin"
+      },
+      {
+        "name": "Austin interior painters",
+        "url": "https://www.hillcopaint.com/interior-painting-austin"
+      },
+      {
+        "name": "Austin cabinet painting",
+        "url": "https://www.hillcopaint.com/cabinet-refinishing-austin"
+      },
+      {
+        "name": "Austin commercial painters",
+        "url": "https://www.hillcopaint.com/commercial-painting-austin"
+      }
     ],
     "serviceAreas": [
       "Austin",

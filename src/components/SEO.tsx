@@ -166,6 +166,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     'Color consultation'
   ];
   const localBusinessServiceOffers = [
+    { name: 'Austin house painters', path: '/service-areas/austin' },
+    { name: 'Austin exterior house painters', path: '/exterior-painting-austin' },
+    { name: 'Austin interior painters', path: '/interior-painting-austin' },
+    { name: 'Austin cabinet painting', path: '/cabinet-refinishing-austin' },
+    { name: 'Austin commercial painters', path: '/commercial-painting-austin' },
     { name: 'Interior painting', path: '/services/interior-painting' },
     { name: 'Exterior painting', path: '/services/exterior-painting' },
     { name: 'Cabinet painting and refinishing', path: '/services/cabinet-refinishing' },
@@ -232,6 +237,9 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       'Austin interior painters',
       'Austin cabinet painting',
       'Austin commercial painters',
+      'Austin painting contractors',
+      'painting contractors Austin',
+      'house painters Austin',
       'Central Texas exterior paint maintenance',
       'HOA paint color approvals',
       'Cabinet refinishing',

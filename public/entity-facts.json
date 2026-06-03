@@ -149,6 +149,12 @@
     "Austin house painting",
     "Austin exterior painting",
     "Austin interior painting",
+    "Austin exterior house painters",
+    "Austin interior painters",
+    "Austin cabinet painting",
+    "Austin commercial painters",
+    "painting contractors Austin",
+    "house painters Austin",
     "Cabinet painting",
     "Cabinet refinishing",
     "Commercial painting",
@@ -163,6 +169,9 @@
     "Austin cabinet painting",
     "Austin cabinet refinishing",
     "Austin commercial painters",
+    "house painters Austin",
+    "painting contractors Austin",
+    "Austin painting contractors",
     "Greater Austin painting contractor",
     "West Lake Hills painters",
     "Tarrytown painters",
@@ -172,6 +181,540 @@
     "Cedar Park painters",
     "Georgetown painters",
     "Leander painters"
+  ],
+  "priorityServicePages": [
+    {
+      "name": "Austin house painters",
+      "url": "https://www.hillcopaint.com/service-areas/austin"
+    },
+    {
+      "name": "Austin exterior house painters",
+      "url": "https://www.hillcopaint.com/exterior-painting-austin"
+    },
+    {
+      "name": "Austin interior painters",
+      "url": "https://www.hillcopaint.com/interior-painting-austin"
+    },
+    {
+      "name": "Austin cabinet painting",
+      "url": "https://www.hillcopaint.com/cabinet-refinishing-austin"
+    },
+    {
+      "name": "Austin commercial painters",
+      "url": "https://www.hillcopaint.com/commercial-painting-austin"
+    }
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "url": "https://www.hillcopaint.com/service-areas/austin",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Austin house painters",
+        "url": "https://www.hillcopaint.com/service-areas/austin",
+        "provider": {
+          "@id": "https://www.hillcopaint.com/#localbusiness"
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "Rollingwood"
+          },
+          {
+            "@type": "Place",
+            "name": "Tarrytown"
+          },
+          {
+            "@type": "Place",
+            "name": "Northwest Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Highlands"
+          },
+          {
+            "@type": "Place",
+            "name": "Lakeway"
+          },
+          {
+            "@type": "Place",
+            "name": "Bee Cave"
+          },
+          {
+            "@type": "Place",
+            "name": "Lake Travis"
+          },
+          {
+            "@type": "Place",
+            "name": "Steiner Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Barton Creek"
+          },
+          {
+            "@type": "Place",
+            "name": "Circle C Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Pemberton Heights"
+          },
+          {
+            "@type": "Place",
+            "name": "Old West Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "Clarksville"
+          },
+          {
+            "@type": "Place",
+            "name": "Allandale"
+          },
+          {
+            "@type": "Place",
+            "name": "Crestview"
+          },
+          {
+            "@type": "Place",
+            "name": "Leander"
+          },
+          {
+            "@type": "Place",
+            "name": "Georgetown"
+          },
+          {
+            "@type": "Place",
+            "name": "Round Rock"
+          },
+          {
+            "@type": "Place",
+            "name": "Cedar Park"
+          },
+          {
+            "@type": "Place",
+            "name": "North Austin"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Offer",
+      "url": "https://www.hillcopaint.com/exterior-painting-austin",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Austin exterior house painters",
+        "url": "https://www.hillcopaint.com/exterior-painting-austin",
+        "provider": {
+          "@id": "https://www.hillcopaint.com/#localbusiness"
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "Rollingwood"
+          },
+          {
+            "@type": "Place",
+            "name": "Tarrytown"
+          },
+          {
+            "@type": "Place",
+            "name": "Northwest Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Highlands"
+          },
+          {
+            "@type": "Place",
+            "name": "Lakeway"
+          },
+          {
+            "@type": "Place",
+            "name": "Bee Cave"
+          },
+          {
+            "@type": "Place",
+            "name": "Lake Travis"
+          },
+          {
+            "@type": "Place",
+            "name": "Steiner Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Barton Creek"
+          },
+          {
+            "@type": "Place",
+            "name": "Circle C Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Pemberton Heights"
+          },
+          {
+            "@type": "Place",
+            "name": "Old West Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "Clarksville"
+          },
+          {
+            "@type": "Place",
+            "name": "Allandale"
+          },
+          {
+            "@type": "Place",
+            "name": "Crestview"
+          },
+          {
+            "@type": "Place",
+            "name": "Leander"
+          },
+          {
+            "@type": "Place",
+            "name": "Georgetown"
+          },
+          {
+            "@type": "Place",
+            "name": "Round Rock"
+          },
+          {
+            "@type": "Place",
+            "name": "Cedar Park"
+          },
+          {
+            "@type": "Place",
+            "name": "North Austin"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Offer",
+      "url": "https://www.hillcopaint.com/interior-painting-austin",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Austin interior painters",
+        "url": "https://www.hillcopaint.com/interior-painting-austin",
+        "provider": {
+          "@id": "https://www.hillcopaint.com/#localbusiness"
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "Rollingwood"
+          },
+          {
+            "@type": "Place",
+            "name": "Tarrytown"
+          },
+          {
+            "@type": "Place",
+            "name": "Northwest Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Highlands"
+          },
+          {
+            "@type": "Place",
+            "name": "Lakeway"
+          },
+          {
+            "@type": "Place",
+            "name": "Bee Cave"
+          },
+          {
+            "@type": "Place",
+            "name": "Lake Travis"
+          },
+          {
+            "@type": "Place",
+            "name": "Steiner Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Barton Creek"
+          },
+          {
+            "@type": "Place",
+            "name": "Circle C Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Pemberton Heights"
+          },
+          {
+            "@type": "Place",
+            "name": "Old West Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "Clarksville"
+          },
+          {
+            "@type": "Place",
+            "name": "Allandale"
+          },
+          {
+            "@type": "Place",
+            "name": "Crestview"
+          },
+          {
+            "@type": "Place",
+            "name": "Leander"
+          },
+          {
+            "@type": "Place",
+            "name": "Georgetown"
+          },
+          {
+            "@type": "Place",
+            "name": "Round Rock"
+          },
+          {
+            "@type": "Place",
+            "name": "Cedar Park"
+          },
+          {
+            "@type": "Place",
+            "name": "North Austin"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Offer",
+      "url": "https://www.hillcopaint.com/cabinet-refinishing-austin",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Austin cabinet painting",
+        "url": "https://www.hillcopaint.com/cabinet-refinishing-austin",
+        "provider": {
+          "@id": "https://www.hillcopaint.com/#localbusiness"
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "Rollingwood"
+          },
+          {
+            "@type": "Place",
+            "name": "Tarrytown"
+          },
+          {
+            "@type": "Place",
+            "name": "Northwest Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Highlands"
+          },
+          {
+            "@type": "Place",
+            "name": "Lakeway"
+          },
+          {
+            "@type": "Place",
+            "name": "Bee Cave"
+          },
+          {
+            "@type": "Place",
+            "name": "Lake Travis"
+          },
+          {
+            "@type": "Place",
+            "name": "Steiner Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Barton Creek"
+          },
+          {
+            "@type": "Place",
+            "name": "Circle C Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Pemberton Heights"
+          },
+          {
+            "@type": "Place",
+            "name": "Old West Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "Clarksville"
+          },
+          {
+            "@type": "Place",
+            "name": "Allandale"
+          },
+          {
+            "@type": "Place",
+            "name": "Crestview"
+          },
+          {
+            "@type": "Place",
+            "name": "Leander"
+          },
+          {
+            "@type": "Place",
+            "name": "Georgetown"
+          },
+          {
+            "@type": "Place",
+            "name": "Round Rock"
+          },
+          {
+            "@type": "Place",
+            "name": "Cedar Park"
+          },
+          {
+            "@type": "Place",
+            "name": "North Austin"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Offer",
+      "url": "https://www.hillcopaint.com/commercial-painting-austin",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Austin commercial painters",
+        "url": "https://www.hillcopaint.com/commercial-painting-austin",
+        "provider": {
+          "@id": "https://www.hillcopaint.com/#localbusiness"
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "Rollingwood"
+          },
+          {
+            "@type": "Place",
+            "name": "Tarrytown"
+          },
+          {
+            "@type": "Place",
+            "name": "Northwest Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Highlands"
+          },
+          {
+            "@type": "Place",
+            "name": "Lakeway"
+          },
+          {
+            "@type": "Place",
+            "name": "Bee Cave"
+          },
+          {
+            "@type": "Place",
+            "name": "Lake Travis"
+          },
+          {
+            "@type": "Place",
+            "name": "Steiner Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Barton Creek"
+          },
+          {
+            "@type": "Place",
+            "name": "Circle C Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Pemberton Heights"
+          },
+          {
+            "@type": "Place",
+            "name": "Old West Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "Clarksville"
+          },
+          {
+            "@type": "Place",
+            "name": "Allandale"
+          },
+          {
+            "@type": "Place",
+            "name": "Crestview"
+          },
+          {
+            "@type": "Place",
+            "name": "Leander"
+          },
+          {
+            "@type": "Place",
+            "name": "Georgetown"
+          },
+          {
+            "@type": "Place",
+            "name": "Round Rock"
+          },
+          {
+            "@type": "Place",
+            "name": "Cedar Park"
+          },
+          {
+            "@type": "Place",
+            "name": "North Austin"
+          }
+        ]
+      }
+    }
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
