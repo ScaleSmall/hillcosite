@@ -579,8 +579,10 @@ function run() {
     fail(`dist is missing at ${distPath}`);
   }
 
+  const shortRevalidationCache = 'public, max-age=60, must-revalidate';
+
   for (const aiManifestPath of ['/llms.txt', '/llms-full.txt', '/ai.txt', '/entity-facts.json', '/citation-facts.json']) {
-    const pattern = new RegExp(`${aiManifestPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+[\\s\\S]*?Cache-Control:\\s*public, max-age=300, must-revalidate`);
+    const pattern = new RegExp(`${aiManifestPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s+[\\s\\S]*?Cache-Control:\\s*${shortRevalidationCache.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`);
     if (!pattern.test(headersText)) {
       fail(`${aiManifestPath}: _headers should use short revalidation cache for AI/citation freshness`);
     }
@@ -590,7 +592,7 @@ function run() {
     }
   }
 
-  if (!middlewareSource.includes("headers.set('Cache-Control', 'public, max-age=300, must-revalidate')")) {
+  if (!middlewareSource.includes(`headers.set('Cache-Control', '${shortRevalidationCache}')`)) {
     fail('functions/_middleware.ts must enforce short revalidation cache headers for AI/citation assets');
   }
 

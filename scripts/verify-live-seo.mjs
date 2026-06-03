@@ -196,11 +196,39 @@ async function checkAustinSchema() {
   console.log(`Live Austin service schema pages checked: ${passed}/${austinServiceSignals.size}`);
 }
 
+async function checkGoogleEntityIdentifier() {
+  const { response, text: html } = await fetchText(`${baseUrl}/?v=${Date.now()}`);
+  const scripts = [];
+
+  for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      scripts.push(JSON.parse(match[1]));
+    } catch {
+      fail('/: invalid JSON-LD script');
+    }
+  }
+
+  const entitySchemas = scripts.filter(item => item?.['@id'] === `${baseUrl}/#organization` || item?.['@id'] === `${baseUrl}/#localbusiness`);
+  const schemasWithIdentifier = entitySchemas.filter(schema =>
+    schema.identifier?.propertyID === 'kgmid' &&
+    schema.identifier?.value === '/g/11frssbq6p' &&
+    schema.identifier?.url === 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p'
+  );
+
+  if (response.status !== 200 || schemasWithIdentifier.length < 2) {
+    fail('/: live Organization and LocalBusiness schema should both include the Google Knowledge Graph ID identifier.');
+    return;
+  }
+
+  console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid');
+}
+
 await checkDns();
 await checkPagesDomain();
 await checkSitemapPages();
 await checkSupabaseFeed();
 await checkAustinSchema();
+await checkGoogleEntityIdentifier();
 
 if (failures.length) {
   console.error('\nLive SEO verification FAILED:');

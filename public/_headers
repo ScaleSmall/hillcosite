@@ -30,11 +30,11 @@
 /*.avif
   Cache-Control: public, max-age=86400
 
-# HTML pages - 5 minute cache with revalidation
+# HTML pages - short cache with revalidation so SEO/schema updates propagate quickly
 /*.html
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 /
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 # MIME types for JavaScript
 /*.js
@@ -73,7 +73,7 @@
 # Sitemap and robots
 /sitemap.xml
   Content-Type: application/xml
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 /robots.txt
   Content-Type: text/plain
@@ -81,21 +81,21 @@
 
 /llms.txt
   Content-Type: text/plain
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 /llms-full.txt
   Content-Type: text/plain
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 /ai.txt
   Content-Type: text/plain
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 /entity-facts.json
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 /citation-facts.json
-  Cache-Control: public, max-age=300, must-revalidate
+  Cache-Control: public, max-age=60, must-revalidate
 
 # Vary header for proper caching with different user agents
 /*

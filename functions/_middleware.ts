@@ -357,7 +357,7 @@ async function aiManifestResponse(next: () => Promise<Response>, path: string): 
   const headers = new Headers(assetResponse.headers);
 
   headers.set('Content-Type', AI_MANIFEST_HEADERS[path]);
-  headers.set('Cache-Control', 'public, max-age=300, must-revalidate');
+  headers.set('Cache-Control', 'public, max-age=60, must-revalidate');
 
   return new Response(assetResponse.body, {
     status: assetResponse.status,
@@ -415,7 +415,7 @@ export async function onRequest(context: {
       status: 200,
       headers: {
         'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=300, must-revalidate',
+        'Cache-Control': 'public, max-age=60, must-revalidate',
       },
     });
   }
