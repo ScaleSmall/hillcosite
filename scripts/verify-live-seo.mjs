@@ -37,9 +37,13 @@ const greaterAustinServiceCounties = [
 const priorityLocalSearchTopics = [
   'Austin house painters',
   'Austin exterior house painters',
+  'Austin exterior painting',
   'Austin interior painters',
+  'Austin interior painting',
   'Austin cabinet painting',
+  'Austin cabinet painters',
   'Austin commercial painters',
+  'Austin commercial painting',
   'house painters near me Austin',
   'exterior painters near me Austin',
   'interior painters near me Austin',
