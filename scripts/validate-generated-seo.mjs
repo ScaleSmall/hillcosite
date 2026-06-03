@@ -18,6 +18,7 @@ const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts'
 const colorConsultationPath = resolve(projectRoot, 'src/pages/ColorConsultation.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
+const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
 const galleryPagePath = resolve(projectRoot, 'src/pages/Gallery.tsx');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const llmsPath = resolve(projectRoot, 'public/llms.txt');
@@ -753,6 +754,7 @@ function run() {
   const colorConsultationSource = readRequired(colorConsultationPath, 'src/pages/ColorConsultation.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
+  const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
   const galleryPageSource = readRequired(galleryPagePath, 'src/pages/Gallery.tsx');
   const robotsText = readRequired(robotsPath, 'robots.txt');
   const llmsText = readRequired(llmsPath, 'llms.txt');
@@ -947,9 +949,25 @@ function run() {
     fail(`public/env.js must point VITE_SUPABASE_URL at ${currentSupabaseUrl}`);
   }
 
+  if (!sitemapPhpSource.includes(`$supabaseUrl = '${currentSupabaseUrl}';`)) {
+    fail(`public/sitemap.php must request sitemap data from ${currentSupabaseUrl}`);
+  }
+
+  if (!middlewareSource.includes(`const CURRENT_SUPABASE_URL = '${currentSupabaseUrl}';`)) {
+    fail(`functions/_middleware.ts must point CURRENT_SUPABASE_URL at ${currentSupabaseUrl}`);
+  }
+
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {
     if (galleryPageSource.includes(retiredSupabaseUrl)) {
       fail(`src/pages/Gallery.tsx must not load retired Supabase project ${retiredSupabaseUrl}`);
+    }
+
+    if (publicEnvSource.includes(retiredSupabaseUrl)) {
+      fail(`public/env.js must not point at retired Supabase project ${retiredSupabaseUrl}`);
+    }
+
+    if (sitemapPhpSource.includes(retiredSupabaseUrl)) {
+      fail(`public/sitemap.php must not request sitemap data from retired Supabase project ${retiredSupabaseUrl}`);
     }
 
     for (const filePath of [...htmlFiles, ...jsFiles]) {
