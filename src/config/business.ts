@@ -57,7 +57,7 @@ export const businessConfig = {
   // Social & Web
   website: 'https://www.hillcopaint.com',
   logo: '/brand/hill-country-painting-logo-primary.png',
-  googleBusinessProfileUrl: 'https://share.google/nnJ8rkOVgGiwe0ys3',
+  googleBusinessProfileUrl: 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p',
 
   geo: {
     latitude: '30.3337',

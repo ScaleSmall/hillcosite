@@ -21,7 +21,7 @@ function escapeAttribute(value) {
 
 function withSelfCanonical(html, route) {
   const canonicalUrl = expectedCanonicalUrl(route);
-  const canonicalTag = `<link rel="canonical" href="${escapeAttribute(canonicalUrl)}">`;
+  const canonicalTag = `<link rel="canonical" href="${escapeAttribute(canonicalUrl)}" data-rh="true">`;
 
   const withoutCanonicals = html.replace(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>\s*/gi, '');
   return withoutCanonicals.replace(/<\/head>/i, `${canonicalTag}\n</head>`);
@@ -40,21 +40,26 @@ async function waitForHeadReady(page, route, requireIndexableHead) {
 
   await wait(500);
 
+  const canonicalUrl = expectedCanonicalUrl(route);
+
+  await page.waitForFunction((expectedCanonical) => {
+    const canonicalTags = Array.from(document.querySelectorAll('link[rel="canonical"]'));
+    const canonical = canonicalTags[0]?.href || '';
+    const description = document.querySelector('meta[name="description"]')?.content || '';
+    const title = document.title || '';
+
+    if (canonicalTags.length !== 1 || canonical !== expectedCanonical || description.trim().length < 50 || title.trim().length < 10) {
+      return false;
+    }
+
+    return true;
+  }, { timeout: 15000 }, canonicalUrl);
+
   if (route !== '/') {
     return;
   }
 
-  const canonicalUrl = expectedCanonicalUrl(route);
-
-  await page.waitForFunction((expectedCanonical) => {
-    const canonical = document.querySelector('link[rel="canonical"]')?.href || '';
-    const description = document.querySelector('meta[name="description"]')?.content || '';
-    const title = document.title || '';
-
-    if (canonical !== expectedCanonical || description.trim().length < 50 || title.trim().length < 10) {
-      return false;
-    }
-
+  await page.waitForFunction(() => {
     const jsonLdText = Array.from(document.querySelectorAll('script[type="application/ld+json"]'))
       .map(script => script.textContent || '')
       .join('\n');

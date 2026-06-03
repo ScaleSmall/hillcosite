@@ -227,6 +227,11 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     })),
     knowsAbout: [
       'Austin house painting',
+      'Austin house painters',
+      'Austin exterior house painters',
+      'Austin interior painters',
+      'Austin cabinet painting',
+      'Austin commercial painters',
       'Central Texas exterior paint maintenance',
       'HOA paint color approvals',
       'Cabinet refinishing',

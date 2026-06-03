@@ -24,6 +24,7 @@ const headersPath = resolve(projectRoot, 'public/_headers');
 const redirectsPath = resolve(projectRoot, 'public/_redirects');
 const routesConfigPath = resolve(projectRoot, 'public/_routes.json');
 const baseUrl = 'https://www.hillcopaint.com';
+const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
@@ -679,6 +680,9 @@ function run() {
     if (!Array.isArray(entityFacts.priorityLocalSearchTopics) || !entityFacts.priorityLocalSearchTopics.includes('Austin house painters')) {
       fail('entity-facts.json must include priority Greater Austin local search topics');
     }
+    if (entityFacts.hasMap !== googleBusinessProfileUrl || !Array.isArray(entityFacts.sameAs) || !entityFacts.sameAs.includes(googleBusinessProfileUrl)) {
+      fail('entity-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
+    }
   } catch (error) {
     fail(`entity-facts.json is invalid JSON (${error.message})`);
   }
@@ -720,6 +724,9 @@ function run() {
     }
     if (!Array.isArray(identity.priorityLocalSearchTopics) || !identity.priorityLocalSearchTopics.includes('Austin house painters')) {
       fail('citation-facts.json must include priority Greater Austin local search topics');
+    }
+    if (identity.googleBusinessProfile !== googleBusinessProfileUrl || !Array.isArray(citationFacts.sameAs) || !citationFacts.sameAs.includes(googleBusinessProfileUrl)) {
+      fail('citation-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
     }
   } catch (error) {
     fail(`citation-facts.json is invalid JSON (${error.message})`);
@@ -907,6 +914,28 @@ function run() {
         for (const signal of requiredHomepageEntitySignals) {
           if (!html.includes(signal)) {
             fail(`${routePath}: homepage is missing required entity signal ${signal}`);
+          }
+        }
+      }
+
+      if (routePath === '/contact') {
+        const requiredContactEntitySignals = [
+          '#localbusiness',
+          '#organization',
+          'hasMap',
+          'sameAs',
+          'serviceArea',
+          'entity-facts.json',
+          'citation-facts.json',
+          googleBusinessProfileUrl,
+          'kgmid=/g/11frssbq6p',
+          '(512) 240-2246',
+          'Greater Austin Area'
+        ];
+
+        for (const signal of requiredContactEntitySignals) {
+          if (!html.includes(signal)) {
+            fail(`${routePath}: contact page is missing required business identity signal ${signal}`);
           }
         }
       }

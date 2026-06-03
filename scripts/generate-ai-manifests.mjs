@@ -31,7 +31,7 @@ const businessFacts = {
   phoneHref: 'tel:+15122402246',
   email: 'info@hillcopaint.com',
   website: BASE_URL,
-  googleBusinessProfile: 'https://share.google/nnJ8rkOVgGiwe0ys3',
+  googleBusinessProfile: 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p',
   primaryServiceArea: 'Austin, TX and the Greater Austin area',
   contactPoint: {
     '@type': 'ContactPoint',

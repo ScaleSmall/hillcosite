@@ -6,6 +6,7 @@ import StatsAndTrust from '../components/sections/StatsAndTrust';
 import GoogleMapEmbed from '../components/GoogleMapEmbed';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { useFocusTrap } from '../hooks/useFocusTrap';
+import { businessConfig } from '../config/business';
 
 const Contact = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
@@ -210,6 +211,7 @@ const Contact = () => {
         title="Contact — Hill Country Painting"
         description="Consultations available for interior, exterior, cabinet painting in Austin. Call (512) 240-2246 or request online. Responsive communication. Insured crew."
         canonical="/contact"
+        includeLocalBusiness={true}
         breadcrumbs={[
           { name: 'Home', url: '/' },
           { name: 'Contact', url: '/contact' }
@@ -737,6 +739,14 @@ const Contact = () => {
                   <h3 className="font-semibold text-brand-gray-900">Service Area</h3>
                   <p className="text-brand-gray-700">Greater Austin Area</p>
                   <p className="text-sm text-brand-gray-600">Tarrytown, West Lake Hills, Northwest Hills & more</p>
+                  <a
+                    href={businessConfig.googleBusinessProfileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex mt-2 text-sm text-brand-azureDark hover:text-brand-azure font-medium transition-colors"
+                  >
+                    View Hill Country Painting on Google
+                  </a>
                 </div>
               </div>
             </div>
