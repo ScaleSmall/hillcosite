@@ -41,6 +41,11 @@ const stripMarkdown = (value: string) =>
     .replace(/\[(.*?)\]\((.*?)\)/g, '$1')
     .trim();
 
+const normalizeArticleContent = (value: string) =>
+  value
+    .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
+    .replace(/<\/h1>/gi, '</h2>');
+
 const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
   const excerpt = stripMarkdown(post.excerpt || post.title);
 
@@ -171,7 +176,7 @@ const BlogPost = () => {
 
   const generateStructuredData = () => {
     const baseUrl = 'https://www.hillcopaint.com';
-    const plainText = post.content.replace(/<[^>]*>/g, '').trim();
+    const plainText = normalizeArticleContent(post.content).replace(/<[^>]*>/g, '').trim();
     const wordCount = plainText.split(/\s+/).length;
 
     return {
@@ -304,6 +309,7 @@ const BlogPost = () => {
       description: 'Professional painting for offices, retail spaces, and commercial properties.'
     }
   ];
+  const articleContent = normalizeArticleContent(post.content);
 
   return (
     <>
@@ -410,7 +416,7 @@ const BlogPost = () => {
               prose-blockquote:border-l-4 prose-blockquote:border-brand-azure prose-blockquote:pl-6 prose-blockquote:py-3 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:text-brand-gray-600 prose-blockquote:bg-brand-gray-50 prose-blockquote:rounded-r
               prose-img:rounded-xl prose-img:shadow-lg prose-img:my-8
               first:prose-p:text-xl first:prose-p:font-medium first:prose-p:text-brand-gray-900 first:prose-p:mb-6"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: articleContent }}
           />
         </div>
       </article>
