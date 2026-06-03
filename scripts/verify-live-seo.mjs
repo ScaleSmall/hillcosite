@@ -81,6 +81,28 @@ const bannedHeroBackgroundImages = [
   'modern-interior-design.jpg',
   'traditional-home-exterior.jpg',
 ];
+const liveLegacyRedirects = [
+  ['/service/residential-concrete-painting-round-rock', '/services/exterior-painting'],
+  ['/service/residential-concrete-painting-round-rock/', '/services/exterior-painting'],
+  ['/service/residential-concrete-painting', '/services/exterior-painting'],
+  ['/residential-concrete-painting-round-rock', '/services/exterior-painting'],
+  ['/residential-concrete-painting', '/services/exterior-painting'],
+  ['/service/mobile-home-painting', '/services'],
+  ['/service/garage-painting', '/services'],
+  ['/service/townhouse-painting-round-rock', '/services'],
+  ['/cabinet-refinishing', '/services/cabinet-refinishing'],
+  ['/cabinet-refinishing-pflugerville', '/services/cabinet-refinishing'],
+  ['/round-rock', '/service-areas/round-rock'],
+  ['/round-rock-2', '/service-areas/round-rock'],
+  ['/austin', '/service-areas/austin'],
+  ['/service-area', '/service-areas'],
+  ['/project', '/gallery'],
+  ['/projects', '/gallery'],
+  ['/commercial-tarrytown', '/commercial-painting-tarrytown'],
+  ['/blog/when-to-repaint-a-home-in-austin-hill-country-painting', '/blog'],
+  ['/guides/painting-costs-round-rock', '/guides/painting-costs-austin'],
+  ['/areas/downtown-austin-luxury/old-west-austin', '/areas/downtown-austin-luxury/old-west-austin-central'],
+];
 
 const failures = [];
 
@@ -142,6 +164,17 @@ function routePathFromUrl(url) {
   const path = parsed.pathname.replace(/\/+$/, '');
 
   return path || '/';
+}
+
+function normalizeRedirectLocation(location) {
+  if (!location) {
+    return { host: '', route: '' };
+  }
+
+  const parsed = new URL(location, baseUrl);
+  const route = parsed.pathname.replace(/\/+$/, '') || '/';
+
+  return { host: parsed.host, route };
 }
 
 function normalizeInternalRoute(href) {
@@ -380,6 +413,31 @@ async function checkSupabaseFeed() {
   }
 }
 
+async function checkLegacyRedirects() {
+  let passed = 0;
+
+  for (const [source, target] of liveLegacyRedirects) {
+    const response = await fetch(`${baseUrl}${source}?v=${Date.now()}`, {
+      redirect: 'manual',
+      headers: {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache',
+      },
+    });
+    const location = response.headers.get('location') || '';
+    const normalized = normalizeRedirectLocation(location);
+
+    if (response.status !== 301 || normalized.host !== 'www.hillcopaint.com' || normalized.route !== target) {
+      fail(`${source}: expected live 301 redirect to ${target}, found status ${response.status} location ${location || '(missing)'}`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live legacy redirects checked: ${passed}/${liveLegacyRedirects.length}`);
+}
+
 async function checkAustinSchema() {
   let passed = 0;
 
@@ -521,6 +579,7 @@ async function checkGoogleEntityIdentifier() {
 await checkDns();
 await checkPagesDomain();
 await checkSitemapPages();
+await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
 await checkPriorityLocalBusinessSchema();
