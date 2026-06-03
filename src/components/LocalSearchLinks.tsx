@@ -22,6 +22,12 @@ const linkGroups = {
       { label: 'Austin interior painters', href: '/services/interior-painting' },
       { label: 'Austin cabinet painting', href: '/services/cabinet-refinishing' },
       { label: 'Austin commercial painters', href: '/services/commercial' }
+    ],
+    directAustinLinks: [
+      { label: 'Austin exterior house painters', href: '/exterior-painting-austin' },
+      { label: 'Austin interior painters', href: '/interior-painting-austin' },
+      { label: 'Austin cabinet painting', href: '/cabinet-refinishing-austin' },
+      { label: 'Austin commercial painters', href: '/commercial-painting-austin' }
     ]
   },
   services: {
@@ -35,6 +41,12 @@ const linkGroups = {
       { label: 'Austin house painters', href: '/service-areas/austin' },
       { label: 'painting contractors Austin', href: '/services' },
       { label: 'house painters Austin', href: '/service-areas/austin' }
+    ],
+    directAustinLinks: [
+      { label: 'Austin exterior house painters', href: '/exterior-painting-austin' },
+      { label: 'Austin interior painters', href: '/interior-painting-austin' },
+      { label: 'Austin cabinet painting', href: '/cabinet-refinishing-austin' },
+      { label: 'Austin commercial painters', href: '/commercial-painting-austin' }
     ]
   },
   areas: {
@@ -90,6 +102,26 @@ const LocalSearchLinks: React.FC<LocalSearchLinksProps> = ({
             </Link>
           ))}
         </div>
+
+        {'directAustinLinks' in group && (
+          <div className="mt-8 rounded-lg border border-brand-gray-200 bg-brand-gray-50 p-5">
+            <h3 className="text-lg font-semibold text-brand-gray-900 mb-4">
+              Austin Service Pages
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {group.directAustinLinks.map((link) => (
+                <Link
+                  key={link.href + link.label}
+                  to={link.href}
+                  className="flex items-center justify-between gap-3 rounded-lg border border-brand-gray-200 bg-white px-4 py-3 text-sm font-semibold text-brand-gray-800 hover:border-brand-azure hover:text-brand-azureDark transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
+                >
+                  <span>{link.label}</span>
+                  <ArrowRight className="w-4 h-4 text-brand-azureDark flex-shrink-0" aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
