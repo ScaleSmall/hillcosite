@@ -7,6 +7,7 @@ import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const WestLakeHighlands = () => {
   const localFAQs = [
@@ -255,6 +256,7 @@ const WestLakeHighlands = () => {
       <StatsAndTrust />
       <ServicesGrid />
       <LocalServiceLinks locationName="West Lake Highlands" locationSlug="west-lake-highlands" />
+      <NAPMapSection />
       <CTABanner />
     </>
   );

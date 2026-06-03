@@ -10,6 +10,7 @@ import ServiceAreasSection from '../../components/sections/ServiceAreasSection';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 import { geoAreas } from '../../data/geoAreas';
 
 const Austin = () => {
@@ -328,6 +329,8 @@ const Austin = () => {
         title="Austin Painting Questions"
         faqs={austinSpecificFAQs}
       />
+
+      <NAPMapSection />
 
       <CTABanner
         title="Ready to Transform Your Austin Home?"

@@ -88,6 +88,7 @@ const serviceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills',
 ];
+const visibleLocalTrustRoutes = ['/service-areas', ...serviceAreaFaqSchemaRoutes];
 const guideFaqSchemaRoutes = [
   '/guides/best-paint-texas-heat',
   '/guides/hoa-color-tips-austin',
@@ -1004,6 +1005,30 @@ async function checkGuideFaqSchema() {
   console.log(`Live guide FAQ schema pages checked: ${passed}/${guideFaqSchemaRoutes.length}`);
 }
 
+async function checkVisibleLocalTrustSections() {
+  let passed = 0;
+
+  for (const route of visibleLocalTrustRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const hasGoogleProfileLink =
+      html.includes(`href="${googleBusinessProfileUrl}"`) ||
+      html.includes(`href="${googleBusinessProfileUrl.replace(/&/g, '&amp;')}"`);
+    const hasCanonicalPhoneLink = html.includes(`href="${canonicalPhoneHref}"`);
+    const hasMapSignal = html.includes('Hill Country Painting - Service Area Map');
+    const hasVisibleGbpText = html.includes('View Hill Country Painting on Google');
+    const hasServiceAreaText = html.includes('Serving Austin, TX and the Greater Austin area');
+
+    if (response.status !== 200 || !hasGoogleProfileLink || !hasCanonicalPhoneLink || !hasMapSignal || !hasVisibleGbpText || !hasServiceAreaText) {
+      fail(`${route}: live page is missing the visible NAP/map/Google Business Profile trust section.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live visible local trust sections checked: ${passed}/${visibleLocalTrustRoutes.length}`);
+}
+
 async function checkFaqSchemaRoutes(routes, label) {
   let passed = 0;
 
@@ -1140,6 +1165,7 @@ await checkHubItemListSchema();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
 await checkGuideFaqSchema();
+await checkVisibleLocalTrustSections();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
 await checkContactPageSchema();

@@ -769,6 +769,21 @@ function pageLinksToRoute(page, sourceRoute, expectedRoute) {
     .some(match => normalizeRoutePath(match[1].trim(), sourceRoute) === expectedRoute);
 }
 
+function pageLinksToHref(page, expectedHref) {
+  return [...page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
+    .some(match => match[1].trim().replace(/&amp;/g, '&') === expectedHref);
+}
+
+function pageHasVisibleLocalTrustSection(page) {
+  return (
+    pageLinksToHref(page, googleBusinessProfileUrl) &&
+    pageLinksToHref(page, canonicalPhoneHref) &&
+    page.html.includes('View Hill Country Painting on Google') &&
+    page.html.includes('Hill Country Painting - Service Area Map') &&
+    page.html.includes('Serving Austin, TX and the Greater Austin area')
+  );
+}
+
 function run() {
   console.log('\n=== Generated SEO Validation ===\n');
 
@@ -947,6 +962,17 @@ function run() {
         fail(`${serviceAreaRoute}: service-area page should link to local service page ${expectedRoute}`);
       }
     }
+
+    if (!pageHasVisibleLocalTrustSection(page)) {
+      fail(`${serviceAreaRoute}: service-area page should include the visible NAP/map/Google Business Profile trust section`);
+    }
+  }
+
+  const serviceAreasHubPage = pages.get('/service-areas');
+  if (!serviceAreasHubPage) {
+    fail('/service-areas: missing generated HTML for visible local trust validation');
+  } else if (!pageHasVisibleLocalTrustSection(serviceAreasHubPage)) {
+    fail('/service-areas: service-area hub should include the visible NAP/map/Google Business Profile trust section');
   }
 
   for (const serviceAreaRoute of requiredServiceAreaFaqSchemaRoutes) {

@@ -7,6 +7,7 @@ import StatsAndTrust from '../../components/sections/StatsAndTrust';
 import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const Tarrytown = () => {
   const localFAQs = [
@@ -261,6 +262,7 @@ const Tarrytown = () => {
       <StatsAndTrust />
       <ServicesGrid />
       <LocalServiceLinks locationName="Tarrytown" locationSlug="tarrytown" />
+      <NAPMapSection />
       <CTABanner />
     </>
   );

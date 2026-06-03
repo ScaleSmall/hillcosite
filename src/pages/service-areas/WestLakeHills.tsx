@@ -9,6 +9,7 @@ import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
+import NAPMapSection from '../../components/NAPMapSection';
 
 const WestLakeHills = () => {
   const westLakeHillsFAQs = [
@@ -206,6 +207,7 @@ const WestLakeHills = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <NAPMapSection />
       <CTABanner />
     </>
   );

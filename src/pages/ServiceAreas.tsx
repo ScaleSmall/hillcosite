@@ -8,6 +8,7 @@ import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
 import { geoAreas } from '../data/geoAreas';
 import LocalSearchLinks from '../components/LocalSearchLinks';
+import NAPMapSection from '../components/NAPMapSection';
 
 const ServiceAreas = () => {
   const baseUrl = 'https://www.hillcopaint.com';
@@ -273,6 +274,8 @@ const ServiceAreas = () => {
           }
         ]}
       />
+
+      <NAPMapSection />
 
       {/* Pattern I: CTA Banner */}
       <CTABanner
