@@ -254,6 +254,32 @@ const canonicalHostRoutes = [
   'https://www.hillcopaint.com/',
   'https://hillcopaint.com/sitemap.xml',
 ];
+const googleCrawlerUserAgents = [
+  {
+    label: 'Googlebot smartphone',
+    userAgent: 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  },
+  {
+    label: 'Google InspectionTool',
+    userAgent: 'Mozilla/5.0 (compatible; Google-InspectionTool/1.0; +http://www.google.com/bot.html)',
+  },
+];
+const googleCrawlerAccessRoutes = [
+  '/',
+  '/services',
+  '/service-areas/austin',
+  '/exterior-painting-austin',
+  '/interior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
+  '/services/exterior-painting',
+  '/services/interior-painting',
+  '/services/cabinet-refinishing',
+  '/services/commercial',
+  '/gallery',
+  '/testimonials',
+  '/contact',
+];
 
 const failures = [];
 
@@ -271,11 +297,12 @@ function attrs(tag) {
   return result;
 }
 
-async function fetchText(url) {
+async function fetchText(url, headers = {}) {
   const response = await fetch(url, {
     headers: {
       'Cache-Control': 'no-cache',
       Pragma: 'no-cache',
+      ...headers,
     },
   });
   return {
@@ -564,6 +591,64 @@ async function checkCanonicalHostRoutes() {
   }
 
   console.log(`Live canonical host routes checked: ${passed}/${canonicalHostRoutes.length}`);
+}
+
+async function checkGoogleCrawlerAccess() {
+  let passed = 0;
+  const challengePattern = /Attention Required|Just a moment|Checking your browser|cf-browser-verification|cf-chl-widget|Access denied/i;
+
+  for (const { label, userAgent } of googleCrawlerUserAgents) {
+    const assetChecks = [
+      { route: '/robots.txt', requiredText: `Sitemap: ${baseUrl}/sitemap.xml` },
+      { route: '/sitemap.xml', requiredText: `<loc>${baseUrl}/` },
+    ];
+
+    for (const { route, requiredText } of assetChecks) {
+      const { response, text } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`, {
+        'User-Agent': userAgent,
+      });
+
+      if (response.status !== 200 || !text.includes(requiredText) || challengePattern.test(text)) {
+        fail(`${route}: ${label} must receive a clean live crawler asset response; found status ${response.status}, required text ${text.includes(requiredText)}, challenge ${challengePattern.test(text)}`);
+        continue;
+      }
+
+      passed += 1;
+    }
+
+    for (const route of googleCrawlerAccessRoutes) {
+      const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`, {
+        'User-Agent': userAgent,
+      });
+      const canonicalTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
+      const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+      const robotsTags = [...html.matchAll(/<meta\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).name || '').toLowerCase() === 'robots');
+      const robotsContent = robotsTags.map(tag => attrs(tag).content || '').join(' ');
+      const expectedCanonical = route === '/' ? `${baseUrl}/` : `${baseUrl}${route}`;
+      const hasExpectedCanonical = canonicalHrefs.length === 1 && canonicalHrefs[0] === expectedCanonical;
+      const isIndexable = /index,\s*follow/i.test(robotsContent) && !/noindex/i.test(robotsContent);
+      const hasChallenge = challengePattern.test(html);
+
+      if (
+        response.status !== 200 ||
+        !hasExpectedCanonical ||
+        robotsTags.length !== 1 ||
+        !isIndexable ||
+        hasChallenge
+      ) {
+        fail(`${route}: ${label} must see clean indexable HTML; found status ${response.status}, canonical ${canonicalHrefs.join(', ') || '(none)'}, robots ${robotsContent || '(missing)'}, challenge ${hasChallenge}`);
+        continue;
+      }
+
+      passed += 1;
+    }
+  }
+
+  console.log(`Live Google crawler access checked: ${passed}/${googleCrawlerUserAgents.length * (googleCrawlerAccessRoutes.length + 2)}`);
 }
 
 async function checkSitemapPages() {
@@ -1599,6 +1684,7 @@ if (pageIndexingMode) {
 }
 
 await checkCanonicalHostRoutes();
+await checkGoogleCrawlerAccess();
 await checkSitemapPages();
 await checkSitemapTrailingSlashRedirects();
 await checkCrawlerEntityAssets();
