@@ -92,11 +92,9 @@
   Cache-Control: public, max-age=300, must-revalidate
 
 /entity-facts.json
-  Content-Type: application/json
   Cache-Control: public, max-age=300, must-revalidate
 
 /citation-facts.json
-  Content-Type: application/json
   Cache-Control: public, max-age=300, must-revalidate
 
 # Vary header for proper caching with different user agents
