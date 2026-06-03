@@ -182,6 +182,8 @@ function redirect(location: string, origin: string): Response {
 //    These routes are allowed to resolve to static prerendered HTML.
 // ---------------------------------------------------------------------------
 const SPA_ROUTES: Set<string> = new Set(generatedSpaRoutes);
+const CURRENT_SUPABASE_URL = 'https://ndggkorglcaznukkhapz.supabase.co';
+const RETIRED_SUPABASE_URLS = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
 
 const NOINDEX_ROUTES: Record<string, string> = {
   '/privacy': 'noindex, follow',
@@ -240,6 +242,19 @@ function headersForRoute(sourceHeaders: Headers, path: string): Headers {
   }
 
   return headers;
+}
+
+async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
+  let html = await response.text();
+
+  for (const retiredUrl of RETIRED_SUPABASE_URLS) {
+    html = html.replaceAll(retiredUrl, CURRENT_SUPABASE_URL);
+  }
+
+  return new Response(html, {
+    status: 200,
+    headers: headersForRoute(response.headers, path),
+  });
 }
 
 const AI_MANIFEST_HEADERS: Record<string, string> = {
@@ -376,10 +391,7 @@ export async function onRequest(context: {
     const prerenderedResponse = await env.ASSETS.fetch(prerenderedRequest);
 
     if (prerenderedResponse.status >= 200 && prerenderedResponse.status < 300) {
-      return new Response(prerenderedResponse.body, {
-        status: 200,
-        headers: headersForRoute(prerenderedResponse.headers, path),
-      });
+      return htmlResponseForRoute(prerenderedResponse, path);
     }
 
     // A generated route without matching prerendered HTML is safer as a hard
