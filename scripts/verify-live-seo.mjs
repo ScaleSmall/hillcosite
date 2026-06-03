@@ -157,6 +157,7 @@ const liveLegacyRedirects = [
   ['/projects', '/gallery'],
   ['/commercial-tarrytown', '/commercial-painting-tarrytown'],
   ['/blog/when-to-repaint-a-home-in-austin-hill-country-painting', '/blog'],
+  ['/blog/how-to-determine-the-best-austin-exterior-house-painters', '/blog/how-to-deterimine-the-best-austin-exterior-house-painters'],
   ['/guides/painting-costs-round-rock', '/guides/painting-costs-austin'],
   ['/areas/downtown-austin-luxury/old-west-austin', '/areas/downtown-austin-luxury/old-west-austin-central'],
   ['/service/definitely-not-a-real-painting-service-gsc-test', '/services'],
