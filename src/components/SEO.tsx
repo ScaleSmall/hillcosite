@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { businessConfig } from '../config/business';
-import { greaterAustinServiceAreas } from '../config/localSeo';
+import {
+  greaterAustinServiceAreas,
+  greaterAustinServiceCounties,
+  priorityLocalSearchTopics
+} from '../config/localSeo';
 import { useRefParamGuard } from '../hooks/useRefParamGuard';
 
 interface SEOProps {
@@ -234,6 +238,17 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   };
 
   const localBusinessAreas = greaterAustinServiceAreas;
+  const localBusinessCounties = greaterAustinServiceCounties;
+  const localBusinessAreaServed = [
+    ...localBusinessAreas.map(area => ({
+      '@type': 'Place',
+      name: area
+    })),
+    ...localBusinessCounties.map(county => ({
+      '@type': 'AdministrativeArea',
+      name: county
+    }))
+  ];
 
   const localBusinessServices = [
     'Interior painting',
@@ -284,10 +299,16 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     telephone: businessConfig.phone,
     email: businessConfig.email,
     contactPoint,
-    serviceArea: {
-      '@type': 'AdministrativeArea',
-      name: 'Greater Austin Area'
-    },
+    serviceArea: [
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Greater Austin Area'
+      },
+      ...localBusinessCounties.map(county => ({
+        '@type': 'AdministrativeArea',
+        name: county
+      }))
+    ],
     image: defaultSocialImage,
     priceRange: '$$',
     paymentAccepted: businessConfig.payment.methods,
@@ -304,11 +325,9 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       latitude: parseFloat(businessConfig.geo.latitude),
       longitude: parseFloat(businessConfig.geo.longitude)
     },
-    areaServed: localBusinessAreas.map(area => ({
-      '@type': 'Place',
-      name: area
-    })),
+    areaServed: localBusinessAreaServed,
     knowsAbout: [
+      ...priorityLocalSearchTopics,
       'Austin house painting',
       'Austin house painters',
       'Austin exterior house painters',
@@ -350,10 +369,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         provider: {
           '@id': `${baseUrl}/#localbusiness`
         },
-        areaServed: localBusinessAreas.map(area => ({
-          '@type': 'Place',
-          name: area
-        }))
+        areaServed: localBusinessAreaServed
       }
     })),
     hasOfferCatalog: {
@@ -367,10 +383,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
           provider: {
             '@id': `${baseUrl}/#localbusiness`
           },
-          areaServed: localBusinessAreas.map(area => ({
-            '@type': 'Place',
-            name: area
-          }))
+          areaServed: localBusinessAreaServed
         }
       }))
     },

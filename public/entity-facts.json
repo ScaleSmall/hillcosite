@@ -40,6 +40,24 @@
     "addressRegion": "TX",
     "addressCountry": "US"
   },
+  "serviceArea": [
+    {
+      "@type": "AdministrativeArea",
+      "name": "Greater Austin Area"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Travis County"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Williamson County"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Hays County"
+    }
+  ],
   "areaServed": [
     {
       "@type": "Place",
@@ -128,6 +146,18 @@
     {
       "@type": "Place",
       "name": "North Austin"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Travis County"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Williamson County"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Hays County"
     }
   ],
   "openingHours": "Mo-Fr 08:00-18:00",
@@ -153,15 +183,32 @@
   ],
   "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
   "knowsAbout": [
-    "Austin house painting",
-    "Austin exterior painting",
-    "Austin interior painting",
+    "Austin house painters",
     "Austin exterior house painters",
     "Austin interior painters",
     "Austin cabinet painting",
+    "Austin cabinet refinishing",
     "Austin commercial painters",
-    "painting contractors Austin",
     "house painters Austin",
+    "painting contractors Austin",
+    "Austin painting contractors",
+    "house painters near me Austin",
+    "exterior painters near me Austin",
+    "interior painters near me Austin",
+    "cabinet painters near me Austin",
+    "commercial painters near me Austin",
+    "Greater Austin painting contractor",
+    "West Lake Hills painters",
+    "Tarrytown painters",
+    "Lakeway painters",
+    "Bee Cave painters",
+    "Round Rock painters",
+    "Cedar Park painters",
+    "Georgetown painters",
+    "Leander painters",
+    "Austin house painting",
+    "Austin exterior painting",
+    "Austin interior painting",
     "Cabinet painting",
     "Cabinet refinishing",
     "Commercial painting",
@@ -179,6 +226,11 @@
     "house painters Austin",
     "painting contractors Austin",
     "Austin painting contractors",
+    "house painters near me Austin",
+    "exterior painters near me Austin",
+    "interior painters near me Austin",
+    "cabinet painters near me Austin",
+    "commercial painters near me Austin",
     "Greater Austin painting contractor",
     "West Lake Hills painters",
     "Tarrytown painters",
@@ -310,6 +362,18 @@
           {
             "@type": "Place",
             "name": "North Austin"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Travis County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Williamson County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Hays County"
           }
         ]
       }
@@ -412,6 +476,18 @@
           {
             "@type": "Place",
             "name": "North Austin"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Travis County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Williamson County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Hays County"
           }
         ]
       }
@@ -514,6 +590,18 @@
           {
             "@type": "Place",
             "name": "North Austin"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Travis County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Williamson County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Hays County"
           }
         ]
       }
@@ -616,6 +704,18 @@
           {
             "@type": "Place",
             "name": "North Austin"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Travis County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Williamson County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Hays County"
           }
         ]
       }
@@ -718,6 +818,18 @@
           {
             "@type": "Place",
             "name": "North Austin"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Travis County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Williamson County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Hays County"
           }
         ]
       }
@@ -823,6 +935,18 @@
             {
               "@type": "Place",
               "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
             }
           ]
         }
@@ -923,6 +1047,18 @@
             {
               "@type": "Place",
               "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
             }
           ]
         }
@@ -1023,6 +1159,18 @@
             {
               "@type": "Place",
               "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
             }
           ]
         }
@@ -1123,6 +1271,18 @@
             {
               "@type": "Place",
               "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
             }
           ]
         }
@@ -1223,6 +1383,18 @@
             {
               "@type": "Place",
               "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
             }
           ]
         }

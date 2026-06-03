@@ -74,6 +74,11 @@
       "house painters Austin",
       "painting contractors Austin",
       "Austin painting contractors",
+      "house painters near me Austin",
+      "exterior painters near me Austin",
+      "interior painters near me Austin",
+      "cabinet painters near me Austin",
+      "commercial painters near me Austin",
       "Greater Austin painting contractor",
       "West Lake Hills painters",
       "Tarrytown painters",
@@ -129,6 +134,11 @@
       "Round Rock",
       "Cedar Park",
       "North Austin"
+    ],
+    "serviceCounties": [
+      "Travis County",
+      "Williamson County",
+      "Hays County"
     ]
   },
   "sameAs": [

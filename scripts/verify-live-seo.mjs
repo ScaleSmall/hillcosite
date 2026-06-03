@@ -9,6 +9,23 @@ const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
+const greaterAustinServiceCounties = [
+  'Travis County',
+  'Williamson County',
+  'Hays County',
+];
+const priorityLocalSearchTopics = [
+  'Austin house painters',
+  'Austin exterior house painters',
+  'Austin interior painters',
+  'Austin cabinet painting',
+  'Austin commercial painters',
+  'house painters near me Austin',
+  'exterior painters near me Austin',
+  'interior painters near me Austin',
+  'cabinet painters near me Austin',
+  'commercial painters near me Austin',
+];
 const austinServiceSignals = new Map([
   ['/exterior-painting-austin', 'Austin exterior house painters'],
   ['/interior-painting-austin', 'Austin interior painters'],
@@ -97,6 +114,14 @@ async function fetchText(url) {
 function schemaTypeIncludes(item, typeName) {
   const schemaType = item?.['@type'];
   return Array.isArray(schemaType) ? schemaType.includes(typeName) : schemaType === typeName;
+}
+
+function asArray(value) {
+  if (value === null || value === undefined) {
+    return [];
+  }
+
+  return Array.isArray(value) ? value : [value];
 }
 
 function firstHeroSectionHtml(html) {
@@ -411,9 +436,17 @@ async function checkPriorityLocalBusinessSchema() {
       identifier?.value === googleKnowledgeGraphId &&
       identifier?.url === googleBusinessProfileUrl;
     const hasCanonicalPhone = String(localBusinessSchema.telephone || '').includes('(512) 240-2246');
+    const localBusinessAreaNames = asArray(localBusinessSchema.areaServed).map(area => area?.name).filter(Boolean);
+    const localBusinessServiceAreaNames = asArray(localBusinessSchema.serviceArea).map(area => area?.name).filter(Boolean);
+    const localBusinessKnowsAbout = JSON.stringify(localBusinessSchema.knowsAbout || []);
+    const hasCountySignals = greaterAustinServiceCounties.every(county =>
+      localBusinessAreaNames.includes(county) &&
+      localBusinessServiceAreaNames.includes(county)
+    );
+    const hasPriorityTopics = priorityLocalSearchTopics.every(topic => localBusinessKnowsAbout.includes(topic));
 
-    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone) {
-      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, or phone.`);
+    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone || !hasCountySignals || !hasPriorityTopics) {
+      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, phone, county service areas, or priority local search topics.`);
       continue;
     }
 

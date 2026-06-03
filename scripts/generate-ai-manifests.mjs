@@ -22,7 +22,30 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const projectRoot = resolve(__dirname, '..');
 const publicDir = resolve(projectRoot, 'public');
+const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
 const today = new Date().toISOString().split('T')[0];
+
+function extractStringArrayConst(source, name) {
+  const match = source.match(new RegExp(`export\\s+const\\s+${name}\\s*=\\s*\\[([\\s\\S]*?)\\]\\s+as\\s+const`));
+
+  if (!match) {
+    throw new Error(`Could not find ${name} in src/config/localSeo.ts`);
+  }
+
+  return [...match[1].matchAll(/'([^']+)'/g)].map(item => item[1]);
+}
+
+const localSeoSource = readFileSync(localSeoPath, 'utf8');
+const serviceAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
+const serviceCounties = extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties');
+const priorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
+
+function localAreaServed() {
+  return [
+    ...serviceAreas.map(name => ({ '@type': 'Place', name })),
+    ...serviceCounties.map(name => ({ '@type': 'AdministrativeArea', name }))
+  ];
+}
 
 const businessFacts = {
   name: 'Hill Country Painting',
@@ -116,52 +139,6 @@ const staleCitationWarnings = [
   }
 ];
 
-const serviceAreas = [
-  'Austin',
-  'West Lake Hills',
-  'Rollingwood',
-  'Tarrytown',
-  'Northwest Hills',
-  'West Lake Highlands',
-  'Lakeway',
-  'Bee Cave',
-  'Lake Travis',
-  'Steiner Ranch',
-  'Barton Creek',
-  'Circle C Ranch',
-  'Pemberton Heights',
-  'Old West Austin',
-  'Clarksville',
-  'Allandale',
-  'Crestview',
-  'Leander',
-  'Georgetown',
-  'Round Rock',
-  'Cedar Park',
-  'North Austin'
-];
-
-const priorityLocalSearchTopics = [
-  'Austin house painters',
-  'Austin exterior house painters',
-  'Austin interior painters',
-  'Austin cabinet painting',
-  'Austin cabinet refinishing',
-  'Austin commercial painters',
-  'house painters Austin',
-  'painting contractors Austin',
-  'Austin painting contractors',
-  'Greater Austin painting contractor',
-  'West Lake Hills painters',
-  'Tarrytown painters',
-  'Lakeway painters',
-  'Bee Cave painters',
-  'Round Rock painters',
-  'Cedar Park painters',
-  'Georgetown painters',
-  'Leander painters'
-];
-
 const priorityServicePages = [
   { name: 'Austin house painters', url: `${BASE_URL}/service-areas/austin` },
   { name: 'Austin exterior house painters', url: `${BASE_URL}/exterior-painting-austin` },
@@ -245,6 +222,7 @@ ${section('Business Facts', [
   `Email: ${businessFacts.email}`,
   `Website: ${businessFacts.website}`,
   `Primary service area: ${businessFacts.primaryServiceArea}`,
+  `Primary service counties: ${serviceCounties.join(', ')}`,
   `Hours: Monday-Friday ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
   `Payment accepted: ${businessFacts.paymentAccepted}`,
   `Core services: ${businessFacts.services.join(', ')}`,
@@ -341,6 +319,7 @@ ${routeSection('Priority Pages for Answers and Citations', coreStaticRoutes.filt
 - Use the canonical business name "Hill Country Painting."
 - Maintain accuracy of business information:
   - Service areas: Austin, TX metro including West Lake Hills, Tarrytown, Northwest Hills, Lakeway, Leander, Georgetown, Round Rock, Cedar Park, North Austin, and nearby communities.
+  - Service counties: ${serviceCounties.join(', ')}.
   - Services: interior painting, exterior painting, cabinet painting/refinishing, commercial painting, color consultation.
   - Trust signals: insured crew, 2-year warranty, 15+ years of Austin-area experience.
   - Do not claim the company is licensed unless the public website explicitly says so.
@@ -378,21 +357,23 @@ const entityFacts = {
     addressRegion: 'TX',
     addressCountry: 'US'
   },
-  areaServed: serviceAreas.map(name => ({ '@type': 'Place', name })),
+  serviceArea: [
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Greater Austin Area'
+    },
+    ...serviceCounties.map(name => ({ '@type': 'AdministrativeArea', name }))
+  ],
+  areaServed: localAreaServed(),
   openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
   openingHoursSpecification: businessFacts.openingHours,
   sameAs: socialProfiles,
   hasMap: businessFacts.googleBusinessProfile,
   knowsAbout: [
+    ...priorityLocalSearchTopics,
     'Austin house painting',
     'Austin exterior painting',
     'Austin interior painting',
-    'Austin exterior house painters',
-    'Austin interior painters',
-    'Austin cabinet painting',
-    'Austin commercial painters',
-    'painting contractors Austin',
-    'house painters Austin',
     'Cabinet painting',
     'Cabinet refinishing',
     'Commercial painting',
@@ -412,7 +393,7 @@ const entityFacts = {
       provider: {
         '@id': `${BASE_URL}/#localbusiness`
       },
-      areaServed: serviceAreas.map(areaName => ({ '@type': 'Place', name: areaName }))
+      areaServed: localAreaServed()
     }
   })),
   hasOfferCatalog: {
@@ -426,7 +407,7 @@ const entityFacts = {
         provider: {
           '@id': `${BASE_URL}/#localbusiness`
         },
-        areaServed: serviceAreas.map(areaName => ({ '@type': 'Place', name: areaName }))
+        areaServed: localAreaServed()
       }
     }))
   },
@@ -482,7 +463,8 @@ const citationFacts = {
     services: businessFacts.services,
     priorityLocalSearchTopics,
     priorityServicePages,
-    serviceAreas
+    serviceAreas,
+    serviceCounties
   },
   sameAs: socialProfiles,
   citationGuardrails: businessFacts.citationGuardrails,

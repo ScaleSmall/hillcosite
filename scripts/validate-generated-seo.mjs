@@ -291,6 +291,14 @@ function schemaTypeIncludes(item, typeName) {
   return Array.isArray(schemaType) ? schemaType.includes(typeName) : schemaType === typeName;
 }
 
+function asArray(value) {
+  if (value === null || value === undefined) {
+    return [];
+  }
+
+  return Array.isArray(value) ? value : [value];
+}
+
 function stripQueryAndHash(value) {
   return value.split('#')[0].split('?')[0];
 }
@@ -753,8 +761,9 @@ function run() {
   const generatedSpaRoutes = generatedSpaRouteData.routes;
   const generatedSpaRouteSet = new Set(generatedSpaRoutes);
   const configuredGreaterAustinAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
+  const configuredGreaterAustinCounties = extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties');
+  const configuredPriorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
   const locationServiceAreaSlugs = extractLocationServiceAreaSlugs(locationsConfigSource);
-  const manifestServiceAreas = extractStringArrayConst(aiManifestGeneratorSource, 'serviceAreas');
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
   const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
   const staticRedirects = extractStaticRedirects(redirectsText);
@@ -974,8 +983,16 @@ function run() {
     fail('src/config/localSeo.ts must export greaterAustinServiceAreas');
   }
 
-  if (JSON.stringify(configuredGreaterAustinAreas) !== JSON.stringify(manifestServiceAreas)) {
-    fail('scripts/generate-ai-manifests.mjs serviceAreas must match src/config/localSeo.ts greaterAustinServiceAreas');
+  if (!aiManifestGeneratorSource.includes("extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas')")) {
+    fail('scripts/generate-ai-manifests.mjs must generate service areas from src/config/localSeo.ts');
+  }
+
+  if (!aiManifestGeneratorSource.includes("extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties')")) {
+    fail('scripts/generate-ai-manifests.mjs must generate service counties from src/config/localSeo.ts');
+  }
+
+  if (!aiManifestGeneratorSource.includes("extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics')")) {
+    fail('scripts/generate-ai-manifests.mjs must generate priority search topics from src/config/localSeo.ts');
   }
 
   if (!serviceProductsSource.includes("import { greaterAustinServiceAreas } from './localSeo'")) {
@@ -997,6 +1014,18 @@ function run() {
   for (const requiredArea of ['Austin', 'Leander', 'Georgetown', 'Round Rock', 'Cedar Park', 'North Austin']) {
     if (!configuredGreaterAustinAreas.includes(requiredArea)) {
       fail(`greaterAustinServiceAreas is missing priority area ${requiredArea}`);
+    }
+  }
+
+  for (const requiredCounty of ['Travis County', 'Williamson County', 'Hays County']) {
+    if (!configuredGreaterAustinCounties.includes(requiredCounty)) {
+      fail(`greaterAustinServiceCounties is missing priority county ${requiredCounty}`);
+    }
+  }
+
+  for (const requiredTopic of ['Austin house painters', 'house painters near me Austin', 'exterior painters near me Austin', 'Austin commercial painters']) {
+    if (!configuredPriorityLocalSearchTopics.includes(requiredTopic)) {
+      fail(`priorityLocalSearchTopics is missing priority topic ${requiredTopic}`);
     }
   }
 
@@ -1078,8 +1107,28 @@ function run() {
     if (!Array.isArray(entityFacts.staleCitationWarnings) || entityFacts.staleCitationWarnings.length < 3) {
       fail('entity-facts.json must include stale citation warnings for NAP cleanup');
     }
-    if (!Array.isArray(entityFacts.priorityLocalSearchTopics) || !entityFacts.priorityLocalSearchTopics.includes('Austin house painters')) {
+    const entityPriorityLocalSearchTopics = Array.isArray(entityFacts.priorityLocalSearchTopics)
+      ? entityFacts.priorityLocalSearchTopics
+      : [];
+    if (!entityPriorityLocalSearchTopics.includes('Austin house painters')) {
       fail('entity-facts.json must include priority Greater Austin local search topics');
+    }
+    for (const requiredTopic of configuredPriorityLocalSearchTopics) {
+      if (!entityPriorityLocalSearchTopics.includes(requiredTopic) || !JSON.stringify(entityFacts.knowsAbout || []).includes(requiredTopic)) {
+        fail(`entity-facts.json must include priority local search topic ${requiredTopic}`);
+      }
+    }
+    const entityAreaNames = asArray(entityFacts.areaServed).map(area => area?.name).filter(Boolean);
+    const entityServiceAreaNames = asArray(entityFacts.serviceArea).map(area => area?.name).filter(Boolean);
+    for (const requiredArea of configuredGreaterAustinAreas) {
+      if (!entityAreaNames.includes(requiredArea)) {
+        fail(`entity-facts.json areaServed is missing ${requiredArea}`);
+      }
+    }
+    for (const requiredCounty of configuredGreaterAustinCounties) {
+      if (!entityAreaNames.includes(requiredCounty) || !entityServiceAreaNames.includes(requiredCounty)) {
+        fail(`entity-facts.json is missing county service signal ${requiredCounty}`);
+      }
     }
     if (!Array.isArray(entityFacts.priorityServicePages) || !entityFacts.priorityServicePages.some(page => page?.name === 'Austin exterior house painters' && page?.url === `${baseUrl}/exterior-painting-austin`)) {
       fail('entity-facts.json must include Austin priority service pages');
@@ -1132,11 +1181,24 @@ function run() {
     if (!warnings.includes('111 Craft Street') || !warnings.includes('1101 Satellite View') || !warnings.includes('/round-rock/') || !warnings.includes('8:00 AM-8:00 AM')) {
       fail('citation-facts.json must warn against known stale directory address, URL, and hours variants');
     }
-    if (!Array.isArray(identity.priorityLocalSearchTopics) || !identity.priorityLocalSearchTopics.includes('Austin house painters')) {
+    const citationPriorityLocalSearchTopics = Array.isArray(identity.priorityLocalSearchTopics)
+      ? identity.priorityLocalSearchTopics
+      : [];
+    if (!citationPriorityLocalSearchTopics.includes('Austin house painters')) {
       fail('citation-facts.json must include priority Greater Austin local search topics');
+    }
+    for (const requiredTopic of configuredPriorityLocalSearchTopics) {
+      if (!citationPriorityLocalSearchTopics.includes(requiredTopic)) {
+        fail(`citation-facts.json must include priority local search topic ${requiredTopic}`);
+      }
     }
     if (!Array.isArray(identity.priorityServicePages) || !identity.priorityServicePages.some(page => page?.name === 'Austin commercial painters' && page?.url === `${baseUrl}/commercial-painting-austin`)) {
       fail('citation-facts.json must include Austin priority service pages');
+    }
+    for (const requiredCounty of configuredGreaterAustinCounties) {
+      if (!Array.isArray(identity.serviceCounties) || !identity.serviceCounties.includes(requiredCounty)) {
+        fail(`citation-facts.json must include service county ${requiredCounty}`);
+      }
     }
     if (identity.googleBusinessProfile !== googleBusinessProfileUrl || !Array.isArray(citationFacts.sameAs) || !citationFacts.sameAs.includes(googleBusinessProfileUrl)) {
       fail('citation-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
@@ -1404,6 +1466,22 @@ function run() {
 
           if (!String(localBusinessSchema.telephone || '').includes('(512) 240-2246')) {
             fail(`${routePath}: LocalBusiness schema must include the canonical phone number`);
+          }
+
+          const localBusinessAreaNames = asArray(localBusinessSchema.areaServed).map(area => area?.name).filter(Boolean);
+          const localBusinessServiceAreaNames = asArray(localBusinessSchema.serviceArea).map(area => area?.name).filter(Boolean);
+          const localBusinessKnowsAbout = JSON.stringify(localBusinessSchema.knowsAbout || []);
+
+          for (const requiredCounty of configuredGreaterAustinCounties) {
+            if (!localBusinessAreaNames.includes(requiredCounty) || !localBusinessServiceAreaNames.includes(requiredCounty)) {
+              fail(`${routePath}: LocalBusiness schema is missing county service signal ${requiredCounty}`);
+            }
+          }
+
+          for (const requiredTopic of configuredPriorityLocalSearchTopics) {
+            if (!localBusinessKnowsAbout.includes(requiredTopic)) {
+              fail(`${routePath}: LocalBusiness schema knowsAbout is missing ${requiredTopic}`);
+            }
           }
         }
       }
