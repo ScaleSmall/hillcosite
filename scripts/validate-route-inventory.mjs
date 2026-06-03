@@ -251,6 +251,7 @@ if (existsSync(redirectsPath)) {
   const validTargetPaths = getAllValidPaths(appTsxPaths);
   validTargetPaths.add('/');
   validTargetPaths.add('/index.html');
+  validTargetPaths.add('/sitemap.xml');
 
   const invalidTargets = redirectTargets.filter(({ target }) => {
     if (target.includes(':splat')) return false;

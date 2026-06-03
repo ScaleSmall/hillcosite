@@ -24,6 +24,7 @@ const additionalValidRoutes = [
   '/thank-you',
   '/eula',
   '/sitemap',
+  '/sitemap.xml',
 ];
 
 function getAllValidRoutes() {

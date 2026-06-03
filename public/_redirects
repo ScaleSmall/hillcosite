@@ -9,6 +9,7 @@
 
 # GSC legacy concrete-painting URLs are excluded from Pages Functions in
 # _routes.json so these static redirects can resolve in one hop.
+/sitemap.php https://www.hillcopaint.com/sitemap.xml 301
 /service/residential-concrete-painting-round-rock/ https://www.hillcopaint.com/services/exterior-painting 301
 /service/residential-concrete-painting-round-rock https://www.hillcopaint.com/services/exterior-painting 301
 /service/residential-concrete-painting/ https://www.hillcopaint.com/services/exterior-painting 301
