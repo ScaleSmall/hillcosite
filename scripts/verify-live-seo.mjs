@@ -143,6 +143,16 @@ const bannedHeroBackgroundImages = [
   'modern-interior-design.jpg',
   'traditional-home-exterior.jpg',
 ];
+const stalePublicIdentitySignals = [
+  'HillCo Paint',
+  '5000 Plaza on the Lake',
+  '5000 Plaza',
+  '2808 Townes Lane',
+  '111 Craft Street',
+  '1101 Satellite View',
+  '(512) 499-8450',
+  '512-499-8450',
+];
 const liveLegacyRedirects = [
   ['/sitemap.php', '/sitemap.xml'],
   ['/service/residential-concrete-painting-round-rock', '/services/exterior-painting'],
@@ -576,6 +586,7 @@ async function checkSitemapPages() {
   let nextIndex = 0;
   const problems = [];
   const heroImageProblems = [];
+  const staleIdentityProblems = [];
 
   async function worker() {
     while (nextIndex < urls.length) {
@@ -622,6 +633,7 @@ async function checkSitemapPages() {
       const hasError = /Something went wrong|Post Not Found|404 Not Found/i.test(html);
       const heroHtml = firstHeroSectionHtml(html);
       const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
+      const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
 
       if (title) {
         sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), route]);
@@ -637,6 +649,10 @@ async function checkSitemapPages() {
 
       if (bannedHeroImage) {
         heroImageProblems.push({ url, image: bannedHeroImage });
+      }
+
+      if (staleIdentitySignal) {
+        staleIdentityProblems.push({ url, signal: staleIdentitySignal });
       }
 
       for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
@@ -704,6 +720,18 @@ async function checkSitemapPages() {
 
   if (heroImageProblems.length === 0) {
     console.log('Live hero image guard: no banned before/after-style hero images found');
+  }
+
+  for (const problem of staleIdentityProblems.slice(0, 10)) {
+    fail(`${problem.url}: live page contains stale NAP/brand signal "${problem.signal}"`);
+  }
+
+  if (staleIdentityProblems.length > 10) {
+    fail(`${staleIdentityProblems.length - 10} additional live stale NAP/brand signal problems not shown.`);
+  }
+
+  if (staleIdentityProblems.length === 0) {
+    console.log('Live stale identity guard: no stale NAP/brand strings found on sitemap pages');
   }
 
   const duplicateMetadataProblems = [
@@ -1376,6 +1404,7 @@ async function checkFaqSchemaRoutes(routes, label) {
 async function checkCrawlerControlRoutes() {
   let noindexPassed = 0;
   let notFoundPassed = 0;
+  const noindexStaleIdentityProblems = [];
 
   for (const [route, expectedRobots] of liveNoindexRoutes) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}${route.includes('?') ? '&' : '?'}v=${Date.now()}`);
@@ -1384,17 +1413,27 @@ async function checkCrawlerControlRoutes() {
       .map(match => match[0])
       .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
     const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+    const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
+
+    if (staleIdentitySignal) {
+      noindexStaleIdentityProblems.push({ route, signal: staleIdentitySignal });
+    }
 
     if (
       response.status !== 200 ||
       xRobotsTag.toLowerCase() !== expectedRobots ||
-      canonicalHrefs.includes(`${baseUrl}/`)
+      canonicalHrefs.includes(`${baseUrl}/`) ||
+      staleIdentitySignal
     ) {
-      fail(`${route}: expected live 200 with X-Robots-Tag "${expectedRobots}" and no homepage canonical; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}`);
+      fail(`${route}: expected live 200 with X-Robots-Tag "${expectedRobots}", no homepage canonical, and no stale NAP/brand strings; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}, stale identity ${staleIdentitySignal || 'none'}`);
       continue;
     }
 
     noindexPassed += 1;
+  }
+
+  if (noindexStaleIdentityProblems.length === 0) {
+    console.log('Live noindex stale identity guard: no stale NAP/brand strings found on utility pages');
   }
 
   for (const route of liveUnknownRoutes) {
