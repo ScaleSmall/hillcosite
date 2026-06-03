@@ -760,10 +760,15 @@ function run() {
         fail(`${routePath}: duplicate twitter:description tags found`);
       }
 
-      if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) {
+      const h1Matches = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/gi)];
+      if (h1Matches.length === 0) {
         fail(`${routePath}: missing H1`);
       } else {
-        const h1 = (html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || '')
+        if (h1Matches.length > 1) {
+          fail(`${routePath}: expected one H1, found ${h1Matches.length}`);
+        }
+
+        const h1 = (h1Matches[0]?.[1] || '')
           .replace(/<[^>]+>/g, ' ')
           .replace(/\s+/g, ' ')
           .trim();

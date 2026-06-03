@@ -141,9 +141,9 @@ const PreApproval = () => {
 
             <div className="box-prequal">
               <div className="margin-bot-24-prequal">
-                <h2 className="title-prequal-small">
+                <h1 className="title-prequal-small">
                   How our financing option works
-                </h2>
+                </h1>
               </div>
 
               <div className="margin-bot-24-prequal">

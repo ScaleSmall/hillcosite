@@ -44,6 +44,36 @@ interface SEOProps {
   additionalSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
+const truncateAtWordBoundary = (value: string, maxLength: number) => {
+  const normalized = String(value).replace(/\s+/g, ' ').trim();
+
+  if (normalized.length <= maxLength) {
+    return normalized;
+  }
+
+  const sliced = normalized.slice(0, maxLength + 1);
+  const lastWhitespace = sliced.search(/\s+\S*$/);
+  const candidate = lastWhitespace > 0
+    ? sliced.slice(0, lastWhitespace)
+    : normalized.slice(0, maxLength);
+
+  return candidate.replace(/[\s|,:;\u2014-]+$/g, '').trim();
+};
+
+const optimizeTitle = (value: string) => {
+  const normalized = String(value).replace(/\s+/g, ' ').trim();
+
+  if (normalized.length <= 70) {
+    return normalized;
+  }
+
+  const withoutTrailingBrand = normalized
+    .replace(/\s+\|\s+Hill Country Painting$/i, '')
+    .replace(/\s+\u2014\s+Hill Country Painting$/i, '');
+
+  return truncateAtWordBoundary(withoutTrailingBrand, 70);
+};
+
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating, additionalSchema }: SEOProps) => {
   const hasRefParam = useRefParamGuard();
   const baseUrl = 'https://www.hillcopaint.com';
@@ -70,11 +100,10 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     }
   }, [canonicalStr]);
 
-  // Ensure title is optimized for length (50-60 chars ideal)
-  const optimizedTitle = String(title).length > 60 ? String(title).slice(0, 57) + '...' : String(title);
+  // Keep metadata concise without hard-cut ellipses that can create awkward search snippets.
+  const optimizedTitle = optimizeTitle(String(title));
 
-  // Ensure description is optimized for length (150-155 chars ideal) - STRICT
-  const optimizedDescription = String(description).length > 155 ? String(description).slice(0, 152) + '...' : String(description);
+  const optimizedDescription = truncateAtWordBoundary(String(description), 160);
 
   // When a tracking ?ref= param is present, suppress indexing of this URL variant
   // while still allowing the crawler to follow links.

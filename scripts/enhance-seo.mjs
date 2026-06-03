@@ -605,7 +605,7 @@ function enhanceIndexHTML() {
     const noscriptContent = `
       <noscript>
         <div style="font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem;">
-          <h1 style="color: #0f172a; font-size: 2rem; margin-bottom: 1rem;">${metadata.h1}</h1>
+          <h2 style="color: #0f172a; font-size: 2rem; margin-bottom: 1rem;">${metadata.h1}</h2>
           <p style="color: #475569; font-size: 1.125rem; line-height: 1.75;">${metadata.content}</p>
           <p style="color: #64748b; margin-top: 1rem;">
             <strong>Call us:</strong> (512) 240-2246 for professional painting services in Austin, TX.
