@@ -891,6 +891,7 @@ async function checkCrawlerEntityAssets() {
     const serviceArea = asArray(entityFacts.serviceArea).map(area => area?.name || area).filter(Boolean);
     const knowsAbout = asArray(entityFacts.knowsAbout);
     const sameAs = asArray(entityFacts.sameAs);
+    const staleWarnings = JSON.stringify(entityFacts.staleCitationWarnings || []);
 
     if (
       entityFacts.name !== 'Hill Country Painting' ||
@@ -906,9 +907,11 @@ async function checkCrawlerEntityAssets() {
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasValidAggregateRating(entityFacts) ||
-      entityFacts.sitemapUrlCount !== 182
+      entityFacts.sitemapUrlCount !== 182 ||
+      !staleWarnings.includes('https://request.hillcopaint.com/') ||
+      !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, or sitemap count.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -920,6 +923,7 @@ async function checkCrawlerEntityAssets() {
     const citationTopics = asArray(citationIdentity.priorityLocalSearchTopics);
     const citationCounties = asArray(citationIdentity.serviceCounties);
     const sameAs = asArray(citationFacts.sameAs);
+    const staleWarnings = JSON.stringify(citationFacts.staleCitationWarnings || []);
 
     if (
       citationIdentity.name !== 'Hill Country Painting' ||
@@ -932,9 +936,11 @@ async function checkCrawlerEntityAssets() {
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
-      !hasAllValues(citationCounties, greaterAustinServiceCounties)
+      !hasAllValues(citationCounties, greaterAustinServiceCounties) ||
+      !staleWarnings.includes('https://request.hillcopaint.com/') ||
+      !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, or priority topics.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');

@@ -1460,6 +1460,12 @@
       "note": "Use the current canonical Round Rock service-area page for citations instead of old city landing page URLs."
     },
     {
+      "field": "url",
+      "staleValue": "https://request.hillcopaint.com/",
+      "canonicalValue": "https://www.hillcopaint.com/contact",
+      "note": "Do not use the request subdomain as the canonical website or citation URL. Use the main hillcopaint.com contact page for public business citations and search snippets."
+    },
+    {
       "field": "hours",
       "staleValue": "Monday-Friday 8:00 AM-5:00 PM or malformed Wednesday-Friday 8:00 AM-8:00 AM",
       "canonicalValue": "Monday-Friday 08:00-18:00",
