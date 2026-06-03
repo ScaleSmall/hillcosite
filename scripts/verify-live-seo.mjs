@@ -73,6 +73,10 @@ const serviceAreasHubItemListRoutes = [
   '/service-areas/lakeway',
   '/areas/west-lake-hills-and-rollingwood',
   '/areas/lakeway-bee-cave-and-lake-travis',
+  '/exterior-painting-austin',
+  '/interior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
 ];
 const serviceAreasHubVisibleServiceRoutes = [
   '/exterior-painting-austin',

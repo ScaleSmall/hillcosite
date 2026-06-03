@@ -58,6 +58,12 @@ const ServiceAreas = () => {
       link: '/services/commercial'
     }
   ];
+  const priorityAustinServicePages = [
+    { name: 'Austin exterior house painters', href: '/exterior-painting-austin' },
+    { name: 'Austin interior painters', href: '/interior-painting-austin' },
+    { name: 'Austin cabinet painting', href: '/cabinet-refinishing-austin' },
+    { name: 'Austin commercial painters', href: '/commercial-painting-austin' }
+  ];
 
   const serviceAreaHubItemList = {
     '@context': 'https://schema.org',
@@ -82,9 +88,28 @@ const ServiceAreas = () => {
           }
         }
       })),
-      ...geoAreas.map((hub, index) => ({
+      ...priorityAustinServicePages.map((service, index) => ({
         '@type': 'ListItem',
         position: allServiceAreas.length + index + 1,
+        name: service.name,
+        url: `${baseUrl}${service.href}`,
+        item: {
+          '@type': 'Service',
+          '@id': `${baseUrl}${service.href}#service`,
+          url: `${baseUrl}${service.href}`,
+          name: service.name,
+          provider: {
+            '@id': `${baseUrl}/#localbusiness`
+          },
+          areaServed: {
+            '@type': 'Place',
+            name: 'Austin'
+          }
+        }
+      })),
+      ...geoAreas.map((hub, index) => ({
+        '@type': 'ListItem',
+        position: allServiceAreas.length + priorityAustinServicePages.length + index + 1,
         name: hub.name,
         url: `${baseUrl}/areas/${hub.slug}`,
         item: {

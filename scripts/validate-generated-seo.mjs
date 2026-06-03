@@ -2080,7 +2080,11 @@ function run() {
           `${baseUrl}/service-areas/northwest-hills`,
           `${baseUrl}/service-areas/lakeway`,
           `${baseUrl}/areas/west-lake-hills-and-rollingwood`,
-          `${baseUrl}/areas/lakeway-bee-cave-and-lake-travis`
+          `${baseUrl}/areas/lakeway-bee-cave-and-lake-travis`,
+          `${baseUrl}/exterior-painting-austin`,
+          `${baseUrl}/interior-painting-austin`,
+          `${baseUrl}/cabinet-refinishing-austin`,
+          `${baseUrl}/commercial-painting-austin`
         ]) {
           if (!areaListUrls.includes(requiredAreaUrl)) {
             fail(`${routePath}: service-area hub ItemList is missing ${requiredAreaUrl}`);
