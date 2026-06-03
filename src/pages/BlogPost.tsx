@@ -62,19 +62,19 @@ const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
     id: post.id,
     title: post.title,
     slug: post.slug,
-    content: `<p>${escapeHtml(excerpt)}</p>`,
+    content: post.content || `<p>${escapeHtml(excerpt)}</p>`,
     excerpt,
-    tldr: excerpt,
+    tldr: post.tldr || excerpt,
     featured_image: post.featured_image,
-    featured_image_alt: post.title,
-    featured_image_title: post.title,
-    featured_image_caption: null,
+    featured_image_alt: post.featured_image_alt || post.title,
+    featured_image_title: post.featured_image_title || post.title,
+    featured_image_caption: post.featured_image_caption || null,
     published_at: post.published_at,
     category: post.category,
     author: post.author,
     tags: [post.category, 'Austin painting', 'Hill Country Painting'],
-    meta_description: excerpt.slice(0, 155),
-    meta_keywords: null
+    meta_description: post.meta_description || excerpt.slice(0, 155),
+    meta_keywords: post.meta_keywords || null
   };
 };
 
@@ -92,6 +92,12 @@ const BlogPost = () => {
         item.slug === requestedSlug || blogPathSlug(item.slug) === requestedSlug
       );
       const supabaseSlug = generatedPostForRoute?.slug || requestedSlug;
+
+      if (generatedPostForRoute && ['127.0.0.1', 'localhost'].includes(window.location.hostname)) {
+        setPost(generatedToBlogPost(generatedPostForRoute));
+        setLoading(false);
+        return;
+      }
 
       if (!supabaseConfigured || !supabase) {
         console.warn('Supabase not configured');

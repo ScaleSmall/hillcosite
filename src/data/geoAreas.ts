@@ -20,6 +20,7 @@ export const geoAreas: HubArea[] = [
     name: 'Steiner Ranch',
     slug: 'steiner-ranch-78732',
     zipCode: '78732',
+    serviceLocationSlug: 'steiner-ranch',
     description: 'Expert painting services for Steiner Ranch\'s distinctive Hill Country homes. Clean prep. Crisp lines. Reliable schedules.',
     specialization: 'Steiner Ranch homes require specialized knowledge of Hill Country architecture, HOA color requirements, and quality finishes that complement the area\'s natural beauty and architectural standards.',
     heroImage: '/hill-country-painting-austin-homepage-hero.jpg',
@@ -54,7 +55,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'West Lake Hills & Rollingwood',
     slug: 'west-lake-hills-and-rollingwood',
-    serviceLocationSlug: 'west-lake-highlands',
+    serviceLocationSlug: 'west-lake-hills',
     description: 'Professional painting services for West Lake Hills and Rollingwood properties. Expert craftsmanship for quality homes.',
     specialization: 'West Lake Hills and Rollingwood homes require high standards in finish quality, quality materials, and meticulous attention to architectural details that define these established communities.',
     heroImage: '/hill-country-painting-austin-interior-hero.jpg',
@@ -89,6 +90,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Barton Creek',
     slug: 'barton-creek',
+    serviceLocationSlug: 'barton-creek',
     description: 'Professional painting services for Barton Creek homes. Careful craftsmanship for quality properties.',
     specialization: 'Barton Creek homes require expert knowledge of quality finishes, professional materials, and the precision needed to maintain architectural standards.',
     heroImage: '/hill-country-home-exterior-painting.png',
@@ -263,6 +265,7 @@ export const geoAreas: HubArea[] = [
   {
     name: 'Circle C Ranch / Southwest Austin',
     slug: 'circle-c-ranch-and-southwest-austin',
+    serviceLocationSlug: 'circle-c-ranch',
     description: 'Professional painting services for Circle C Ranch and Southwest Austin communities. Quality craftsmanship you can trust.',
     specialization: 'Southwest Austin communities combine family-friendly neighborhoods with diverse architectural styles, requiring versatile expertise and understanding of HOA requirements across different subdivisions.',
     heroImage: '/hill-country-painting-austin-interior-hero.jpg',

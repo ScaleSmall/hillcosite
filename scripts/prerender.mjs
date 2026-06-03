@@ -227,7 +227,21 @@ async function writeFileWithRetry(filePath, content, attempts = 5) {
 }
 
 function shouldRetryPrerender(error) {
-  return /detached|target closed|session closed|browser has disconnected|navigation failed/i.test(error?.message || '');
+  return /detached|target closed|session closed|browser has disconnected|navigation failed|waiting failed|err_connection_refused|connection refused/i.test(error?.message || '');
+}
+
+function shouldRestartPreview(error) {
+  return /err_connection_refused|connection refused/i.test(error?.message || '');
+}
+
+async function restartPreview(currentPreviewServer) {
+  if (currentPreviewServer) {
+    currentPreviewServer.kill();
+    await wait(1000);
+  }
+
+  console.log('  Restarting preview server after connection failure...');
+  return startPreview();
 }
 
 async function prerenderRoute(browser, route, sitemapRoutes) {
@@ -295,13 +309,16 @@ async function prerender() {
 
       try {
         let outputPath;
-        for (let attempt = 1; attempt <= 2; attempt++) {
+        for (let attempt = 1; attempt <= 3; attempt++) {
           try {
             outputPath = await prerenderRoute(browser, route, sitemapRoutes);
             break;
           } catch (error) {
-            if (attempt === 2 || !shouldRetryPrerender(error)) {
+            if (attempt === 3 || !shouldRetryPrerender(error)) {
               throw error;
+            }
+            if (shouldRestartPreview(error)) {
+              previewServer = await restartPreview(previewServer);
             }
             console.log(`  Retrying ${route} after prerender page reset: ${error.message}`);
             await wait(500);

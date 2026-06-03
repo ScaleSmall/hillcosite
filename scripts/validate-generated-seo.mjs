@@ -28,6 +28,28 @@ const citationFactsPath = resolve(projectRoot, 'public/citation-facts.json');
 const headersPath = resolve(projectRoot, 'public/_headers');
 const redirectsPath = resolve(projectRoot, 'public/_redirects');
 const routesConfigPath = resolve(projectRoot, 'public/_routes.json');
+
+function waitSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+function readFileWithRetry(filePath, encoding = 'utf8', attempts = 6) {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return readFileSync(filePath, encoding);
+    } catch (error) {
+      const isTemporaryLock = ['EBUSY', 'EPERM', 'EACCES'].includes(error.code);
+
+      if (!isTemporaryLock || attempt === attempts) {
+        throw error;
+      }
+
+      waitSync(attempt * 250);
+    }
+  }
+
+  return readFileSync(filePath, encoding);
+}
 const baseUrl = 'https://www.hillcopaint.com';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
@@ -103,6 +125,18 @@ const bannedHeroBackgroundImages = [
   'modern-interior-design.jpg',
   'traditional-home-exterior.jpg'
 ];
+const localServicePrefixes = [
+  '/interior-painting-',
+  '/exterior-painting-',
+  '/cabinet-refinishing-',
+  '/commercial-painting-'
+];
+const requiredGeoHubServiceLocationSlugs = new Map([
+  ['/areas/steiner-ranch-78732', 'steiner-ranch'],
+  ['/areas/west-lake-hills-and-rollingwood', 'west-lake-hills'],
+  ['/areas/barton-creek', 'barton-creek'],
+  ['/areas/circle-c-ranch-and-southwest-austin', 'circle-c-ranch']
+]);
 
 const errors = [];
 const warnings = [];
@@ -606,15 +640,14 @@ function extractLocationServiceAreaSlugs(source) {
 }
 
 function serviceLocationSlugFromRoute(routePath) {
-  const prefixes = [
-    '/interior-painting-',
-    '/exterior-painting-',
-    '/cabinet-refinishing-',
-    '/commercial-painting-'
-  ];
-  const prefix = prefixes.find(item => routePath.startsWith(item));
+  const prefix = localServicePrefixes.find(item => routePath.startsWith(item));
 
   return prefix ? routePath.slice(prefix.length) : '';
+}
+
+function pageLinksToRoute(page, sourceRoute, expectedRoute) {
+  return [...page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
+    .some(match => normalizeRoutePath(match[1].trim(), sourceRoute) === expectedRoute);
 }
 
 function run() {
@@ -699,7 +732,7 @@ function run() {
   const jsFiles = walkFiles(distPath, filePath => filePath.endsWith('.js'));
   const pages = new Map(htmlFiles.map(filePath => [
     routeFromHtmlFile(filePath),
-    { filePath, html: readFileSync(filePath, 'utf8') }
+    { filePath, html: readFileWithRetry(filePath) }
   ]));
 
   const inbound = new Map(sitemapPaths.map(routePath => [routePath, 0]));
@@ -729,11 +762,36 @@ function run() {
       continue;
     }
 
-    const linksToServiceArea = [...page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
-      .some(match => normalizeRoutePath(match[1].trim(), routePath) === expectedServiceAreaRoute);
+    const linksToServiceArea = pageLinksToRoute(page, routePath, expectedServiceAreaRoute);
 
     if (!linksToServiceArea) {
       fail(`${routePath}: service-location page should link to local service-area hub ${expectedServiceAreaRoute}`);
+    }
+  }
+
+  for (const [hubRoute, serviceLocationSlug] of requiredGeoHubServiceLocationSlugs) {
+    const routesToCheck = sitemapPaths.filter(routePath => routePath === hubRoute || routePath.startsWith(`${hubRoute}/`));
+
+    if (routesToCheck.length === 0) {
+      fail(`${hubRoute}: required local hub route is missing from sitemap`);
+      continue;
+    }
+
+    for (const routePath of routesToCheck) {
+      const page = pages.get(routePath);
+
+      if (!page) {
+        fail(`${routePath}: missing generated HTML for hub-to-service-location link validation`);
+        continue;
+      }
+
+      for (const prefix of localServicePrefixes) {
+        const expectedRoute = `${prefix}${serviceLocationSlug}`;
+
+        if (!pageLinksToRoute(page, routePath, expectedRoute)) {
+          fail(`${routePath}: high-value local area page should link to ${expectedRoute}`);
+        }
+      }
     }
   }
 

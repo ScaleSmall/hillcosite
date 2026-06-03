@@ -48,6 +48,9 @@ interface SEOProps {
   additionalSchema?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
+type JsonLdSchema = Record<string, unknown>;
+type SchemaInput = JsonLdSchema | JsonLdSchema[] | null | undefined;
+
 const truncateAtWordBoundary = (value: string, maxLength: number) => {
   const normalized = String(value).replace(/\s+/g, ' ').trim();
 
@@ -76,6 +79,70 @@ const optimizeTitle = (value: string) => {
     .replace(/\s+\u2014\s+Hill Country Painting$/i, '');
 
   return truncateAtWordBoundary(withoutTrailingBrand, 70);
+};
+
+const upsertNamedMetaTag = (name: string, content: string) => {
+  const selector = `meta[name="${name}"]`;
+  const tags = Array.from(document.head.querySelectorAll<HTMLMetaElement>(selector));
+  const tag = tags[0] ?? document.createElement('meta');
+
+  tags.slice(1).forEach(duplicate => duplicate.remove());
+
+  if (!tag.parentElement) {
+    tag.setAttribute('name', name);
+    tag.setAttribute('data-seo-runtime', 'true');
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute('content', content);
+};
+
+const upsertCanonicalTag = (href: string) => {
+  const tags = Array.from(document.head.querySelectorAll<HTMLLinkElement>('link[rel="canonical"]'));
+  const tag = tags[0] ?? document.createElement('link');
+
+  tags.slice(1).forEach(duplicate => duplicate.remove());
+
+  if (!tag.parentElement) {
+    tag.setAttribute('rel', 'canonical');
+    tag.setAttribute('data-seo-runtime', 'true');
+    document.head.appendChild(tag);
+  }
+
+  tag.setAttribute('href', href);
+};
+
+const flattenSchemaEntries = (schemas: SchemaInput[]) => {
+  return schemas.flatMap(schema => {
+    if (!schema) {
+      return [];
+    }
+
+    return Array.isArray(schema) ? schema : [schema];
+  });
+};
+
+const upsertJsonLdTags = (schemaPayload: string) => {
+  const runtimeSelector = 'script[type="application/ld+json"][data-seo-runtime="true"]';
+  const helmetSelector = 'script[type="application/ld+json"]:not([data-seo-runtime="true"])';
+  const helmetTags = Array.from(document.head.querySelectorAll<HTMLScriptElement>(helmetSelector));
+
+  if (helmetTags.length > 0) {
+    document.head.querySelectorAll(runtimeSelector).forEach(tag => tag.remove());
+    return;
+  }
+
+  const schemas = JSON.parse(schemaPayload) as JsonLdSchema[];
+  document.head.querySelectorAll(runtimeSelector).forEach(tag => tag.remove());
+
+  schemas.forEach((schema, index) => {
+    const tag = document.createElement('script');
+    tag.setAttribute('type', 'application/ld+json');
+    tag.setAttribute('data-seo-runtime', 'true');
+    tag.setAttribute('data-seo-runtime-index', String(index));
+    tag.text = JSON.stringify(schema);
+    document.head.appendChild(tag);
+  });
 };
 
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating, additionalSchema }: SEOProps) => {
@@ -501,6 +568,29 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     } : undefined
   } : null;
 
+  const schemaPayload = JSON.stringify(flattenSchemaEntries([
+    organizationSchema,
+    websiteSchema,
+    breadcrumbSchema,
+    serviceSchema,
+    faqSchema,
+    additionalSchema,
+    localBusinessSchema,
+    collectionSchema,
+    webpageSchema
+  ]));
+
+  useEffect(() => {
+    document.title = optimizedTitle;
+    upsertNamedMetaTag('description', optimizedDescription);
+    upsertNamedMetaTag('robots', robotsContent);
+
+    if (canonicalStr) {
+      upsertCanonicalTag(canonicalStr);
+    }
+
+    upsertJsonLdTags(schemaPayload);
+  }, [canonicalStr, optimizedDescription, optimizedTitle, robotsContent, schemaPayload]);
 
   return (
     <Helmet>

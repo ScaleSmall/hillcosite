@@ -84,10 +84,17 @@ function sanitizeBlogPost(post) {
     title: post.title || post.slug,
     slug: post.slug,
     excerpt: post.excerpt || '',
+    content: post.content || '',
+    tldr: post.tldr || null,
     featured_image: post.featured_image || null,
+    featured_image_alt: post.featured_image_alt || null,
+    featured_image_title: post.featured_image_title || null,
+    featured_image_caption: post.featured_image_caption || null,
     published_at: post.published_at || post.created_at || new Date().toISOString(),
     category: post.category || 'Painting Tips',
     author: post.author || 'Hill Country Painting',
+    meta_description: post.meta_description || null,
+    meta_keywords: post.meta_keywords || null,
     updated_at: post.updated_at || null
   };
 }
@@ -112,10 +119,17 @@ function writeGeneratedBlogPosts(posts) {
   title: string;
   slug: string;
   excerpt: string;
+  content: string;
+  tldr: string | null;
   featured_image: string | null;
+  featured_image_alt: string | null;
+  featured_image_title: string | null;
+  featured_image_caption: string | null;
   published_at: string;
   category: string;
   author: string;
+  meta_description: string | null;
+  meta_keywords: string | null;
   updated_at: string | null;
 }
 
@@ -172,7 +186,7 @@ async function fetchBlogPosts() {
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { data, error } = await supabase
       .from('blog_posts')
-      .select('id, title, slug, excerpt, featured_image, published_at, category, author, updated_at, created_at')
+      .select('id, title, slug, excerpt, content, tldr, featured_image, featured_image_alt, featured_image_title, featured_image_caption, published_at, category, author, meta_description, meta_keywords, updated_at, created_at')
       .eq('published', true)
       .order('published_at', { ascending: false });
 
