@@ -17,6 +17,7 @@ const locationsConfigPath = resolve(projectRoot, 'src/config/locations.ts');
 const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts');
 const colorConsultationPath = resolve(projectRoot, 'src/pages/ColorConsultation.tsx');
 const googleMapEmbedPath = resolve(projectRoot, 'src/components/GoogleMapEmbed.tsx');
+const gbpRatingHookPath = resolve(projectRoot, 'src/hooks/useGBPRating.ts');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
@@ -797,6 +798,7 @@ function run() {
   const serviceProductsSource = readRequired(serviceProductsPath, 'src/config/serviceProducts.ts');
   const colorConsultationSource = readRequired(colorConsultationPath, 'src/pages/ColorConsultation.tsx');
   const googleMapEmbedSource = readRequired(googleMapEmbedPath, 'src/components/GoogleMapEmbed.tsx');
+  const gbpRatingHookSource = readRequired(gbpRatingHookPath, 'src/hooks/useGBPRating.ts');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
@@ -1034,6 +1036,18 @@ function run() {
 
   if (!googleMapEmbedSource.includes('maps?q=') || !googleMapEmbedSource.includes('output=embed')) {
     fail('src/components/GoogleMapEmbed.tsx must use a query-based Google Maps fallback embed');
+  }
+
+  if (!gbpRatingHookSource.includes('../config/business') || !gbpRatingHookSource.includes('businessConfig.aggregateRating')) {
+    fail('src/hooks/useGBPRating.ts must use the canonical Google review rating data from src/config/business.ts');
+  }
+
+  if (
+    gbpRatingHookSource.includes("reviewCount: '150'") ||
+    gbpRatingHookSource.includes('reviewCount: 150') ||
+    gbpRatingHookSource.includes('Using placeholder values until client provides live API credentials')
+  ) {
+    fail('src/hooks/useGBPRating.ts must not carry stale placeholder Google review data');
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {

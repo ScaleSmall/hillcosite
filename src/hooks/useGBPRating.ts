@@ -1,3 +1,5 @@
+import { businessConfig, hasValidRating } from '../config/business';
+
 interface GBPRating {
   ratingValue: string;
   reviewCount: string;
@@ -6,14 +8,15 @@ interface GBPRating {
 }
 
 /**
- * Hook to return static GBP rating data
- * Using placeholder values until client provides live API credentials
+ * Canonical static fallback used only when live GBP rating data is unavailable.
  */
 export function useGBPRating(): GBPRating | null {
+  const { ratingValue, reviewCount } = businessConfig.aggregateRating;
+
   return {
-    ratingValue: '4.9',
-    reviewCount: '150',
-    shouldDisplay: true,
+    ratingValue: ratingValue.toFixed(1),
+    reviewCount: String(reviewCount),
+    shouldDisplay: hasValidRating(ratingValue),
     isLoading: false
   };
 }
