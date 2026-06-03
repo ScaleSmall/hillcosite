@@ -46,6 +46,7 @@ const requiredLegacyRedirects = new Map([
   ['/service-area', '/service-areas'],
   ['/service/living-room-painting-round-rock', '/services/interior-painting'],
   ['/service/residential-deck-painting-round-rock', '/services/exterior-painting'],
+  ['/service/residential-concrete-painting-round-rock', '/services/exterior-painting'],
   ['/service/residential-foyer-painting-round-rock', '/services/interior-painting'],
   ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
   ['/service/custom-home-painting-round-rock', '/services'],
