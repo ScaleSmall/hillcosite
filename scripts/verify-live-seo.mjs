@@ -963,6 +963,28 @@ async function checkGoogleEntityIdentifier() {
   console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid');
 }
 
+async function checkContactPageSchema() {
+  const { response, text: html } = await fetchText(`${baseUrl}/contact?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, '/contact');
+  const contactPageSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'ContactPage') &&
+    item?.['@id'] === `${baseUrl}/contact#contactpage`
+  );
+  const hasBusinessEntity =
+    contactPageSchema?.about?.['@id'] === `${baseUrl}/#localbusiness` &&
+    contactPageSchema?.mainEntity?.['@id'] === `${baseUrl}/#localbusiness`;
+  const hasContactPoint =
+    schemaTypeIncludes(contactPageSchema?.contactPoint, 'ContactPoint') &&
+    String(contactPageSchema?.contactPoint?.telephone || '').includes('(512) 240-2246');
+
+  if (response.status !== 200 || !contactPageSchema || !hasBusinessEntity || !hasContactPoint || !hasPaintingEstimateAction(contactPageSchema)) {
+    fail('/contact: live ContactPage schema should connect the LocalBusiness, canonical phone, and estimate QuoteAction.');
+    return;
+  }
+
+  console.log('Live contact page schema includes LocalBusiness contact and estimate action');
+}
+
 if (pageIndexingMode) {
   console.log('Live DNS/custom-domain checks skipped for page-indexing validation mode.');
 } else {
@@ -981,6 +1003,7 @@ await checkServiceAreaFaqSchema();
 await checkGuideFaqSchema();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
+await checkContactPageSchema();
 
 if (failures.length) {
   console.error('\nLive SEO verification FAILED:');

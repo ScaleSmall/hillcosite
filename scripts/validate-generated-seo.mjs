@@ -1534,6 +1534,26 @@ function run() {
             fail(`${routePath}: contact page is missing required business identity signal ${signal}`);
           }
         }
+
+        const contactPageSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ContactPage') &&
+          item?.['@id'] === `${baseUrl}/contact#contactpage`
+        );
+
+        if (!contactPageSchema) {
+          fail(`${routePath}: contact page is missing ContactPage structured data`);
+        } else {
+          const hasBusinessEntity =
+            contactPageSchema.about?.['@id'] === `${baseUrl}/#localbusiness` &&
+            contactPageSchema.mainEntity?.['@id'] === `${baseUrl}/#localbusiness`;
+          const hasContactPoint =
+            schemaTypeIncludes(contactPageSchema.contactPoint, 'ContactPoint') &&
+            String(contactPageSchema.contactPoint?.telephone || '').includes('(512) 240-2246');
+
+          if (!hasBusinessEntity || !hasContactPoint || !hasPaintingEstimateAction(contactPageSchema)) {
+            fail(`${routePath}: ContactPage schema must connect the LocalBusiness, canonical phone, and estimate QuoteAction`);
+          }
+        }
       }
 
       if (isLocalBusinessSchemaRoute(routePath)) {

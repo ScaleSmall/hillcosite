@@ -585,6 +585,29 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     } : undefined
   } : null;
 
+  const contactPageSchema = canonicalStr === `${baseUrl}/contact` ? {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${baseUrl}/contact#contactpage`,
+    url: `${baseUrl}/contact`,
+    name: optimizedTitle,
+    description: optimizedDescription,
+    isPartOf: {
+      '@id': `${baseUrl}/#website`
+    },
+    about: {
+      '@id': `${baseUrl}/#localbusiness`
+    },
+    mainEntity: {
+      '@id': `${baseUrl}/#localbusiness`
+    },
+    contactPoint,
+    potentialAction: requestEstimateAction,
+    breadcrumb: breadcrumbs && breadcrumbs.length > 0 ? {
+      '@id': `${baseUrl}/contact#breadcrumb`
+    } : undefined
+  } : null;
+
   // WebPage schema for standard pages (only if canonical is provided)
   const webpageSchema = canonicalStr && pageType !== 'collection' ? {
     '@context': 'https://schema.org',
@@ -615,6 +638,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     additionalSchema,
     localBusinessSchema,
     collectionSchema,
+    contactPageSchema,
     webpageSchema
   ]));
 
@@ -718,6 +742,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       {collectionSchema && (
         <script type="application/ld+json">
           {JSON.stringify(collectionSchema)}
+        </script>
+      )}
+
+      {contactPageSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(contactPageSchema)}
         </script>
       )}
 
