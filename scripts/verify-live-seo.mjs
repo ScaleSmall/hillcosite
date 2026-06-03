@@ -34,7 +34,7 @@ const austinServiceSignals = new Map([
   ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
   ['/commercial-painting-austin', 'Austin commercial painters'],
 ]);
-const priorityLocalBusinessRoutes = [
+const coreLocalBusinessRoutes = [
   '/',
   '/about',
   '/services',
@@ -47,10 +47,12 @@ const priorityLocalBusinessRoutes = [
   '/faq',
   '/color-consultation',
   '/contact',
-  '/exterior-painting-austin',
-  '/interior-painting-austin',
-  '/cabinet-refinishing-austin',
-  '/commercial-painting-austin',
+];
+const localServicePrefixes = [
+  '/interior-painting-',
+  '/exterior-painting-',
+  '/cabinet-refinishing-',
+  '/commercial-painting-',
 ];
 const serviceAreaFaqSchemaRoutes = [
   '/service-areas/austin',
@@ -177,6 +179,20 @@ function asArray(value) {
   }
 
   return Array.isArray(value) ? value : [value];
+}
+
+function routeIsServiceLocation(route) {
+  return localServicePrefixes.some(prefix => route.startsWith(prefix));
+}
+
+function routeNeedsLocalBusinessSchema(route) {
+  return (
+    coreLocalBusinessRoutes.includes(route) ||
+    route === '/service-areas' ||
+    route.startsWith('/service-areas/') ||
+    route.startsWith('/areas/') ||
+    routeIsServiceLocation(route)
+  );
 }
 
 function firstHeroSectionHtml(html) {
@@ -749,9 +765,19 @@ async function checkAustinSchema() {
 }
 
 async function checkPriorityLocalBusinessSchema() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml`);
+
+  if (sitemapResponse.status !== 200) {
+    fail(`sitemap.xml returned ${sitemapResponse.status} before LocalBusiness schema route discovery`);
+    return;
+  }
+
+  const routes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(match => routePathFromUrl(match[1]))
+    .filter(routeNeedsLocalBusinessSchema);
   let passed = 0;
 
-  for (const route of priorityLocalBusinessRoutes) {
+  for (const route of routes) {
     const path = route === '/' ? '/' : route;
     const { response, text: html } = await fetchText(`${baseUrl}${path}?v=${Date.now()}`);
     const scripts = parseJsonLd(html, route);
@@ -794,7 +820,7 @@ async function checkPriorityLocalBusinessSchema() {
     passed += 1;
   }
 
-  console.log(`Live priority LocalBusiness schema pages checked: ${passed}/${priorityLocalBusinessRoutes.length}`);
+  console.log(`Live local LocalBusiness schema pages checked: ${passed}/${routes.length}`);
 }
 
 async function checkServiceAreaFaqSchema() {

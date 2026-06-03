@@ -66,6 +66,7 @@ const ServiceAreas = () => {
           { name: 'Home', url: '/' },
           { name: 'Service Areas', url: '/service-areas' }
         ]}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}

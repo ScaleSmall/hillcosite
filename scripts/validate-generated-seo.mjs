@@ -133,6 +133,20 @@ const localServicePrefixes = [
   '/cabinet-refinishing-',
   '/commercial-painting-'
 ];
+const coreLocalBusinessRoutes = new Set([
+  '/',
+  '/about',
+  '/services',
+  '/services/interior-painting',
+  '/services/exterior-painting',
+  '/services/cabinet-refinishing',
+  '/services/commercial',
+  '/gallery',
+  '/testimonials',
+  '/faq',
+  '/color-consultation',
+  '/contact',
+]);
 const requiredGeoHubServiceLocationSlugs = new Map([
   ['/areas/steiner-ranch-78732', 'steiner-ranch'],
   ['/areas/west-lake-hills-and-rollingwood', 'west-lake-hills'],
@@ -299,6 +313,20 @@ function asArray(value) {
   }
 
   return Array.isArray(value) ? value : [value];
+}
+
+function isServiceLocationRoute(routePath) {
+  return localServicePrefixes.some(prefix => routePath.startsWith(prefix));
+}
+
+function isLocalBusinessSchemaRoute(routePath) {
+  return (
+    coreLocalBusinessRoutes.has(routePath) ||
+    routePath === '/service-areas' ||
+    routePath.startsWith('/service-areas/') ||
+    routePath.startsWith('/areas/') ||
+    isServiceLocationRoute(routePath)
+  );
 }
 
 function hasValidAggregateRating(schema) {
@@ -1468,25 +1496,7 @@ function run() {
         }
       }
 
-      const localBusinessSchemaRequiredRoutes = new Set([
-        '/about',
-        '/services',
-        '/services/interior-painting',
-        '/services/exterior-painting',
-        '/services/cabinet-refinishing',
-        '/services/commercial',
-        '/gallery',
-        '/testimonials',
-        '/faq',
-        '/color-consultation',
-        '/contact',
-        '/exterior-painting-austin',
-        '/interior-painting-austin',
-        '/cabinet-refinishing-austin',
-        '/commercial-painting-austin'
-      ]);
-
-      if (localBusinessSchemaRequiredRoutes.has(routePath)) {
+      if (isLocalBusinessSchemaRoute(routePath)) {
         const localBusinessSchema = schemaItems.find(item =>
           schemaTypeIncludes(item, 'LocalBusiness') &&
           schemaTypeIncludes(item, 'PaintingContractor') &&
