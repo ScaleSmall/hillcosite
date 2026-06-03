@@ -103,6 +103,7 @@ const liveLegacyRedirects = [
   ['/blog/when-to-repaint-a-home-in-austin-hill-country-painting', '/blog'],
   ['/guides/painting-costs-round-rock', '/guides/painting-costs-austin'],
   ['/areas/downtown-austin-luxury/old-west-austin', '/areas/downtown-austin-luxury/old-west-austin-central'],
+  ['/service/definitely-not-a-real-painting-service-gsc-test', '/services'],
 ];
 const crawlerEntityAssets = [
   '/robots.txt',
@@ -111,6 +112,20 @@ const crawlerEntityAssets = [
   '/ai.txt',
   '/entity-facts.json',
   '/citation-facts.json',
+];
+const liveNoindexRoutes = [
+  ['/search?q=test', 'noindex, follow'],
+  ['/thank-you', 'noindex, follow'],
+  ['/pre-approval', 'noindex, nofollow'],
+  ['/privacy', 'noindex, follow'],
+  ['/terms', 'noindex, follow'],
+  ['/do-not-sell', 'noindex, follow'],
+  ['/eula', 'noindex, follow'],
+  ['/sitemap', 'noindex, follow'],
+];
+const liveUnknownRoutes = [
+  '/does-not-exist-gsc-test',
+  '/areas/not-a-real-area-gsc-test',
 ];
 
 const failures = [];
@@ -682,6 +697,53 @@ async function checkFaqSchemaRoutes(routes, label) {
   return passed;
 }
 
+async function checkCrawlerControlRoutes() {
+  let noindexPassed = 0;
+  let notFoundPassed = 0;
+
+  for (const [route, expectedRobots] of liveNoindexRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}${route.includes('?') ? '&' : '?'}v=${Date.now()}`);
+    const xRobotsTag = response.headers.get('x-robots-tag') || '';
+    const canonicalTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+      .map(match => match[0])
+      .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
+    const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+
+    if (
+      response.status !== 200 ||
+      xRobotsTag.toLowerCase() !== expectedRobots ||
+      canonicalHrefs.includes(`${baseUrl}/`)
+    ) {
+      fail(`${route}: expected live 200 with X-Robots-Tag "${expectedRobots}" and no homepage canonical; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}`);
+      continue;
+    }
+
+    noindexPassed += 1;
+  }
+
+  for (const route of liveUnknownRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const xRobotsTag = response.headers.get('x-robots-tag') || '';
+    const canonicalTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+      .map(match => match[0])
+      .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
+    const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+
+    if (
+      response.status !== 404 ||
+      xRobotsTag.toLowerCase() !== 'noindex, nofollow' ||
+      canonicalHrefs.includes(`${baseUrl}/`)
+    ) {
+      fail(`${route}: expected live 404 with X-Robots-Tag "noindex, nofollow" and no homepage canonical; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}`);
+      continue;
+    }
+
+    notFoundPassed += 1;
+  }
+
+  console.log(`Live crawler control routes checked: noindex ${noindexPassed}/${liveNoindexRoutes.length}, 404 ${notFoundPassed}/${liveUnknownRoutes.length}`);
+}
+
 async function checkGoogleEntityIdentifier() {
   const { response, text: html } = await fetchText(`${baseUrl}/?v=${Date.now()}`);
   const scripts = parseJsonLd(html, '/');
@@ -710,6 +772,7 @@ await checkAustinSchema();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
 await checkGuideFaqSchema();
+await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
 
 if (failures.length) {
