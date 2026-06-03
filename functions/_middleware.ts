@@ -575,6 +575,10 @@ export async function onRequest(context: {
     });
   }
 
+  if (pathname === '/sitemap.php') {
+    return redirect('/sitemap.xml', url.origin);
+  }
+
   if (AI_MANIFEST_HEADERS[pathname]) {
     return aiManifestResponse(next, pathname);
   }

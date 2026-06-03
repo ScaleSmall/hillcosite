@@ -82,6 +82,7 @@ const bannedHeroBackgroundImages = [
   'traditional-home-exterior.jpg',
 ];
 const liveLegacyRedirects = [
+  ['/sitemap.php', '/sitemap.xml'],
   ['/service/residential-concrete-painting-round-rock', '/services/exterior-painting'],
   ['/service/residential-concrete-painting-round-rock/', '/services/exterior-painting'],
   ['/service/residential-concrete-painting', '/services/exterior-painting'],
