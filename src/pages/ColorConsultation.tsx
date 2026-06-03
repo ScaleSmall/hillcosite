@@ -120,6 +120,7 @@ const ColorConsultation = () => {
           areaServed: ['Austin', 'Lakeway', 'Bee Cave', 'Barton Creek', 'Allandale', 'Crestview', 'Rollingwood', 'West Lake Hills', 'Circle C Ranch', 'Northwest Hills', 'Tarrytown', 'Clarksville', 'Lake Travis', 'Steiner Ranch', 'Pemberton Heights', 'Westlake Highlands']
         }}
         faq={faqs}
+        includeLocalBusiness={true}
       />
 
       {/* Vibrant Color-Themed Hero */}

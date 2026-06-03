@@ -119,6 +119,7 @@ const CommercialPainting = () => {
         }}
         faq={faqs}
         product={productData}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}

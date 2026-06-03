@@ -1156,6 +1156,46 @@ function run() {
         }
       }
 
+      const localBusinessSchemaRequiredRoutes = new Set([
+        '/services',
+        '/services/interior-painting',
+        '/services/exterior-painting',
+        '/services/cabinet-refinishing',
+        '/services/commercial',
+        '/color-consultation',
+        '/exterior-painting-austin',
+        '/interior-painting-austin',
+        '/cabinet-refinishing-austin',
+        '/commercial-painting-austin'
+      ]);
+
+      if (localBusinessSchemaRequiredRoutes.has(routePath)) {
+        const localBusinessSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'LocalBusiness') &&
+          schemaTypeIncludes(item, 'PaintingContractor') &&
+          item?.['@id'] === `${baseUrl}/#localbusiness`
+        );
+
+        if (!localBusinessSchema) {
+          fail(`${routePath}: priority local SEO page is missing LocalBusiness/PaintingContractor schema`);
+        } else {
+          const identifier = localBusinessSchema.identifier;
+          const sameAs = Array.isArray(localBusinessSchema.sameAs) ? localBusinessSchema.sameAs : [];
+
+          if (localBusinessSchema.hasMap !== googleBusinessProfileUrl || !sameAs.includes(googleBusinessProfileUrl)) {
+            fail(`${routePath}: LocalBusiness schema must include the canonical Google Business Profile URL`);
+          }
+
+          if (identifier?.propertyID !== 'kgmid' || identifier?.value !== googleKnowledgeGraphId || identifier?.url !== googleBusinessProfileUrl) {
+            fail(`${routePath}: LocalBusiness schema must include the Google Knowledge Graph ID PropertyValue`);
+          }
+
+          if (!String(localBusinessSchema.telephone || '').includes('(512) 240-2246')) {
+            fail(`${routePath}: LocalBusiness schema must include the canonical phone number`);
+          }
+        }
+      }
+
       const isDetailedServiceRoute = routePath.startsWith('/services/')
         || /^\/(interior-painting|exterior-painting|cabinet-refinishing|commercial-painting)-/.test(routePath);
 

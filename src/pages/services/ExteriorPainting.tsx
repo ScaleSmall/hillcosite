@@ -123,6 +123,7 @@ const ExteriorPainting = () => {
         }}
         faq={faqs}
         product={productData}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}

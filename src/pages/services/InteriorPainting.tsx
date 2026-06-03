@@ -131,6 +131,7 @@ const InteriorPainting = () => {
         }}
         faq={faqs}
         product={productData}
+        includeLocalBusiness={true}
       />
 
       {/* Hero */}
