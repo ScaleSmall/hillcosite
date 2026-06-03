@@ -103,6 +103,14 @@ const liveLegacyRedirects = [
   ['/guides/painting-costs-round-rock', '/guides/painting-costs-austin'],
   ['/areas/downtown-austin-luxury/old-west-austin', '/areas/downtown-austin-luxury/old-west-austin-central'],
 ];
+const crawlerEntityAssets = [
+  '/robots.txt',
+  '/llms.txt',
+  '/llms-full.txt',
+  '/ai.txt',
+  '/entity-facts.json',
+  '/citation-facts.json',
+];
 
 const failures = [];
 
@@ -393,6 +401,121 @@ async function checkSitemapPages() {
   }
 }
 
+function hasAllValues(values, expectedValues) {
+  return expectedValues.every(value => values.includes(value));
+}
+
+async function checkCrawlerEntityAssets() {
+  const assetText = new Map();
+  let passed = 0;
+
+  for (const path of crawlerEntityAssets) {
+    const { response, text } = await fetchText(`${baseUrl}${path}?v=${Date.now()}`);
+
+    if (response.status !== 200) {
+      fail(`${path}: live crawler/entity asset returned ${response.status}`);
+      continue;
+    }
+
+    assetText.set(path, text);
+    passed += 1;
+  }
+
+  const robotsText = assetText.get('/robots.txt') || '';
+  const llmsText = assetText.get('/llms.txt') || '';
+  const llmsFullText = assetText.get('/llms-full.txt') || '';
+  const aiText = assetText.get('/ai.txt') || '';
+
+  if (
+    !robotsText.includes(`Sitemap: ${baseUrl}/sitemap.xml`) ||
+    !robotsText.includes('User-agent: Googlebot') ||
+    /^\s*Disallow:\s*\/\s*$/im.test(robotsText)
+  ) {
+    fail('/robots.txt: live robots file is missing the canonical sitemap, Googlebot access, or blocks the site.');
+  }
+
+  const llmsRequired = [
+    '/llms-full.txt',
+    '/entity-facts.json',
+    '/citation-facts.json',
+    'Austin house painters',
+  ];
+
+  if (!llmsRequired.every(value => llmsText.includes(value))) {
+    fail('/llms.txt: live LLM manifest is missing full manifest, entity/citation facts, or Austin house painter positioning.');
+  }
+
+  const llmsFullRequired = [
+    `${baseUrl}/`,
+    `${baseUrl}/sitemap.xml`,
+    `${baseUrl}/exterior-painting-austin`,
+  ];
+
+  if (!llmsFullRequired.every(value => llmsFullText.includes(value))) {
+    fail('/llms-full.txt: live full LLM manifest is missing canonical homepage, sitemap, or Austin exterior painting URL.');
+  }
+
+  const aiRequired = [
+    'Austin house painters',
+    `${baseUrl}/sitemap.xml`,
+    `${baseUrl}/entity-facts.json`,
+    `${baseUrl}/citation-facts.json`,
+  ];
+
+  if (!aiRequired.every(value => aiText.includes(value))) {
+    fail('/ai.txt: live AI discovery file is missing Austin house painter positioning or canonical discovery URLs.');
+  }
+
+  try {
+    const entityFacts = JSON.parse(assetText.get('/entity-facts.json') || '{}');
+    const areaServed = asArray(entityFacts.areaServed).map(area => area?.name || area).filter(Boolean);
+    const serviceArea = asArray(entityFacts.serviceArea).map(area => area?.name || area).filter(Boolean);
+    const knowsAbout = asArray(entityFacts.knowsAbout);
+
+    if (
+      entityFacts.name !== 'Hill Country Painting' ||
+      entityFacts.url !== baseUrl ||
+      entityFacts.telephone !== '(512) 240-2246' ||
+      entityFacts.hasMap !== googleBusinessProfileUrl ||
+      entityFacts.identifier?.propertyID !== 'kgmid' ||
+      entityFacts.identifier?.value !== googleKnowledgeGraphId ||
+      entityFacts.identifier?.url !== googleBusinessProfileUrl ||
+      !hasAllValues(areaServed, greaterAustinServiceCounties) ||
+      !hasAllValues(serviceArea, greaterAustinServiceCounties) ||
+      !hasAllValues(knowsAbout, priorityLocalSearchTopics) ||
+      entityFacts.sitemapUrlCount !== 182
+    ) {
+      fail('/entity-facts.json: live entity facts are missing canonical identity, GBP/kgmid, Austin service counties, priority topics, or sitemap count.');
+    }
+  } catch {
+    fail('/entity-facts.json: live entity facts are not valid JSON.');
+  }
+
+  try {
+    const citationFacts = JSON.parse(assetText.get('/citation-facts.json') || '{}');
+    const citationIdentity = citationFacts.canonicalIdentity || {};
+    const citationTopics = asArray(citationIdentity.priorityLocalSearchTopics);
+    const citationCounties = asArray(citationIdentity.serviceCounties);
+
+    if (
+      citationIdentity.name !== 'Hill Country Painting' ||
+      citationIdentity.website !== baseUrl ||
+      citationIdentity.telephone !== '(512) 240-2246' ||
+      citationIdentity.serviceAreaBusiness !== true ||
+      citationIdentity.googleKnowledgeGraphId !== googleKnowledgeGraphId ||
+      citationIdentity.googleBusinessProfile !== googleBusinessProfileUrl ||
+      !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
+      !hasAllValues(citationCounties, greaterAustinServiceCounties)
+    ) {
+      fail('/citation-facts.json: live citation facts are missing canonical identity, GBP/kgmid, service counties, or priority topics.');
+    }
+  } catch {
+    fail('/citation-facts.json: live citation facts are not valid JSON.');
+  }
+
+  console.log(`Live crawler/entity assets checked: ${passed}/${crawlerEntityAssets.length}`);
+}
+
 async function checkSupabaseFeed() {
   const { response, text: html } = await fetchText(`${baseUrl}/gallery?v=${Date.now()}`);
 
@@ -579,6 +702,7 @@ async function checkGoogleEntityIdentifier() {
 await checkDns();
 await checkPagesDomain();
 await checkSitemapPages();
+await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
