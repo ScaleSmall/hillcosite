@@ -485,7 +485,14 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       alternateName: service.alternateName,
       description: service.description,
       provider: {
-        '@id': `${baseUrl}/#localbusiness`
+        '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
+        '@id': `${baseUrl}/#localbusiness`,
+        name: businessConfig.name,
+        url: baseUrl,
+        telephone: businessConfig.phone,
+        hasMap: businessConfig.googleBusinessProfileUrl,
+        sameAs: sameAsProfiles,
+        identifier: googleBusinessIdentifier
       },
       areaServed: serviceAreas,
       serviceArea: serviceAreaRegions,

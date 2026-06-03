@@ -1073,6 +1073,27 @@ function hasPaintingEstimateAction(schema) {
   });
 }
 
+function hasCanonicalServiceProvider(schema) {
+  const provider = schema?.provider || {};
+  const providerTypes = asArray(provider?.['@type']);
+  const providerSameAs = asArray(provider?.sameAs);
+  const identifier = provider?.identifier || {};
+
+  return (
+    provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+    providerTypes.includes('LocalBusiness') &&
+    providerTypes.includes('HousePainter') &&
+    provider?.name === 'Hill Country Painting' &&
+    provider?.url === baseUrl &&
+    provider?.hasMap === googleBusinessProfileUrl &&
+    providerSameAs.includes(googleBusinessProfileUrl) &&
+    schemaTypeIncludes(identifier, 'PropertyValue') &&
+    identifier?.propertyID === 'kgmid' &&
+    identifier?.value === googleKnowledgeGraphId &&
+    identifier?.url === googleBusinessProfileUrl
+  );
+}
+
 async function checkCrawlerEntityAssets() {
   const assetText = new Map();
   let passed = 0;
@@ -1300,9 +1321,10 @@ async function checkAustinSchema() {
     const hasServicePageConnection = serviceSchemas.some(schema =>
       schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
     );
+    const hasServiceProviderIdentity = serviceSchemas.some(schema => hasCanonicalServiceProvider(schema));
 
-    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection) {
-      fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, or WebPage connection signal.`);
+    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection || !hasServiceProviderIdentity) {
+      fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, WebPage connection, or canonical provider identity signal.`);
     } else {
       passed += 1;
     }
@@ -1352,9 +1374,10 @@ async function checkServiceLocationServiceSchema() {
     const hasServicePageConnection = serviceSchemas.some(schema =>
       schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
     );
+    const hasServiceProviderIdentity = serviceSchemas.some(schema => hasCanonicalServiceProvider(schema));
 
-    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection) {
-      fail(`${route}: live Service schema is missing the ${expectedPhrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, or WebPage connection signal.`);
+    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection || !hasServiceProviderIdentity) {
+      fail(`${route}: live Service schema is missing the ${expectedPhrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, WebPage connection, or canonical provider identity signal.`);
       continue;
     }
 

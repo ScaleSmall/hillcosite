@@ -462,6 +462,27 @@ function hasPaintingEstimateAction(schema) {
   });
 }
 
+function hasCanonicalServiceProvider(schema) {
+  const provider = schema?.provider || {};
+  const providerTypes = asArray(provider?.['@type']);
+  const providerSameAs = asArray(provider?.sameAs);
+  const identifier = provider?.identifier || {};
+
+  return (
+    provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+    providerTypes.includes('LocalBusiness') &&
+    providerTypes.includes('HousePainter') &&
+    provider?.name === 'Hill Country Painting' &&
+    provider?.url === baseUrl &&
+    provider?.hasMap === googleBusinessProfileUrl &&
+    providerSameAs.includes(googleBusinessProfileUrl) &&
+    schemaTypeIncludes(identifier, 'PropertyValue') &&
+    identifier?.propertyID === 'kgmid' &&
+    identifier?.value === googleKnowledgeGraphId &&
+    identifier?.url === googleBusinessProfileUrl
+  );
+}
+
 function itemListUrls(schema) {
   return asArray(schema?.itemListElement)
     .map(item => item?.url || item?.item?.url)
@@ -2191,8 +2212,14 @@ function run() {
           fail(`${routePath}: WebPage schema mainEntity should be ${expectedServiceId}`);
         }
 
+        const canonicalServiceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
+
+        if (canonicalServiceSchema && !hasCanonicalServiceProvider(canonicalServiceSchema)) {
+          fail(`${routePath}: Service schema provider should carry the canonical LocalBusiness, HousePainter, Google Business Profile, and kgmid identity signals`);
+        }
+
         if (routePath.startsWith('/services/')) {
-          const serviceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
+          const serviceSchema = canonicalServiceSchema;
           const areaNames = (serviceSchema?.areaServed || [])
             .map(area => area?.name)
             .filter(Boolean);
@@ -2213,7 +2240,7 @@ function run() {
         const expectedAustinServiceAlias = austinServiceSchemaSignals.get(routePath);
 
         if (expectedAustinServiceAlias) {
-          const serviceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
+          const serviceSchema = canonicalServiceSchema;
           const alternateNames = Array.isArray(serviceSchema?.alternateName) ? serviceSchema.alternateName : [];
           const keywords = Array.isArray(serviceSchema?.keywords) ? serviceSchema.keywords : [];
           const serviceAreaNames = asArray(serviceSchema?.serviceArea).map(area => area?.name).filter(Boolean);
