@@ -22,6 +22,7 @@ const gbpRatingHookPath = resolve(projectRoot, 'src/hooks/useGBPRating.ts');
 const headerPath = resolve(projectRoot, 'src/components/Header.tsx');
 const footerPath = resolve(projectRoot, 'src/components/Footer.tsx');
 const seoComponentPath = resolve(projectRoot, 'src/components/SEO.tsx');
+const serviceLocationLinksPath = resolve(projectRoot, 'src/components/ServiceLocationLinks.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
@@ -154,6 +155,12 @@ const localServicePrefixes = [
   '/cabinet-refinishing-',
   '/commercial-painting-'
 ];
+const coreServiceLocationGridRoutes = new Map([
+  ['/services/interior-painting', '/interior-painting-'],
+  ['/services/exterior-painting', '/exterior-painting-'],
+  ['/services/cabinet-refinishing', '/cabinet-refinishing-'],
+  ['/services/commercial', '/commercial-painting-']
+]);
 const coreLocalBusinessRoutes = new Set([
   '/',
   '/about',
@@ -875,6 +882,7 @@ function run() {
   const headerSource = readRequired(headerPath, 'src/components/Header.tsx');
   const footerSource = readRequired(footerPath, 'src/components/Footer.tsx');
   const seoComponentSource = readRequired(seoComponentPath, 'src/components/SEO.tsx');
+  const serviceLocationLinksSource = readRequired(serviceLocationLinksPath, 'src/components/ServiceLocationLinks.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
@@ -1161,6 +1169,10 @@ function run() {
 
   if (!aiManifestGeneratorSource.includes('extractBusinessSocialProfiles(businessConfigSource)')) {
     fail('scripts/generate-ai-manifests.mjs must derive AI/citation sameAs social profiles from src/config/business.ts');
+  }
+
+  if (!serviceLocationLinksSource.includes("import { locations } from '../config/locations'") || !serviceLocationLinksSource.includes('Object.values(locations)')) {
+    fail('src/components/ServiceLocationLinks.tsx must derive service-location grid links from the canonical src/config/locations.ts list');
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {
@@ -1518,6 +1530,26 @@ function run() {
     const blockingRule = disallowRules.find(rule => robotsRuleBlocksPath(rule, routePath));
     if (blockingRule) {
       fail(`${routePath}: sitemap URL is blocked by robots.txt rule Disallow: ${blockingRule}`);
+    }
+  }
+
+  for (const [coreServiceRoute, servicePrefix] of coreServiceLocationGridRoutes) {
+    const page = pages.get(coreServiceRoute);
+    const expectedRoutes = sitemapPaths.filter(routePath => routePath.startsWith(servicePrefix));
+
+    if (!page) {
+      fail(`${coreServiceRoute}: missing generated HTML for service-location grid validation`);
+      continue;
+    }
+
+    if (expectedRoutes.length < 16) {
+      fail(`${coreServiceRoute}: expected at least 16 service-location routes for ${servicePrefix}, found ${expectedRoutes.length}`);
+    }
+
+    for (const expectedRoute of expectedRoutes) {
+      if (!pageLinksToRoute(page, coreServiceRoute, expectedRoute)) {
+        fail(`${coreServiceRoute}: service-location grid is missing link to ${expectedRoute}`);
+      }
     }
   }
 

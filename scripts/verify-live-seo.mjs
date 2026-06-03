@@ -82,6 +82,12 @@ const localServicePrefixes = [
   '/cabinet-refinishing-',
   '/commercial-painting-',
 ];
+const coreServiceLocationGridRoutes = new Map([
+  ['/services/interior-painting', '/interior-painting-'],
+  ['/services/exterior-painting', '/exterior-painting-'],
+  ['/services/cabinet-refinishing', '/cabinet-refinishing-'],
+  ['/services/commercial', '/commercial-painting-'],
+]);
 const serviceAreaFaqSchemaRoutes = [
   '/service-areas/austin',
   '/service-areas/cedar-park',
@@ -967,6 +973,40 @@ async function checkHubItemListSchema() {
   console.log(`Live hub ItemList schema pages checked: ${passed}/${hubs.length}`);
 }
 
+async function checkCoreServiceLocationGrids() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+
+  if (sitemapResponse.status !== 200) {
+    fail('live sitemap could not be fetched for core service-location grid validation.');
+    return;
+  }
+
+  let passed = 0;
+
+  for (const [coreServiceRoute, servicePrefix] of coreServiceLocationGridRoutes) {
+    const expectedRoutes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+      .map(match => routePathFromUrl(match[1]))
+      .filter(route => route.startsWith(servicePrefix));
+    const { response, text: html } = await fetchText(`${baseUrl}${coreServiceRoute}?v=${Date.now()}`);
+
+    if (expectedRoutes.length < 16) {
+      fail(`${coreServiceRoute}: live sitemap should expose at least 16 service-location routes for ${servicePrefix}, found ${expectedRoutes.length}.`);
+      continue;
+    }
+
+    const missingRoutes = expectedRoutes.filter(route => !html.includes(`href="${route}"`));
+
+    if (response.status !== 200 || missingRoutes.length > 0) {
+      fail(`${coreServiceRoute}: live service-location grid is missing links to ${missingRoutes.slice(0, 8).join(', ')}${missingRoutes.length > 8 ? '...' : ''}`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live core service-location grids checked: ${passed}/${coreServiceLocationGridRoutes.size}`);
+}
+
 async function checkPriorityLocalBusinessSchema() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml`);
 
@@ -1300,6 +1340,7 @@ await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
 await checkHubItemListSchema();
+await checkCoreServiceLocationGrids();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
 await checkGuideFaqSchema();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
+import { locations } from '../config/locations';
 
 interface ServiceLocationLinksProps {
   service: 'interior' | 'exterior' | 'cabinet' | 'commercial';
@@ -44,19 +45,7 @@ const austinIntentLinks = {
   }
 } as const;
 
-const locations = [
-  { name: 'Austin', slug: 'austin' },
-  { name: 'Tarrytown', slug: 'tarrytown' },
-  { name: 'Northwest Hills', slug: 'northwest-hills' },
-  { name: 'West Lake Hills', slug: 'west-lake-hills' },
-  { name: 'Westlake Highlands', slug: 'west-lake-highlands' },
-  { name: 'Lakeway', slug: 'lakeway' },
-  { name: 'Leander', slug: 'leander' },
-  { name: 'Georgetown', slug: 'georgetown' },
-  { name: 'Round Rock', slug: 'round-rock' },
-  { name: 'Cedar Park', slug: 'cedar-park' },
-  { name: 'North Austin', slug: 'north-austin' }
-];
+const locationLinks = Object.values(locations).map(({ name, slug }) => ({ name, slug }));
 
 const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, currentLocation }) => {
   const serviceName = serviceNames[service];
@@ -65,8 +54,8 @@ const ServiceLocationLinks: React.FC<ServiceLocationLinksProps> = ({ service, cu
   const showAustinIntentLink = currentLocation !== 'austin';
 
   const filteredLocations = currentLocation
-    ? locations.filter(loc => loc.slug !== currentLocation)
-    : locations;
+    ? locationLinks.filter(loc => loc.slug !== currentLocation)
+    : locationLinks;
 
   return (
     <section className="section-padding bg-brand-gray-50">
