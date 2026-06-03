@@ -20,6 +20,16 @@ function fail(message) {
   failures.push(message);
 }
 
+function attrs(tag) {
+  const result = {};
+
+  for (const match of tag.matchAll(/([\w:-]+)\s*=\s*(["'])(.*?)\2/g)) {
+    result[match[1].toLowerCase()] = match[3];
+  }
+
+  return result;
+}
+
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
@@ -111,15 +121,41 @@ async function checkSitemapPages() {
         },
       });
       const html = await page.text();
-      const canonicalCount = [...html.matchAll(/<link\s+[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*>/gi)].length;
+      const canonicalTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
+      const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+      const canonicalCount = canonicalTags.length;
+      const canonicalMatchesSelf = canonicalHrefs.length === 1 && canonicalHrefs[0] === url;
+      const robotsTags = [...html.matchAll(/<meta\b[^>]*>/gi)]
+        .map(match => match[0])
+        .filter(tag => (attrs(tag).name || '').toLowerCase() === 'robots');
+      const robotsContents = robotsTags.map(tag => attrs(tag).content || '');
+      const robotsContent = robotsContents.join(' ');
+      const robotsCount = robotsTags.length;
+      const robotsIndexable =
+        robotsCount === 1 &&
+        /index,\s*follow/i.test(robotsContent) &&
+        /max-image-preview:large/i.test(robotsContent) &&
+        !/noindex/i.test(robotsContent);
       const h1Count = [...html.matchAll(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi)].length;
-      const noindex =
-        /<meta\s+[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html) ||
-        /noindex/i.test(page.headers.get('x-robots-tag') || '');
+      const xRobotsTag = page.headers.get('x-robots-tag') || '';
+      const noindex = /noindex/i.test(robotsContent) || /noindex/i.test(xRobotsTag);
       const hasError = /Something went wrong|Post Not Found|404 Not Found/i.test(html);
 
-      if (page.status !== 200 || canonicalCount !== 1 || h1Count !== 1 || noindex || hasError) {
-        problems.push({ url, status: page.status, canonicalCount, h1Count, noindex, hasError });
+      if (page.status !== 200 || canonicalCount !== 1 || !canonicalMatchesSelf || robotsCount !== 1 || !robotsIndexable || h1Count !== 1 || noindex || hasError) {
+        problems.push({
+          url,
+          status: page.status,
+          canonicalCount,
+          canonicalHrefs,
+          canonicalMatchesSelf,
+          robotsCount,
+          robotsContents,
+          h1Count,
+          noindex,
+          hasError,
+        });
       }
     }
   }
@@ -129,7 +165,7 @@ async function checkSitemapPages() {
   console.log(`Live sitemap pages checked: ${urls.length}`);
 
   for (const problem of problems.slice(0, 10)) {
-    fail(`${problem.url}: status ${problem.status}, canonicals ${problem.canonicalCount}, H1s ${problem.h1Count}, noindex ${problem.noindex}, error ${problem.hasError}`);
+    fail(`${problem.url}: status ${problem.status}, canonicals ${problem.canonicalCount}, canonicalSelf ${problem.canonicalMatchesSelf}, robots ${problem.robotsCount}, H1s ${problem.h1Count}, noindex ${problem.noindex}, error ${problem.hasError}`);
   }
 
   if (problems.length > 10) {
