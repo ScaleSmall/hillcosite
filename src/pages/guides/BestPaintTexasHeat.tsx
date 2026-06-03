@@ -96,6 +96,7 @@ const BestPaintTexasHeat = () => {
           { name: 'Guides', url: '/guides/best-paint-texas-heat' },
           { name: 'Best Paint for Texas Heat', url: '/guides/best-paint-texas-heat' }
         ]}
+        faq={faqs}
       />
 
       {/* Hero - Warm Surface */}

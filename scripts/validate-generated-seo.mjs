@@ -163,6 +163,12 @@ const requiredServiceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills'
 ];
+const requiredGuideFaqSchemaRoutes = [
+  '/guides/best-paint-texas-heat',
+  '/guides/hoa-color-tips-austin',
+  '/guides/how-often-paint-central-texas',
+  '/guides/painting-costs-austin'
+];
 
 const errors = [];
 const warnings = [];
@@ -848,6 +854,19 @@ function run() {
 
     if (!/"@type"\s*:\s*"FAQPage"/.test(page.html)) {
       fail(`${serviceAreaRoute}: service-area page with visible FAQs should include FAQPage schema`);
+    }
+  }
+
+  for (const guideRoute of requiredGuideFaqSchemaRoutes) {
+    const page = pages.get(guideRoute);
+
+    if (!page) {
+      fail(`${guideRoute}: missing generated HTML for guide FAQ schema validation`);
+      continue;
+    }
+
+    if (!/"@type"\s*:\s*"FAQPage"/.test(page.html)) {
+      fail(`${guideRoute}: guide page with visible FAQs should include FAQPage schema`);
     }
   }
 

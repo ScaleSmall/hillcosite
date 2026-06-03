@@ -8,6 +8,28 @@ const __dirname = dirname(__filename);
 
 const distPath = resolve(__dirname, '../dist');
 
+function waitSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
+function readFileWithRetry(filePath, encoding = 'utf-8', attempts = 6) {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return readFileSync(filePath, encoding);
+    } catch (error) {
+      const isTemporaryLock = ['EBUSY', 'EPERM', 'EACCES'].includes(error.code);
+
+      if (!isTemporaryLock || attempt === attempts) {
+        throw error;
+      }
+
+      waitSync(attempt * 250);
+    }
+  }
+
+  return readFileSync(filePath, encoding);
+}
+
 function getAllHtmlFiles(dir, fileList = []) {
   const files = readdirSync(dir);
 
@@ -35,7 +57,7 @@ function validateCanonicals() {
 
   htmlFiles.forEach(filePath => {
     totalFiles++;
-    const content = readFileSync(filePath, 'utf-8');
+    const content = readFileWithRetry(filePath);
 
     // Match canonical links regardless of attribute order or extra attributes.
     const canonicalRegex = /<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi;

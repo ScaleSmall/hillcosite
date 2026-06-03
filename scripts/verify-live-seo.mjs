@@ -46,6 +46,12 @@ const serviceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills',
 ];
+const guideFaqSchemaRoutes = [
+  '/guides/best-paint-texas-heat',
+  '/guides/hoa-color-tips-austin',
+  '/guides/how-often-paint-central-texas',
+  '/guides/painting-costs-austin',
+];
 
 const failures = [];
 
@@ -323,15 +329,27 @@ async function checkPriorityLocalBusinessSchema() {
 }
 
 async function checkServiceAreaFaqSchema() {
+  const passed = await checkFaqSchemaRoutes(serviceAreaFaqSchemaRoutes, 'service-area');
+
+  console.log(`Live service-area FAQ schema pages checked: ${passed}/${serviceAreaFaqSchemaRoutes.length}`);
+}
+
+async function checkGuideFaqSchema() {
+  const passed = await checkFaqSchemaRoutes(guideFaqSchemaRoutes, 'guide');
+
+  console.log(`Live guide FAQ schema pages checked: ${passed}/${guideFaqSchemaRoutes.length}`);
+}
+
+async function checkFaqSchemaRoutes(routes, label) {
   let passed = 0;
 
-  for (const route of serviceAreaFaqSchemaRoutes) {
+  for (const route of routes) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
     const scripts = parseJsonLd(html, route);
     const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
 
     if (response.status !== 200 || !faqSchema) {
-      fail(`${route}: live service-area FAQPage schema is missing.`);
+      fail(`${route}: live ${label} FAQPage schema is missing.`);
       continue;
     }
 
@@ -344,14 +362,14 @@ async function checkServiceAreaFaqSchema() {
     );
 
     if (!hasValidQuestionAnswer) {
-      fail(`${route}: live service-area FAQPage schema has no valid Question/Answer entries.`);
+      fail(`${route}: live ${label} FAQPage schema has no valid Question/Answer entries.`);
       continue;
     }
 
     passed += 1;
   }
 
-  console.log(`Live service-area FAQ schema pages checked: ${passed}/${serviceAreaFaqSchemaRoutes.length}`);
+  return passed;
 }
 
 async function checkGoogleEntityIdentifier() {
@@ -379,6 +397,7 @@ await checkSupabaseFeed();
 await checkAustinSchema();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
+await checkGuideFaqSchema();
 await checkGoogleEntityIdentifier();
 
 if (failures.length) {

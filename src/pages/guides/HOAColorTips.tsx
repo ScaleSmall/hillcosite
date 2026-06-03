@@ -118,6 +118,7 @@ const HOAColorTips = () => {
           { name: 'Guides', url: '/guides/hoa-color-tips-austin' },
           { name: 'HOA Color Tips', url: '/guides/hoa-color-tips-austin' }
         ]}
+        faq={faqs}
       />
 
       {/* Hero */}

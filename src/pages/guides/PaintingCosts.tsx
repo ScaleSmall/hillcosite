@@ -61,6 +61,7 @@ const PaintingCosts = () => {
           { name: 'Guides', url: '/guides/painting-costs-austin' },
           { name: 'Painting Costs', url: '/guides/painting-costs-austin' }
         ]}
+        faq={faqs}
       />
 
       {/* Hero */}

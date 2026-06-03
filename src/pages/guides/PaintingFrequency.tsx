@@ -126,6 +126,7 @@ const PaintingFrequency = () => {
           { name: 'Guides', url: '/guides/how-often-paint-central-texas' },
           { name: 'Painting Frequency', url: '/guides/how-often-paint-central-texas' }
         ]}
+        faq={faqs}
       />
 
       {/* Hero - Neutral Surface */}
