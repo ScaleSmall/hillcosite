@@ -5,6 +5,7 @@ import TestimonialsSection from '../components/sections/TestimonialsSection';
 import ServiceAreasSection from '../components/sections/ServiceAreasSection';
 import SplitSection from '../components/sections/SplitSection';
 import CTABanner from '../components/sections/CTABanner';
+import { businessConfig } from '../config/business';
 
 const Testimonials = () => {
   const allTestimonials = [
@@ -130,9 +131,14 @@ const Testimonials = () => {
               <Link to="/contact" className="btn-primary">
                 Request a Consultation
               </Link>
-              <Link to="/gallery" className="btn-outline">
-                View Gallery
-              </Link>
+              <a
+                href={businessConfig.googleBusinessProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline"
+              >
+                Read More Reviews on Google
+              </a>
             </div>
           </div>
         </div>
@@ -143,6 +149,7 @@ const Testimonials = () => {
         title="Real Reviews from Real Customers"
         subtitle="Honest feedback from Austin area homeowners and businesses"
         testimonials={allTestimonials}
+        structuredReviews={true}
       />
 
       {/* Pattern H: Service Areas */}

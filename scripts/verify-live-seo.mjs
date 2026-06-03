@@ -1148,6 +1148,30 @@ async function checkContactPageSchema() {
   console.log('Live contact page schema includes LocalBusiness contact and estimate action');
 }
 
+async function checkTestimonialsTrustSignals() {
+  const { response, text: html } = await fetchText(`${baseUrl}/testimonials?v=${Date.now()}`);
+  const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
+  const hasGoogleReviewsCta = html.includes('Read More Reviews on Google');
+  const hasGoogleProfileLink =
+    html.includes(`href="${googleBusinessProfileUrl}"`) ||
+    html.includes(`href="${googleBusinessProfileUrl.replace(/&/g, '&amp;')}"`);
+  const hasReviewSignals = [
+    'itemprop="itemReviewed"',
+    'itemtype="https://schema.org/LocalBusiness"',
+    'itemprop="reviewRating"',
+    'itemprop="reviewBody"',
+    'itemprop="ratingValue"',
+    'Hill Country Painting',
+  ].every(signal => html.includes(signal));
+
+  if (response.status !== 200 || reviewSchemaCount < 10 || !hasGoogleReviewsCta || !hasGoogleProfileLink || !hasReviewSignals) {
+    fail('/testimonials: live page is missing real-review schema semantics or the Google reviews trust link.');
+    return;
+  }
+
+  console.log(`Live testimonials trust signals checked: ${reviewSchemaCount} marked-up reviews with Google review link`);
+}
+
 if (pageIndexingMode) {
   console.log('Live DNS/custom-domain checks skipped for page-indexing validation mode.');
 } else {
@@ -1169,6 +1193,7 @@ await checkVisibleLocalTrustSections();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
 await checkContactPageSchema();
+await checkTestimonialsTrustSignals();
 
 if (failures.length) {
   console.error('\nLive SEO verification FAILED:');

@@ -1613,6 +1613,30 @@ function run() {
         }
       }
 
+      if (routePath === '/testimonials') {
+        const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
+        const requiredTestimonialsSignals = [
+          'Read More Reviews on Google',
+          googleBusinessProfileUrl.replace(/&/g, '&amp;'),
+          'itemprop="itemReviewed"',
+          'itemtype="https://schema.org/LocalBusiness"',
+          'itemprop="reviewRating"',
+          'itemprop="reviewBody"',
+          'itemprop="ratingValue"',
+          'Hill Country Painting'
+        ];
+
+        if (reviewSchemaCount < 10) {
+          fail(`${routePath}: testimonials page should mark up the real customer reviews as Review entities`);
+        }
+
+        for (const signal of requiredTestimonialsSignals) {
+          if (!html.includes(signal)) {
+            fail(`${routePath}: testimonials page is missing required review trust signal ${signal}`);
+          }
+        }
+      }
+
       if (routePath === '/services') {
         const servicesItemList = schemaItems.find(item =>
           schemaTypeIncludes(item, 'ItemList') &&

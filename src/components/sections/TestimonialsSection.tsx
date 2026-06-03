@@ -13,9 +13,10 @@ interface TestimonialsSectionProps {
   title?: string;
   subtitle?: string;
   testimonials: Testimonial[];
+  structuredReviews?: boolean;
 }
 
-const TestimonialsSection = ({ title, subtitle, testimonials }: TestimonialsSectionProps) => {
+const TestimonialsSection = ({ title, subtitle, testimonials, structuredReviews = false }: TestimonialsSectionProps) => {
   return (
     <section className="section-padding bg-brand-coral">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,28 +37,48 @@ const TestimonialsSection = ({ title, subtitle, testimonials }: TestimonialsSect
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="card p-6 relative group overflow-hidden border-b-4 border-brand-regentGray20 hover:border-brand-azure transition-colors duration-300">
+            <article
+              key={index}
+              className="card p-6 relative group overflow-hidden border-b-4 border-brand-regentGray20 hover:border-brand-azure transition-colors duration-300"
+              itemScope={structuredReviews || undefined}
+              itemType={structuredReviews ? 'https://schema.org/Review' : undefined}
+            >
               {/* Highlight bar on top */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-azure to-brand-azureDark opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {structuredReviews && (
+                <div itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" className="sr-only">
+                  <span itemProp="name">Hill Country Painting</span>
+                  <span itemProp="telephone">(512) 240-2246</span>
+                  <span itemProp="areaServed">Greater Austin Area</span>
+                </div>
+              )}
 
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-brand-azureDark to-brand-azure text-white rounded-full flex items-center justify-center font-semibold mr-4 shadow-md">
                   {testimonial.initials}
                 </div>
-                <div>
-                  <div className="font-semibold text-brand-gray-900">{testimonial.name}</div>
+                <div itemProp={structuredReviews ? 'author' : undefined} itemScope={structuredReviews || undefined} itemType={structuredReviews ? 'https://schema.org/Person' : undefined}>
+                  <div className="font-semibold text-brand-gray-900" itemProp={structuredReviews ? 'name' : undefined}>{testimonial.name}</div>
                   <div className="text-sm text-brand-gray-600">{testimonial.location}</div>
                 </div>
               </div>
-              <div className="flex items-center mb-4">
+              <div className="flex items-center mb-4" itemProp={structuredReviews ? 'reviewRating' : undefined} itemScope={structuredReviews || undefined} itemType={structuredReviews ? 'https://schema.org/Rating' : undefined}>
+                {structuredReviews && (
+                  <>
+                    <meta itemProp="ratingValue" content={String(testimonial.rating)} />
+                    <meta itemProp="bestRating" content="5" />
+                    <meta itemProp="worstRating" content="1" />
+                  </>
+                )}
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 text-brand-coral fill-current" />
                 ))}
               </div>
-              <p className="text-brand-gray-700 leading-body">
+              <p className="text-brand-gray-700 leading-body" itemProp={structuredReviews ? 'reviewBody' : undefined}>
                 "{testimonial.text}"
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>
