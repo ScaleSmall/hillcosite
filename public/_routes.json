@@ -29,6 +29,12 @@
     "/residential-concrete-painting-round-rock",
     "/residential-concrete-painting/",
     "/residential-concrete-painting",
+    "/service/mobile-home-painting/",
+    "/service/mobile-home-painting",
+    "/service/garage-painting/",
+    "/service/garage-painting",
+    "/service/townhouse-painting-round-rock/",
+    "/service/townhouse-painting-round-rock",
     "/functions/*",
     "/api/*"
   ]

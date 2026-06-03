@@ -56,7 +56,7 @@ const requiredLegacyRedirects = new Map([
   ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
   ['/service/custom-home-painting-round-rock', '/services'],
 ]);
-const staticConcreteRedirects = new Map([
+const staticLegacyRedirects = new Map([
   ['/service/residential-concrete-painting-round-rock/', `${baseUrl}/services/exterior-painting`],
   ['/service/residential-concrete-painting-round-rock', `${baseUrl}/services/exterior-painting`],
   ['/service/residential-concrete-painting/', `${baseUrl}/services/exterior-painting`],
@@ -65,6 +65,12 @@ const staticConcreteRedirects = new Map([
   ['/residential-concrete-painting-round-rock', `${baseUrl}/services/exterior-painting`],
   ['/residential-concrete-painting/', `${baseUrl}/services/exterior-painting`],
   ['/residential-concrete-painting', `${baseUrl}/services/exterior-painting`],
+  ['/service/mobile-home-painting/', `${baseUrl}/services`],
+  ['/service/mobile-home-painting', `${baseUrl}/services`],
+  ['/service/garage-painting/', `${baseUrl}/services`],
+  ['/service/garage-painting', `${baseUrl}/services`],
+  ['/service/townhouse-painting-round-rock/', `${baseUrl}/services`],
+  ['/service/townhouse-painting-round-rock', `${baseUrl}/services`],
 ]);
 const imageExtensions = new Set(['.avif', '.gif', '.ico', '.jpeg', '.jpg', '.png', '.svg', '.webp']);
 const assetExtensions = new Set([...imageExtensions, '.css', '.js', '.json', '.map', '.txt', '.webmanifest', '.xml']);
@@ -652,11 +658,11 @@ function run() {
     const routesConfig = JSON.parse(routesConfigText);
     const excludedRoutes = new Set(routesConfig.exclude || []);
 
-    for (const [legacyPath, expectedTarget] of staticConcreteRedirects) {
+    for (const [legacyPath, expectedTarget] of staticLegacyRedirects) {
       const staticRedirect = staticRedirectMap.get(legacyPath);
 
       if (!staticRedirect) {
-        fail(`${legacyPath}: missing static _redirects rule for direct concrete-painting legacy redirect`);
+        fail(`${legacyPath}: missing static _redirects rule for direct legacy redirect`);
       } else if (staticRedirect.target !== expectedTarget || staticRedirect.code !== '301') {
         fail(`${legacyPath}: expected static 301 redirect to ${expectedTarget}, found ${staticRedirect.target || '(missing)'} ${staticRedirect.code || '(default)'}`);
       }
