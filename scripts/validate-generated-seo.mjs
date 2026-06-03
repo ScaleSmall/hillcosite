@@ -1163,6 +1163,7 @@ function run() {
         '/services/cabinet-refinishing',
         '/services/commercial',
         '/color-consultation',
+        '/contact',
         '/exterior-painting-austin',
         '/interior-painting-austin',
         '/cabinet-refinishing-austin',

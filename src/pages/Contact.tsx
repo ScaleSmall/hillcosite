@@ -756,7 +756,11 @@ const Contact = () => {
             <h3 className="text-xl font-bold text-brand-gray-900 mb-2">Our Service Area</h3>
             <p className="text-brand-gray-600">Serving Austin and surrounding communities</p>
           </div>
-          <GoogleMapEmbed className="max-w-4xl mx-auto" query="Greater Austin Area, TX" />
+          <GoogleMapEmbed
+            className="max-w-4xl mx-auto"
+            query={`${businessConfig.name} Austin TX`}
+            title={`${businessConfig.name} - Greater Austin Service Area`}
+          />
         </div>
       </section>
 
