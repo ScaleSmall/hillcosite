@@ -7,12 +7,28 @@ const pagesTarget = 'hillcosite.pages.dev';
 const accountId = '7b68f149b6054718ad2c6ff0634ae145';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
+const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
+const googleKnowledgeGraphId = '/g/11frssbq6p';
 const austinServiceSignals = new Map([
   ['/exterior-painting-austin', 'Austin exterior house painters'],
   ['/interior-painting-austin', 'Austin interior painters'],
   ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
   ['/commercial-painting-austin', 'Austin commercial painters'],
 ]);
+const priorityLocalBusinessRoutes = [
+  '/',
+  '/services',
+  '/services/interior-painting',
+  '/services/exterior-painting',
+  '/services/cabinet-refinishing',
+  '/services/commercial',
+  '/color-consultation',
+  '/contact',
+  '/exterior-painting-austin',
+  '/interior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
+];
 
 const failures = [];
 
@@ -41,6 +57,34 @@ async function fetchText(url) {
     response,
     text: await response.text(),
   };
+}
+
+function schemaTypeIncludes(item, typeName) {
+  const schemaType = item?.['@type'];
+  return Array.isArray(schemaType) ? schemaType.includes(typeName) : schemaType === typeName;
+}
+
+function parseJsonLd(html, route) {
+  const scripts = [];
+
+  for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const parsed = JSON.parse(match[1]);
+      const roots = Array.isArray(parsed) ? parsed : [parsed];
+
+      for (const root of roots) {
+        if (Array.isArray(root?.['@graph'])) {
+          scripts.push(...root['@graph']);
+        } else {
+          scripts.push(root);
+        }
+      }
+    } catch {
+      fail(`${route}: invalid JSON-LD script`);
+    }
+  }
+
+  return scripts;
 }
 
 async function checkDns() {
@@ -198,21 +242,10 @@ async function checkAustinSchema() {
 
   for (const [route, phrase] of austinServiceSignals) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
-    const scripts = [];
-
-    for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
-      try {
-        scripts.push(JSON.parse(match[1]));
-      } catch {
-        fail(`${route}: invalid JSON-LD script`);
-      }
-    }
+    const scripts = parseJsonLd(html, route);
 
     const serviceId = `${baseUrl}${route}#service`;
-    const serviceSchemas = scripts.filter(item => {
-      const schemaType = item?.['@type'];
-      return (Array.isArray(schemaType) ? schemaType.includes('Service') : schemaType === 'Service') && item?.['@id'] === serviceId;
-    });
+    const serviceSchemas = scripts.filter(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === serviceId);
 
     const hasSignal = serviceSchemas.some(schema =>
       Array.isArray(schema.alternateName) &&
@@ -232,23 +265,54 @@ async function checkAustinSchema() {
   console.log(`Live Austin service schema pages checked: ${passed}/${austinServiceSignals.size}`);
 }
 
-async function checkGoogleEntityIdentifier() {
-  const { response, text: html } = await fetchText(`${baseUrl}/?v=${Date.now()}`);
-  const scripts = [];
+async function checkPriorityLocalBusinessSchema() {
+  let passed = 0;
 
-  for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
-    try {
-      scripts.push(JSON.parse(match[1]));
-    } catch {
-      fail('/: invalid JSON-LD script');
+  for (const route of priorityLocalBusinessRoutes) {
+    const path = route === '/' ? '/' : route;
+    const { response, text: html } = await fetchText(`${baseUrl}${path}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const localBusinessSchema = scripts.find(item =>
+      schemaTypeIncludes(item, 'LocalBusiness') &&
+      schemaTypeIncludes(item, 'PaintingContractor') &&
+      item?.['@id'] === `${baseUrl}/#localbusiness`
+    );
+
+    if (response.status !== 200 || !localBusinessSchema) {
+      fail(`${route}: live LocalBusiness/PaintingContractor schema is missing.`);
+      continue;
     }
+
+    const sameAs = Array.isArray(localBusinessSchema.sameAs) ? localBusinessSchema.sameAs : [];
+    const identifier = localBusinessSchema.identifier;
+    const hasCanonicalGbp =
+      localBusinessSchema.hasMap === googleBusinessProfileUrl &&
+      sameAs.includes(googleBusinessProfileUrl);
+    const hasKgIdentifier =
+      identifier?.propertyID === 'kgmid' &&
+      identifier?.value === googleKnowledgeGraphId &&
+      identifier?.url === googleBusinessProfileUrl;
+    const hasCanonicalPhone = String(localBusinessSchema.telephone || '').includes('(512) 240-2246');
+
+    if (!hasCanonicalGbp || !hasKgIdentifier || !hasCanonicalPhone) {
+      fail(`${route}: live LocalBusiness schema is missing canonical GBP URL, kgmid, or phone.`);
+      continue;
+    }
+
+    passed += 1;
   }
 
+  console.log(`Live priority LocalBusiness schema pages checked: ${passed}/${priorityLocalBusinessRoutes.length}`);
+}
+
+async function checkGoogleEntityIdentifier() {
+  const { response, text: html } = await fetchText(`${baseUrl}/?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, '/');
   const entitySchemas = scripts.filter(item => item?.['@id'] === `${baseUrl}/#organization` || item?.['@id'] === `${baseUrl}/#localbusiness`);
   const schemasWithIdentifier = entitySchemas.filter(schema =>
     schema.identifier?.propertyID === 'kgmid' &&
-    schema.identifier?.value === '/g/11frssbq6p' &&
-    schema.identifier?.url === 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p'
+    schema.identifier?.value === googleKnowledgeGraphId &&
+    schema.identifier?.url === googleBusinessProfileUrl
   );
 
   if (response.status !== 200 || schemasWithIdentifier.length < 2) {
@@ -264,6 +328,7 @@ await checkPagesDomain();
 await checkSitemapPages();
 await checkSupabaseFeed();
 await checkAustinSchema();
+await checkPriorityLocalBusinessSchema();
 await checkGoogleEntityIdentifier();
 
 if (failures.length) {
