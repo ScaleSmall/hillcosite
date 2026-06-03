@@ -169,6 +169,34 @@ const crawlerEntityAssets = [
   '/entity-facts.json',
   '/citation-facts.json',
 ];
+const requiredRobotsAllowAgents = [
+  'Googlebot',
+  'Googlebot-Image',
+  'Googlebot-Video',
+  'Googlebot-News',
+  'Google-InspectionTool',
+  'Storebot-Google',
+  'GoogleOther',
+  'GoogleOther-Image',
+  'GoogleOther-Video',
+  'Google-CloudVertexBot',
+  'Google-Extended',
+  'Bingbot',
+  'OAI-SearchBot',
+  'GPTBot',
+  'ChatGPT-User',
+  'OAI-AdsBot',
+  'ClaudeBot',
+  'Claude-SearchBot',
+  'Claude-User',
+  'anthropic-ai',
+  'PerplexityBot',
+  'Perplexity-User',
+  'Applebot',
+  'Applebot-Extended',
+  'CCBot',
+  'Amazonbot',
+];
 const liveNoindexRoutes = [
   ['/search?q=test', 'noindex, follow'],
   ['/thank-you', 'noindex, follow'],
@@ -315,6 +343,36 @@ function normalizeInternalRoute(href) {
   const path = parsed.pathname.replace(/\/+$/, '');
 
   return path || '/';
+}
+
+function robotsAllowsAgent(robotsText, agent) {
+  const groups = [];
+  let currentGroup = [];
+
+  for (const rawLine of robotsText.split(/\r?\n/)) {
+    const line = rawLine.trim();
+
+    if (/^User-agent:/i.test(line) && currentGroup.length > 0) {
+      groups.push(currentGroup);
+      currentGroup = [line];
+    } else if (line || currentGroup.length > 0) {
+      currentGroup.push(line);
+    }
+  }
+
+  if (currentGroup.length > 0) {
+    groups.push(currentGroup);
+  }
+
+  return groups.some(group => {
+    const agents = group
+      .filter(line => /^User-agent:/i.test(line))
+      .map(line => line.replace(/^User-agent:\s*/i, '').trim().toLowerCase());
+    const allowsRoot = group.some(line => /^Allow:\s*\/\s*$/i.test(line));
+    const disallowsRoot = group.some(line => /^Disallow:\s*\/\s*$/i.test(line));
+
+    return agents.includes(agent.toLowerCase()) && allowsRoot && !disallowsRoot;
+  });
 }
 
 function parseJsonLd(html, route) {
@@ -743,10 +801,15 @@ async function checkCrawlerEntityAssets() {
 
   if (
     !robotsText.includes(`Sitemap: ${baseUrl}/sitemap.xml`) ||
-    !robotsText.includes('User-agent: Googlebot') ||
     /^\s*Disallow:\s*\/\s*$/im.test(robotsText)
   ) {
-    fail('/robots.txt: live robots file is missing the canonical sitemap, Googlebot access, or blocks the site.');
+    fail('/robots.txt: live robots file is missing the canonical sitemap or blocks the site.');
+  }
+
+  const missingRobotsAllowAgents = requiredRobotsAllowAgents.filter(agent => !robotsAllowsAgent(robotsText, agent));
+
+  if (missingRobotsAllowAgents.length > 0) {
+    fail(`/robots.txt: live robots file is missing explicit Allow: / entries for ${missingRobotsAllowAgents.join(', ')}.`);
   }
 
   const llmsRequired = [

@@ -181,6 +181,34 @@ const requiredGeoHubServiceLocationSlugs = new Map([
   ['/areas/barton-creek', 'barton-creek'],
   ['/areas/circle-c-ranch-and-southwest-austin', 'circle-c-ranch']
 ]);
+const requiredRobotsAllowAgents = [
+  'Googlebot',
+  'Googlebot-Image',
+  'Googlebot-Video',
+  'Googlebot-News',
+  'Google-InspectionTool',
+  'Storebot-Google',
+  'GoogleOther',
+  'GoogleOther-Image',
+  'GoogleOther-Video',
+  'Google-CloudVertexBot',
+  'Google-Extended',
+  'Bingbot',
+  'OAI-SearchBot',
+  'GPTBot',
+  'ChatGPT-User',
+  'OAI-AdsBot',
+  'ClaudeBot',
+  'Claude-SearchBot',
+  'Claude-User',
+  'anthropic-ai',
+  'PerplexityBot',
+  'Perplexity-User',
+  'Applebot',
+  'Applebot-Extended',
+  'CCBot',
+  'Amazonbot',
+];
 const requiredServiceAreaServiceLocationSlugs = new Map([
   ['/service-areas/austin', 'austin'],
   ['/service-areas/tarrytown', 'tarrytown'],
@@ -854,6 +882,36 @@ function pageLinksToHref(page, expectedHref) {
     .some(match => match[1].trim().replace(/&amp;/g, '&') === expectedHref);
 }
 
+function robotsAllowsAgent(robotsText, agent) {
+  const groups = [];
+  let currentGroup = [];
+
+  for (const rawLine of robotsText.split(/\r?\n/)) {
+    const line = rawLine.trim();
+
+    if (/^User-agent:/i.test(line) && currentGroup.length > 0) {
+      groups.push(currentGroup);
+      currentGroup = [line];
+    } else if (line || currentGroup.length > 0) {
+      currentGroup.push(line);
+    }
+  }
+
+  if (currentGroup.length > 0) {
+    groups.push(currentGroup);
+  }
+
+  return groups.some(group => {
+    const agents = group
+      .filter(line => /^User-agent:/i.test(line))
+      .map(line => line.replace(/^User-agent:\s*/i, '').trim().toLowerCase());
+    const allowsRoot = group.some(line => /^Allow:\s*\/\s*$/i.test(line));
+    const disallowsRoot = group.some(line => /^Disallow:\s*\/\s*$/i.test(line));
+
+    return agents.includes(agent.toLowerCase()) && allowsRoot && !disallowsRoot;
+  });
+}
+
 function pageHasVisibleLocalTrustSection(page) {
   return (
     pageLinksToHref(page, googleBusinessProfileUrl) &&
@@ -898,6 +956,16 @@ function run() {
   const routesConfigText = readRequired(routesConfigPath, '_routes.json');
 
   validateHeroBackgroundImageSources();
+
+  if (!robotsText.includes(`Sitemap: ${baseUrl}/sitemap.xml`) || /^\s*Disallow:\s*\/\s*$/im.test(robotsText)) {
+    fail('robots.txt should include the canonical sitemap and must not block the full site');
+  }
+
+  const missingRobotsAllowAgents = requiredRobotsAllowAgents.filter(agent => !robotsAllowsAgent(robotsText, agent));
+
+  if (missingRobotsAllowAgents.length > 0) {
+    fail(`robots.txt should explicitly allow SEO and AI/GEO crawlers: missing ${missingRobotsAllowAgents.join(', ')}`);
+  }
 
   if (sitemapXml && distSitemapXml && sitemapXml !== distSitemapXml) {
     fail('dist/sitemap.xml must exactly match the generated public/sitemap.xml');

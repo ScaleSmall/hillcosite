@@ -5,9 +5,42 @@ User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
 
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+User-agent: GoogleOther-Video
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 0
+
+User-agent: OAI-SearchBot
+Allow: /
 
 User-agent: GPTBot
 Allow: /
@@ -15,19 +48,22 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: OAI-AdsBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: OAI-SearchBot
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
 Allow: /
 
 User-agent: Perplexity-User
