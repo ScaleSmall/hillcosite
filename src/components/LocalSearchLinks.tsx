@@ -18,10 +18,10 @@ const linkGroups = {
       { label: 'Austin house painters', href: '/service-areas/austin' },
       { label: 'house painters Austin', href: '/service-areas/austin' },
       { label: 'painting contractors Austin', href: '/services' },
-      { label: 'Austin exterior house painters', href: '/services/exterior-painting' },
-      { label: 'Austin interior painters', href: '/services/interior-painting' },
-      { label: 'Austin cabinet painting', href: '/services/cabinet-refinishing' },
-      { label: 'Austin commercial painters', href: '/services/commercial' }
+      { label: 'Exterior painting service overview', href: '/services/exterior-painting' },
+      { label: 'Interior painting service overview', href: '/services/interior-painting' },
+      { label: 'Cabinet refinishing service overview', href: '/services/cabinet-refinishing' },
+      { label: 'Commercial painting service overview', href: '/services/commercial' }
     ],
     directAustinLinks: [
       { label: 'Austin exterior house painters', href: '/exterior-painting-austin' },
@@ -34,10 +34,10 @@ const linkGroups = {
     title: 'Find Painting Help by Need',
     subtitle: 'Choose the Austin painting service that matches your project. Property owners comparing painting contractors Austin wide can review each service before requesting a consultation.',
     links: [
-      { label: 'Austin exterior house painters', href: '/services/exterior-painting' },
-      { label: 'Austin interior painters', href: '/services/interior-painting' },
-      { label: 'Austin cabinet painting', href: '/services/cabinet-refinishing' },
-      { label: 'Austin commercial painters', href: '/services/commercial' },
+      { label: 'Exterior painting service overview', href: '/services/exterior-painting' },
+      { label: 'Interior painting service overview', href: '/services/interior-painting' },
+      { label: 'Cabinet refinishing service overview', href: '/services/cabinet-refinishing' },
+      { label: 'Commercial painting service overview', href: '/services/commercial' },
       { label: 'Austin house painters', href: '/service-areas/austin' },
       { label: 'painting contractors Austin', href: '/services' },
       { label: 'house painters Austin', href: '/service-areas/austin' }

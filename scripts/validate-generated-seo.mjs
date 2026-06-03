@@ -300,6 +300,34 @@ function assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute) {
   fail(`${sourceRoute}: missing priority local-search anchor "${expectedText}" to ${expectedRoute}`);
 }
 
+function assertExactAnchorTargets(pages, expectedText, expectedRoute) {
+  const mismatches = [];
+  let matches = 0;
+
+  for (const [sourceRoute, page] of pages) {
+    for (const match of page.html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi)) {
+      const targetRoute = normalizeRoutePath(match[1].trim(), sourceRoute);
+      const anchorText = normalizeAnchorText(match[2]);
+
+      if (anchorText.toLowerCase() === expectedText.toLowerCase()) {
+        matches += 1;
+
+        if (targetRoute !== expectedRoute) {
+          mismatches.push(`${sourceRoute} links "${expectedText}" to ${targetRoute}`);
+        }
+      }
+    }
+  }
+
+  if (matches === 0) {
+    fail(`missing exact priority local-search anchor "${expectedText}" to ${expectedRoute}`);
+  }
+
+  for (const mismatch of mismatches) {
+    fail(`${mismatch}; exact priority anchors should point to ${expectedRoute}`);
+  }
+}
+
 function assertPageContains(pages, sourceRoute, expectedText) {
   const page = pages.get(sourceRoute);
 
@@ -642,18 +670,18 @@ function run() {
     ['/', 'Austin house painters', '/service-areas/austin'],
     ['/', 'house painters Austin', '/service-areas/austin'],
     ['/', 'painting contractors Austin', '/services'],
-    ['/', 'Austin exterior house painters', '/services/exterior-painting'],
-    ['/', 'Austin interior painters', '/services/interior-painting'],
-    ['/', 'Austin cabinet painting', '/services/cabinet-refinishing'],
-    ['/', 'Austin commercial painters', '/services/commercial'],
+    ['/', 'Exterior painting service overview', '/services/exterior-painting'],
+    ['/', 'Interior painting service overview', '/services/interior-painting'],
+    ['/', 'Cabinet refinishing service overview', '/services/cabinet-refinishing'],
+    ['/', 'Commercial painting service overview', '/services/commercial'],
     ['/', 'Austin exterior house painters', '/exterior-painting-austin'],
     ['/', 'Austin interior painters', '/interior-painting-austin'],
     ['/', 'Austin cabinet painting', '/cabinet-refinishing-austin'],
     ['/', 'Austin commercial painters', '/commercial-painting-austin'],
-    ['/services', 'Austin exterior house painters', '/services/exterior-painting'],
-    ['/services', 'Austin interior painters', '/services/interior-painting'],
-    ['/services', 'Austin cabinet painting', '/services/cabinet-refinishing'],
-    ['/services', 'Austin commercial painters', '/services/commercial'],
+    ['/services', 'Exterior painting service overview', '/services/exterior-painting'],
+    ['/services', 'Interior painting service overview', '/services/interior-painting'],
+    ['/services', 'Cabinet refinishing service overview', '/services/cabinet-refinishing'],
+    ['/services', 'Commercial painting service overview', '/services/commercial'],
     ['/services', 'house painters Austin', '/service-areas/austin'],
     ['/services', 'painting contractors Austin', '/services'],
     ['/services', 'Austin exterior house painters', '/exterior-painting-austin'],
@@ -674,6 +702,18 @@ function run() {
     ['/service-areas', 'Leander house painters', '/service-areas/leander']
   ].forEach(([sourceRoute, expectedText, expectedRoute]) => {
     assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute);
+  });
+
+  [
+    ['Austin exterior house painters', '/exterior-painting-austin'],
+    ['Austin interior painters', '/interior-painting-austin'],
+    ['Austin cabinet painting', '/cabinet-refinishing-austin'],
+    ['Austin commercial painters', '/commercial-painting-austin'],
+    ['Austin house painters', '/service-areas/austin'],
+    ['house painters Austin', '/service-areas/austin'],
+    ['painting contractors Austin', '/services']
+  ].forEach(([expectedText, expectedRoute]) => {
+    assertExactAnchorTargets(pages, expectedText, expectedRoute);
   });
 
   [
