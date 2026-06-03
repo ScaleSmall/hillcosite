@@ -52,6 +52,49 @@ function extractBusinessSocialProfiles(source) {
   return [...match[1].matchAll(/:\s*'([^']+)'/g)].map(item => item[1]);
 }
 
+function extractStringProperty(source, name) {
+  const match = source.match(new RegExp(`${name}:\\s*'([^']*)'`));
+
+  if (!match) {
+    throw new Error(`Could not find ${name} in src/config/business.ts`);
+  }
+
+  return match[1];
+}
+
+function extractNumberProperty(source, name) {
+  const match = source.match(new RegExp(`${name}:\\s*([\\d.]+)`));
+
+  if (!match) {
+    throw new Error(`Could not find ${name} in src/config/business.ts`);
+  }
+
+  return Number(match[1]);
+}
+
+function extractWeekdayHours(source) {
+  const match = source.match(/weekday:\s*\{([\s\S]*?)\n\s*\}/);
+
+  if (!match) {
+    throw new Error('Could not find weekday hours in src/config/business.ts');
+  }
+
+  const weekdaySource = match[1];
+  const daysMatch = weekdaySource.match(/days:\s*\[([^\]]+)\]/);
+  const opensMatch = weekdaySource.match(/opens:\s*'([^']+)'/);
+  const closesMatch = weekdaySource.match(/closes:\s*'([^']+)'/);
+
+  if (!daysMatch || !opensMatch || !closesMatch) {
+    throw new Error('Could not parse weekday hours in src/config/business.ts');
+  }
+
+  return {
+    days: [...daysMatch[1].matchAll(/'([^']+)'/g)].map(item => item[1]),
+    opens: opensMatch[1],
+    closes: closesMatch[1]
+  };
+}
+
 function localAreaServed() {
   return [
     ...serviceAreas.map(name => ({ '@type': 'Place', name })),
@@ -59,38 +102,57 @@ function localAreaServed() {
   ];
 }
 
+function sentenceCase(value) {
+  return value ? `${value[0].toLowerCase()}${value.slice(1)}` : value;
+}
+
+function joinNaturalList(items) {
+  if (items.length <= 1) {
+    return items.join('');
+  }
+
+  if (items.length === 2) {
+    return `${items[0]} and ${items[1]}`;
+  }
+
+  return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`;
+}
+
+const weekdayHours = extractWeekdayHours(businessConfigSource);
 const businessFacts = {
-  name: 'Hill Country Painting',
-  legalName: 'Hill Country Painting LLC',
-  phone: '(512) 240-2246',
-  phoneHref: 'tel:+15122402246',
-  email: 'info@hillcopaint.com',
+  name: extractStringProperty(businessConfigSource, 'name'),
+  legalName: extractStringProperty(businessConfigSource, 'legalName'),
+  phone: extractStringProperty(businessConfigSource, 'phone'),
+  phoneHref: extractStringProperty(businessConfigSource, 'phoneHref'),
+  email: extractStringProperty(businessConfigSource, 'email'),
   website: BASE_URL,
-  googleKnowledgeGraphId: '/g/11frssbq6p',
-  googleBusinessProfile: 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p',
-  primaryServiceArea: 'Austin, TX and the Greater Austin area',
+  googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
+  googleBusinessProfile: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
+  primaryServiceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
+  description: extractStringProperty(businessConfigSource, 'description'),
+  tagline: extractStringProperty(businessConfigSource, 'tagline'),
   aggregateRating: {
     '@type': 'AggregateRating',
-    ratingValue: 4.9,
-    reviewCount: 127,
-    bestRating: 5,
-    worstRating: 1
+    ratingValue: extractNumberProperty(businessConfigSource, 'ratingValue'),
+    reviewCount: extractNumberProperty(businessConfigSource, 'reviewCount'),
+    bestRating: extractNumberProperty(businessConfigSource, 'bestRating'),
+    worstRating: extractNumberProperty(businessConfigSource, 'worstRating')
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '(512) 240-2246',
+    telephone: extractStringProperty(businessConfigSource, 'phone'),
     contactType: 'customer service',
     areaServed: 'US-TX',
     availableLanguage: ['English']
   },
   openingHours: {
     '@type': 'OpeningHoursSpecification',
-    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    opens: '08:00',
-    closes: '18:00'
+    dayOfWeek: weekdayHours.days,
+    opens: weekdayHours.opens,
+    closes: weekdayHours.closes
   },
-  paymentAccepted: 'Cash, Check, Credit Card',
-  currenciesAccepted: 'USD',
+  paymentAccepted: extractStringProperty(businessConfigSource, 'methods'),
+  currenciesAccepted: extractStringProperty(businessConfigSource, 'currencies'),
   availableLanguage: ['English'],
   services: [
     'Interior painting',
@@ -361,8 +423,8 @@ const entityFacts = {
     value: businessFacts.googleKnowledgeGraphId,
     url: businessFacts.googleBusinessProfile
   },
-  description: 'Professional painting contractors serving Austin, TX and the Greater Austin area. Services include interior painting, exterior painting, cabinet painting and refinishing, commercial painting, and color consultation.',
-  slogan: 'Clean prep. Crisp lines. Reliable schedules.',
+  description: `Professional painting contractors serving ${businessFacts.primaryServiceArea}. Services include ${joinNaturalList(businessFacts.services.map(sentenceCase))}.`,
+  slogan: businessFacts.tagline,
   priceRange: '$$',
   paymentAccepted: businessFacts.paymentAccepted,
   currenciesAccepted: businessFacts.currenciesAccepted,

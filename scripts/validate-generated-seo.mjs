@@ -404,6 +404,18 @@ function hasValidAggregateRating(schema) {
   );
 }
 
+function extractStringProperty(source, name) {
+  const match = source.match(new RegExp(`${name}:\\s*'([^']*)'`));
+
+  return match?.[1] || '';
+}
+
+function extractNumberProperty(source, name) {
+  const match = source.match(new RegExp(`${name}:\\s*([\\d.]+)`));
+
+  return match ? Number(match[1]) : NaN;
+}
+
 function hasPaintingEstimateAction(schema) {
   return asArray(schema?.potentialAction).some(action => {
     const target = action?.target || {};
@@ -1041,6 +1053,24 @@ function run() {
   const configuredGreaterAustinAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
   const configuredGreaterAustinCounties = extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties');
   const configuredPriorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
+  const configuredBusinessFacts = {
+    name: extractStringProperty(businessConfigSource, 'name'),
+    legalName: extractStringProperty(businessConfigSource, 'legalName'),
+    phone: extractStringProperty(businessConfigSource, 'phone'),
+    phoneHref: extractStringProperty(businessConfigSource, 'phoneHref'),
+    email: extractStringProperty(businessConfigSource, 'email'),
+    serviceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
+    googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
+    googleBusinessProfileUrl: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
+    ratingValue: extractNumberProperty(businessConfigSource, 'ratingValue'),
+    reviewCount: extractNumberProperty(businessConfigSource, 'reviewCount'),
+    bestRating: extractNumberProperty(businessConfigSource, 'bestRating'),
+    worstRating: extractNumberProperty(businessConfigSource, 'worstRating'),
+    paymentAccepted: extractStringProperty(businessConfigSource, 'methods'),
+    currenciesAccepted: extractStringProperty(businessConfigSource, 'currencies'),
+    opens: extractStringProperty(businessConfigSource, 'opens'),
+    closes: extractStringProperty(businessConfigSource, 'closes')
+  };
   const locationServiceAreaSlugs = extractLocationServiceAreaSlugs(locationsConfigSource);
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
   const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
@@ -1479,24 +1509,40 @@ function run() {
     }
   }
 
+  if (configuredBusinessFacts.googleBusinessProfileUrl !== googleBusinessProfileUrl) {
+    fail('src/config/business.ts Google Business Profile URL must match the canonical SEO validator constant');
+  }
+  if (configuredBusinessFacts.googleKnowledgeGraphId !== googleKnowledgeGraphId) {
+    fail('src/config/business.ts Google Knowledge Graph ID must match the canonical SEO validator constant');
+  }
+  if (configuredBusinessFacts.phoneHref !== canonicalPhoneHref) {
+    fail('src/config/business.ts phoneHref must match the canonical tel link used sitewide');
+  }
+
   try {
     const entityFacts = JSON.parse(entityFactsText);
-    if (entityFacts.name !== 'Hill Country Painting') {
+    if (entityFacts.name !== configuredBusinessFacts.name) {
       fail('entity-facts.json must use the canonical business name');
+    }
+    if (entityFacts.legalName !== configuredBusinessFacts.legalName) {
+      fail('entity-facts.json must use the canonical legal business name');
     }
     if (entityFacts.url !== baseUrl) {
       fail(`entity-facts.json URL should be ${baseUrl}`);
     }
-    if (entityFacts.telephone !== '(512) 240-2246') {
+    if (entityFacts.telephone !== configuredBusinessFacts.phone) {
       fail('entity-facts.json must include the canonical phone number');
     }
-    if (entityFacts.contactPoint?.telephone !== '(512) 240-2246') {
+    if (entityFacts.email !== configuredBusinessFacts.email) {
+      fail('entity-facts.json must include the canonical email address');
+    }
+    if (entityFacts.contactPoint?.telephone !== configuredBusinessFacts.phone) {
       fail('entity-facts.json must include a canonical customer service contactPoint');
     }
-    if (entityFacts.openingHoursSpecification?.opens !== '08:00' || entityFacts.openingHoursSpecification?.closes !== '18:00') {
+    if (entityFacts.openingHoursSpecification?.opens !== configuredBusinessFacts.opens || entityFacts.openingHoursSpecification?.closes !== configuredBusinessFacts.closes) {
       fail('entity-facts.json must include canonical weekday opening hours');
     }
-    if (entityFacts.paymentAccepted !== 'Cash, Check, Credit Card' || entityFacts.currenciesAccepted !== 'USD') {
+    if (entityFacts.paymentAccepted !== configuredBusinessFacts.paymentAccepted || entityFacts.currenciesAccepted !== configuredBusinessFacts.currenciesAccepted) {
       fail('entity-facts.json must include canonical payment and currency details');
     }
     if (entityFacts.sitemapUrlCount !== sitemapPaths.length) {
@@ -1537,14 +1583,22 @@ function run() {
     if (!Array.isArray(entityFacts.makesOffer) || !JSON.stringify(entityFacts.makesOffer).includes(`${baseUrl}/cabinet-refinishing-austin`)) {
       fail('entity-facts.json must connect priority Austin service pages to LocalBusiness offers');
     }
-    if (entityFacts.hasMap !== googleBusinessProfileUrl || !Array.isArray(entityFacts.sameAs) || !entityFacts.sameAs.includes(googleBusinessProfileUrl)) {
+    if (entityFacts.hasMap !== configuredBusinessFacts.googleBusinessProfileUrl || !Array.isArray(entityFacts.sameAs) || !entityFacts.sameAs.includes(configuredBusinessFacts.googleBusinessProfileUrl)) {
       fail('entity-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
     }
-    if (entityFacts.identifier?.propertyID !== 'kgmid' || entityFacts.identifier?.value !== googleKnowledgeGraphId || entityFacts.identifier?.url !== googleBusinessProfileUrl) {
+    if (entityFacts.identifier?.propertyID !== 'kgmid' || entityFacts.identifier?.value !== configuredBusinessFacts.googleKnowledgeGraphId || entityFacts.identifier?.url !== configuredBusinessFacts.googleBusinessProfileUrl) {
       fail('entity-facts.json must include the Google Knowledge Graph ID as a PropertyValue identifier');
     }
     if (!hasValidAggregateRating(entityFacts)) {
       fail('entity-facts.json must include a valid Google aggregate rating summary');
+    }
+    if (
+      Number(entityFacts.aggregateRating?.ratingValue) !== configuredBusinessFacts.ratingValue ||
+      Number(entityFacts.aggregateRating?.reviewCount) !== configuredBusinessFacts.reviewCount ||
+      Number(entityFacts.aggregateRating?.bestRating) !== configuredBusinessFacts.bestRating ||
+      Number(entityFacts.aggregateRating?.worstRating) !== configuredBusinessFacts.worstRating
+    ) {
+      fail('entity-facts.json aggregate rating must match src/config/business.ts');
     }
   } catch (error) {
     fail(`entity-facts.json is invalid JSON (${error.message})`);
@@ -1554,22 +1608,31 @@ function run() {
     const citationFacts = JSON.parse(citationFactsText);
     const identity = citationFacts.canonicalIdentity || {};
 
-    if (identity.name !== 'Hill Country Painting') {
+    if (identity.name !== configuredBusinessFacts.name) {
       fail('citation-facts.json must use the canonical business name');
+    }
+    if (identity.legalName !== configuredBusinessFacts.legalName) {
+      fail('citation-facts.json must use the canonical legal business name');
     }
     if (identity.website !== baseUrl) {
       fail(`citation-facts.json website should be ${baseUrl}`);
     }
-    if (identity.telephone !== '(512) 240-2246') {
+    if (identity.telephone !== configuredBusinessFacts.phone) {
       fail('citation-facts.json must include the canonical phone number');
     }
-    if (identity.contactPoint?.telephone !== '(512) 240-2246') {
+    if (identity.telephoneHref !== configuredBusinessFacts.phoneHref) {
+      fail('citation-facts.json must include the canonical phone href');
+    }
+    if (identity.email !== configuredBusinessFacts.email) {
+      fail('citation-facts.json must include the canonical email address');
+    }
+    if (identity.contactPoint?.telephone !== configuredBusinessFacts.phone) {
       fail('citation-facts.json must include a canonical customer service contactPoint');
     }
-    if (identity.openingHoursSpecification?.opens !== '08:00' || identity.openingHoursSpecification?.closes !== '18:00') {
+    if (identity.openingHoursSpecification?.opens !== configuredBusinessFacts.opens || identity.openingHoursSpecification?.closes !== configuredBusinessFacts.closes) {
       fail('citation-facts.json must include canonical weekday opening hours');
     }
-    if (identity.paymentAccepted !== 'Cash, Check, Credit Card' || identity.currenciesAccepted !== 'USD') {
+    if (identity.paymentAccepted !== configuredBusinessFacts.paymentAccepted || identity.currenciesAccepted !== configuredBusinessFacts.currenciesAccepted) {
       fail('citation-facts.json must include canonical payment and currency details');
     }
     if (identity.serviceAreaBusiness !== true) {
@@ -1604,14 +1667,22 @@ function run() {
         fail(`citation-facts.json must include service county ${requiredCounty}`);
       }
     }
-    if (identity.googleBusinessProfile !== googleBusinessProfileUrl || !Array.isArray(citationFacts.sameAs) || !citationFacts.sameAs.includes(googleBusinessProfileUrl)) {
+    if (identity.googleBusinessProfile !== configuredBusinessFacts.googleBusinessProfileUrl || !Array.isArray(citationFacts.sameAs) || !citationFacts.sameAs.includes(configuredBusinessFacts.googleBusinessProfileUrl)) {
       fail('citation-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
     }
-    if (identity.googleKnowledgeGraphId !== googleKnowledgeGraphId) {
+    if (identity.googleKnowledgeGraphId !== configuredBusinessFacts.googleKnowledgeGraphId) {
       fail('citation-facts.json must include the Google Knowledge Graph ID');
     }
     if (!hasValidAggregateRating(identity)) {
       fail('citation-facts.json must include a valid Google aggregate rating summary');
+    }
+    if (
+      Number(identity.aggregateRating?.ratingValue) !== configuredBusinessFacts.ratingValue ||
+      Number(identity.aggregateRating?.reviewCount) !== configuredBusinessFacts.reviewCount ||
+      Number(identity.aggregateRating?.bestRating) !== configuredBusinessFacts.bestRating ||
+      Number(identity.aggregateRating?.worstRating) !== configuredBusinessFacts.worstRating
+    ) {
+      fail('citation-facts.json aggregate rating must match src/config/business.ts');
     }
   } catch (error) {
     fail(`citation-facts.json is invalid JSON (${error.message})`);
