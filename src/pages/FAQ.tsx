@@ -48,12 +48,64 @@ const FAQ = () => {
       answer: 'Our cabinet painting process includes complete disassembly and professional spray finishing in controlled conditions. Results look like new cabinets at a fraction of replacement cost.'
     },
     {
+      question: 'Do you handle exterior painting for Austin homes?',
+      answer: 'Yes, our Austin exterior painting process is built around Central Texas sun, moisture swings, substrate prep, caulking, primer selection, and durable finish systems for homes across Greater Austin.'
+    },
+    {
+      question: 'Do you paint occupied interiors in Austin homes?',
+      answer: 'Yes, our Austin interior painters work in occupied homes with furniture protection, floor protection, room-by-room scheduling, dust control, and daily cleanup so the project is easier to live through.'
+    },
+    {
+      question: 'Can you refinish cabinets without replacing them?',
+      answer: 'Yes, our Austin cabinet painting and cabinet refinishing service is designed for homeowners who want a cleaner, updated kitchen look without the disruption and cost of full cabinet replacement.'
+    },
+    {
+      question: 'Do you offer commercial painting in Austin?',
+      answer: 'Yes, we provide Austin commercial painting for offices, retail spaces, common areas, and managed properties, with scheduling options that help reduce disruption for tenants, staff, and customers.'
+    },
+    {
+      question: 'Which Austin service areas can request an estimate?',
+      answer: 'Homeowners and businesses can request painting estimates across Austin, West Lake Hills, Tarrytown, Northwest Hills, Lakeway, Bee Cave, Cedar Park, Round Rock, Georgetown, Leander, North Austin, and nearby Greater Austin communities.'
+    },
+    {
+      question: 'How do you prepare a painting estimate?',
+      answer: 'We review the surfaces, access, repairs, prep needs, finish expectations, timing, and service type before preparing a written estimate for interior painting, exterior painting, cabinet painting, or commercial painting.'
+    },
+    {
       question: 'How do you handle weather delays?',
       answer: 'We carefully monitor weather conditions and adjust schedules as needed for exterior work. We\'ll communicate any necessary changes promptly and work with you to minimize project delays.'
     },
     {
       question: 'Do you offer color consultation?',
       answer: 'Yes, we provide free color consultation services to help you choose colors that complement your space, lighting, and personal style preferences.'
+    }
+  ];
+
+  const priorityFAQLinks = [
+    {
+      title: 'Austin Exterior Painting FAQ',
+      description: 'Prep, weather timing, siding, trim, caulking, and durable exterior paint systems for Austin homes.',
+      href: '/exterior-painting-austin'
+    },
+    {
+      title: 'Austin Interior Painting FAQ',
+      description: 'Room-by-room scheduling, furniture protection, walls, ceilings, trim, doors, and occupied-home painting.',
+      href: '/interior-painting-austin'
+    },
+    {
+      title: 'Austin Cabinet Painting FAQ',
+      description: 'Cabinet refinishing, spray finishes, kitchen updates, prep steps, and alternatives to cabinet replacement.',
+      href: '/cabinet-refinishing-austin'
+    },
+    {
+      title: 'Austin Commercial Painting FAQ',
+      description: 'Office, retail, managed-property, tenant-space, and schedule-sensitive commercial repaint questions.',
+      href: '/commercial-painting-austin'
+    },
+    {
+      title: 'Austin House Painters FAQ',
+      description: 'Service-area coverage, local estimate options, trust signals, reviews, and Greater Austin painting support.',
+      href: '/service-areas/austin'
     }
   ];
 
@@ -95,6 +147,31 @@ const FAQ = () => {
 
       {/* FAQ Section */}
       <MiniFAQ faqs={allFAQs} />
+
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
+              Austin Painting FAQ Topics
+            </h2>
+            <p className="text-lg text-brand-gray-700 leading-body">
+              For service-specific answers, review the Austin painting page that matches your project type.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {priorityFAQLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="rounded-lg border border-brand-gray-200 p-5 transition-colors hover:border-brand-azure hover:bg-brand-azure/5"
+              >
+                <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{link.title}</h3>
+                <p className="text-brand-gray-700 leading-body">{link.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Pattern C: Split Section */}
       <SplitSection

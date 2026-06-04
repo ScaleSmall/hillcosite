@@ -2543,6 +2543,45 @@ function run() {
         }
       }
 
+      if (routePath === '/faq') {
+        const faqSchema = schemaItems.find(item => schemaTypeIncludes(item, 'FAQPage'));
+        const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+        const faqText = questions
+          .map(item => `${item?.name || ''} ${item?.acceptedAnswer?.text || ''}`)
+          .join(' ');
+        const requiredFaqSignals = [
+          'Austin exterior painting',
+          'Austin interior painters',
+          'Austin cabinet painting',
+          'Austin commercial painting',
+          'Greater Austin communities',
+          'written estimate'
+        ];
+        const requiredFaqLinks = [
+          '/service-areas/austin',
+          '/exterior-painting-austin',
+          '/interior-painting-austin',
+          '/cabinet-refinishing-austin',
+          '/commercial-painting-austin'
+        ];
+
+        if (!faqSchema || questions.length < 18) {
+          fail(`${routePath}: FAQPage schema should include 18+ visible Question/Answer entries after Austin service expansion`);
+        }
+
+        for (const signal of requiredFaqSignals) {
+          if (!faqText.includes(signal)) {
+            fail(`${routePath}: FAQPage schema is missing Austin service FAQ signal ${signal}`);
+          }
+        }
+
+        for (const expectedRoute of requiredFaqLinks) {
+          if (!pageLinksToRoute(page, routePath, expectedRoute)) {
+            fail(`${routePath}: FAQ page should link to priority Austin service page ${expectedRoute}`);
+          }
+        }
+      }
+
       if (routePath === '/free-estimate') {
         const requiredEstimateSignals = [
           'Free Painting Estimate for Austin Homes and Businesses',

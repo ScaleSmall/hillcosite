@@ -2305,6 +2305,41 @@ async function checkAboutPageSchema() {
   console.log('Live AboutPage schema connects the trust page to canonical local-business identity');
 }
 
+async function checkMainFaqPage() {
+  const route = '/faq';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, route);
+  const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
+  const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+  const faqText = questions
+    .map(item => `${item?.name || ''} ${item?.acceptedAnswer?.text || ''}`)
+    .join(' ');
+  const requiredFaqSignals = [
+    'Austin exterior painting',
+    'Austin interior painters',
+    'Austin cabinet painting',
+    'Austin commercial painting',
+    'Greater Austin communities',
+    'written estimate',
+  ];
+  const requiredFaqLinks = [
+    '/service-areas/austin',
+    '/exterior-painting-austin',
+    '/interior-painting-austin',
+    '/cabinet-refinishing-austin',
+    '/commercial-painting-austin',
+  ];
+  const hasRequiredSignals = requiredFaqSignals.every(signal => faqText.includes(signal));
+  const hasRequiredLinks = requiredFaqLinks.every(link => html.includes(`href="${link}"`));
+
+  if (response.status !== 200 || !faqSchema || questions.length < 18 || !hasRequiredSignals || !hasRequiredLinks) {
+    fail(`${route}: live FAQ page should include expanded Austin service FAQ schema and priority Austin service links.`);
+    return;
+  }
+
+  console.log('Live FAQ page includes expanded Austin service FAQ schema and priority service links');
+}
+
 async function checkFreeEstimatePage() {
   const route = '/free-estimate';
   const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
@@ -2475,6 +2510,7 @@ await checkGoogleEntityIdentifier();
 await checkWebsiteSearchActionSchema();
 await checkBreadcrumbSchema();
 await checkAboutPageSchema();
+await checkMainFaqPage();
 await checkContactPageSchema();
 await checkFreeEstimatePage();
 await checkPaintingCostProviderSchema();
