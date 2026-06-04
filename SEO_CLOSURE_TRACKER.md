@@ -24,7 +24,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live H1/title/meta audit across all 183 sitemap URLs reports 0 duplicate or missing title, description, or H1 issues.
 - Live internal discovery confirms every sitemap page has at least 2 inbound source pages.
 - Live internal-link target validation reports 0 unexpected non-sitemap links.
-- Live HTML sitemap discovery confirms `/free-estimate`, all primary service-area hubs, and all service-location pages are linked from `/sitemap`.
+- Live HTML sitemap discovery confirms all 183 XML sitemap URLs are linked from `/sitemap`, including blog posts, service pages, service-area hubs, service-location pages, and neighborhood pages.
 - Live Googlebot sitemap access confirms 183/183 sitemap URLs are accessible.
 - Live hero image guard reports no banned before/after-style hero images.
 - Live gallery feed validation confirms current Supabase project `https://ndggkorglcaznukkhapz.supabase.co` is present and retired project `https://oyyfpkpzalhxztpcdjgq.supabase.co` is absent.
@@ -115,7 +115,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 
 ## Evidence
 - Commit `465120a` deployed successfully to Cloudflare Pages preview `https://720d89f1.hillcosite.pages.dev`.
-- Current live page-indexing verifier run on 2026-06-04 passed with 183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, 182/182 trailing-slash redirect checks, 215/215 legacy redirect checks, 76/76 HTML sitemap discovery links, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, 11/11 service-area FAQ schema pages, 4/4 guide FAQ schema pages, and 160/160 visible local trust sections.
+- Current live page-indexing verifier run on 2026-06-04 passed with 183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, 182/182 trailing-slash redirect checks, 215/215 legacy redirect checks, 183/183 HTML sitemap discovery links, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, 11/11 service-area FAQ schema pages, 4/4 guide FAQ schema pages, and 160/160 visible local trust sections.
 - The same live verifier now enforces matching local Place schema on all 64 service-location pages, including area coordinates, neighborhoods, ZIP codes, and primary local service intent.
 - The same live verifier confirms the current Supabase gallery feed is present, the retired Supabase feed is absent, and no before/after-style images are used as hero backgrounds.
 - The same live verifier confirms `/free-estimate` is live with estimate intent, service links, QuoteAction, and LocalBusiness schema.
