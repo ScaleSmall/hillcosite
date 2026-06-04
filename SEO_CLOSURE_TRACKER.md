@@ -20,16 +20,17 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 ### Fixed live
 - Latest checked production deployment is canonical and successful on Cloudflare Pages.
 - Cloudflare Pages custom domain `www.hillcopaint.com` is active.
-- All 182 sitemap URLs return 200, expose exactly one canonical tag, and are indexable.
-- Live H1/title/meta audit across all 182 sitemap URLs reports 0 duplicate or missing title, description, or H1 issues.
+- All 183 sitemap URLs return 200, expose exactly one canonical tag, and are indexable.
+- Live H1/title/meta audit across all 183 sitemap URLs reports 0 duplicate or missing title, description, or H1 issues.
 - Live internal discovery confirms every sitemap page has at least 2 inbound source pages.
 - Live internal-link target validation reports 0 unexpected non-sitemap links.
-- Live Googlebot sitemap access confirms 182/182 sitemap URLs are accessible.
+- Live Googlebot sitemap access confirms 183/183 sitemap URLs are accessible.
 - Live hero image guard reports no banned before/after-style hero images.
 - Live gallery feed validation confirms current Supabase project `https://ndggkorglcaznukkhapz.supabase.co` is present and retired project `https://oyyfpkpzalhxztpcdjgq.supabase.co` is absent.
 - robots.txt, sitemap.xml, ai.txt, llms.txt, llms-full.txt, entity-facts.json, citation-facts.json, humans.txt, security.txt, and site.webmanifest are live with expected content types.
 - Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
+- `/free-estimate` is now a canonical, indexable estimate page in the sitemap with estimate intent copy, service links, breadcrumb schema, QuoteAction, and LocalBusiness schema.
 - LocalBusiness schema, service-location Service schema, FAQ schema, breadcrumbs, contact schema, and testimonial trust signals pass the live SEO verifier.
 - Sitemap and AI-manifest generators use Austin-local dates, preventing future-dated generated SEO files during UTC rollover.
 
@@ -112,14 +113,15 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 
 ## Evidence
 - Commit `465120a` deployed successfully to Cloudflare Pages preview `https://720d89f1.hillcosite.pages.dev`.
-- Current live page-indexing verifier run on 2026-06-03 passed with 182 sitemap pages, 32/32 Google crawler access checks, 182/182 Googlebot sitemap access checks, 181/181 trailing-slash redirect checks, 28/28 legacy redirect checks, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, 11/11 service-area FAQ schema pages, 4/4 guide FAQ schema pages, and 160/160 visible local trust sections.
+- Current live page-indexing verifier run on 2026-06-03 passed with 183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, 182/182 trailing-slash redirect checks, 29/29 legacy redirect checks, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, 11/11 service-area FAQ schema pages, 4/4 guide FAQ schema pages, and 160/160 visible local trust sections.
 - The same live verifier confirms the current Supabase gallery feed is present, the retired Supabase feed is absent, and no before/after-style images are used as hero backgrounds.
+- The same live verifier confirms `/free-estimate` is live with estimate intent, service links, QuoteAction, and LocalBusiness schema.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.
-- Live sitemap crawl: 182 sitemap URLs, 182 clean indexable 200 responses, 0 problems.
-- Live H1/meta crawl: 182 pages checked, 0 issues for duplicate/missing H1, hard-cut ellipses, overlong titles, or overlong descriptions.
-- Live internal discovery and internal-link target checks: 182 sitemap pages checked, every sitemap page has 2+ inbound source pages, and 0 unexpected non-sitemap link targets were found.
+- Live sitemap crawl: 183 sitemap URLs, 183 clean indexable 200 responses, 0 problems.
+- Live H1/meta crawl: 183 pages checked, 0 issues for duplicate/missing H1, hard-cut ellipses, overlong titles, or overlong descriptions.
+- Live internal discovery and internal-link target checks: 183 sitemap pages checked, every sitemap page has 2+ inbound source pages, and 0 unexpected non-sitemap link targets were found.
 - Live file checks confirmed expected public discovery files are available.
 
 ## Next steps
