@@ -782,6 +782,12 @@ export async function onRequest(context: {
     }
   }
 
+  // /service/* catch-all — any unmatched legacy /service/ path should resolve
+  // directly in one hop, including trailing-slash variants.
+  if (cleanPath.startsWith('/service/')) {
+    return redirect('/services', url.origin);
+  }
+
   // ── D. Trailing-slash canonicalization ────────────────────────────────
   if (cleanPath !== pathname) {
     url.pathname = cleanPath;

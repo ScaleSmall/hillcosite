@@ -1,8 +1,15 @@
 #!/usr/bin/env node
 import { resolve4, resolveCname, resolveNs } from 'dns/promises';
+import { readFileSync } from 'fs';
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
 const args = new Set(process.argv.slice(2));
 const pageIndexingMode = args.has('--page-indexing');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const projectRoot = resolve(__dirname, '..');
+const middlewareSource = readFileSync(resolve(projectRoot, 'functions/_middleware.ts'), 'utf8');
 const baseUrl = 'https://www.hillcopaint.com';
 const pagesProjectName = 'hillcosite';
 const pagesTarget = 'hillcosite.pages.dev';
@@ -189,37 +196,33 @@ const stalePublicIdentitySignals = [
   '(512) 499-8450',
   '512-499-8450',
 ];
-const liveLegacyRedirects = [
-  ['/sitemap.php', '/sitemap.xml'],
-  ['/service/residential-concrete-painting-round-rock', '/services/exterior-painting'],
-  ['/service/residential-concrete-painting-round-rock/', '/services/exterior-painting'],
-  ['/service/residential-concrete-painting', '/services/exterior-painting'],
-  ['/residential-concrete-painting-round-rock', '/services/exterior-painting'],
-  ['/residential-concrete-painting', '/services/exterior-painting'],
-  ['/service/mobile-home-painting', '/services'],
-  ['/service/garage-painting', '/services'],
-  ['/service/townhouse-painting-round-rock', '/services'],
-  ['/cabinet-refinishing', '/services/cabinet-refinishing'],
-  ['/cabinet-refinishing/', '/services/cabinet-refinishing'],
-  ['/cabinet-refinishing-pflugerville', '/services/cabinet-refinishing'],
-  ['/austin/', '/service-areas/austin'],
-  ['/round-rock', '/service-areas/round-rock'],
-  ['/round-rock/', '/service-areas/round-rock'],
-  ['/round-rock-2', '/service-areas/round-rock'],
-  ['/austin', '/service-areas/austin'],
-  ['/exterior-painting/', '/services/exterior-painting'],
-  ['/commercial-painting/', '/services/commercial'],
-  ['/service-area', '/service-areas'],
-  ['/project', '/gallery'],
-  ['/projects', '/gallery'],
-  ['/get-a-free-estimate', '/free-estimate'],
-  ['/commercial-tarrytown', '/commercial-painting-tarrytown'],
-  ['/blog/when-to-repaint-a-home-in-austin-hill-country-painting', '/blog'],
-  ['/blog/how-to-determine-the-best-austin-exterior-house-painters', '/blog/how-to-deterimine-the-best-austin-exterior-house-painters'],
-  ['/guides/painting-costs-round-rock', '/guides/painting-costs-austin'],
-  ['/areas/downtown-austin-luxury/old-west-austin', '/areas/downtown-austin-luxury/old-west-austin-central'],
-  ['/service/definitely-not-a-real-painting-service-gsc-test', '/services'],
-];
+function extractMiddlewareRedirects(source) {
+  const blockMatch = source.match(/const REDIRECTS[\s\S]*?=\s*{([\s\S]*?)\n};/);
+  if (!blockMatch) {
+    return [];
+  }
+
+  return [...blockMatch[1].matchAll(/^\s*['"]([^'"]+)['"]\s*:\s*['"]([^'"]+)['"]\s*,?/gm)]
+    .map(match => [match[1], match[2]]);
+}
+
+function buildLiveLegacyRedirects() {
+  const redirectMap = new Map([
+    ['/sitemap.php', '/sitemap.xml'],
+    ...extractMiddlewareRedirects(middlewareSource),
+    ['/service/definitely-not-a-real-painting-service-gsc-test', '/services'],
+  ]);
+
+  for (const [source, target] of [...redirectMap.entries()]) {
+    if (source !== '/' && !source.endsWith('/') && !/\.[a-z0-9]+$/i.test(source)) {
+      redirectMap.set(`${source}/`, target);
+    }
+  }
+
+  return [...redirectMap.entries()].sort(([a], [b]) => a.localeCompare(b));
+}
+
+const liveLegacyRedirects = buildLiveLegacyRedirects();
 const crawlerEntityAssets = [
   '/robots.txt',
   '/llms.txt',
