@@ -121,6 +121,9 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - The same live verifier confirms the current Supabase gallery feed is present, the retired Supabase feed is absent, and no before/after-style images are used as hero backgrounds.
 - The same live verifier confirms `/free-estimate` is live with estimate intent, service links, QuoteAction, and LocalBusiness schema.
 - The local production build now enforces the corrected blog URL in sitemap, LLM, Cloudflare route, and HTML sitemap outputs and prevents the `deterimine` typo from re-entering generated SEO assets.
+- Commit `0b67f9f` deployed successfully to Cloudflare Pages preview `https://bec8fd7e.hillcosite.pages.dev`.
+- Live verification on 2026-06-04 confirmed the misspelled blog URL returns a 301 to the corrected canonical URL, while `/sitemap.xml`, `/llms-full.txt`, and `/sitemap` include the corrected URL and exclude the typo.
+- Live page-indexing and full SEO verifier runs on 2026-06-04 passed with 183/183 sitemap pages, 183/183 Googlebot sitemap access checks, 215/215 legacy redirects, 183/183 HTML sitemap discovery links, and current Supabase project validation.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.
