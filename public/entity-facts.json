@@ -49,6 +49,11 @@
     "addressRegion": "TX",
     "addressCountry": "US"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 30.3337,
+    "longitude": -97.8166
+  },
   "serviceArea": [
     {
       "@type": "AdministrativeArea",

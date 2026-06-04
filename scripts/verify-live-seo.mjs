@@ -22,6 +22,8 @@ const typoBlogPath = '/blog/how-to-deterimine-the-best-austin-exterior-house-pai
 const correctedBlogPath = '/blog/how-to-determine-the-best-austin-exterior-house-painters';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
+const businessLatitude = 30.3337;
+const businessLongitude = -97.8166;
 const businessDisambiguatingDescription = 'Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.';
 const businessAlternateNames = [
   'Hill Country Painting LLC',
@@ -1290,6 +1292,10 @@ async function checkCrawlerEntityAssets() {
     const sameAs = asArray(entityFacts.sameAs);
     const alternateNames = asArray(entityFacts.alternateName);
     const staleWarnings = JSON.stringify(entityFacts.staleCitationWarnings || []);
+    const hasCanonicalGeo =
+      entityFacts.geo?.['@type'] === 'GeoCoordinates' &&
+      Number(entityFacts.geo?.latitude) === businessLatitude &&
+      Number(entityFacts.geo?.longitude) === businessLongitude;
 
     if (
       entityFacts.name !== 'Hill Country Painting' ||
@@ -1308,6 +1314,7 @@ async function checkCrawlerEntityAssets() {
       !hasAllValues(knowsAbout, priorityLocalSearchTopics) ||
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
+      !hasCanonicalGeo ||
       !hasValidAggregateRating(entityFacts) ||
       entityFacts.sitemapUrlCount !== liveSitemapUrlCount ||
       !staleWarnings.includes(`${baseUrl}/austin/`) ||
@@ -1321,7 +1328,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, geo coordinates, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -1335,6 +1342,24 @@ async function checkCrawlerEntityAssets() {
     const sameAs = asArray(citationFacts.sameAs);
     const alternateNames = asArray(citationIdentity.alternateName);
     const staleWarnings = JSON.stringify(citationFacts.staleCitationWarnings || []);
+    const verificationUrls = asArray(citationFacts.verificationUrls);
+    const requiredCitationVerificationUrls = [
+      `${baseUrl}/`,
+      `${baseUrl}/contact`,
+      `${baseUrl}/service-areas`,
+      `${baseUrl}/service-areas/austin`,
+      `${baseUrl}/exterior-painting-austin`,
+      `${baseUrl}/interior-painting-austin`,
+      `${baseUrl}/cabinet-refinishing-austin`,
+      `${baseUrl}/commercial-painting-austin`,
+      `${baseUrl}/entity-facts.json`,
+      `${baseUrl}/citation-facts.json`,
+      `${baseUrl}/sitemap.xml`,
+    ];
+    const hasCanonicalGeo =
+      citationIdentity.geo?.['@type'] === 'GeoCoordinates' &&
+      Number(citationIdentity.geo?.latitude) === businessLatitude &&
+      Number(citationIdentity.geo?.longitude) === businessLongitude;
 
     if (
       citationIdentity.name !== 'Hill Country Painting' ||
@@ -1349,9 +1374,11 @@ async function checkCrawlerEntityAssets() {
       citationIdentity.googleBusinessProfile !== googleBusinessProfileUrl ||
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
+      !hasCanonicalGeo ||
       !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
       !hasAllValues(citationCounties, greaterAustinServiceCounties) ||
+      !hasAllValues(verificationUrls, requiredCitationVerificationUrls) ||
       !staleWarnings.includes(`${baseUrl}/austin/`) ||
       !staleWarnings.includes(`${baseUrl}/service-areas/austin`) ||
       !staleWarnings.includes(`${baseUrl}/exterior-painting/`) ||
@@ -1363,7 +1390,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');

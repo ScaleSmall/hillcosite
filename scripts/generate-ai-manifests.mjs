@@ -146,6 +146,11 @@ const businessFacts = {
   googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
   googleBusinessProfile: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
   primaryServiceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: Number(extractStringProperty(businessConfigSource, 'latitude')),
+    longitude: Number(extractStringProperty(businessConfigSource, 'longitude'))
+  },
   description: extractStringProperty(businessConfigSource, 'description'),
   disambiguatingDescription: extractStringProperty(businessConfigSource, 'disambiguatingDescription'),
   alternateNames: extractBusinessStringArrayProperty(businessConfigSource, 'alternateNames'),
@@ -491,6 +496,7 @@ const entityFacts = {
     addressRegion: 'TX',
     addressCountry: 'US'
   },
+  geo: businessFacts.geo,
   serviceArea: [
     {
       '@type': 'AdministrativeArea',
@@ -605,6 +611,7 @@ const citationFacts = {
       addressCountry: 'US',
       display: 'Greater Austin Area'
     },
+    geo: businessFacts.geo,
     services: businessFacts.services,
     priorityLocalSearchTopics,
     priorityServicePages,
@@ -618,7 +625,13 @@ const citationFacts = {
     `${BASE_URL}/`,
     `${BASE_URL}/contact`,
     `${BASE_URL}/service-areas`,
+    `${BASE_URL}/service-areas/austin`,
+    `${BASE_URL}/exterior-painting-austin`,
+    `${BASE_URL}/interior-painting-austin`,
+    `${BASE_URL}/cabinet-refinishing-austin`,
+    `${BASE_URL}/commercial-painting-austin`,
     `${BASE_URL}/entity-facts.json`,
+    `${BASE_URL}/citation-facts.json`,
     `${BASE_URL}/sitemap.xml`
   ]
 };

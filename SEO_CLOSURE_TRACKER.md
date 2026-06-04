@@ -30,6 +30,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live hero image guard reports no banned before/after-style hero images.
 - Live gallery feed validation confirms current Supabase project `https://ndggkorglcaznukkhapz.supabase.co` is present and retired project `https://oyyfpkpzalhxztpcdjgq.supabase.co` is absent.
 - robots.txt, sitemap.xml, ai.txt, llms.txt, llms-full.txt, entity-facts.json, citation-facts.json, humans.txt, security.txt, and site.webmanifest are live with expected content types.
+- entity-facts.json and citation-facts.json now expose canonical Austin-area geo coordinates, and citation-facts.json lists homepage, contact, sitemap, AI fact files, and the priority Austin service URLs as verification sources.
 - Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
 - `/free-estimate` is now a canonical, indexable estimate page in the sitemap with estimate intent copy, service links, breadcrumb schema, QuoteAction, and LocalBusiness schema.
@@ -124,6 +125,8 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Commit `0b67f9f` deployed successfully to Cloudflare Pages preview `https://bec8fd7e.hillcosite.pages.dev`.
 - Live verification on 2026-06-04 confirmed the misspelled blog URL returns a 301 to the corrected canonical URL, while `/sitemap.xml`, `/llms-full.txt`, and `/sitemap` include the corrected URL and exclude the typo.
 - Live page-indexing and full SEO verifier runs on 2026-06-04 passed with 183/183 sitemap pages, 183/183 Googlebot sitemap access checks, 215/215 legacy redirects, 183/183 HTML sitemap discovery links, and current Supabase project validation.
+- Cloudflare Pages deployment `https://f84784e2.hillcosite.pages.dev` deployed successfully on 2026-06-04 after adding geo coordinates and priority Austin verification URLs to the public entity/citation fact files.
+- Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment with 183/183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, 182/182 trailing-slash redirect checks, 215/215 legacy redirect checks, 183/183 HTML sitemap discovery links, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, and 160/160 visible local trust sections.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

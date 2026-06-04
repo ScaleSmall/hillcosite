@@ -74,6 +74,11 @@
       "addressCountry": "US",
       "display": "Greater Austin Area"
     },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 30.3337,
+      "longitude": -97.8166
+    },
     "services": [
       "Interior painting",
       "Exterior painting",
@@ -254,7 +259,13 @@
     "https://www.hillcopaint.com/",
     "https://www.hillcopaint.com/contact",
     "https://www.hillcopaint.com/service-areas",
+    "https://www.hillcopaint.com/service-areas/austin",
+    "https://www.hillcopaint.com/exterior-painting-austin",
+    "https://www.hillcopaint.com/interior-painting-austin",
+    "https://www.hillcopaint.com/cabinet-refinishing-austin",
+    "https://www.hillcopaint.com/commercial-painting-austin",
     "https://www.hillcopaint.com/entity-facts.json",
+    "https://www.hillcopaint.com/citation-facts.json",
     "https://www.hillcopaint.com/sitemap.xml"
   ]
 }

@@ -1236,6 +1236,8 @@ function run() {
     naicsDescription: extractStringProperty(businessConfigSource, 'naicsDescription'),
     googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
     googleBusinessProfileUrl: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
+    latitude: Number(extractStringProperty(businessConfigSource, 'latitude')),
+    longitude: Number(extractStringProperty(businessConfigSource, 'longitude')),
     ratingValue: extractNumberProperty(businessConfigSource, 'ratingValue'),
     reviewCount: extractNumberProperty(businessConfigSource, 'reviewCount'),
     bestRating: extractNumberProperty(businessConfigSource, 'bestRating'),
@@ -1762,6 +1764,13 @@ function run() {
     if (entityFacts.email !== configuredBusinessFacts.email) {
       fail('entity-facts.json must include the canonical email address');
     }
+    if (
+      entityFacts.geo?.['@type'] !== 'GeoCoordinates' ||
+      Number(entityFacts.geo?.latitude) !== configuredBusinessFacts.latitude ||
+      Number(entityFacts.geo?.longitude) !== configuredBusinessFacts.longitude
+    ) {
+      fail('entity-facts.json must include canonical Austin-area geo coordinates from src/config/business.ts');
+    }
     if (entityFacts.contactPoint?.telephone !== configuredBusinessFacts.phone) {
       fail('entity-facts.json must include a canonical customer service contactPoint');
     }
@@ -1858,6 +1867,13 @@ function run() {
     if (identity.email !== configuredBusinessFacts.email) {
       fail('citation-facts.json must include the canonical email address');
     }
+    if (
+      identity.geo?.['@type'] !== 'GeoCoordinates' ||
+      Number(identity.geo?.latitude) !== configuredBusinessFacts.latitude ||
+      Number(identity.geo?.longitude) !== configuredBusinessFacts.longitude
+    ) {
+      fail('citation-facts.json must include canonical Austin-area geo coordinates from src/config/business.ts');
+    }
     if (identity.contactPoint?.telephone !== configuredBusinessFacts.phone) {
       fail('citation-facts.json must include a canonical customer service contactPoint');
     }
@@ -1908,6 +1924,22 @@ function run() {
     }
     if (!Array.isArray(identity.priorityServicePages) || !identity.priorityServicePages.some(page => page?.name === 'Austin commercial painters' && page?.url === `${baseUrl}/commercial-painting-austin`)) {
       fail('citation-facts.json must include Austin priority service pages');
+    }
+    const requiredCitationVerificationUrls = [
+      `${baseUrl}/`,
+      `${baseUrl}/contact`,
+      `${baseUrl}/service-areas`,
+      `${baseUrl}/service-areas/austin`,
+      `${baseUrl}/exterior-painting-austin`,
+      `${baseUrl}/interior-painting-austin`,
+      `${baseUrl}/cabinet-refinishing-austin`,
+      `${baseUrl}/commercial-painting-austin`,
+      `${baseUrl}/entity-facts.json`,
+      `${baseUrl}/citation-facts.json`,
+      `${baseUrl}/sitemap.xml`
+    ];
+    if (!hasAllValues(asArray(citationFacts.verificationUrls), requiredCitationVerificationUrls)) {
+      fail('citation-facts.json must include homepage, contact, sitemap, AI fact files, and priority Austin service URLs as citation verification URLs');
     }
     for (const requiredCounty of configuredGreaterAustinCounties) {
       if (!Array.isArray(identity.serviceCounties) || !identity.serviceCounties.includes(requiredCounty)) {
