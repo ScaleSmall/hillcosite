@@ -2582,6 +2582,54 @@ function run() {
         }
       }
 
+      if (routePath === '/financing') {
+        const faqSchema = schemaItems.find(item => schemaTypeIncludes(item, 'FAQPage'));
+        const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+        const faqText = questions
+          .map(item => `${item?.name || ''} ${item?.acceptedAnswer?.text || ''}`)
+          .join(' ');
+        const localBusinessSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'LocalBusiness') &&
+          schemaTypeIncludes(item, 'HousePainter') &&
+          item?.['@id'] === `${baseUrl}/#localbusiness`
+        );
+        const requiredFinancingSignals = [
+          'Austin exterior painting',
+          'Austin interior painting',
+          'cabinet painting',
+          'commercial painting',
+          'written painting estimate',
+          'soft credit check'
+        ];
+        const requiredFinancingLinks = [
+          '/exterior-painting-austin',
+          '/interior-painting-austin',
+          '/cabinet-refinishing-austin',
+          '/commercial-painting-austin',
+          '/pre-approval'
+        ];
+
+        if (!faqSchema || questions.length < 6) {
+          fail(`${routePath}: financing page should include 6+ financing FAQPage schema entries`);
+        }
+
+        if (!localBusinessSchema) {
+          fail(`${routePath}: financing page should include LocalBusiness schema for local trust and entity consistency`);
+        }
+
+        for (const signal of requiredFinancingSignals) {
+          if (!faqText.includes(signal) && !html.includes(signal)) {
+            fail(`${routePath}: financing page is missing required painting financing signal ${signal}`);
+          }
+        }
+
+        for (const expectedRoute of requiredFinancingLinks) {
+          if (!pageLinksToRoute(page, routePath, expectedRoute)) {
+            fail(`${routePath}: financing page should link to ${expectedRoute}`);
+          }
+        }
+      }
+
       if (routePath === '/free-estimate') {
         const requiredEstimateSignals = [
           'Free Painting Estimate for Austin Homes and Businesses',

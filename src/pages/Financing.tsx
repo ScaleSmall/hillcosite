@@ -4,12 +4,68 @@ import { CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const Financing = () => {
+  const financingFAQs = [
+    {
+      question: 'Can financing be used for Austin exterior painting?',
+      answer: 'Yes, financing can be used for eligible Austin exterior painting projects, including larger scopes with washing, scraping, caulking, repairs, primer, trim, siding, and finish coats.'
+    },
+    {
+      question: 'Can financing be used for Austin interior painting?',
+      answer: 'Yes, payment options can help Austin homeowners complete multi-room interior painting projects that include walls, ceilings, trim, doors, built-ins, and coordinated color updates.'
+    },
+    {
+      question: 'Can financing be used for cabinet painting or refinishing?',
+      answer: 'Yes, eligible cabinet painting and cabinet refinishing projects can use financing when homeowners want a durable kitchen update without paying the full project cost upfront.'
+    },
+    {
+      question: 'Can commercial painting projects use financing?',
+      answer: 'Some Austin commercial painting projects may qualify for payment options depending on project details, approval, and the financing terms available through Wisetack.'
+    },
+    {
+      question: 'Do I need a painting estimate before choosing financing?',
+      answer: 'A written painting estimate helps match the financing request to the actual project scope, including service type, prep requirements, coatings, timing, and total project cost.'
+    },
+    {
+      question: 'Does checking payment options affect my credit score?',
+      answer: 'Wisetack states that checking options uses a soft credit check. Final approval, terms, and available offers are subject to credit approval and Wisetack terms.'
+    }
+  ];
+
+  const financingServiceLinks = [
+    {
+      title: 'Exterior Painting Financing',
+      description: 'Plan payment options for Austin exterior painting, prep, trim, siding, caulking, primer, and full repaint scopes.',
+      href: '/exterior-painting-austin'
+    },
+    {
+      title: 'Interior Painting Financing',
+      description: 'Review payment options for multi-room Austin interior painting, walls, ceilings, trim, doors, and color updates.',
+      href: '/interior-painting-austin'
+    },
+    {
+      title: 'Cabinet Painting Financing',
+      description: 'Use financing context for Austin cabinet painting, cabinet refinishing, sprayed finishes, and kitchen updates.',
+      href: '/cabinet-refinishing-austin'
+    },
+    {
+      title: 'Commercial Painting Financing',
+      description: 'Discuss payment options for qualifying Austin commercial painting, tenant spaces, offices, and managed properties.',
+      href: '/commercial-painting-austin'
+    }
+  ];
+
   return (
     <>
       <SEO
         title="Financing Options - Up to 24 Months Interest-Free"
         description="Flexible payment plans with Wisetack financing. Get up to 24 months interest-free on your painting project. Easy approval and competitive rates available."
         canonical="/financing"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Financing', url: '/financing' }
+        ]}
+        faq={financingFAQs}
+        includeLocalBusiness={true}
       />
 
       {/* Hero Section */}
@@ -258,6 +314,47 @@ const Financing = () => {
                 Cabinet refinishing is usually far less than replacement, and financing can spread the cost of a durable sprayed finish, hardware coordination, and careful reassembly.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 bg-brand-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-8">
+            <h2 className="text-3xl font-bold text-brand-gray-900 mb-4">
+              Financing by Austin Painting Service
+            </h2>
+            <p className="text-lg text-brand-gray-700 leading-body">
+              Match payment planning to the painting scope you are considering before requesting a written estimate.
+            </p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {financingServiceLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="rounded-lg border border-brand-gray-200 bg-white p-5 transition-colors hover:border-brand-azure hover:bg-brand-azure/5"
+              >
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-2">{link.title}</h3>
+                <p className="text-brand-gray-700 leading-body">{link.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-gray-900 mb-6 text-center">
+            Painting Financing FAQ
+          </h2>
+          <div className="grid gap-5 md:grid-cols-2">
+            {financingFAQs.map((faq) => (
+              <div key={faq.question} className="rounded-lg border border-brand-gray-200 p-5">
+                <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-brand-gray-700 leading-body">{faq.answer}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

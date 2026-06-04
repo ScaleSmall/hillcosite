@@ -2340,6 +2340,46 @@ async function checkMainFaqPage() {
   console.log('Live FAQ page includes expanded Austin service FAQ schema and priority service links');
 }
 
+async function checkFinancingPage() {
+  const route = '/financing';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, route);
+  const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
+  const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+  const faqText = questions
+    .map(item => `${item?.name || ''} ${item?.acceptedAnswer?.text || ''}`)
+    .join(' ');
+  const localBusinessSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'LocalBusiness') &&
+    schemaTypeIncludes(item, 'HousePainter') &&
+    item?.['@id'] === `${baseUrl}/#localbusiness`
+  );
+  const requiredSignals = [
+    'Austin exterior painting',
+    'Austin interior painting',
+    'cabinet painting',
+    'commercial painting',
+    'written painting estimate',
+    'soft credit check',
+  ];
+  const requiredLinks = [
+    '/exterior-painting-austin',
+    '/interior-painting-austin',
+    '/cabinet-refinishing-austin',
+    '/commercial-painting-austin',
+    '/pre-approval',
+  ];
+  const hasRequiredSignals = requiredSignals.every(signal => faqText.includes(signal) || html.includes(signal));
+  const hasRequiredLinks = requiredLinks.every(link => html.includes(`href="${link}"`));
+
+  if (response.status !== 200 || !faqSchema || questions.length < 6 || !localBusinessSchema || !hasRequiredSignals || !hasRequiredLinks) {
+    fail(`${route}: live financing page should include local painting financing FAQ schema, LocalBusiness schema, and priority service links.`);
+    return;
+  }
+
+  console.log('Live financing page includes local painting financing FAQ schema, LocalBusiness schema, and priority service links');
+}
+
 async function checkFreeEstimatePage() {
   const route = '/free-estimate';
   const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
@@ -2511,6 +2551,7 @@ await checkWebsiteSearchActionSchema();
 await checkBreadcrumbSchema();
 await checkAboutPageSchema();
 await checkMainFaqPage();
+await checkFinancingPage();
 await checkContactPageSchema();
 await checkFreeEstimatePage();
 await checkPaintingCostProviderSchema();
