@@ -39,6 +39,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Testimonials review markup now ties each reviewed LocalBusiness back to the canonical website, Google Business Profile, and Google Knowledge Graph ID.
 - Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
+- The four priority Austin service pages now have enforced local FAQPage schema coverage in both local and live SEO verification.
 - `/free-estimate` is now a canonical, indexable estimate page in the sitemap with estimate intent copy, service links, breadcrumb schema, QuoteAction, and LocalBusiness schema.
 - LocalBusiness schema, service-location Service schema, FAQ schema, breadcrumbs, contact schema, and testimonial trust signals pass the live SEO verifier.
 - All 64 service-location pages now include matching local Place schema with canonical area name, coordinates, neighborhoods, ZIP codes, and service intent.
@@ -147,6 +148,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including DNS/custom-domain active, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, no banned before/after-style hero images, current Supabase project validation, 4/4 Austin service schema pages, 64/64 service-location Service schema pages, 172/172 LocalBusiness schema pages, and canonical QuoteAction provider checks.
 - Cloudflare Pages deployment `https://7914ced0.hillcosite.pages.dev` deployed successfully on 2026-06-04 after enriching the canonical provider objects reused by Service, Offer, ImageGallery, AI fact, and QuoteAction schema.
 - Full live SEO verifier run on 2026-06-04 passed after that deployment with the stricter canonical provider checks, including DNS/custom-domain active, 183/183 sitemap pages, 183/183 Googlebot sitemap access checks, 4/4 Austin service schema pages, 64/64 service-location Service schema pages, 2/2 hub ItemList schema pages, 2/2 painting cost provider schemas, current Supabase project validation, and no banned before/after-style hero images.
+- Full live SEO verifier run on 2026-06-04 passed after adding priority Austin service FAQ verification coverage, including `Live Austin service FAQ schema pages checked: 4/4`.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

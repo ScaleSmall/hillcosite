@@ -151,6 +151,32 @@ const serviceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills',
 ];
+const austinServiceFaqSchemaRoutes = [
+  {
+    route: '/exterior-painting-austin',
+    label: 'Austin exterior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'exterior',
+  },
+  {
+    route: '/interior-painting-austin',
+    label: 'Austin interior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'interior',
+  },
+  {
+    route: '/cabinet-refinishing-austin',
+    label: 'Austin cabinet painting',
+    localTerm: 'Austin',
+    serviceTerm: 'cabinet',
+  },
+  {
+    route: '/commercial-painting-austin',
+    label: 'Austin commercial painting',
+    localTerm: 'Austin',
+    serviceTerm: 'commercial',
+  },
+];
 const primaryServiceAreaHubRoutes = [
   '/service-areas/austin',
   '/service-areas/tarrytown',
@@ -1890,6 +1916,42 @@ async function checkServiceAreaFaqSchema() {
   console.log(`Live service-area FAQ schema pages checked: ${passed}/${serviceAreaFaqSchemaRoutes.length}`);
 }
 
+async function checkAustinServiceFaqSchema() {
+  let passed = 0;
+
+  for (const { route, label, localTerm, serviceTerm } of austinServiceFaqSchemaRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
+    const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+    const validQuestions = questions.filter(item =>
+      schemaTypeIncludes(item, 'Question') &&
+      item.name &&
+      schemaTypeIncludes(item.acceptedAnswer, 'Answer') &&
+      item.acceptedAnswer?.text
+    );
+    const combinedText = validQuestions
+      .map(item => `${item.name} ${item.acceptedAnswer?.text || ''}`)
+      .join(' ')
+      .toLowerCase();
+
+    if (
+      response.status !== 200 ||
+      !faqSchema ||
+      validQuestions.length < 5 ||
+      !combinedText.includes(localTerm.toLowerCase()) ||
+      !combinedText.includes(serviceTerm.toLowerCase())
+    ) {
+      fail(`${route}: live priority ${label} FAQPage schema is missing 5+ valid local service Q/A entries.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live Austin service FAQ schema pages checked: ${passed}/${austinServiceFaqSchemaRoutes.length}`);
+}
+
 async function checkGuideFaqSchema() {
   const passed = await checkFaqSchemaRoutes(guideFaqSchemaRoutes, 'guide');
 
@@ -2299,6 +2361,7 @@ await checkCoreServiceLocationGrids();
 await checkPrimaryServiceAreaHubLinks();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
+await checkAustinServiceFaqSchema();
 await checkGuideFaqSchema();
 await checkVisibleLocalTrustSections();
 await checkCrawlerControlRoutes();

@@ -269,6 +269,32 @@ const requiredServiceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills'
 ];
+const requiredAustinServiceFaqSchemaRoutes = [
+  {
+    route: '/exterior-painting-austin',
+    label: 'Austin exterior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'exterior'
+  },
+  {
+    route: '/interior-painting-austin',
+    label: 'Austin interior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'interior'
+  },
+  {
+    route: '/cabinet-refinishing-austin',
+    label: 'Austin cabinet painting',
+    localTerm: 'Austin',
+    serviceTerm: 'cabinet'
+  },
+  {
+    route: '/commercial-painting-austin',
+    label: 'Austin commercial painting',
+    localTerm: 'Austin',
+    serviceTerm: 'commercial'
+  }
+];
 const primaryServiceAreaHubRoutes = [
   '/service-areas/austin',
   '/service-areas/tarrytown',
@@ -498,6 +524,27 @@ function hasPaintingEstimateAction(schema) {
       serviceType.includes('commercial painting')
     );
   });
+}
+
+function hasValidFaqPageSchema(items, { localTerm, serviceTerm, minimumQuestions = 5 }) {
+  const faqSchema = items.find(item => schemaTypeIncludes(item, 'FAQPage'));
+  const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+  const validQuestions = questions.filter(item =>
+    schemaTypeIncludes(item, 'Question') &&
+    item.name &&
+    schemaTypeIncludes(item.acceptedAnswer, 'Answer') &&
+    item.acceptedAnswer?.text
+  );
+  const combinedText = validQuestions
+    .map(item => `${item.name} ${item.acceptedAnswer?.text || ''}`)
+    .join(' ')
+    .toLowerCase();
+
+  return (
+    validQuestions.length >= minimumQuestions &&
+    combinedText.includes(localTerm.toLowerCase()) &&
+    combinedText.includes(serviceTerm.toLowerCase())
+  );
 }
 
 function hasCanonicalServiceProvider(schema) {
@@ -1480,6 +1527,19 @@ function run() {
 
     if (!/"@type"\s*:\s*"FAQPage"/.test(page.html)) {
       fail(`${serviceAreaRoute}: service-area page with visible FAQs should include FAQPage schema`);
+    }
+  }
+
+  for (const { route, label, localTerm, serviceTerm } of requiredAustinServiceFaqSchemaRoutes) {
+    const page = pages.get(route);
+
+    if (!page) {
+      fail(`${route}: missing generated HTML for priority Austin service FAQ schema validation`);
+      continue;
+    }
+
+    if (!hasValidFaqPageSchema(jsonLdItems(page.html, route), { localTerm, serviceTerm })) {
+      fail(`${route}: priority ${label} page with visible FAQs should include FAQPage schema with 5+ valid local service Q/A entries`);
     }
   }
 
