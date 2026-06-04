@@ -380,11 +380,30 @@ function writeJsonFile(name, value) {
 }
 
 const sitemapUrls = readSitemapUrls();
-const sitemapRouteSet = new Set(getSitemapRoutes().map(route => route.path));
+const sitemapRoutes = getSitemapRoutes();
+const sitemapRouteSet = new Set(sitemapRoutes.map(route => route.path));
 const sitemapCoreStaticRoutes = coreStaticRoutes.filter(route => sitemapRouteSet.has(route.path));
 const sitemapGeoRoutes = getGeoRoutes().filter(route => sitemapRouteSet.has(route.path));
+const priorityAiCitationPagePaths = [
+  '/',
+  '/services',
+  '/services/interior-painting',
+  '/services/exterior-painting',
+  '/services/cabinet-refinishing',
+  '/services/commercial',
+  '/service-areas',
+  '/service-areas/austin',
+  '/exterior-painting-austin',
+  '/interior-painting-austin',
+  '/cabinet-refinishing-austin',
+  '/commercial-painting-austin',
+  '/service-areas/west-lake-hills',
+  '/service-areas/tarrytown',
+  '/service-areas/lakeway',
+  '/contact'
+];
 const staticUrlSet = new Set([
-  ...getSitemapRoutes().map(routeUrl)
+  ...sitemapRoutes.map(routeUrl)
 ]);
 const blogUrls = sitemapUrls.filter(url => !staticUrlSet.has(url));
 
@@ -494,20 +513,7 @@ Last updated: ${today}
 
 ${section('Priority Local Search Topics', priorityLocalSearchTopics)}
 
-${routeSection('Priority Pages for Answers and Citations', coreStaticRoutes.filter(route => [
-  '/',
-  '/services',
-  '/services/interior-painting',
-  '/services/exterior-painting',
-  '/services/cabinet-refinishing',
-  '/services/commercial',
-  '/service-areas',
-  '/service-areas/austin',
-  '/service-areas/west-lake-hills',
-  '/service-areas/tarrytown',
-  '/service-areas/lakeway',
-  '/contact'
-].includes(route.path)))}
+${routeSection('Priority Pages for Answers and Citations', sitemapRoutes.filter(route => priorityAiCitationPagePaths.includes(route.path)))}
 ## Content Usage
 
 - Public site content may be used to answer user questions with attribution.

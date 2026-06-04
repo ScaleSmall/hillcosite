@@ -30,6 +30,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live hero image guard reports no banned before/after-style hero images.
 - Live gallery feed validation confirms current Supabase project `https://ndggkorglcaznukkhapz.supabase.co` is present and retired project `https://oyyfpkpzalhxztpcdjgq.supabase.co` is absent.
 - robots.txt, sitemap.xml, ai.txt, llms.txt, llms-full.txt, entity-facts.json, citation-facts.json, humans.txt, security.txt, and site.webmanifest are live with expected content types.
+- `ai.txt` now lists the four priority Austin service pages in its Priority Pages for Answers and Citations section.
 - entity-facts.json and citation-facts.json now expose canonical Austin-area geo coordinates, and citation-facts.json lists homepage, contact, sitemap, AI fact files, and the priority Austin service URLs as verification sources.
 - Organization, LocalBusiness, entity-facts.json, and citation-facts.json now carry the canonical logo and primary Austin homepage image identity signals.
 - Detailed Service schema providers now carry the canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals across Austin priority and service-location pages.
@@ -149,6 +150,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Cloudflare Pages deployment `https://7914ced0.hillcosite.pages.dev` deployed successfully on 2026-06-04 after enriching the canonical provider objects reused by Service, Offer, ImageGallery, AI fact, and QuoteAction schema.
 - Full live SEO verifier run on 2026-06-04 passed after that deployment with the stricter canonical provider checks, including DNS/custom-domain active, 183/183 sitemap pages, 183/183 Googlebot sitemap access checks, 4/4 Austin service schema pages, 64/64 service-location Service schema pages, 2/2 hub ItemList schema pages, 2/2 painting cost provider schemas, current Supabase project validation, and no banned before/after-style hero images.
 - Full live SEO verifier run on 2026-06-04 passed after adding priority Austin service FAQ verification coverage, including `Live Austin service FAQ schema pages checked: 4/4`.
+- Local generated SEO validation and static SEO verification passed after adding enforced `ai.txt` coverage for the four priority Austin service URLs.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

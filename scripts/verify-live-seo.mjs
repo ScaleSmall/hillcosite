@@ -1378,10 +1378,14 @@ async function checkCrawlerEntityAssets() {
     `${baseUrl}/sitemap.xml`,
     `${baseUrl}/entity-facts.json`,
     `${baseUrl}/citation-facts.json`,
+    `${baseUrl}/exterior-painting-austin`,
+    `${baseUrl}/interior-painting-austin`,
+    `${baseUrl}/cabinet-refinishing-austin`,
+    `${baseUrl}/commercial-painting-austin`,
   ];
 
   if (!aiRequired.every(value => aiText.includes(value))) {
-    fail('/ai.txt: live AI discovery file is missing Austin house painter positioning or canonical discovery URLs.');
+    fail('/ai.txt: live AI discovery file is missing Austin house painter positioning, canonical discovery URLs, or priority Austin service URLs.');
   }
 
   const typoPublicAsset = [...assetText.entries()]

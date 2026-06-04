@@ -1878,6 +1878,17 @@ function run() {
     fail('AI manifest files must include priority Greater Austin local search topics');
   }
 
+  for (const priorityAustinServiceUrl of [
+    `${baseUrl}/exterior-painting-austin`,
+    `${baseUrl}/interior-painting-austin`,
+    `${baseUrl}/cabinet-refinishing-austin`,
+    `${baseUrl}/commercial-painting-austin`
+  ]) {
+    if (!aiText.includes(priorityAustinServiceUrl)) {
+      fail(`ai.txt must list priority Austin service URL ${priorityAustinServiceUrl}`);
+    }
+  }
+
   for (const routePath of sitemapPaths) {
     const canonicalUrl = expectedCanonical(routePath);
     if (!llmsFullText.includes(canonicalUrl)) {
