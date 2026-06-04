@@ -196,6 +196,59 @@ const GREATER_AUSTIN_COUNTY_SERVICE_AREAS = [
   'Williamson County',
   'Hays County',
 ];
+const GOOGLE_BUSINESS_PROFILE_URL = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
+const CANONICAL_BUSINESS_PROVIDER = {
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
+  '@id': 'https://www.hillcopaint.com/#localbusiness',
+  name: 'Hill Country Painting',
+  url: 'https://www.hillcopaint.com',
+  telephone: '(512) 240-2246',
+  logo: {
+    '@type': 'ImageObject',
+    '@id': 'https://www.hillcopaint.com/#logo',
+    url: 'https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png',
+    contentUrl: 'https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png',
+    width: 512,
+    height: 512,
+    caption: 'Hill Country Painting logo',
+  },
+  image: [
+    'https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg',
+    {
+      '@id': 'https://www.hillcopaint.com/#logo',
+    },
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Austin',
+    addressRegion: 'TX',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Greater Austin Area',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '30.3337',
+    longitude: '-97.8166',
+  },
+  hasMap: GOOGLE_BUSINESS_PROFILE_URL,
+  sameAs: [
+    GOOGLE_BUSINESS_PROFILE_URL,
+    'https://www.facebook.com/Hillcopaint',
+    'https://www.instagram.com/hill_country_painting_austin/',
+    'https://x.com/Hill_Co_Paint',
+    'https://www.youtube.com/@HillCountryPaintingAustin',
+    'https://www.tiktok.com/@hillco_painting_austin',
+  ],
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'kgmid',
+    value: '/g/11frssbq6p',
+    url: GOOGLE_BUSINESS_PROFILE_URL,
+  },
+};
 const ROBOTS_TXT = `User-agent: *
 Allow: /
 
@@ -495,13 +548,12 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
         'http://schema.org/MobileWebPlatform',
       ],
     },
-    provider: {
-      '@id': 'https://www.hillcopaint.com/#localbusiness',
-    },
+    provider: CANONICAL_BUSINESS_PROVIDER,
     object: {
       '@type': 'Service',
       name: 'Painting estimate for Greater Austin homes and businesses',
       serviceType: 'Interior painting, exterior painting, cabinet painting, and commercial painting',
+      provider: CANONICAL_BUSINESS_PROVIDER,
     },
   };
   let updatedHtml = html;
@@ -548,9 +600,7 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
     alternateName: additions,
     keywords: additions,
     serviceOutput: `${exactPhrase} service for homes, businesses, and property managers in Austin, TX`,
-    provider: {
-      '@id': 'https://www.hillcopaint.com/#localbusiness',
-    },
+    provider: CANONICAL_BUSINESS_PROVIDER,
     serviceArea: countyServiceAreas,
     mainEntityOfPage: {
       '@id': webpageId,

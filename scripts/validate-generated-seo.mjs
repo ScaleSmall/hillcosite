@@ -1483,6 +1483,8 @@ function run() {
     'Travis County',
     'Williamson County',
     'Hays County',
+    'CANONICAL_BUSINESS_PROVIDER',
+    "GOOGLE_BUSINESS_PROFILE_URL = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p'",
     'schema.serviceArea = countyServiceAreas',
     'schema.mainEntityOfPage',
     'schema.potentialAction = requestEstimateAction',
@@ -1491,6 +1493,11 @@ function run() {
     if (!middlewareSource.includes(signal)) {
       fail(`functions/_middleware.ts Austin service schema repair must preserve ${signal}`);
     }
+  }
+
+  const middlewareCanonicalProviderUses = middlewareSource.match(/provider:\s*CANONICAL_BUSINESS_PROVIDER/g) || [];
+  if (middlewareCanonicalProviderUses.length < 3) {
+    fail('functions/_middleware.ts Austin service schema repair must use CANONICAL_BUSINESS_PROVIDER for the Service provider, QuoteAction provider, and QuoteAction object provider');
   }
 
   if (googleMapEmbedSource.includes('maps/embed?pb=')) {
