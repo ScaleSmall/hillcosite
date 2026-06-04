@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import SplitSection from '../components/sections/SplitSection';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import CTABanner from '../components/sections/CTABanner';
+import { siteBaseUrl } from '../lib/businessSchema';
 
 const About = () => {
   const breadcrumbItems = [
@@ -33,6 +34,44 @@ const About = () => {
       label: "Austin Local"
     }
   ];
+  const aboutPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${siteBaseUrl}/about#aboutpage`,
+    url: `${siteBaseUrl}/about`,
+    name: 'About Hill Country Painting',
+    description: 'About Hill Country Painting, an insured Austin service-area painting contractor serving Greater Austin homes and businesses.',
+    isPartOf: {
+      '@id': `${siteBaseUrl}/#website`
+    },
+    about: {
+      '@id': `${siteBaseUrl}/#localbusiness`
+    },
+    mainEntity: {
+      '@id': `${siteBaseUrl}/#localbusiness`
+    },
+    publisher: {
+      '@id': `${siteBaseUrl}/#organization`
+    },
+    primaryImageOfPage: {
+      '@id': `${siteBaseUrl}/#logo`
+    },
+    relatedLink: [
+      `${siteBaseUrl}/services`,
+      `${siteBaseUrl}/service-areas/austin`,
+      `${siteBaseUrl}/testimonials`,
+      `${siteBaseUrl}/gallery`,
+      `${siteBaseUrl}/free-estimate`
+    ],
+    mentions: [
+      'Austin house painters',
+      'Austin exterior painting',
+      'Austin interior painting',
+      'Austin cabinet painting',
+      'Austin commercial painting',
+      'Greater Austin service-area painting contractor'
+    ]
+  };
 
   return (
     <>
@@ -45,6 +84,7 @@ const About = () => {
           { name: 'About Us', url: '/about' }
         ]}
         includeLocalBusiness={true}
+        additionalSchema={aboutPageSchema}
       />
 
       {/* Hero */}

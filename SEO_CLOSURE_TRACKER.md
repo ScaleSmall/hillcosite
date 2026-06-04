@@ -157,6 +157,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Local generated SEO validation and static SEO verification passed after adding enforced `ai.txt` coverage for the four priority Austin service URLs.
 - Local generated SEO validation now enforces `ai.txt` coverage for the canonical trust and conversion pages used by answer engines and citation systems.
 - Local and live SEO verification now require About and FAQ in the canonical citation verification URL set.
+- Local generated SEO validation and live SEO verification now enforce `/about` AboutPage schema tied to the canonical LocalBusiness, Organization, priority proof pages, and Austin painting topics.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

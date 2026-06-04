@@ -2483,6 +2483,38 @@ function run() {
         }
       }
 
+      if (routePath === '/about') {
+        const aboutPageSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'AboutPage') &&
+          item?.['@id'] === `${baseUrl}/about#aboutpage`
+        );
+        const relatedLinks = asArray(aboutPageSchema?.relatedLink);
+        const mentionsText = JSON.stringify(aboutPageSchema?.mentions || []);
+        const requiredRelatedLinks = [
+          `${baseUrl}/services`,
+          `${baseUrl}/service-areas/austin`,
+          `${baseUrl}/testimonials`,
+          `${baseUrl}/gallery`,
+          `${baseUrl}/free-estimate`
+        ];
+        const hasRelatedLinks = requiredRelatedLinks.every(link => relatedLinks.includes(link));
+        const hasBusinessEntity =
+          aboutPageSchema?.about?.['@id'] === `${baseUrl}/#localbusiness` &&
+          aboutPageSchema?.mainEntity?.['@id'] === `${baseUrl}/#localbusiness` &&
+          aboutPageSchema?.publisher?.['@id'] === `${baseUrl}/#organization`;
+
+        if (
+          !aboutPageSchema ||
+          aboutPageSchema.url !== `${baseUrl}/about` ||
+          !hasBusinessEntity ||
+          !hasRelatedLinks ||
+          !mentionsText.includes('Austin house painters') ||
+          !mentionsText.includes('Austin commercial painting')
+        ) {
+          fail(`${routePath}: AboutPage schema must connect the trust page to the canonical LocalBusiness, priority proof pages, and Austin painting topics`);
+        }
+      }
+
       if (routePath === '/free-estimate') {
         const requiredEstimateSignals = [
           'Free Painting Estimate for Austin Homes and Businesses',

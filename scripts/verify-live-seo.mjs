@@ -2254,6 +2254,45 @@ async function checkContactPageSchema() {
   console.log('Live contact page schema includes LocalBusiness contact and estimate action');
 }
 
+async function checkAboutPageSchema() {
+  const route = '/about';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, route);
+  const aboutPageSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'AboutPage') &&
+    item?.['@id'] === `${baseUrl}${route}#aboutpage`
+  );
+  const relatedLinks = asArray(aboutPageSchema?.relatedLink);
+  const mentionsText = JSON.stringify(aboutPageSchema?.mentions || []);
+  const requiredRelatedLinks = [
+    `${baseUrl}/services`,
+    `${baseUrl}/service-areas/austin`,
+    `${baseUrl}/testimonials`,
+    `${baseUrl}/gallery`,
+    `${baseUrl}/free-estimate`,
+  ];
+  const hasRelatedLinks = requiredRelatedLinks.every(link => relatedLinks.includes(link));
+  const hasBusinessEntity =
+    aboutPageSchema?.about?.['@id'] === `${baseUrl}/#localbusiness` &&
+    aboutPageSchema?.mainEntity?.['@id'] === `${baseUrl}/#localbusiness` &&
+    aboutPageSchema?.publisher?.['@id'] === `${baseUrl}/#organization`;
+
+  if (
+    response.status !== 200 ||
+    !aboutPageSchema ||
+    aboutPageSchema.url !== `${baseUrl}${route}` ||
+    !hasBusinessEntity ||
+    !hasRelatedLinks ||
+    !mentionsText.includes('Austin house painters') ||
+    !mentionsText.includes('Austin commercial painting')
+  ) {
+    fail(`${route}: live AboutPage schema should connect the trust page to the canonical LocalBusiness, priority proof pages, and Austin painting topics.`);
+    return;
+  }
+
+  console.log('Live AboutPage schema connects the trust page to canonical local-business identity');
+}
+
 async function checkFreeEstimatePage() {
   const route = '/free-estimate';
   const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
@@ -2423,6 +2462,7 @@ await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
 await checkWebsiteSearchActionSchema();
 await checkBreadcrumbSchema();
+await checkAboutPageSchema();
 await checkContactPageSchema();
 await checkFreeEstimatePage();
 await checkPaintingCostProviderSchema();
