@@ -97,6 +97,18 @@ const canonicalSocialProfileUrls = [
   'https://www.youtube.com/@HillCountryPaintingAustin',
   'https://www.tiktok.com/@hillco_painting_austin'
 ];
+const canonicalBusinessAlternateNames = [
+  'Hill Country Painting LLC',
+  'Hill Country Painting Austin',
+  'Hill Country Painting of Austin'
+];
+const businessEmail = 'info@hillcopaint.com';
+const businessPriceRange = '$$';
+const businessPaymentAccepted = 'Cash, Check, Credit Card';
+const businessCurrenciesAccepted = 'USD';
+const businessOpeningHours = 'Mo-Fr 08:00-18:00';
+const businessWeekdayOpens = '08:00';
+const businessWeekdayCloses = '18:00';
 const minimumAggregateRatingValue = 4.5;
 const minimumAggregateReviewCount = 100;
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
@@ -492,6 +504,10 @@ function hasCanonicalServiceProvider(schema) {
   const provider = schema?.provider || {};
   const providerTypes = asArray(provider?.['@type']);
   const providerSameAs = asArray(provider?.sameAs);
+  const alternateNames = asArray(provider?.alternateName);
+  const availableLanguages = asArray(provider?.availableLanguage);
+  const contactPoint = provider?.contactPoint || {};
+  const openingHoursSpecification = provider?.openingHoursSpecification || {};
   const identifier = provider?.identifier || {};
 
   return (
@@ -499,14 +515,32 @@ function hasCanonicalServiceProvider(schema) {
     providerTypes.includes('LocalBusiness') &&
     providerTypes.includes('HousePainter') &&
     provider?.name === 'Hill Country Painting' &&
+    provider?.legalName === 'Hill Country Painting LLC' &&
+    hasAllValues(alternateNames, canonicalBusinessAlternateNames) &&
+    provider?.disambiguatingDescription === 'Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.' &&
+    provider?.naics === '238320' &&
+    provider?.industry === 'Painting and Wall Covering Contractors' &&
     provider?.url === baseUrl &&
+    provider?.email === businessEmail &&
+    schemaTypeIncludes(contactPoint, 'ContactPoint') &&
+    contactPoint?.telephone === '(512) 240-2246' &&
+    contactPoint?.contactType === 'customer service' &&
     provider?.logo?.['@type'] === 'ImageObject' &&
     provider?.logo?.url === `${baseUrl}/brand/hill-country-painting-logo-primary.png` &&
     provider?.logo?.contentUrl === `${baseUrl}/brand/hill-country-painting-logo-primary.png` &&
     JSON.stringify(provider?.image || []).includes(`${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`) &&
     JSON.stringify(provider?.image || []).includes(`${baseUrl}/#logo`) &&
+    provider?.priceRange === businessPriceRange &&
+    provider?.paymentAccepted === businessPaymentAccepted &&
+    provider?.currenciesAccepted === businessCurrenciesAccepted &&
+    availableLanguages.includes('English') &&
     provider?.hasMap === googleBusinessProfileUrl &&
+    provider?.openingHours === businessOpeningHours &&
+    schemaTypeIncludes(openingHoursSpecification, 'OpeningHoursSpecification') &&
+    openingHoursSpecification?.opens === businessWeekdayOpens &&
+    openingHoursSpecification?.closes === businessWeekdayCloses &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
+    hasValidAggregateRating(provider) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&
     identifier?.propertyID === 'kgmid' &&
     identifier?.value === googleKnowledgeGraphId &&

@@ -32,6 +32,14 @@ const businessAlternateNames = [
   'Hill Country Painting Austin',
   'Hill Country Painting of Austin',
 ];
+const businessEmail = 'info@hillcopaint.com';
+const businessPhone = '(512) 240-2246';
+const businessPriceRange = '$$';
+const businessPaymentAccepted = 'Cash, Check, Credit Card';
+const businessCurrenciesAccepted = 'USD';
+const businessOpeningHours = 'Mo-Fr 08:00-18:00';
+const businessWeekdayOpens = '08:00';
+const businessWeekdayCloses = '18:00';
 const businessNaicsCode = '238320';
 const businessNaicsDescription = 'Painting and Wall Covering Contractors';
 const canonicalSocialProfileUrls = [
@@ -1192,6 +1200,10 @@ function hasCanonicalServiceProvider(schema) {
   const provider = schema?.provider || {};
   const providerTypes = asArray(provider?.['@type']);
   const providerSameAs = asArray(provider?.sameAs);
+  const alternateNames = asArray(provider?.alternateName);
+  const availableLanguages = asArray(provider?.availableLanguage);
+  const contactPoint = provider?.contactPoint || {};
+  const openingHoursSpecification = provider?.openingHoursSpecification || {};
   const identifier = provider?.identifier || {};
 
   return (
@@ -1199,14 +1211,32 @@ function hasCanonicalServiceProvider(schema) {
     providerTypes.includes('LocalBusiness') &&
     providerTypes.includes('HousePainter') &&
     provider?.name === 'Hill Country Painting' &&
+    provider?.legalName === 'Hill Country Painting LLC' &&
+    hasAllValues(alternateNames, businessAlternateNames) &&
+    provider?.disambiguatingDescription === businessDisambiguatingDescription &&
+    provider?.naics === businessNaicsCode &&
+    provider?.industry === businessNaicsDescription &&
     provider?.url === baseUrl &&
+    provider?.email === businessEmail &&
+    schemaTypeIncludes(contactPoint, 'ContactPoint') &&
+    contactPoint?.telephone === businessPhone &&
+    contactPoint?.contactType === 'customer service' &&
     provider?.logo?.['@type'] === 'ImageObject' &&
     provider?.logo?.url === businessLogoUrl &&
     provider?.logo?.contentUrl === businessLogoUrl &&
     JSON.stringify(provider?.image || []).includes(businessPrimaryImageUrl) &&
     JSON.stringify(provider?.image || []).includes(`${baseUrl}/#logo`) &&
+    provider?.priceRange === businessPriceRange &&
+    provider?.paymentAccepted === businessPaymentAccepted &&
+    provider?.currenciesAccepted === businessCurrenciesAccepted &&
+    availableLanguages.includes('English') &&
     provider?.hasMap === googleBusinessProfileUrl &&
+    provider?.openingHours === businessOpeningHours &&
+    schemaTypeIncludes(openingHoursSpecification, 'OpeningHoursSpecification') &&
+    openingHoursSpecification?.opens === businessWeekdayOpens &&
+    openingHoursSpecification?.closes === businessWeekdayCloses &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
+    hasValidAggregateRating(provider) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&
     identifier?.propertyID === 'kgmid' &&
     identifier?.value === googleKnowledgeGraphId &&

@@ -328,8 +328,29 @@
           ],
           "@id": "https://www.hillcopaint.com/#localbusiness",
           "name": "Hill Country Painting",
+          "legalName": "Hill Country Painting LLC",
+          "alternateName": [
+            "Hill Country Painting LLC",
+            "Hill Country Painting Austin",
+            "Hill Country Painting of Austin"
+          ],
+          "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+          "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+          "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+          "naics": "238320",
+          "industry": "Painting and Wall Covering Contractors",
           "url": "https://www.hillcopaint.com",
           "telephone": "(512) 240-2246",
+          "email": "info@hillcopaint.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "(512) 240-2246",
+            "contactType": "customer service",
+            "areaServed": "US-TX",
+            "availableLanguage": [
+              "English"
+            ]
+          },
           "logo": {
             "@type": "ImageObject",
             "@id": "https://www.hillcopaint.com/#logo",
@@ -345,6 +366,12 @@
               "@id": "https://www.hillcopaint.com/#logo"
             }
           ],
+          "priceRange": "$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "currenciesAccepted": "USD",
+          "availableLanguage": [
+            "English"
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Austin",
@@ -357,6 +384,19 @@
             "longitude": -97.8166
           },
           "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
           "sameAs": [
             "https://www.facebook.com/Hillcopaint",
             "https://www.instagram.com/hill_country_painting_austin/",
@@ -365,6 +405,13 @@
             "https://www.tiktok.com/@hillco_painting_austin",
             "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
           ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "reviewCount": 127,
+            "bestRating": 5,
+            "worstRating": 1
+          },
           "identifier": {
             "@type": "PropertyValue",
             "propertyID": "kgmid",
@@ -491,8 +538,29 @@
           ],
           "@id": "https://www.hillcopaint.com/#localbusiness",
           "name": "Hill Country Painting",
+          "legalName": "Hill Country Painting LLC",
+          "alternateName": [
+            "Hill Country Painting LLC",
+            "Hill Country Painting Austin",
+            "Hill Country Painting of Austin"
+          ],
+          "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+          "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+          "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+          "naics": "238320",
+          "industry": "Painting and Wall Covering Contractors",
           "url": "https://www.hillcopaint.com",
           "telephone": "(512) 240-2246",
+          "email": "info@hillcopaint.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "(512) 240-2246",
+            "contactType": "customer service",
+            "areaServed": "US-TX",
+            "availableLanguage": [
+              "English"
+            ]
+          },
           "logo": {
             "@type": "ImageObject",
             "@id": "https://www.hillcopaint.com/#logo",
@@ -508,6 +576,12 @@
               "@id": "https://www.hillcopaint.com/#logo"
             }
           ],
+          "priceRange": "$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "currenciesAccepted": "USD",
+          "availableLanguage": [
+            "English"
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Austin",
@@ -520,6 +594,19 @@
             "longitude": -97.8166
           },
           "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
           "sameAs": [
             "https://www.facebook.com/Hillcopaint",
             "https://www.instagram.com/hill_country_painting_austin/",
@@ -528,6 +615,13 @@
             "https://www.tiktok.com/@hillco_painting_austin",
             "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
           ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "reviewCount": 127,
+            "bestRating": 5,
+            "worstRating": 1
+          },
           "identifier": {
             "@type": "PropertyValue",
             "propertyID": "kgmid",
@@ -654,8 +748,29 @@
           ],
           "@id": "https://www.hillcopaint.com/#localbusiness",
           "name": "Hill Country Painting",
+          "legalName": "Hill Country Painting LLC",
+          "alternateName": [
+            "Hill Country Painting LLC",
+            "Hill Country Painting Austin",
+            "Hill Country Painting of Austin"
+          ],
+          "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+          "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+          "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+          "naics": "238320",
+          "industry": "Painting and Wall Covering Contractors",
           "url": "https://www.hillcopaint.com",
           "telephone": "(512) 240-2246",
+          "email": "info@hillcopaint.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "(512) 240-2246",
+            "contactType": "customer service",
+            "areaServed": "US-TX",
+            "availableLanguage": [
+              "English"
+            ]
+          },
           "logo": {
             "@type": "ImageObject",
             "@id": "https://www.hillcopaint.com/#logo",
@@ -671,6 +786,12 @@
               "@id": "https://www.hillcopaint.com/#logo"
             }
           ],
+          "priceRange": "$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "currenciesAccepted": "USD",
+          "availableLanguage": [
+            "English"
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Austin",
@@ -683,6 +804,19 @@
             "longitude": -97.8166
           },
           "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
           "sameAs": [
             "https://www.facebook.com/Hillcopaint",
             "https://www.instagram.com/hill_country_painting_austin/",
@@ -691,6 +825,13 @@
             "https://www.tiktok.com/@hillco_painting_austin",
             "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
           ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "reviewCount": 127,
+            "bestRating": 5,
+            "worstRating": 1
+          },
           "identifier": {
             "@type": "PropertyValue",
             "propertyID": "kgmid",
@@ -817,8 +958,29 @@
           ],
           "@id": "https://www.hillcopaint.com/#localbusiness",
           "name": "Hill Country Painting",
+          "legalName": "Hill Country Painting LLC",
+          "alternateName": [
+            "Hill Country Painting LLC",
+            "Hill Country Painting Austin",
+            "Hill Country Painting of Austin"
+          ],
+          "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+          "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+          "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+          "naics": "238320",
+          "industry": "Painting and Wall Covering Contractors",
           "url": "https://www.hillcopaint.com",
           "telephone": "(512) 240-2246",
+          "email": "info@hillcopaint.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "(512) 240-2246",
+            "contactType": "customer service",
+            "areaServed": "US-TX",
+            "availableLanguage": [
+              "English"
+            ]
+          },
           "logo": {
             "@type": "ImageObject",
             "@id": "https://www.hillcopaint.com/#logo",
@@ -834,6 +996,12 @@
               "@id": "https://www.hillcopaint.com/#logo"
             }
           ],
+          "priceRange": "$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "currenciesAccepted": "USD",
+          "availableLanguage": [
+            "English"
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Austin",
@@ -846,6 +1014,19 @@
             "longitude": -97.8166
           },
           "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
           "sameAs": [
             "https://www.facebook.com/Hillcopaint",
             "https://www.instagram.com/hill_country_painting_austin/",
@@ -854,6 +1035,13 @@
             "https://www.tiktok.com/@hillco_painting_austin",
             "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
           ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "reviewCount": 127,
+            "bestRating": 5,
+            "worstRating": 1
+          },
           "identifier": {
             "@type": "PropertyValue",
             "propertyID": "kgmid",
@@ -980,8 +1168,29 @@
           ],
           "@id": "https://www.hillcopaint.com/#localbusiness",
           "name": "Hill Country Painting",
+          "legalName": "Hill Country Painting LLC",
+          "alternateName": [
+            "Hill Country Painting LLC",
+            "Hill Country Painting Austin",
+            "Hill Country Painting of Austin"
+          ],
+          "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+          "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+          "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+          "naics": "238320",
+          "industry": "Painting and Wall Covering Contractors",
           "url": "https://www.hillcopaint.com",
           "telephone": "(512) 240-2246",
+          "email": "info@hillcopaint.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "(512) 240-2246",
+            "contactType": "customer service",
+            "areaServed": "US-TX",
+            "availableLanguage": [
+              "English"
+            ]
+          },
           "logo": {
             "@type": "ImageObject",
             "@id": "https://www.hillcopaint.com/#logo",
@@ -997,6 +1206,12 @@
               "@id": "https://www.hillcopaint.com/#logo"
             }
           ],
+          "priceRange": "$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "currenciesAccepted": "USD",
+          "availableLanguage": [
+            "English"
+          ],
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Austin",
@@ -1009,6 +1224,19 @@
             "longitude": -97.8166
           },
           "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
           "sameAs": [
             "https://www.facebook.com/Hillcopaint",
             "https://www.instagram.com/hill_country_painting_austin/",
@@ -1017,6 +1245,13 @@
             "https://www.tiktok.com/@hillco_painting_austin",
             "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
           ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "reviewCount": 127,
+            "bestRating": 5,
+            "worstRating": 1
+          },
           "identifier": {
             "@type": "PropertyValue",
             "propertyID": "kgmid",
@@ -1146,8 +1381,29 @@
             ],
             "@id": "https://www.hillcopaint.com/#localbusiness",
             "name": "Hill Country Painting",
+            "legalName": "Hill Country Painting LLC",
+            "alternateName": [
+              "Hill Country Painting LLC",
+              "Hill Country Painting Austin",
+              "Hill Country Painting of Austin"
+            ],
+            "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+            "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+            "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+            "naics": "238320",
+            "industry": "Painting and Wall Covering Contractors",
             "url": "https://www.hillcopaint.com",
             "telephone": "(512) 240-2246",
+            "email": "info@hillcopaint.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "(512) 240-2246",
+              "contactType": "customer service",
+              "areaServed": "US-TX",
+              "availableLanguage": [
+                "English"
+              ]
+            },
             "logo": {
               "@type": "ImageObject",
               "@id": "https://www.hillcopaint.com/#logo",
@@ -1163,6 +1419,12 @@
                 "@id": "https://www.hillcopaint.com/#logo"
               }
             ],
+            "priceRange": "$$",
+            "paymentAccepted": "Cash, Check, Credit Card",
+            "currenciesAccepted": "USD",
+            "availableLanguage": [
+              "English"
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Austin",
@@ -1175,6 +1437,19 @@
               "longitude": -97.8166
             },
             "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
             "sameAs": [
               "https://www.facebook.com/Hillcopaint",
               "https://www.instagram.com/hill_country_painting_austin/",
@@ -1183,6 +1458,13 @@
               "https://www.tiktok.com/@hillco_painting_austin",
               "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
             ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.9,
+              "reviewCount": 127,
+              "bestRating": 5,
+              "worstRating": 1
+            },
             "identifier": {
               "@type": "PropertyValue",
               "propertyID": "kgmid",
@@ -1307,8 +1589,29 @@
             ],
             "@id": "https://www.hillcopaint.com/#localbusiness",
             "name": "Hill Country Painting",
+            "legalName": "Hill Country Painting LLC",
+            "alternateName": [
+              "Hill Country Painting LLC",
+              "Hill Country Painting Austin",
+              "Hill Country Painting of Austin"
+            ],
+            "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+            "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+            "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+            "naics": "238320",
+            "industry": "Painting and Wall Covering Contractors",
             "url": "https://www.hillcopaint.com",
             "telephone": "(512) 240-2246",
+            "email": "info@hillcopaint.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "(512) 240-2246",
+              "contactType": "customer service",
+              "areaServed": "US-TX",
+              "availableLanguage": [
+                "English"
+              ]
+            },
             "logo": {
               "@type": "ImageObject",
               "@id": "https://www.hillcopaint.com/#logo",
@@ -1324,6 +1627,12 @@
                 "@id": "https://www.hillcopaint.com/#logo"
               }
             ],
+            "priceRange": "$$",
+            "paymentAccepted": "Cash, Check, Credit Card",
+            "currenciesAccepted": "USD",
+            "availableLanguage": [
+              "English"
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Austin",
@@ -1336,6 +1645,19 @@
               "longitude": -97.8166
             },
             "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
             "sameAs": [
               "https://www.facebook.com/Hillcopaint",
               "https://www.instagram.com/hill_country_painting_austin/",
@@ -1344,6 +1666,13 @@
               "https://www.tiktok.com/@hillco_painting_austin",
               "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
             ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.9,
+              "reviewCount": 127,
+              "bestRating": 5,
+              "worstRating": 1
+            },
             "identifier": {
               "@type": "PropertyValue",
               "propertyID": "kgmid",
@@ -1468,8 +1797,29 @@
             ],
             "@id": "https://www.hillcopaint.com/#localbusiness",
             "name": "Hill Country Painting",
+            "legalName": "Hill Country Painting LLC",
+            "alternateName": [
+              "Hill Country Painting LLC",
+              "Hill Country Painting Austin",
+              "Hill Country Painting of Austin"
+            ],
+            "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+            "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+            "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+            "naics": "238320",
+            "industry": "Painting and Wall Covering Contractors",
             "url": "https://www.hillcopaint.com",
             "telephone": "(512) 240-2246",
+            "email": "info@hillcopaint.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "(512) 240-2246",
+              "contactType": "customer service",
+              "areaServed": "US-TX",
+              "availableLanguage": [
+                "English"
+              ]
+            },
             "logo": {
               "@type": "ImageObject",
               "@id": "https://www.hillcopaint.com/#logo",
@@ -1485,6 +1835,12 @@
                 "@id": "https://www.hillcopaint.com/#logo"
               }
             ],
+            "priceRange": "$$",
+            "paymentAccepted": "Cash, Check, Credit Card",
+            "currenciesAccepted": "USD",
+            "availableLanguage": [
+              "English"
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Austin",
@@ -1497,6 +1853,19 @@
               "longitude": -97.8166
             },
             "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
             "sameAs": [
               "https://www.facebook.com/Hillcopaint",
               "https://www.instagram.com/hill_country_painting_austin/",
@@ -1505,6 +1874,13 @@
               "https://www.tiktok.com/@hillco_painting_austin",
               "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
             ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.9,
+              "reviewCount": 127,
+              "bestRating": 5,
+              "worstRating": 1
+            },
             "identifier": {
               "@type": "PropertyValue",
               "propertyID": "kgmid",
@@ -1629,8 +2005,29 @@
             ],
             "@id": "https://www.hillcopaint.com/#localbusiness",
             "name": "Hill Country Painting",
+            "legalName": "Hill Country Painting LLC",
+            "alternateName": [
+              "Hill Country Painting LLC",
+              "Hill Country Painting Austin",
+              "Hill Country Painting of Austin"
+            ],
+            "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+            "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+            "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+            "naics": "238320",
+            "industry": "Painting and Wall Covering Contractors",
             "url": "https://www.hillcopaint.com",
             "telephone": "(512) 240-2246",
+            "email": "info@hillcopaint.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "(512) 240-2246",
+              "contactType": "customer service",
+              "areaServed": "US-TX",
+              "availableLanguage": [
+                "English"
+              ]
+            },
             "logo": {
               "@type": "ImageObject",
               "@id": "https://www.hillcopaint.com/#logo",
@@ -1646,6 +2043,12 @@
                 "@id": "https://www.hillcopaint.com/#logo"
               }
             ],
+            "priceRange": "$$",
+            "paymentAccepted": "Cash, Check, Credit Card",
+            "currenciesAccepted": "USD",
+            "availableLanguage": [
+              "English"
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Austin",
@@ -1658,6 +2061,19 @@
               "longitude": -97.8166
             },
             "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
             "sameAs": [
               "https://www.facebook.com/Hillcopaint",
               "https://www.instagram.com/hill_country_painting_austin/",
@@ -1666,6 +2082,13 @@
               "https://www.tiktok.com/@hillco_painting_austin",
               "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
             ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.9,
+              "reviewCount": 127,
+              "bestRating": 5,
+              "worstRating": 1
+            },
             "identifier": {
               "@type": "PropertyValue",
               "propertyID": "kgmid",
@@ -1790,8 +2213,29 @@
             ],
             "@id": "https://www.hillcopaint.com/#localbusiness",
             "name": "Hill Country Painting",
+            "legalName": "Hill Country Painting LLC",
+            "alternateName": [
+              "Hill Country Painting LLC",
+              "Hill Country Painting Austin",
+              "Hill Country Painting of Austin"
+            ],
+            "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+            "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+            "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+            "naics": "238320",
+            "industry": "Painting and Wall Covering Contractors",
             "url": "https://www.hillcopaint.com",
             "telephone": "(512) 240-2246",
+            "email": "info@hillcopaint.com",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "(512) 240-2246",
+              "contactType": "customer service",
+              "areaServed": "US-TX",
+              "availableLanguage": [
+                "English"
+              ]
+            },
             "logo": {
               "@type": "ImageObject",
               "@id": "https://www.hillcopaint.com/#logo",
@@ -1807,6 +2251,12 @@
                 "@id": "https://www.hillcopaint.com/#logo"
               }
             ],
+            "priceRange": "$$",
+            "paymentAccepted": "Cash, Check, Credit Card",
+            "currenciesAccepted": "USD",
+            "availableLanguage": [
+              "English"
+            ],
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Austin",
@@ -1819,6 +2269,19 @@
               "longitude": -97.8166
             },
             "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "openingHours": "Mo-Fr 08:00-18:00",
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
             "sameAs": [
               "https://www.facebook.com/Hillcopaint",
               "https://www.instagram.com/hill_country_painting_austin/",
@@ -1827,6 +2290,13 @@
               "https://www.tiktok.com/@hillco_painting_austin",
               "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
             ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": 4.9,
+              "reviewCount": 127,
+              "bestRating": 5,
+              "worstRating": 1
+            },
             "identifier": {
               "@type": "PropertyValue",
               "propertyID": "kgmid",

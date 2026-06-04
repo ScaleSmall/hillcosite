@@ -307,8 +307,17 @@ const canonicalBusinessProvider = {
   '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
   '@id': `${BASE_URL}/#localbusiness`,
   name: businessFacts.name,
+  legalName: businessFacts.legalName,
+  alternateName: businessFacts.alternateNames,
+  disambiguatingDescription: businessFacts.disambiguatingDescription,
+  description: businessFacts.description,
+  slogan: businessFacts.tagline,
+  naics: businessFacts.naics,
+  industry: businessFacts.naicsDescription,
   url: BASE_URL,
   telephone: businessFacts.phone,
+  email: businessFacts.email,
+  contactPoint: businessFacts.contactPoint,
   logo: businessFacts.logo,
   image: [
     businessFacts.primaryImage,
@@ -316,6 +325,10 @@ const canonicalBusinessProvider = {
       '@id': `${BASE_URL}/#logo`
     }
   ],
+  priceRange: '$$',
+  paymentAccepted: businessFacts.paymentAccepted,
+  currenciesAccepted: businessFacts.currenciesAccepted,
+  availableLanguage: businessFacts.availableLanguage,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Austin',
@@ -324,7 +337,10 @@ const canonicalBusinessProvider = {
   },
   geo: businessFacts.geo,
   hasMap: businessFacts.googleBusinessProfile,
+  openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
+  openingHoursSpecification: businessFacts.openingHours,
   sameAs: socialProfiles,
+  aggregateRating: businessFacts.aggregateRating,
   identifier: {
     '@type': 'PropertyValue',
     propertyID: 'kgmid',
