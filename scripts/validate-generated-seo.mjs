@@ -269,6 +269,32 @@ const requiredServiceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills'
 ];
+const requiredCoreServiceFaqSchemaRoutes = [
+  {
+    route: '/services/interior-painting',
+    label: 'interior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'interior'
+  },
+  {
+    route: '/services/exterior-painting',
+    label: 'exterior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'exterior'
+  },
+  {
+    route: '/services/cabinet-refinishing',
+    label: 'cabinet refinishing',
+    localTerm: 'Austin',
+    serviceTerm: 'cabinet'
+  },
+  {
+    route: '/services/commercial',
+    label: 'commercial painting',
+    localTerm: 'Austin',
+    serviceTerm: 'commercial'
+  }
+];
 const requiredAustinServiceFaqSchemaRoutes = [
   {
     route: '/exterior-painting-austin',
@@ -1527,6 +1553,19 @@ function run() {
 
     if (!/"@type"\s*:\s*"FAQPage"/.test(page.html)) {
       fail(`${serviceAreaRoute}: service-area page with visible FAQs should include FAQPage schema`);
+    }
+  }
+
+  for (const { route, label, localTerm, serviceTerm } of requiredCoreServiceFaqSchemaRoutes) {
+    const page = pages.get(route);
+
+    if (!page) {
+      fail(`${route}: missing generated HTML for core service FAQ schema validation`);
+      continue;
+    }
+
+    if (!hasValidFaqPageSchema(jsonLdItems(page.html, route), { localTerm, serviceTerm })) {
+      fail(`${route}: core ${label} page with visible FAQs should include FAQPage schema with 5+ valid local service Q/A entries`);
     }
   }
 

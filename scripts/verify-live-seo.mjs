@@ -151,6 +151,32 @@ const serviceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills',
 ];
+const coreServiceFaqSchemaRoutes = [
+  {
+    route: '/services/interior-painting',
+    label: 'interior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'interior',
+  },
+  {
+    route: '/services/exterior-painting',
+    label: 'exterior painting',
+    localTerm: 'Austin',
+    serviceTerm: 'exterior',
+  },
+  {
+    route: '/services/cabinet-refinishing',
+    label: 'cabinet refinishing',
+    localTerm: 'Austin',
+    serviceTerm: 'cabinet',
+  },
+  {
+    route: '/services/commercial',
+    label: 'commercial painting',
+    localTerm: 'Austin',
+    serviceTerm: 'commercial',
+  },
+];
 const austinServiceFaqSchemaRoutes = [
   {
     route: '/exterior-painting-austin',
@@ -1927,10 +1953,10 @@ async function checkServiceAreaFaqSchema() {
   console.log(`Live service-area FAQ schema pages checked: ${passed}/${serviceAreaFaqSchemaRoutes.length}`);
 }
 
-async function checkAustinServiceFaqSchema() {
+async function checkLocalServiceFaqSchemaRoutes(routes, routeType) {
   let passed = 0;
 
-  for (const { route, label, localTerm, serviceTerm } of austinServiceFaqSchemaRoutes) {
+  for (const { route, label, localTerm, serviceTerm } of routes) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
     const scripts = parseJsonLd(html, route);
     const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
@@ -1953,12 +1979,24 @@ async function checkAustinServiceFaqSchema() {
       !combinedText.includes(localTerm.toLowerCase()) ||
       !combinedText.includes(serviceTerm.toLowerCase())
     ) {
-      fail(`${route}: live priority ${label} FAQPage schema is missing 5+ valid local service Q/A entries.`);
+      fail(`${route}: live ${routeType} ${label} FAQPage schema is missing 5+ valid local service Q/A entries.`);
       continue;
     }
 
     passed += 1;
   }
+
+  return passed;
+}
+
+async function checkCoreServiceFaqSchema() {
+  const passed = await checkLocalServiceFaqSchemaRoutes(coreServiceFaqSchemaRoutes, 'core service');
+
+  console.log(`Live core service FAQ schema pages checked: ${passed}/${coreServiceFaqSchemaRoutes.length}`);
+}
+
+async function checkAustinServiceFaqSchema() {
+  const passed = await checkLocalServiceFaqSchemaRoutes(austinServiceFaqSchemaRoutes, 'priority');
 
   console.log(`Live Austin service FAQ schema pages checked: ${passed}/${austinServiceFaqSchemaRoutes.length}`);
 }
@@ -2372,6 +2410,7 @@ await checkCoreServiceLocationGrids();
 await checkPrimaryServiceAreaHubLinks();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
+await checkCoreServiceFaqSchema();
 await checkAustinServiceFaqSchema();
 await checkGuideFaqSchema();
 await checkVisibleLocalTrustSections();

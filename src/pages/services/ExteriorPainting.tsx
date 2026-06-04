@@ -79,11 +79,11 @@ const ExteriorPainting = () => {
   const faqs = [
     {
       question: 'How long does exterior painting take?',
-      answer: 'Most exterior painting projects take 3-7 days depending on home size, weather, and scope of work. We provide a detailed timeline during your consultation.'
+      answer: 'Most Austin exterior painting projects take 3-7 days depending on home size, weather, and scope of work. We provide a detailed timeline during your consultation.'
     },
     {
-      question: 'What type of paint do you use for Texas weather?',
-      answer: 'We use premium weather-resistant paints specifically formulated for Texas heat, UV exposure, and humidity. These paints are designed to last 7-10 years.'
+      question: 'What type of paint do you use for Austin weather?',
+      answer: 'We use premium weather-resistant paints specifically formulated for Austin heat, UV exposure, and humidity. These paints are designed to last 7-10 years.'
     },
     {
       question: 'Do you handle HOA approvals?',
@@ -91,11 +91,11 @@ const ExteriorPainting = () => {
     },
     {
       question: 'How much does exterior painting cost?',
-      answer: 'Exterior painting typically ranges from $4,500-$12,000 depending on home size, paint quality, and prep work needed. We provide detailed estimates with transparent pricing.'
+      answer: 'Exterior painting in Austin typically ranges from $4,500-$12,000 depending on home size, paint quality, and prep work needed. We provide detailed estimates with transparent pricing.'
     },
     {
-      question: 'When is the best time to paint exteriors in Texas?',
-      answer: 'Spring and fall are ideal for exterior painting in Texas. We avoid extreme summer heat and winter cold for optimal paint application and curing.'
+      question: 'When is the best time to paint exteriors in Austin?',
+      answer: 'Spring and fall are ideal for exterior painting in Austin. We avoid extreme summer heat and winter cold for optimal paint application and curing.'
     },
     {
       question: 'Do you repair damaged siding or trim?',

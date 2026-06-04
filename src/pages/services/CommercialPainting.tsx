@@ -74,15 +74,15 @@ const CommercialPainting = () => {
   const faqs = [
     {
       question: 'Can you work outside business hours?',
-      answer: 'Yes, we offer flexible scheduling including evenings and weekends to minimize disruption to your business operations.'
+      answer: 'Yes, we offer flexible scheduling for Austin businesses, including evenings and weekends to minimize disruption to your operations.'
     },
     {
       question: 'How long does commercial painting take?',
-      answer: 'Project timelines vary based on size and scope. Most commercial projects are completed within 1-3 weeks with minimal business disruption.'
+      answer: 'Project timelines vary based on size and scope. Most Austin commercial painting projects are completed within 1-3 weeks with minimal business disruption.'
     },
     {
       question: 'Are you insured?',
-      answer: 'Yes, we are fully insured with commercial liability coverage to protect your business.'
+      answer: 'Yes, we are fully insured with commercial liability coverage to protect Austin businesses and commercial properties.'
     },
     {
       question: 'Do you offer warranties on commercial painting?',
@@ -94,7 +94,7 @@ const CommercialPainting = () => {
     },
     {
       question: 'How much does commercial painting cost?',
-      answer: 'Commercial painting costs vary based on square footage, surface type, and project scope. We provide detailed estimates with transparent pricing.'
+      answer: 'Commercial painting costs in Austin vary based on square footage, surface type, and project scope. We provide detailed estimates with transparent pricing.'
     }
   ];
 
