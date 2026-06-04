@@ -126,8 +126,7 @@ const REDIRECTS: Record<string, string> = {
 
   // -- Utility page redirects --
   '/privacy-policy':        '/privacy',
-  '/free-estimate':         '/contact',
-  '/get-a-free-estimate':   '/contact',
+  '/get-a-free-estimate':   '/free-estimate',
 
   // -- Broken area URL fix --
   '/areas/downtown-austin-luxury/old-west-austin': '/areas/downtown-austin-luxury/old-west-austin-central',
@@ -145,6 +144,7 @@ const REDIRECTS: Record<string, string> = {
   '/service-areas/':              '/service-areas',
   '/blog/':                       '/blog',
   '/contact/':                    '/contact',
+  '/free-estimate/':              '/free-estimate',
   '/about/':                      '/about',
   '/faq/':                        '/faq',
   '/gallery/':                    '/gallery',

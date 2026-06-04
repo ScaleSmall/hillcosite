@@ -1,4 +1,4 @@
-export const generatedSpaRouteCount = 190;
+export const generatedSpaRouteCount = 191;
 
 export const generatedSpaRoutes = [
   "/",
@@ -146,6 +146,7 @@ export const generatedSpaRoutes = [
   "/exterior-painting-west-lake-hills",
   "/faq",
   "/financing",
+  "/free-estimate",
   "/gallery",
   "/guides/best-paint-texas-heat",
   "/guides/hoa-color-tips-austin",

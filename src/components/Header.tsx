@@ -202,10 +202,10 @@ const Header = () => {
           {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center flex-shrink-0">
             <Link
-              to="/contact"
+              to="/free-estimate"
               className="inline-flex items-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 whitespace-nowrap"
             >
-              Consultation
+              Free Estimate
             </Link>
             <div className="grid grid-cols-3 gap-1.5 items-center ml-6">
               {socialLinks.map((social) => (
@@ -326,11 +326,11 @@ const Header = () => {
                 <span>(512) 240-2246</span>
               </a>
               <Link
-                to="/contact"
+                to="/free-estimate"
                 onClick={() => setIsMenuOpen(false)}
                 className="inline-flex items-center justify-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 w-full"
               >
-                Consultation
+                Free Estimate
               </Link>
             </div>
           </div>

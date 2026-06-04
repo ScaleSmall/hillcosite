@@ -148,6 +148,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.hillcopaint.com/free-estimate</loc>
+    <lastmod>2026-06-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.hillcopaint.com/blog</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>weekly</changefreq>

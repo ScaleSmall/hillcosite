@@ -337,6 +337,7 @@ Last updated: ${today}
 - Project gallery: ${BASE_URL}/gallery
 - Customer reviews: ${BASE_URL}/testimonials
 - Contact: ${BASE_URL}/contact
+- Free estimate: ${BASE_URL}/free-estimate
 - Blog and guides: ${BASE_URL}/blog
 - XML sitemap: ${BASE_URL}/sitemap.xml
 - Full AI route index: ${BASE_URL}/llms-full.txt
@@ -361,7 +362,7 @@ ${section('Business Facts', [
   'Positioning: clean prep, crisp lines, reliable schedules',
   `Google Business Profile: ${businessFacts.googleBusinessProfile}`
 ])}
-${routeSection('Primary Service Pages', sitemapCoreStaticRoutes.filter(route => route.path.startsWith('/services/') || route.path === '/services' || route.path === '/color-consultation' || route.path === '/financing'))}
+${routeSection('Primary Service Pages', sitemapCoreStaticRoutes.filter(route => route.path.startsWith('/services/') || route.path === '/services' || route.path === '/color-consultation' || route.path === '/financing' || route.path === '/free-estimate'))}
 ${routeSection('Priority Service Area Pages', sitemapCoreStaticRoutes.filter(route => route.path.startsWith('/service-areas')))}
 ${routeSection('High-Intent Service Plus Location Pages', serviceLocationPages)}
 ${routeSection('Affluent And High-Value Austin Area Pages', sitemapGeoRoutes.filter(route => !route.path.split('/').slice(2).join('/').includes('/')))}

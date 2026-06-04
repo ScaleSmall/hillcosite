@@ -36,6 +36,7 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/service-areas/north-austin
 - https://www.hillcopaint.com/color-consultation
 - https://www.hillcopaint.com/contact
+- https://www.hillcopaint.com/free-estimate
 - https://www.hillcopaint.com/blog
 - https://www.hillcopaint.com/guides/painting-costs-austin
 - https://www.hillcopaint.com/guides/best-paint-texas-heat
@@ -230,6 +231,7 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/service-areas/north-austin
 - https://www.hillcopaint.com/color-consultation
 - https://www.hillcopaint.com/contact
+- https://www.hillcopaint.com/free-estimate
 - https://www.hillcopaint.com/blog
 - https://www.hillcopaint.com/guides/painting-costs-austin
 - https://www.hillcopaint.com/guides/best-paint-texas-heat

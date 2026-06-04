@@ -165,6 +165,7 @@ const breadcrumbRoutes = [
   '/gallery',
   '/testimonials',
   '/contact',
+  '/free-estimate',
 ];
 const bannedHeroBackgroundImages = [
   'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
@@ -211,6 +212,7 @@ const liveLegacyRedirects = [
   ['/service-area', '/service-areas'],
   ['/project', '/gallery'],
   ['/projects', '/gallery'],
+  ['/get-a-free-estimate', '/free-estimate'],
   ['/commercial-tarrytown', '/commercial-painting-tarrytown'],
   ['/blog/when-to-repaint-a-home-in-austin-hill-country-painting', '/blog'],
   ['/blog/how-to-determine-the-best-austin-exterior-house-painters', '/blog/how-to-deterimine-the-best-austin-exterior-house-painters'],
@@ -1127,6 +1129,14 @@ async function checkCrawlerEntityAssets() {
   const llmsText = assetText.get('/llms.txt') || '';
   const llmsFullText = assetText.get('/llms-full.txt') || '';
   const aiText = assetText.get('/ai.txt') || '';
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+  const liveSitemapUrlCount = sitemapResponse.status === 200
+    ? [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].length
+    : 0;
+
+  if (sitemapResponse.status !== 200 || liveSitemapUrlCount === 0) {
+    fail('/sitemap.xml: live sitemap could not be fetched for crawler/entity asset validation.');
+  }
 
   if (
     !robotsText.includes(`Sitemap: ${baseUrl}/sitemap.xml`) ||
@@ -1146,6 +1156,7 @@ async function checkCrawlerEntityAssets() {
     '/entity-facts.json',
     '/citation-facts.json',
     'Austin house painters',
+    `${baseUrl}/free-estimate`,
   ];
 
   if (!llmsRequired.every(value => llmsText.includes(value))) {
@@ -1156,6 +1167,7 @@ async function checkCrawlerEntityAssets() {
     `${baseUrl}/`,
     `${baseUrl}/sitemap.xml`,
     `${baseUrl}/exterior-painting-austin`,
+    `${baseUrl}/free-estimate`,
   ];
 
   if (!llmsFullRequired.every(value => llmsFullText.includes(value))) {
@@ -1200,7 +1212,7 @@ async function checkCrawlerEntityAssets() {
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasValidAggregateRating(entityFacts) ||
-      entityFacts.sitemapUrlCount !== 182 ||
+      entityFacts.sitemapUrlCount !== liveSitemapUrlCount ||
       !staleWarnings.includes(`${baseUrl}/austin/`) ||
       !staleWarnings.includes(`${baseUrl}/service-areas/austin`) ||
       !staleWarnings.includes(`${baseUrl}/exterior-painting/`) ||
@@ -1879,6 +1891,46 @@ async function checkContactPageSchema() {
   console.log('Live contact page schema includes LocalBusiness contact and estimate action');
 }
 
+async function checkFreeEstimatePage() {
+  const route = '/free-estimate';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, route);
+  const quoteAction = scripts.find(item =>
+    schemaTypeIncludes(item, 'QuoteAction') &&
+    item?.['@id'] === `${baseUrl}${route}#quoteaction`
+  );
+  const requiredSignals = [
+    'Free Painting Estimate for Austin Homes and Businesses',
+    'exterior painting',
+    'interior painting',
+    'cabinet refinishing',
+    'commercial painting',
+    `href="/contact"`,
+    `href="/exterior-painting-austin"`,
+    `href="/interior-painting-austin"`,
+    `href="/cabinet-refinishing-austin"`,
+    `href="/commercial-painting-austin"`,
+  ];
+  const hasRequiredSignals = requiredSignals.every(signal => html.includes(signal));
+  const hasQuoteAction =
+    quoteAction?.provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+    quoteAction?.target?.urlTemplate === `${baseUrl}/contact` &&
+    schemaTypeIncludes(quoteAction?.target, 'EntryPoint') &&
+    schemaTypeIncludes(quoteAction?.object, 'Service');
+  const hasLocalBusiness = scripts.some(item =>
+    schemaTypeIncludes(item, 'LocalBusiness') &&
+    schemaTypeIncludes(item, 'HousePainter') &&
+    item?.['@id'] === `${baseUrl}/#localbusiness`
+  );
+
+  if (response.status !== 200 || !hasRequiredSignals || !hasQuoteAction || !hasLocalBusiness) {
+    fail(`${route}: live free estimate page should be indexable with estimate intent copy, service links, QuoteAction, and LocalBusiness schema.`);
+    return;
+  }
+
+  console.log('Live free estimate page includes estimate intent, service links, QuoteAction, and LocalBusiness schema');
+}
+
 async function checkTestimonialsTrustSignals() {
   const { response, text: html } = await fetchText(`${baseUrl}/testimonials?v=${Date.now()}`);
   const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
@@ -1933,6 +1985,7 @@ await checkGoogleEntityIdentifier();
 await checkWebsiteSearchActionSchema();
 await checkBreadcrumbSchema();
 await checkContactPageSchema();
+await checkFreeEstimatePage();
 await checkTestimonialsTrustSignals();
 
 if (failures.length) {

@@ -125,6 +125,7 @@ export const coreStaticRoutes = [
   { path: '/service-areas/north-austin', changefreq: 'monthly', priority: '0.8' },
   { path: '/color-consultation', changefreq: 'monthly', priority: '0.7' },
   { path: '/contact', changefreq: 'monthly', priority: '0.9' },
+  { path: '/free-estimate', changefreq: 'monthly', priority: '0.8' },
   { path: '/blog', changefreq: 'weekly', priority: '0.8' },
   { path: '/guides/painting-costs-austin', changefreq: 'monthly', priority: '0.7' },
   { path: '/guides/best-paint-texas-heat', changefreq: 'monthly', priority: '0.7' },

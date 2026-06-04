@@ -131,6 +131,7 @@ const requiredLegacyRedirects = new Map([
   ['/service/residential-foyer-painting-round-rock', '/services/interior-painting'],
   ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
   ['/service/custom-home-painting-round-rock', '/services'],
+  ['/get-a-free-estimate', '/free-estimate'],
 ]);
 const staticLegacyRedirects = new Map([
   ['/service/residential-concrete-painting-round-rock/', `${baseUrl}/services/exterior-painting`],
@@ -191,6 +192,7 @@ const coreLocalBusinessRoutes = new Set([
   '/faq',
   '/color-consultation',
   '/contact',
+  '/free-estimate',
 ]);
 const requiredGeoHubServiceLocationSlugs = new Map([
   ['/areas/steiner-ranch-78732', 'steiner-ranch'],
@@ -2080,6 +2082,44 @@ function run() {
           if (!hasBusinessEntity || !hasContactPoint || !hasPaintingEstimateAction(contactPageSchema)) {
             fail(`${routePath}: ContactPage schema must connect the LocalBusiness, canonical phone, and estimate QuoteAction`);
           }
+        }
+      }
+
+      if (routePath === '/free-estimate') {
+        const requiredEstimateSignals = [
+          'Free Painting Estimate for Austin Homes and Businesses',
+          'exterior painting',
+          'interior painting',
+          'cabinet refinishing',
+          'commercial painting',
+          'href="/contact"',
+          'href="/exterior-painting-austin"',
+          'href="/interior-painting-austin"',
+          'href="/cabinet-refinishing-austin"',
+          'href="/commercial-painting-austin"',
+          'Request a painting estimate',
+          'Painting estimate for Greater Austin homes and businesses'
+        ];
+
+        for (const signal of requiredEstimateSignals) {
+          if (!html.includes(signal)) {
+            fail(`${routePath}: free estimate page is missing required estimate intent signal ${signal}`);
+          }
+        }
+
+        const estimateAction = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'QuoteAction') &&
+          item?.['@id'] === `${baseUrl}/free-estimate#quoteaction`
+        );
+
+        if (
+          !estimateAction ||
+          estimateAction?.provider?.['@id'] !== `${baseUrl}/#localbusiness` ||
+          estimateAction?.target?.urlTemplate !== `${baseUrl}/contact` ||
+          !schemaTypeIncludes(estimateAction?.target, 'EntryPoint') ||
+          !schemaTypeIncludes(estimateAction?.object, 'Service')
+        ) {
+          fail(`${routePath}: free estimate page must expose a QuoteAction connected to the canonical LocalBusiness and contact form`);
         }
       }
 

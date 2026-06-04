@@ -27,6 +27,7 @@ const Footer = () => {
     { name: 'Color Consultation', href: '/color-consultation' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Free Estimate', href: '/free-estimate' },
   ];
 
   const services = [
@@ -351,6 +352,8 @@ const Footer = () => {
               <Link to="/sitemap" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Sitemap</Link>
               <span className="text-brand-gray-400">•</span>
               <Link to="/financing" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Financing</Link>
+              <span className="text-brand-gray-400">•</span>
+              <Link to="/free-estimate" className="hover:text-brand-azure transition-colors focus:outline-none focus:ring-2 focus:ring-brand-azure rounded">Free Estimate</Link>
             </div>
           </div>
         </div>
