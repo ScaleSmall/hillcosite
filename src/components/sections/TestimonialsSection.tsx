@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import { businessConfig } from '../../config/business';
 
 interface Testimonial {
   name: string;
@@ -49,8 +50,17 @@ const TestimonialsSection = ({ title, subtitle, testimonials, structuredReviews 
               {structuredReviews && (
                 <div itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" className="sr-only">
                   <span itemProp="name">Hill Country Painting</span>
+                  <span itemProp="url">{businessConfig.website}</span>
                   <span itemProp="telephone">(512) 240-2246</span>
                   <span itemProp="areaServed">Greater Austin Area</span>
+                  <span itemProp="sameAs">{businessConfig.googleBusinessProfileUrl}</span>
+                  <span itemProp="hasMap">{businessConfig.googleBusinessProfileUrl}</span>
+                  <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
+                    <span itemProp="name">Google Knowledge Graph ID</span>
+                    <span itemProp="propertyID">kgmid</span>
+                    <span itemProp="value">{businessConfig.googleKnowledgeGraphId}</span>
+                    <span itemProp="url">{businessConfig.googleBusinessProfileUrl}</span>
+                  </span>
                 </div>
               )}
 

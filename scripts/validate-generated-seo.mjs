@@ -2299,7 +2299,14 @@ function run() {
           'itemprop="reviewRating"',
           'itemprop="reviewBody"',
           'itemprop="ratingValue"',
-          'Hill Country Painting'
+          'Hill Country Painting',
+          'itemprop="sameAs"',
+          'itemprop="hasMap"',
+          'itemprop="identifier"',
+          'itemprop="propertyID"',
+          'itemprop="value"',
+          'kgmid',
+          googleKnowledgeGraphId
         ];
 
         if (reviewSchemaCount < 10) {

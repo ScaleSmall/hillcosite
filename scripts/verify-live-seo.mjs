@@ -2130,6 +2130,13 @@ async function checkTestimonialsTrustSignals() {
     'itemprop="reviewBody"',
     'itemprop="ratingValue"',
     'Hill Country Painting',
+    'itemprop="sameAs"',
+    'itemprop="hasMap"',
+    'itemprop="identifier"',
+    'itemprop="propertyID"',
+    'itemprop="value"',
+    'kgmid',
+    googleKnowledgeGraphId,
   ].every(signal => html.includes(signal));
 
   if (response.status !== 200 || reviewSchemaCount < 10 || !hasGoogleReviewsCta || !hasGoogleProfileLink || !hasReviewSignals) {

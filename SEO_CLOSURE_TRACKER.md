@@ -33,6 +33,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - entity-facts.json and citation-facts.json now expose canonical Austin-area geo coordinates, and citation-facts.json lists homepage, contact, sitemap, AI fact files, and the priority Austin service URLs as verification sources.
 - Organization, LocalBusiness, entity-facts.json, and citation-facts.json now carry the canonical logo and primary Austin homepage image identity signals.
 - Detailed Service schema providers now carry the canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals across Austin priority and service-location pages.
+- Testimonials review markup now ties each reviewed LocalBusiness back to the canonical website, Google Business Profile, and Google Knowledge Graph ID.
 - Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
 - `/free-estimate` is now a canonical, indexable estimate page in the sitemap with estimate intent copy, service links, breadcrumb schema, QuoteAction, and LocalBusiness schema.
@@ -133,6 +134,8 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including the new Organization/LocalBusiness canonical logo/image identity checks.
 - Cloudflare Pages deployment `https://d655ffaa.hillcosite.pages.dev` deployed successfully on 2026-06-04 after adding canonical logo/image identity to detailed Service schema providers.
 - Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including 4/4 Austin service schema pages, 64/64 service-location Service schema pages, and the strengthened canonical provider identity checks.
+- Cloudflare Pages deployment `https://b79c4e90.hillcosite.pages.dev` deployed successfully on 2026-06-04 after adding canonical GBP/kgmid identity to testimonials review markup.
+- Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including 12 marked-up testimonials with the Google review link and strengthened LocalBusiness review identity checks.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.
