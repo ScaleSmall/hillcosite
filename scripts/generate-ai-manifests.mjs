@@ -678,6 +678,10 @@ const citationFacts = {
   verificationUrls: [
     `${BASE_URL}/`,
     `${BASE_URL}/contact`,
+    `${BASE_URL}/free-estimate`,
+    `${BASE_URL}/gallery`,
+    `${BASE_URL}/testimonials`,
+    `${BASE_URL}/guides/painting-costs-austin`,
     `${BASE_URL}/service-areas`,
     `${BASE_URL}/service-areas/austin`,
     `${BASE_URL}/exterior-painting-austin`,

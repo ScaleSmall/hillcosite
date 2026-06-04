@@ -72,6 +72,7 @@ const FreeEstimate = () => {
       '@type': 'Service',
       name: 'Painting estimate for Greater Austin homes and businesses',
       serviceType: 'Interior painting, exterior painting, cabinet painting, cabinet refinishing, and commercial painting',
+      provider: canonicalBusinessProvider,
       areaServed: greaterAustinServiceAreas.map(area => ({
         '@type': 'Place',
         name: area

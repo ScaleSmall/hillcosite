@@ -474,11 +474,12 @@ function hasPaintingEstimateAction(schema) {
     return (
       schemaTypeIncludes(action, 'QuoteAction') &&
       action?.name === 'Request a painting estimate' &&
-      action?.provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+      hasCanonicalProviderObject(action?.provider) &&
       target?.urlTemplate === `${baseUrl}/contact` &&
       schemaTypeIncludes(target, 'EntryPoint') &&
       schemaTypeIncludes(object, 'Service') &&
       object?.name === 'Painting estimate for Greater Austin homes and businesses' &&
+      hasCanonicalServiceProvider(object) &&
       serviceType.includes('Interior painting') &&
       serviceType.includes('exterior painting') &&
       serviceType.includes('cabinet painting') &&
@@ -1537,6 +1538,10 @@ function run() {
     fail('src/components/SEO.tsx sameAs schema must use businessConfig.socialProfiles for canonical entity profile links');
   }
 
+  if (!seoComponentSource.includes("from '../lib/businessSchema'") || !seoComponentSource.includes('canonicalBusinessProvider')) {
+    fail('src/components/SEO.tsx must reuse the shared canonicalBusinessProvider for crawler-facing provider schema');
+  }
+
   if (!aiManifestGeneratorSource.includes('extractBusinessSocialProfiles(businessConfigSource)')) {
     fail('scripts/generate-ai-manifests.mjs must derive AI/citation sameAs social profiles from src/config/business.ts');
   }
@@ -2008,6 +2013,10 @@ function run() {
     const requiredCitationVerificationUrls = [
       `${baseUrl}/`,
       `${baseUrl}/contact`,
+      `${baseUrl}/free-estimate`,
+      `${baseUrl}/gallery`,
+      `${baseUrl}/testimonials`,
+      `${baseUrl}/guides/painting-costs-austin`,
       `${baseUrl}/service-areas`,
       `${baseUrl}/service-areas/austin`,
       `${baseUrl}/exterior-painting-austin`,

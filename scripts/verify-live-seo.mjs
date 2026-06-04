@@ -1174,11 +1174,12 @@ function hasPaintingEstimateAction(schema) {
     return (
       schemaTypeIncludes(action, 'QuoteAction') &&
       action?.name === 'Request a painting estimate' &&
-      action?.provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+      hasCanonicalProviderObject(action?.provider) &&
       target?.urlTemplate === `${baseUrl}/contact` &&
       schemaTypeIncludes(target, 'EntryPoint') &&
       schemaTypeIncludes(object, 'Service') &&
       object?.name === 'Painting estimate for Greater Austin homes and businesses' &&
+      hasCanonicalServiceProvider(object) &&
       serviceType.includes('Interior painting') &&
       serviceType.includes('exterior painting') &&
       serviceType.includes('cabinet painting') &&
@@ -1411,6 +1412,10 @@ async function checkCrawlerEntityAssets() {
     const requiredCitationVerificationUrls = [
       `${baseUrl}/`,
       `${baseUrl}/contact`,
+      `${baseUrl}/free-estimate`,
+      `${baseUrl}/gallery`,
+      `${baseUrl}/testimonials`,
+      `${baseUrl}/guides/painting-costs-austin`,
       `${baseUrl}/service-areas`,
       `${baseUrl}/service-areas/austin`,
       `${baseUrl}/exterior-painting-austin`,

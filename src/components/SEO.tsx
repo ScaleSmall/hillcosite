@@ -7,6 +7,7 @@ import {
   priorityLocalSearchTopics
 } from '../config/localSeo';
 import { useRefParamGuard } from '../hooks/useRefParamGuard';
+import { businessLogoImage, canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
 
 interface SEOProps {
   title: string;
@@ -151,17 +152,8 @@ const upsertJsonLdTags = (schemaPayload: string) => {
 
 const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, service, faq, product, geoPlacename, includeLocalBusiness, aggregateRating, additionalSchema }: SEOProps) => {
   const hasRefParam = useRefParamGuard();
-  const baseUrl = 'https://www.hillcopaint.com';
+  const baseUrl = siteBaseUrl;
   const defaultSocialImage = `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`;
-  const businessLogoImage = {
-    '@type': 'ImageObject',
-    '@id': `${baseUrl}/#logo`,
-    url: `${baseUrl}${businessConfig.logo}`,
-    contentUrl: `${baseUrl}${businessConfig.logo}`,
-    width: 512,
-    height: 512,
-    caption: 'Hill Country Painting Logo'
-  };
   const resolvedAggregateRating = aggregateRating ?? {
     ratingValue: businessConfig.aggregateRating.ratingValue,
     reviewCount: businessConfig.aggregateRating.reviewCount
@@ -305,13 +297,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         'http://schema.org/MobileWebPlatform'
       ]
     },
-    provider: {
-      '@id': `${baseUrl}/#localbusiness`
-    },
+    provider: canonicalBusinessProvider,
     object: {
       '@type': 'Service',
       name: 'Painting estimate for Greater Austin homes and businesses',
-      serviceType: 'Interior painting, exterior painting, cabinet painting, and commercial painting'
+      serviceType: 'Interior painting, exterior painting, cabinet painting, and commercial painting',
+      provider: canonicalBusinessProvider
     }
   };
 
@@ -406,9 +397,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         '@type': 'Service',
         '@id': `${baseUrl}${offer.path}#service`,
         name: offer.name,
-        provider: {
-          '@id': `${baseUrl}/#localbusiness`
-        },
+        provider: canonicalBusinessProvider,
         areaServed: localBusinessAreaServed
       }
     })),
@@ -420,9 +409,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         itemOffered: {
           '@type': 'Service',
           name: serviceName,
-          provider: {
-            '@id': `${baseUrl}/#localbusiness`
-          },
+          provider: canonicalBusinessProvider,
           areaServed: localBusinessAreaServed
         }
       }))
@@ -491,23 +478,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       name: service.name,
       alternateName: service.alternateName,
       description: service.description,
-      provider: {
-        '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
-        '@id': `${baseUrl}/#localbusiness`,
-        name: businessConfig.name,
-        url: baseUrl,
-        telephone: businessConfig.phone,
-        logo: businessLogoImage,
-        image: [
-          defaultSocialImage,
-          {
-            '@id': `${baseUrl}/#logo`
-          }
-        ],
-        hasMap: businessConfig.googleBusinessProfileUrl,
-        sameAs: sameAsProfiles,
-        identifier: googleBusinessIdentifier
-      },
+      provider: canonicalBusinessProvider,
       areaServed: serviceAreas,
       serviceArea: serviceAreaRegions,
       serviceType: service.name,
@@ -548,9 +519,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
           itemOffered: {
             '@type': 'Service',
             name: service.name,
-            provider: {
-              '@id': `${baseUrl}/#localbusiness`
-            },
+            provider: canonicalBusinessProvider,
             areaServed: serviceAreas
           }
         }]
