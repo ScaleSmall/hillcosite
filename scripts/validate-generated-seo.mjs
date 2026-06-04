@@ -13,6 +13,7 @@ const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts'
 const functionRoutesPath = resolve(projectRoot, 'functions/generatedRoutes.ts');
 const middlewarePath = resolve(projectRoot, 'functions/_middleware.ts');
 const businessConfigPath = resolve(projectRoot, 'src/config/business.ts');
+const businessSchemaPath = resolve(projectRoot, 'src/lib/businessSchema.ts');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
 const locationsConfigPath = resolve(projectRoot, 'src/config/locations.ts');
 const serviceProductsPath = resolve(projectRoot, 'src/config/serviceProducts.ts');
@@ -101,6 +102,16 @@ const canonicalBusinessAlternateNames = [
   'Hill Country Painting LLC',
   'Hill Country Painting Austin',
   'Hill Country Painting of Austin'
+];
+const requiredCanonicalProviderKnowsAboutTopics = [
+  'Austin house painters',
+  'Austin exterior house painters',
+  'Austin interior painters',
+  'Austin cabinet painting',
+  'Austin commercial painters',
+  'painting contractors Austin',
+  'Greater Austin painting contractor',
+  'West Lake Hills painters'
 ];
 const businessEmail = 'info@hillcopaint.com';
 const businessPriceRange = '$$';
@@ -581,6 +592,7 @@ function hasCanonicalServiceProvider(schema) {
   const providerSameAs = asArray(provider?.sameAs);
   const alternateNames = asArray(provider?.alternateName);
   const availableLanguages = asArray(provider?.availableLanguage);
+  const knowsAbout = asArray(provider?.knowsAbout);
   const contactPoint = provider?.contactPoint || {};
   const openingHoursSpecification = provider?.openingHoursSpecification || {};
   const identifier = provider?.identifier || {};
@@ -614,6 +626,7 @@ function hasCanonicalServiceProvider(schema) {
     schemaTypeIncludes(openingHoursSpecification, 'OpeningHoursSpecification') &&
     openingHoursSpecification?.opens === businessWeekdayOpens &&
     openingHoursSpecification?.closes === businessWeekdayCloses &&
+    hasAllValues(knowsAbout, requiredCanonicalProviderKnowsAboutTopics) &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
     hasValidAggregateRating(provider) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&
@@ -1245,6 +1258,7 @@ function run() {
   const functionRoutesSource = readRequired(functionRoutesPath, 'functions/generatedRoutes.ts');
   const middlewareSource = readRequired(middlewarePath, 'functions/_middleware.ts');
   const businessConfigSource = readRequired(businessConfigPath, 'src/config/business.ts');
+  const businessSchemaSource = readRequired(businessSchemaPath, 'src/lib/businessSchema.ts');
   const localSeoSource = readRequired(localSeoPath, 'src/config/localSeo.ts');
   const locationsConfigSource = readRequired(locationsConfigPath, 'src/config/locations.ts');
   const serviceProductsSource = readRequired(serviceProductsPath, 'src/config/serviceProducts.ts');
@@ -1624,11 +1638,25 @@ function run() {
     'schema.mainEntityOfPage',
     'schema.potentialAction = requestEstimateAction',
     "name: 'Request a painting estimate'",
-    "urlTemplate: 'https://www.hillcopaint.com/free-estimate'"
+    "urlTemplate: 'https://www.hillcopaint.com/free-estimate'",
+    'knowsAbout:',
+    "'Austin house painters'",
+    "'Austin commercial painters'",
+    "'Greater Austin painting contractor'"
   ]) {
     if (!middlewareSource.includes(signal)) {
       fail(`functions/_middleware.ts Austin service schema repair must preserve ${signal}`);
     }
+  }
+
+  if (
+    !businessSchemaSource.includes("import { priorityLocalSearchTopics } from '../config/localSeo'") ||
+    !businessSchemaSource.includes('knowsAbout:') ||
+    !businessSchemaSource.includes('...priorityLocalSearchTopics') ||
+    !businessSchemaSource.includes("'Austin house painting'") ||
+    !businessSchemaSource.includes("'Commercial repaint scheduling'")
+  ) {
+    fail('src/lib/businessSchema.ts canonicalBusinessProvider must expose priority local search topics through knowsAbout');
   }
 
   const middlewareCanonicalProviderUses = middlewareSource.match(/provider:\s*CANONICAL_BUSINESS_PROVIDER/g) || [];

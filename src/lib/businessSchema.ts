@@ -1,4 +1,5 @@
 import { businessConfig } from '../config/business';
+import { priorityLocalSearchTopics } from '../config/localSeo';
 
 export const siteBaseUrl = 'https://www.hillcopaint.com';
 
@@ -78,6 +79,16 @@ export const canonicalBusinessProvider = {
     latitude: businessConfig.geo.latitude,
     longitude: businessConfig.geo.longitude
   },
+  knowsAbout: [
+    ...priorityLocalSearchTopics,
+    'Austin house painting',
+    'Austin painting contractors',
+    'Central Texas exterior paint maintenance',
+    'HOA paint color approvals',
+    'Cabinet refinishing',
+    'Interior repainting',
+    'Commercial repaint scheduling'
+  ],
   hasMap: businessConfig.googleBusinessProfileUrl,
   openingHours: `Mo-Fr ${weekdayHours.opens}-${weekdayHours.closes}`,
   openingHoursSpecification: businessOpeningHoursSpecification,

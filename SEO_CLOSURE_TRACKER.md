@@ -160,6 +160,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Local generated SEO validation and live SEO verification now enforce `/about` AboutPage schema tied to the canonical LocalBusiness, Organization, priority proof pages, and Austin painting topics.
 - Cloudflare Pages deployment `https://b8bb45e4.hillcosite.pages.dev` deployed successfully on 2026-06-04 after adding enforced `/about` AboutPage entity schema.
 - Full live SEO verifier run on 2026-06-04 passed after that deployment, including DNS/custom-domain active, 183/183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, current Supabase project validation, no banned before/after-style hero images, and the new live AboutPage schema identity check.
+- Canonical provider schema now exposes priority Greater Austin painting topics through `knowsAbout` across app schema, AI/entity facts, and Cloudflare service-schema fallback, with local and live verification enforcing those provider topic signals.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

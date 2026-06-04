@@ -32,6 +32,16 @@ const businessAlternateNames = [
   'Hill Country Painting Austin',
   'Hill Country Painting of Austin',
 ];
+const requiredCanonicalProviderKnowsAboutTopics = [
+  'Austin house painters',
+  'Austin exterior house painters',
+  'Austin interior painters',
+  'Austin cabinet painting',
+  'Austin commercial painters',
+  'painting contractors Austin',
+  'Greater Austin painting contractor',
+  'West Lake Hills painters',
+];
 const businessEmail = 'info@hillcopaint.com';
 const businessPhone = '(512) 240-2246';
 const businessPriceRange = '$$';
@@ -1256,6 +1266,7 @@ function hasCanonicalServiceProvider(schema) {
   const providerSameAs = asArray(provider?.sameAs);
   const alternateNames = asArray(provider?.alternateName);
   const availableLanguages = asArray(provider?.availableLanguage);
+  const knowsAbout = asArray(provider?.knowsAbout);
   const contactPoint = provider?.contactPoint || {};
   const openingHoursSpecification = provider?.openingHoursSpecification || {};
   const identifier = provider?.identifier || {};
@@ -1289,6 +1300,7 @@ function hasCanonicalServiceProvider(schema) {
     schemaTypeIncludes(openingHoursSpecification, 'OpeningHoursSpecification') &&
     openingHoursSpecification?.opens === businessWeekdayOpens &&
     openingHoursSpecification?.closes === businessWeekdayCloses &&
+    hasAllValues(knowsAbout, requiredCanonicalProviderKnowsAboutTopics) &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
     hasValidAggregateRating(provider) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&

@@ -336,6 +336,16 @@ const canonicalBusinessProvider = {
     addressCountry: 'US'
   },
   geo: businessFacts.geo,
+  knowsAbout: [
+    ...priorityLocalSearchTopics,
+    'Austin house painting',
+    'Austin painting contractors',
+    'Central Texas exterior paint maintenance',
+    'HOA paint color approvals',
+    'Cabinet refinishing',
+    'Interior repainting',
+    'Commercial repaint scheduling'
+  ],
   hasMap: businessFacts.googleBusinessProfile,
   openingHours: `Mo-Fr ${businessFacts.openingHours.opens}-${businessFacts.openingHours.closes}`,
   openingHoursSpecification: businessFacts.openingHours,
