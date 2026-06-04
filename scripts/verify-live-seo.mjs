@@ -24,6 +24,8 @@ const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+P
 const googleKnowledgeGraphId = '/g/11frssbq6p';
 const businessLatitude = 30.3337;
 const businessLongitude = -97.8166;
+const businessLogoUrl = `${baseUrl}/brand/hill-country-painting-logo-primary.png`;
+const businessPrimaryImageUrl = `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`;
 const businessDisambiguatingDescription = 'Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.';
 const businessAlternateNames = [
   'Hill Country Painting LLC',
@@ -1296,6 +1298,12 @@ async function checkCrawlerEntityAssets() {
       entityFacts.geo?.['@type'] === 'GeoCoordinates' &&
       Number(entityFacts.geo?.latitude) === businessLatitude &&
       Number(entityFacts.geo?.longitude) === businessLongitude;
+    const hasCanonicalImageIdentity =
+      entityFacts.logo?.['@type'] === 'ImageObject' &&
+      entityFacts.logo?.url === businessLogoUrl &&
+      entityFacts.logo?.contentUrl === businessLogoUrl &&
+      JSON.stringify(entityFacts.image || []).includes(businessPrimaryImageUrl) &&
+      JSON.stringify(entityFacts.image || []).includes(`${baseUrl}/#logo`);
 
     if (
       entityFacts.name !== 'Hill Country Painting' ||
@@ -1315,6 +1323,7 @@ async function checkCrawlerEntityAssets() {
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasCanonicalGeo ||
+      !hasCanonicalImageIdentity ||
       !hasValidAggregateRating(entityFacts) ||
       entityFacts.sitemapUrlCount !== liveSitemapUrlCount ||
       !staleWarnings.includes(`${baseUrl}/austin/`) ||
@@ -1328,7 +1337,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, geo coordinates, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, logo/image signals, geo coordinates, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -1360,6 +1369,12 @@ async function checkCrawlerEntityAssets() {
       citationIdentity.geo?.['@type'] === 'GeoCoordinates' &&
       Number(citationIdentity.geo?.latitude) === businessLatitude &&
       Number(citationIdentity.geo?.longitude) === businessLongitude;
+    const hasCanonicalImageIdentity =
+      citationIdentity.logo?.['@type'] === 'ImageObject' &&
+      citationIdentity.logo?.url === businessLogoUrl &&
+      citationIdentity.logo?.contentUrl === businessLogoUrl &&
+      JSON.stringify(citationIdentity.image || []).includes(businessPrimaryImageUrl) &&
+      JSON.stringify(citationIdentity.image || []).includes(`${baseUrl}/#logo`);
 
     if (
       citationIdentity.name !== 'Hill Country Painting' ||
@@ -1375,6 +1390,7 @@ async function checkCrawlerEntityAssets() {
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasCanonicalGeo ||
+      !hasCanonicalImageIdentity ||
       !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
       !hasAllValues(citationCounties, greaterAustinServiceCounties) ||
@@ -1390,7 +1406,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, logo/image signals, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
@@ -1921,16 +1937,24 @@ async function checkGoogleEntityIdentifier() {
     asArray(schema.sameAs).includes(googleBusinessProfileUrl) &&
     hasCanonicalSocialProfiles(schema.sameAs)
   );
+  const schemasWithImageIdentity = entitySchemas.filter(schema =>
+    schema.logo?.['@type'] === 'ImageObject' &&
+    schema.logo?.url === businessLogoUrl &&
+    schema.logo?.contentUrl === businessLogoUrl &&
+    JSON.stringify(schema.image || []).includes(`${baseUrl}/#logo`)
+  );
+  const localBusinessSchema = entitySchemas.find(schema => schema?.['@id'] === `${baseUrl}/#localbusiness`);
+  const localBusinessHasPrimaryImage = JSON.stringify(localBusinessSchema?.image || []).includes(businessPrimaryImageUrl);
   const homepageLinksCanonicalProfiles = canonicalSocialProfileUrls.every(profileUrl =>
     html.includes(`href="${profileUrl}"`)
   );
 
-  if (response.status !== 200 || schemasWithIdentifier.length < 2 || schemasWithProfiles.length < 2 || !homepageLinksCanonicalProfiles) {
-    fail('/: live Organization and LocalBusiness schema should include kgmid plus canonical sameAs social/GBP profiles, and the homepage should link the canonical social profiles.');
+  if (response.status !== 200 || schemasWithIdentifier.length < 2 || schemasWithProfiles.length < 2 || schemasWithImageIdentity.length < 2 || !localBusinessHasPrimaryImage || !homepageLinksCanonicalProfiles) {
+    fail('/: live Organization and LocalBusiness schema should include kgmid, canonical logo/image identity, sameAs social/GBP profiles, and homepage links to canonical social profiles.');
     return;
   }
 
-  console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid and canonical sameAs profiles');
+  console.log('Live Google entity identifier: Organization and LocalBusiness both include kgmid, canonical logo/image identity, and sameAs profiles');
 }
 
 async function checkWebsiteSearchActionSchema() {

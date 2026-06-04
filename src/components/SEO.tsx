@@ -153,6 +153,15 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const hasRefParam = useRefParamGuard();
   const baseUrl = 'https://www.hillcopaint.com';
   const defaultSocialImage = `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`;
+  const businessLogoImage = {
+    '@type': 'ImageObject',
+    '@id': `${baseUrl}/#logo`,
+    url: `${baseUrl}${businessConfig.logo}`,
+    contentUrl: `${baseUrl}${businessConfig.logo}`,
+    width: 512,
+    height: 512,
+    caption: 'Hill Country Painting Logo'
+  };
   const resolvedAggregateRating = aggregateRating ?? {
     ratingValue: businessConfig.aggregateRating.ratingValue,
     reviewCount: businessConfig.aggregateRating.reviewCount
@@ -214,15 +223,7 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     naics: businessConfig.industry.naics,
     industry: businessConfig.industry.naicsDescription,
     url: baseUrl,
-    logo: {
-      '@type': 'ImageObject',
-      '@id': `${baseUrl}/#logo`,
-      url: `${baseUrl}/brand/hill-country-painting-logo-primary.png`,
-      contentUrl: `${baseUrl}/brand/hill-country-painting-logo-primary.png`,
-      width: 512,
-      height: 512,
-      caption: 'Hill Country Painting Logo'
-    },
+    logo: businessLogoImage,
     image: {
       '@id': `${baseUrl}/#logo`
     },
@@ -341,7 +342,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         name: county
       }))
     ],
-    image: defaultSocialImage,
+    logo: businessLogoImage,
+    image: [
+      defaultSocialImage,
+      {
+        '@id': `${baseUrl}/#logo`
+      }
+    ],
     priceRange: '$$',
     paymentAccepted: businessConfig.payment.methods,
     currenciesAccepted: businessConfig.payment.currencies,

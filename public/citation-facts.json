@@ -31,6 +31,21 @@
       ]
     },
     "website": "https://www.hillcopaint.com",
+    "logo": {
+      "@type": "ImageObject",
+      "@id": "https://www.hillcopaint.com/#logo",
+      "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+      "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+      "width": 512,
+      "height": 512,
+      "caption": "Hill Country Painting Logo"
+    },
+    "image": [
+      "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+      {
+        "@id": "https://www.hillcopaint.com/#logo"
+      }
+    ],
     "googleKnowledgeGraphId": "/g/11frssbq6p",
     "googleBusinessProfile": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
     "businessType": [

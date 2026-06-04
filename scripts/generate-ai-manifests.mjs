@@ -136,6 +136,18 @@ function joinNaturalList(items) {
 }
 
 const weekdayHours = extractWeekdayHours(businessConfigSource);
+const logoPath = extractStringProperty(businessConfigSource, 'logo');
+const logoUrl = `${BASE_URL}${logoPath}`;
+const primaryImageUrl = `${BASE_URL}/hill-country-painting-austin-homepage-hero.jpg`;
+const logoImageObject = {
+  '@type': 'ImageObject',
+  '@id': `${BASE_URL}/#logo`,
+  url: logoUrl,
+  contentUrl: logoUrl,
+  width: 512,
+  height: 512,
+  caption: 'Hill Country Painting Logo'
+};
 const businessFacts = {
   name: extractStringProperty(businessConfigSource, 'name'),
   legalName: extractStringProperty(businessConfigSource, 'legalName'),
@@ -143,6 +155,8 @@ const businessFacts = {
   phoneHref: extractStringProperty(businessConfigSource, 'phoneHref'),
   email: extractStringProperty(businessConfigSource, 'email'),
   website: BASE_URL,
+  logo: logoImageObject,
+  primaryImage: primaryImageUrl,
   googleKnowledgeGraphId: extractStringProperty(businessConfigSource, 'googleKnowledgeGraphId'),
   googleBusinessProfile: extractStringProperty(businessConfigSource, 'googleBusinessProfileUrl'),
   primaryServiceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
@@ -471,6 +485,13 @@ const entityFacts = {
   legalName: businessFacts.legalName,
   alternateName: businessFacts.alternateNames,
   url: BASE_URL,
+  logo: businessFacts.logo,
+  image: [
+    businessFacts.primaryImage,
+    {
+      '@id': `${BASE_URL}/#logo`
+    }
+  ],
   telephone: businessFacts.phone,
   email: businessFacts.email,
   contactPoint: businessFacts.contactPoint,
@@ -592,6 +613,13 @@ const citationFacts = {
     email: businessFacts.email,
     contactPoint: businessFacts.contactPoint,
     website: BASE_URL,
+    logo: businessFacts.logo,
+    image: [
+      businessFacts.primaryImage,
+      {
+        '@id': `${BASE_URL}/#logo`
+      }
+    ],
     googleKnowledgeGraphId: businessFacts.googleKnowledgeGraphId,
     googleBusinessProfile: businessFacts.googleBusinessProfile,
     businessType: ['HousePainter', 'HomeAndConstructionBusiness', 'LocalBusiness', 'painting contractor'],

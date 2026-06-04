@@ -14,6 +14,21 @@
     "Hill Country Painting of Austin"
   ],
   "url": "https://www.hillcopaint.com",
+  "logo": {
+    "@type": "ImageObject",
+    "@id": "https://www.hillcopaint.com/#logo",
+    "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+    "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+    "width": 512,
+    "height": 512,
+    "caption": "Hill Country Painting Logo"
+  },
+  "image": [
+    "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+    {
+      "@id": "https://www.hillcopaint.com/#logo"
+    }
+  ],
   "telephone": "(512) 240-2246",
   "email": "info@hillcopaint.com",
   "contactPoint": {

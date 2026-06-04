@@ -1229,6 +1229,8 @@ function run() {
     phone: extractStringProperty(businessConfigSource, 'phone'),
     phoneHref: extractStringProperty(businessConfigSource, 'phoneHref'),
     email: extractStringProperty(businessConfigSource, 'email'),
+    logoUrl: `${baseUrl}${extractStringProperty(businessConfigSource, 'logo')}`,
+    primaryImageUrl: `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`,
     serviceArea: extractStringProperty(businessConfigSource, 'serviceArea'),
     disambiguatingDescription: extractStringProperty(businessConfigSource, 'disambiguatingDescription'),
     alternateNames: extractBusinessStringArrayProperty(businessConfigSource, 'alternateNames'),
@@ -1758,6 +1760,15 @@ function run() {
     if (entityFacts.url !== baseUrl) {
       fail(`entity-facts.json URL should be ${baseUrl}`);
     }
+    if (
+      entityFacts.logo?.['@type'] !== 'ImageObject' ||
+      entityFacts.logo?.url !== configuredBusinessFacts.logoUrl ||
+      entityFacts.logo?.contentUrl !== configuredBusinessFacts.logoUrl ||
+      !JSON.stringify(entityFacts.image || []).includes(configuredBusinessFacts.primaryImageUrl) ||
+      !JSON.stringify(entityFacts.image || []).includes(`${baseUrl}/#logo`)
+    ) {
+      fail('entity-facts.json must include canonical logo and primary image identity signals');
+    }
     if (entityFacts.telephone !== configuredBusinessFacts.phone) {
       fail('entity-facts.json must include the canonical phone number');
     }
@@ -1857,6 +1868,15 @@ function run() {
     }
     if (identity.website !== baseUrl) {
       fail(`citation-facts.json website should be ${baseUrl}`);
+    }
+    if (
+      identity.logo?.['@type'] !== 'ImageObject' ||
+      identity.logo?.url !== configuredBusinessFacts.logoUrl ||
+      identity.logo?.contentUrl !== configuredBusinessFacts.logoUrl ||
+      !JSON.stringify(identity.image || []).includes(configuredBusinessFacts.primaryImageUrl) ||
+      !JSON.stringify(identity.image || []).includes(`${baseUrl}/#logo`)
+    ) {
+      fail('citation-facts.json must include canonical logo and primary image identity signals');
     }
     if (identity.telephone !== configuredBusinessFacts.phone) {
       fail('citation-facts.json must include the canonical phone number');
@@ -2400,6 +2420,16 @@ function run() {
 
           if (!hasValidAggregateRating(localBusinessSchema)) {
             fail(`${routePath}: LocalBusiness schema must include a valid aggregate rating signal`);
+          }
+
+          if (
+            localBusinessSchema.logo?.['@type'] !== 'ImageObject' ||
+            localBusinessSchema.logo?.url !== configuredBusinessFacts.logoUrl ||
+            localBusinessSchema.logo?.contentUrl !== configuredBusinessFacts.logoUrl ||
+            !JSON.stringify(localBusinessSchema.image || []).includes(configuredBusinessFacts.primaryImageUrl) ||
+            !JSON.stringify(localBusinessSchema.image || []).includes(`${baseUrl}/#logo`)
+          ) {
+            fail(`${routePath}: LocalBusiness schema must include canonical logo and primary image signals`);
           }
 
           if (!hasPaintingEstimateAction(localBusinessSchema)) {
