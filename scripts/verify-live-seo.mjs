@@ -2023,20 +2023,18 @@ async function checkHtmlSitemapDiscoveryLinks() {
       .map(match => normalizeInternalRoute(match[1]))
       .filter(Boolean)
   );
-  const serviceLocationRoutes = sitemapResponse.status === 200
+  const sitemapRoutes = sitemapResponse.status === 200
     ? [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
       .map(match => routePathFromUrl(match[1]))
-      .filter(routeIsServiceLocation)
     : [];
-  const requiredRoutes = ['/free-estimate', ...primaryServiceAreaHubRoutes, ...serviceLocationRoutes];
-  const missingRoutes = requiredRoutes.filter(requiredRoute => !hrefRoutes.has(requiredRoute));
+  const missingRoutes = sitemapRoutes.filter(sitemapRoute => !hrefRoutes.has(sitemapRoute));
 
-  if (response.status !== 200 || sitemapResponse.status !== 200 || serviceLocationRoutes.length < 64 || missingRoutes.length > 0) {
-    fail(`${route}: live HTML sitemap should link to free estimate, all primary service-area hubs, and service-location pages; missing ${missingRoutes.join(', ') || 'none'}.`);
+  if (response.status !== 200 || sitemapResponse.status !== 200 || sitemapRoutes.length < 183 || missingRoutes.length > 0) {
+    fail(`${route}: live HTML sitemap should link to every XML sitemap URL; missing ${missingRoutes.join(', ') || 'none'}.`);
     return;
   }
 
-  console.log(`Live HTML sitemap discovery links checked: ${requiredRoutes.length}/${requiredRoutes.length}`);
+  console.log(`Live HTML sitemap discovery links checked: ${sitemapRoutes.length}/${sitemapRoutes.length}`);
 }
 
 async function checkTestimonialsTrustSignals() {

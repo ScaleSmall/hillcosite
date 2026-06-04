@@ -1537,14 +1537,13 @@ function run() {
 
   {
     const htmlSitemapPage = pages.get('/sitemap');
-    const htmlSitemapServiceLocationRoutes = sitemapPaths.filter(isServiceLocationRoute);
 
     if (!htmlSitemapPage) {
       fail('/sitemap: missing generated HTML for visible sitemap link validation');
     } else {
-      for (const requiredRoute of ['/free-estimate', ...primaryServiceAreaHubRoutes, ...htmlSitemapServiceLocationRoutes]) {
+      for (const requiredRoute of sitemapPaths) {
         if (!pageLinksToRoute(htmlSitemapPage, '/sitemap', requiredRoute)) {
-          fail(`/sitemap: visible HTML sitemap should link to ${requiredRoute}`);
+          fail(`/sitemap: visible HTML sitemap should link to sitemap URL ${requiredRoute}`);
         }
       }
     }
