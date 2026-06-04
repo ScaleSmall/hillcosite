@@ -1346,6 +1346,48 @@ async function checkAustinSchema() {
   console.log(`Live Austin service schema pages checked: ${passed}/${austinServiceSignals.size}`);
 }
 
+async function checkAustinServiceAreaSchema() {
+  const route = '/service-areas/austin';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, route);
+  const serviceId = `${baseUrl}${route}#service`;
+  const serviceSchemas = scripts.filter(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === serviceId);
+  const requiredSignals = [
+    'Austin house painters',
+    'house painters Austin',
+    'painting contractors Austin',
+    'Austin painting contractors',
+  ];
+  const hasLocalIntentSignals = serviceSchemas.some(schema => {
+    const alternateNames = asArray(schema.alternateName);
+    const keywords = asArray(schema.keywords);
+
+    return requiredSignals.every(signal => alternateNames.includes(signal) && keywords.includes(signal));
+  });
+  const hasPriorityServiceOutput = serviceSchemas.some(schema => {
+    const serviceOutput = String(schema.serviceOutput || '');
+
+    return (
+      serviceOutput.includes('Austin house painters') &&
+      serviceOutput.includes('exterior painting') &&
+      serviceOutput.includes('interior painting') &&
+      serviceOutput.includes('cabinet painting') &&
+      serviceOutput.includes('commercial painting')
+    );
+  });
+  const hasServiceProviderIdentity = serviceSchemas.some(schema => hasCanonicalServiceProvider(schema));
+  const hasServicePageConnection = serviceSchemas.some(schema =>
+    schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
+  );
+
+  if (response.status !== 200 || !hasLocalIntentSignals || !hasPriorityServiceOutput || !hasServiceProviderIdentity || !hasServicePageConnection) {
+    fail(`${route}: live Service schema is missing Austin house painters, painting contractors Austin, priority service output, canonical provider, or WebPage connection signals.`);
+    return;
+  }
+
+  console.log('Live Austin service-area schema includes house-painter and priority-service intent signals');
+}
+
 async function checkServiceLocationServiceSchema() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
 
@@ -1877,6 +1919,7 @@ await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
+await checkAustinServiceAreaSchema();
 await checkServiceLocationServiceSchema();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();

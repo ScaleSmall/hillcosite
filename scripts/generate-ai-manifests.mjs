@@ -24,7 +24,14 @@ const projectRoot = resolve(__dirname, '..');
 const publicDir = resolve(projectRoot, 'public');
 const localSeoPath = resolve(projectRoot, 'src/config/localSeo.ts');
 const businessConfigPath = resolve(projectRoot, 'src/config/business.ts');
-const today = new Date().toISOString().split('T')[0];
+
+function localIsoDate(date = new Date()) {
+  const localTime = date.getTime() - date.getTimezoneOffset() * 60_000;
+
+  return new Date(localTime).toISOString().split('T')[0];
+}
+
+const today = localIsoDate();
 
 function extractStringArrayConst(source, name) {
   const match = source.match(new RegExp(`export\\s+const\\s+${name}\\s*=\\s*\\[([\\s\\S]*?)\\]\\s+as\\s+const`));

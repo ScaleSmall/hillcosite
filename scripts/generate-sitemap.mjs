@@ -60,6 +60,12 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   'exterior-painting-in-austin-pros-hill-country-painting',
 ]);
 
+function localIsoDate(date = new Date()) {
+  const localTime = date.getTime() - date.getTimezoneOffset() * 60_000;
+
+  return new Date(localTime).toISOString().split('T')[0];
+}
+
 function readGeneratedBlogPostsFallback() {
   const fallbackPath = resolve(__dirname, '../src/generated/blogPosts.ts');
 
@@ -211,7 +217,7 @@ async function fetchBlogPosts() {
 const generateSitemap = async () => {
   console.log('Generating sitemap...');
 
-  const lastmod = new Date().toISOString().split('T')[0];
+  const lastmod = localIsoDate();
   const staticRoutes = getSitemapRoutes();
 
   let blogPosts = [];

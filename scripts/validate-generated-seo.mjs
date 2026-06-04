@@ -58,6 +58,13 @@ function readFileWithRetry(filePath, encoding = 'utf8', attempts = 6) {
 
   return readFileSync(filePath, encoding);
 }
+
+function localIsoDate(date = new Date()) {
+  const localTime = date.getTime() - date.getTimezoneOffset() * 60_000;
+
+  return new Date(localTime).toISOString().split('T')[0];
+}
+
 const baseUrl = 'https://www.hillcopaint.com';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
@@ -982,6 +989,16 @@ function robotsAllowsAgent(robotsText, agent) {
   });
 }
 
+function validateNoFutureGeneratedDates(label, source, today = localIsoDate()) {
+  for (const match of source.matchAll(/\b20\d{2}-\d{2}-\d{2}\b/g)) {
+    const date = match[0];
+
+    if (date > today) {
+      fail(`${label} contains future generated date ${date}; current local date is ${today}`);
+    }
+  }
+}
+
 function pageHasVisibleLocalTrustSection(page) {
   return (
     pageLinksToHref(page, googleBusinessProfileUrl) &&
@@ -1026,6 +1043,19 @@ function run() {
   const headersText = readRequired(headersPath, '_headers');
   const redirectsText = readRequired(redirectsPath, '_redirects');
   const routesConfigText = readRequired(routesConfigPath, '_routes.json');
+
+  [
+    ['public/sitemap.xml', sitemapXml],
+    ['dist/sitemap.xml', distSitemapXml],
+    ['functions/generatedSitemap.ts', functionSitemapSource],
+    ['public/llms.txt', llmsText],
+    ['public/llms-full.txt', llmsFullText],
+    ['public/ai.txt', aiText],
+    ['public/entity-facts.json', entityFactsText],
+    ['public/citation-facts.json', citationFactsText]
+  ].forEach(([label, source]) => {
+    validateNoFutureGeneratedDates(label, source);
+  });
 
   validateHeroBackgroundImageSources();
 
@@ -2265,7 +2295,31 @@ function run() {
           ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
           ['/commercial-painting-austin', 'Austin commercial painters']
         ]);
+        const austinServiceAreaSignals = routePath === '/service-areas/austin'
+          ? ['Austin house painters', 'house painters Austin', 'painting contractors Austin', 'Austin painting contractors']
+          : [];
         const expectedAustinServiceAlias = austinServiceSchemaSignals.get(routePath);
+
+        if (austinServiceAreaSignals.length > 0) {
+          const serviceSchema = canonicalServiceSchema;
+          const alternateNames = Array.isArray(serviceSchema?.alternateName) ? serviceSchema.alternateName : [];
+          const keywords = Array.isArray(serviceSchema?.keywords) ? serviceSchema.keywords : [];
+          const serviceOutput = String(serviceSchema?.serviceOutput || '');
+
+          for (const signal of austinServiceAreaSignals) {
+            if (!alternateNames.includes(signal)) {
+              fail(`${routePath}: Austin service-area Service schema alternateName is missing ${signal}`);
+            }
+
+            if (!keywords.includes(signal)) {
+              fail(`${routePath}: Austin service-area Service schema keywords are missing ${signal}`);
+            }
+          }
+
+          if (!serviceOutput.includes('Austin house painters') || !serviceOutput.includes('exterior painting') || !serviceOutput.includes('cabinet painting') || !serviceOutput.includes('commercial painting')) {
+            fail(`${routePath}: Austin service-area Service schema serviceOutput should include the Austin house painters and priority service-category signals`);
+          }
+        }
 
         if (expectedAustinServiceAlias) {
           const serviceSchema = canonicalServiceSchema;

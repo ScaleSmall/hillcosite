@@ -106,7 +106,32 @@ const Austin = () => {
         service={{
           name: 'Austin Professional Painting Services',
           description: 'Professional residential and commercial painting services throughout Austin, Texas. Specializing in historic district preservation, modern downtown properties, West Lake Hills luxury homes, and all Austin architectural styles. Expert painters serving the Live Music Capital with quality craftsmanship.',
-          areaServed: ['Austin', 'Downtown Austin', 'West Lake Hills', 'Tarrytown', 'Clarksville', 'Travis Heights', 'South Congress', 'Zilker', 'Allandale', 'Crestview', 'Rosedale', 'Pemberton Heights', 'University of Texas Area', 'Barton Creek', 'Circle C Ranch']
+          areaServed: ['Austin', 'Downtown Austin', 'West Lake Hills', 'Tarrytown', 'Clarksville', 'Travis Heights', 'South Congress', 'Zilker', 'Allandale', 'Crestview', 'Rosedale', 'Pemberton Heights', 'University of Texas Area', 'Barton Creek', 'Circle C Ranch'],
+          alternateName: [
+            'Austin house painters',
+            'house painters Austin',
+            'painting contractors Austin',
+            'Austin painting contractors',
+            'Austin painters',
+            'Austin exterior house painters',
+            'Austin interior painters',
+            'Austin cabinet painting',
+            'Austin cabinet painters',
+            'Austin commercial painters'
+          ],
+          keywords: [
+            'Austin house painters',
+            'house painters Austin',
+            'painting contractors Austin',
+            'Austin painting contractors',
+            'Austin painters',
+            'Austin exterior painting',
+            'Austin interior painting',
+            'Austin cabinet painting',
+            'Austin commercial painting',
+            'Greater Austin painting contractor'
+          ],
+          serviceOutput: 'Austin house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Austin, TX'
         }}
         faq={austinSpecificFAQs}
         includeLocalBusiness={true}
