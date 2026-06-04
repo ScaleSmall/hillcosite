@@ -519,6 +519,19 @@ function itemListUrls(schema) {
     .filter(Boolean);
 }
 
+function itemListServiceItems(schema) {
+  return asArray(schema?.itemListElement)
+    .map(listItem => listItem?.item)
+    .flatMap(item => [item, item?.about])
+    .filter(item => schemaTypeIncludes(item, 'Service'));
+}
+
+function itemListHasCanonicalServiceProvider(schema) {
+  const serviceItems = itemListServiceItems(schema);
+
+  return serviceItems.length > 0 && serviceItems.every(service => hasCanonicalServiceProvider(service));
+}
+
 function stripQueryAndHash(value) {
   return value.split('#')[0].split('?')[0];
 }
@@ -2331,6 +2344,10 @@ function run() {
           fail(`${routePath}: services hub is missing ItemList structured data`);
         }
 
+        if (!itemListHasCanonicalServiceProvider(servicesItemList)) {
+          fail(`${routePath}: services hub ItemList Service entries must carry canonical LocalBusiness provider identity`);
+        }
+
         for (const requiredServiceUrl of [
           `${baseUrl}/services/interior-painting`,
           `${baseUrl}/services/exterior-painting`,
@@ -2364,6 +2381,10 @@ function run() {
 
         if (!areasItemList) {
           fail(`${routePath}: service-area hub is missing ItemList structured data`);
+        }
+
+        if (!itemListHasCanonicalServiceProvider(areasItemList)) {
+          fail(`${routePath}: service-area hub ItemList Service entries must carry canonical LocalBusiness provider identity`);
         }
 
         for (const requiredAreaUrl of [

@@ -10,9 +10,41 @@ import { geoAreas } from '../data/geoAreas';
 import LocalSearchLinks from '../components/LocalSearchLinks';
 import NAPMapSection from '../components/NAPMapSection';
 import PaintingGuideLinks from '../components/PaintingGuideLinks';
+import { businessConfig } from '../config/business';
 
 const ServiceAreas = () => {
   const baseUrl = 'https://www.hillcopaint.com';
+  const businessLogoUrl = `${baseUrl}${businessConfig.logo}`;
+  const businessLogoImage = {
+    '@type': 'ImageObject',
+    '@id': `${baseUrl}/#logo`,
+    url: businessLogoUrl,
+    contentUrl: businessLogoUrl,
+    caption: `${businessConfig.name} logo`
+  };
+  const businessProviderSchema = {
+    '@type': ['LocalBusiness', 'HousePainter'],
+    '@id': `${baseUrl}/#localbusiness`,
+    name: businessConfig.name,
+    url: baseUrl,
+    telephone: businessConfig.phone,
+    logo: businessLogoImage,
+    image: [
+      `${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`,
+      { '@id': `${baseUrl}/#logo` }
+    ],
+    hasMap: businessConfig.googleBusinessProfileUrl,
+    sameAs: [
+      businessConfig.googleBusinessProfileUrl,
+      ...Object.values(businessConfig.socialProfiles)
+    ],
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'kgmid',
+      value: businessConfig.googleKnowledgeGraphId,
+      url: businessConfig.googleBusinessProfileUrl
+    }
+  };
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: 'Service Areas' }
@@ -98,9 +130,7 @@ const ServiceAreas = () => {
           '@id': `${baseUrl}${service.href}#service`,
           url: `${baseUrl}${service.href}`,
           name: service.name,
-          provider: {
-            '@id': `${baseUrl}/#localbusiness`
-          },
+          provider: businessProviderSchema,
           areaServed: {
             '@type': 'Place',
             name: 'Austin'

@@ -388,6 +388,19 @@ function itemListUrls(schema) {
     .filter(Boolean);
 }
 
+function itemListServiceItems(schema) {
+  return asArray(schema?.itemListElement)
+    .map(listItem => listItem?.item)
+    .flatMap(item => [item, item?.about])
+    .filter(item => schemaTypeIncludes(item, 'Service'));
+}
+
+function itemListHasCanonicalServiceProvider(schema) {
+  const serviceItems = itemListServiceItems(schema);
+
+  return serviceItems.length > 0 && serviceItems.every(service => hasCanonicalServiceProvider(service));
+}
+
 function routeIsServiceLocation(route) {
   return localServicePrefixes.some(prefix => route.startsWith(prefix));
 }
@@ -1629,9 +1642,10 @@ async function checkHubItemListSchema() {
     );
     const urls = itemListUrls(itemList);
     const hasRequiredRoutes = hub.requiredRoutes.every(route => urls.includes(`${baseUrl}${route}`));
+    const hasCanonicalHubServiceProviders = itemListHasCanonicalServiceProvider(itemList);
 
-    if (response.status !== 200 || !itemList || !hasRequiredRoutes) {
-      fail(`${hub.route}: live ${hub.label} ItemList is missing or does not include all priority local SEO links.`);
+    if (response.status !== 200 || !itemList || !hasRequiredRoutes || !hasCanonicalHubServiceProviders) {
+      fail(`${hub.route}: live ${hub.label} ItemList is missing priority local SEO links or canonical provider identity on Service entries.`);
       continue;
     }
 
