@@ -113,7 +113,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 
 ## Evidence
 - Commit `465120a` deployed successfully to Cloudflare Pages preview `https://720d89f1.hillcosite.pages.dev`.
-- Current live page-indexing verifier run on 2026-06-03 passed with 183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, 182/182 trailing-slash redirect checks, 197/197 legacy redirect checks, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, 11/11 service-area FAQ schema pages, 4/4 guide FAQ schema pages, and 160/160 visible local trust sections.
+- Current live page-indexing verifier run on 2026-06-03 passed with 183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, 182/182 trailing-slash redirect checks, 215/215 legacy redirect checks, 172/172 LocalBusiness schema pages, 64/64 service-location Service schema pages, 11/11 service-area FAQ schema pages, 4/4 guide FAQ schema pages, and 160/160 visible local trust sections.
 - The same live verifier confirms the current Supabase gallery feed is present, the retired Supabase feed is absent, and no before/after-style images are used as hero backgrounds.
 - The same live verifier confirms `/free-estimate` is live with estimate intent, service links, QuoteAction, and LocalBusiness schema.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.

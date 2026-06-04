@@ -210,6 +210,16 @@ function buildLiveLegacyRedirects() {
   const redirectMap = new Map([
     ['/sitemap.php', '/sitemap.xml'],
     ...extractMiddlewareRedirects(middlewareSource),
+    ['/commercial-exterior-painting-round-rock', '/services/commercial'],
+    ['/hotel-lobby-painting-round-rock', '/services/commercial'],
+    ['/industrial-facility-coating-round-rock', '/services/commercial'],
+    ['/residential-cabinet-painting-round-rock', '/services/cabinet-refinishing'],
+    ['/residential-exterior-trim-painting-round-rock', '/services/exterior-painting'],
+    ['/residential-interior-bedroom-painting-round-rock', '/services/interior-painting'],
+    ['/service/residential-deck-painting-round-rock-gsc-sample', '/services/exterior-painting'],
+    ['/service/residential-nursery-painting-round-rock', '/services/interior-painting'],
+    ['/service/whole-home-cabinet-refinishing-round-rock', '/services/cabinet-refinishing'],
+    ['/service/commercial-office-painting-round-rock-gsc-sample', '/services/commercial'],
     ['/service/definitely-not-a-real-painting-service-gsc-test', '/services'],
   ]);
 
