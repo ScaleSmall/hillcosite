@@ -69,6 +69,8 @@ const baseUrl = 'https://www.hillcopaint.com';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
+const typoBlogPath = '/blog/how-to-deterimine-the-best-austin-exterior-house-painters';
+const correctedBlogPath = '/blog/how-to-determine-the-best-austin-exterior-house-painters';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
 const stalePublicIdentitySignals = [
@@ -131,6 +133,7 @@ const requiredLegacyRedirects = new Map([
   ['/service/residential-foyer-painting-round-rock', '/services/interior-painting'],
   ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
   ['/service/custom-home-painting-round-rock', '/services'],
+  [typoBlogPath, correctedBlogPath],
   ['/get-a-free-estimate', '/free-estimate'],
 ]);
 const staticLegacyRedirects = new Map([
@@ -1108,6 +1111,7 @@ function run() {
     ['public/sitemap.xml', sitemapXml],
     ['dist/sitemap.xml', distSitemapXml],
     ['functions/generatedSitemap.ts', functionSitemapSource],
+    ['functions/generatedRoutes.ts', functionRoutesSource],
     ['public/llms.txt', llmsText],
     ['public/llms-full.txt', llmsFullText],
     ['public/ai.txt', aiText],
@@ -1115,6 +1119,22 @@ function run() {
     ['public/citation-facts.json', citationFactsText]
   ].forEach(([label, source]) => {
     validateNoFutureGeneratedDates(label, source);
+  });
+
+  [
+    ['public/sitemap.xml', sitemapXml],
+    ['dist/sitemap.xml', distSitemapXml],
+    ['functions/generatedSitemap.ts', functionSitemapSource],
+    ['functions/generatedRoutes.ts', functionRoutesSource],
+    ['public/llms.txt', llmsText],
+    ['public/llms-full.txt', llmsFullText],
+    ['public/ai.txt', aiText],
+    ['public/entity-facts.json', entityFactsText],
+    ['public/citation-facts.json', citationFactsText],
+  ].forEach(([label, source]) => {
+    if (source.toLowerCase().includes('deterimine')) {
+      fail(`${label}: generated SEO output must use the corrected blog slug/title, not "deterimine"`);
+    }
   });
 
   validateHeroBackgroundImageSources();
@@ -1225,6 +1245,14 @@ function run() {
     opens: extractStringProperty(businessConfigSource, 'opens'),
     closes: extractStringProperty(businessConfigSource, 'closes')
   };
+
+  if (!sitemapSet.has(correctedBlogPath)) {
+    fail(`sitemap.xml must include corrected blog URL ${correctedBlogPath}`);
+  }
+
+  if (sitemapSet.has(typoBlogPath)) {
+    fail(`sitemap.xml must not include misspelled blog URL ${typoBlogPath}`);
+  }
   const locationServiceAreaSlugs = extractLocationServiceAreaSlugs(locationsConfigSource);
   const locationLocalFacts = extractLocationLocalFacts(locationsConfigSource);
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
@@ -1541,6 +1569,14 @@ function run() {
     if (!htmlSitemapPage) {
       fail('/sitemap: missing generated HTML for visible sitemap link validation');
     } else {
+      if (!pageLinksToRoute(htmlSitemapPage, '/sitemap', correctedBlogPath)) {
+        fail(`/sitemap: visible HTML sitemap should link to corrected blog URL ${correctedBlogPath}`);
+      }
+
+      if (htmlSitemapPage.html.toLowerCase().includes('deterimine')) {
+        fail('/sitemap: visible HTML sitemap must not include the misspelled blog slug/title');
+      }
+
       for (const requiredRoute of sitemapPaths) {
         if (!pageLinksToRoute(htmlSitemapPage, '/sitemap', requiredRoute)) {
           fail(`/sitemap: visible HTML sitemap should link to sitemap URL ${requiredRoute}`);

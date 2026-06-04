@@ -254,7 +254,7 @@ async function prerenderRoute(browser, route, sitemapRoutes) {
       timeout: 30000
     });
 
-    const requiresContentHeading = route === '/blog' || route.startsWith('/blog/');
+    const requiresContentHeading = route === '/sitemap' || route === '/blog' || route.startsWith('/blog/');
     await page.waitForFunction((requiresHeading) => {
       const text = document.body?.textContent || '';
       const isLoading = /Loading (post|posts|projects|gallery|results)\.\.\./i.test(text);

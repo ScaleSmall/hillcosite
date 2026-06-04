@@ -7,6 +7,7 @@ import { Calendar, ArrowLeft, ArrowRight, Tag } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 import { generatedBlogPosts, type GeneratedBlogPost } from '../generated/blogPosts';
 import { cleanBlogDisplayText } from '../lib/blogText';
+import { blogPathSlug, blogPostPath } from '../lib/blogRoutes';
 
 interface BlogPostData {
   id: string;
@@ -46,15 +47,6 @@ const normalizeArticleContent = (value: string) =>
   value
     .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
     .replace(/<\/h1>/gi, '</h2>');
-
-const blogPathSlug = (postSlug: string) =>
-  postSlug
-    .trim()
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-const blogPostPath = (postSlug: string) => `/blog/${blogPathSlug(postSlug)}`;
 
 const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
   const excerpt = stripMarkdown(post.excerpt || post.title);

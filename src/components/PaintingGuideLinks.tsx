@@ -11,7 +11,7 @@ interface PaintingGuideLinksProps {
 const guides = [
   {
     title: 'Best Austin Exterior House Painters',
-    href: '/blog/how-to-deterimine-the-best-austin-exterior-house-painters',
+    href: '/blog/how-to-determine-the-best-austin-exterior-house-painters',
     description: 'How Austin homeowners can compare exterior painters by prep, reviews, warranty, and local project management.'
   },
   {
@@ -75,4 +75,3 @@ const PaintingGuideLinks: React.FC<PaintingGuideLinksProps> = ({ surface = 'gray
 };
 
 export default PaintingGuideLinks;
-

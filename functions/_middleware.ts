@@ -133,7 +133,7 @@ const REDIRECTS: Record<string, string> = {
 
   // -- GSC 404 fixes: old blog slugs that no longer exist --
   '/blog/when-to-repaint-a-home-in-austin-hill-country-painting':            '/blog',
-  '/blog/how-to-determine-the-best-austin-exterior-house-painters':          '/blog/how-to-deterimine-the-best-austin-exterior-house-painters',
+  '/blog/how-to-deterimine-the-best-austin-exterior-house-painters':         '/blog/how-to-determine-the-best-austin-exterior-house-painters',
 
   // -- GSC 404 fixes: old service-location URLs that don't match current pattern --
   '/exterior-painting-taylor':            '/services/exterior-painting',
@@ -419,12 +419,18 @@ function assetPathForPrerenderedRoute(path: string): string {
 }
 
 function blogPathSlug(slug: string): string {
-  return slug
+  const normalized = slug
     .trim()
     .toLowerCase()
     .replace(/&/g, 'and')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
+
+  if (normalized === 'how-to-deterimine-the-best-austin-exterior-house-painters') {
+    return 'how-to-determine-the-best-austin-exterior-house-painters';
+  }
+
+  return normalized;
 }
 
 function cleanBlogPath(path: string): string {

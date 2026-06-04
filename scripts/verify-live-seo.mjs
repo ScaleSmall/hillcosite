@@ -18,6 +18,8 @@ const accountId = '7b68f149b6054718ad2c6ff0634ae145';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
 const canonicalPhoneHref = 'tel:+15122402246';
+const typoBlogPath = '/blog/how-to-deterimine-the-best-austin-exterior-house-painters';
+const correctedBlogPath = '/blog/how-to-determine-the-best-austin-exterior-house-painters';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
 const businessDisambiguatingDescription = 'Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.';
@@ -1254,6 +1256,10 @@ async function checkCrawlerEntityAssets() {
     fail('/llms-full.txt: live full LLM manifest is missing canonical homepage, sitemap, or Austin exterior painting URL.');
   }
 
+  if (!llmsFullText.includes(`${baseUrl}${correctedBlogPath}`) || llmsFullText.toLowerCase().includes('deterimine')) {
+    fail('/llms-full.txt: live full LLM manifest must use the corrected exterior painters blog URL and title.');
+  }
+
   const aiRequired = [
     'Austin house painters',
     `${baseUrl}/sitemap.xml`,
@@ -1263,6 +1269,17 @@ async function checkCrawlerEntityAssets() {
 
   if (!aiRequired.every(value => aiText.includes(value))) {
     fail('/ai.txt: live AI discovery file is missing Austin house painter positioning or canonical discovery URLs.');
+  }
+
+  const typoPublicAsset = [...assetText.entries()]
+    .find(([path, text]) => path !== '/robots.txt' && text.toLowerCase().includes('deterimine'));
+
+  if (typoPublicAsset) {
+    fail(`${typoPublicAsset[0]}: live crawler/entity asset must not include the misspelled blog slug/title.`);
+  }
+
+  if (!sitemapXml.includes(`${baseUrl}${correctedBlogPath}`) || sitemapXml.includes(`${baseUrl}${typoBlogPath}`)) {
+    fail('/sitemap.xml: live sitemap must use the corrected exterior painters blog URL and exclude the misspelled URL.');
   }
 
   try {
@@ -2028,8 +2045,14 @@ async function checkHtmlSitemapDiscoveryLinks() {
       .map(match => routePathFromUrl(match[1]))
     : [];
   const missingRoutes = sitemapRoutes.filter(sitemapRoute => !hrefRoutes.has(sitemapRoute));
+  const hasCorrectedBlogPath = sitemapRoutes.includes(correctedBlogPath) && hrefRoutes.has(correctedBlogPath);
+  const hasTypoBlogPath =
+    sitemapRoutes.includes(typoBlogPath) ||
+    hrefRoutes.has(typoBlogPath) ||
+    html.toLowerCase().includes('deterimine') ||
+    sitemapXml.toLowerCase().includes('deterimine');
 
-  if (response.status !== 200 || sitemapResponse.status !== 200 || sitemapRoutes.length < 183 || missingRoutes.length > 0) {
+  if (response.status !== 200 || sitemapResponse.status !== 200 || sitemapRoutes.length < 183 || missingRoutes.length > 0 || !hasCorrectedBlogPath || hasTypoBlogPath) {
     fail(`${route}: live HTML sitemap should link to every XML sitemap URL; missing ${missingRoutes.join(', ') || 'none'}.`);
     return;
   }

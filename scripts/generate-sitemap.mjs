@@ -59,6 +59,15 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   'when-to-repaint-a-home-in-austin-hill-country-painting',
   'exterior-painting-in-austin-pros-hill-country-painting',
 ]);
+const BLOG_POST_CORRECTIONS = new Map([
+  [
+    'how-to-deterimine-the-best-austin-exterior-house-painters',
+    {
+      title: 'How to Determine the Best Austin Exterior House Painters',
+      slug: 'how-to-determine-the-best-austin-exterior-house-painters'
+    }
+  ]
+]);
 
 function localIsoDate(date = new Date()) {
   const localTime = date.getTime() - date.getTimezoneOffset() * 60_000;
@@ -85,10 +94,13 @@ function readGeneratedBlogPostsFallback() {
 }
 
 function sanitizeBlogPost(post) {
+  const correctedSlug = blogPathSlug(post.slug || '');
+  const correction = BLOG_POST_CORRECTIONS.get(correctedSlug);
+
   return {
     id: post.id || post.slug,
-    title: post.title || post.slug,
-    slug: post.slug,
+    title: correction?.title || post.title || post.slug,
+    slug: correction?.slug || post.slug,
     excerpt: post.excerpt || '',
     content: post.content || '',
     tldr: post.tldr || null,

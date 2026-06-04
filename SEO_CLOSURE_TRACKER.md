@@ -25,6 +25,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live internal discovery confirms every sitemap page has at least 2 inbound source pages.
 - Live internal-link target validation reports 0 unexpected non-sitemap links.
 - Live HTML sitemap discovery confirms all 183 XML sitemap URLs are linked from `/sitemap`, including blog posts, service pages, service-area hubs, service-location pages, and neighborhood pages.
+- The misspelled exterior-painters blog URL now redirects to the corrected canonical URL, and generated sitemap/LLM/static sitemap outputs use `https://www.hillcopaint.com/blog/how-to-determine-the-best-austin-exterior-house-painters`.
 - Live Googlebot sitemap access confirms 183/183 sitemap URLs are accessible.
 - Live hero image guard reports no banned before/after-style hero images.
 - Live gallery feed validation confirms current Supabase project `https://ndggkorglcaznukkhapz.supabase.co` is present and retired project `https://oyyfpkpzalhxztpcdjgq.supabase.co` is absent.
@@ -119,6 +120,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - The same live verifier now enforces matching local Place schema on all 64 service-location pages, including area coordinates, neighborhoods, ZIP codes, and primary local service intent.
 - The same live verifier confirms the current Supabase gallery feed is present, the retired Supabase feed is absent, and no before/after-style images are used as hero backgrounds.
 - The same live verifier confirms `/free-estimate` is live with estimate intent, service links, QuoteAction, and LocalBusiness schema.
+- The local production build now enforces the corrected blog URL in sitemap, LLM, Cloudflare route, and HTML sitemap outputs and prevents the `deterimine` typo from re-entering generated SEO assets.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

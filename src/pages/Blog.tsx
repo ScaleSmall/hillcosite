@@ -8,6 +8,7 @@ import { Calendar, ArrowRight } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 import { generatedBlogPosts } from '../generated/blogPosts';
 import { cleanBlogDisplayText } from '../lib/blogText';
+import { blogPostPath } from '../lib/blogRoutes';
 
 interface BlogPost {
   id: string;
@@ -21,14 +22,6 @@ interface BlogPost {
 }
 
 const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
-const blogPathSlug = (slug: string) =>
-  slug
-    .trim()
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-const blogPostPath = (slug: string) => `/blog/${blogPathSlug(slug)}`;
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);

@@ -6,6 +6,7 @@ import { locations } from '../config/locations';
 import { serviceLocationPages } from '../config/routes';
 import { geoAreas } from '../data/geoAreas';
 import { generatedBlogPosts } from '../generated/blogPosts';
+import { blogPostPath } from '../lib/blogRoutes';
 
 const serviceLocationGroups = [
   {
@@ -80,12 +81,6 @@ const Sitemap = () => {
     { name: 'HOA Color Tips', href: '/guides/hoa-color-tips-austin' },
     { name: 'How Often to Paint', href: '/guides/how-often-paint-central-texas' },
   ];
-  const blogPostPath = (slug: string) => `/blog/${slug
-    .trim()
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '')}`;
   const blogPosts = generatedBlogPosts.map((post) => ({
     name: post.title,
     href: blogPostPath(post.slug)
