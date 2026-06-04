@@ -1944,6 +1944,25 @@ async function checkFreeEstimatePage() {
   console.log('Live free estimate page includes estimate intent, service links, QuoteAction, and LocalBusiness schema');
 }
 
+async function checkHtmlSitemapDiscoveryLinks() {
+  const route = '/sitemap';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const hrefRoutes = new Set(
+    [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
+      .map(match => normalizeInternalRoute(match[1]))
+      .filter(Boolean)
+  );
+  const requiredRoutes = ['/free-estimate', ...primaryServiceAreaHubRoutes];
+  const missingRoutes = requiredRoutes.filter(requiredRoute => !hrefRoutes.has(requiredRoute));
+
+  if (response.status !== 200 || missingRoutes.length > 0) {
+    fail(`${route}: live HTML sitemap should link to free estimate and all primary service-area hubs; missing ${missingRoutes.join(', ') || 'none'}.`);
+    return;
+  }
+
+  console.log(`Live HTML sitemap discovery links checked: ${requiredRoutes.length}/${requiredRoutes.length}`);
+}
+
 async function checkTestimonialsTrustSignals() {
   const { response, text: html } = await fetchText(`${baseUrl}/testimonials?v=${Date.now()}`);
   const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
@@ -1999,6 +2018,7 @@ await checkWebsiteSearchActionSchema();
 await checkBreadcrumbSchema();
 await checkContactPageSchema();
 await checkFreeEstimatePage();
+await checkHtmlSitemapDiscoveryLinks();
 await checkTestimonialsTrustSignals();
 
 if (failures.length) {

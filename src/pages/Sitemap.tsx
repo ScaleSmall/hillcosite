@@ -19,6 +19,11 @@ const Sitemap = () => {
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
     { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
     { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Georgetown', href: '/service-areas/georgetown' },
+    { name: 'Round Rock', href: '/service-areas/round-rock' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'North Austin', href: '/service-areas/north-austin' },
   ];
 
   const guides = [
@@ -34,6 +39,7 @@ const Sitemap = () => {
     { name: 'Testimonials', href: '/testimonials' },
     { name: 'FAQ', href: '/faq' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Free Estimate', href: '/free-estimate' },
     { name: 'Color Consultation', href: '/color-consultation' },
     { name: 'Financing', href: '/financing' },
     { name: 'Blog', href: '/blog' },
@@ -210,10 +216,10 @@ const Sitemap = () => {
                 Can't find what you're looking for? Contact us directly and we'll be happy to help.
               </p>
               <Link
-                to="/contact"
+                to="/free-estimate"
                 className="inline-flex items-center px-6 py-3 bg-brand-azure hover:bg-brand-azureDark text-white font-semibold rounded-lg transition-colors"
               >
-                Contact Us
+                Request a Free Estimate
               </Link>
             </div>
           </div>

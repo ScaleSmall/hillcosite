@@ -1476,6 +1476,20 @@ function run() {
     }
   }
 
+  {
+    const htmlSitemapPage = pages.get('/sitemap');
+
+    if (!htmlSitemapPage) {
+      fail('/sitemap: missing generated HTML for visible sitemap link validation');
+    } else {
+      for (const requiredRoute of ['/free-estimate', ...primaryServiceAreaHubRoutes]) {
+        if (!pageLinksToRoute(htmlSitemapPage, '/sitemap', requiredRoute)) {
+          fail(`/sitemap: visible HTML sitemap should link to ${requiredRoute}`);
+        }
+      }
+    }
+  }
+
   [
     ['Austin exterior house painters', '/exterior-painting-austin'],
     ['Austin interior painters', '/interior-painting-austin'],
