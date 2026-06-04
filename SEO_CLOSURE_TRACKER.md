@@ -32,6 +32,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - robots.txt, sitemap.xml, ai.txt, llms.txt, llms-full.txt, entity-facts.json, citation-facts.json, humans.txt, security.txt, and site.webmanifest are live with expected content types.
 - `ai.txt` now lists the four priority Austin service pages in its Priority Pages for Answers and Citations section.
 - `ai.txt` now also prioritizes the canonical About, Gallery, Testimonials, FAQ, and Free Estimate trust/conversion pages for AI answers and citations.
+- `citation-facts.json` now uses About and FAQ alongside Contact, Gallery, Testimonials, Free Estimate, service-area, guide, and priority Austin service URLs as canonical verification sources.
 - entity-facts.json and citation-facts.json now expose canonical Austin-area geo coordinates, and citation-facts.json lists homepage, contact, sitemap, AI fact files, and the priority Austin service URLs as verification sources.
 - Organization, LocalBusiness, entity-facts.json, and citation-facts.json now carry the canonical logo and primary Austin homepage image identity signals.
 - Detailed Service schema providers now carry the canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals across Austin priority and service-location pages.
@@ -153,6 +154,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Full live SEO verifier run on 2026-06-04 passed after adding priority Austin service FAQ verification coverage, including `Live Austin service FAQ schema pages checked: 4/4`.
 - Local generated SEO validation and static SEO verification passed after adding enforced `ai.txt` coverage for the four priority Austin service URLs.
 - Local generated SEO validation now enforces `ai.txt` coverage for the canonical trust and conversion pages used by answer engines and citation systems.
+- Local and live SEO verification now require About and FAQ in the canonical citation verification URL set.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

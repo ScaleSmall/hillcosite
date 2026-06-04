@@ -1476,10 +1476,12 @@ async function checkCrawlerEntityAssets() {
     const verificationUrls = asArray(citationFacts.verificationUrls);
     const requiredCitationVerificationUrls = [
       `${baseUrl}/`,
+      `${baseUrl}/about`,
       `${baseUrl}/contact`,
       `${baseUrl}/free-estimate`,
       `${baseUrl}/gallery`,
       `${baseUrl}/testimonials`,
+      `${baseUrl}/faq`,
       `${baseUrl}/guides/painting-costs-austin`,
       `${baseUrl}/service-areas`,
       `${baseUrl}/service-areas/austin`,
