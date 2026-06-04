@@ -10,6 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const projectRoot = resolve(__dirname, '..');
 const middlewareSource = readFileSync(resolve(projectRoot, 'functions/_middleware.ts'), 'utf8');
+const locationsConfigSource = readFileSync(resolve(projectRoot, 'src/config/locations.ts'), 'utf8');
 const baseUrl = 'https://www.hillcopaint.com';
 const pagesProjectName = 'hillcosite';
 const pagesTarget = 'hillcosite.pages.dev';
@@ -402,6 +403,72 @@ function expectedServiceLocationPhrase(route) {
   }
 
   return null;
+}
+
+function serviceLocationSlugFromRoute(route) {
+  const prefix = localServicePrefixes.find(item => route.startsWith(item));
+
+  return prefix ? route.slice(prefix.length) : '';
+}
+
+function extractLocationLocalFacts(source) {
+  const result = new Map();
+
+  for (const match of source.matchAll(/['"]([^'"]+)['"]\s*:\s*{([\s\S]*?)\n\s{2}}\s*(?:,|\n};)/g)) {
+    const slug = match[1];
+    const body = match[2];
+    const name = body.match(/name:\s*['"]([^'"]+)['"]/)?.[1] || '';
+    const zipCodesBlock = body.match(/zipCodes:\s*\[([^\]]*)\]/)?.[1] || '';
+    const neighborhoodsBlock = body.match(/neighborhoods:\s*\[([^\]]*)\]/)?.[1] || '';
+    const latitude = Number(body.match(/coordinates:\s*{\s*lat:\s*([\d.-]+)/)?.[1]);
+    const longitude = Number(body.match(/coordinates:\s*{\s*lat:\s*[\d.-]+,\s*lng:\s*([\d.-]+)/)?.[1]);
+
+    result.set(slug, {
+      name,
+      zipCodes: [...zipCodesBlock.matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]),
+      neighborhoods: [...neighborhoodsBlock.matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]),
+      latitude,
+      longitude,
+    });
+  }
+
+  return result;
+}
+
+const locationLocalFacts = extractLocationLocalFacts(locationsConfigSource);
+
+function serviceLocationHasLocalPlaceSchema(route, scripts) {
+  const locationSlug = serviceLocationSlugFromRoute(route);
+  const facts = locationLocalFacts.get(locationSlug);
+  const placeSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'Place') &&
+    item?.['@id'] === `${baseUrl}${route}#service-area`
+  );
+
+  if (!facts || !placeSchema) {
+    return false;
+  }
+
+  const zipValue = String(asArray(placeSchema.additionalProperty)
+    .find(item => item?.name === 'ZIP codes served')?.value || '');
+  const intentValue = String(asArray(placeSchema.additionalProperty)
+    .find(item => item?.name === 'Primary local service intent')?.value || '');
+  const neighborhoodNames = asArray(placeSchema.containsPlace)
+    .map(place => place?.name)
+    .filter(Boolean);
+
+  return (
+    placeSchema.name === `${facts.name}, TX` &&
+    placeSchema?.containedInPlace?.name === 'Greater Austin Area' &&
+    placeSchema?.address?.addressLocality === facts.name &&
+    placeSchema?.address?.addressRegion === 'TX' &&
+    placeSchema?.geo?.['@type'] === 'GeoCoordinates' &&
+    Number(placeSchema?.geo?.latitude) === facts.latitude &&
+    Number(placeSchema?.geo?.longitude) === facts.longitude &&
+    facts.zipCodes.every(zipCode => zipValue.includes(zipCode)) &&
+    facts.neighborhoods.every(neighborhood => neighborhoodNames.includes(neighborhood)) &&
+    intentValue.toLowerCase().includes(facts.name.toLowerCase())
+  );
 }
 
 function routeNeedsLocalBusinessSchema(route) {
@@ -1455,9 +1522,10 @@ async function checkServiceLocationServiceSchema() {
       schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
     );
     const hasServiceProviderIdentity = serviceSchemas.some(schema => hasCanonicalServiceProvider(schema));
+    const hasLocalPlaceSchema = serviceLocationHasLocalPlaceSchema(route, scripts);
 
-    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection || !hasServiceProviderIdentity) {
-      fail(`${route}: live Service schema is missing the ${expectedPhrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, WebPage connection, or canonical provider identity signal.`);
+    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection || !hasServiceProviderIdentity || !hasLocalPlaceSchema) {
+      fail(`${route}: live Service schema is missing the ${expectedPhrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, WebPage connection, canonical provider identity signal, or local Place schema.`);
       continue;
     }
 

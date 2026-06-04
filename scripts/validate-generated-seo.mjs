@@ -945,10 +945,68 @@ function extractLocationServiceAreaSlugs(source) {
   return result;
 }
 
+function extractLocationLocalFacts(source) {
+  const result = new Map();
+
+  for (const match of source.matchAll(/['"]([^'"]+)['"]\s*:\s*{([\s\S]*?)\n\s{2}}\s*(?:,|\n};)/g)) {
+    const slug = match[1];
+    const body = match[2];
+    const name = body.match(/name:\s*['"]([^'"]+)['"]/)?.[1] || '';
+    const zipCodesBlock = body.match(/zipCodes:\s*\[([^\]]*)\]/)?.[1] || '';
+    const neighborhoodsBlock = body.match(/neighborhoods:\s*\[([^\]]*)\]/)?.[1] || '';
+    const latitude = Number(body.match(/coordinates:\s*{\s*lat:\s*([\d.-]+)/)?.[1]);
+    const longitude = Number(body.match(/coordinates:\s*{\s*lat:\s*[\d.-]+,\s*lng:\s*([\d.-]+)/)?.[1]);
+
+    result.set(slug, {
+      name,
+      zipCodes: [...zipCodesBlock.matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]),
+      neighborhoods: [...neighborhoodsBlock.matchAll(/['"]([^'"]+)['"]/g)].map(item => item[1]),
+      latitude,
+      longitude
+    });
+  }
+
+  return result;
+}
+
 function serviceLocationSlugFromRoute(routePath) {
   const prefix = localServicePrefixes.find(item => routePath.startsWith(item));
 
   return prefix ? routePath.slice(prefix.length) : '';
+}
+
+function serviceLocationHasLocalPlaceSchema(routePath, schemaItems, locationFacts) {
+  const locationSlug = serviceLocationSlugFromRoute(routePath);
+  const facts = locationFacts.get(locationSlug);
+  const placeSchema = schemaItems.find(item =>
+    schemaTypeIncludes(item, 'Place') &&
+    item?.['@id'] === `${expectedCanonical(routePath)}#service-area`
+  );
+
+  if (!facts || !placeSchema) {
+    return false;
+  }
+
+  const zipValue = String(asArray(placeSchema.additionalProperty)
+    .find(item => item?.name === 'ZIP codes served')?.value || '');
+  const intentValue = String(asArray(placeSchema.additionalProperty)
+    .find(item => item?.name === 'Primary local service intent')?.value || '');
+  const neighborhoodNames = asArray(placeSchema.containsPlace)
+    .map(place => place?.name)
+    .filter(Boolean);
+
+  return (
+    placeSchema.name === `${facts.name}, TX` &&
+    placeSchema?.containedInPlace?.name === 'Greater Austin Area' &&
+    placeSchema?.address?.addressLocality === facts.name &&
+    placeSchema?.address?.addressRegion === 'TX' &&
+    placeSchema?.geo?.['@type'] === 'GeoCoordinates' &&
+    Number(placeSchema?.geo?.latitude) === facts.latitude &&
+    Number(placeSchema?.geo?.longitude) === facts.longitude &&
+    facts.zipCodes.every(zipCode => zipValue.includes(zipCode)) &&
+    facts.neighborhoods.every(neighborhood => neighborhoodNames.includes(neighborhood)) &&
+    intentValue.toLowerCase().includes(facts.name.toLowerCase())
+  );
 }
 
 function pageLinksToRoute(page, sourceRoute, expectedRoute) {
@@ -1168,6 +1226,7 @@ function run() {
     closes: extractStringProperty(businessConfigSource, 'closes')
   };
   const locationServiceAreaSlugs = extractLocationServiceAreaSlugs(locationsConfigSource);
+  const locationLocalFacts = extractLocationLocalFacts(locationsConfigSource);
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
   const middlewareRedirectMap = new Map(middlewareRedirects.map(redirect => [redirect.source, redirect.target]));
   const staticRedirects = extractStaticRedirects(redirectsText);
@@ -2329,6 +2388,10 @@ function run() {
 
         if (canonicalServiceSchema && !hasCanonicalServiceProvider(canonicalServiceSchema)) {
           fail(`${routePath}: Service schema provider should carry the canonical LocalBusiness, HousePainter, Google Business Profile, and kgmid identity signals`);
+        }
+
+        if (isServiceLocationRoute(routePath) && !serviceLocationHasLocalPlaceSchema(routePath, schemaItems, locationLocalFacts)) {
+          fail(`${routePath}: service-location page must include matching Place schema with canonical area name, coordinates, neighborhoods, ZIP codes, and local service intent`);
         }
 
         if (routePath.startsWith('/services/')) {

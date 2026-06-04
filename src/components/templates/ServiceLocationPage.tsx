@@ -76,6 +76,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
   const { service, location, content, images, canonicalOverride } = config;
 
   const canonicalPath = canonicalOverride || `/${service.slug}-${location.slug}`;
+  const canonicalUrl = `https://www.hillcopaint.com${canonicalPath}`;
   const pageTitle = `${service.name} ${location.name}, TX | Hill Country Painting`;
   const metaDescription = `Expert ${service.name.toLowerCase()} services in ${location.name}, Texas. Insured painters with 2-year warranty. Serving ${location.neighborhoods.slice(0, 3).join(', ')} & more. Consultations available.`;
   const serviceAreaHref = `/service-areas/${location.serviceAreaSlug}`;
@@ -170,8 +171,46 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             `${service.name} near me in Austin`
           ]
         : [])
-    ])
+      ])
   ];
+  const localPlaceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    '@id': `${canonicalUrl}#service-area`,
+    name: `${location.name}, TX`,
+    description: `${service.name} service area for Hill Country Painting in ${location.name}, TX and nearby Greater Austin neighborhoods.`,
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: location.coordinates.lat,
+      longitude: location.coordinates.lng
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: location.name,
+      addressRegion: 'TX',
+      addressCountry: 'US'
+    },
+    containedInPlace: {
+      '@type': 'AdministrativeArea',
+      name: 'Greater Austin Area'
+    },
+    containsPlace: location.neighborhoods.map(neighborhood => ({
+      '@type': 'Place',
+      name: neighborhood
+    })),
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'ZIP codes served',
+        value: location.zipCodes.join(', ')
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Primary local service intent',
+        value: localServiceIntentPhrase
+      }
+    ]
+  };
 
   return (
     <>
@@ -196,6 +235,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         }}
         faq={content.faqs}
         includeLocalBusiness={true}
+        additionalSchema={localPlaceSchema}
       />
 
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
