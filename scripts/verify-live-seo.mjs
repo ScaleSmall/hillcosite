@@ -1946,17 +1946,25 @@ async function checkFreeEstimatePage() {
 
 async function checkHtmlSitemapDiscoveryLinks() {
   const route = '/sitemap';
-  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const [{ response, text: html }, { response: sitemapResponse, text: sitemapXml }] = await Promise.all([
+    fetchText(`${baseUrl}${route}?v=${Date.now()}`),
+    fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`)
+  ]);
   const hrefRoutes = new Set(
     [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
       .map(match => normalizeInternalRoute(match[1]))
       .filter(Boolean)
   );
-  const requiredRoutes = ['/free-estimate', ...primaryServiceAreaHubRoutes];
+  const serviceLocationRoutes = sitemapResponse.status === 200
+    ? [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+      .map(match => routePathFromUrl(match[1]))
+      .filter(routeIsServiceLocation)
+    : [];
+  const requiredRoutes = ['/free-estimate', ...primaryServiceAreaHubRoutes, ...serviceLocationRoutes];
   const missingRoutes = requiredRoutes.filter(requiredRoute => !hrefRoutes.has(requiredRoute));
 
-  if (response.status !== 200 || missingRoutes.length > 0) {
-    fail(`${route}: live HTML sitemap should link to free estimate and all primary service-area hubs; missing ${missingRoutes.join(', ') || 'none'}.`);
+  if (response.status !== 200 || sitemapResponse.status !== 200 || serviceLocationRoutes.length < 64 || missingRoutes.length > 0) {
+    fail(`${route}: live HTML sitemap should link to free estimate, all primary service-area hubs, and service-location pages; missing ${missingRoutes.join(', ') || 'none'}.`);
     return;
   }
 

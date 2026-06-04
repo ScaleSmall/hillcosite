@@ -2,7 +2,54 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Wrench, MapPin, BookOpen, HelpCircle, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
+import { locations } from '../config/locations';
+import { serviceLocationPages } from '../config/routes';
 import { geoAreas } from '../data/geoAreas';
+
+const serviceLocationGroups = [
+  {
+    heading: 'Interior Painting by Area',
+    prefix: '/interior-painting-',
+    label: 'Interior Painting'
+  },
+  {
+    heading: 'Exterior Painting by Area',
+    prefix: '/exterior-painting-',
+    label: 'Exterior Painting'
+  },
+  {
+    heading: 'Cabinet Painting by Area',
+    prefix: '/cabinet-refinishing-',
+    label: 'Cabinet Painting'
+  },
+  {
+    heading: 'Commercial Painting by Area',
+    prefix: '/commercial-painting-',
+    label: 'Commercial Painting'
+  }
+].map((group) => {
+  const locationNameBySlug = new Map(
+    Object.values(locations).map((location) => [location.slug, location.name])
+  );
+
+  return {
+    ...group,
+    links: serviceLocationPages
+      .filter((route) => route.path.startsWith(group.prefix))
+      .map((route) => {
+        const slug = route.path.slice(group.prefix.length);
+        const locationName = locationNameBySlug.get(slug) || slug
+          .split('-')
+          .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+          .join(' ');
+
+        return {
+          name: `${group.label} ${locationName}`,
+          href: route.path
+        };
+      })
+  };
+});
 
 const Sitemap = () => {
   const services = [
@@ -156,6 +203,24 @@ const Sitemap = () => {
                   ))}
                 </ul>
               </div>
+
+              {serviceLocationGroups.map((group) => (
+                <div key={group.heading}>
+                  <div className="flex items-center gap-2 mb-4">
+                    <MapPin className="w-5 h-5 text-brand-azure" />
+                    <h2 className="text-2xl font-bold text-brand-gray-900">{group.heading}</h2>
+                  </div>
+                  <ul className="space-y-2">
+                    {group.links.map((link) => (
+                      <li key={link.href}>
+                        <Link to={link.href} className="text-brand-azure hover:text-brand-azureDark transition-colors">
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
 
               <div>
                 <div className="flex items-center gap-2 mb-4">
