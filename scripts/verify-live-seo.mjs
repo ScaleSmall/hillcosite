@@ -1186,6 +1186,11 @@ function hasCanonicalServiceProvider(schema) {
     providerTypes.includes('HousePainter') &&
     provider?.name === 'Hill Country Painting' &&
     provider?.url === baseUrl &&
+    provider?.logo?.['@type'] === 'ImageObject' &&
+    provider?.logo?.url === businessLogoUrl &&
+    provider?.logo?.contentUrl === businessLogoUrl &&
+    JSON.stringify(provider?.image || []).includes(businessPrimaryImageUrl) &&
+    JSON.stringify(provider?.image || []).includes(`${baseUrl}/#logo`) &&
     provider?.hasMap === googleBusinessProfileUrl &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&

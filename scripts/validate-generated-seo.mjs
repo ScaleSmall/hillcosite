@@ -499,6 +499,11 @@ function hasCanonicalServiceProvider(schema) {
     providerTypes.includes('HousePainter') &&
     provider?.name === 'Hill Country Painting' &&
     provider?.url === baseUrl &&
+    provider?.logo?.['@type'] === 'ImageObject' &&
+    provider?.logo?.url === `${baseUrl}/brand/hill-country-painting-logo-primary.png` &&
+    provider?.logo?.contentUrl === `${baseUrl}/brand/hill-country-painting-logo-primary.png` &&
+    JSON.stringify(provider?.image || []).includes(`${baseUrl}/hill-country-painting-austin-homepage-hero.jpg`) &&
+    JSON.stringify(provider?.image || []).includes(`${baseUrl}/#logo`) &&
     provider?.hasMap === googleBusinessProfileUrl &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&
@@ -2484,7 +2489,7 @@ function run() {
         const canonicalServiceSchema = schemaItems.find(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === expectedServiceId);
 
         if (canonicalServiceSchema && !hasCanonicalServiceProvider(canonicalServiceSchema)) {
-          fail(`${routePath}: Service schema provider should carry the canonical LocalBusiness, HousePainter, Google Business Profile, and kgmid identity signals`);
+          fail(`${routePath}: Service schema provider should carry the canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals`);
         }
 
         if (isServiceLocationRoute(routePath) && !serviceLocationHasLocalPlaceSchema(routePath, schemaItems, locationLocalFacts)) {

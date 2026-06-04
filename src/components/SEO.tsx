@@ -497,6 +497,13 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
         name: businessConfig.name,
         url: baseUrl,
         telephone: businessConfig.phone,
+        logo: businessLogoImage,
+        image: [
+          defaultSocialImage,
+          {
+            '@id': `${baseUrl}/#logo`
+          }
+        ],
         hasMap: businessConfig.googleBusinessProfileUrl,
         sameAs: sameAsProfiles,
         identifier: googleBusinessIdentifier
