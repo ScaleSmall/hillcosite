@@ -531,7 +531,8 @@ function extractNumberProperty(source, name) {
 
 function hasPaintingEstimateAction(schema) {
   return asArray(schema?.potentialAction).some(action => {
-    const target = action?.target || {};
+    const targets = asArray(action?.target);
+    const targetUrls = targets.map(target => target?.urlTemplate).filter(Boolean);
     const object = action?.object || {};
     const serviceType = String(object.serviceType || '');
 
@@ -539,8 +540,9 @@ function hasPaintingEstimateAction(schema) {
       schemaTypeIncludes(action, 'QuoteAction') &&
       action?.name === 'Request a painting estimate' &&
       hasCanonicalProviderObject(action?.provider) &&
-      target?.urlTemplate === `${baseUrl}/contact` &&
-      schemaTypeIncludes(target, 'EntryPoint') &&
+      targetUrls.includes(`${baseUrl}/contact`) &&
+      targetUrls.includes(`${baseUrl}/free-estimate`) &&
+      targets.every(target => schemaTypeIncludes(target, 'EntryPoint')) &&
       schemaTypeIncludes(object, 'Service') &&
       object?.name === 'Painting estimate for Greater Austin homes and businesses' &&
       hasCanonicalServiceProvider(object) &&
@@ -1621,7 +1623,8 @@ function run() {
     'schema.serviceArea = countyServiceAreas',
     'schema.mainEntityOfPage',
     'schema.potentialAction = requestEstimateAction',
-    "name: 'Request a painting estimate'"
+    "name: 'Request a painting estimate'",
+    "urlTemplate: 'https://www.hillcopaint.com/free-estimate'"
   ]) {
     if (!middlewareSource.includes(signal)) {
       fail(`functions/_middleware.ts Austin service schema repair must preserve ${signal}`);
@@ -2510,11 +2513,12 @@ function run() {
         if (
           !estimateAction ||
           !hasCanonicalProviderObject(estimateAction?.provider) ||
-          estimateAction?.target?.urlTemplate !== `${baseUrl}/contact` ||
-          !schemaTypeIncludes(estimateAction?.target, 'EntryPoint') ||
+          !asArray(estimateAction?.target).some(target => target?.urlTemplate === `${baseUrl}/contact`) ||
+          !asArray(estimateAction?.target).some(target => target?.urlTemplate === `${baseUrl}/free-estimate`) ||
+          !asArray(estimateAction?.target).every(target => schemaTypeIncludes(target, 'EntryPoint')) ||
           !schemaTypeIncludes(estimateAction?.object, 'Service')
         ) {
-          fail(`${routePath}: free estimate page must expose a QuoteAction connected to the canonical LocalBusiness and contact form`);
+          fail(`${routePath}: free estimate page must expose a QuoteAction connected to the canonical LocalBusiness, contact form, and free-estimate entry point`);
         }
       }
 

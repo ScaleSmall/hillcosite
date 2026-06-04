@@ -289,14 +289,24 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const requestEstimateAction = {
     '@type': 'QuoteAction',
     name: 'Request a painting estimate',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: `${baseUrl}/contact`,
-      actionPlatform: [
-        'http://schema.org/DesktopWebPlatform',
-        'http://schema.org/MobileWebPlatform'
-      ]
-    },
+    target: [
+      {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/contact`,
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform'
+        ]
+      },
+      {
+        '@type': 'EntryPoint',
+        urlTemplate: `${baseUrl}/free-estimate`,
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform'
+        ]
+      }
+    ],
     provider: canonicalBusinessProvider,
     object: {
       '@type': 'Service',

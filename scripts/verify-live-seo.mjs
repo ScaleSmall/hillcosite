@@ -1227,7 +1227,8 @@ function hasValidAggregateRating(schema) {
 
 function hasPaintingEstimateAction(schema) {
   return asArray(schema?.potentialAction).some(action => {
-    const target = action?.target || {};
+    const targets = asArray(action?.target);
+    const targetUrls = targets.map(target => target?.urlTemplate).filter(Boolean);
     const object = action?.object || {};
     const serviceType = String(object.serviceType || '');
 
@@ -1235,8 +1236,9 @@ function hasPaintingEstimateAction(schema) {
       schemaTypeIncludes(action, 'QuoteAction') &&
       action?.name === 'Request a painting estimate' &&
       hasCanonicalProviderObject(action?.provider) &&
-      target?.urlTemplate === `${baseUrl}/contact` &&
-      schemaTypeIncludes(target, 'EntryPoint') &&
+      targetUrls.includes(`${baseUrl}/contact`) &&
+      targetUrls.includes(`${baseUrl}/free-estimate`) &&
+      targets.every(target => schemaTypeIncludes(target, 'EntryPoint')) &&
       schemaTypeIncludes(object, 'Service') &&
       object?.name === 'Painting estimate for Greater Austin homes and businesses' &&
       hasCanonicalServiceProvider(object) &&
@@ -2273,10 +2275,13 @@ async function checkFreeEstimatePage() {
     `href="/commercial-painting-austin"`,
   ];
   const hasRequiredSignals = requiredSignals.every(signal => html.includes(signal));
+  const quoteActionTargets = asArray(quoteAction?.target);
+  const quoteActionTargetUrls = quoteActionTargets.map(target => target?.urlTemplate).filter(Boolean);
   const hasQuoteAction =
     hasCanonicalProviderObject(quoteAction?.provider) &&
-    quoteAction?.target?.urlTemplate === `${baseUrl}/contact` &&
-    schemaTypeIncludes(quoteAction?.target, 'EntryPoint') &&
+    quoteActionTargetUrls.includes(`${baseUrl}/contact`) &&
+    quoteActionTargetUrls.includes(`${baseUrl}/free-estimate`) &&
+    quoteActionTargets.every(target => schemaTypeIncludes(target, 'EntryPoint')) &&
     schemaTypeIncludes(quoteAction?.object, 'Service');
   const hasLocalBusiness = scripts.some(item =>
     schemaTypeIncludes(item, 'LocalBusiness') &&

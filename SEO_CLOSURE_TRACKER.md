@@ -44,6 +44,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
 - The four priority Austin service pages now have enforced local FAQPage schema coverage in both local and live SEO verification.
 - The four core service pages now have enforced Austin-local FAQPage schema coverage in both local and live SEO verification.
+- Estimate QuoteAction schema now exposes both `/contact` and `/free-estimate` as canonical request-entry points, with local and live verification enforcing both.
 - `/free-estimate` is now a canonical, indexable estimate page in the sitemap with estimate intent copy, service links, breadcrumb schema, QuoteAction, and LocalBusiness schema.
 - LocalBusiness schema, service-location Service schema, FAQ schema, breadcrumbs, contact schema, and testimonial trust signals pass the live SEO verifier.
 - All 64 service-location pages now include matching local Place schema with canonical area name, coordinates, neighborhoods, ZIP codes, and service intent.

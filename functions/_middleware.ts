@@ -577,14 +577,24 @@ function withAustinServiceSchemaSignals(html: string, path: string): string {
   const requestEstimateAction = {
     '@type': 'QuoteAction',
     name: 'Request a painting estimate',
-    target: {
-      '@type': 'EntryPoint',
-      urlTemplate: 'https://www.hillcopaint.com/contact',
-      actionPlatform: [
-        'http://schema.org/DesktopWebPlatform',
-        'http://schema.org/MobileWebPlatform',
-      ],
-    },
+    target: [
+      {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://www.hillcopaint.com/contact',
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform',
+        ],
+      },
+      {
+        '@type': 'EntryPoint',
+        urlTemplate: 'https://www.hillcopaint.com/free-estimate',
+        actionPlatform: [
+          'http://schema.org/DesktopWebPlatform',
+          'http://schema.org/MobileWebPlatform',
+        ],
+      },
+    ],
     provider: CANONICAL_BUSINESS_PROVIDER,
     object: {
       '@type': 'Service',
