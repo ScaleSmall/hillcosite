@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { usePricingData } from '../../hooks/usePricingData';
+import { canonicalBusinessProvider } from '../../lib/businessSchema';
 
 const PaintingCostsTable = () => {
   const { data: pricingData } = usePricingData('painting-costs');
@@ -37,17 +38,7 @@ const PaintingCostsTable = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "serviceType": "House Painting Services",
-    "provider": {
-      "@type": "Organization",
-      "name": "Hill Country Painting",
-      "telephone": "(512) 240-2246",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Austin",
-        "addressRegion": "TX",
-        "addressCountry": "US"
-      }
-    },
+    "provider": canonicalBusinessProvider,
     "areaServed": {
       "@type": "City",
       "name": "Austin, Texas"
@@ -66,8 +57,10 @@ const PaintingCostsTable = () => {
                 "@type": "Service",
                 "name": "Interior House Painting - Austin TX",
                 "description": "Professional interior painting services for Austin homes",
-                "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg"
+                "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
+                "provider": canonicalBusinessProvider
               },
+              "seller": canonicalBusinessProvider,
               "price": String(interiorPrice?.min || 2500),
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
@@ -85,8 +78,10 @@ const PaintingCostsTable = () => {
                 "@type": "Service",
                 "name": "Exterior House Painting - Austin TX",
                 "description": "Professional exterior painting services for Austin homes",
-                "image": "https://www.hillcopaint.com/classic-home-exterior.jpg"
+                "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
+                "provider": canonicalBusinessProvider
               },
+              "seller": canonicalBusinessProvider,
               "price": String(exteriorPrice?.min || 4000),
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,

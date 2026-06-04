@@ -321,7 +321,56 @@
         "name": "Austin house painters",
         "url": "https://www.hillcopaint.com/service-areas/austin",
         "provider": {
-          "@id": "https://www.hillcopaint.com/#localbusiness"
+          "@type": [
+            "LocalBusiness",
+            "HomeAndConstructionBusiness",
+            "HousePainter"
+          ],
+          "@id": "https://www.hillcopaint.com/#localbusiness",
+          "name": "Hill Country Painting",
+          "url": "https://www.hillcopaint.com",
+          "telephone": "(512) 240-2246",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.hillcopaint.com/#logo",
+            "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Hill Country Painting Logo"
+          },
+          "image": [
+            "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+            {
+              "@id": "https://www.hillcopaint.com/#logo"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3337,
+            "longitude": -97.8166
+          },
+          "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "sameAs": [
+            "https://www.facebook.com/Hillcopaint",
+            "https://www.instagram.com/hill_country_painting_austin/",
+            "https://x.com/Hill_Co_Paint",
+            "https://www.youtube.com/@HillCountryPaintingAustin",
+            "https://www.tiktok.com/@hillco_painting_austin",
+            "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          ],
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "kgmid",
+            "value": "/g/11frssbq6p",
+            "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          }
         },
         "areaServed": [
           {
@@ -435,7 +484,56 @@
         "name": "Austin exterior house painters",
         "url": "https://www.hillcopaint.com/exterior-painting-austin",
         "provider": {
-          "@id": "https://www.hillcopaint.com/#localbusiness"
+          "@type": [
+            "LocalBusiness",
+            "HomeAndConstructionBusiness",
+            "HousePainter"
+          ],
+          "@id": "https://www.hillcopaint.com/#localbusiness",
+          "name": "Hill Country Painting",
+          "url": "https://www.hillcopaint.com",
+          "telephone": "(512) 240-2246",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.hillcopaint.com/#logo",
+            "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Hill Country Painting Logo"
+          },
+          "image": [
+            "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+            {
+              "@id": "https://www.hillcopaint.com/#logo"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3337,
+            "longitude": -97.8166
+          },
+          "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "sameAs": [
+            "https://www.facebook.com/Hillcopaint",
+            "https://www.instagram.com/hill_country_painting_austin/",
+            "https://x.com/Hill_Co_Paint",
+            "https://www.youtube.com/@HillCountryPaintingAustin",
+            "https://www.tiktok.com/@hillco_painting_austin",
+            "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          ],
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "kgmid",
+            "value": "/g/11frssbq6p",
+            "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          }
         },
         "areaServed": [
           {
@@ -549,7 +647,56 @@
         "name": "Austin interior painters",
         "url": "https://www.hillcopaint.com/interior-painting-austin",
         "provider": {
-          "@id": "https://www.hillcopaint.com/#localbusiness"
+          "@type": [
+            "LocalBusiness",
+            "HomeAndConstructionBusiness",
+            "HousePainter"
+          ],
+          "@id": "https://www.hillcopaint.com/#localbusiness",
+          "name": "Hill Country Painting",
+          "url": "https://www.hillcopaint.com",
+          "telephone": "(512) 240-2246",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.hillcopaint.com/#logo",
+            "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Hill Country Painting Logo"
+          },
+          "image": [
+            "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+            {
+              "@id": "https://www.hillcopaint.com/#logo"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3337,
+            "longitude": -97.8166
+          },
+          "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "sameAs": [
+            "https://www.facebook.com/Hillcopaint",
+            "https://www.instagram.com/hill_country_painting_austin/",
+            "https://x.com/Hill_Co_Paint",
+            "https://www.youtube.com/@HillCountryPaintingAustin",
+            "https://www.tiktok.com/@hillco_painting_austin",
+            "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          ],
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "kgmid",
+            "value": "/g/11frssbq6p",
+            "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          }
         },
         "areaServed": [
           {
@@ -663,7 +810,56 @@
         "name": "Austin cabinet painting",
         "url": "https://www.hillcopaint.com/cabinet-refinishing-austin",
         "provider": {
-          "@id": "https://www.hillcopaint.com/#localbusiness"
+          "@type": [
+            "LocalBusiness",
+            "HomeAndConstructionBusiness",
+            "HousePainter"
+          ],
+          "@id": "https://www.hillcopaint.com/#localbusiness",
+          "name": "Hill Country Painting",
+          "url": "https://www.hillcopaint.com",
+          "telephone": "(512) 240-2246",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.hillcopaint.com/#logo",
+            "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Hill Country Painting Logo"
+          },
+          "image": [
+            "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+            {
+              "@id": "https://www.hillcopaint.com/#logo"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3337,
+            "longitude": -97.8166
+          },
+          "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "sameAs": [
+            "https://www.facebook.com/Hillcopaint",
+            "https://www.instagram.com/hill_country_painting_austin/",
+            "https://x.com/Hill_Co_Paint",
+            "https://www.youtube.com/@HillCountryPaintingAustin",
+            "https://www.tiktok.com/@hillco_painting_austin",
+            "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          ],
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "kgmid",
+            "value": "/g/11frssbq6p",
+            "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          }
         },
         "areaServed": [
           {
@@ -777,7 +973,56 @@
         "name": "Austin commercial painters",
         "url": "https://www.hillcopaint.com/commercial-painting-austin",
         "provider": {
-          "@id": "https://www.hillcopaint.com/#localbusiness"
+          "@type": [
+            "LocalBusiness",
+            "HomeAndConstructionBusiness",
+            "HousePainter"
+          ],
+          "@id": "https://www.hillcopaint.com/#localbusiness",
+          "name": "Hill Country Painting",
+          "url": "https://www.hillcopaint.com",
+          "telephone": "(512) 240-2246",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.hillcopaint.com/#logo",
+            "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Hill Country Painting Logo"
+          },
+          "image": [
+            "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+            {
+              "@id": "https://www.hillcopaint.com/#logo"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3337,
+            "longitude": -97.8166
+          },
+          "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "sameAs": [
+            "https://www.facebook.com/Hillcopaint",
+            "https://www.instagram.com/hill_country_painting_austin/",
+            "https://x.com/Hill_Co_Paint",
+            "https://www.youtube.com/@HillCountryPaintingAustin",
+            "https://www.tiktok.com/@hillco_painting_austin",
+            "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          ],
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "kgmid",
+            "value": "/g/11frssbq6p",
+            "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          }
         },
         "areaServed": [
           {
@@ -894,7 +1139,56 @@
           "@type": "Service",
           "name": "Interior painting",
           "provider": {
-            "@id": "https://www.hillcopaint.com/#localbusiness"
+            "@type": [
+              "LocalBusiness",
+              "HomeAndConstructionBusiness",
+              "HousePainter"
+            ],
+            "@id": "https://www.hillcopaint.com/#localbusiness",
+            "name": "Hill Country Painting",
+            "url": "https://www.hillcopaint.com",
+            "telephone": "(512) 240-2246",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.hillcopaint.com/#logo",
+              "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Hill Country Painting Logo"
+            },
+            "image": [
+              "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+              {
+                "@id": "https://www.hillcopaint.com/#logo"
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 30.3337,
+              "longitude": -97.8166
+            },
+            "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "sameAs": [
+              "https://www.facebook.com/Hillcopaint",
+              "https://www.instagram.com/hill_country_painting_austin/",
+              "https://x.com/Hill_Co_Paint",
+              "https://www.youtube.com/@HillCountryPaintingAustin",
+              "https://www.tiktok.com/@hillco_painting_austin",
+              "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            ],
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "kgmid",
+              "value": "/g/11frssbq6p",
+              "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            }
           },
           "areaServed": [
             {
@@ -1006,7 +1300,56 @@
           "@type": "Service",
           "name": "Exterior painting",
           "provider": {
-            "@id": "https://www.hillcopaint.com/#localbusiness"
+            "@type": [
+              "LocalBusiness",
+              "HomeAndConstructionBusiness",
+              "HousePainter"
+            ],
+            "@id": "https://www.hillcopaint.com/#localbusiness",
+            "name": "Hill Country Painting",
+            "url": "https://www.hillcopaint.com",
+            "telephone": "(512) 240-2246",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.hillcopaint.com/#logo",
+              "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Hill Country Painting Logo"
+            },
+            "image": [
+              "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+              {
+                "@id": "https://www.hillcopaint.com/#logo"
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 30.3337,
+              "longitude": -97.8166
+            },
+            "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "sameAs": [
+              "https://www.facebook.com/Hillcopaint",
+              "https://www.instagram.com/hill_country_painting_austin/",
+              "https://x.com/Hill_Co_Paint",
+              "https://www.youtube.com/@HillCountryPaintingAustin",
+              "https://www.tiktok.com/@hillco_painting_austin",
+              "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            ],
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "kgmid",
+              "value": "/g/11frssbq6p",
+              "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            }
           },
           "areaServed": [
             {
@@ -1118,7 +1461,56 @@
           "@type": "Service",
           "name": "Cabinet painting and refinishing",
           "provider": {
-            "@id": "https://www.hillcopaint.com/#localbusiness"
+            "@type": [
+              "LocalBusiness",
+              "HomeAndConstructionBusiness",
+              "HousePainter"
+            ],
+            "@id": "https://www.hillcopaint.com/#localbusiness",
+            "name": "Hill Country Painting",
+            "url": "https://www.hillcopaint.com",
+            "telephone": "(512) 240-2246",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.hillcopaint.com/#logo",
+              "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Hill Country Painting Logo"
+            },
+            "image": [
+              "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+              {
+                "@id": "https://www.hillcopaint.com/#logo"
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 30.3337,
+              "longitude": -97.8166
+            },
+            "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "sameAs": [
+              "https://www.facebook.com/Hillcopaint",
+              "https://www.instagram.com/hill_country_painting_austin/",
+              "https://x.com/Hill_Co_Paint",
+              "https://www.youtube.com/@HillCountryPaintingAustin",
+              "https://www.tiktok.com/@hillco_painting_austin",
+              "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            ],
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "kgmid",
+              "value": "/g/11frssbq6p",
+              "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            }
           },
           "areaServed": [
             {
@@ -1230,7 +1622,56 @@
           "@type": "Service",
           "name": "Commercial painting",
           "provider": {
-            "@id": "https://www.hillcopaint.com/#localbusiness"
+            "@type": [
+              "LocalBusiness",
+              "HomeAndConstructionBusiness",
+              "HousePainter"
+            ],
+            "@id": "https://www.hillcopaint.com/#localbusiness",
+            "name": "Hill Country Painting",
+            "url": "https://www.hillcopaint.com",
+            "telephone": "(512) 240-2246",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.hillcopaint.com/#logo",
+              "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Hill Country Painting Logo"
+            },
+            "image": [
+              "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+              {
+                "@id": "https://www.hillcopaint.com/#logo"
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 30.3337,
+              "longitude": -97.8166
+            },
+            "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "sameAs": [
+              "https://www.facebook.com/Hillcopaint",
+              "https://www.instagram.com/hill_country_painting_austin/",
+              "https://x.com/Hill_Co_Paint",
+              "https://www.youtube.com/@HillCountryPaintingAustin",
+              "https://www.tiktok.com/@hillco_painting_austin",
+              "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            ],
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "kgmid",
+              "value": "/g/11frssbq6p",
+              "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            }
           },
           "areaServed": [
             {
@@ -1342,7 +1783,56 @@
           "@type": "Service",
           "name": "Color consultation",
           "provider": {
-            "@id": "https://www.hillcopaint.com/#localbusiness"
+            "@type": [
+              "LocalBusiness",
+              "HomeAndConstructionBusiness",
+              "HousePainter"
+            ],
+            "@id": "https://www.hillcopaint.com/#localbusiness",
+            "name": "Hill Country Painting",
+            "url": "https://www.hillcopaint.com",
+            "telephone": "(512) 240-2246",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://www.hillcopaint.com/#logo",
+              "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Hill Country Painting Logo"
+            },
+            "image": [
+              "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+              {
+                "@id": "https://www.hillcopaint.com/#logo"
+              }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Austin",
+              "addressRegion": "TX",
+              "addressCountry": "US"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 30.3337,
+              "longitude": -97.8166
+            },
+            "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+            "sameAs": [
+              "https://www.facebook.com/Hillcopaint",
+              "https://www.instagram.com/hill_country_painting_austin/",
+              "https://x.com/Hill_Co_Paint",
+              "https://www.youtube.com/@HillCountryPaintingAustin",
+              "https://www.tiktok.com/@hillco_painting_austin",
+              "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            ],
+            "identifier": {
+              "@type": "PropertyValue",
+              "propertyID": "kgmid",
+              "value": "/g/11frssbq6p",
+              "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+            }
           },
           "areaServed": [
             {

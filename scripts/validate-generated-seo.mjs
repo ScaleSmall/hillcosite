@@ -513,6 +513,40 @@ function hasCanonicalServiceProvider(schema) {
   );
 }
 
+function hasCanonicalProviderObject(provider) {
+  return hasCanonicalServiceProvider({ provider });
+}
+
+function collectSchemaNodes(value, predicate, result = [], seen = new Set()) {
+  if (!value || typeof value !== 'object' || seen.has(value)) {
+    return result;
+  }
+
+  seen.add(value);
+
+  if (predicate(value)) {
+    result.push(value);
+  }
+
+  for (const child of Object.values(value)) {
+    if (Array.isArray(child)) {
+      for (const item of child) {
+        collectSchemaNodes(item, predicate, result, seen);
+      }
+    } else {
+      collectSchemaNodes(child, predicate, result, seen);
+    }
+  }
+
+  return result;
+}
+
+function schemaTreeServicesHaveCanonicalProviders(schema) {
+  const services = collectSchemaNodes(schema, item => schemaTypeIncludes(item, 'Service'));
+
+  return services.length > 0 && services.every(service => hasCanonicalServiceProvider(service));
+}
+
 function itemListUrls(schema) {
   return asArray(schema?.itemListElement)
     .map(item => item?.url || item?.item?.url)
@@ -1844,8 +1878,16 @@ function run() {
     if (!Array.isArray(entityFacts.priorityServicePages) || !entityFacts.priorityServicePages.some(page => page?.name === 'Austin exterior house painters' && page?.url === `${baseUrl}/exterior-painting-austin`)) {
       fail('entity-facts.json must include Austin priority service pages');
     }
-    if (!Array.isArray(entityFacts.makesOffer) || !JSON.stringify(entityFacts.makesOffer).includes(`${baseUrl}/cabinet-refinishing-austin`)) {
+    if (
+      !Array.isArray(entityFacts.makesOffer) ||
+      !JSON.stringify(entityFacts.makesOffer).includes(`${baseUrl}/cabinet-refinishing-austin`) ||
+      !schemaTreeServicesHaveCanonicalProviders(entityFacts.makesOffer)
+    ) {
       fail('entity-facts.json must connect priority Austin service pages to LocalBusiness offers');
+    }
+
+    if (!schemaTreeServicesHaveCanonicalProviders(entityFacts.hasOfferCatalog)) {
+      fail('entity-facts.json hasOfferCatalog services must carry canonical LocalBusiness provider identity');
     }
     if (entityFacts.hasMap !== configuredBusinessFacts.googleBusinessProfileUrl || !Array.isArray(entityFacts.sameAs) || !entityFacts.sameAs.includes(configuredBusinessFacts.googleBusinessProfileUrl)) {
       fail('entity-facts.json must include the canonical Google Business Profile URL with Knowledge Graph ID');
@@ -2293,12 +2335,42 @@ function run() {
 
         if (
           !estimateAction ||
-          estimateAction?.provider?.['@id'] !== `${baseUrl}/#localbusiness` ||
+          !hasCanonicalProviderObject(estimateAction?.provider) ||
           estimateAction?.target?.urlTemplate !== `${baseUrl}/contact` ||
           !schemaTypeIncludes(estimateAction?.target, 'EntryPoint') ||
           !schemaTypeIncludes(estimateAction?.object, 'Service')
         ) {
           fail(`${routePath}: free estimate page must expose a QuoteAction connected to the canonical LocalBusiness and contact form`);
+        }
+      }
+
+      if (routePath === '/gallery') {
+        const imageGallerySchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ImageGallery') &&
+          item?.url === `${baseUrl}/gallery`
+        );
+
+        if (!imageGallerySchema || !hasCanonicalProviderObject(imageGallerySchema.provider)) {
+          fail(`${routePath}: ImageGallery schema must carry canonical LocalBusiness provider identity`);
+        }
+      }
+
+      if (routePath === '/' || routePath === '/guides/painting-costs-austin') {
+        const paintingCostServiceSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'Service') &&
+          item?.serviceType === 'House Painting Services'
+        );
+        const typicalHomeCostsSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ItemList') &&
+          item?.name === 'Austin House Painting Costs by Size'
+        );
+
+        if (!paintingCostServiceSchema || !schemaTreeServicesHaveCanonicalProviders(paintingCostServiceSchema)) {
+          fail(`${routePath}: painting cost Service schema and nested offers must carry canonical LocalBusiness provider identity`);
+        }
+
+        if (!typicalHomeCostsSchema || !schemaTreeServicesHaveCanonicalProviders(typicalHomeCostsSchema)) {
+          fail(`${routePath}: typical home cost ItemList services must carry canonical LocalBusiness provider identity`);
         }
       }
 

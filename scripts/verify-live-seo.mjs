@@ -1213,6 +1213,40 @@ function hasCanonicalServiceProvider(schema) {
   );
 }
 
+function hasCanonicalProviderObject(provider) {
+  return hasCanonicalServiceProvider({ provider });
+}
+
+function collectSchemaNodes(value, predicate, result = [], seen = new Set()) {
+  if (!value || typeof value !== 'object' || seen.has(value)) {
+    return result;
+  }
+
+  seen.add(value);
+
+  if (predicate(value)) {
+    result.push(value);
+  }
+
+  for (const child of Object.values(value)) {
+    if (Array.isArray(child)) {
+      for (const item of child) {
+        collectSchemaNodes(item, predicate, result, seen);
+      }
+    } else {
+      collectSchemaNodes(child, predicate, result, seen);
+    }
+  }
+
+  return result;
+}
+
+function schemaTreeServicesHaveCanonicalProviders(schema) {
+  const services = collectSchemaNodes(schema, item => schemaTypeIncludes(item, 'Service'));
+
+  return services.length > 0 && services.every(service => hasCanonicalServiceProvider(service));
+}
+
 async function checkCrawlerEntityAssets() {
   const assetText = new Map();
   let passed = 0;
@@ -1312,6 +1346,9 @@ async function checkCrawlerEntityAssets() {
     const sameAs = asArray(entityFacts.sameAs);
     const alternateNames = asArray(entityFacts.alternateName);
     const staleWarnings = JSON.stringify(entityFacts.staleCitationWarnings || []);
+    const hasCanonicalOfferProviders =
+      schemaTreeServicesHaveCanonicalProviders(entityFacts.makesOffer) &&
+      schemaTreeServicesHaveCanonicalProviders(entityFacts.hasOfferCatalog);
     const hasCanonicalGeo =
       entityFacts.geo?.['@type'] === 'GeoCoordinates' &&
       Number(entityFacts.geo?.latitude) === businessLatitude &&
@@ -1342,6 +1379,7 @@ async function checkCrawlerEntityAssets() {
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasCanonicalGeo ||
       !hasCanonicalImageIdentity ||
+      !hasCanonicalOfferProviders ||
       !hasValidAggregateRating(entityFacts) ||
       entityFacts.sitemapUrlCount !== liveSitemapUrlCount ||
       !staleWarnings.includes(`${baseUrl}/austin/`) ||
@@ -1355,7 +1393,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, logo/image signals, geo coordinates, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, logo/image signals, geo coordinates, offer provider identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -1435,6 +1473,11 @@ async function checkCrawlerEntityAssets() {
 
 async function checkSupabaseFeed() {
   const { response, text: html } = await fetchText(`${baseUrl}/gallery?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, '/gallery');
+  const imageGallerySchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'ImageGallery') &&
+    item?.url === `${baseUrl}/gallery`
+  );
 
   if (response.status !== 200) {
     fail(`/gallery returned ${response.status}`);
@@ -1448,8 +1491,12 @@ async function checkSupabaseFeed() {
     fail(`/gallery still includes retired Supabase project ${retiredSupabaseUrl}`);
   }
 
-  if (response.status === 200 && html.includes(currentSupabaseUrl) && !html.includes(retiredSupabaseUrl)) {
-    console.log('Live Supabase gallery feed: current project present, retired project absent');
+  if (!imageGallerySchema || !hasCanonicalProviderObject(imageGallerySchema.provider)) {
+    fail('/gallery ImageGallery schema is missing canonical LocalBusiness provider identity');
+  }
+
+  if (response.status === 200 && html.includes(currentSupabaseUrl) && !html.includes(retiredSupabaseUrl) && imageGallerySchema && hasCanonicalProviderObject(imageGallerySchema.provider)) {
+    console.log('Live Supabase gallery feed: current project present, retired project absent; ImageGallery provider identity is canonical');
   }
 }
 
@@ -2081,7 +2128,7 @@ async function checkFreeEstimatePage() {
   ];
   const hasRequiredSignals = requiredSignals.every(signal => html.includes(signal));
   const hasQuoteAction =
-    quoteAction?.provider?.['@id'] === `${baseUrl}/#localbusiness` &&
+    hasCanonicalProviderObject(quoteAction?.provider) &&
     quoteAction?.target?.urlTemplate === `${baseUrl}/contact` &&
     schemaTypeIncludes(quoteAction?.target, 'EntryPoint') &&
     schemaTypeIncludes(quoteAction?.object, 'Service');
@@ -2092,11 +2139,44 @@ async function checkFreeEstimatePage() {
   );
 
   if (response.status !== 200 || !hasRequiredSignals || !hasQuoteAction || !hasLocalBusiness) {
-    fail(`${route}: live free estimate page should be indexable with estimate intent copy, service links, QuoteAction, and LocalBusiness schema.`);
+    fail(`${route}: live free estimate page should be indexable with estimate intent copy, service links, canonical QuoteAction provider, and LocalBusiness schema.`);
     return;
   }
 
-  console.log('Live free estimate page includes estimate intent, service links, QuoteAction, and LocalBusiness schema');
+  console.log('Live free estimate page includes estimate intent, service links, canonical QuoteAction provider, and LocalBusiness schema');
+}
+
+async function checkPaintingCostProviderSchema() {
+  const routes = ['/', '/guides/painting-costs-austin'];
+  let passed = 0;
+
+  for (const route of routes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const paintingCostServiceSchema = scripts.find(item =>
+      schemaTypeIncludes(item, 'Service') &&
+      item?.serviceType === 'House Painting Services'
+    );
+    const typicalHomeCostsSchema = scripts.find(item =>
+      schemaTypeIncludes(item, 'ItemList') &&
+      item?.name === 'Austin House Painting Costs by Size'
+    );
+
+    if (
+      response.status !== 200 ||
+      !paintingCostServiceSchema ||
+      !schemaTreeServicesHaveCanonicalProviders(paintingCostServiceSchema) ||
+      !typicalHomeCostsSchema ||
+      !schemaTreeServicesHaveCanonicalProviders(typicalHomeCostsSchema)
+    ) {
+      fail(`${route}: live painting cost and typical home cost schemas must carry canonical LocalBusiness provider identity.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live painting cost provider schemas checked: ${passed}/${routes.length}`);
 }
 
 async function checkHtmlSitemapDiscoveryLinks() {
@@ -2192,6 +2272,7 @@ await checkWebsiteSearchActionSchema();
 await checkBreadcrumbSchema();
 await checkContactPageSchema();
 await checkFreeEstimatePage();
+await checkPaintingCostProviderSchema();
 await checkHtmlSitemapDiscoveryLinks();
 await checkTestimonialsTrustSignals();
 

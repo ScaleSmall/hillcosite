@@ -6,6 +6,7 @@ import CTABanner from '../components/sections/CTABanner';
 import StatsAndTrust from '../components/sections/StatsAndTrust';
 import { businessConfig } from '../config/business';
 import { greaterAustinServiceAreas } from '../config/localSeo';
+import { canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
 
 const estimateSteps = [
   {
@@ -52,7 +53,7 @@ const faqs = [
 ];
 
 const FreeEstimate = () => {
-  const baseUrl = 'https://www.hillcopaint.com';
+  const baseUrl = siteBaseUrl;
   const estimateAction = {
     '@context': 'https://schema.org',
     '@type': 'QuoteAction',
@@ -66,9 +67,7 @@ const FreeEstimate = () => {
         'http://schema.org/MobileWebPlatform'
       ]
     },
-    provider: {
-      '@id': `${baseUrl}/#localbusiness`
-    },
+    provider: canonicalBusinessProvider,
     object: {
       '@type': 'Service',
       name: 'Painting estimate for Greater Austin homes and businesses',

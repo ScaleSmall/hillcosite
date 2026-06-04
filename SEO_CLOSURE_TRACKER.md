@@ -34,6 +34,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Organization, LocalBusiness, entity-facts.json, and citation-facts.json now carry the canonical logo and primary Austin homepage image identity signals.
 - Detailed Service schema providers now carry the canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals across Austin priority and service-location pages.
 - Services and service-area hub ItemList Service entries now carry the same canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals.
+- Gallery, free-estimate, pricing/cost, and AI fact offer schemas now reuse the same canonical LocalBusiness, HomeAndConstructionBusiness, HousePainter provider identity.
 - Testimonials review markup now ties each reviewed LocalBusiness back to the canonical website, Google Business Profile, and Google Knowledge Graph ID.
 - Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
@@ -139,6 +140,8 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including 12 marked-up testimonials with the Google review link and strengthened LocalBusiness review identity checks.
 - Cloudflare Pages deployment `https://71055123.hillcosite.pages.dev` deployed successfully on 2026-06-04 after strengthening services and service-area hub ItemList Service provider identity.
 - Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including the new hub ItemList canonical provider identity checks for `/services` and `/service-areas`.
+- Cloudflare Pages deployment `https://72f14028.hillcosite.pages.dev` deployed successfully on 2026-06-04 after centralizing canonical provider identity for gallery, estimate, pricing/cost, and AI fact offer schemas.
+- Live page-indexing and full SEO verifier runs on 2026-06-04 passed after that deployment, including canonical ImageGallery provider identity, canonical QuoteAction provider identity, 2/2 painting cost provider schema checks, and AI fact offer provider checks.
 - Commit `0712181` deployed successfully to Cloudflare production deployment `d79bab62-e192-479d-ba28-404aebce53ee`.
 - Follow-up documentation commit `4667c83` deployed successfully to Cloudflare production deployment `629c2244-7c3a-4954-a1ef-26de551c2250`.
 - Safe Cloudflare project check confirmed the latest production deployment had status `success`.

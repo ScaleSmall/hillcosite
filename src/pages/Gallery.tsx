@@ -12,6 +12,7 @@ import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ImageLightbox, { LightboxImage } from '../components/ImageLightbox';
 import { supabase } from '../lib/supabase';
 import { getSupabaseConfig } from '../lib/env';
+import { canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
 
 interface GalleryPhoto {
   id: string;
@@ -288,15 +289,13 @@ const Gallery = () => {
     '@type': 'ImageGallery',
     name: 'Hill Country Painting Gallery',
     description: 'Gallery of professional painting projects by Hill Country Painting in Austin, TX including before and after transformations',
-    url: 'https://www.hillcopaint.com/gallery',
-    provider: {
-      '@id': 'https://www.hillcopaint.com/#localbusiness'
-    },
+    url: `${siteBaseUrl}/gallery`,
+    provider: canonicalBusinessProvider,
     publisher: {
-      '@id': 'https://www.hillcopaint.com/#organization'
+      '@id': `${siteBaseUrl}/#organization`
     },
     about: {
-      '@id': 'https://www.hillcopaint.com/#localbusiness'
+      '@id': `${siteBaseUrl}/#localbusiness`
     },
     image: allPhotos.length > 0 ? allPhotos.map(photo => ({
       '@type': 'ImageObject',

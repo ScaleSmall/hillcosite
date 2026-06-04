@@ -2,6 +2,7 @@ import React from 'react';
 import { Home } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { usePricingData } from '../../hooks/usePricingData';
+import { canonicalBusinessProvider } from '../../lib/businessSchema';
 
 const TypicalHomeCosts = () => {
   const { data: pricingData } = usePricingData('painting-costs');
@@ -57,17 +58,7 @@ const TypicalHomeCosts = () => {
           "name": "Interior Painting - 1,500 sq ft Home Austin",
           "description": "Professional interior painting service for 1,500 sq ft homes in Austin",
           "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-          "provider": {
-            "@type": "Organization",
-            "name": "Hill Country Painting",
-            "telephone": "(512) 240-2246",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
-              "addressCountry": "US"
-            }
-          },
+          "provider": canonicalBusinessProvider,
           "areaServed": {
             "@type": "City",
             "name": "Austin, Texas"
@@ -90,17 +81,7 @@ const TypicalHomeCosts = () => {
           "name": "Exterior Painting - 1,500 sq ft Home Austin",
           "description": "Professional exterior painting service for 1,500 sq ft homes in Austin",
           "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-          "provider": {
-            "@type": "Organization",
-            "name": "Hill Country Painting",
-            "telephone": "(512) 240-2246",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
-              "addressCountry": "US"
-            }
-          },
+          "provider": canonicalBusinessProvider,
           "areaServed": {
             "@type": "City",
             "name": "Austin, Texas"
@@ -123,17 +104,7 @@ const TypicalHomeCosts = () => {
           "name": "Interior Painting - 2,200 sq ft Home Austin",
           "description": "Professional interior painting service for 2,200 sq ft homes in Austin",
           "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-          "provider": {
-            "@type": "Organization",
-            "name": "Hill Country Painting",
-            "telephone": "(512) 240-2246",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
-              "addressCountry": "US"
-            }
-          },
+          "provider": canonicalBusinessProvider,
           "areaServed": {
             "@type": "City",
             "name": "Austin, Texas"
@@ -156,17 +127,7 @@ const TypicalHomeCosts = () => {
           "name": "Exterior Painting - 2,200 sq ft Home Austin",
           "description": "Professional exterior painting service for 2,200 sq ft homes in Austin",
           "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-          "provider": {
-            "@type": "Organization",
-            "name": "Hill Country Painting",
-            "telephone": "(512) 240-2246",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
-              "addressCountry": "US"
-            }
-          },
+          "provider": canonicalBusinessProvider,
           "areaServed": {
             "@type": "City",
             "name": "Austin, Texas"
@@ -189,17 +150,7 @@ const TypicalHomeCosts = () => {
           "name": "Interior Painting - 3,000+ sq ft Home Austin",
           "description": "Professional interior painting service for 3,000+ sq ft homes in Austin",
           "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-          "provider": {
-            "@type": "Organization",
-            "name": "Hill Country Painting",
-            "telephone": "(512) 240-2246",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
-              "addressCountry": "US"
-            }
-          },
+          "provider": canonicalBusinessProvider,
           "areaServed": {
             "@type": "City",
             "name": "Austin, Texas"
@@ -222,17 +173,7 @@ const TypicalHomeCosts = () => {
           "name": "Exterior Painting - 3,000+ sq ft Home Austin",
           "description": "Professional exterior painting service for 3,000+ sq ft homes in Austin",
           "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-          "provider": {
-            "@type": "Organization",
-            "name": "Hill Country Painting",
-            "telephone": "(512) 240-2246",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Austin",
-              "addressRegion": "TX",
-              "addressCountry": "US"
-            }
-          },
+          "provider": canonicalBusinessProvider,
           "areaServed": {
             "@type": "City",
             "name": "Austin, Texas"

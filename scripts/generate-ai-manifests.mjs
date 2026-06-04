@@ -303,6 +303,36 @@ const socialProfiles = [
   businessFacts.googleBusinessProfile
 ];
 
+const canonicalBusinessProvider = {
+  '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
+  '@id': `${BASE_URL}/#localbusiness`,
+  name: businessFacts.name,
+  url: BASE_URL,
+  telephone: businessFacts.phone,
+  logo: businessFacts.logo,
+  image: [
+    businessFacts.primaryImage,
+    {
+      '@id': `${BASE_URL}/#logo`
+    }
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Austin',
+    addressRegion: 'TX',
+    addressCountry: 'US'
+  },
+  geo: businessFacts.geo,
+  hasMap: businessFacts.googleBusinessProfile,
+  sameAs: socialProfiles,
+  identifier: {
+    '@type': 'PropertyValue',
+    propertyID: 'kgmid',
+    value: businessFacts.googleKnowledgeGraphId,
+    url: businessFacts.googleBusinessProfile
+  }
+};
+
 function readSitemapUrls() {
   const sitemapPath = resolve(publicDir, 'sitemap.xml');
   const sitemapXml = readFileSync(sitemapPath, 'utf8');
@@ -557,9 +587,7 @@ const entityFacts = {
       '@type': 'Service',
       name: page.name,
       url: page.url,
-      provider: {
-        '@id': `${BASE_URL}/#localbusiness`
-      },
+      provider: canonicalBusinessProvider,
       areaServed: localAreaServed()
     }
   })),
@@ -571,9 +599,7 @@ const entityFacts = {
       itemOffered: {
         '@type': 'Service',
         name,
-        provider: {
-          '@id': `${BASE_URL}/#localbusiness`
-        },
+        provider: canonicalBusinessProvider,
         areaServed: localAreaServed()
       }
     }))
