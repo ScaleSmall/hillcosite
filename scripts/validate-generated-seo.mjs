@@ -245,6 +245,19 @@ const requiredServiceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills'
 ];
+const primaryServiceAreaHubRoutes = [
+  '/service-areas/austin',
+  '/service-areas/tarrytown',
+  '/service-areas/west-lake-hills',
+  '/service-areas/northwest-hills',
+  '/service-areas/west-lake-highlands',
+  '/service-areas/lakeway',
+  '/service-areas/leander',
+  '/service-areas/georgetown',
+  '/service-areas/round-rock',
+  '/service-areas/cedar-park',
+  '/service-areas/north-austin'
+];
 const requiredGuideFaqSchemaRoutes = [
   '/guides/best-paint-texas-heat',
   '/guides/hoa-color-tips-austin',
@@ -1415,6 +1428,21 @@ function run() {
   ].forEach(([sourceRoute, expectedText, expectedRoute]) => {
     assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute);
   });
+
+  for (const sourceRoute of ['/', '/services', '/service-areas']) {
+    const page = pages.get(sourceRoute);
+
+    if (!page) {
+      fail(`${sourceRoute}: missing page for primary service-area hub link validation`);
+      continue;
+    }
+
+    for (const serviceAreaRoute of primaryServiceAreaHubRoutes) {
+      if (!pageLinksToRoute(page, sourceRoute, serviceAreaRoute)) {
+        fail(`${sourceRoute}: primary hub should link to canonical service-area page ${serviceAreaRoute}`);
+      }
+    }
+  }
 
   [
     ['Austin exterior house painters', '/exterior-painting-austin'],

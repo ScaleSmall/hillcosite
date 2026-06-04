@@ -129,6 +129,19 @@ const serviceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills',
 ];
+const primaryServiceAreaHubRoutes = [
+  '/service-areas/austin',
+  '/service-areas/tarrytown',
+  '/service-areas/west-lake-hills',
+  '/service-areas/northwest-hills',
+  '/service-areas/west-lake-highlands',
+  '/service-areas/lakeway',
+  '/service-areas/leander',
+  '/service-areas/georgetown',
+  '/service-areas/round-rock',
+  '/service-areas/cedar-park',
+  '/service-areas/north-austin',
+];
 const visibleLocalTrustRoutes = ['/service-areas', ...serviceAreaFaqSchemaRoutes];
 const guideFaqSchemaRoutes = [
   '/guides/best-paint-texas-heat',
@@ -1483,6 +1496,30 @@ async function checkCoreServiceLocationGrids() {
   console.log(`Live core service-location grids checked: ${passed}/${coreServiceLocationGridRoutes.size}`);
 }
 
+async function checkPrimaryServiceAreaHubLinks() {
+  const sourceRoutes = ['/', '/services', '/service-areas'];
+  let passed = 0;
+
+  for (const route of sourceRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const linkedRoutes = new Set(
+      [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)]
+        .map(match => normalizeInternalRoute(match[1].trim()))
+        .filter(Boolean)
+    );
+    const missingRoutes = primaryServiceAreaHubRoutes.filter(serviceAreaRoute => !linkedRoutes.has(serviceAreaRoute));
+
+    if (response.status !== 200 || missingRoutes.length > 0) {
+      fail(`${route}: live primary hub is missing service-area links to ${missingRoutes.join(', ') || '(none)'}`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live primary service-area hub links checked: ${passed}/${sourceRoutes.length}`);
+}
+
 async function checkPriorityLocalBusinessSchema() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml`);
 
@@ -1843,6 +1880,7 @@ await checkAustinSchema();
 await checkServiceLocationServiceSchema();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
+await checkPrimaryServiceAreaHubLinks();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();
 await checkGuideFaqSchema();

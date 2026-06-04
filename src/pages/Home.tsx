@@ -26,8 +26,13 @@ const Home = () => {
     { name: 'Tarrytown', href: '/service-areas/tarrytown' },
     { name: 'West Lake Hills', href: '/service-areas/west-lake-hills' },
     { name: 'Northwest Hills', href: '/service-areas/northwest-hills' },
-    { name: 'Westlake Highlands', href: '/service-areas/west-lake-highlands' },
-    { name: 'Lakeway', href: '/service-areas/lakeway' }
+    { name: 'West Lake Highlands', href: '/service-areas/west-lake-highlands' },
+    { name: 'Lakeway', href: '/service-areas/lakeway' },
+    { name: 'Leander', href: '/service-areas/leander' },
+    { name: 'Georgetown', href: '/service-areas/georgetown' },
+    { name: 'Round Rock', href: '/service-areas/round-rock' },
+    { name: 'Cedar Park', href: '/service-areas/cedar-park' },
+    { name: 'North Austin', href: '/service-areas/north-austin' }
   ];
 
   const testimonials = [
