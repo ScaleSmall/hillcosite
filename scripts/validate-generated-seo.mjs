@@ -1889,6 +1889,18 @@ function run() {
     }
   }
 
+  for (const priorityTrustUrl of [
+    `${baseUrl}/about`,
+    `${baseUrl}/gallery`,
+    `${baseUrl}/testimonials`,
+    `${baseUrl}/faq`,
+    `${baseUrl}/free-estimate`
+  ]) {
+    if (!aiText.includes(priorityTrustUrl)) {
+      fail(`ai.txt must list priority trust and conversion URL ${priorityTrustUrl}`);
+    }
+  }
+
   for (const routePath of sitemapPaths) {
     const canonicalUrl = expectedCanonical(routePath);
     if (!llmsFullText.includes(canonicalUrl)) {

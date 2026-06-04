@@ -386,11 +386,15 @@ const sitemapCoreStaticRoutes = coreStaticRoutes.filter(route => sitemapRouteSet
 const sitemapGeoRoutes = getGeoRoutes().filter(route => sitemapRouteSet.has(route.path));
 const priorityAiCitationPagePaths = [
   '/',
+  '/about',
   '/services',
   '/services/interior-painting',
   '/services/exterior-painting',
   '/services/cabinet-refinishing',
   '/services/commercial',
+  '/gallery',
+  '/testimonials',
+  '/faq',
   '/service-areas',
   '/service-areas/austin',
   '/exterior-painting-austin',
@@ -400,7 +404,8 @@ const priorityAiCitationPagePaths = [
   '/service-areas/west-lake-hills',
   '/service-areas/tarrytown',
   '/service-areas/lakeway',
-  '/contact'
+  '/contact',
+  '/free-estimate'
 ];
 const staticUrlSet = new Set([
   ...sitemapRoutes.map(routeUrl)

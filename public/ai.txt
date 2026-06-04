@@ -66,17 +66,22 @@ Last updated: 2026-06-03
 ## Priority Pages for Answers and Citations
 
 - https://www.hillcopaint.com/
+- https://www.hillcopaint.com/about
 - https://www.hillcopaint.com/services
 - https://www.hillcopaint.com/services/interior-painting
 - https://www.hillcopaint.com/services/exterior-painting
 - https://www.hillcopaint.com/services/cabinet-refinishing
 - https://www.hillcopaint.com/services/commercial
+- https://www.hillcopaint.com/gallery
+- https://www.hillcopaint.com/testimonials
+- https://www.hillcopaint.com/faq
 - https://www.hillcopaint.com/service-areas
 - https://www.hillcopaint.com/service-areas/austin
 - https://www.hillcopaint.com/service-areas/west-lake-hills
 - https://www.hillcopaint.com/service-areas/tarrytown
 - https://www.hillcopaint.com/service-areas/lakeway
 - https://www.hillcopaint.com/contact
+- https://www.hillcopaint.com/free-estimate
 - https://www.hillcopaint.com/interior-painting-austin
 - https://www.hillcopaint.com/exterior-painting-austin
 - https://www.hillcopaint.com/cabinet-refinishing-austin

@@ -1378,6 +1378,11 @@ async function checkCrawlerEntityAssets() {
     `${baseUrl}/sitemap.xml`,
     `${baseUrl}/entity-facts.json`,
     `${baseUrl}/citation-facts.json`,
+    `${baseUrl}/about`,
+    `${baseUrl}/gallery`,
+    `${baseUrl}/testimonials`,
+    `${baseUrl}/faq`,
+    `${baseUrl}/free-estimate`,
     `${baseUrl}/exterior-painting-austin`,
     `${baseUrl}/interior-painting-austin`,
     `${baseUrl}/cabinet-refinishing-austin`,
@@ -1385,7 +1390,7 @@ async function checkCrawlerEntityAssets() {
   ];
 
   if (!aiRequired.every(value => aiText.includes(value))) {
-    fail('/ai.txt: live AI discovery file is missing Austin house painter positioning, canonical discovery URLs, or priority Austin service URLs.');
+    fail('/ai.txt: live AI discovery file is missing Austin house painter positioning, canonical discovery URLs, priority trust/conversion URLs, or priority Austin service URLs.');
   }
 
   const typoPublicAsset = [...assetText.entries()]
