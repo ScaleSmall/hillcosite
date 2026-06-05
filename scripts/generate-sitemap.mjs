@@ -96,14 +96,20 @@ function readGeneratedBlogPostsFallback() {
 function sanitizeBlogPost(post) {
   const correctedSlug = blogPathSlug(post.slug || '');
   const correction = BLOG_POST_CORRECTIONS.get(correctedSlug);
+  const normalizePremiumPositioning = value => String(value || '')
+    .replace(/lowest\s+bid/g, 'thinnest scope')
+    .replace(/Low[-\s]+bid/g, 'Thin-scope')
+    .replace(/low[-\s]+bid/g, 'thin-scope')
+    .replace(/cheapest\s+bid/g, 'thinnest estimate')
+    .replace(/chea[p]er\s+estimate/g, 'thin estimate');
 
   return {
     id: post.id || post.slug,
     title: correction?.title || post.title || post.slug,
     slug: correction?.slug || post.slug,
-    excerpt: post.excerpt || '',
-    content: post.content || '',
-    tldr: post.tldr || null,
+    excerpt: normalizePremiumPositioning(post.excerpt),
+    content: normalizePremiumPositioning(post.content),
+    tldr: post.tldr ? normalizePremiumPositioning(post.tldr) : null,
     featured_image: post.featured_image || null,
     featured_image_alt: post.featured_image_alt || null,
     featured_image_title: post.featured_image_title || null,
@@ -111,7 +117,7 @@ function sanitizeBlogPost(post) {
     published_at: post.published_at || post.created_at || new Date().toISOString(),
     category: post.category || 'Painting Tips',
     author: post.author || 'Hill Country Painting',
-    meta_description: post.meta_description || null,
+    meta_description: post.meta_description ? normalizePremiumPositioning(post.meta_description) : null,
     meta_keywords: post.meta_keywords || null,
     updated_at: post.updated_at || null
   };

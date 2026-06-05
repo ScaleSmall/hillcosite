@@ -371,7 +371,7 @@ const Home = () => {
                   Cabinet Painting
                 </h3>
                 <p className="text-brand-gray-600 mb-4">
-                  Update your kitchen at a fraction of replacement cost. Durable finish that withstands daily use.
+                  Update your existing kitchen layout with controlled prep and a durable finish that withstands daily use.
                 </p>
                 <span className="text-brand-azure font-semibold group-hover:underline">
                   Learn more →

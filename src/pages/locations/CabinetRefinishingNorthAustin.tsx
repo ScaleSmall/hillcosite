@@ -12,7 +12,7 @@ const config: ServiceLocationConfig = {
   },
   location: location,
   content: {
-    heroSubtitle: "Cabinet refinishing in North Austin. Factory-quality spray finish on your existing cabinets at a fraction of replacement cost.",
+    heroSubtitle: "Cabinet refinishing in North Austin. Factory-quality spray finish planned around your existing cabinet layout.",
     introText: "Kitchen cabinet refinishing is one of the highest-impact home updates available to North Austin homeowners — transforming dated or builder-grade cabinets into a fresh, like-new kitchen without the cost and disruption of a full renovation. We serve The Domain Area, Balcones, Milwood, and all North Austin neighborhoods.",
     benefits: [
     "Spray-applied premium cabinet finish",

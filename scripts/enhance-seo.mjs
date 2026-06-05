@@ -191,7 +191,7 @@ const routeMetadata = {
     title: 'Cabinet Painting & Staining — Hill Country Painting',
     description: 'Kitchen cabinet painting and staining. Transform your kitchen affordably. Professional spray finishes. Austin cabinet refinishing experts.',
     h1: 'Cabinet Painting & Staining Services',
-    content: 'Professional cabinet refinishing services in Austin. Transform your kitchen with expert painting and staining at a fraction of replacement cost.'
+    content: 'Professional cabinet refinishing services in Austin. Transform your kitchen with expert painting, staining, and a durable finish on your existing cabinet layout.'
   },
   '/services/commercial': {
     title: 'Commercial Painting — Hill Country Painting',
@@ -359,25 +359,25 @@ const routeMetadata = {
     title: 'Cabinet Refinishing Tarrytown — Hill Country Painting',
     description: 'Professional cabinet painting in Tarrytown, Austin TX. Kitchen cabinet refinishing specialists. Free estimates. Insured crew. 2-year warranty.',
     h1: 'Cabinet Refinishing in Tarrytown',
-    content: 'Professional cabinet refinishing services for Tarrytown kitchens. Expert painting and staining at a fraction of replacement cost.'
+    content: 'Professional cabinet refinishing services for Tarrytown kitchens. Expert painting, staining, prep, and durable finish planning for existing cabinets.'
   },
   '/cabinet-refinishing-northwest-hills': {
     title: 'Cabinet Refinishing Northwest Hills — Hill Country Painting',
     description: 'Professional cabinet painting in Northwest Hills, Austin TX. Kitchen cabinet refinishing specialists. Free estimates. 2-year warranty.',
     h1: 'Cabinet Refinishing in Northwest Hills',
-    content: 'Professional cabinet refinishing services for Northwest Hills kitchens. Expert painting and staining at a fraction of replacement cost.'
+    content: 'Professional cabinet refinishing services for Northwest Hills kitchens. Expert painting, staining, prep, and durable finish planning for existing cabinets.'
   },
   '/cabinet-refinishing-west-lake-highlands': {
     title: 'Cabinet Refinishing Westlake Highlands — Hill Country Painting',
     description: 'Professional cabinet painting in Westlake Highlands, Austin TX. Kitchen cabinet refinishing specialists. Free estimates. 2-year warranty.',
     h1: 'Cabinet Refinishing in Westlake Highlands',
-    content: 'Professional cabinet refinishing services for Westlake Highlands kitchens. Expert painting and staining at a fraction of replacement cost.'
+    content: 'Professional cabinet refinishing services for Westlake Highlands kitchens. Expert painting, staining, prep, and durable finish planning for existing cabinets.'
   },
   '/cabinet-refinishing-lakeway': {
     title: 'Cabinet Refinishing Lakeway — Hill Country Painting',
     description: 'Professional cabinet painting in Lakeway, TX. Kitchen cabinet refinishing specialists. Free estimates. Insured crew. 2-year warranty.',
     h1: 'Cabinet Refinishing in Lakeway',
-    content: 'Professional cabinet refinishing services for Lakeway kitchens. Expert painting and staining at a fraction of replacement cost.'
+    content: 'Professional cabinet refinishing services for Lakeway kitchens. Expert painting, staining, prep, and durable finish planning for existing cabinets.'
   },
   '/commercial-painting-tarrytown': {
     title: 'Commercial Painting Tarrytown — Hill Country Painting',
@@ -420,7 +420,7 @@ const routeMetadata = {
     title: 'Cabinet Refinishing Leander TX — Hill Country Painting',
     description: 'Professional cabinet refinishing in Leander, TX. Factory-quality spray finish for Crystal Falls, Travisso, and Leander kitchens. Free estimates.',
     h1: 'Cabinet Refinishing in Leander',
-    content: 'Transform your Leander kitchen with professional cabinet refinishing. Spray-applied premium finish on your existing cabinets at a fraction of replacement cost.'
+    content: 'Transform your Leander kitchen with professional cabinet refinishing. Spray-applied premium finish planned around your existing cabinet layout.'
   },
   '/commercial-painting-leander': {
     title: 'Commercial Painting Leander TX — Hill Country Painting',
@@ -470,7 +470,7 @@ const routeMetadata = {
     title: 'Cabinet Refinishing Round Rock TX — Hill Country Painting',
     description: 'Professional cabinet refinishing in Round Rock, TX. Factory-quality spray finish for Forest Creek, Mayfield Ranch, and Round Rock kitchens. Free estimates.',
     h1: 'Cabinet Refinishing in Round Rock',
-    content: 'Transform your Round Rock kitchen with professional cabinet refinishing. Spray-applied premium finish on existing cabinets at a fraction of replacement cost.'
+    content: 'Transform your Round Rock kitchen with professional cabinet refinishing. Spray-applied premium finish planned around your existing cabinet layout.'
   },
   '/commercial-painting-round-rock': {
     title: 'Commercial Painting Round Rock TX — Hill Country Painting',

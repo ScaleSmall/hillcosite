@@ -30,10 +30,10 @@ const Services = () => {
     },
     {
       title: 'Cabinet Painting',
-      description: 'Transform your kitchen for significantly less than replacement. Professional cabinet painting with custom colors and factory-quality finishes.',
+      description: 'Transform your existing kitchen layout with professional cabinet painting, custom colors, controlled prep, and factory-quality finishes.',
       image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800',
       link: '/services/cabinet-refinishing',
-      features: ['Custom painting', 'Factory sprayed finish', 'A cost-effective alternative to replacement']
+      features: ['Custom painting', 'Factory sprayed finish', 'Existing cabinet layout planning']
     },
     {
       title: 'Commercial Painting',
@@ -239,7 +239,7 @@ const Services = () => {
           },
           {
             title: 'Cabinet Painting Austin',
-            description: 'Kitchen and bathroom cabinet painting services at a fraction of replacement cost.',
+            description: 'Kitchen and bathroom cabinet painting services with controlled prep and durable finishes for existing cabinets.',
             href: '/cabinet-refinishing-austin'
           },
           {

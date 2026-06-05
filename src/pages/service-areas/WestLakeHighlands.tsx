@@ -153,7 +153,7 @@ const WestLakeHighlands = () => {
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <Paintbrush className="w-10 h-10 text-brand-azure mb-4" />
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">Cabinet Refinishing</h3>
-              <p className="text-brand-gray-600">Transform kitchens and bathrooms with professional cabinet painting at a fraction of replacement cost.</p>
+              <p className="text-brand-gray-600">Transform kitchens and bathrooms with professional cabinet painting planned around existing cabinetry.</p>
             </div>
             <div className="bg-white rounded-xl p-6 shadow-sm">
               <Home className="w-10 h-10 text-brand-azure mb-4" />

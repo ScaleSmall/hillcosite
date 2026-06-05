@@ -12,7 +12,7 @@ const config: ServiceLocationConfig = {
   },
   location: location,
   content: {
-    heroSubtitle: "Cabinet refinishing in Georgetown. Factory-quality spray finish on your existing cabinets at a fraction of replacement cost.",
+    heroSubtitle: "Cabinet refinishing in Georgetown. Factory-quality spray finish planned around your existing cabinet layout.",
     introText: "Kitchen cabinet refinishing is one of the highest-impact home updates available to Georgetown homeowners — transforming dated or builder-grade cabinets into a fresh, like-new kitchen without the cost and disruption of a full renovation. We serve Sun City Georgetown, Berry Creek, Teravista, and all Georgetown neighborhoods.",
     benefits: [
     "Spray-applied premium cabinet finish",

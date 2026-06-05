@@ -69,7 +69,7 @@ const config: ServiceLocationConfig = {
     },
     {
         "question": "How do you estimate commercial painting projects in Cedar Park?",
-        "answer": "We provide a written estimate that covers area-by-area scope, product specifications, project timeline, and total cost. For larger commercial projects, we can phase the work to stay within budget while meeting your timeline."
+        "answer": "We provide a written estimate that covers area-by-area scope, product specifications, project timeline, and total cost. For larger commercial projects, we can phase the work around priority areas while meeting your timeline."
     }
 ],
     testimonials: [

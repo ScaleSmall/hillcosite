@@ -64,7 +64,7 @@ const InteriorPainting = () => {
       name: 'leslie lyon-house',
       location: 'Austin',
       rating: 5,
-      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Fantastic value - the price point is beyond fair.',
+      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Fantastic value - the scope felt clear and fair.',
       initials: 'LL'
     },
     {

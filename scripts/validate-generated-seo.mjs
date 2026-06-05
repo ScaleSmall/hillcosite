@@ -140,6 +140,23 @@ const businessWeekdayOpens = '08:00';
 const businessWeekdayCloses = '18:00';
 const minimumAggregateRatingValue = 4.5;
 const minimumAggregateReviewCount = 100;
+const bannedVisibleValuePositioningSignals = [
+  'fraction of replacement cost',
+  'all budgets',
+  'budget options',
+  'budget requirements',
+  'budget requires',
+  'cheaper',
+  'minor savings',
+  'cost-effective',
+  'price point',
+  'lowest bid',
+  'cheapest bid',
+  'low-bid',
+  'saved the homeowners',
+  'on budget',
+  'stay within budget',
+];
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
 const allowedNonSitemapLinks = new Set(['/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
@@ -765,6 +782,19 @@ function normalizeRoutePath(value, currentRoute = '/') {
 
 function normalizeAnchorText(value) {
   return value
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function visibleTextFromHtml(html) {
+  return String(html || '')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
@@ -2562,11 +2592,18 @@ function run() {
         fail(`${routePath}: prerendered sitemap page contains the generic application error state`);
       }
 
-      const visibleText = normalizeAnchorText(html);
+      const visibleText = visibleTextFromHtml(html);
       const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
 
       if (lowVisibleCostRanges.length > 0) {
         fail(`${routePath}: visible cost copy must not show project ranges below $6,000 (${[...new Set(lowVisibleCostRanges)].join(', ')})`);
+      }
+
+      const visibleTextLower = visibleText.toLowerCase();
+      const bannedValueSignals = bannedVisibleValuePositioningSignals.filter(signal => visibleTextLower.includes(signal));
+
+      if (bannedValueSignals.length > 0) {
+        fail(`${routePath}: visible value-positioning copy should support full-scope $6,000+ projects, not bargain framing (${bannedValueSignals.join(', ')})`);
       }
 
       const lowStructuredPrices = findSubMinimumStructuredPrices(schemaItems);

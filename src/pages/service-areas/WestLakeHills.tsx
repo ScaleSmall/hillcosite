@@ -15,7 +15,7 @@ const WestLakeHills = () => {
   const westLakeHillsFAQs = [
     {
       question: 'Do you specialize in luxury homes and high-end finishes in West Lake Hills?',
-      answer: 'Yes. West Lake Hills homes demand premium materials, tight craftsmanship, and painters who understand what a luxury finish actually means at this price point. We use fine-finish products from Benjamin Moore Aura, Sherwin-Williams Emerald, and specialty lines for millwork and cabinetry. Every project includes dedicated prep, careful masking of stone, wood, and metal details, and a final walk-through with the homeowner before we leave the site.'
+      answer: 'Yes. West Lake Hills homes demand premium materials, tight craftsmanship, and painters who understand what a luxury finish actually requires. We use fine-finish products from Benjamin Moore Aura, Sherwin-Williams Emerald, and specialty lines for millwork and cabinetry. Every project includes dedicated prep, careful masking of stone, wood, and metal details, and a final walk-through with the homeowner before we leave the site.'
     },
     {
       question: 'How do you handle hillside access and challenging terrain in West Lake Hills?',

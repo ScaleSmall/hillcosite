@@ -92,8 +92,8 @@ const PaintingCosts = () => {
       answer: 'Key factors include home size, paint quality, surface preparation needs, number of colors, accessibility, repairs, masking requirements, and timeline. Austin\'s climate also affects exterior prep requirements.'
     },
     {
-      question: 'Is it cheaper to paint in winter in Austin?',
-      answer: 'Interior painting rates are consistent year-round. Exterior painting may have slight seasonal pricing, but weather windows are more important than minor savings in Austin\'s variable climate.'
+      question: 'Does season affect painting pricing in Austin?',
+      answer: 'Interior painting rates are consistent year-round. Exterior painting may have slight seasonal differences, but proper weather windows and surface conditions matter more than chasing a small seasonal change in Austin\'s variable climate.'
     },
     {
       question: 'Do Austin painting contractors charge more for two-story homes?',

@@ -276,7 +276,7 @@ const Blog = () => {
           { text: 'Color and design advice for Austin aesthetics' },
           { text: 'Project planning guidance for Austin homeowners' },
           { text: 'Seasonal considerations for Texas weather' },
-          { text: 'Cost-effective solutions and maintenance tips' }
+          { text: 'Full-scope planning and maintenance tips' }
         ]}
         image="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Austin painting blog - Hill Country Painting expert tips and advice"

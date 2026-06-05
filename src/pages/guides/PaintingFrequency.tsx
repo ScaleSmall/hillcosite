@@ -111,7 +111,7 @@ const PaintingFrequency = () => {
     },
     {
       question: 'Should I paint all sides of my house at the same time?',
-      answer: 'Ideally yes, for color consistency and efficiency. However, you can prioritize the most sun-damaged sides (usually south and west) first if budget requires staged painting.'
+      answer: 'Ideally yes, for color consistency and efficiency. However, you can prioritize the most sun-damaged sides, usually south and west, first when a written scope calls for staged painting.'
     }
   ];
 

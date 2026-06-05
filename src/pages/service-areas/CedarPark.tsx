@@ -31,7 +31,7 @@ const CedarPark = () => {
     },
     {
       question: 'Do you offer cabinet painting in Cedar Park?',
-      answer: 'Cabinet refinishing is extremely popular in Cedar Park — it is the most cost-effective way to transform a kitchen without a full renovation. We use a spray-application process with multiple coats and light sanding between coats for a smooth, durable finish that rivals factory-painted cabinets. White and off-white shaker cabinets are the most common request, but we work in any color.'
+      answer: 'Cabinet refinishing is extremely popular in Cedar Park because it transforms an existing kitchen layout without the disruption of a full renovation. We use a spray-application process with multiple coats and light sanding between coats for a smooth, durable finish that rivals factory-painted cabinets. White and off-white shaker cabinets are the most common request, but we work in any color.'
     }
   ];
 
@@ -47,7 +47,7 @@ const CedarPark = () => {
       name: 'Sarah K.',
       location: 'Buttercup Creek, Cedar Park',
       rating: 5,
-      text: 'We had builder-grade paint on everything from when the house was built in 2019. Hill Country Painting transformed every room with proper paint and the difference is remarkable. They were on schedule, on budget, and cleaned up perfectly every day.',
+      text: 'We had builder-grade paint on everything from when the house was built in 2019. Hill Country Painting transformed every room with proper paint and the difference is remarkable. They were on schedule, clear about the scope, and cleaned up perfectly every day.',
       initials: 'SK'
     }
   ];

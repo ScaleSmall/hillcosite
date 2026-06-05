@@ -33,7 +33,7 @@ const ServicesGrid = ({ services, title, subtitle, surface = 'white' }: Services
     },
     {
       title: "Cabinet Painting",
-      description: "Transform your kitchen with professional cabinet painting at a fraction of replacement cost.",
+      description: "Transform your kitchen with professional cabinet painting, controlled prep, and a durable finish on your existing cabinet layout.",
       image: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800",
       link: "/services/cabinet-refinishing"
     },

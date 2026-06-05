@@ -27,7 +27,7 @@ const Leander = () => {
     },
     {
       question: 'Can you match and repair areas of existing paint without doing a full repaint?',
-      answer: 'Yes, though it depends on the age and fade level of the existing paint. On newer homes (under 5 years) with limited sun damage, touch-up matching is often feasible. On homes where the exterior has chalked, faded, or shows significant UV shift, a full repaint is usually the more cost-effective approach because touch-ups will remain visible. We assess this during the estimate visit and give you an honest recommendation.'
+      answer: 'Yes, though it depends on the age and fade level of the existing paint. On newer homes (under 5 years) with limited sun damage, touch-up matching is often feasible. On homes where the exterior has chalked, faded, or shows significant UV shift, a full repaint is usually the better long-term scope because touch-ups will remain visible. We assess this during the estimate visit and give you an honest recommendation.'
     },
     {
       question: 'Do you do interior painting for new construction upgrades in Leander?',
@@ -120,7 +120,7 @@ const Leander = () => {
               Leander has been one of the fastest-growing cities in the country for several consecutive years, and the housing stock reflects that — predominantly master-planned communities built in the last 10–15 years, with new phases still under construction in Bryson, Travisso, and Crystal Falls. This creates two distinct painting contexts: newer homes with builder-grade finishes ready for an upgrade, and slightly older homes from the early build-out phases showing weather wear.
             </p>
             <p>
-              Leander's position on Central Texas limestone terrain means significant UV intensity and temperature swings — over 100°F in summer, with occasional freeze events in winter. Exterior coatings here need to handle thermal cycling that can crack cheaper products at caulk joints and seams. We prep these areas carefully and use flexible, high-adhesion caulk before applying premium exterior paint.
+              Leander's position on Central Texas limestone terrain means significant UV intensity and temperature swings — over 100°F in summer, with occasional freeze events in winter. Exterior coatings here need to handle thermal cycling that can crack entry-level products at caulk joints and seams. We prep these areas carefully and use flexible, high-adhesion caulk before applying premium exterior paint.
             </p>
           </div>
         </div>
@@ -134,7 +134,7 @@ const Leander = () => {
               { icon: Home, title: 'New Construction Exterior Upgrades', description: 'Builder-grade exterior paint starts showing fade and chalk faster than homeowners expect. We upgrade to premium UV-resistant coatings that significantly extend the time between repaints, with HOA color approval handled.' },
               { icon: Sun, title: 'Heat and UV Resilient Exterior Coatings', description: 'Leander\'s sun exposure is real. We use products rated specifically for Central Texas heat — Sherwin-Williams Duration and Emerald Exterior being the most common — with higher opacity for better UV blocking on south and west elevations.' },
               { icon: CheckCircle, title: 'Interior Builder-Grade Upgrades', description: 'Every Leander new construction home can benefit from upgraded interior paint. We replace flat builder paint with scrubbable finishes in living areas and premium sheen in kitchens and baths, with precise trim and ceiling work.' },
-              { icon: Home, title: 'Cabinet Refinishing', description: 'Kitchen cabinet refinishing is the single highest-impact update for most Leander homes. We spray-apply multiple coats of premium cabinet finish for a result that looks factory-painted at a fraction of replacement cost.' }
+              { icon: Home, title: 'Cabinet Refinishing', description: 'Kitchen cabinet refinishing is the single highest-impact update for most Leander homes. We spray-apply multiple coats of premium cabinet finish for a result that looks factory-painted on the existing cabinet layout.' }
             ].map(({ icon: Icon, title, description }) => (
               <div key={title} className="bg-white rounded-xl p-6 shadow-sm border border-brand-gray-100">
                 <Icon className="w-8 h-8 text-brand-green-500 mb-3" />

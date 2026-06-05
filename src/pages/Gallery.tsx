@@ -788,7 +788,7 @@ const Gallery = () => {
                     Featured: Custom Kitchen Painting
                   </h3>
                   <p className="text-brand-gray-600 mb-6 leading-body">
-                    Complete cabinet painting with custom color matching. This project saved the homeowners significantly compared to full replacement while achieving a completely fresh, modern look that transforms the entire kitchen space.
+                    Complete cabinet painting with custom color matching. This project preserved the existing cabinet layout while achieving a completely fresh, modern look that transforms the entire kitchen space.
                   </p>
                   <div className="flex flex-wrap gap-4 mb-6">
                     <span className="px-3 py-1 bg-brand-gray-100 text-brand-azureDark rounded-full text-sm font-medium">

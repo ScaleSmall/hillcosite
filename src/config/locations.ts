@@ -193,7 +193,7 @@ export const locations: Record<string, LocationData> = {
       'New construction specialists',
       'Dell/tech campus scheduling',
       'Diverse home style knowledge',
-      'Quality finishes for all budgets',
+      'Clear full-scope finish planning',
       'Reliable Round Rock scheduling'
     ],
     serviceAreaSlug: 'round-rock',

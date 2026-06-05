@@ -33,7 +33,7 @@ const FAQ = () => {
     },
     {
       question: 'What paint brands do you use?',
-      answer: 'We use premium paint brands selected for durability, coverage, and finish quality. We\'ll recommend the right options for your specific project and budget requirements.'
+      answer: 'We use premium paint brands selected for durability, coverage, and finish quality. We\'ll recommend the right options for your specific project scope, surfaces, and finish expectations.'
     },
     {
       question: 'Can you match any color?',
@@ -45,7 +45,7 @@ const FAQ = () => {
     },
     {
       question: 'What makes your cabinet painting different?',
-      answer: 'Our cabinet painting process includes complete disassembly and professional spray finishing in controlled conditions. Results look like new cabinets at a fraction of replacement cost.'
+      answer: 'Our cabinet painting process includes complete disassembly and professional spray finishing in controlled conditions. Results give existing cabinets a durable, updated finish without the disruption of a full cabinet replacement.'
     },
     {
       question: 'Do you handle exterior painting for Austin homes?',

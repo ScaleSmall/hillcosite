@@ -12,8 +12,8 @@ const config: ServiceLocationConfig = {
   },
   location: location,
   content: {
-    heroSubtitle: "Cabinet refinishing in Cedar Park. Factory-quality spray finish on your existing cabinets at a fraction of replacement cost.",
-    introText: "Kitchen cabinet refinishing is one of the highest-impact home updates available to Cedar Park homeowners — transforming dated or builder-grade cabinets into a fresh, like-new kitchen without the cost and disruption of a full renovation. We serve Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, and all Cedar Park neighborhoods.",
+    heroSubtitle: "Cabinet refinishing in Cedar Park. Factory-quality spray finish planned around your existing cabinet layout.",
+    introText: "Kitchen cabinet refinishing is one of the highest-impact home updates available to Cedar Park homeowners, transforming dated or builder-grade cabinets into a fresh, like-new kitchen without the disruption of a full renovation. We serve Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, and all Cedar Park neighborhoods.",
     benefits: [
     "Spray-applied premium cabinet finish",
     "Multiple coats with sanding between",

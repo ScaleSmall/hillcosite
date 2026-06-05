@@ -287,7 +287,7 @@ const CabinetRefinishing = () => {
               Proper cabinet painting requires thorough degreasing, sanding, bonding primer, and multiple finish coats applied in a controlled environment. Shortcuts in any of these steps lead to early failure and frustration.
             </p>
             <p>
-              When done correctly, painted cabinets last 7-10 years and provide a factory-quality finish at a fraction of replacement cost. Clear communication throughout prevents surprises and ensures you know exactly what to expect.
+              When done correctly, painted cabinets last 7-10 years and provide a factory-quality finish on your existing cabinet layout. Clear communication throughout prevents surprises and ensures you know exactly what to expect.
             </p>
           </div>
         </div>

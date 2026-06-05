@@ -61,6 +61,23 @@ const canonicalSocialProfileUrls = [
 ];
 const minimumAggregateRatingValue = 4.5;
 const minimumAggregateReviewCount = 100;
+const bannedVisibleValuePositioningSignals = [
+  'fraction of replacement cost',
+  'all budgets',
+  'budget options',
+  'budget requirements',
+  'budget requires',
+  'cheaper',
+  'minor savings',
+  'cost-effective',
+  'price point',
+  'lowest bid',
+  'cheapest bid',
+  'low-bid',
+  'saved the homeowners',
+  'on budget',
+  'stay within budget',
+];
 const greaterAustinServiceCounties = [
   'Travis County',
   'Williamson County',
@@ -1090,6 +1107,7 @@ async function checkSitemapPages() {
   const staleIdentityProblems = [];
   const lowVisibleCostProblems = [];
   const lowStructuredPriceProblems = [];
+  const valuePositioningProblems = [];
 
   async function worker() {
     while (nextIndex < urls.length) {
@@ -1137,8 +1155,12 @@ async function checkSitemapPages() {
       const heroHtml = firstHeroSectionHtml(html);
       const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
       const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
-      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleTextFromHtml(html));
+      const visibleText = visibleTextFromHtml(html);
+      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
       const lowStructuredPrices = findSubMinimumStructuredPrices(parseJsonLd(html, route));
+      const valuePositioningSignals = bannedVisibleValuePositioningSignals.filter(signal =>
+        visibleText.toLowerCase().includes(signal)
+      );
 
       if (title) {
         sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), route]);
@@ -1166,6 +1188,10 @@ async function checkSitemapPages() {
 
       if (lowStructuredPrices.length > 0) {
         lowStructuredPriceProblems.push({ url, prices: [...new Set(lowStructuredPrices)] });
+      }
+
+      if (valuePositioningSignals.length > 0) {
+        valuePositioningProblems.push({ url, signals: valuePositioningSignals });
       }
 
       for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
@@ -1269,6 +1295,18 @@ async function checkSitemapPages() {
 
   if (lowStructuredPriceProblems.length === 0) {
     console.log('Live structured pricing guard: no project schema values below $6,000 found on sitemap pages');
+  }
+
+  for (const problem of valuePositioningProblems.slice(0, 10)) {
+    fail(`${problem.url}: live visible value-positioning copy should support full-scope $6,000+ projects, not bargain framing (${problem.signals.join(', ')})`);
+  }
+
+  if (valuePositioningProblems.length > 10) {
+    fail(`${valuePositioningProblems.length - 10} additional live value-positioning problems not shown.`);
+  }
+
+  if (valuePositioningProblems.length === 0) {
+    console.log('Live value-positioning guard: no bargain framing found on sitemap pages');
   }
 
   const duplicateMetadataProblems = [

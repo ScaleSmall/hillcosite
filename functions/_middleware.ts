@@ -477,7 +477,7 @@ const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answe
     },
     {
       question: 'Does paint brand matter in Texas heat?',
-      answer: 'Yes, brand quality matters significantly in Texas. Premium brands like Sherwin Williams, Benjamin Moore, and PPG offer superior heat and UV resistance compared to budget options.',
+      answer: 'Yes, brand quality matters significantly in Texas. Premium brands like Sherwin Williams, Benjamin Moore, and PPG offer superior heat and UV resistance compared with entry-level coatings.',
     },
     {
       question: 'Can I paint my house in summer in Central Texas?',
@@ -529,7 +529,7 @@ const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answe
     },
     {
       question: 'Should I paint all sides of my house at the same time?',
-      answer: 'Ideally yes, for color consistency and efficiency. However, you can prioritize the most sun-damaged sides (usually south and west) first if budget requires staged painting.',
+      answer: 'Ideally yes, for color consistency and efficiency. However, you can prioritize the most sun-damaged sides, usually south and west, first when a written scope calls for staged painting.',
     },
   ],
   '/guides/painting-costs-austin': [
@@ -542,8 +542,8 @@ const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answe
       answer: "Key factors include home size, paint quality, surface preparation needs, number of colors, accessibility, and timeline. Austin's climate also affects exterior prep requirements.",
     },
     {
-      question: 'Is it cheaper to paint in winter in Austin?',
-      answer: "Interior painting rates are consistent year-round. Exterior painting may have slight seasonal pricing, but weather windows are more important than minor savings in Austin's variable climate.",
+      question: 'Does season affect painting pricing in Austin?',
+      answer: "Interior painting rates are consistent year-round. Exterior painting may have slight seasonal differences, but proper weather windows and surface conditions matter more than chasing a small seasonal change in Austin's variable climate.",
     },
     {
       question: 'Do Austin painting contractors charge more for two-story homes?',

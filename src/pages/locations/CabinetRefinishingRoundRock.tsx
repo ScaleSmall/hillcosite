@@ -12,7 +12,7 @@ const config: ServiceLocationConfig = {
   },
   location: location,
   content: {
-    heroSubtitle: "Cabinet refinishing in Round Rock. Factory-quality spray finish on your existing cabinets at a fraction of replacement cost.",
+    heroSubtitle: "Cabinet refinishing in Round Rock. Factory-quality spray finish planned around your existing cabinet layout.",
     introText: "Kitchen cabinet refinishing is one of the highest-impact home updates available to Round Rock homeowners — transforming dated or builder-grade cabinets into a fresh, like-new kitchen without the cost and disruption of a full renovation. We serve Forest Creek, Mayfield Ranch, Brushy Creek, and all Round Rock neighborhoods.",
     benefits: [
     "Spray-applied premium cabinet finish",
