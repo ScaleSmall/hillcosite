@@ -19,9 +19,22 @@ const CACHE_KEY = 'hillco_pricing_data';
 const CACHE_DURATION = 3600000;
 const MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
 const MINIMUM_AVERAGE_PROJECT_PRICE = 8500;
+const PRICING_KEY_MINIMUMS: Record<string, number> = {
+  cost_factor_home_size_interior: 6500,
+  cost_factor_home_size_exterior: 7000,
+  faq_2000sqft_interior: 6500,
+  faq_2000sqft_exterior: 8500,
+  house_1500_interior: 6250,
+  house_1500_exterior: 6750,
+  house_2200_interior: 6500,
+  house_2200_exterior: 8500,
+  house_3000_interior: 9000,
+  house_3000_exterior: 12000,
+  stat_average_project: MINIMUM_AVERAGE_PROJECT_PRICE
+};
 
 function minimumForPricingKey(key: string): number {
-  return key === 'stat_average_project' ? MINIMUM_AVERAGE_PROJECT_PRICE : MINIMUM_VISIBLE_PROJECT_PRICE;
+  return PRICING_KEY_MINIMUMS[key] || MINIMUM_VISIBLE_PROJECT_PRICE;
 }
 
 function formatCurrency(value: number): string {

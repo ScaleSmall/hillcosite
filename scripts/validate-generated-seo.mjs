@@ -312,6 +312,16 @@ const requiredRobotsAllowAgents = [
   'CCBot',
   'Amazonbot',
 ];
+const crawlerSpecificMetaNames = [
+  'googlebot',
+  'bingbot',
+  'gptbot',
+  'chatgpt-user',
+  'perplexitybot',
+  'claudebot',
+  'anthropic-ai',
+  'cohere-ai',
+];
 const requiredServiceAreaServiceLocationSlugs = new Map([
   ['/service-areas/austin', 'austin'],
   ['/service-areas/tarrytown', 'tarrytown'],
@@ -1074,6 +1084,33 @@ function getMetaTags(html, selector) {
   return [...html.matchAll(/<meta\b[^>]*>/gi)]
     .map(match => match[0])
     .filter(tag => selector(attrs(tag)));
+}
+
+function noindexCrawlerMetaProblems(html, expectedRobotsContent) {
+  const expectedNofollow = /\bnofollow\b/i.test(expectedRobotsContent);
+  const metaByName = new Map(
+    getMetaTags(html, tagAttrs => crawlerSpecificMetaNames.includes((tagAttrs.name || '').toLowerCase()))
+      .map(tag => {
+        const tagAttrs = attrs(tag);
+        return [(tagAttrs.name || '').toLowerCase(), tagAttrs.content || ''];
+      })
+  );
+
+  return crawlerSpecificMetaNames
+    .map(name => {
+      const content = metaByName.get(name) || '';
+
+      if (!content) {
+        return '';
+      }
+
+      if (!/\bnoindex\b/i.test(content) || (expectedNofollow && !/\bnofollow\b/i.test(content))) {
+        return `${name}=${content}`;
+      }
+
+      return '';
+    })
+    .filter(Boolean);
 }
 
 function getLocalAssetPath(value) {
@@ -2539,9 +2576,16 @@ function run() {
     const twitterDescriptionTags = getMetaTags(html, tagAttrs => (tagAttrs.name || '').toLowerCase() === 'twitter:description');
     const schemaItems = jsonLdItems(html, routePath);
     const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
+    const crawlerMetaProblems = /noindex/i.test(robotsContent)
+      ? noindexCrawlerMetaProblems(html, robotsContent)
+      : [];
 
     if (staleIdentitySignal) {
       fail(`${routePath}: generated HTML contains stale NAP/brand signal "${staleIdentitySignal}"`);
+    }
+
+    if (crawlerMetaProblems.length > 0) {
+      fail(`${routePath}: generated noindex page has crawler-specific index directives (${crawlerMetaProblems.join('; ')})`);
     }
 
     if (isSitemapPage) {

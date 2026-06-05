@@ -29,6 +29,8 @@ const PaintingCostsTable = () => {
 
   const interiorPrice = extractPrice(interiorHomeSize);
   const exteriorPrice = extractPrice(exteriorHomeSize);
+  const fallbackInteriorSchemaPrice = 6500;
+  const fallbackExteriorSchemaPrice = 7000;
 
   const priceValidUntil = new Date();
   priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
@@ -61,7 +63,7 @@ const PaintingCostsTable = () => {
                 "provider": canonicalBusinessProvider
               },
               "seller": canonicalBusinessProvider,
-              "price": String(interiorPrice?.min || 6000),
+              "price": String(interiorPrice?.min || fallbackInteriorSchemaPrice),
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"
@@ -82,7 +84,7 @@ const PaintingCostsTable = () => {
                 "provider": canonicalBusinessProvider
               },
               "seller": canonicalBusinessProvider,
-              "price": String(exteriorPrice?.min || 6000),
+              "price": String(exteriorPrice?.min || fallbackExteriorSchemaPrice),
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"

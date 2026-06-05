@@ -74,14 +74,14 @@ const CabinetRefinishing = () => {
       link: '/services/cabinet-refinishing'
     },
     {
-      title: 'Island & Built-In Painting',
-      description: 'Coordinated finish work for kitchen islands, built-ins, pantry cabinets, and storage pieces that need to match the room.',
+      title: 'Kitchen Island & Built-In Painting',
+      description: 'Coordinated cabinet finish work for islands, pantry cabinets, breakfast-bar panels, and kitchen built-ins that need to feel intentional.',
       image: 'https://images.pexels.com/photos/6207947/pexels-photo-6207947.jpeg?auto=compress&cs=tinysrgb&w=800',
       link: '/services/cabinet-refinishing'
     },
     {
       title: 'Trim & Millwork',
-      description: 'Professional painting of trim and millwork to complement your painted cabinets.',
+      description: 'Professional painting of crown, casing, baseboards, and detailed millwork so the kitchen finish feels complete.',
       image: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=800',
       link: '/services'
     }
@@ -358,7 +358,7 @@ const CabinetRefinishing = () => {
               Complete Kitchen Solutions
             </h2>
             <p className="text-xl text-brand-gray-600">
-              Transform your entire kitchen with our comprehensive services
+              Cabinet-focused finish work for kitchens that need more than a quick coat of paint
             </p>
           </div>
 

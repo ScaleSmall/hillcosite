@@ -48,10 +48,13 @@ const uniqueByImageUrl = (photos: GalleryPhoto[]) =>
     allPhotos.findIndex(item => item.image_url === photo.image_url) === index
   );
 
+const excludeImageUrls = (photos: GalleryPhoto[], excludedUrls: Set<string>) =>
+  photos.filter(photo => !excludedUrls.has(photo.image_url));
+
 const FALLBACK_FEATURED: GalleryPhoto[] = [
   {
     id: 'fb-1',
-    image_url: 'https://images.pexels.com/photos/6474471/pexels-photo-6474471.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: 'https://images.pexels.com/photos/8134847/pexels-photo-8134847.jpeg?auto=compress&cs=tinysrgb&w=900',
     title: 'Austin Exterior Painting',
     description: 'Full exterior repaint with premium weather-resistant finish.',
     alt_text: 'Exterior house painting Tarrytown Austin by Hill Country Painting',
@@ -63,7 +66,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-2',
-    image_url: 'https://images.pexels.com/photos/6474343/pexels-photo-6474343.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: 'https://images.pexels.com/photos/6585755/pexels-photo-6585755.jpeg?auto=compress&cs=tinysrgb&w=900',
     title: 'Austin Interior Painting',
     description: 'Complete interior refresh with custom accent wall.',
     alt_text: 'Interior painting living room Central Austin by Hill Country Painting',
@@ -75,7 +78,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-3',
-    image_url: 'https://images.pexels.com/photos/6207946/pexels-photo-6207946.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: 'https://images.pexels.com/photos/7195569/pexels-photo-7195569.jpeg?auto=compress&cs=tinysrgb&w=900',
     title: 'Cabinet Painting Finish',
     description: 'Cabinet painting with custom color matching for a fresh modern look.',
     alt_text: 'Kitchen cabinet painting West Lake Hills Austin by Hill Country Painting',
@@ -87,7 +90,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-4',
-    image_url: 'https://images.pexels.com/photos/6474473/pexels-photo-6474473.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=900',
     title: 'Hill Country Exterior Finish',
     description: 'Professional exterior with weather-resistant finishes and detailed trim work.',
     alt_text: 'Classic home exterior painting Austin by Hill Country Painting',
@@ -99,7 +102,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-5',
-    image_url: 'https://images.pexels.com/photos/6474478/pexels-photo-6474478.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: 'https://images.pexels.com/photos/6434606/pexels-photo-6434606.jpeg?auto=compress&cs=tinysrgb&w=900',
     title: 'Modern Interior Painting',
     description: 'Complete interior painting with custom accent walls.',
     alt_text: 'Modern interior painting Austin by Hill Country Painting',
@@ -111,7 +114,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-6',
-    image_url: 'https://images.pexels.com/photos/6474476/pexels-photo-6474476.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: 'https://images.pexels.com/photos/6434608/pexels-photo-6434608.jpeg?auto=compress&cs=tinysrgb&w=900',
     title: 'Traditional Exterior Painting',
     description: 'Complete exterior painting with premium weather-resistant finishes for Texas climate.',
     alt_text: 'Traditional home exterior painting Austin by Hill Country Painting',
@@ -170,11 +173,13 @@ const Gallery = () => {
   const uniqueRegularPhotos = uniqueByImageUrl(regularPhotos);
   const recentBeforeAfter = uniqueBeforeAfterPhotos.slice(0, 6);
   const olderBeforeAfter = uniqueBeforeAfterPhotos.slice(6);
-  const recentRegularPhotos = uniqueRegularPhotos.slice(0, 12);
-  const olderRegularPhotos = uniqueRegularPhotos.slice(12);
   const safeHeroFeaturedPhotos = uniqueByImageUrl(featuredPhotos).filter(photo => !isBannedHeroImage(photo.image_url));
   const heroFeaturedPhotos = uniqueByImageUrl([...safeHeroFeaturedPhotos, ...FALLBACK_FEATURED])
     .slice(0, 6);
+  const heroFeaturedPhotoUrls = new Set(heroFeaturedPhotos.map(photo => photo.image_url));
+  const nonHeroRegularPhotos = excludeImageUrls(uniqueRegularPhotos, heroFeaturedPhotoUrls);
+  const recentRegularPhotos = nonHeroRegularPhotos.slice(0, 12);
+  const olderRegularPhotos = nonHeroRegularPhotos.slice(12);
 
   const openLightbox = (images: LightboxImage[], index: number) => {
     setLightboxImages(images);

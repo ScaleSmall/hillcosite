@@ -168,7 +168,7 @@ const PaintingFrequency = () => {
           </div>
           
           <div className="overflow-x-auto">
-            <table className="w-full bg-white rounded-lg shadow-lg">
+            <table className="w-full min-w-[1080px] bg-white rounded-lg shadow-lg">
               <thead className="bg-brand-azureDark text-white">
                 <tr>
                   <th className="px-6 py-4 text-left whitespace-nowrap min-w-[190px]">Surface Type</th>

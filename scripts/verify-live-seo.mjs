@@ -435,6 +435,16 @@ const requiredRobotsAllowAgents = [
   'CCBot',
   'Amazonbot',
 ];
+const crawlerSpecificMetaNames = [
+  'googlebot',
+  'bingbot',
+  'gptbot',
+  'chatgpt-user',
+  'perplexitybot',
+  'claudebot',
+  'anthropic-ai',
+  'cohere-ai',
+];
 const liveNoindexRoutes = [
   ['/search?q=test', 'noindex, follow'],
   ['/thank-you', 'noindex, follow'],
@@ -461,6 +471,7 @@ const stalePublicSearchResultSamples = [
   { route: '/', canonical: '/' },
   { route: '/about', canonical: '/about' },
   { route: '/about/', redirect: '/about' },
+  { route: '/privacy', noindex: '/privacy', robots: 'noindex, follow' },
   { route: '/terms/', redirect: '/terms' },
   { route: '/contact/', redirect: '/contact' },
   { route: '/faq/', redirect: '/faq' },
@@ -533,6 +544,32 @@ function attrs(tag) {
   }
 
   return result;
+}
+
+function noindexCrawlerMetaProblems(html, expectedRobotsContent) {
+  const expectedNofollow = /\bnofollow\b/i.test(expectedRobotsContent);
+  const metaByName = new Map(
+    [...html.matchAll(/<meta\b[^>]*>/gi)]
+      .map(match => attrs(match[0]))
+      .filter(tagAttrs => crawlerSpecificMetaNames.includes((tagAttrs.name || '').toLowerCase()))
+      .map(tagAttrs => [(tagAttrs.name || '').toLowerCase(), tagAttrs.content || ''])
+  );
+
+  return crawlerSpecificMetaNames
+    .map(name => {
+      const content = metaByName.get(name) || '';
+
+      if (!content) {
+        return '';
+      }
+
+      if (!/\bnoindex\b/i.test(content) || (expectedNofollow && !/\bnofollow\b/i.test(content))) {
+        return `${name}=${content}`;
+      }
+
+      return '';
+    })
+    .filter(Boolean);
 }
 
 async function fetchText(url, headers = {}) {
@@ -2038,6 +2075,26 @@ async function checkStalePublicSearchResultSamples() {
       ...bannedVisibleValuePositioningSignals.filter(signal => visibleTextLower.includes(signal)),
     ];
 
+    if (sample.noindex) {
+      const xRobotsTag = response.headers.get('x-robots-tag') || '';
+      const crawlerMetaProblems = noindexCrawlerMetaProblems(html, sample.robots || 'noindex, follow');
+
+      if (
+        response.status !== 200 ||
+        xRobotsTag.toLowerCase() !== (sample.robots || 'noindex, follow') ||
+        canonicalHrefs.length !== 1 ||
+        canonicalHrefs[0] !== `${baseUrl}${sample.noindex}` ||
+        staleSignals.length > 0 ||
+        crawlerMetaProblems.length > 0
+      ) {
+        fail(`${sample.route}: stale public search-result noindex page should be live, canonical, clean, and have no crawler-specific index directives; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}, stale ${staleSignals.join(', ') || 'none'}, crawler meta ${crawlerMetaProblems.join('; ') || 'ok'}`);
+        continue;
+      }
+
+      passed += 1;
+      continue;
+    }
+
     if (
       response.status !== 200 ||
       canonicalHrefs.length !== 1 ||
@@ -2697,6 +2754,7 @@ async function checkCrawlerControlRoutes() {
       .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
     const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
     const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
+    const crawlerMetaProblems = noindexCrawlerMetaProblems(html, expectedRobots);
 
     if (staleIdentitySignal) {
       noindexStaleIdentityProblems.push({ route, signal: staleIdentitySignal });
@@ -2706,9 +2764,10 @@ async function checkCrawlerControlRoutes() {
       response.status !== 200 ||
       xRobotsTag.toLowerCase() !== expectedRobots ||
       canonicalHrefs.includes(`${baseUrl}/`) ||
-      staleIdentitySignal
+      staleIdentitySignal ||
+      crawlerMetaProblems.length > 0
     ) {
-      fail(`${route}: expected live 200 with X-Robots-Tag "${expectedRobots}", no homepage canonical, and no stale NAP/brand strings; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}, stale identity ${staleIdentitySignal || 'none'}`);
+      fail(`${route}: expected live 200 with X-Robots-Tag "${expectedRobots}", no homepage canonical, no stale NAP/brand strings, and no crawler-specific index directives; found status ${response.status}, X-Robots-Tag "${xRobotsTag || '(missing)'}", canonicals ${canonicalHrefs.join(', ') || '(none)'}, stale identity ${staleIdentitySignal || 'none'}, crawler meta ${crawlerMetaProblems.join('; ') || 'ok'}`);
       continue;
     }
 

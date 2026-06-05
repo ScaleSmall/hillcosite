@@ -79,7 +79,7 @@ const PaintingCosts = () => {
   const getFAQAnswer = () => {
     const interiorPrice = getCostFactor('faq_2000sqft_interior', '$6,500-$10,500');
     const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$8,500-$14,000');
-    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Hill Country Painting prices professional repaint projects from a $6,000 minimum so the estimate can include proper prep, protection, coatings, cleanup, and a clear written scope.`;
+    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Hill Country Painting keeps $6,000 as the professional project floor, then prices upward based on prep, protection, coatings, cleanup, and the written project plan.`;
   };
 
   const faqs = [
@@ -101,7 +101,7 @@ const PaintingCosts = () => {
     },
     {
       question: 'What\'s included in a professional painting estimate?',
-      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. At Hill Country Painting, full professional projects have a $6,000 minimum, and every estimate explains exactly what is included.'
+      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. Interior, exterior, cabinet, and commercial ranges are priced separately so every estimate explains exactly what is included.'
     }
   ];
 
@@ -160,7 +160,7 @@ const PaintingCosts = () => {
               Match the Price Range to the Right Austin Painting Scope
             </h2>
             <p className="text-xl text-brand-gray-600 leading-body">
-              The $6,000 minimum is for complete professional projects, not quick touch-ups. Use these Austin project paths to compare what changes the estimate: prep, surface condition, access, protection, coatings, scheduling, and finish expectations.
+              The $6,000 professional floor is only the starting point for complete projects, not a flat price or quick touch-up rate. Use these Austin project paths to compare how prep, surface condition, access, protection, coatings, scheduling, and finish expectations move each service into its own range.
             </p>
           </div>
 

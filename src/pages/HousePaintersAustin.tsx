@@ -14,7 +14,7 @@ const serviceLinks = [
     title: 'Austin Exterior House Painters',
     href: '/exterior-painting-austin',
     icon: Home,
-    description: 'Exterior repaint planning for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
+    description: 'Exterior repaints for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
     scope: 'Most full exterior repaint projects land in the $7,000-$16,000+ range once prep, access, repairs, and coating needs are reviewed.'
   },
   {
@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     question: 'How much do professional Austin house painters cost?',
-    answer: 'Full-scope professional painting projects have a $6,000 minimum, and most Austin estimates vary above that based on surface condition, prep, access, repairs, coatings, room count, cabinet count, scheduling needs, and finish expectations.'
+    answer: 'Complete professional painting projects start at $6,000, but most Austin estimates sit above that once the service type is clear: interior projects often begin in the mid-$6,000s, exteriors around $7,000+, cabinets around $6,250+, and commercial projects around $7,500+.'
   },
   {
     question: 'What makes a good Austin house-painting estimate?',
@@ -161,7 +161,7 @@ const HousePaintersAustin = () => {
     <>
       <SEO
         title="Austin House Painters | Exterior, Interior, Cabinets, Commercial"
-        description="Austin house painters for exterior, interior, cabinet, and commercial painting. Full-scope $6,000+ projects with prep, protection, cleanup, and written estimates."
+        description="Austin house painters for exterior, interior, cabinet, and commercial painting. Service-specific project ranges with prep, protection, cleanup, and written estimates."
         canonical="/house-painters-austin"
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -316,7 +316,7 @@ const HousePaintersAustin = () => {
                 {[
                   'Written estimates that explain prep, coatings, protection, cleanup, and warranty expectations.',
                   'Project planning for Austin weather, HOA requirements, access, occupied homes, and business schedules.',
-                  'Pricing is built around the real prep and protection the job needs, with a $6,000 minimum for complete professional projects.',
+                  'Pricing is built around the real prep and protection the job needs, with service-specific ranges instead of one-size-fits-all numbers.',
                   'Internal paths to the Austin service page that matches your project type.'
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-brand-gray-700 leading-relaxed">

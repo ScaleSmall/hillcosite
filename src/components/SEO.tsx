@@ -203,6 +203,12 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
   const robotsContent = hasRefParam
     ? 'noindex, follow'
     : String(robots || 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
+  const isNoindexPage = /\bnoindex\b/i.test(robotsContent);
+  const noindexCrawlerContent = /\bnofollow\b/i.test(robotsContent) ? 'noindex, nofollow' : 'noindex, follow';
+  const searchBotRobotsContent = isNoindexPage
+    ? noindexCrawlerContent
+    : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
+  const aiCrawlerRobotsContent = isNoindexPage ? noindexCrawlerContent : 'index, follow';
 
   const organizationSchema = {
     '@context': 'https://schema.org',
@@ -716,14 +722,14 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       {/* AI/LLM Crawler Optimization */}
-      <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="GPTBot" content="index, follow" />
-      <meta name="ChatGPT-User" content="index, follow" />
-      <meta name="PerplexityBot" content="index, follow" />
-      <meta name="ClaudeBot" content="index, follow" />
-      <meta name="anthropic-ai" content="index, follow" />
-      <meta name="cohere-ai" content="index, follow" />
+      <meta name="googlebot" content={searchBotRobotsContent} />
+      <meta name="bingbot" content={searchBotRobotsContent} />
+      <meta name="GPTBot" content={aiCrawlerRobotsContent} />
+      <meta name="ChatGPT-User" content={aiCrawlerRobotsContent} />
+      <meta name="PerplexityBot" content={aiCrawlerRobotsContent} />
+      <meta name="ClaudeBot" content={aiCrawlerRobotsContent} />
+      <meta name="anthropic-ai" content={aiCrawlerRobotsContent} />
+      <meta name="cohere-ai" content={aiCrawlerRobotsContent} />
 
       {/* GEO Meta Tags for Local SEO */}
       <meta name="geo.region" content="US-TX" />

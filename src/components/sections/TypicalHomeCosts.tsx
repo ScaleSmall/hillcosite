@@ -25,6 +25,15 @@ const TypicalHomeCosts = () => {
     return null;
   };
 
+  const fallbackSchemaPrices = {
+    house1500Interior: 6250,
+    house1500Exterior: 6750,
+    house2200Interior: 6500,
+    house2200Exterior: 8500,
+    house3000Interior: 9000,
+    house3000Exterior: 12000
+  };
+
   const house1500Interior = getCostFactor('house_1500_interior', '$6,250 - $8,500');
   const house1500Exterior = getCostFactor('house_1500_exterior', '$6,750 - $10,500');
   const house2200Interior = getCostFactor('house_2200_interior', '$6,500 - $10,500');
@@ -66,7 +75,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price1500Int?.min || 6000),
+            "price": String(price1500Int?.min || fallbackSchemaPrices.house1500Interior),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -89,7 +98,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price1500Ext?.min || 6000),
+            "price": String(price1500Ext?.min || fallbackSchemaPrices.house1500Exterior),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -112,7 +121,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price2200Int?.min || 6000),
+            "price": String(price2200Int?.min || fallbackSchemaPrices.house2200Interior),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -135,7 +144,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price2200Ext?.min || 6800),
+            "price": String(price2200Ext?.min || fallbackSchemaPrices.house2200Exterior),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -158,7 +167,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price3000Int?.min || 6000),
+            "price": String(price3000Int?.min || fallbackSchemaPrices.house3000Interior),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -181,7 +190,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price3000Ext?.min || 9500),
+            "price": String(price3000Ext?.min || fallbackSchemaPrices.house3000Exterior),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -204,7 +213,7 @@ const TypicalHomeCosts = () => {
             Typical Full-Scope Austin Home Painting Costs
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Full professional projects are priced by prep, protection, access, coatings, cleanup, and a written scope, with $6,000 as the minimum floor
+            Example ranges start above the $6,000 professional floor and move with prep, protection, access, coatings, cleanup, and the written project plan
           </p>
         </div>
 
