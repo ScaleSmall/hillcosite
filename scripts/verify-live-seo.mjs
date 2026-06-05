@@ -458,9 +458,16 @@ const liveUnknownRoutes = [
   '/api/pricing',
 ];
 const stalePublicSearchResultSamples = [
+  { route: '/', canonical: '/' },
   { route: '/about', canonical: '/about' },
   { route: '/about/', redirect: '/about' },
+  { route: '/terms/', redirect: '/terms' },
+  { route: '/contact/', redirect: '/contact' },
+  { route: '/faq/', redirect: '/faq' },
+  { route: '/austin/', redirect: '/service-areas/austin' },
   { route: '/service-areas/', redirect: '/service-areas' },
+  { route: '/services/interior-painting', canonical: '/services/interior-painting' },
+  { route: '/services/interior-painting/', redirect: '/services/interior-painting' },
   { route: '/commercial-exterior-painting-round-rock/', redirect: '/services/commercial' },
   { route: '/service/residential-deck-painting-round-rock/', redirect: '/services/exterior-painting' },
   { route: '/service/residential-concrete-painting-round-rock/', redirect: '/services/exterior-painting' },
