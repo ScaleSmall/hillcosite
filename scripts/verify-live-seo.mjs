@@ -1974,6 +1974,20 @@ async function checkAustinHousePaintersHubSchema() {
     '/commercial-painting-austin',
     '/service-areas/austin',
   ];
+  const requiredAreaProofRoutes = [
+    '/areas/tarrytown/tarrytown',
+    '/areas/west-lake-hills-and-rollingwood/west-lake-hills',
+    '/areas/allandale-and-northwest-hills/northwest-hills',
+    '/areas/barton-creek',
+    '/areas/west-lake-hills-and-rollingwood/rollingwood',
+    '/areas/downtown-austin-luxury',
+    '/areas/downtown-austin-luxury/zilker',
+    '/areas/allandale-and-northwest-hills/allandale',
+    '/areas/circle-c-ranch-and-southwest-austin/circle-c-ranch',
+    '/areas/lakeway-bee-cave-and-lake-travis/lakeway',
+    '/areas/lakeway-bee-cave-and-lake-travis/bee-cave',
+    '/areas/north-austin',
+  ];
   const hasLocalIntentSignals = serviceSchemas.some(schema => {
     const alternateNames = asArray(schema.alternateName);
     const keywords = asArray(schema.keywords);
@@ -2011,6 +2025,18 @@ async function checkAustinHousePaintersHubSchema() {
   const hasVisibleRoutes = requiredVisibleRoutes.every(expectedRoute =>
     html.includes(`href="${expectedRoute}"`) || html.includes(`href='${expectedRoute}'`)
   );
+  const areaProofSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'ItemList') &&
+    item?.['@id'] === `${baseUrl}/house-painters-austin#austin-area-proof`
+  );
+  const areaProofUrls = itemListUrls(areaProofSchema);
+  const hasVisibleAreaProofRoutes = requiredAreaProofRoutes.every(expectedRoute =>
+    html.includes(`href="${expectedRoute}"`) || html.includes(`href='${expectedRoute}'`)
+  );
+  const hasAreaProofSchema =
+    areaProofSchema &&
+    hasCanonicalProviderObject(areaProofSchema.about) &&
+    requiredAreaProofRoutes.every(expectedRoute => areaProofUrls.includes(`${baseUrl}${expectedRoute}`));
   const hasSitewideNavigationLink =
     html.includes('Austin House Painters') &&
     (html.includes('href="/house-painters-austin"') || html.includes("href='/house-painters-austin'"));
@@ -2034,10 +2060,12 @@ async function checkAustinHousePaintersHubSchema() {
     !hasServicePageConnection ||
     !hasFaq ||
     !hasVisibleRoutes ||
+    !hasVisibleAreaProofRoutes ||
+    !hasAreaProofSchema ||
     !hasSitewideNavigationLink ||
     !hasVisibleTrust
   ) {
-    fail(`${route}: live Austin house-painters hub is missing exact-intent Service schema, provider identity, FAQ schema, trust section, sitewide navigation link, or priority Austin service links.`);
+    fail(`${route}: live Austin house-painters hub is missing exact-intent Service schema, provider identity, FAQ schema, trust section, sitewide navigation link, priority Austin service links, or local area proof links/schema.`);
     return;
   }
 

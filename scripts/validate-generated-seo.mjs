@@ -3185,6 +3185,42 @@ function run() {
           if (!serviceOutput.includes('Austin house painters') || !serviceOutput.includes('exterior painting') || !serviceOutput.includes('cabinet painting') || !serviceOutput.includes('commercial painting')) {
             fail(`${routePath}: Austin house-painter Service schema serviceOutput should include the Austin house painters and priority service-category signals`);
           }
+
+          if (routePath === '/house-painters-austin') {
+            const requiredAreaProofRoutes = [
+              '/areas/tarrytown/tarrytown',
+              '/areas/west-lake-hills-and-rollingwood/west-lake-hills',
+              '/areas/allandale-and-northwest-hills/northwest-hills',
+              '/areas/barton-creek',
+              '/areas/west-lake-hills-and-rollingwood/rollingwood',
+              '/areas/downtown-austin-luxury',
+              '/areas/downtown-austin-luxury/zilker',
+              '/areas/allandale-and-northwest-hills/allandale',
+              '/areas/circle-c-ranch-and-southwest-austin/circle-c-ranch',
+              '/areas/lakeway-bee-cave-and-lake-travis/lakeway',
+              '/areas/lakeway-bee-cave-and-lake-travis/bee-cave',
+              '/areas/north-austin'
+            ];
+            const areaProofSchema = schemaItems.find(item =>
+              schemaTypeIncludes(item, 'ItemList') &&
+              item?.['@id'] === `${baseUrl}/house-painters-austin#austin-area-proof`
+            );
+            const areaProofUrls = itemListUrls(areaProofSchema);
+
+            if (!areaProofSchema || !hasCanonicalProviderObject(areaProofSchema.about)) {
+              fail(`${routePath}: Austin house-painters hub is missing canonical local area proof ItemList schema`);
+            }
+
+            for (const requiredAreaProofRoute of requiredAreaProofRoutes) {
+              if (!pageLinksToRoute(page, routePath, requiredAreaProofRoute)) {
+                fail(`${routePath}: Austin house-painters hub should visibly link to local proof route ${requiredAreaProofRoute}`);
+              }
+
+              if (!areaProofUrls.includes(`${baseUrl}${requiredAreaProofRoute}`)) {
+                fail(`${routePath}: Austin area proof ItemList is missing ${baseUrl}${requiredAreaProofRoute}`);
+              }
+            }
+          }
         }
 
         if (expectedAustinServiceAlias) {

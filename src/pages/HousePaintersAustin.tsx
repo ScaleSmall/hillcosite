@@ -40,20 +40,20 @@ const serviceLinks = [
   }
 ] as const;
 
-const neighborhoods = [
-  'Tarrytown',
-  'West Lake Hills',
-  'Northwest Hills',
-  'Barton Creek',
-  'Rollingwood',
-  'Downtown Austin',
-  'Zilker',
-  'Allandale',
-  'Circle C Ranch',
-  'Lakeway',
-  'Bee Cave',
-  'North Austin'
-];
+const areaLinks = [
+  { name: 'Tarrytown', href: '/areas/tarrytown/tarrytown' },
+  { name: 'West Lake Hills', href: '/areas/west-lake-hills-and-rollingwood/west-lake-hills' },
+  { name: 'Northwest Hills', href: '/areas/allandale-and-northwest-hills/northwest-hills' },
+  { name: 'Barton Creek', href: '/areas/barton-creek' },
+  { name: 'Rollingwood', href: '/areas/west-lake-hills-and-rollingwood/rollingwood' },
+  { name: 'Downtown Austin', href: '/areas/downtown-austin-luxury' },
+  { name: 'Zilker', href: '/areas/downtown-austin-luxury/zilker' },
+  { name: 'Allandale', href: '/areas/allandale-and-northwest-hills/allandale' },
+  { name: 'Circle C Ranch', href: '/areas/circle-c-ranch-and-southwest-austin/circle-c-ranch' },
+  { name: 'Lakeway', href: '/areas/lakeway-bee-cave-and-lake-travis/lakeway' },
+  { name: 'Bee Cave', href: '/areas/lakeway-bee-cave-and-lake-travis/bee-cave' },
+  { name: 'North Austin', href: '/areas/north-austin' }
+] as const;
 
 const faqs = [
   {
@@ -130,6 +130,28 @@ const HousePaintersAustin = () => {
       }
     }))
   };
+  const areaItemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${baseUrl}/house-painters-austin#austin-area-proof`,
+    name: 'Greater Austin house-painter service area proof',
+    about: canonicalBusinessProvider,
+    itemListElement: areaLinks.map((area, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: `${area.name} house painters`,
+      url: `${baseUrl}${area.href}`,
+      item: {
+        '@type': 'Place',
+        name: area.name,
+        url: `${baseUrl}${area.href}`,
+        containedInPlace: {
+          '@type': 'City',
+          name: 'Austin'
+        }
+      }
+    }))
+  };
 
   return (
     <>
@@ -186,7 +208,7 @@ const HousePaintersAustin = () => {
         }}
         faq={faqs}
         includeLocalBusiness={true}
-        additionalSchema={serviceItemList}
+        additionalSchema={[serviceItemList, areaItemList]}
       />
 
       <section className="relative py-32 md:py-40 lg:py-44 overflow-hidden">
@@ -298,10 +320,14 @@ const HousePaintersAustin = () => {
                 Hill Country Painting serves Austin and nearby high-value neighborhoods from one consistent local painting process.
               </p>
               <div className="grid grid-cols-2 gap-3">
-                {neighborhoods.map((area) => (
-                  <span key={area} className="rounded-lg bg-brand-gray-50 px-3 py-2 text-sm font-semibold text-brand-gray-800">
-                    {area}
-                  </span>
+                {areaLinks.map((area) => (
+                  <Link
+                    key={area.href}
+                    to={area.href}
+                    className="rounded-lg bg-brand-gray-50 px-3 py-2 text-sm font-semibold text-brand-gray-800 transition-colors hover:bg-white hover:text-brand-azureDark focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
+                  >
+                    {area.name}
+                  </Link>
                 ))}
               </div>
               <Link
