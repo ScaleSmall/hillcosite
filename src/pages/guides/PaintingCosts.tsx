@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { DollarSign, Home, Calculator, Clock } from 'lucide-react';
+import { ArrowRight, DollarSign, Home, Calculator, Clock } from 'lucide-react';
 import SEO from '../../components/SEO';
 import NextStepsSection from '../../components/NextStepsSection';
 import SplitSection from '../../components/sections/SplitSection';
@@ -10,9 +10,64 @@ import CTABanner from '../../components/sections/CTABanner';
 import PaintingCostsTable from '../../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../../components/sections/TypicalHomeCosts';
 import { usePricingData } from '../../hooks/usePricingData';
+import { canonicalBusinessProvider, siteBaseUrl } from '../../lib/businessSchema';
+
+const costProjectLinks = [
+  {
+    label: 'Austin house painters',
+    href: '/house-painters-austin',
+    description: 'Compare the full Austin painting process before choosing exterior, interior, cabinet, or commercial scope.'
+  },
+  {
+    label: 'Austin exterior house painters',
+    href: '/exterior-painting-austin',
+    description: 'Exterior ranges are shaped by siding, stucco, trim, repairs, access, sun exposure, and coating system.'
+  },
+  {
+    label: 'Austin interior painters',
+    href: '/interior-painting-austin',
+    description: 'Interior ranges account for room count, ceiling height, trim detail, occupied-home protection, and wall repair.'
+  },
+  {
+    label: 'Austin cabinet painting',
+    href: '/cabinet-refinishing-austin',
+    description: 'Cabinet ranges are driven by doors, drawers, boxes, prep, coating method, finish quality, and cure time.'
+  },
+  {
+    label: 'Austin commercial painters',
+    href: '/commercial-painting-austin',
+    description: 'Commercial ranges reflect square footage, access, business-hours scheduling, surfaces, and phasing.'
+  },
+  {
+    label: 'Request a written estimate',
+    href: '/free-estimate',
+    description: 'Use the $6,000+ ranges as planning guidance, then confirm the final scope with an on-site review.'
+  }
+] as const;
 
 const PaintingCosts = () => {
   const { data: pricingData, loading } = usePricingData('painting-costs');
+  const baseUrl = siteBaseUrl;
+  const costProjectItemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${baseUrl}/guides/painting-costs-austin#cost-project-paths`,
+    name: 'Austin painting cost guide project paths',
+    about: canonicalBusinessProvider,
+    itemListElement: costProjectLinks.map((link, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: link.label,
+      url: `${baseUrl}${link.href}`,
+      item: {
+        '@type': link.href === '/free-estimate' ? 'WebPage' : 'Service',
+        name: link.label,
+        url: `${baseUrl}${link.href}`,
+        provider: link.href === '/free-estimate' ? undefined : canonicalBusinessProvider,
+        description: link.description
+      }
+    }))
+  };
 
   const getCostFactor = (key: string, fallback: string) => {
     if (pricingData && pricingData[key]) {
@@ -62,6 +117,7 @@ const PaintingCosts = () => {
           { name: 'Painting Costs', url: '/guides/painting-costs-austin' }
         ]}
         faq={faqs}
+        additionalSchema={costProjectItemList}
       />
 
       {/* Hero */}
@@ -96,6 +152,37 @@ const PaintingCosts = () => {
 
       {/* House Size Examples */}
       <TypicalHomeCosts />
+
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+              Match the Price Range to the Right Austin Painting Scope
+            </h2>
+            <p className="text-xl text-brand-gray-600 leading-body">
+              The $6,000+ floor is for complete professional projects, not quick touch-ups. Use these Austin project paths to compare what changes the estimate: prep, surface condition, access, protection, coatings, scheduling, and finish expectations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+            {costProjectLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="rounded-lg border border-brand-gray-200 bg-white p-5 transition-colors hover:border-brand-azure hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-lg font-bold text-brand-gray-900 mb-2">{link.label}</h3>
+                    <p className="text-brand-gray-600 leading-body">{link.description}</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 flex-shrink-0 text-brand-azureDark" aria-hidden="true" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Split Section - Value Explanation */}
       <SplitSection

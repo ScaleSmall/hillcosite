@@ -2857,6 +2857,14 @@ async function checkFreeEstimatePage() {
 
 async function checkPaintingCostProviderSchema() {
   const routes = ['/', '/guides/painting-costs-austin'];
+  const requiredCostProjectAnchors = [
+    ['Austin house painters', '/house-painters-austin'],
+    ['Austin exterior house painters', '/exterior-painting-austin'],
+    ['Austin interior painters', '/interior-painting-austin'],
+    ['Austin cabinet painting', '/cabinet-refinishing-austin'],
+    ['Austin commercial painters', '/commercial-painting-austin'],
+    ['Request a written estimate', '/free-estimate'],
+  ];
   let passed = 0;
 
   for (const route of routes) {
@@ -2870,15 +2878,29 @@ async function checkPaintingCostProviderSchema() {
       schemaTypeIncludes(item, 'ItemList') &&
       item?.name === 'Austin House Painting Costs by Size'
     );
+    const costProjectPathSchema = scripts.find(item =>
+      schemaTypeIncludes(item, 'ItemList') &&
+      item?.['@id'] === `${baseUrl}/guides/painting-costs-austin#cost-project-paths`
+    );
+    const costProjectPathUrls = itemListUrls(costProjectPathSchema);
+    const hasCostGuideProjectPaths = route !== '/guides/painting-costs-austin' || (
+      html.includes('Match the Price Range to the Right Austin Painting Scope') &&
+      requiredCostProjectAnchors.every(([text, path]) =>
+        htmlHasVisibleAnchor(html, text, path) &&
+        costProjectPathUrls.includes(`${baseUrl}${path}`)
+      ) &&
+      schemaTreeServicesHaveCanonicalProviders(costProjectPathSchema)
+    );
 
     if (
       response.status !== 200 ||
       !paintingCostServiceSchema ||
       !schemaTreeServicesHaveCanonicalProviders(paintingCostServiceSchema) ||
       !typicalHomeCostsSchema ||
-      !schemaTreeServicesHaveCanonicalProviders(typicalHomeCostsSchema)
+      !schemaTreeServicesHaveCanonicalProviders(typicalHomeCostsSchema) ||
+      !hasCostGuideProjectPaths
     ) {
-      fail(`${route}: live painting cost and typical home cost schemas must carry canonical LocalBusiness provider identity.`);
+      fail(`${route}: live painting cost and typical home cost schemas must carry canonical LocalBusiness provider identity, and the Austin cost guide must visibly and structurally link to priority Austin project paths.`);
       continue;
     }
 

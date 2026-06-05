@@ -2894,6 +2894,36 @@ function run() {
         }
       }
 
+      if (routePath === '/guides/painting-costs-austin') {
+        const costProjectPathSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ItemList') &&
+          item?.['@id'] === `${baseUrl}/guides/painting-costs-austin#cost-project-paths`
+        );
+        const requiredCostProjectPaths = [
+          '/house-painters-austin',
+          '/exterior-painting-austin',
+          '/interior-painting-austin',
+          '/cabinet-refinishing-austin',
+          '/commercial-painting-austin',
+          '/free-estimate'
+        ];
+        const costProjectPathUrls = itemListUrls(costProjectPathSchema);
+
+        if (!html.includes('Match the Price Range to the Right Austin Painting Scope')) {
+          fail(`${routePath}: cost guide should explain how the $6,000+ floor maps to Austin project scopes`);
+        }
+
+        for (const requiredPath of requiredCostProjectPaths) {
+          if (!pageLinksToRoute(page, routePath, requiredPath) || !costProjectPathUrls.includes(`${baseUrl}${requiredPath}`)) {
+            fail(`${routePath}: cost guide must visibly and structurally link to ${requiredPath}`);
+          }
+        }
+
+        if (!schemaTreeServicesHaveCanonicalProviders(costProjectPathSchema)) {
+          fail(`${routePath}: cost guide project-path ItemList services must carry canonical LocalBusiness provider identity`);
+        }
+      }
+
       if (routePath === '/testimonials') {
         const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
         const requiredTestimonialsSignals = [
