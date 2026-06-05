@@ -24,10 +24,20 @@ const Header = () => {
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   const services = [
+    { name: 'Austin House Painters', href: '/house-painters-austin' },
     { name: 'Interior Painting', href: '/services/interior-painting' },
     { name: 'Exterior Painting', href: '/services/exterior-painting' },
     { name: 'Cabinet Painting', href: '/services/cabinet-refinishing' },
     { name: 'Commercial Painting', href: '/services/commercial' },
+  ];
+
+  const servicesActiveRoutes = [
+    '/services',
+    '/house-painters-austin',
+    '/interior-painting-austin',
+    '/exterior-painting-austin',
+    '/cabinet-refinishing-austin',
+    '/commercial-painting-austin'
   ];
 
   const guides = [
@@ -125,7 +135,7 @@ const Header = () => {
                       aria-controls={item.name === 'Services' ? 'services-dropdown' : 'guides-dropdown'}
                       aria-haspopup="true"
                       className={`flex items-center space-x-1 text-base font-semibold transition-colors duration-200 whitespace-nowrap ${
-                        (item.name === 'Services' && location.pathname.startsWith('/services')) ||
+                        (item.name === 'Services' && servicesActiveRoutes.some(route => location.pathname === route || location.pathname.startsWith('/services'))) ||
                         (item.name === 'Guides' && location.pathname.startsWith('/guides'))
                           ? 'text-brand-azureDark'
                           : 'text-brand-gray-700 hover:text-brand-azureDark'
@@ -252,7 +262,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`block py-3 text-base font-semibold transition-colors duration-200 ${
                     location.pathname === item.href ||
-                    (item.name === 'Services' && location.pathname.startsWith('/services/')) ||
+                    (item.name === 'Services' && servicesActiveRoutes.some(route => location.pathname === route || location.pathname.startsWith('/services/'))) ||
                     (item.name === 'Guides' && location.pathname.startsWith('/guides/'))
                       ? 'text-brand-azureDark'
                       : 'text-brand-gray-700 hover:text-brand-azureDark'

@@ -1926,6 +1926,7 @@ function run() {
     ['Austin interior painters', '/interior-painting-austin'],
     ['Austin cabinet painting', '/cabinet-refinishing-austin'],
     ['Austin commercial painters', '/commercial-painting-austin'],
+    ['Austin House Painters', '/house-painters-austin'],
     ['Austin house painters', '/house-painters-austin'],
     ['house painters Austin', '/house-painters-austin'],
     ['painting contractors Austin', '/services']

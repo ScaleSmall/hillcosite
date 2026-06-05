@@ -1997,6 +1997,9 @@ async function checkAustinHousePaintersHubSchema() {
   const hasVisibleRoutes = requiredVisibleRoutes.every(expectedRoute =>
     html.includes(`href="${expectedRoute}"`) || html.includes(`href='${expectedRoute}'`)
   );
+  const hasSitewideNavigationLink =
+    html.includes('Austin House Painters') &&
+    (html.includes('href="/house-painters-austin"') || html.includes("href='/house-painters-austin'"));
   const hasGoogleProfileLink =
     html.includes(`href="${googleBusinessProfileUrl}"`) ||
     html.includes(`href="${googleBusinessProfileUrl.replace(/&/g, '&amp;')}"`);
@@ -2017,13 +2020,14 @@ async function checkAustinHousePaintersHubSchema() {
     !hasServicePageConnection ||
     !hasFaq ||
     !hasVisibleRoutes ||
+    !hasSitewideNavigationLink ||
     !hasVisibleTrust
   ) {
-    fail(`${route}: live Austin house-painters hub is missing exact-intent Service schema, provider identity, FAQ schema, trust section, or priority Austin service links.`);
+    fail(`${route}: live Austin house-painters hub is missing exact-intent Service schema, provider identity, FAQ schema, trust section, sitewide navigation link, or priority Austin service links.`);
     return;
   }
 
-  console.log('Live Austin house-painters hub includes exact-intent schema, FAQ, trust section, and priority service links');
+  console.log('Live Austin house-painters hub includes exact-intent schema, FAQ, trust section, sitewide navigation link, and priority service links');
 }
 
 async function checkServiceLocationServiceSchema() {
