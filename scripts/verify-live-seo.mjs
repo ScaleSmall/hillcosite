@@ -3165,6 +3165,54 @@ async function checkVisibleLocalTrustSections() {
   console.log(`Live visible local trust sections checked: ${passed}/${routes.length}`);
 }
 
+async function checkGeoAreaPriorityAustinServicePaths() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+
+  if (sitemapResponse.status !== 200) {
+    fail('live sitemap could not be fetched for geo-area priority Austin service validation.');
+    return;
+  }
+
+  const routes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(match => routePathFromUrl(match[1]))
+    .filter(route => route.startsWith('/areas/'));
+  let passed = 0;
+
+  for (const route of routes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const priorityAustinServicePathSchema = scripts.find(item =>
+      schemaTypeIncludes(item, 'ItemList') &&
+      item?.['@id'] === `${baseUrl}${route}#priority-austin-service-paths`
+    );
+    const urls = itemListUrls(priorityAustinServicePathSchema);
+    const schemaText = JSON.stringify(priorityAustinServicePathSchema || {});
+    const missingVisibleLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute]) => !html.includes(`href="${serviceRoute}"`));
+    const missingSchemaLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute, serviceName]) =>
+      !urls.includes(`${baseUrl}${serviceRoute}`) ||
+      !schemaText.includes(`${baseUrl}${serviceRoute}#service`) ||
+      !schemaText.includes(serviceName)
+    );
+    const hasVisibleCopy = html.includes('Compare Austin Painting Services');
+
+    if (
+      response.status !== 200 ||
+      !hasVisibleCopy ||
+      !priorityAustinServicePathSchema ||
+      !itemListHasCanonicalServiceProvider(priorityAustinServicePathSchema) ||
+      missingVisibleLinks.length > 0 ||
+      missingSchemaLinks.length > 0
+    ) {
+      fail(`${route}: live geo-area page should visibly and structurally connect to priority Austin service pages; missing visible ${missingVisibleLinks.map(([, name]) => name).join(', ') || 'none'}, missing schema ${missingSchemaLinks.map(([, name]) => name).join(', ') || 'none'}.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live geo-area priority Austin service paths checked: ${passed}/${routes.length}`);
+}
+
 async function checkFaqSchemaRoutes(routes, label) {
   let passed = 0;
 
@@ -3748,6 +3796,7 @@ await checkAustinServiceFaqSchema();
 await checkGuideFaqSchema();
 await checkGuidePriorityAustinServiceLinks();
 await checkVisibleLocalTrustSections();
+await checkGeoAreaPriorityAustinServicePaths();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();
 await checkWebsiteSearchActionSchema();

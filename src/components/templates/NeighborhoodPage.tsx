@@ -21,8 +21,10 @@ import GoogleMapEmbed from '../GoogleMapEmbed';
 import LocalSignals from '../LocalSignals';
 import NAPMapSection from '../NAPMapSection';
 import Breadcrumbs from '../Breadcrumbs';
+import PriorityAustinServiceLinks from '../PriorityAustinServiceLinks';
 import { businessConfig } from '../../config/business';
 import type { HubArea, Neighborhood } from '../../data/geoAreas';
+import { createPriorityAustinServiceItemList } from '../../lib/priorityAustinServices';
 
 interface NeighborhoodPageProps {
   hub: HubArea;
@@ -33,6 +35,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
   const pageTitle = `Professional House Painting in ${neighborhood.name} | Hill Country Painting`;
   const mapQuery = `${businessConfig.name} painting service area ${neighborhood.name} TX`;
   const canonical = `/areas/${hub.slug}/${neighborhood.slug}`;
+  const priorityAustinServiceItemList = createPriorityAustinServiceItemList(canonical, neighborhood.name);
 
   return (
     <>
@@ -54,6 +57,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           areaServed: [neighborhood.name]
         }}
         includeLocalBusiness={true}
+        additionalSchema={priorityAustinServiceItemList}
       />
 
       <div className="bg-white py-4 border-b">
@@ -215,6 +219,8 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
           </div>
         </div>
       </section>
+
+      <PriorityAustinServiceLinks areaName={neighborhood.name} surface="white" />
 
       <LocalSignals
         city="Austin"

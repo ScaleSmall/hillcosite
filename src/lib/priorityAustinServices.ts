@@ -50,3 +50,30 @@ export const priorityAustinServiceSchema = priorityAustinServiceLinks.map(servic
     name: 'Austin'
   }
 }));
+
+export const createPriorityAustinServiceItemList = (path: string, areaName: string) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  '@id': `${siteBaseUrl}${path}#priority-austin-service-paths`,
+  name: `Priority Austin painting service paths for ${areaName}`,
+  description: `Austin house-painter, exterior, interior, cabinet, and commercial painting service paths connected to ${areaName} local painting intent.`,
+  provider: canonicalBusinessProvider,
+  itemListElement: priorityAustinServiceLinks.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: service.schemaName,
+    url: `${siteBaseUrl}${service.href}`,
+    item: {
+      '@type': 'Service',
+      '@id': `${siteBaseUrl}${service.href}#service`,
+      name: service.schemaName,
+      serviceType: service.serviceType,
+      url: `${siteBaseUrl}${service.href}`,
+      provider: canonicalBusinessProvider,
+      areaServed: {
+        '@type': 'Place',
+        name: areaName
+      }
+    }
+  }))
+});

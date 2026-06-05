@@ -1861,12 +1861,42 @@ function run() {
     const page = pages.get(routePath);
 
     if (!page) {
-      fail(`${routePath}: missing generated HTML for geo-area visible local trust validation`);
+      fail(`${routePath}: missing generated HTML for geo-area local validation`);
       continue;
     }
 
     if (!pageHasVisibleLocalTrustSection(page)) {
       fail(`${routePath}: geo-area page should include the visible NAP/map/Google Business Profile trust section`);
+    }
+
+    if (!page.html.includes('Compare Austin Painting Services')) {
+      fail(`${routePath}: geo-area page should include visible priority Austin service comparison copy`);
+    }
+
+    const schemaItems = jsonLdItems(page.html, routePath);
+    const priorityAustinServicePathSchema = schemaItems.find(item =>
+      schemaTypeIncludes(item, 'ItemList') &&
+      item?.['@id'] === `${baseUrl}${routePath}#priority-austin-service-paths`
+    );
+    const priorityAustinServicePathText = JSON.stringify(priorityAustinServicePathSchema || {});
+    const priorityAustinServicePathUrls = itemListUrls(priorityAustinServicePathSchema);
+
+    if (!priorityAustinServicePathSchema || !itemListHasCanonicalServiceProvider(priorityAustinServicePathSchema)) {
+      fail(`${routePath}: geo-area page should include priority Austin service ItemList schema with canonical LocalBusiness provider identity`);
+    }
+
+    for (const [serviceRoute, serviceName] of priorityAustinBlogServiceLinks) {
+      if (!pageLinksToRoute(page, routePath, serviceRoute)) {
+        fail(`${routePath}: geo-area page should visibly link to priority Austin service page ${serviceName} (${serviceRoute})`);
+      }
+
+      if (
+        !priorityAustinServicePathUrls.includes(`${baseUrl}${serviceRoute}`) ||
+        !priorityAustinServicePathText.includes(`${baseUrl}${serviceRoute}#service`) ||
+        !priorityAustinServicePathText.includes(serviceName)
+      ) {
+        fail(`${routePath}: geo-area priority Austin service schema should connect to ${serviceName}`);
+      }
     }
   }
 

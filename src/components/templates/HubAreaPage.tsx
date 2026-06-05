@@ -21,9 +21,11 @@ import GoogleMapEmbed from '../GoogleMapEmbed';
 import LocalSignals from '../LocalSignals';
 import NAPMapSection from '../NAPMapSection';
 import Breadcrumbs from '../Breadcrumbs';
+import PriorityAustinServiceLinks from '../PriorityAustinServiceLinks';
 import { businessConfig } from '../../config/business';
 import type { HubArea } from '../../data/geoAreas';
 import { getNearbyAreas } from '../../data/geoAreas';
+import { createPriorityAustinServiceItemList } from '../../lib/priorityAustinServices';
 
 interface HubAreaPageProps {
   hub: HubArea;
@@ -36,6 +38,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
 
   const areaServed = [hub.name, ...hub.neighborhoods.map(n => n.name)];
   const nearbyAreas = getNearbyAreas(hub.slug);
+  const priorityAustinServiceItemList = createPriorityAustinServiceItemList(canonical, hub.name);
 
   return (
     <>
@@ -56,6 +59,7 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
           areaServed
         }}
         includeLocalBusiness={true}
+        additionalSchema={priorityAustinServiceItemList}
       />
 
       <div className="bg-white py-4 border-b">
@@ -224,6 +228,8 @@ const HubAreaPage: React.FC<HubAreaPageProps> = ({ hub }) => {
           </div>
         </div>
       </section>
+
+      <PriorityAustinServiceLinks areaName={hub.name} surface="white" />
 
       <LocalSignals
         city="Austin"
