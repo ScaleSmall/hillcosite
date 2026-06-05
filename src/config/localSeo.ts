@@ -129,3 +129,226 @@ export const coreServiceLocalSignalKeywords = {
     'painting contractors Austin'
   ]
 } as const;
+
+export const serviceAreaLocalIntent = {
+  'tarrytown': {
+    alternateName: [
+      'Tarrytown house painters',
+      'house painters Tarrytown',
+      'painting contractors Tarrytown',
+      'Tarrytown exterior painters',
+      'Tarrytown interior painters',
+      'Tarrytown cabinet painting',
+      'Tarrytown commercial painters'
+    ],
+    keywords: [
+      'Tarrytown painting services',
+      'Tarrytown house painters',
+      'house painters Tarrytown',
+      'painting contractors Tarrytown',
+      'Tarrytown exterior painting',
+      'Tarrytown interior painting',
+      'Tarrytown cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Tarrytown house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Tarrytown and nearby Central Austin neighborhoods'
+  },
+  'northwest-hills': {
+    alternateName: [
+      'Northwest Hills house painters',
+      'house painters Northwest Hills',
+      'painting contractors Northwest Hills',
+      'Northwest Hills exterior painters',
+      'Northwest Hills interior painters',
+      'Northwest Hills cabinet painting',
+      'Northwest Hills commercial painters'
+    ],
+    keywords: [
+      'Northwest Hills painting services',
+      'Northwest Hills house painters',
+      'house painters Northwest Hills',
+      'painting contractors Northwest Hills',
+      'Northwest Hills exterior painting',
+      'Northwest Hills interior painting',
+      'Northwest Hills cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Northwest Hills house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Northwest Hills and nearby North Austin neighborhoods'
+  },
+  'west-lake-hills': {
+    alternateName: [
+      'West Lake Hills house painters',
+      'house painters West Lake Hills',
+      'painting contractors West Lake Hills',
+      'West Lake Hills exterior painters',
+      'West Lake Hills interior painters',
+      'West Lake Hills cabinet painting',
+      'West Lake Hills commercial painters'
+    ],
+    keywords: [
+      'West Lake Hills painting services',
+      'West Lake Hills house painters',
+      'house painters West Lake Hills',
+      'painting contractors West Lake Hills',
+      'West Lake Hills exterior painting',
+      'West Lake Hills interior painting',
+      'West Lake Hills cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'West Lake Hills house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in West Lake Hills and nearby Eanes corridor neighborhoods'
+  },
+  'west-lake-highlands': {
+    alternateName: [
+      'West Lake Highlands house painters',
+      'house painters West Lake Highlands',
+      'painting contractors West Lake Highlands',
+      'West Lake Highlands exterior painters',
+      'West Lake Highlands interior painters',
+      'West Lake Highlands cabinet painting',
+      'West Lake Highlands commercial painters'
+    ],
+    keywords: [
+      'West Lake Highlands painting services',
+      'West Lake Highlands house painters',
+      'house painters West Lake Highlands',
+      'painting contractors West Lake Highlands',
+      'West Lake Highlands exterior painting',
+      'West Lake Highlands interior painting',
+      'West Lake Highlands cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'West Lake Highlands house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in West Lake Highlands and nearby Hill Country neighborhoods'
+  },
+  'lakeway': {
+    alternateName: [
+      'Lakeway house painters',
+      'house painters Lakeway',
+      'painting contractors Lakeway',
+      'Lakeway exterior painters',
+      'Lakeway interior painters',
+      'Lakeway cabinet painting',
+      'Lakeway commercial painters'
+    ],
+    keywords: [
+      'Lakeway painting services',
+      'Lakeway house painters',
+      'house painters Lakeway',
+      'painting contractors Lakeway',
+      'Lakeway exterior painting',
+      'Lakeway interior painting',
+      'Lakeway cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Lakeway house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Lakeway and nearby Lake Travis communities'
+  },
+  'leander': {
+    alternateName: [
+      'Leander house painters',
+      'house painters Leander',
+      'painting contractors Leander',
+      'Leander exterior painters',
+      'Leander interior painters',
+      'Leander cabinet painting',
+      'Leander commercial painters'
+    ],
+    keywords: [
+      'Leander painting services',
+      'Leander house painters',
+      'house painters Leander',
+      'painting contractors Leander',
+      'Leander exterior painting',
+      'Leander interior painting',
+      'Leander cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Leander house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Leander and nearby master-planned communities'
+  },
+  'georgetown': {
+    alternateName: [
+      'Georgetown house painters',
+      'house painters Georgetown',
+      'painting contractors Georgetown',
+      'Georgetown exterior painters',
+      'Georgetown interior painters',
+      'Georgetown cabinet painting',
+      'Georgetown commercial painters'
+    ],
+    keywords: [
+      'Georgetown painting services',
+      'Georgetown house painters',
+      'house painters Georgetown',
+      'painting contractors Georgetown',
+      'Georgetown exterior painting',
+      'Georgetown interior painting',
+      'Georgetown cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Georgetown house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Georgetown, Sun City, and nearby communities'
+  },
+  'round-rock': {
+    alternateName: [
+      'Round Rock house painters',
+      'house painters Round Rock',
+      'painting contractors Round Rock',
+      'Round Rock exterior painters',
+      'Round Rock interior painters',
+      'Round Rock cabinet painting',
+      'Round Rock commercial painters'
+    ],
+    keywords: [
+      'Round Rock painting services',
+      'Round Rock house painters',
+      'house painters Round Rock',
+      'painting contractors Round Rock',
+      'Round Rock exterior painting',
+      'Round Rock interior painting',
+      'Round Rock cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Round Rock house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Round Rock and nearby Williamson County neighborhoods'
+  },
+  'cedar-park': {
+    alternateName: [
+      'Cedar Park house painters',
+      'house painters Cedar Park',
+      'painting contractors Cedar Park',
+      'Cedar Park exterior painters',
+      'Cedar Park interior painters',
+      'Cedar Park cabinet painting',
+      'Cedar Park commercial painters'
+    ],
+    keywords: [
+      'Cedar Park painting services',
+      'Cedar Park house painters',
+      'house painters Cedar Park',
+      'painting contractors Cedar Park',
+      'Cedar Park exterior painting',
+      'Cedar Park interior painting',
+      'Cedar Park cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'Cedar Park house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Cedar Park and nearby northwest Austin communities'
+  },
+  'north-austin': {
+    alternateName: [
+      'North Austin house painters',
+      'house painters North Austin',
+      'painting contractors North Austin',
+      'North Austin exterior painters',
+      'North Austin interior painters',
+      'North Austin cabinet painting',
+      'North Austin commercial painters'
+    ],
+    keywords: [
+      'North Austin painting services',
+      'North Austin house painters',
+      'house painters North Austin',
+      'painting contractors North Austin',
+      'North Austin exterior painting',
+      'North Austin interior painting',
+      'North Austin cabinet painting',
+      'Greater Austin painting contractor'
+    ],
+    serviceOutput: 'North Austin house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in North Austin and the Domain-area corridor'
+  }
+} as const;

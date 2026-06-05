@@ -10,6 +10,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const WestLakeHills = () => {
   const westLakeHillsFAQs = [
@@ -66,7 +67,8 @@ const WestLakeHills = () => {
         service={{
           name: 'West Lake Hills Luxury Painting Services',
           description: 'Professional luxury residential painting services throughout West Lake Hills, Texas. Specializing in high-end homes, premium finishes, hillside properties, and strict HOA compliance.',
-          areaServed: ['West Lake Hills', 'Westlake', 'Rob Roy', 'Eanes', 'Rollingwood', 'Lost Creek', 'Davenport Ranch', 'Barton Creek']
+          areaServed: ['West Lake Hills', 'Westlake', 'Rob Roy', 'Eanes', 'Rollingwood', 'Lost Creek', 'Davenport Ranch', 'Barton Creek'],
+          ...serviceAreaLocalIntent['west-lake-hills']
         }}
         faq={westLakeHillsFAQs}
         includeLocalBusiness={true}

@@ -356,6 +356,18 @@ const requiredServiceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills'
 ];
+const serviceAreaLocalIntentSignals = new Map([
+  ['/service-areas/tarrytown', 'Tarrytown'],
+  ['/service-areas/northwest-hills', 'Northwest Hills'],
+  ['/service-areas/west-lake-hills', 'West Lake Hills'],
+  ['/service-areas/west-lake-highlands', 'West Lake Highlands'],
+  ['/service-areas/lakeway', 'Lakeway'],
+  ['/service-areas/leander', 'Leander'],
+  ['/service-areas/georgetown', 'Georgetown'],
+  ['/service-areas/round-rock', 'Round Rock'],
+  ['/service-areas/cedar-park', 'Cedar Park'],
+  ['/service-areas/north-austin', 'North Austin']
+]);
 const requiredCoreServiceFaqSchemaRoutes = [
   {
     route: '/services/interior-painting',
@@ -3451,6 +3463,38 @@ function run() {
 
           if (expectedCoreServiceSignal && (!serviceOutput.includes(expectedCoreServiceSignal) || !serviceOutput.includes('Greater Austin'))) {
             fail(`${routePath}: core service schema serviceOutput should include ${expectedCoreServiceSignal} and Greater Austin`);
+          }
+        }
+
+        const serviceAreaIntentName = serviceAreaLocalIntentSignals.get(routePath);
+        if (serviceAreaIntentName) {
+          const serviceSchema = canonicalServiceSchema;
+          const alternateNames = Array.isArray(serviceSchema?.alternateName) ? serviceSchema.alternateName : [];
+          const keywords = Array.isArray(serviceSchema?.keywords) ? serviceSchema.keywords : [];
+          const serviceOutput = String(serviceSchema?.serviceOutput || '');
+
+          for (const signal of [
+            `${serviceAreaIntentName} house painters`,
+            `painting contractors ${serviceAreaIntentName}`,
+            `${serviceAreaIntentName} cabinet painting`
+          ]) {
+            if (!alternateNames.includes(signal)) {
+              fail(`${routePath}: service-area Service schema alternateName is missing ${signal}`);
+            }
+
+            if (!keywords.includes(signal)) {
+              fail(`${routePath}: service-area Service schema keywords are missing ${signal}`);
+            }
+          }
+
+          for (const serviceType of ['exterior painting', 'interior painting', 'cabinet painting', 'commercial painting']) {
+            if (!serviceOutput.includes(serviceType)) {
+              fail(`${routePath}: service-area Service schema serviceOutput should include ${serviceType}`);
+            }
+          }
+
+          if (!serviceOutput.includes(`${serviceAreaIntentName} house painters`)) {
+            fail(`${routePath}: service-area Service schema serviceOutput should include ${serviceAreaIntentName} house painters`);
           }
         }
 

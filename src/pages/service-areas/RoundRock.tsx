@@ -10,6 +10,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const RoundRock = () => {
   const roundRockFAQs = [
@@ -66,7 +67,8 @@ const RoundRock = () => {
         service={{
           name: 'Round Rock TX Painting Services',
           description: 'Professional interior and exterior painting throughout Round Rock, Texas. Serving Forest Creek, Mayfield Ranch, Brushy Creek, Round Rock Ranch, and Vista Oaks with interior repaints, exterior painting, and cabinet refinishing.',
-          areaServed: ['Round Rock', 'Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks']
+          areaServed: ['Round Rock', 'Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks'],
+          ...serviceAreaLocalIntent['round-rock']
         }}
         faq={roundRockFAQs}
         includeLocalBusiness={true}

@@ -10,6 +10,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const NorthAustin = () => {
   const northAustinFAQs = [
@@ -66,7 +67,8 @@ const NorthAustin = () => {
         service={{
           name: 'North Austin Painting Services',
           description: 'Professional interior and exterior painting throughout North Austin, Texas. Specialists in mid-century modern homes, tech corridor townhomes and condos, and commercial spaces near The Domain. Serving Balcones, Milwood, Jollyville, Anderson Mill, and the Domain area.',
-          areaServed: ['North Austin', 'Balcones', 'Milwood', 'Jollyville', 'Anderson Mill', 'The Domain Area']
+          areaServed: ['North Austin', 'Balcones', 'Milwood', 'Jollyville', 'Anderson Mill', 'The Domain Area'],
+          ...serviceAreaLocalIntent['north-austin']
         }}
         faq={northAustinFAQs}
         includeLocalBusiness={true}

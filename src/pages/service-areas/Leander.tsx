@@ -10,6 +10,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const Leander = () => {
   const leanderFAQs = [
@@ -66,7 +67,8 @@ const Leander = () => {
         service={{
           name: 'Leander TX Painting Services',
           description: 'Professional interior and exterior painting throughout Leander, Texas. Specialists in master-planned community HOA compliance, new construction upgrades, and premium exterior coatings for Crystal Falls, Travisso, Mason Hills, Devine Lake, and Bryson.',
-          areaServed: ['Leander', 'Crystal Falls', 'Travisso', 'Mason Hills', 'Devine Lake', 'Bryson']
+          areaServed: ['Leander', 'Crystal Falls', 'Travisso', 'Mason Hills', 'Devine Lake', 'Bryson'],
+          ...serviceAreaLocalIntent['leander']
         }}
         faq={leanderFAQs}
         includeLocalBusiness={true}

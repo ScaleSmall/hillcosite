@@ -8,6 +8,7 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const Lakeway = () => {
   const localFAQs = [
@@ -60,7 +61,8 @@ const Lakeway = () => {
         service={{
           name: 'Lakeway Painting Services',
           description: 'Professional residential painting services throughout Lakeway, Texas. Specializing in Lake Travis area homes, waterfront properties, and Hill Country architecture. Expert painters serving Lakeway with exceptional quality.',
-          areaServed: ['Lakeway', 'Rough Hollow', 'The Hills', 'Serene Hills', 'Bee Cave']
+          areaServed: ['Lakeway', 'Rough Hollow', 'The Hills', 'Serene Hills', 'Bee Cave'],
+          ...serviceAreaLocalIntent['lakeway']
         }}
         additionalSchema={faqSchema}
         includeLocalBusiness={true}

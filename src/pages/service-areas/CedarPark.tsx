@@ -10,6 +10,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const CedarPark = () => {
   const cedarParkFAQs = [
@@ -66,7 +67,8 @@ const CedarPark = () => {
         service={{
           name: 'Cedar Park Painting Services',
           description: 'Professional interior and exterior painting services throughout Cedar Park, Texas. HOA color compliance specialists for master-planned communities including Avery Ranch, Ranch at Brushy Creek, Buttercup Creek, Lakeline, and Twin Creeks.',
-          areaServed: ['Cedar Park', 'Avery Ranch', 'Ranch at Brushy Creek', 'Buttercup Creek', 'Lakeline', 'Twin Creeks']
+          areaServed: ['Cedar Park', 'Avery Ranch', 'Ranch at Brushy Creek', 'Buttercup Creek', 'Lakeline', 'Twin Creeks'],
+          ...serviceAreaLocalIntent['cedar-park']
         }}
         faq={cedarParkFAQs}
         includeLocalBusiness={true}

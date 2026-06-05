@@ -229,6 +229,18 @@ const serviceAreaFaqSchemaRoutes = [
   '/service-areas/west-lake-highlands',
   '/service-areas/west-lake-hills',
 ];
+const serviceAreaLocalIntentSignals = new Map([
+  ['/service-areas/tarrytown', 'Tarrytown'],
+  ['/service-areas/northwest-hills', 'Northwest Hills'],
+  ['/service-areas/west-lake-hills', 'West Lake Hills'],
+  ['/service-areas/west-lake-highlands', 'West Lake Highlands'],
+  ['/service-areas/lakeway', 'Lakeway'],
+  ['/service-areas/leander', 'Leander'],
+  ['/service-areas/georgetown', 'Georgetown'],
+  ['/service-areas/round-rock', 'Round Rock'],
+  ['/service-areas/cedar-park', 'Cedar Park'],
+  ['/service-areas/north-austin', 'North Austin'],
+]);
 const coreServiceFaqSchemaRoutes = [
   {
     route: '/services/interior-painting',
@@ -2271,6 +2283,48 @@ async function checkAustinServiceAreaSchema() {
   console.log('Live Austin service-area schema includes house-painter and priority-service intent signals');
 }
 
+async function checkLocalServiceAreaIntentSchema() {
+  let passed = 0;
+
+  for (const [route, serviceAreaName] of serviceAreaLocalIntentSignals) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const serviceId = `${baseUrl}${route}#service`;
+    const webpageId = `${baseUrl}${route}#webpage`;
+    const serviceSchemas = scripts.filter(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === serviceId);
+    const requiredSignals = [
+      `${serviceAreaName} house painters`,
+      `painting contractors ${serviceAreaName}`,
+      `${serviceAreaName} cabinet painting`,
+    ];
+    const hasLocalIntentSignals = serviceSchemas.some(schema => {
+      const alternateNames = asArray(schema.alternateName);
+      const keywords = asArray(schema.keywords);
+      const serviceOutput = String(schema.serviceOutput || '');
+
+      return (
+        requiredSignals.every(signal => alternateNames.includes(signal) && keywords.includes(signal)) &&
+        serviceOutput.includes(`${serviceAreaName} house painters`) &&
+        serviceOutput.includes('exterior painting') &&
+        serviceOutput.includes('interior painting') &&
+        serviceOutput.includes('cabinet painting') &&
+        serviceOutput.includes('commercial painting') &&
+        hasCanonicalServiceProvider(schema) &&
+        schema?.mainEntityOfPage?.['@id'] === webpageId
+      );
+    });
+
+    if (response.status !== 200 || !hasLocalIntentSignals) {
+      fail(`${route}: live service-area Service schema is missing local house-painter, painting-contractor, cabinet, serviceOutput, provider, or WebPage signals.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live local service-area intent schema checked: ${passed}/${serviceAreaLocalIntentSignals.size}`);
+}
+
 async function checkAustinHousePaintersHubSchema() {
   const route = '/house-painters-austin';
   const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
@@ -3433,6 +3487,7 @@ await checkStalePublicSearchResultSamples();
 await checkSupabaseFeed();
 await checkAustinSchema();
 await checkAustinServiceAreaSchema();
+await checkLocalServiceAreaIntentSchema();
 await checkAustinHousePaintersHubSchema();
 await checkSitewidePriorityServiceNavigation();
 await checkSitewideServiceLocationFooterAnchors();

@@ -8,6 +8,7 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const WestLakeHighlands = () => {
   const localFAQs = [
@@ -60,7 +61,8 @@ const WestLakeHighlands = () => {
         service={{
           name: 'West Lake Highlands Painting Services',
           description: 'Professional residential painting services throughout West Lake Highlands, Austin. Specializing in Hill Country homes, elevated terrain, and quality finishes. Expert painters serving West Lake Highlands with exceptional quality.',
-          areaServed: ['West Lake Highlands', 'Lake Pointe', 'Hill Country', 'Scenic Brook']
+          areaServed: ['West Lake Highlands', 'Lake Pointe', 'Hill Country', 'Scenic Brook'],
+          ...serviceAreaLocalIntent['west-lake-highlands']
         }}
         additionalSchema={faqSchema}
         includeLocalBusiness={true}

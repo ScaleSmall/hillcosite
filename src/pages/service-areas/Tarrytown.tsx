@@ -8,6 +8,7 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const Tarrytown = () => {
   const localFAQs = [
@@ -60,7 +61,8 @@ const Tarrytown = () => {
         service={{
           name: 'Tarrytown Painting Services',
           description: 'Professional residential painting services throughout Tarrytown, Austin. Specializing in historic homes, luxury properties, and Old Austin architecture. Expert painters serving Tarrytown with exceptional quality and care.',
-          areaServed: ['Tarrytown', 'Old Enfield', 'Pemberton Heights', 'Bryker Woods', 'Clarksville']
+          areaServed: ['Tarrytown', 'Old Enfield', 'Pemberton Heights', 'Bryker Woods', 'Clarksville'],
+          ...serviceAreaLocalIntent['tarrytown']
         }}
         additionalSchema={faqSchema}
         includeLocalBusiness={true}

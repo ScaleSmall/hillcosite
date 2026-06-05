@@ -8,6 +8,7 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const NorthwestHills = () => {
   const localFAQs = [
@@ -60,7 +61,8 @@ const NorthwestHills = () => {
         service={{
           name: 'Northwest Hills Painting Services',
           description: 'Professional residential painting services throughout Northwest Hills, Austin. Specializing in established neighborhoods, mid-century modern homes, and quality finishes. Expert painters serving Northwest Hills with exceptional quality.',
-          areaServed: ['Northwest Hills', 'Allandale', 'Crestview', 'Quail Creek']
+          areaServed: ['Northwest Hills', 'Allandale', 'Crestview', 'Quail Creek'],
+          ...serviceAreaLocalIntent['northwest-hills']
         }}
         additionalSchema={faqSchema}
         includeLocalBusiness={true}

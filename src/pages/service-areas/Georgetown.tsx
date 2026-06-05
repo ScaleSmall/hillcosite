@@ -10,6 +10,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
+import { serviceAreaLocalIntent } from '../../config/localSeo';
 
 const Georgetown = () => {
   const georgetownFAQs = [
@@ -66,7 +67,8 @@ const Georgetown = () => {
         service={{
           name: 'Georgetown TX Painting Services',
           description: 'Professional residential and commercial painting throughout Georgetown, Texas. Specialists in Sun City Del Webb HOA compliance, historic Victorian preservation, and master-planned community exteriors in Wolf Ranch, Berry Creek, and Teravista.',
-          areaServed: ['Georgetown', 'Sun City Georgetown', 'Berry Creek', 'Teravista', 'Wolf Ranch', 'Georgetown Square']
+          areaServed: ['Georgetown', 'Sun City Georgetown', 'Berry Creek', 'Teravista', 'Wolf Ranch', 'Georgetown Square'],
+          ...serviceAreaLocalIntent['georgetown']
         }}
         faq={georgetownFAQs}
         includeLocalBusiness={true}
