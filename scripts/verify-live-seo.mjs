@@ -291,6 +291,13 @@ const priorityServiceReviewContextRoutes = new Map([
   ['/cabinet-refinishing-austin', 'Cabinet Refinishing Austin'],
   ['/commercial-painting-austin', 'Commercial Painting Austin'],
 ]);
+const priorityAustinBlogServiceLinks = [
+  ['/house-painters-austin', 'Austin House Painters'],
+  ['/exterior-painting-austin', 'Austin Exterior House Painters'],
+  ['/interior-painting-austin', 'Austin Interior Painters'],
+  ['/cabinet-refinishing-austin', 'Austin Cabinet Painting'],
+  ['/commercial-painting-austin', 'Austin Commercial Painters'],
+];
 const austinServiceFaqSchemaRoutes = [
   {
     route: '/house-painters-austin',
@@ -3556,6 +3563,43 @@ async function checkHtmlSitemapDiscoveryLinks() {
   console.log(`Live HTML sitemap discovery links checked: ${sitemapRoutes.length}/${sitemapRoutes.length}`);
 }
 
+async function checkBlogPriorityAustinServiceLinks() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+
+  if (sitemapResponse.status !== 200) {
+    fail('live sitemap could not be fetched for blog priority Austin service link validation.');
+    return;
+  }
+
+  const blogRoutes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(match => routePathFromUrl(match[1]))
+    .filter(route => route.startsWith('/blog/'));
+  let passed = 0;
+
+  for (const route of blogRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const blogPostingSchema = scripts.find(item => schemaTypeIncludes(item, 'BlogPosting'));
+    const blogSchemaText = JSON.stringify(blogPostingSchema || {});
+    const missingVisibleLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute]) => !html.includes(`href="${serviceRoute}"`));
+    const missingSchemaLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute, serviceName]) =>
+      !blogSchemaText.includes(`${baseUrl}${serviceRoute}`) ||
+      !blogSchemaText.includes(`${baseUrl}${serviceRoute}#service`) ||
+      !blogSchemaText.includes(serviceName) ||
+      !blogSchemaText.includes(`${baseUrl}/#localbusiness`)
+    );
+
+    if (response.status !== 200 || !blogPostingSchema || missingVisibleLinks.length > 0 || missingSchemaLinks.length > 0) {
+      fail(`${route}: live blog article should visibly and structurally connect to priority Austin service pages; missing visible ${missingVisibleLinks.map(([, name]) => name).join(', ') || 'none'}, missing schema ${missingSchemaLinks.map(([, name]) => name).join(', ') || 'none'}.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live blog priority Austin service links checked: ${passed}/${blogRoutes.length}`);
+}
+
 async function checkTestimonialsTrustSignals() {
   const { response, text: html } = await fetchText(`${baseUrl}/testimonials?v=${Date.now()}`);
   const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
@@ -3661,6 +3705,7 @@ await checkContactPageSchema();
 await checkFreeEstimatePage();
 await checkPaintingCostProviderSchema();
 await checkHtmlSitemapDiscoveryLinks();
+await checkBlogPriorityAustinServiceLinks();
 await checkTestimonialsTrustSignals();
 await checkPriorityServiceReviewContext();
 

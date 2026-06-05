@@ -8,6 +8,7 @@ import { supabase, supabaseConfigured } from '../lib/supabase';
 import { generatedBlogPosts, type GeneratedBlogPost } from '../generated/blogPosts';
 import { cleanBlogDisplayText } from '../lib/blogText';
 import { blogPathSlug, blogPostPath } from '../lib/blogRoutes';
+import { canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
 
 interface BlogPostData {
   id: string;
@@ -47,6 +48,57 @@ const normalizeArticleContent = (value: string) =>
   value
     .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
     .replace(/<\/h1>/gi, '</h2>');
+
+const priorityAustinServiceLinks = [
+  {
+    title: 'Austin House Painters',
+    schemaName: 'Austin House Painters',
+    href: '/house-painters-austin',
+    serviceType: 'House painting services',
+    description: 'Compare exterior, interior, cabinet, and commercial painting options for Austin properties.'
+  },
+  {
+    title: 'Exterior Painting in Austin',
+    schemaName: 'Austin Exterior House Painters',
+    href: '/exterior-painting-austin',
+    serviceType: 'Exterior painting',
+    description: 'Prep, coatings, and weather-aware exterior painting for Central Texas homes.'
+  },
+  {
+    title: 'Interior Painting in Austin',
+    schemaName: 'Austin Interior Painters',
+    href: '/interior-painting-austin',
+    serviceType: 'Interior painting',
+    description: 'Clean, careful interior painting for living spaces, trim, walls, and ceilings.'
+  },
+  {
+    title: 'Cabinet Painting Austin',
+    schemaName: 'Austin Cabinet Painting',
+    href: '/cabinet-refinishing-austin',
+    serviceType: 'Cabinet painting and refinishing',
+    description: 'Durable cabinet painting and refinishing for Austin kitchens, baths, and built-ins.'
+  },
+  {
+    title: 'Commercial Painting Austin',
+    schemaName: 'Austin Commercial Painters',
+    href: '/commercial-painting-austin',
+    serviceType: 'Commercial painting',
+    description: 'Professional painting for Austin offices, retail spaces, and commercial properties.'
+  }
+] as const;
+
+const priorityAustinServiceSchema = priorityAustinServiceLinks.map(service => ({
+  '@type': 'Service',
+  '@id': `${siteBaseUrl}${service.href}#service`,
+  name: service.schemaName,
+  serviceType: service.serviceType,
+  url: `${siteBaseUrl}${service.href}`,
+  provider: canonicalBusinessProvider,
+  areaServed: {
+    '@type': 'City',
+    name: 'Austin'
+  }
+}));
 
 const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
   const excerpt = stripMarkdown(post.excerpt || post.title);
@@ -185,7 +237,7 @@ const BlogPost = () => {
   }
 
   const generateStructuredData = () => {
-    const baseUrl = 'https://www.hillcopaint.com';
+    const baseUrl = siteBaseUrl;
     const postPath = blogPostPath(post.slug);
     const plainText = normalizeArticleContent(post.content).replace(/<[^>]*>/g, '').trim();
     const wordCount = plainText.split(/\s+/).length;
@@ -240,6 +292,8 @@ const BlogPost = () => {
           },
           articleSection: post.category,
           keywords: post.tags.join(', '),
+          about: priorityAustinServiceSchema,
+          mentions: priorityAustinServiceSchema,
           inLanguage: 'en-US',
           isAccessibleForFree: true,
           isPartOf: {
@@ -300,28 +354,7 @@ const BlogPost = () => {
         .filter((item, index, items) => item.slug !== post.slug && items.findIndex(other => other.slug === item.slug) === index)
     : generatedBlogPosts.filter(item => item.slug !== post.slug).slice(0, 3);
 
-  const serviceLinks = [
-    {
-      title: 'Exterior Painting in Austin',
-      href: '/exterior-painting-austin',
-      description: 'Prep, coatings, and weather-aware exterior painting for Central Texas homes.'
-    },
-    {
-      title: 'Interior Painting in Austin',
-      href: '/interior-painting-austin',
-      description: 'Clean, careful interior painting for living spaces, trim, walls, and ceilings.'
-    },
-    {
-      title: 'Cabinet Refinishing',
-      href: '/services/cabinet-refinishing',
-      description: 'Durable cabinet painting and refinishing for kitchens, baths, and built-ins.'
-    },
-    {
-      title: 'Commercial Painting',
-      href: '/services/commercial',
-      description: 'Professional painting for offices, retail spaces, and commercial properties.'
-    }
-  ];
+  const serviceLinks = priorityAustinServiceLinks;
   const articleContent = normalizeArticleContent(post.content);
   const displayTitle = cleanBlogDisplayText(post.title);
   const displayDescription = cleanBlogDisplayText(post.meta_description || post.excerpt);
@@ -473,8 +506,8 @@ const BlogPost = () => {
             )}
 
             <div>
-              <h3 className="text-xl font-bold text-brand-gray-900 mb-4">Painting Services</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <h3 className="text-xl font-bold text-brand-gray-900 mb-4">Austin Painting Services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
                 {serviceLinks.map(service => (
                   <Link
                     key={service.href}

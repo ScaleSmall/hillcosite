@@ -418,6 +418,13 @@ const priorityServiceReviewContextRoutes = new Map([
   ['/cabinet-refinishing-austin', 'Cabinet Refinishing Austin'],
   ['/commercial-painting-austin', 'Commercial Painting Austin']
 ]);
+const priorityAustinBlogServiceLinks = [
+  ['/house-painters-austin', 'Austin House Painters'],
+  ['/exterior-painting-austin', 'Austin Exterior House Painters'],
+  ['/interior-painting-austin', 'Austin Interior Painters'],
+  ['/cabinet-refinishing-austin', 'Austin Cabinet Painting'],
+  ['/commercial-painting-austin', 'Austin Commercial Painters']
+];
 const requiredAustinServiceFaqSchemaRoutes = [
   {
     route: '/house-painters-austin',
@@ -2937,6 +2944,30 @@ function run() {
       }
 
       validateBreadcrumbReferences(routePath, schemaItems);
+
+      if (routePath.startsWith('/blog/')) {
+        const blogPostingSchema = schemaItems.find(item => schemaTypeIncludes(item, 'BlogPosting'));
+        const blogSchemaText = JSON.stringify(blogPostingSchema || {});
+
+        if (!blogPostingSchema) {
+          fail(`${routePath}: blog article is missing BlogPosting structured data`);
+        }
+
+        for (const [serviceRoute, serviceName] of priorityAustinBlogServiceLinks) {
+          if (!pageLinksToRoute(page, routePath, serviceRoute)) {
+            fail(`${routePath}: blog article should visibly link to priority Austin service page ${serviceName} (${serviceRoute})`);
+          }
+
+          if (
+            !blogSchemaText.includes(`${baseUrl}${serviceRoute}`) ||
+            !blogSchemaText.includes(`${baseUrl}${serviceRoute}#service`) ||
+            !blogSchemaText.includes(serviceName) ||
+            !blogSchemaText.includes(`${baseUrl}/#localbusiness`)
+          ) {
+            fail(`${routePath}: BlogPosting schema should connect article topical relevance to ${serviceName} and the canonical LocalBusiness provider`);
+          }
+        }
+      }
 
       if (routePath === '/') {
         const requiredHomepageEntitySignals = [
