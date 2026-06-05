@@ -407,6 +407,17 @@ const requiredCoreServiceFaqSchemaRoutes = [
     serviceTerm: 'commercial'
   }
 ];
+const priorityServiceReviewContextRoutes = new Map([
+  ['/house-painters-austin', 'Austin House Painters'],
+  ['/services/interior-painting', 'Austin Interior Painting'],
+  ['/services/exterior-painting', 'Austin Exterior Painting'],
+  ['/services/cabinet-refinishing', 'Austin Cabinet Painting'],
+  ['/services/commercial', 'Austin Commercial Painting'],
+  ['/interior-painting-austin', 'Interior Painting Austin'],
+  ['/exterior-painting-austin', 'Exterior Painting Austin'],
+  ['/cabinet-refinishing-austin', 'Cabinet Refinishing Austin'],
+  ['/commercial-painting-austin', 'Commercial Painting Austin']
+]);
 const requiredAustinServiceFaqSchemaRoutes = [
   {
     route: '/house-painters-austin',
@@ -3294,6 +3305,24 @@ function run() {
           if (!html.includes(signal)) {
             fail(`${routePath}: testimonials page is missing required review trust signal ${signal}`);
           }
+        }
+      }
+
+      const expectedReviewServiceName = priorityServiceReviewContextRoutes.get(routePath);
+      if (expectedReviewServiceName) {
+        const serviceReviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
+        const hasServiceReviewedItem =
+          html.includes('itemprop="itemReviewed"') &&
+          html.includes('itemtype="https://schema.org/Service"') &&
+          html.includes(`itemid="${baseUrl}${routePath}"`) &&
+          html.includes(expectedReviewServiceName) &&
+          html.includes('itemprop="provider"') &&
+          html.includes(`itemid="${baseUrl}/#localbusiness"`) &&
+          html.includes(googleBusinessProfileUrl) &&
+          html.includes('itemprop="reviewBody"');
+
+        if (serviceReviewSchemaCount < 3 || !hasServiceReviewedItem) {
+          fail(`${routePath}: priority service page should mark visible customer feedback as Review entities for the specific Service and canonical LocalBusiness provider`);
         }
       }
 

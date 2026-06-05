@@ -8,6 +8,7 @@ import ImageWithGeo from '../../components/ImageWithGeo';
 import RelatedServices from '../../components/RelatedServices';
 import SplitSection from '../../components/sections/SplitSection';
 import ProcessSection from '../../components/sections/ProcessSection';
+import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
@@ -60,19 +61,22 @@ const CommercialPainting = () => {
       name: 'Jason Hartley',
       location: 'Austin',
       rating: 5,
-      text: 'Hill Country Painting did an outstanding job. They showed up on time, worked hard, and paid close attention to detail. Everything looks clean and professional.'
+      text: 'Hill Country Painting did an outstanding job. They showed up on time, worked hard, and paid close attention to detail. Everything looks clean and professional.',
+      initials: 'JH'
     },
     {
       name: 'Arashk Shirazi',
       location: 'Austin',
       rating: 5,
-      text: 'Josh was very professional, honest and informative about options and gave the best advice and recommendations. The crew were respectful and very responsible about the quality of their work.'
+      text: 'Josh was very professional, honest and informative about options and gave the best advice and recommendations. The crew were respectful and very responsible about the quality of their work.',
+      initials: 'AS'
     },
     {
       name: 'Chris Morgan',
       location: 'Austin',
       rating: 5,
-      text: 'Great attention to detail, good communication and follow up. The crew was exceptional! Highly recommend.'
+      text: 'Great attention to detail, good communication and follow up. The crew was exceptional! Highly recommend.',
+      initials: 'CM'
     }
   ];
 
@@ -340,6 +344,19 @@ const CommercialPainting = () => {
         ]}
         image="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=800"
         imageAlt="Commercial painting preparation Austin"
+      />
+
+      <TestimonialsSection
+        title="What Our Commercial Painting Customers Say"
+        testimonials={testimonials}
+        structuredReviews={true}
+        reviewedItem={{
+          type: 'Service',
+          name: 'Austin Commercial Painting',
+          url: '/services/commercial',
+          serviceType: 'Commercial painting',
+          areaServed: 'Austin, TX and the Greater Austin area'
+        }}
       />
 
       <NAPMapSection />

@@ -17,7 +17,8 @@ interface PricingDataResponse {
 
 const CACHE_KEY = 'hillco_pricing_data';
 const CACHE_DURATION = 3600000;
-const MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+const ABSOLUTE_MINIMUM_PROJECT_PRICE = 6000;
+const DEFAULT_VISIBLE_PROJECT_PRICE = 6250;
 const MINIMUM_AVERAGE_PROJECT_PRICE = 8500;
 const PRICING_KEY_MINIMUMS: Record<string, number> = {
   cost_factor_home_size_interior: 6500,
@@ -33,8 +34,28 @@ const PRICING_KEY_MINIMUMS: Record<string, number> = {
   stat_average_project: MINIMUM_AVERAGE_PROJECT_PRICE
 };
 
+const PRICING_KEY_PATTERN_MINIMUMS: Array<[RegExp, number]> = [
+  [/commercial/i, 7500],
+  [/(house_3000_exterior|3000.*exterior|exterior.*3000|large.*exterior)/i, 12000],
+  [/(house_3000_interior|3000.*interior|interior.*3000|large.*interior)/i, 9000],
+  [/(house_2200_exterior|faq_2000sqft_exterior|2000.*exterior|2200.*exterior|average.*exterior)/i, 8500],
+  [/(house_1500_exterior|1500.*exterior)/i, 6750],
+  [/exterior/i, 7000],
+  [/(house_1500_interior|1500.*interior)/i, 6250],
+  [/interior/i, 6500],
+  [/cabinet/i, 6250],
+  [/average|stat/i, MINIMUM_AVERAGE_PROJECT_PRICE]
+];
+
 function minimumForPricingKey(key: string): number {
-  return PRICING_KEY_MINIMUMS[key] || MINIMUM_VISIBLE_PROJECT_PRICE;
+  const exactMinimum = PRICING_KEY_MINIMUMS[key];
+
+  if (exactMinimum) {
+    return exactMinimum;
+  }
+
+  const patternMinimum = PRICING_KEY_PATTERN_MINIMUMS.find(([pattern]) => pattern.test(key))?.[1];
+  return Math.max(patternMinimum || DEFAULT_VISIBLE_PROJECT_PRICE, ABSOLUTE_MINIMUM_PROJECT_PRICE);
 }
 
 function formatCurrency(value: number): string {

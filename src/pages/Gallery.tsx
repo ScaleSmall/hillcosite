@@ -43,13 +43,22 @@ const BANNED_HERO_IMAGE_FILENAMES = [
 const isBannedHeroImage = (imageUrl: string) =>
   BANNED_HERO_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
 
+const imageDedupeKey = (imageUrl: string) => {
+  try {
+    const parsed = new URL(imageUrl);
+    return `${parsed.origin}${parsed.pathname}`;
+  } catch {
+    return imageUrl.split(/[?#]/)[0];
+  }
+};
+
 const uniqueByImageUrl = (photos: GalleryPhoto[]) =>
   photos.filter((photo, index, allPhotos) =>
-    allPhotos.findIndex(item => item.image_url === photo.image_url) === index
+    allPhotos.findIndex(item => imageDedupeKey(item.image_url) === imageDedupeKey(photo.image_url)) === index
   );
 
 const excludeImageUrls = (photos: GalleryPhoto[], excludedUrls: Set<string>) =>
-  photos.filter(photo => !excludedUrls.has(photo.image_url));
+  photos.filter(photo => !excludedUrls.has(imageDedupeKey(photo.image_url)));
 
 const FALLBACK_FEATURED: GalleryPhoto[] = [
   {
@@ -174,9 +183,9 @@ const Gallery = () => {
   const safeHeroFeaturedPhotos = uniqueByImageUrl(featuredPhotos).filter(photo => !isBannedHeroImage(photo.image_url));
   const heroFeaturedPhotos = uniqueByImageUrl([...safeHeroFeaturedPhotos, ...FALLBACK_FEATURED])
     .slice(0, 6);
-  const heroFeaturedPhotoUrls = new Set(heroFeaturedPhotos.map(photo => photo.image_url));
+  const heroFeaturedPhotoUrls = new Set(heroFeaturedPhotos.map(photo => imageDedupeKey(photo.image_url)));
   const displayedBeforeAfterPhotos = excludeImageUrls(uniqueBeforeAfterPhotos, heroFeaturedPhotoUrls);
-  const displayedBeforeAfterPhotoUrls = new Set(displayedBeforeAfterPhotos.map(photo => photo.image_url));
+  const displayedBeforeAfterPhotoUrls = new Set(displayedBeforeAfterPhotos.map(photo => imageDedupeKey(photo.image_url)));
   const displayedRegularExcludedUrls = new Set([...heroFeaturedPhotoUrls, ...displayedBeforeAfterPhotoUrls]);
   const recentBeforeAfter = displayedBeforeAfterPhotos.slice(0, 6);
   const olderBeforeAfter = displayedBeforeAfterPhotos.slice(6);

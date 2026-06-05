@@ -328,6 +328,14 @@ const ExteriorPainting = () => {
       <TestimonialsSection
         title="What Our Exterior Painting Customers Say"
         testimonials={testimonials}
+        structuredReviews={true}
+        reviewedItem={{
+          type: 'Service',
+          name: 'Austin Exterior Painting',
+          url: '/services/exterior-painting',
+          serviceType: 'Exterior painting',
+          areaServed: 'Austin, TX and the Greater Austin area'
+        }}
       />
 
       <NAPMapSection />

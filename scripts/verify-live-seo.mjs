@@ -280,6 +280,17 @@ const coreServiceFaqSchemaRoutes = [
     serviceTerm: 'commercial',
   },
 ];
+const priorityServiceReviewContextRoutes = new Map([
+  ['/house-painters-austin', 'Austin House Painters'],
+  ['/services/interior-painting', 'Austin Interior Painting'],
+  ['/services/exterior-painting', 'Austin Exterior Painting'],
+  ['/services/cabinet-refinishing', 'Austin Cabinet Painting'],
+  ['/services/commercial', 'Austin Commercial Painting'],
+  ['/interior-painting-austin', 'Interior Painting Austin'],
+  ['/exterior-painting-austin', 'Exterior Painting Austin'],
+  ['/cabinet-refinishing-austin', 'Cabinet Refinishing Austin'],
+  ['/commercial-painting-austin', 'Commercial Painting Austin'],
+]);
 const austinServiceFaqSchemaRoutes = [
   {
     route: '/house-painters-austin',
@@ -603,8 +614,33 @@ function noindexCrawlerMetaProblems(html, expectedRobotsContent) {
     .filter(Boolean);
 }
 
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const transientFetchErrorPattern = /(terminated|UND_ERR_SOCKET|ECONNRESET|ETIMEDOUT|fetch failed|other side closed|socket)/i;
+
+async function fetchWithRetry(url, options = {}, attempts = 4) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      return await fetch(url, options);
+    } catch (error) {
+      lastError = error;
+      const message = `${error?.message || ''} ${error?.cause?.message || ''} ${error?.cause?.code || ''}`;
+      const isTransient = transientFetchErrorPattern.test(message);
+
+      if (!isTransient || attempt === attempts) {
+        throw error;
+      }
+
+      await sleep((250 * attempt) + Math.floor(Math.random() * 150));
+    }
+  }
+
+  throw lastError;
+}
+
 async function fetchText(url, headers = {}) {
-  const response = await fetch(url, {
+  const response = await fetchWithRetry(url, {
     headers: {
       'Cache-Control': 'no-cache',
       Pragma: 'no-cache',
@@ -1047,7 +1083,7 @@ async function checkPagesDomain() {
     return;
   }
 
-  const response = await fetch(
+  const response = await fetchWithRetry(
     `https://api.cloudflare.com/client/v4/accounts/${accountId}/pages/projects/${pagesProjectName}/domains`,
     {
       headers: {
@@ -1093,7 +1129,7 @@ async function checkCanonicalHostRoutes() {
       }
 
       seen.add(currentUrl);
-      const response = await fetch(currentUrl, {
+      const response = await fetchWithRetry(currentUrl, {
         redirect: 'manual',
         headers: {
           'Cache-Control': 'no-cache',
@@ -1204,7 +1240,7 @@ async function checkGooglebotSitemapAccess() {
   async function worker() {
     while (nextIndex < urls.length) {
       const url = urls[nextIndex++];
-      const page = await fetch(`${url}?v=${Date.now()}`, {
+      const page = await fetchWithRetry(`${url}?v=${Date.now()}`, {
         redirect: 'manual',
         headers: {
           'Cache-Control': 'no-cache',
@@ -1289,7 +1325,7 @@ async function checkSitemapPages() {
     while (nextIndex < urls.length) {
       const url = urls[nextIndex++];
       const route = routePathFromUrl(url);
-      const page = await fetch(url, {
+      const page = await fetchWithRetry(url, {
         redirect: 'manual',
         headers: {
           'Cache-Control': 'no-cache',
@@ -1590,7 +1626,7 @@ async function checkSitemapTrailingSlashRedirects() {
   async function worker() {
     while (nextIndex < routes.length) {
       const route = routes[nextIndex++];
-      const response = await fetch(`${baseUrl}${route}/?v=${Date.now()}`, {
+      const response = await fetchWithRetry(`${baseUrl}${route}/?v=${Date.now()}`, {
         redirect: 'manual',
         headers: {
           'Cache-Control': 'no-cache',
@@ -2153,7 +2189,7 @@ async function checkLegacyRedirects() {
   let passed = 0;
 
   for (const [source, target] of liveLegacyRedirects) {
-    const response = await fetch(`${baseUrl}${source}?v=${Date.now()}`, {
+    const response = await fetchWithRetry(`${baseUrl}${source}?v=${Date.now()}`, {
       redirect: 'manual',
       headers: {
         'Cache-Control': 'no-cache',
@@ -2178,7 +2214,7 @@ async function checkStalePublicSearchResultSamples() {
   let passed = 0;
 
   for (const sample of stalePublicSearchResultSamples) {
-    const response = await fetch(`${baseUrl}${sample.route}?v=${Date.now()}`, {
+    const response = await fetchWithRetry(`${baseUrl}${sample.route}?v=${Date.now()}`, {
       redirect: 'manual',
       headers: {
         'Cache-Control': 'no-cache',
@@ -3551,6 +3587,33 @@ async function checkTestimonialsTrustSignals() {
   console.log(`Live testimonials trust signals checked: ${reviewSchemaCount} marked-up reviews with Google review link`);
 }
 
+async function checkPriorityServiceReviewContext() {
+  let passed = 0;
+
+  for (const [route, expectedServiceName] of priorityServiceReviewContextRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const reviewSchemaCount = (html.match(/itemtype="https:\/\/schema\.org\/Review"/g) || []).length;
+    const hasServiceReviewedItem =
+      html.includes('itemprop="itemReviewed"') &&
+      html.includes('itemtype="https://schema.org/Service"') &&
+      html.includes(`itemid="${baseUrl}${route}"`) &&
+      html.includes(expectedServiceName) &&
+      html.includes('itemprop="provider"') &&
+      html.includes(`itemid="${baseUrl}/#localbusiness"`) &&
+      html.includes(googleBusinessProfileUrl) &&
+      html.includes('itemprop="reviewBody"');
+
+    if (response.status !== 200 || reviewSchemaCount < 3 || !hasServiceReviewedItem) {
+      fail(`${route}: live priority service page is missing service-specific Review markup tied to the canonical LocalBusiness provider.`);
+      continue;
+    }
+
+    passed++;
+  }
+
+  console.log(`Live priority service review context checked: ${passed}/${priorityServiceReviewContextRoutes.size}`);
+}
+
 if (pageIndexingMode) {
   console.log('Live DNS/custom-domain checks skipped for page-indexing validation mode.');
 } else {
@@ -3599,6 +3662,7 @@ await checkFreeEstimatePage();
 await checkPaintingCostProviderSchema();
 await checkHtmlSitemapDiscoveryLinks();
 await checkTestimonialsTrustSignals();
+await checkPriorityServiceReviewContext();
 
 if (failures.length) {
   console.error('\nLive SEO verification FAILED:');

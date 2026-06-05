@@ -9,6 +9,7 @@ import RelatedServices from '../../components/RelatedServices';
 import ComparisonSection from '../../components/sections/ComparisonSection';
 import ProcessSection from '../../components/sections/ProcessSection';
 import ServicesGrid from '../../components/sections/ServicesGrid';
+import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
@@ -323,6 +324,19 @@ const CabinetRefinishing = () => {
         steps={processSteps}
       />
 
+      <TestimonialsSection
+        title="What Our Cabinet Painting Customers Say"
+        testimonials={testimonials}
+        structuredReviews={true}
+        reviewedItem={{
+          type: 'Service',
+          name: 'Austin Cabinet Painting',
+          url: '/services/cabinet-refinishing',
+          serviceType: 'Cabinet painting and refinishing',
+          areaServed: 'Austin, TX and the Greater Austin area'
+        }}
+      />
+
       {/* What Makes This Experience Different */}
       <section className="section-padding bg-brand-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -415,23 +429,23 @@ const CabinetRefinishing = () => {
 
       {/* Related Services */}
       <RelatedServices
-        title="Complete Home Painting Services"
+        title="Kitchen Finish Services"
         location="Austin"
         services={[
           {
-            title: 'Interior Painting',
-            description: 'Professional interior painting services to complement your newly painted cabinets.',
-            href: '/interior-painting-austin'
-          },
-          {
-            title: 'Exterior Painting',
-            description: 'Weather-resistant exterior painting designed for Austin climate.',
-            href: '/exterior-painting-austin'
-          },
-          {
-            title: 'Color Consultation',
-            description: 'Expert color consultation to help choose the perfect cabinet and paint colors.',
+            title: 'Kitchen Color Consultation',
+            description: 'Cabinet, wall, island, and trim color planning so the finished kitchen feels cohesive.',
             href: '/color-consultation'
+          },
+          {
+            title: 'Kitchen Trim & Millwork',
+            description: 'Finish work for crown, casing, baseboards, pantry trim, and detailed kitchen millwork.',
+            href: '/services/interior-painting'
+          },
+          {
+            title: 'Cabinet Refinishing by Area',
+            description: 'Kitchen cabinet painting and refinishing options for Austin-area homes and neighborhoods.',
+            href: '/cabinet-refinishing-austin'
           }
         ]}
       />

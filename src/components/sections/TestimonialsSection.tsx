@@ -15,9 +15,29 @@ interface TestimonialsSectionProps {
   subtitle?: string;
   testimonials: Testimonial[];
   structuredReviews?: boolean;
+  reviewedItem?: {
+    type?: 'LocalBusiness' | 'Service';
+    name: string;
+    url?: string;
+    serviceType?: string;
+    areaServed?: string;
+  };
 }
 
-const TestimonialsSection = ({ title, subtitle, testimonials, structuredReviews = false }: TestimonialsSectionProps) => {
+const toAbsoluteUrl = (url?: string) => {
+  if (!url) return businessConfig.website;
+  if (/^https?:\/\//i.test(url)) return url;
+  return `${businessConfig.website}${url.startsWith('/') ? url : `/${url}`}`;
+};
+
+const TestimonialsSection = ({ title, subtitle, testimonials, structuredReviews = false, reviewedItem }: TestimonialsSectionProps) => {
+  const reviewTarget = reviewedItem || {
+    type: 'LocalBusiness' as const,
+    name: businessConfig.name,
+    url: businessConfig.website,
+    areaServed: businessConfig.serviceArea
+  };
+
   return (
     <section className="section-padding bg-brand-coral">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,20 +68,42 @@ const TestimonialsSection = ({ title, subtitle, testimonials, structuredReviews 
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-azure to-brand-azureDark opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               {structuredReviews && (
-                <div itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" className="sr-only">
-                  <span itemProp="name">Hill Country Painting</span>
-                  <span itemProp="url">{businessConfig.website}</span>
-                  <span itemProp="telephone">(512) 240-2246</span>
-                  <span itemProp="areaServed">Greater Austin Area</span>
-                  <span itemProp="sameAs">{businessConfig.googleBusinessProfileUrl}</span>
-                  <span itemProp="hasMap">{businessConfig.googleBusinessProfileUrl}</span>
-                  <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
-                    <span itemProp="name">Google Knowledge Graph ID</span>
-                    <span itemProp="propertyID">kgmid</span>
-                    <span itemProp="value">{businessConfig.googleKnowledgeGraphId}</span>
-                    <span itemProp="url">{businessConfig.googleBusinessProfileUrl}</span>
-                  </span>
-                </div>
+                reviewTarget.type === 'Service' ? (
+                  <div itemProp="itemReviewed" itemScope itemType="https://schema.org/Service" itemID={toAbsoluteUrl(reviewTarget.url)} className="sr-only">
+                    <span itemProp="name">{reviewTarget.name}</span>
+                    <span itemProp="url">{toAbsoluteUrl(reviewTarget.url)}</span>
+                    {reviewTarget.serviceType && <span itemProp="serviceType">{reviewTarget.serviceType}</span>}
+                    <span itemProp="areaServed">{reviewTarget.areaServed || businessConfig.serviceArea}</span>
+                    <span itemProp="provider" itemScope itemType="https://schema.org/LocalBusiness" itemID={`${businessConfig.website}/#localbusiness`}>
+                      <span itemProp="name">{businessConfig.name}</span>
+                      <span itemProp="url">{businessConfig.website}</span>
+                      <span itemProp="telephone">{businessConfig.phone}</span>
+                      <span itemProp="sameAs">{businessConfig.googleBusinessProfileUrl}</span>
+                      <span itemProp="hasMap">{businessConfig.googleBusinessProfileUrl}</span>
+                      <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
+                        <span itemProp="name">Google Knowledge Graph ID</span>
+                        <span itemProp="propertyID">kgmid</span>
+                        <span itemProp="value">{businessConfig.googleKnowledgeGraphId}</span>
+                        <span itemProp="url">{businessConfig.googleBusinessProfileUrl}</span>
+                      </span>
+                    </span>
+                  </div>
+                ) : (
+                  <div itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness" itemID={`${businessConfig.website}/#localbusiness`} className="sr-only">
+                    <span itemProp="name">{businessConfig.name}</span>
+                    <span itemProp="url">{businessConfig.website}</span>
+                    <span itemProp="telephone">{businessConfig.phone}</span>
+                    <span itemProp="areaServed">{reviewTarget.areaServed || 'Greater Austin Area'}</span>
+                    <span itemProp="sameAs">{businessConfig.googleBusinessProfileUrl}</span>
+                    <span itemProp="hasMap">{businessConfig.googleBusinessProfileUrl}</span>
+                    <span itemProp="identifier" itemScope itemType="https://schema.org/PropertyValue">
+                      <span itemProp="name">Google Knowledge Graph ID</span>
+                      <span itemProp="propertyID">kgmid</span>
+                      <span itemProp="value">{businessConfig.googleKnowledgeGraphId}</span>
+                      <span itemProp="url">{businessConfig.googleBusinessProfileUrl}</span>
+                    </span>
+                  </div>
+                )
               )}
 
               <div className="flex items-center mb-4">

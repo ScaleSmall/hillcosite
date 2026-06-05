@@ -513,6 +513,14 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
       <TestimonialsSection
         title={`${location.name} Customer Reviews`}
         testimonials={content.testimonials}
+        structuredReviews={true}
+        reviewedItem={{
+          type: 'Service',
+          name: `${service.name} ${location.name}`,
+          url: canonicalPath,
+          serviceType: service.name,
+          areaServed: `${location.name}, TX`
+        }}
       />
 
       <NAPMapSection />

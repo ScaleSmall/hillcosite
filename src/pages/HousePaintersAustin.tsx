@@ -14,15 +14,15 @@ const serviceLinks = [
     title: 'Austin Exterior House Painters',
     href: '/exterior-painting-austin',
     icon: Home,
-    description: 'Exterior repaints for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
-    scope: 'Most full exterior repaint projects land in the $7,000-$16,000+ range once prep, access, repairs, and coating needs are reviewed.'
+    description: 'Exterior repaints built for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
+    scope: 'Most complete exterior repaint projects land in the $7,000-$16,000+ range once prep, access, repairs, and coating needs are reviewed.'
   },
   {
     title: 'Austin Interior Painters',
     href: '/interior-painting-austin',
     icon: PaintBucket,
     description: 'Interior painting for walls, trim, ceilings, rooms, and whole-home repaints with careful protection and daily cleanup.',
-    scope: 'Whole-home and multi-room interior projects commonly begin around $6,500, with prep, masking, protection, materials, and cleanup built into the estimate.'
+    scope: 'Whole-home and multi-room interior projects commonly begin around $6,500, with prep, masking, protection, materials, and cleanup included in the estimate.'
   },
   {
     title: 'Austin Cabinet Painting',
@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     question: 'Do Austin house painters handle both interior and exterior work?',
-    answer: 'Yes. Hill Country Painting handles full-scope Austin interior and exterior painting, including prep, masking, protection, premium coatings, cleanup, and a written estimate. Cabinet painting and commercial painting are also available.'
+    answer: 'Yes. Hill Country Painting handles complete Austin interior and exterior painting projects, including prep, masking, protection, premium coatings, cleanup, and a written estimate. Cabinet painting and commercial painting are also available.'
   },
   {
     question: 'How much do professional Austin house painters cost?',
@@ -169,7 +169,7 @@ const HousePaintersAustin = () => {
         ]}
         service={{
           name: 'Austin House Painters',
-          description: 'Professional Austin house painters for full-scope exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Greater Austin.',
+          description: 'Professional Austin house painters for complete exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Greater Austin.',
           areaServed: [
             'Austin',
             'Downtown Austin',
@@ -218,7 +218,7 @@ const HousePaintersAustin = () => {
             'commercial painters near me Austin',
             'Greater Austin painting contractor'
           ],
-          serviceOutput: 'Austin house painters service for full-scope exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Austin, TX'
+          serviceOutput: 'Austin house painters service for complete exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in Austin, TX'
         }}
         faq={faqs}
         includeLocalBusiness={true}
@@ -253,10 +253,10 @@ const HousePaintersAustin = () => {
               Greater Austin painting contractor
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-              Austin House Painters for Serious Full-Scope Projects
+              Austin House Painters for Projects Done Right
             </h1>
             <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-              Exterior, interior, cabinet, and commercial painting for Austin homes and businesses. Every estimate is built around prep, protection, premium materials, cleanup, and a clear written scope.
+              Exterior, interior, cabinet, and commercial painting for Austin homes and businesses. Every estimate is built around prep, protection, premium materials, cleanup, and a clear written plan.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/free-estimate" className="inline-flex items-center justify-center rounded-lg bg-brand-azureDark px-8 py-4 font-semibold text-white transition-colors hover:bg-brand-azure focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2">
@@ -310,7 +310,7 @@ const HousePaintersAustin = () => {
                 What Austin Homeowners Should Expect
               </h2>
               <p className="text-lg text-brand-gray-600 leading-body mb-6">
-                The lowest estimate is rarely the strongest choice when the home needs real prep, protection, reliable scheduling, and a finish that survives Central Texas sun and daily use. Hill Country Painting positions each project around the finished result and the work required to get there.
+                The lowest estimate is rarely the strongest choice when the home needs real prep, protection, reliable scheduling, and a finish that survives Central Texas sun and daily use. Hill Country Painting plans each project around the finished result and the work required to get there.
               </p>
               <ul className="space-y-4">
                 {[
@@ -360,6 +360,14 @@ const HousePaintersAustin = () => {
         title="Austin Customer Feedback"
         subtitle="Real project feedback from local homeowners"
         testimonials={testimonials}
+        structuredReviews={true}
+        reviewedItem={{
+          type: 'Service',
+          name: 'Austin House Painters',
+          url: '/house-painters-austin',
+          serviceType: 'House painting services',
+          areaServed: 'Austin, TX and the Greater Austin area'
+        }}
       />
 
       <MiniFAQ title="Austin House Painters FAQ" faqs={faqs} surface="white" />

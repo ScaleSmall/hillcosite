@@ -431,6 +431,14 @@ const InteriorPainting = () => {
       <TestimonialsSection
         title="What Our Interior Painting Customers Say"
         testimonials={[testimonials[0], testimonials[1], testimonials[2]]}
+        structuredReviews={true}
+        reviewedItem={{
+          type: 'Service',
+          name: 'Austin Interior Painting',
+          url: '/services/interior-painting',
+          serviceType: 'Interior painting',
+          areaServed: 'Austin, TX and the Greater Austin area'
+        }}
       />
 
       {/* NAP and Map */}
