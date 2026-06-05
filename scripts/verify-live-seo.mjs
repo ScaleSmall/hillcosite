@@ -457,6 +457,20 @@ const liveUnknownRoutes = [
   '/api/fetch-gbp-rating',
   '/api/pricing',
 ];
+const stalePublicSearchResultSamples = [
+  { route: '/about', canonical: '/about' },
+  { route: '/about/', redirect: '/about' },
+  { route: '/service-areas/', redirect: '/service-areas' },
+  { route: '/commercial-exterior-painting-round-rock/', redirect: '/services/commercial' },
+  { route: '/service/residential-deck-painting-round-rock/', redirect: '/services/exterior-painting' },
+  { route: '/service/residential-concrete-painting-round-rock/', redirect: '/services/exterior-painting' },
+  { route: '/service/residential-nursery-painting-round-rock/', redirect: '/services/interior-painting' },
+  { route: '/service/garage-painting-round-rock/', redirect: '/services' },
+  { route: '/service/residential-foyer-painting-round-rock/', redirect: '/services/interior-painting' },
+  { route: '/service/residential-hallway-painting-round-rock/', redirect: '/services/interior-painting' },
+  { route: '/projects/', redirect: '/gallery' },
+  { route: '/exterior-painting/', redirect: '/services/exterior-painting' },
+];
 const allowedInternalNoindexRoutes = new Set(
   liveNoindexRoutes.map(([route]) => route.split('?')[0])
 );
@@ -1980,6 +1994,59 @@ async function checkLegacyRedirects() {
   console.log(`Live legacy redirects checked: ${passed}/${liveLegacyRedirects.length}`);
 }
 
+async function checkStalePublicSearchResultSamples() {
+  let passed = 0;
+
+  for (const sample of stalePublicSearchResultSamples) {
+    const response = await fetch(`${baseUrl}${sample.route}?v=${Date.now()}`, {
+      redirect: 'manual',
+      headers: {
+        'Cache-Control': 'no-cache',
+        Pragma: 'no-cache',
+      },
+    });
+
+    if (sample.redirect) {
+      const location = response.headers.get('location') || '';
+      const normalized = normalizeRedirectLocation(location);
+
+      if (response.status !== 301 || normalized.host !== 'www.hillcopaint.com' || normalized.route !== sample.redirect) {
+        fail(`${sample.route}: stale public search-result URL should 301 to ${sample.redirect}, found status ${response.status} location ${location || '(missing)'}`);
+        continue;
+      }
+
+      passed += 1;
+      continue;
+    }
+
+    const html = await response.text();
+    const canonicalTags = [...html.matchAll(/<link\b[^>]*>/gi)]
+      .map(match => match[0])
+      .filter(tag => (attrs(tag).rel || '').toLowerCase() === 'canonical');
+    const canonicalHrefs = canonicalTags.map(tag => attrs(tag).href || '');
+    const visibleTextLower = visibleTextFromHtml(html).toLowerCase();
+    const staleSignals = [
+      ...stalePublicIdentitySignals.filter(signal => html.includes(signal)),
+      ...staleVisibleTrustProofSignals.filter(signal => visibleTextLower.includes(signal)),
+      ...bannedVisibleValuePositioningSignals.filter(signal => visibleTextLower.includes(signal)),
+    ];
+
+    if (
+      response.status !== 200 ||
+      canonicalHrefs.length !== 1 ||
+      canonicalHrefs[0] !== `${baseUrl}${sample.canonical}` ||
+      staleSignals.length > 0
+    ) {
+      fail(`${sample.route}: stale public search-result canonical page should be live, canonical, and free of stale visible signals; found status ${response.status}, canonicals ${canonicalHrefs.join(', ') || '(none)'}, stale ${staleSignals.join(', ') || 'none'}`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live stale public search-result samples checked: ${passed}/${stalePublicSearchResultSamples.length}`);
+}
+
 async function checkAustinSchema() {
   let passed = 0;
 
@@ -3072,6 +3139,7 @@ await checkSitemapPages();
 await checkSitemapTrailingSlashRedirects();
 await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
+await checkStalePublicSearchResultSamples();
 await checkSupabaseFeed();
 await checkAustinSchema();
 await checkAustinServiceAreaSchema();
