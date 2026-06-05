@@ -2841,6 +2841,7 @@ async function checkCoreServiceLocalSignalDetails() {
 
   for (const [route, expectedSignal] of coreServiceLocalDetailSignals) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const hasGuideClusterLinks = guideFaqSchemaRoutes.every(guideRoute => html.includes(`href="${guideRoute}"`));
     const hasLocalDetailSignals =
       html.includes('Austin Painting Service Area Details') &&
       html.includes('ZIP Codes We Serve') &&
@@ -2850,8 +2851,8 @@ async function checkCoreServiceLocalSignalDetails() {
       html.includes('West Lake Hills') &&
       html.includes(expectedSignal);
 
-    if (response.status !== 200 || !hasLocalDetailSignals) {
-      fail(`${route}: live core service page is missing expanded Austin ZIP, nearby-area, or service-specific local intent details.`);
+    if (response.status !== 200 || !hasLocalDetailSignals || !hasGuideClusterLinks) {
+      fail(`${route}: live core service page is missing expanded Austin ZIP, nearby-area, service-specific local intent details, or Austin painting guide cluster links.`);
       continue;
     }
 

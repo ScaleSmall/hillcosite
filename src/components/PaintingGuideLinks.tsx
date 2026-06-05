@@ -10,6 +10,26 @@ interface PaintingGuideLinksProps {
 
 const guides = [
   {
+    title: 'Austin Painting Costs',
+    href: '/guides/painting-costs-austin',
+    description: 'How project size, prep, access, surfaces, and finish expectations shape written Austin painting estimates.'
+  },
+  {
+    title: 'Best Paint for Texas Heat',
+    href: '/guides/best-paint-texas-heat',
+    description: 'Coating and sheen considerations for Central Texas UV, heat, humidity, and exterior exposure.'
+  },
+  {
+    title: 'HOA Color Tips',
+    href: '/guides/hoa-color-tips-austin',
+    description: 'How Austin-area homeowners can prepare color selections, samples, and review details before repainting.'
+  },
+  {
+    title: 'How Often to Paint',
+    href: '/guides/how-often-paint-central-texas',
+    description: 'Maintenance timing for exterior, interior, trim, and cabinet finishes in Central Texas conditions.'
+  },
+  {
     title: 'Best Austin Exterior House Painters',
     href: '/blog/how-to-determine-the-best-austin-exterior-house-painters',
     description: 'How Austin homeowners can compare exterior painters by prep, reviews, warranty, and local project management.'
@@ -43,10 +63,10 @@ const PaintingGuideLinks: React.FC<PaintingGuideLinksProps> = ({ surface = 'gray
             <span>Austin Painting Guides</span>
           </div>
           <h2 id="painting-guide-links-heading" className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-            Planning Help for Exterior Painting Decisions
+            Planning Help for Austin Painting Decisions
           </h2>
           <p className="text-lg text-brand-gray-600 leading-body">
-            Read the most useful Hill Country Painting guides for comparing Austin house painters, choosing exterior coatings, and timing work around Central Texas conditions.
+            Read the most useful Hill Country Painting guides for comparing Austin house painters, budgeting projects, choosing coatings, handling HOA colors, and timing work around Central Texas conditions.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">

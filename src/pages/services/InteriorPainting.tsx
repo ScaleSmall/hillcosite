@@ -14,6 +14,7 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
+import PaintingGuideLinks from '../../components/PaintingGuideLinks';
 import {
   coreAustinNearbyAreas,
   coreAustinZipCodes,
@@ -485,6 +486,8 @@ const InteriorPainting = () => {
           }
         ]}
       />
+
+      <PaintingGuideLinks surface="gray" />
 
       <ServiceLocationLinks service="interior" />
 

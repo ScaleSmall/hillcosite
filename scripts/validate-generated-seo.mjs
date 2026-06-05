@@ -1942,6 +1942,12 @@ function run() {
     if (!hasExpandedLocalSignals) {
       fail(`${coreServiceRoute}: core service page should include expanded Austin local details with ZIP codes, nearby areas, and service-specific local intent`);
     }
+
+    for (const guideRoute of requiredGuideFaqSchemaRoutes) {
+      if (!pageLinksToRoute(page, coreServiceRoute, guideRoute)) {
+        fail(`${coreServiceRoute}: core service page should link to Austin painting guide ${guideRoute}`);
+      }
+    }
   }
 
   for (const serviceAreaRoute of requiredServiceAreaFaqSchemaRoutes) {
