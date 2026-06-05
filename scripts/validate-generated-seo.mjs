@@ -1004,6 +1004,10 @@ function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
   return matches;
 }
 
+function findExactMinimumVisibleCostMentions(text) {
+  return [...String(text || '').matchAll(/\$6,000\+?/g)].map(match => match[0]);
+}
+
 function findSubMinimumStructuredPrices(value, minimum = 6000, path = 'schema', matches = []) {
   if (Array.isArray(value)) {
     value.forEach((item, index) => findSubMinimumStructuredPrices(item, minimum, `${path}[${index}]`, matches));
@@ -2001,9 +2005,25 @@ function run() {
       fail(`${guideRoute}: guide page with visible FAQs should include FAQPage schema`);
     }
 
+    const guideArticleSchema = jsonLdItems(page.html, guideRoute).find(item => schemaTypeIncludes(item, 'Article'));
+    const guideArticleText = JSON.stringify(guideArticleSchema || {});
+
+    if (!guideArticleSchema) {
+      fail(`${guideRoute}: guide page should include Article structured data`);
+    }
+
     for (const [serviceRoute, serviceName] of priorityAustinBlogServiceLinks) {
       if (!pageLinksToRoute(page, guideRoute, serviceRoute)) {
         fail(`${guideRoute}: guide page should visibly link to priority Austin service page ${serviceName} (${serviceRoute})`);
+      }
+
+      if (
+        !guideArticleText.includes(`${baseUrl}${serviceRoute}`) ||
+        !guideArticleText.includes(`${baseUrl}${serviceRoute}#service`) ||
+        !guideArticleText.includes(serviceName) ||
+        !guideArticleText.includes(`${baseUrl}/#localbusiness`)
+      ) {
+        fail(`${guideRoute}: guide Article schema should connect topical relevance to ${serviceName} and the canonical LocalBusiness provider`);
       }
     }
   }
@@ -2927,9 +2947,14 @@ function run() {
 
       const visibleText = visibleTextFromHtml(html);
       const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
+      const exactMinimumCostMentions = findExactMinimumVisibleCostMentions(visibleText);
 
       if (lowVisibleCostRanges.length > 0) {
         fail(`${routePath}: visible cost copy must not show project ranges below $6,000 (${[...new Set(lowVisibleCostRanges)].join(', ')})`);
+      }
+
+      if (exactMinimumCostMentions.length > 1) {
+        fail(`${routePath}: visible cost copy repeats the $6,000 project floor too often; use varied, context-specific ranges above the floor instead`);
       }
 
       const visibleTextLower = visibleText.toLowerCase();

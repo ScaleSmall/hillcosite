@@ -1027,6 +1027,10 @@ function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
   return matches;
 }
 
+function findExactMinimumVisibleCostMentions(text) {
+  return [...String(text || '').matchAll(/\$6,000\+?/g)].map(match => match[0]);
+}
+
 function findSubMinimumStructuredPrices(value, minimum = 6000, path = 'schema', matches = []) {
   if (Array.isArray(value)) {
     value.forEach((item, index) => findSubMinimumStructuredPrices(item, minimum, `${path}[${index}]`, matches));
@@ -1324,6 +1328,7 @@ async function checkSitemapPages() {
   const heroImageProblems = [];
   const staleIdentityProblems = [];
   const lowVisibleCostProblems = [];
+  const repeatedMinimumCostProblems = [];
   const lowStructuredPriceProblems = [];
   const valuePositioningProblems = [];
   const staleTrustProofProblems = [];
@@ -1376,6 +1381,7 @@ async function checkSitemapPages() {
       const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
       const visibleText = visibleTextFromHtml(html);
       const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
+      const exactMinimumCostMentions = findExactMinimumVisibleCostMentions(visibleText);
       const lowStructuredPrices = findSubMinimumStructuredPrices(parseJsonLd(html, route));
       const valuePositioningSignals = bannedVisibleValuePositioningSignals.filter(signal =>
         visibleText.toLowerCase().includes(signal)
@@ -1406,6 +1412,10 @@ async function checkSitemapPages() {
 
       if (lowVisibleCostRanges.length > 0) {
         lowVisibleCostProblems.push({ url, ranges: [...new Set(lowVisibleCostRanges)] });
+      }
+
+      if (exactMinimumCostMentions.length > 1) {
+        repeatedMinimumCostProblems.push({ url, count: exactMinimumCostMentions.length });
       }
 
       if (lowStructuredPrices.length > 0) {
@@ -1509,6 +1519,18 @@ async function checkSitemapPages() {
 
   if (lowVisibleCostProblems.length === 0) {
     console.log('Live visible pricing guard: no project cost ranges below $6,000 found on sitemap pages');
+  }
+
+  for (const problem of repeatedMinimumCostProblems.slice(0, 10)) {
+    fail(`${problem.url}: live visible cost copy repeats the $6,000 project floor too often (${problem.count} mentions); use varied, context-specific ranges above the floor instead`);
+  }
+
+  if (repeatedMinimumCostProblems.length > 10) {
+    fail(`${repeatedMinimumCostProblems.length - 10} additional live repeated minimum-price problems not shown.`);
+  }
+
+  if (repeatedMinimumCostProblems.length === 0) {
+    console.log('Live minimum-price variance guard: no page repeats the exact $6,000 floor in visible copy');
   }
 
   for (const problem of lowStructuredPriceProblems.slice(0, 10)) {
@@ -3082,10 +3104,19 @@ async function checkGuidePriorityAustinServiceLinks() {
 
   for (const route of guideFaqSchemaRoutes) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const guideArticleSchema = scripts.find(item => schemaTypeIncludes(item, 'Article'));
+    const guideArticleText = JSON.stringify(guideArticleSchema || {});
     const missingLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute]) => !html.includes(`href="${serviceRoute}"`));
+    const missingSchemaLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute, serviceName]) =>
+      !guideArticleText.includes(`${baseUrl}${serviceRoute}`) ||
+      !guideArticleText.includes(`${baseUrl}${serviceRoute}#service`) ||
+      !guideArticleText.includes(serviceName) ||
+      !guideArticleText.includes(`${baseUrl}/#localbusiness`)
+    );
 
-    if (response.status !== 200 || missingLinks.length > 0) {
-      fail(`${route}: live guide page should visibly link to priority Austin service pages; missing ${missingLinks.map(([, name]) => name).join(', ') || 'none'}.`);
+    if (response.status !== 200 || !guideArticleSchema || missingLinks.length > 0 || missingSchemaLinks.length > 0) {
+      fail(`${route}: live guide page should visibly and structurally link to priority Austin service pages; missing visible ${missingLinks.map(([, name]) => name).join(', ') || 'none'}, missing schema ${missingSchemaLinks.map(([, name]) => name).join(', ') || 'none'}.`);
       continue;
     }
 

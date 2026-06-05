@@ -7,8 +7,16 @@ import SplitSection from '../../components/sections/SplitSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import LocalSearchLinks from '../../components/LocalSearchLinks';
+import { createGuideArticleSchema } from '../../lib/guideArticleSchema';
 
 const BestPaintTexasHeat = () => {
+  const guideArticleSchema = createGuideArticleSchema({
+    path: '/guides/best-paint-texas-heat',
+    headline: 'Best Exterior Paint for Texas Heat',
+    description: 'Guide to choosing exterior paint that withstands Texas heat, UV exposure, humidity, and Austin weather conditions.',
+    keywords: ['best exterior paint Texas heat', 'Austin exterior painting', 'Austin house painters', 'painting contractors Austin']
+  });
+
   const paintTypes = [
     {
       type: 'Acrylic Latex',
@@ -98,6 +106,7 @@ const BestPaintTexasHeat = () => {
           { name: 'Best Paint for Texas Heat', url: '/guides/best-paint-texas-heat' }
         ]}
         faq={faqs}
+        additionalSchema={guideArticleSchema}
       />
 
       {/* Hero - Warm Surface */}

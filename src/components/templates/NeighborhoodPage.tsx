@@ -198,7 +198,7 @@ const NeighborhoodPage: React.FC<NeighborhoodPageProps> = ({ hub, neighborhood }
             </div>
             <div className="mt-8 p-6 bg-white rounded-lg border border-brand-gray-200">
               <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
-                Estimate Scope for {neighborhood.name}
+                What Your Estimate Covers in {neighborhood.name}
               </h3>
               <p className="text-brand-gray-700 leading-relaxed">
                 A typical consultation reviews the condition of walls, trim, siding, fascia, doors, cabinets, and high-wear areas, then separates must-do prep from optional upgrades. That gives homeowners a clear plan for scope, scheduling, materials, and the areas most likely to affect long-term paint performance.

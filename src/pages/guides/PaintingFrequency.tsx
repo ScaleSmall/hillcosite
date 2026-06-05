@@ -7,8 +7,16 @@ import SplitSection from '../../components/sections/SplitSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import LocalSearchLinks from '../../components/LocalSearchLinks';
+import { createGuideArticleSchema } from '../../lib/guideArticleSchema';
 
 const PaintingFrequency = () => {
+  const guideArticleSchema = createGuideArticleSchema({
+    path: '/guides/how-often-paint-central-texas',
+    headline: 'How Often to Paint Your Greater Austin Home',
+    description: 'Central Texas painting maintenance guide for exterior siding, interiors, trim, cabinets, and seasonal repaint planning.',
+    keywords: ['how often to paint Austin home', 'Austin exterior painting', 'Austin interior painters', 'Austin cabinet painting']
+  });
+
   const paintingSchedule = [
     {
       surface: 'Exterior Siding (Wood)',
@@ -128,6 +136,7 @@ const PaintingFrequency = () => {
           { name: 'Painting Frequency', url: '/guides/how-often-paint-central-texas' }
         ]}
         faq={faqs}
+        additionalSchema={guideArticleSchema}
       />
 
       {/* Hero - Neutral Surface */}

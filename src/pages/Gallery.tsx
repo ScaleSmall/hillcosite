@@ -27,7 +27,7 @@ interface GalleryPhoto {
   featured: boolean;
 }
 
-const BANNED_HERO_IMAGE_FILENAMES = [
+const RESERVED_SITE_IMAGE_FILENAMES = [
   'before_and_after-1-sep_16_2025_10_14am-u7me.jpg',
   'before_and_after-5-nov_14_2025_11_37am-nahg.jpg',
   'before_and_after-6-sep_12_2025_11_32am-vj7w.jpg',
@@ -41,7 +41,10 @@ const BANNED_HERO_IMAGE_FILENAMES = [
 ];
 
 const isBannedHeroImage = (imageUrl: string) =>
-  BANNED_HERO_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
+  RESERVED_SITE_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
+
+const isReservedSiteImage = (imageUrl: string) =>
+  RESERVED_SITE_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
 
 const imageDedupeKey = (imageUrl: string) => {
   try {
@@ -178,8 +181,10 @@ const Gallery = () => {
     }
   };
 
-  const uniqueBeforeAfterPhotos = uniqueByImageUrl(beforeAfterPhotos);
-  const uniqueRegularPhotos = uniqueByImageUrl(regularPhotos);
+  const uniqueBeforeAfterPhotos = uniqueByImageUrl(beforeAfterPhotos)
+    .filter(photo => !isReservedSiteImage(photo.image_url));
+  const uniqueRegularPhotos = uniqueByImageUrl(regularPhotos)
+    .filter(photo => !isReservedSiteImage(photo.image_url));
   const safeHeroFeaturedPhotos = uniqueByImageUrl(featuredPhotos).filter(photo => !isBannedHeroImage(photo.image_url));
   const heroFeaturedPhotos = uniqueByImageUrl([...safeHeroFeaturedPhotos, ...FALLBACK_FEATURED])
     .slice(0, 6);
@@ -349,7 +354,7 @@ const Gallery = () => {
   ];
 
   // Generate ImageGallery schema markup
-  const allPhotos = uniqueByImageUrl([...featuredPhotos, ...beforeAfterPhotos, ...regularPhotos]);
+  const allPhotos = uniqueByImageUrl([...heroFeaturedPhotos, ...displayedBeforeAfterPhotos, ...nonHeroRegularPhotos]);
   const imageGallerySchema = {
     '@context': 'https://schema.org',
     '@type': 'ImageGallery',

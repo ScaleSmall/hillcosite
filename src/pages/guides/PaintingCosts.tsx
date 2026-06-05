@@ -11,6 +11,7 @@ import PaintingCostsTable from '../../components/sections/PaintingCostsTable';
 import TypicalHomeCosts from '../../components/sections/TypicalHomeCosts';
 import { usePricingData } from '../../hooks/usePricingData';
 import { canonicalBusinessProvider, siteBaseUrl } from '../../lib/businessSchema';
+import { createGuideArticleSchema } from '../../lib/guideArticleSchema';
 
 const costProjectLinks = [
   {
@@ -68,6 +69,12 @@ const PaintingCosts = () => {
       }
     }))
   };
+  const guideArticleSchema = createGuideArticleSchema({
+    path: '/guides/painting-costs-austin',
+    headline: 'Cost to Paint a House in Austin',
+    description: 'Austin painting cost guide for interior, exterior, cabinet, and commercial painting project planning.',
+    keywords: ['Austin painting costs', 'Austin house painters', 'Austin exterior house painters', 'Austin cabinet painting', 'Austin commercial painters']
+  });
 
   const getCostFactor = (key: string, fallback: string) => {
     if (pricingData && pricingData[key]) {
@@ -117,7 +124,7 @@ const PaintingCosts = () => {
           { name: 'Painting Costs', url: '/guides/painting-costs-austin' }
         ]}
         faq={faqs}
-        additionalSchema={costProjectItemList}
+        additionalSchema={[costProjectItemList, guideArticleSchema]}
       />
 
       {/* Hero */}

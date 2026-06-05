@@ -7,8 +7,16 @@ import SplitSection from '../../components/sections/SplitSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import LocalSearchLinks from '../../components/LocalSearchLinks';
+import { createGuideArticleSchema } from '../../lib/guideArticleSchema';
 
 const HOAColorTips = () => {
+  const guideArticleSchema = createGuideArticleSchema({
+    path: '/guides/hoa-color-tips-austin',
+    headline: 'HOA Color Tips for Austin Homes',
+    description: 'Guide to Austin HOA paint color approvals, color planning, architectural review, and exterior repaint preparation.',
+    keywords: ['Austin HOA paint colors', 'Austin exterior painting', 'Austin house painters', 'painting contractors Austin']
+  });
+
   const commonRequirements = [
     {
       requirement: 'Approved Color Palette',
@@ -120,6 +128,7 @@ const HOAColorTips = () => {
           { name: 'HOA Color Tips', url: '/guides/hoa-color-tips-austin' }
         ]}
         faq={faqs}
+        additionalSchema={guideArticleSchema}
       />
 
       {/* Hero */}
