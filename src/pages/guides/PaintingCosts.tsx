@@ -205,7 +205,7 @@ const PaintingCosts = () => {
         stats={[
           {
             icon: <DollarSign className="w-8 h-8 text-brand-azureDark" />,
-            value: pricingData?.stat_average_project?.formatted || "$6,500",
+            value: pricingData?.stat_average_project?.formatted || "$8,500",
             label: "Average Project"
           },
           {

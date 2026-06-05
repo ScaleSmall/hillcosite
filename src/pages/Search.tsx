@@ -49,7 +49,7 @@ const staticContent = [
   {
     type: 'service' as const,
     title: 'Commercial Painting',
-    description: 'Professional commercial painting services for businesses in Austin. Minimal disruption, quality results, and competitive pricing.',
+    description: 'Professional commercial painting services for businesses in Austin. Minimal disruption, quality results, and clear written pricing.',
     url: '/services/commercial',
     category: 'Services'
   },

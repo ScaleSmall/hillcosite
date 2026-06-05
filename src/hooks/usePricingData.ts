@@ -18,34 +18,43 @@ interface PricingDataResponse {
 const CACHE_KEY = 'hillco_pricing_data';
 const CACHE_DURATION = 3600000;
 const MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+const MINIMUM_AVERAGE_PROJECT_PRICE = 8500;
+
+function minimumForPricingKey(key: string): number {
+  return key === 'stat_average_project' ? MINIMUM_AVERAGE_PROJECT_PRICE : MINIMUM_VISIBLE_PROJECT_PRICE;
+}
 
 function formatCurrency(value: number): string {
   return `$${value.toLocaleString('en-US')}`;
 }
 
-function normalizePriceData(price: PriceData): PriceData {
+function normalizePriceData(price: PriceData, minimumVisiblePrice: number): PriceData {
   const normalizePriceText = (value: string) => value.replace(
-    /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g,
-    (match, lowValue: string, highValue?: string) => {
+    /\$([0-9][0-9,]*)(\+)?(?:\s*(?:-|–|—|to)\s*\$?([0-9][0-9,]*)(\+)?)?/g,
+    (match, lowValue: string, _lowPlus: string | undefined, highValue?: string) => {
       const low = Number(lowValue.replace(/,/g, ''));
       const high = highValue ? Number(highValue.replace(/,/g, '')) : undefined;
 
-      if (low >= MINIMUM_VISIBLE_PROJECT_PRICE && (!high || high >= MINIMUM_VISIBLE_PROJECT_PRICE)) {
+      if (low >= minimumVisiblePrice && (!high || high >= minimumVisiblePrice)) {
         return match;
       }
 
       if (high) {
-        return `${formatCurrency(MINIMUM_VISIBLE_PROJECT_PRICE)} - ${formatCurrency(Math.max(high, MINIMUM_VISIBLE_PROJECT_PRICE))}`;
+        if (high <= minimumVisiblePrice) {
+          return `${formatCurrency(minimumVisiblePrice)}+`;
+        }
+
+        return `${formatCurrency(minimumVisiblePrice)} - ${formatCurrency(high)}`;
       }
 
-      return `${formatCurrency(MINIMUM_VISIBLE_PROJECT_PRICE)}+`;
+      return `${formatCurrency(minimumVisiblePrice)}+`;
     }
   );
 
   return {
     ...price,
-    min: Math.max(price.min, MINIMUM_VISIBLE_PROJECT_PRICE),
-    max: price.max ? Math.max(price.max, MINIMUM_VISIBLE_PROJECT_PRICE) : price.max,
+    min: Math.max(price.min, minimumVisiblePrice),
+    max: price.max && price.max > minimumVisiblePrice ? price.max : undefined,
     formatted: normalizePriceText(price.formatted),
     description: normalizePriceText(price.description)
   };
@@ -55,7 +64,7 @@ function normalizePricingResponse(response: PricingDataResponse): PricingDataRes
   return {
     ...response,
     data: Object.fromEntries(
-      Object.entries(response.data).map(([key, price]) => [key, normalizePriceData(price)])
+      Object.entries(response.data).map(([key, price]) => [key, normalizePriceData(price, minimumForPricingKey(key))])
     )
   };
 }

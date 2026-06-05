@@ -1966,6 +1966,11 @@ async function checkAustinHousePaintersHubSchema() {
     'house painters Austin',
     'painting contractors Austin',
     'Austin painting contractors',
+    'house painters near me Austin',
+    'exterior painters near me Austin',
+    'interior painters near me Austin',
+    'cabinet painters near me Austin',
+    'commercial painters near me Austin',
   ];
   const requiredVisibleRoutes = [
     '/exterior-painting-austin',
@@ -2021,7 +2026,13 @@ async function checkAustinHousePaintersHubSchema() {
     .map(item => `${item.name} ${item.acceptedAnswer?.text || ''}`)
     .join(' ')
     .toLowerCase();
-  const hasFaq = validQuestions.length >= 5 && faqText.includes('austin') && faqText.includes('house');
+  const hasFaq =
+    validQuestions.length >= 6 &&
+    faqText.includes('austin') &&
+    faqText.includes('house') &&
+    faqText.includes('house painters near me in austin') &&
+    faqText.includes('google business profile') &&
+    faqText.includes('written scopes');
   const hasVisibleRoutes = requiredVisibleRoutes.every(expectedRoute =>
     html.includes(`href="${expectedRoute}"`) || html.includes(`href='${expectedRoute}'`)
   );

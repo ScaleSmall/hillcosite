@@ -3161,9 +3161,21 @@ function run() {
           ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
           ['/commercial-painting-austin', 'Austin commercial painters']
         ]);
-        const austinServiceAreaSignals = routePath === '/service-areas/austin' || routePath === '/house-painters-austin'
+        const austinServiceAreaSignals = routePath === '/service-areas/austin'
           ? ['Austin house painters', 'house painters Austin', 'painting contractors Austin', 'Austin painting contractors']
-          : [];
+          : routePath === '/house-painters-austin'
+            ? [
+                'Austin house painters',
+                'house painters Austin',
+                'painting contractors Austin',
+                'Austin painting contractors',
+                'house painters near me Austin',
+                'exterior painters near me Austin',
+                'interior painters near me Austin',
+                'cabinet painters near me Austin',
+                'commercial painters near me Austin'
+              ]
+            : [];
         const expectedAustinServiceAlias = austinServiceSchemaSignals.get(routePath);
 
         if (austinServiceAreaSignals.length > 0) {
@@ -3187,6 +3199,8 @@ function run() {
           }
 
           if (routePath === '/house-painters-austin') {
+            const faqSchema = schemaItems.find(item => schemaTypeIncludes(item, 'FAQPage'));
+            const faqText = JSON.stringify(faqSchema || {}).toLowerCase();
             const requiredAreaProofRoutes = [
               '/areas/tarrytown/tarrytown',
               '/areas/west-lake-hills-and-rollingwood/west-lake-hills',
@@ -3209,6 +3223,14 @@ function run() {
 
             if (!areaProofSchema || !hasCanonicalProviderObject(areaProofSchema.about)) {
               fail(`${routePath}: Austin house-painters hub is missing canonical local area proof ItemList schema`);
+            }
+
+            if (
+              !faqText.includes('house painters near me in austin') ||
+              !faqText.includes('google business profile') ||
+              !faqText.includes('written scopes')
+            ) {
+              fail(`${routePath}: Austin house-painters FAQ schema should answer the natural house-painters-near-me comparison intent`);
             }
 
             for (const requiredAreaProofRoute of requiredAreaProofRoutes) {
