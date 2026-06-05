@@ -3077,6 +3077,24 @@ async function checkGuideFaqSchema() {
   console.log(`Live guide FAQ schema pages checked: ${passed}/${guideFaqSchemaRoutes.length}`);
 }
 
+async function checkGuidePriorityAustinServiceLinks() {
+  let passed = 0;
+
+  for (const route of guideFaqSchemaRoutes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const missingLinks = priorityAustinBlogServiceLinks.filter(([serviceRoute]) => !html.includes(`href="${serviceRoute}"`));
+
+    if (response.status !== 200 || missingLinks.length > 0) {
+      fail(`${route}: live guide page should visibly link to priority Austin service pages; missing ${missingLinks.map(([, name]) => name).join(', ') || 'none'}.`);
+      continue;
+    }
+
+    passed += 1;
+  }
+
+  console.log(`Live guide priority Austin service links checked: ${passed}/${guideFaqSchemaRoutes.length}`);
+}
+
 async function checkVisibleLocalTrustSections() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
   const sitemapRoutes = sitemapResponse.status === 200
@@ -3697,6 +3715,7 @@ await checkServiceAreaFaqSchema();
 await checkCoreServiceFaqSchema();
 await checkAustinServiceFaqSchema();
 await checkGuideFaqSchema();
+await checkGuidePriorityAustinServiceLinks();
 await checkVisibleLocalTrustSections();
 await checkCrawlerControlRoutes();
 await checkGoogleEntityIdentifier();

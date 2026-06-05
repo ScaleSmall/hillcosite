@@ -6,6 +6,7 @@ import NextStepsSection from '../../components/NextStepsSection';
 import SplitSection from '../../components/sections/SplitSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import LocalSearchLinks from '../../components/LocalSearchLinks';
 
 const HOAColorTips = () => {
   const commonRequirements = [
@@ -389,6 +390,8 @@ const HOAColorTips = () => {
         title="Austin HOA Paint Color FAQ"
         faqs={faqs}
       />
+
+      <LocalSearchLinks variant="services" surface="white" />
 
       {/* Next Steps */}
       <NextStepsSection

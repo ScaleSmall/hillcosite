@@ -2000,6 +2000,12 @@ function run() {
     if (!/"@type"\s*:\s*"FAQPage"/.test(page.html)) {
       fail(`${guideRoute}: guide page with visible FAQs should include FAQPage schema`);
     }
+
+    for (const [serviceRoute, serviceName] of priorityAustinBlogServiceLinks) {
+      if (!pageLinksToRoute(page, guideRoute, serviceRoute)) {
+        fail(`${guideRoute}: guide page should visibly link to priority Austin service page ${serviceName} (${serviceRoute})`);
+      }
+    }
   }
 
   if (!publicEnvSource.includes(`VITE_SUPABASE_URL: "${currentSupabaseUrl}"`)) {

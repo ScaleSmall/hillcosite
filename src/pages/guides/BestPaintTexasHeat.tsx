@@ -6,6 +6,7 @@ import NextStepsSection from '../../components/NextStepsSection';
 import SplitSection from '../../components/sections/SplitSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
+import LocalSearchLinks from '../../components/LocalSearchLinks';
 
 const BestPaintTexasHeat = () => {
   const paintTypes = [
@@ -319,6 +320,8 @@ const BestPaintTexasHeat = () => {
         title="Texas Heat Paint Selection FAQ"
         faqs={faqs}
       />
+
+      <LocalSearchLinks variant="services" surface="white" />
 
       {/* Next Steps */}
       <NextStepsSection
