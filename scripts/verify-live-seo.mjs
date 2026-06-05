@@ -2866,6 +2866,9 @@ async function checkServiceAreaLocalSignalDetails() {
 
   for (const [route, expected] of serviceAreaLocalSignalDetails) {
     const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const hasAustinHousePaintersHubLink =
+      html.includes('href="/house-painters-austin"') &&
+      html.includes('Compare Austin house painters');
     const hasLocalDetailSignals =
       html.includes('Local Service Area Details') &&
       html.includes('ZIP Codes We Serve') &&
@@ -2875,8 +2878,8 @@ async function checkServiceAreaLocalSignalDetails() {
       html.includes(expected.nearby) &&
       html.includes(expected.service);
 
-    if (response.status !== 200 || !hasLocalDetailSignals) {
-      fail(`${route}: live service-area page is missing expanded ZIP, nearby-area, or service-specific local intent details.`);
+    if (response.status !== 200 || !hasLocalDetailSignals || !hasAustinHousePaintersHubLink) {
+      fail(`${route}: live service-area page is missing expanded ZIP, nearby-area, service-specific local intent details, or the Austin house-painters comparison hub link.`);
       continue;
     }
 

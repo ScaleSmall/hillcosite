@@ -1882,6 +1882,14 @@ function run() {
       }
     }
 
+    if (!pageLinksToRoute(page, serviceAreaRoute, '/house-painters-austin')) {
+      fail(`${serviceAreaRoute}: service-area page should visibly link back to the Austin house painters comparison hub`);
+    }
+
+    if (!page.html.includes('Compare Austin house painters')) {
+      fail(`${serviceAreaRoute}: service-area page should use visible Austin house-painters comparison language`);
+    }
+
     if (!pageHasVisibleLocalTrustSection(page)) {
       fail(`${serviceAreaRoute}: service-area page should include the visible NAP/map/Google Business Profile trust section`);
     }

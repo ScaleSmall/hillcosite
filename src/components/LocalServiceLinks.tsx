@@ -46,6 +46,13 @@ const LocalServiceLinks = ({
           <p className="text-xl text-brand-gray-600 leading-body">
             {intro}
           </p>
+          <Link
+            to="/house-painters-austin"
+            className="mt-5 inline-flex items-center font-semibold text-brand-azureDark hover:text-brand-azure focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 rounded"
+          >
+            Compare Austin house painters for every project type
+            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {localServices.map((service) => {
