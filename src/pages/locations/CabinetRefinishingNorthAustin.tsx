@@ -53,7 +53,7 @@ const config: ServiceLocationConfig = {
     faqs: [
     {
         "question": "How much does cabinet refinishing cost in North Austin?",
-        "answer": "Cabinet refinishing in North Austin typically ranges from $2,500 to $6,500+ depending on the number of cabinet doors, drawer fronts, and whether you include the boxes. We provide exact pricing after measuring your kitchen."
+        "answer": "Full-scope cabinet refinishing in North Austin typically starts around $6,000 and often ranges from $6,000 to $10,500+ depending on the number of cabinet doors, drawer fronts, box painting, prep needs, and finish expectations. We provide exact pricing after measuring your kitchen."
     },
     {
         "question": "How long does cabinet refinishing take in North Austin?",

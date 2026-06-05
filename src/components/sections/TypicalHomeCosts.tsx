@@ -25,12 +25,12 @@ const TypicalHomeCosts = () => {
     return null;
   };
 
-  const house1500Interior = getCostFactor('house_1500_interior', '$3,200 - $5,800');
-  const house1500Exterior = getCostFactor('house_1500_exterior', '$5,200 - $8,500');
-  const house2200Interior = getCostFactor('house_2200_interior', '$4,400 - $7,200');
-  const house2200Exterior = getCostFactor('house_2200_exterior', '$6,800 - $11,000');
-  const house3000Interior = getCostFactor('house_3000_interior', '$6,000 - $10,500');
-  const house3000Exterior = getCostFactor('house_3000_exterior', '$9,500 - $16,000');
+  const house1500Interior = getCostFactor('house_1500_interior', '$6,000 - $8,500');
+  const house1500Exterior = getCostFactor('house_1500_exterior', '$6,000 - $10,500');
+  const house2200Interior = getCostFactor('house_2200_interior', '$6,500 - $10,500');
+  const house2200Exterior = getCostFactor('house_2200_exterior', '$8,500 - $14,000');
+  const house3000Interior = getCostFactor('house_3000_interior', '$9,000 - $15,000');
+  const house3000Exterior = getCostFactor('house_3000_exterior', '$12,000 - $20,000');
 
   const price1500Int = extractPrice(house1500Interior);
   const price1500Ext = extractPrice(house1500Exterior);
@@ -216,11 +216,11 @@ const TypicalHomeCosts = () => {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>
-                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_1500_interior', '$3,200 - $5,800')}</span>
+                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_1500_interior', '$6,000 - $8,500')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Exterior:</span>
-                <span className="font-semibold text-brand-azure">{getCostFactor('house_1500_exterior', '$5,200 - $8,500')}</span>
+                <span className="font-semibold text-brand-azure">{getCostFactor('house_1500_exterior', '$6,000 - $10,500')}</span>
               </div>
             </div>
           </div>
@@ -232,11 +232,11 @@ const TypicalHomeCosts = () => {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>
-                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_2200_interior', '$4,400 - $7,200')}</span>
+                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_2200_interior', '$6,500 - $10,500')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Exterior:</span>
-                <span className="font-semibold text-brand-azure">{getCostFactor('house_2200_exterior', '$6,800 - $11,000')}</span>
+                <span className="font-semibold text-brand-azure">{getCostFactor('house_2200_exterior', '$8,500 - $14,000')}</span>
               </div>
             </div>
             <div className="mt-4">
@@ -251,11 +251,11 @@ const TypicalHomeCosts = () => {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>
-                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_3000_interior', '$6,000 - $10,500')}</span>
+                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_3000_interior', '$9,000 - $15,000')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Exterior:</span>
-                <span className="font-semibold text-brand-azure">{getCostFactor('house_3000_exterior', '$9,500 - $16,000')}</span>
+                <span className="font-semibold text-brand-azure">{getCostFactor('house_3000_exterior', '$12,000 - $20,000')}</span>
               </div>
             </div>
           </div>

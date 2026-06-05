@@ -17,6 +17,47 @@ interface PricingDataResponse {
 
 const CACHE_KEY = 'hillco_pricing_data';
 const CACHE_DURATION = 3600000;
+const MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+
+function formatCurrency(value: number): string {
+  return `$${value.toLocaleString('en-US')}`;
+}
+
+function normalizePriceData(price: PriceData): PriceData {
+  const formatted = price.formatted.replace(
+    /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g,
+    (match, lowValue: string, highValue?: string) => {
+      const low = Number(lowValue.replace(/,/g, ''));
+      const high = highValue ? Number(highValue.replace(/,/g, '')) : undefined;
+
+      if (low >= MINIMUM_VISIBLE_PROJECT_PRICE && (!high || high >= MINIMUM_VISIBLE_PROJECT_PRICE)) {
+        return match;
+      }
+
+      if (high) {
+        return `${formatCurrency(MINIMUM_VISIBLE_PROJECT_PRICE)} - ${formatCurrency(Math.max(high, MINIMUM_VISIBLE_PROJECT_PRICE))}`;
+      }
+
+      return `${formatCurrency(MINIMUM_VISIBLE_PROJECT_PRICE)}+`;
+    }
+  );
+
+  return {
+    ...price,
+    min: Math.max(price.min, MINIMUM_VISIBLE_PROJECT_PRICE),
+    max: price.max ? Math.max(price.max, MINIMUM_VISIBLE_PROJECT_PRICE) : price.max,
+    formatted
+  };
+}
+
+function normalizePricingResponse(response: PricingDataResponse): PricingDataResponse {
+  return {
+    ...response,
+    data: Object.fromEntries(
+      Object.entries(response.data).map(([key, price]) => [key, normalizePriceData(price)])
+    )
+  };
+}
 
 function getCachedData(): PricingDataResponse | null {
   try {
@@ -25,7 +66,7 @@ function getCachedData(): PricingDataResponse | null {
       const parsed = JSON.parse(cached);
       const now = Date.now();
       if (now - parsed.timestamp < CACHE_DURATION) {
-        return parsed.data;
+        return normalizePricingResponse(parsed.data);
       }
     }
   } catch (error) {
@@ -83,8 +124,9 @@ export function usePricingData(guide: string = 'painting-costs') {
         const result: PricingDataResponse = await response.json();
 
         if (result.success) {
-          setData(result.data);
-          setCachedData(result);
+          const normalizedResult = normalizePricingResponse(result);
+          setData(normalizedResult.data);
+          setCachedData(normalizedResult);
         } else {
           throw new Error('Invalid response format');
         }

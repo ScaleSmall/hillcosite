@@ -493,7 +493,7 @@ const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answe
   '/guides/painting-costs-austin': [
     {
       question: 'How much does it cost to paint a 2,000 sq ft house in Austin?',
-      answer: 'For a typical 2,000 sq ft Austin home, interior painting ranges from $4,000-$8,000, exterior painting from $6,000-$12,000. Final cost depends on paint quality, prep work needed, and number of stories.',
+    answer: 'For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from $6,000-$10,500, while full-scope exterior painting often ranges from $8,500-$14,000. Final cost depends on prep, access, coatings, repairs, number of stories, and finish expectations.',
     },
     {
       question: 'What factors affect painting costs in Austin?',

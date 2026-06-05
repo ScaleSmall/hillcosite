@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Inspection', description: 'Comprehensive review ensuring exceptional results.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in Tarrytown?', answer: 'Cabinet refinishing in Tarrytown typically ranges from $4,000-$12,000 depending on kitchen size, cabinet condition, and finish complexity.' },
+      { question: 'How much does cabinet refinishing cost in Tarrytown?', answer: 'Full-scope cabinet refinishing in Tarrytown typically starts around $6,000 and often ranges from $6,000-$14,000 depending on kitchen size, cabinet condition, finish complexity, and historic-home details.' },
       { question: 'How long does the process take?', answer: 'Most Tarrytown kitchens take 5-7 days from start to finish. We work efficiently while maintaining high quality standards.' },
       { question: 'Can you match custom colors?', answer: 'Yes! We can match any color and offer various finish options from traditional to contemporary.' },
       { question: 'Will I need to leave my home?', answer: 'No. While we recommend staying out of the kitchen during application, you can remain in your home throughout the process.' },

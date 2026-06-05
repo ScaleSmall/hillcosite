@@ -102,7 +102,7 @@ const InteriorPainting = () => {
     },
     {
       question: 'What does interior painting cost in Austin?',
-      answer: 'Interior projects typically range from $3,200-$7,200 depending on square footage, ceiling height, and paint quality. We provide detailed written estimates with clear pricing.'
+      answer: 'Full-scope interior projects typically start around $6,000 and often range from $6,000-$10,500 depending on square footage, ceiling height, surface prep, masking, and paint quality. We provide detailed written estimates with clear pricing.'
     },
     {
       question: 'How often should interior paint be refreshed?',

@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Quality Inspection', description: 'Comprehensive review ensuring exceptional results.' }
     ],
     faqs: [
-      { question: 'How much does exterior painting cost in Northwest Hills?', answer: 'Northwest Hills exterior painting typically ranges from $5,000-$15,000 depending on home size, style, and condition. Mid-century modern homes may require specialized attention.' },
+      { question: 'How much does exterior painting cost in Northwest Hills?', answer: 'Full-scope Northwest Hills exterior painting typically starts around $6,000 and often ranges from $6,000-$16,000 depending on home size, style, access, repairs, and condition. Mid-century modern homes may require specialized attention.' },
       { question: 'Do you understand mid-century modern architecture?', answer: 'Yes! Northwest Hills has wonderful mid-century homes. We understand clean lines, wood accents, and period-appropriate finishes.' },
       { question: 'Can you work around Austin ISD schedules?', answer: 'Absolutely. Many Northwest Hills families have school-age children. We offer flexible scheduling to minimize disruption.' },
       { question: 'How do you handle mature landscaping?', answer: 'Northwest Hills homes often have established landscaping. We use protective measures and work carefully around plantings.' },

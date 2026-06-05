@@ -53,7 +53,7 @@ const config: ServiceLocationConfig = {
     faqs: [
     {
         "question": "How much does interior painting cost in Leander?",
-        "answer": "Interior painting in Leander typically ranges from $3,000 to $8,000+ depending on home size, number of rooms, and scope. We provide detailed written estimates after an in-home visit."
+        "answer": "Full-scope interior painting in Leander typically starts around $6,000 and often ranges from $6,000 to $10,000+ depending on home size, number of rooms, ceiling height, prep needs, and scope. We provide detailed written estimates after an in-home visit."
     },
     {
         "question": "Do you paint ceilings and trim in Leander?",

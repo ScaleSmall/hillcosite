@@ -85,7 +85,7 @@ const Financing = () => {
               <ul className="space-y-2 text-base md:text-lg">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="text-brand-azure flex-shrink-0 mt-1" size={20} />
-                  <span>Financing from $500 to $25,000</span>
+                  <span>Payment options for qualifying $6,000+ projects</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="text-brand-azure flex-shrink-0 mt-1" size={20} />
@@ -246,7 +246,7 @@ const Financing = () => {
                   <h3 className="title-code-example-xxsmall">Terms:</h3>
                 </div>
                 <ul role="list" className="list-code-example">
-                  <li className="list-item-code-example">Financing from $500 - $25,000*</li>
+                  <li className="list-item-code-example">Payment options for qualifying $6,000+ projects*</li>
                   <li className="list-item-code-example">APRs from 0% to 35.9%*</li>
                   <li className="list-item-code-example">Terms from 3 to 60 months*</li>
                   <li className="list-item-code-example">No penalties, late fees, or compounding interest</li>

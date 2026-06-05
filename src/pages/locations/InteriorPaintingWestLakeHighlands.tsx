@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Walkthrough', description: 'Comprehensive review ensuring your complete satisfaction.' }
     ],
     faqs: [
-      { question: 'How much does interior painting cost in West Lake Highlands?', answer: 'West Lake Highlands interior painting typically ranges from $4,500-$14,000 depending on home size, detail work, and finish requirements.' },
+      { question: 'How much does interior painting cost in West Lake Highlands?', answer: 'Full-scope West Lake Highlands interior painting typically starts around $6,000 and often ranges from $6,000-$15,500 depending on home size, detail work, ceiling height, prep needs, and finish requirements.' },
       { question: 'Can you work around our schedule?', answer: 'Yes! We understand West Lake families are busy. We offer flexible scheduling to minimize disruption.' },
       { question: 'Do you use low-VOC paints?', answer: 'Yes. We offer zero-VOC and low-VOC options for healthier indoor air quality.' },
       { question: 'How do you handle open floor plans?', answer: 'We plan carefully for open spaces, ensuring color flow and efficient completion of connected areas.' },

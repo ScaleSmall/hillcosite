@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Quality Inspection', description: 'Comprehensive review ensuring lasting results.' }
     ],
     faqs: [
-      { question: 'How much does exterior painting cost in Austin?', answer: 'Austin exterior painting ranges from $4,500-$15,000+ depending on home size, location, and complexity. Historic homes and large properties may exceed this range.' },
+      { question: 'How much does exterior painting cost in Austin?', answer: 'Full-scope Austin exterior painting typically starts around $6,000 and often ranges from $6,000-$16,000+ depending on home size, access, repairs, location, and complexity. Historic homes and large properties may exceed this range.' },
       { question: 'Do you work with Austin\'s historic neighborhoods?', answer: 'Yes! We specialize in Clarksville, Travis Heights, Tarrytown, and other historic Austin areas. We respect original details while providing modern protection.' },
       { question: 'What about Austin\'s tree coverage and shade?', answer: 'Austin\'s urban forest creates varied conditions. We assess sun and shade patterns to recommend appropriate products and schedule work for optimal results.' },
       { question: 'How do you handle Austin HOA requirements?', answer: 'Many Austin neighborhoods have architectural standards. We help select compliant colors and can assist with approval processes where required.' },

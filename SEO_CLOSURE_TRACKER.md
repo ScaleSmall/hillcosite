@@ -48,6 +48,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - `/free-estimate` is now a canonical, indexable estimate page in the sitemap with estimate intent copy, service links, breadcrumb schema, QuoteAction, and LocalBusiness schema.
 - `/financing` now includes Austin painting financing FAQ schema, canonical LocalBusiness/HousePainter schema, and visible links to the four priority Austin service pages.
 - Local and live SEO verification now enforce `/financing` FAQ schema, LocalBusiness schema, priority service links, and payment-option trust signals.
+- Visible painting cost ranges now use a `$6,000+` project floor with full-scope prep/materials/context language, and local/live verification prevents sub-$6,000 visible project cost copy from returning.
 - LocalBusiness schema, service-location Service schema, FAQ schema, breadcrumbs, contact schema, and testimonial trust signals pass the live SEO verifier.
 - All 64 service-location pages now include matching local Place schema with canonical area name, coordinates, neighborhoods, ZIP codes, and service intent.
 - Sitemap and AI-manifest generators use Austin-local dates, preventing future-dated generated SEO files during UTC rollover.

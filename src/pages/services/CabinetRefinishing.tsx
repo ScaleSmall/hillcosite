@@ -127,7 +127,7 @@ const CabinetRefinishing = () => {
     },
     {
       question: 'How much does cabinet painting cost in Austin?',
-      answer: 'Cabinet painting typically ranges from $3,000-$8,000 depending on kitchen size, number of cabinets, and finish selected. Much less than $15,000+ replacement costs.'
+      answer: 'Full cabinet painting projects typically start around $6,000 and often range from $6,000-$12,000 depending on kitchen size, number of doors and drawers, prep needs, and finish selected. That is still far less than many $15,000+ replacement projects.'
     }
   ];
 
@@ -299,7 +299,7 @@ const CabinetRefinishing = () => {
         subtitle="Smart homeowners choose cabinet painting"
         option1Title="Cabinet Painting"
         option2Title="Cabinet Replacement"
-        option1Price="$3,000 – $8,000"
+        option1Price="$6,000 – $12,000"
         option2Price="$15,000 – $40,000+"
         option1Description="Transform with custom paint colors"
         option2Description="Expensive and time-consuming process"

@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Inspection', description: 'Comprehensive review ensuring exceptional results.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in West Lake Highlands?', answer: 'Cabinet refinishing in West Lake Highlands typically ranges from $4,500-$12,000 depending on kitchen size and finish complexity.' },
+      { question: 'How much does cabinet refinishing cost in West Lake Highlands?', answer: 'Full-scope cabinet refinishing in West Lake Highlands typically starts around $6,000 and often ranges from $6,000-$14,000 depending on kitchen size, finish complexity, prep needs, and detail level.' },
       { question: 'How long does the process take?', answer: 'Most kitchens take 5-7 days from start to finish. We work efficiently while maintaining quality standards.' },
       { question: 'Can you match contemporary finishes?', answer: 'Yes! We offer various contemporary finish options from matte to high-gloss in any color.' },
       { question: 'Will we need to leave our home?', answer: 'No. While we recommend staying out of the kitchen during application, you can remain in your home.' },

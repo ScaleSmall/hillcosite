@@ -53,7 +53,7 @@ const config: ServiceLocationConfig = {
     faqs: [
     {
         "question": "How much does exterior painting cost in Cedar Park?",
-        "answer": "Exterior painting in Cedar Park typically ranges from $3,500 to $10,000+ depending on home size, number of stories, surface condition, and complexity. We provide detailed written estimates after an in-person assessment."
+        "answer": "Full-scope exterior painting in Cedar Park typically starts around $6,000 and often ranges from $6,000 to $12,000+ depending on home size, number of stories, surface condition, repairs, and complexity. We provide detailed written estimates after an in-person assessment."
     },
     {
         "question": "How long does exterior paint last in Cedar Park's climate?",

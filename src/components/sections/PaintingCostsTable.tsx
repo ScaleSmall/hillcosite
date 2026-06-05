@@ -24,8 +24,8 @@ const PaintingCostsTable = () => {
     return null;
   };
 
-  const interiorHomeSize = getCostFactor('cost_factor_home_size_interior', '$2,500 - $6,000');
-  const exteriorHomeSize = getCostFactor('cost_factor_home_size_exterior', '$4,000 - $10,000');
+  const interiorHomeSize = getCostFactor('cost_factor_home_size_interior', '$6,000 - $10,000');
+  const exteriorHomeSize = getCostFactor('cost_factor_home_size_exterior', '$6,000 - $14,000');
 
   const interiorPrice = extractPrice(interiorHomeSize);
   const exteriorPrice = extractPrice(exteriorHomeSize);
@@ -61,7 +61,7 @@ const PaintingCostsTable = () => {
                 "provider": canonicalBusinessProvider
               },
               "seller": canonicalBusinessProvider,
-              "price": String(interiorPrice?.min || 2500),
+              "price": String(interiorPrice?.min || 6000),
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"
@@ -82,7 +82,7 @@ const PaintingCostsTable = () => {
                 "provider": canonicalBusinessProvider
               },
               "seller": canonicalBusinessProvider,
-              "price": String(exteriorPrice?.min || 4000),
+              "price": String(exteriorPrice?.min || 6000),
               "priceCurrency": "USD",
               "priceValidUntil": priceValidDate,
               "availability": "https://schema.org/InStock"
@@ -96,27 +96,27 @@ const PaintingCostsTable = () => {
   const costFactors = [
     {
       factor: 'Home Size',
-      interior: getCostFactor('cost_factor_home_size_interior', '$2,500 - $6,000'),
-      exterior: getCostFactor('cost_factor_home_size_exterior', '$4,000 - $10,000'),
-      details: 'Based on square footage and room count'
+      interior: getCostFactor('cost_factor_home_size_interior', '$6,000 - $10,000'),
+      exterior: getCostFactor('cost_factor_home_size_exterior', '$6,000 - $14,000'),
+      details: 'Full professional project pricing based on square footage, room count, and site conditions'
     },
     {
       factor: 'Paint Quality',
-      interior: getCostFactor('cost_factor_paint_quality_interior', '+$300 - $800'),
-      exterior: getCostFactor('cost_factor_paint_quality_exterior', '+$500 - $1,200'),
-      details: 'Premium paints last longer, better coverage'
+      interior: 'Included in $6,000+ scopes',
+      exterior: 'Included in $6,000+ scopes',
+      details: 'Premium coatings are specified as part of a complete written scope, not as a surprise add-on'
     },
     {
       factor: 'Preparation Work',
-      interior: getCostFactor('cost_factor_prep_work_interior', '+$200 - $600'),
-      exterior: getCostFactor('cost_factor_prep_work_exterior', '+$800 - $2,000'),
-      details: 'Repairs, priming, surface prep requirements'
+      interior: 'Scoped from $6,000+',
+      exterior: 'Scoped from $6,000+',
+      details: 'Repairs, priming, masking, sanding, and surface prep are reviewed before pricing is finalized'
     },
     {
       factor: 'Color Changes',
-      interior: getCostFactor('cost_factor_color_changes_interior', '+$150 - $400'),
-      exterior: getCostFactor('cost_factor_color_changes_exterior', '+$300 - $800'),
-      details: 'Dark to light colors require additional coats'
+      interior: 'Scoped from $6,000+',
+      exterior: 'Scoped from $6,000+',
+      details: 'Major color changes may require extra coats and are built into the written estimate'
     }
   ];
 

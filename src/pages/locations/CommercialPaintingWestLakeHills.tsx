@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Professional Completion', description: 'Your Westlake business looking its best.' }
     ],
     faqs: [
-      { question: 'How much does commercial painting cost in West Lake Hills?', answer: 'Westlake commercial painting reflects premium standards, typically $2.50-$6.00+ per square foot depending on scope and finish requirements.' },
+      { question: 'How much does commercial painting cost in West Lake Hills?', answer: 'Westlake commercial painting reflects premium standards. Full professional projects typically start around $6,000 and are priced by scope, access, schedule, substrate condition, and finish requirements after a walkthrough.' },
       { question: 'Do you work at Hill Country Galleria?', answer: 'Yes! We have experience with retail and restaurant spaces in and around the Galleria area.' },
       { question: 'What about private clubs and professional offices?', answer: 'We paint professional offices, private clubs, and exclusive business spaces throughout the Westlake corridor.' },
       { question: 'Can you maintain confidentiality for high-profile clients?', answer: 'Absolutely. We provide discreet, professional service and maintain client privacy for all Westlake commercial projects.' },

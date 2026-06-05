@@ -22,9 +22,9 @@ const PaintingCosts = () => {
   };
 
   const getFAQAnswer = () => {
-    const interiorPrice = getCostFactor('faq_2000sqft_interior', '$4,000-$8,000');
-    const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$6,000-$12,000');
-    return `For a typical 2,000 sq ft Austin home, interior painting ranges from ${interiorPrice}, exterior painting from ${exteriorPrice}. Final cost depends on paint quality, prep work needed, and number of stories.`;
+    const interiorPrice = getCostFactor('faq_2000sqft_interior', '$6,000-$10,500');
+    const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$8,500-$14,000');
+    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Final cost depends on prep, access, coatings, repairs, number of stories, and finish expectations.`;
   };
 
   const faqs = [
@@ -34,7 +34,7 @@ const PaintingCosts = () => {
     },
     {
       question: 'What factors affect painting costs in Austin?',
-      answer: 'Key factors include home size, paint quality, surface preparation needs, number of colors, accessibility, and timeline. Austin\'s climate also affects exterior prep requirements.'
+      answer: 'Key factors include home size, paint quality, surface preparation needs, number of colors, accessibility, repairs, masking requirements, and timeline. Austin\'s climate also affects exterior prep requirements.'
     },
     {
       question: 'Is it cheaper to paint in winter in Austin?',

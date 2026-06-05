@@ -747,6 +747,22 @@ function normalizeAnchorText(value) {
     .trim();
 }
 
+function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
+  const matches = [];
+  const pricePattern = /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g;
+
+  for (const match of text.matchAll(pricePattern)) {
+    const low = Number(match[1].replace(/,/g, ''));
+    const high = match[2] ? Number(match[2].replace(/,/g, '')) : null;
+
+    if (low < minimum || (high !== null && high < minimum)) {
+      matches.push(match[0]);
+    }
+  }
+
+  return matches;
+}
+
 function assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute) {
   const page = pages.get(sourceRoute);
 
@@ -2421,12 +2437,14 @@ function run() {
         fail(`${routePath}: prerendered sitemap page contains the generic application error state`);
       }
 
-      const visibleWordCount = html
-        .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-        .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-        .replace(/<[^>]+>/g, ' ')
-        .replace(/\s+/g, ' ')
-        .trim()
+      const visibleText = normalizeAnchorText(html);
+      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
+
+      if (lowVisibleCostRanges.length > 0) {
+        fail(`${routePath}: visible cost copy must not show project ranges below $6,000 (${[...new Set(lowVisibleCostRanges)].join(', ')})`);
+      }
+
+      const visibleWordCount = visibleText
         .split(/\s+/)
         .filter(Boolean)
         .length;

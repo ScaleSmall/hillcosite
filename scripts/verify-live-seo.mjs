@@ -687,6 +687,35 @@ function parseJsonLd(html, route) {
   return scripts;
 }
 
+function visibleTextFromHtml(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
+  const matches = [];
+  const pricePattern = /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g;
+
+  for (const match of text.matchAll(pricePattern)) {
+    const low = Number(match[1].replace(/,/g, ''));
+    const high = match[2] ? Number(match[2].replace(/,/g, '')) : null;
+
+    if (low < minimum || (high !== null && high < minimum)) {
+      matches.push(match[0]);
+    }
+  }
+
+  return matches;
+}
+
 async function checkDns() {
   const nsRecords = await resolveNs('hillcopaint.com');
   console.log(`DNS authority: ${nsRecords.join(', ')}`);
@@ -952,6 +981,7 @@ async function checkSitemapPages() {
   const problems = [];
   const heroImageProblems = [];
   const staleIdentityProblems = [];
+  const lowVisibleCostProblems = [];
 
   async function worker() {
     while (nextIndex < urls.length) {
@@ -999,6 +1029,7 @@ async function checkSitemapPages() {
       const heroHtml = firstHeroSectionHtml(html);
       const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
       const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
+      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleTextFromHtml(html));
 
       if (title) {
         sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), route]);
@@ -1018,6 +1049,10 @@ async function checkSitemapPages() {
 
       if (staleIdentitySignal) {
         staleIdentityProblems.push({ url, signal: staleIdentitySignal });
+      }
+
+      if (lowVisibleCostRanges.length > 0) {
+        lowVisibleCostProblems.push({ url, ranges: [...new Set(lowVisibleCostRanges)] });
       }
 
       for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
@@ -1097,6 +1132,18 @@ async function checkSitemapPages() {
 
   if (staleIdentityProblems.length === 0) {
     console.log('Live stale identity guard: no stale NAP/brand strings found on sitemap pages');
+  }
+
+  for (const problem of lowVisibleCostProblems.slice(0, 10)) {
+    fail(`${problem.url}: live visible cost copy must not show project ranges below $6,000 (${problem.ranges.join(', ')})`);
+  }
+
+  if (lowVisibleCostProblems.length > 10) {
+    fail(`${lowVisibleCostProblems.length - 10} additional live visible cost range problems not shown.`);
+  }
+
+  if (lowVisibleCostProblems.length === 0) {
+    console.log('Live visible pricing guard: no project cost ranges below $6,000 found on sitemap pages');
   }
 
   const duplicateMetadataProblems = [
