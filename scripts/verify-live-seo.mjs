@@ -788,6 +788,61 @@ function htmlTextContent(fragment) {
     .trim();
 }
 
+function normalizeImageSource(value) {
+  if (!value) {
+    return '';
+  }
+
+  const decoded = value
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#x27;/g, "'");
+
+  try {
+    const parsed = new URL(decoded, baseUrl);
+    return `${parsed.origin}${parsed.pathname}`;
+  } catch {
+    return decoded.split(/[?#]/)[0];
+  }
+}
+
+function imageSourcesFromHtml(html) {
+  return [...String(html || '').matchAll(/<img\b[^>]*\bsrc=(["'])(.*?)\1/gi)]
+    .map(match => normalizeImageSource(match[2]))
+    .filter(Boolean);
+}
+
+function sectionContainingText(html, text) {
+  const textIndex = String(html || '').indexOf(text);
+
+  if (textIndex === -1) {
+    return '';
+  }
+
+  const sectionStart = html.lastIndexOf('<section', textIndex);
+  const endIndex = html.indexOf('</section>', textIndex);
+
+  if (sectionStart === -1 || endIndex === -1) {
+    return '';
+  }
+
+  return html.slice(sectionStart, endIndex + '</section>'.length);
+}
+
+function galleryHeroImageReuseProblems(html) {
+  const heroHtml = sectionContainingText(html, 'Our Work Gallery');
+
+  if (!heroHtml) {
+    return ['missing-gallery-hero-section'];
+  }
+
+  const heroImages = [...new Set(imageSourcesFromHtml(heroHtml))];
+  const outsideHeroHtml = heroHtml ? html.replace(heroHtml, '') : html;
+  const outsideImageSet = new Set(imageSourcesFromHtml(outsideHeroHtml));
+
+  return heroImages.filter(src => outsideImageSet.has(src));
+}
+
 function htmlHasVisibleAnchor(html, text, route) {
   const anchorMatches = html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi);
 
@@ -2000,6 +2055,11 @@ async function checkSupabaseFeed() {
     }
   }
 
+  const reusedGalleryHeroImages = galleryHeroImageReuseProblems(html);
+  if (reusedGalleryHeroImages.length > 0) {
+    fail(`/gallery hero image(s) must not be reused elsewhere on the gallery page (${reusedGalleryHeroImages.join(', ')})`);
+  }
+
   if (
     response.status === 200 &&
     html.includes(currentSupabaseUrl) &&
@@ -2007,9 +2067,10 @@ async function checkSupabaseFeed() {
     imageGallerySchema &&
     hasCanonicalProviderObject(imageGallerySchema.provider) &&
     projectProofSchema &&
-    hasCanonicalProviderObject(projectProofSchema.provider)
+    hasCanonicalProviderObject(projectProofSchema.provider) &&
+    reusedGalleryHeroImages.length === 0
   ) {
-    console.log('Live Supabase gallery feed: current project present, retired project absent; ImageGallery provider identity and project proof schema are canonical');
+    console.log('Live Supabase gallery feed: current project present, retired project absent; ImageGallery provider identity, project proof schema, and gallery hero image uniqueness are canonical');
   }
 }
 
