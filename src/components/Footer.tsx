@@ -15,6 +15,12 @@ const XIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
+const formatServiceLocationAnchor = (service: string, location: string) => {
+  const serviceLabel = service === 'Cabinet Refinishing' ? 'Cabinet Painting' : service;
+
+  return `${serviceLabel} ${location}`;
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -334,7 +340,7 @@ const Footer = () => {
                         to={loc.href}
                         className="text-brand-gray-400 hover:text-brand-azure transition-colors text-xs focus:outline-none focus:ring-2 focus:ring-brand-azure rounded"
                       >
-                        {loc.name}
+                        {formatServiceLocationAnchor(group.service, loc.name)}
                       </Link>
                     </li>
                   ))}

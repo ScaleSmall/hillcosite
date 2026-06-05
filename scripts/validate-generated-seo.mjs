@@ -1976,6 +1976,14 @@ function run() {
     fail('src/components/Header.tsx should keep desktop dropdown links in the prerendered HTML and hide them with CSS state, not omit them until hover/click');
   }
 
+  if (
+    !footerSource.includes('const formatServiceLocationAnchor') ||
+    !footerSource.includes("service === 'Cabinet Refinishing' ? 'Cabinet Painting' : service") ||
+    !footerSource.includes('{formatServiceLocationAnchor(group.service, loc.name)}')
+  ) {
+    fail('src/components/Footer.tsx service-location footer links must use descriptive service + location anchor text, with Cabinet Painting used for cabinet routes');
+  }
+
   if (!seoComponentSource.includes('Object.values(businessConfig.socialProfiles)')) {
     fail('src/components/SEO.tsx sameAs schema must use businessConfig.socialProfiles for canonical entity profile links');
   }

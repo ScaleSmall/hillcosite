@@ -2416,6 +2416,48 @@ async function checkSitewidePriorityServiceNavigation() {
   console.log(`Live sitewide priority service navigation checked: ${requiredSitewidePriorityServiceLinks.length}/${requiredSitewidePriorityServiceLinks.length}`);
 }
 
+async function checkSitewideServiceLocationFooterAnchors() {
+  const route = '/';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const locations = [
+    ['Austin', 'austin'],
+    ['Tarrytown', 'tarrytown'],
+    ['Northwest Hills', 'northwest-hills'],
+    ['West Lake Hills', 'west-lake-hills'],
+    ['Westlake Highlands', 'west-lake-highlands'],
+    ['Lakeway', 'lakeway'],
+    ['Leander', 'leander'],
+    ['Georgetown', 'georgetown'],
+    ['Round Rock', 'round-rock'],
+    ['Cedar Park', 'cedar-park'],
+    ['North Austin', 'north-austin'],
+    ['Rollingwood', 'rollingwood'],
+    ['Bee Cave', 'bee-cave'],
+    ['Barton Creek', 'barton-creek'],
+    ['Steiner Ranch', 'steiner-ranch'],
+    ['Circle C Ranch', 'circle-c-ranch'],
+  ];
+  const serviceGroups = [
+    ['Interior Painting', 'interior-painting'],
+    ['Exterior Painting', 'exterior-painting'],
+    ['Cabinet Painting', 'cabinet-refinishing'],
+    ['Commercial Painting', 'commercial-painting'],
+  ];
+  const expectedLinks = serviceGroups.flatMap(([serviceLabel, routePrefix]) =>
+    locations.map(([location, slug]) => [`${serviceLabel} ${location}`, `/${routePrefix}-${slug}`])
+  );
+  const missingLinks = expectedLinks.filter(([anchorText, expectedRoute]) =>
+    !htmlHasVisibleAnchor(html, anchorText, expectedRoute)
+  );
+
+  if (response.status !== 200 || missingLinks.length > 0) {
+    fail(`${route}: live footer is missing descriptive service-location anchor text: ${missingLinks.slice(0, 10).map(([text, path]) => `${text} -> ${path}`).join(', ') || 'none'}.`);
+    return;
+  }
+
+  console.log(`Live descriptive service-location footer anchors checked: ${expectedLinks.length}/${expectedLinks.length}`);
+}
+
 async function checkServiceLocationServiceSchema() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
 
@@ -3294,6 +3336,7 @@ await checkAustinSchema();
 await checkAustinServiceAreaSchema();
 await checkAustinHousePaintersHubSchema();
 await checkSitewidePriorityServiceNavigation();
+await checkSitewideServiceLocationFooterAnchors();
 await checkServiceLocationServiceSchema();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
