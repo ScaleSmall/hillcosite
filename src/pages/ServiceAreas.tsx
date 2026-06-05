@@ -60,6 +60,7 @@ const ServiceAreas = () => {
     }
   ];
   const priorityAustinServicePages = [
+    { name: 'Austin painting contractors', href: '/house-painters-austin' },
     { name: 'Austin exterior house painters', href: '/exterior-painting-austin' },
     { name: 'Austin interior painters', href: '/interior-painting-austin' },
     { name: 'Austin cabinet painting', href: '/cabinet-refinishing-austin' },

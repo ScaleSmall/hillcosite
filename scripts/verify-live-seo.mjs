@@ -124,6 +124,7 @@ const servicesHubItemListRoutes = [
   '/commercial-painting-austin',
 ];
 const serviceAreasHubItemListRoutes = [
+  '/house-painters-austin',
   '/service-areas/austin',
   '/service-areas/west-lake-hills',
   '/service-areas/northwest-hills',
@@ -669,6 +670,38 @@ function normalizeInternalRoute(href) {
   const path = parsed.pathname.replace(/\/+$/, '');
 
   return path || '/';
+}
+
+function htmlTextContent(fragment) {
+  return fragment
+    .replace(/<script\b[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]*>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function htmlHasVisibleAnchor(html, text, route) {
+  const anchorMatches = html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi);
+
+  for (const match of anchorMatches) {
+    const anchorHtml = match[0];
+    const hrefMatch = anchorHtml.match(/\bhref=(["'])(.*?)\1/i);
+
+    if (!hrefMatch || normalizeInternalRoute(hrefMatch[2]) !== route) {
+      continue;
+    }
+
+    if (htmlTextContent(anchorHtml).includes(text)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function robotsAllowsAgent(robotsText, agent) {
@@ -2152,12 +2185,18 @@ async function checkHubItemListSchema() {
       ],
       label: 'homepage Austin house-painter services',
       requiredVisibleRoutes: ['/house-painters-austin'],
+      requiredVisibleAnchors: [
+        ['Austin painting contractors', '/house-painters-austin'],
+      ],
     },
     {
       route: '/services',
       itemListId: `${baseUrl}/services#servicelist`,
       requiredRoutes: servicesHubItemListRoutes,
       label: 'services hub',
+      requiredVisibleAnchors: [
+        ['Austin painting contractors', '/house-painters-austin'],
+      ],
     },
     {
       route: '/service-areas',
@@ -2167,6 +2206,9 @@ async function checkHubItemListSchema() {
       requiredPageType: 'CollectionPage',
       requiredPageId: `${baseUrl}/service-areas#webpage`,
       requiredVisibleRoutes: serviceAreasHubVisibleServiceRoutes,
+      requiredVisibleAnchors: [
+        ['Austin painting contractors', '/house-painters-austin'],
+      ],
     },
   ];
   let passed = 0;
@@ -2204,6 +2246,17 @@ async function checkHubItemListSchema() {
 
       if (!hasVisibleRoutes) {
         fail(`${hub.route}: live ${hub.label} is missing visible links to the priority Austin service-location pages.`);
+        continue;
+      }
+    }
+
+    if (hub.requiredVisibleAnchors) {
+      const missingVisibleAnchors = hub.requiredVisibleAnchors.filter(([text, route]) =>
+        !htmlHasVisibleAnchor(html, text, route)
+      );
+
+      if (missingVisibleAnchors.length > 0) {
+        fail(`${hub.route}: live ${hub.label} is missing visible local-intent anchor(s): ${missingVisibleAnchors.map(([text, route]) => `${text} -> ${route}`).join(', ')}.`);
         continue;
       }
     }

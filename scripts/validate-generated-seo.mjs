@@ -1849,6 +1849,7 @@ function run() {
   [
     ['/', 'Austin house painters', '/house-painters-austin'],
     ['/', 'house painters Austin', '/house-painters-austin'],
+    ['/', 'Austin painting contractors', '/house-painters-austin'],
     ['/', 'painting contractors Austin', '/services'],
     ['/', 'Exterior painting service overview', '/services/exterior-painting'],
     ['/', 'Interior painting service overview', '/services/interior-painting'],
@@ -1863,6 +1864,7 @@ function run() {
     ['/services', 'Cabinet refinishing service overview', '/services/cabinet-refinishing'],
     ['/services', 'Commercial painting service overview', '/services/commercial'],
     ['/services', 'house painters Austin', '/house-painters-austin'],
+    ['/services', 'Austin painting contractors', '/house-painters-austin'],
     ['/services', 'painting contractors Austin', '/services'],
     ['/services', 'Austin exterior house painters', '/exterior-painting-austin'],
     ['/services', 'Austin interior painters', '/interior-painting-austin'],
@@ -1876,6 +1878,7 @@ function run() {
     ['/service-areas/austin', 'Austin interior painters', '/interior-painting-austin'],
     ['/service-areas/austin', 'Austin cabinet painting', '/cabinet-refinishing-austin'],
     ['/service-areas/austin', 'Austin commercial painters', '/commercial-painting-austin'],
+    ['/service-areas', 'Austin painting contractors', '/house-painters-austin'],
     ['/service-areas', 'Round Rock house painters', '/service-areas/round-rock'],
     ['/service-areas', 'Cedar Park house painters', '/service-areas/cedar-park'],
     ['/service-areas', 'Georgetown house painters', '/service-areas/georgetown'],
@@ -1929,6 +1932,7 @@ function run() {
     ['Austin House Painters', '/house-painters-austin'],
     ['Austin house painters', '/house-painters-austin'],
     ['house painters Austin', '/house-painters-austin'],
+    ['Austin painting contractors', '/house-painters-austin'],
     ['painting contractors Austin', '/services']
   ].forEach(([expectedText, expectedRoute]) => {
     assertExactAnchorTargets(pages, expectedText, expectedRoute);

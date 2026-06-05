@@ -87,6 +87,7 @@ const Home = () => {
     itemListOrder: 'https://schema.org/ItemListOrderAscending',
     itemListElement: [
       ['Austin house painters', '/house-painters-austin'],
+      ['Austin painting contractors', '/house-painters-austin'],
       ['Austin exterior house painters', '/exterior-painting-austin'],
       ['Austin interior painters', '/interior-painting-austin'],
       ['Austin cabinet painting', '/cabinet-refinishing-austin'],

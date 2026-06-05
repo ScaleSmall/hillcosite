@@ -17,6 +17,7 @@ const linkGroups = {
     links: [
       { label: 'Austin house painters', href: '/house-painters-austin' },
       { label: 'house painters Austin', href: '/house-painters-austin' },
+      { label: 'Austin painting contractors', href: '/house-painters-austin' },
       { label: 'Austin service area', href: '/service-areas/austin' },
       { label: 'painting contractors Austin', href: '/services' },
       { label: 'Exterior painting service overview', href: '/services/exterior-painting' },
@@ -40,6 +41,7 @@ const linkGroups = {
       { label: 'Cabinet refinishing service overview', href: '/services/cabinet-refinishing' },
       { label: 'Commercial painting service overview', href: '/services/commercial' },
       { label: 'Austin house painters', href: '/house-painters-austin' },
+      { label: 'Austin painting contractors', href: '/house-painters-austin' },
       { label: 'painting contractors Austin', href: '/services' },
       { label: 'house painters Austin', href: '/house-painters-austin' },
       { label: 'Austin service area', href: '/service-areas/austin' }
@@ -56,6 +58,7 @@ const linkGroups = {
     subtitle: 'Local painting crews for homes and businesses across the north and west Austin metro.',
     links: [
       { label: 'Austin house painters', href: '/house-painters-austin' },
+      { label: 'Austin painting contractors', href: '/house-painters-austin' },
       { label: 'Austin service area', href: '/service-areas/austin' },
       { label: 'Round Rock house painters', href: '/service-areas/round-rock' },
       { label: 'Cedar Park house painters', href: '/service-areas/cedar-park' },
