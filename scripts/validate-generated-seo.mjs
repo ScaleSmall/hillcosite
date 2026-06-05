@@ -113,6 +113,19 @@ const requiredCanonicalProviderKnowsAboutTopics = [
   'Greater Austin painting contractor',
   'West Lake Hills painters'
 ];
+let requiredCanonicalProviderAreaNames = [
+  'Austin',
+  'West Lake Hills',
+  'Lakeway',
+  'Leander',
+  'Georgetown',
+  'Round Rock',
+  'Cedar Park',
+  'North Austin',
+  'Travis County',
+  'Williamson County',
+  'Hays County'
+];
 const businessEmail = 'info@hillcopaint.com';
 const businessPriceRange = '$$';
 const businessPaymentAccepted = 'Cash, Check, Credit Card';
@@ -593,6 +606,8 @@ function hasCanonicalServiceProvider(schema) {
   const alternateNames = asArray(provider?.alternateName);
   const availableLanguages = asArray(provider?.availableLanguage);
   const knowsAbout = asArray(provider?.knowsAbout);
+  const areaServedNames = asArray(provider?.areaServed).map(area => area?.name).filter(Boolean);
+  const serviceAreaNames = asArray(provider?.serviceArea).map(area => area?.name).filter(Boolean);
   const contactPoint = provider?.contactPoint || {};
   const openingHoursSpecification = provider?.openingHoursSpecification || {};
   const identifier = provider?.identifier || {};
@@ -621,6 +636,8 @@ function hasCanonicalServiceProvider(schema) {
     provider?.paymentAccepted === businessPaymentAccepted &&
     provider?.currenciesAccepted === businessCurrenciesAccepted &&
     availableLanguages.includes('English') &&
+    hasAllValues(areaServedNames, requiredCanonicalProviderAreaNames) &&
+    hasAllValues(serviceAreaNames, ['Greater Austin Area', 'Travis County', 'Williamson County', 'Hays County']) &&
     provider?.hasMap === googleBusinessProfileUrl &&
     provider?.openingHours === businessOpeningHours &&
     schemaTypeIncludes(openingHoursSpecification, 'OpeningHoursSpecification') &&
@@ -1415,6 +1432,10 @@ function run() {
   const configuredGreaterAustinAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
   const configuredGreaterAustinCounties = extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties');
   const configuredPriorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
+  requiredCanonicalProviderAreaNames = [
+    ...configuredGreaterAustinAreas,
+    ...configuredGreaterAustinCounties
+  ];
   const configuredBusinessFacts = {
     name: extractStringProperty(businessConfigSource, 'name'),
     legalName: extractStringProperty(businessConfigSource, 'legalName'),
@@ -1666,13 +1687,24 @@ function run() {
   }
 
   if (
-    !businessSchemaSource.includes("import { priorityLocalSearchTopics } from '../config/localSeo'") ||
+    !businessSchemaSource.includes("} from '../config/localSeo'") ||
+    !businessSchemaSource.includes('priorityLocalSearchTopics') ||
     !businessSchemaSource.includes('knowsAbout:') ||
     !businessSchemaSource.includes('...priorityLocalSearchTopics') ||
     !businessSchemaSource.includes("'Austin house painting'") ||
     !businessSchemaSource.includes("'Commercial repaint scheduling'")
   ) {
     fail('src/lib/businessSchema.ts canonicalBusinessProvider must expose priority local search topics through knowsAbout');
+  }
+
+  if (
+    !businessSchemaSource.includes('greaterAustinServiceAreas') ||
+    !businessSchemaSource.includes('greaterAustinServiceCounties') ||
+    !businessSchemaSource.includes('export const businessAreaServed') ||
+    !businessSchemaSource.includes('areaServed: businessAreaServed') ||
+    !businessSchemaSource.includes('serviceArea: businessServiceArea')
+  ) {
+    fail('src/lib/businessSchema.ts canonicalBusinessProvider must expose the canonical Greater Austin served-area list');
   }
 
   const middlewareCanonicalProviderUses = middlewareSource.match(/provider:\s*CANONICAL_BUSINESS_PROVIDER/g) || [];

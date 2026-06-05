@@ -196,6 +196,50 @@ const GREATER_AUSTIN_COUNTY_SERVICE_AREAS = [
   'Williamson County',
   'Hays County',
 ];
+const GREATER_AUSTIN_SERVICE_AREAS = [
+  'Austin',
+  'West Lake Hills',
+  'Rollingwood',
+  'Tarrytown',
+  'Northwest Hills',
+  'West Lake Highlands',
+  'Lakeway',
+  'Bee Cave',
+  'Lake Travis',
+  'Steiner Ranch',
+  'Barton Creek',
+  'Circle C Ranch',
+  'Pemberton Heights',
+  'Old West Austin',
+  'Clarksville',
+  'Allandale',
+  'Crestview',
+  'Leander',
+  'Georgetown',
+  'Round Rock',
+  'Cedar Park',
+  'North Austin',
+];
+const CANONICAL_BUSINESS_AREA_SERVED = [
+  ...GREATER_AUSTIN_SERVICE_AREAS.map(name => ({
+    '@type': 'Place',
+    name,
+  })),
+  ...GREATER_AUSTIN_COUNTY_SERVICE_AREAS.map(name => ({
+    '@type': 'AdministrativeArea',
+    name,
+  })),
+];
+const CANONICAL_BUSINESS_SERVICE_AREA = [
+  {
+    '@type': 'AdministrativeArea',
+    name: 'Greater Austin Area',
+  },
+  ...GREATER_AUSTIN_COUNTY_SERVICE_AREAS.map(name => ({
+    '@type': 'AdministrativeArea',
+    name,
+  })),
+];
 const GOOGLE_BUSINESS_PROFILE_URL = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const CANONICAL_BUSINESS_PROVIDER = {
   '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
@@ -247,10 +291,8 @@ const CANONICAL_BUSINESS_PROVIDER = {
     addressRegion: 'TX',
     addressCountry: 'US',
   },
-  areaServed: {
-    '@type': 'AdministrativeArea',
-    name: 'Greater Austin Area',
-  },
+  areaServed: CANONICAL_BUSINESS_AREA_SERVED,
+  serviceArea: CANONICAL_BUSINESS_SERVICE_AREA,
   geo: {
     '@type': 'GeoCoordinates',
     latitude: '30.3337',

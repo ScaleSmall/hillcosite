@@ -335,6 +335,14 @@ const canonicalBusinessProvider = {
     addressRegion: 'TX',
     addressCountry: 'US'
   },
+  serviceArea: [
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Greater Austin Area'
+    },
+    ...serviceCounties.map(name => ({ '@type': 'AdministrativeArea', name }))
+  ],
+  areaServed: localAreaServed(),
   geo: businessFacts.geo,
   knowsAbout: [
     ...priorityLocalSearchTopics,

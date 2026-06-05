@@ -1,5 +1,9 @@
 import { businessConfig } from '../config/business';
-import { priorityLocalSearchTopics } from '../config/localSeo';
+import {
+  greaterAustinServiceAreas,
+  greaterAustinServiceCounties,
+  priorityLocalSearchTopics
+} from '../config/localSeo';
 
 export const siteBaseUrl = 'https://www.hillcopaint.com';
 
@@ -40,6 +44,28 @@ export const businessAggregateRating = {
   worstRating: businessConfig.aggregateRating.worstRating
 } as const;
 
+export const businessAreaServed = [
+  ...greaterAustinServiceAreas.map(name => ({
+    '@type': 'Place',
+    name
+  })),
+  ...greaterAustinServiceCounties.map(name => ({
+    '@type': 'AdministrativeArea',
+    name
+  }))
+] as const;
+
+export const businessServiceArea = [
+  {
+    '@type': 'AdministrativeArea',
+    name: 'Greater Austin Area'
+  },
+  ...greaterAustinServiceCounties.map(name => ({
+    '@type': 'AdministrativeArea',
+    name
+  }))
+] as const;
+
 export const canonicalBusinessProvider = {
   '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
   '@id': `${siteBaseUrl}/#localbusiness`,
@@ -70,10 +96,8 @@ export const canonicalBusinessProvider = {
     addressRegion: businessConfig.address.addressRegion,
     addressCountry: businessConfig.address.addressCountry
   },
-  areaServed: {
-    '@type': 'AdministrativeArea',
-    name: 'Greater Austin Area'
-  },
+  areaServed: businessAreaServed,
+  serviceArea: businessServiceArea,
   geo: {
     '@type': 'GeoCoordinates',
     latitude: businessConfig.geo.latitude,

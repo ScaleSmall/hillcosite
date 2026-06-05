@@ -378,6 +378,126 @@
             "addressRegion": "TX",
             "addressCountry": "US"
           },
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Greater Austin Area"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "Place",
+              "name": "Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "Rollingwood"
+            },
+            {
+              "@type": "Place",
+              "name": "Tarrytown"
+            },
+            {
+              "@type": "Place",
+              "name": "Northwest Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Highlands"
+            },
+            {
+              "@type": "Place",
+              "name": "Lakeway"
+            },
+            {
+              "@type": "Place",
+              "name": "Bee Cave"
+            },
+            {
+              "@type": "Place",
+              "name": "Lake Travis"
+            },
+            {
+              "@type": "Place",
+              "name": "Steiner Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Barton Creek"
+            },
+            {
+              "@type": "Place",
+              "name": "Circle C Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Pemberton Heights"
+            },
+            {
+              "@type": "Place",
+              "name": "Old West Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "Clarksville"
+            },
+            {
+              "@type": "Place",
+              "name": "Allandale"
+            },
+            {
+              "@type": "Place",
+              "name": "Crestview"
+            },
+            {
+              "@type": "Place",
+              "name": "Leander"
+            },
+            {
+              "@type": "Place",
+              "name": "Georgetown"
+            },
+            {
+              "@type": "Place",
+              "name": "Round Rock"
+            },
+            {
+              "@type": "Place",
+              "name": "Cedar Park"
+            },
+            {
+              "@type": "Place",
+              "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 30.3337,
@@ -624,6 +744,126 @@
             "addressRegion": "TX",
             "addressCountry": "US"
           },
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Greater Austin Area"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "Place",
+              "name": "Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "Rollingwood"
+            },
+            {
+              "@type": "Place",
+              "name": "Tarrytown"
+            },
+            {
+              "@type": "Place",
+              "name": "Northwest Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Highlands"
+            },
+            {
+              "@type": "Place",
+              "name": "Lakeway"
+            },
+            {
+              "@type": "Place",
+              "name": "Bee Cave"
+            },
+            {
+              "@type": "Place",
+              "name": "Lake Travis"
+            },
+            {
+              "@type": "Place",
+              "name": "Steiner Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Barton Creek"
+            },
+            {
+              "@type": "Place",
+              "name": "Circle C Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Pemberton Heights"
+            },
+            {
+              "@type": "Place",
+              "name": "Old West Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "Clarksville"
+            },
+            {
+              "@type": "Place",
+              "name": "Allandale"
+            },
+            {
+              "@type": "Place",
+              "name": "Crestview"
+            },
+            {
+              "@type": "Place",
+              "name": "Leander"
+            },
+            {
+              "@type": "Place",
+              "name": "Georgetown"
+            },
+            {
+              "@type": "Place",
+              "name": "Round Rock"
+            },
+            {
+              "@type": "Place",
+              "name": "Cedar Park"
+            },
+            {
+              "@type": "Place",
+              "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 30.3337,
@@ -870,6 +1110,126 @@
             "addressRegion": "TX",
             "addressCountry": "US"
           },
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Greater Austin Area"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "Place",
+              "name": "Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "Rollingwood"
+            },
+            {
+              "@type": "Place",
+              "name": "Tarrytown"
+            },
+            {
+              "@type": "Place",
+              "name": "Northwest Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Highlands"
+            },
+            {
+              "@type": "Place",
+              "name": "Lakeway"
+            },
+            {
+              "@type": "Place",
+              "name": "Bee Cave"
+            },
+            {
+              "@type": "Place",
+              "name": "Lake Travis"
+            },
+            {
+              "@type": "Place",
+              "name": "Steiner Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Barton Creek"
+            },
+            {
+              "@type": "Place",
+              "name": "Circle C Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Pemberton Heights"
+            },
+            {
+              "@type": "Place",
+              "name": "Old West Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "Clarksville"
+            },
+            {
+              "@type": "Place",
+              "name": "Allandale"
+            },
+            {
+              "@type": "Place",
+              "name": "Crestview"
+            },
+            {
+              "@type": "Place",
+              "name": "Leander"
+            },
+            {
+              "@type": "Place",
+              "name": "Georgetown"
+            },
+            {
+              "@type": "Place",
+              "name": "Round Rock"
+            },
+            {
+              "@type": "Place",
+              "name": "Cedar Park"
+            },
+            {
+              "@type": "Place",
+              "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 30.3337,
@@ -1116,6 +1476,126 @@
             "addressRegion": "TX",
             "addressCountry": "US"
           },
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Greater Austin Area"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "Place",
+              "name": "Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "Rollingwood"
+            },
+            {
+              "@type": "Place",
+              "name": "Tarrytown"
+            },
+            {
+              "@type": "Place",
+              "name": "Northwest Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Highlands"
+            },
+            {
+              "@type": "Place",
+              "name": "Lakeway"
+            },
+            {
+              "@type": "Place",
+              "name": "Bee Cave"
+            },
+            {
+              "@type": "Place",
+              "name": "Lake Travis"
+            },
+            {
+              "@type": "Place",
+              "name": "Steiner Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Barton Creek"
+            },
+            {
+              "@type": "Place",
+              "name": "Circle C Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Pemberton Heights"
+            },
+            {
+              "@type": "Place",
+              "name": "Old West Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "Clarksville"
+            },
+            {
+              "@type": "Place",
+              "name": "Allandale"
+            },
+            {
+              "@type": "Place",
+              "name": "Crestview"
+            },
+            {
+              "@type": "Place",
+              "name": "Leander"
+            },
+            {
+              "@type": "Place",
+              "name": "Georgetown"
+            },
+            {
+              "@type": "Place",
+              "name": "Round Rock"
+            },
+            {
+              "@type": "Place",
+              "name": "Cedar Park"
+            },
+            {
+              "@type": "Place",
+              "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 30.3337,
@@ -1362,6 +1842,126 @@
             "addressRegion": "TX",
             "addressCountry": "US"
           },
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Greater Austin Area"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "Place",
+              "name": "Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "Rollingwood"
+            },
+            {
+              "@type": "Place",
+              "name": "Tarrytown"
+            },
+            {
+              "@type": "Place",
+              "name": "Northwest Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Highlands"
+            },
+            {
+              "@type": "Place",
+              "name": "Lakeway"
+            },
+            {
+              "@type": "Place",
+              "name": "Bee Cave"
+            },
+            {
+              "@type": "Place",
+              "name": "Lake Travis"
+            },
+            {
+              "@type": "Place",
+              "name": "Steiner Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Barton Creek"
+            },
+            {
+              "@type": "Place",
+              "name": "Circle C Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Pemberton Heights"
+            },
+            {
+              "@type": "Place",
+              "name": "Old West Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "Clarksville"
+            },
+            {
+              "@type": "Place",
+              "name": "Allandale"
+            },
+            {
+              "@type": "Place",
+              "name": "Crestview"
+            },
+            {
+              "@type": "Place",
+              "name": "Leander"
+            },
+            {
+              "@type": "Place",
+              "name": "Georgetown"
+            },
+            {
+              "@type": "Place",
+              "name": "Round Rock"
+            },
+            {
+              "@type": "Place",
+              "name": "Cedar Park"
+            },
+            {
+              "@type": "Place",
+              "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
           "geo": {
             "@type": "GeoCoordinates",
             "latitude": 30.3337,
@@ -1611,6 +2211,126 @@
               "addressRegion": "TX",
               "addressCountry": "US"
             },
+            "serviceArea": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater Austin Area"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "Place",
+                "name": "Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "Rollingwood"
+              },
+              {
+                "@type": "Place",
+                "name": "Tarrytown"
+              },
+              {
+                "@type": "Place",
+                "name": "Northwest Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Highlands"
+              },
+              {
+                "@type": "Place",
+                "name": "Lakeway"
+              },
+              {
+                "@type": "Place",
+                "name": "Bee Cave"
+              },
+              {
+                "@type": "Place",
+                "name": "Lake Travis"
+              },
+              {
+                "@type": "Place",
+                "name": "Steiner Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Barton Creek"
+              },
+              {
+                "@type": "Place",
+                "name": "Circle C Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Pemberton Heights"
+              },
+              {
+                "@type": "Place",
+                "name": "Old West Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "Clarksville"
+              },
+              {
+                "@type": "Place",
+                "name": "Allandale"
+              },
+              {
+                "@type": "Place",
+                "name": "Crestview"
+              },
+              {
+                "@type": "Place",
+                "name": "Leander"
+              },
+              {
+                "@type": "Place",
+                "name": "Georgetown"
+              },
+              {
+                "@type": "Place",
+                "name": "Round Rock"
+              },
+              {
+                "@type": "Place",
+                "name": "Cedar Park"
+              },
+              {
+                "@type": "Place",
+                "name": "North Austin"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
             "geo": {
               "@type": "GeoCoordinates",
               "latitude": 30.3337,
@@ -1855,6 +2575,126 @@
               "addressRegion": "TX",
               "addressCountry": "US"
             },
+            "serviceArea": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater Austin Area"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "Place",
+                "name": "Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "Rollingwood"
+              },
+              {
+                "@type": "Place",
+                "name": "Tarrytown"
+              },
+              {
+                "@type": "Place",
+                "name": "Northwest Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Highlands"
+              },
+              {
+                "@type": "Place",
+                "name": "Lakeway"
+              },
+              {
+                "@type": "Place",
+                "name": "Bee Cave"
+              },
+              {
+                "@type": "Place",
+                "name": "Lake Travis"
+              },
+              {
+                "@type": "Place",
+                "name": "Steiner Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Barton Creek"
+              },
+              {
+                "@type": "Place",
+                "name": "Circle C Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Pemberton Heights"
+              },
+              {
+                "@type": "Place",
+                "name": "Old West Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "Clarksville"
+              },
+              {
+                "@type": "Place",
+                "name": "Allandale"
+              },
+              {
+                "@type": "Place",
+                "name": "Crestview"
+              },
+              {
+                "@type": "Place",
+                "name": "Leander"
+              },
+              {
+                "@type": "Place",
+                "name": "Georgetown"
+              },
+              {
+                "@type": "Place",
+                "name": "Round Rock"
+              },
+              {
+                "@type": "Place",
+                "name": "Cedar Park"
+              },
+              {
+                "@type": "Place",
+                "name": "North Austin"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
             "geo": {
               "@type": "GeoCoordinates",
               "latitude": 30.3337,
@@ -2099,6 +2939,126 @@
               "addressRegion": "TX",
               "addressCountry": "US"
             },
+            "serviceArea": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater Austin Area"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "Place",
+                "name": "Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "Rollingwood"
+              },
+              {
+                "@type": "Place",
+                "name": "Tarrytown"
+              },
+              {
+                "@type": "Place",
+                "name": "Northwest Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Highlands"
+              },
+              {
+                "@type": "Place",
+                "name": "Lakeway"
+              },
+              {
+                "@type": "Place",
+                "name": "Bee Cave"
+              },
+              {
+                "@type": "Place",
+                "name": "Lake Travis"
+              },
+              {
+                "@type": "Place",
+                "name": "Steiner Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Barton Creek"
+              },
+              {
+                "@type": "Place",
+                "name": "Circle C Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Pemberton Heights"
+              },
+              {
+                "@type": "Place",
+                "name": "Old West Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "Clarksville"
+              },
+              {
+                "@type": "Place",
+                "name": "Allandale"
+              },
+              {
+                "@type": "Place",
+                "name": "Crestview"
+              },
+              {
+                "@type": "Place",
+                "name": "Leander"
+              },
+              {
+                "@type": "Place",
+                "name": "Georgetown"
+              },
+              {
+                "@type": "Place",
+                "name": "Round Rock"
+              },
+              {
+                "@type": "Place",
+                "name": "Cedar Park"
+              },
+              {
+                "@type": "Place",
+                "name": "North Austin"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
             "geo": {
               "@type": "GeoCoordinates",
               "latitude": 30.3337,
@@ -2343,6 +3303,126 @@
               "addressRegion": "TX",
               "addressCountry": "US"
             },
+            "serviceArea": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater Austin Area"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "Place",
+                "name": "Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "Rollingwood"
+              },
+              {
+                "@type": "Place",
+                "name": "Tarrytown"
+              },
+              {
+                "@type": "Place",
+                "name": "Northwest Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Highlands"
+              },
+              {
+                "@type": "Place",
+                "name": "Lakeway"
+              },
+              {
+                "@type": "Place",
+                "name": "Bee Cave"
+              },
+              {
+                "@type": "Place",
+                "name": "Lake Travis"
+              },
+              {
+                "@type": "Place",
+                "name": "Steiner Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Barton Creek"
+              },
+              {
+                "@type": "Place",
+                "name": "Circle C Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Pemberton Heights"
+              },
+              {
+                "@type": "Place",
+                "name": "Old West Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "Clarksville"
+              },
+              {
+                "@type": "Place",
+                "name": "Allandale"
+              },
+              {
+                "@type": "Place",
+                "name": "Crestview"
+              },
+              {
+                "@type": "Place",
+                "name": "Leander"
+              },
+              {
+                "@type": "Place",
+                "name": "Georgetown"
+              },
+              {
+                "@type": "Place",
+                "name": "Round Rock"
+              },
+              {
+                "@type": "Place",
+                "name": "Cedar Park"
+              },
+              {
+                "@type": "Place",
+                "name": "North Austin"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
             "geo": {
               "@type": "GeoCoordinates",
               "latitude": 30.3337,
@@ -2587,6 +3667,126 @@
               "addressRegion": "TX",
               "addressCountry": "US"
             },
+            "serviceArea": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Greater Austin Area"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
+            "areaServed": [
+              {
+                "@type": "Place",
+                "name": "Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "Rollingwood"
+              },
+              {
+                "@type": "Place",
+                "name": "Tarrytown"
+              },
+              {
+                "@type": "Place",
+                "name": "Northwest Hills"
+              },
+              {
+                "@type": "Place",
+                "name": "West Lake Highlands"
+              },
+              {
+                "@type": "Place",
+                "name": "Lakeway"
+              },
+              {
+                "@type": "Place",
+                "name": "Bee Cave"
+              },
+              {
+                "@type": "Place",
+                "name": "Lake Travis"
+              },
+              {
+                "@type": "Place",
+                "name": "Steiner Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Barton Creek"
+              },
+              {
+                "@type": "Place",
+                "name": "Circle C Ranch"
+              },
+              {
+                "@type": "Place",
+                "name": "Pemberton Heights"
+              },
+              {
+                "@type": "Place",
+                "name": "Old West Austin"
+              },
+              {
+                "@type": "Place",
+                "name": "Clarksville"
+              },
+              {
+                "@type": "Place",
+                "name": "Allandale"
+              },
+              {
+                "@type": "Place",
+                "name": "Crestview"
+              },
+              {
+                "@type": "Place",
+                "name": "Leander"
+              },
+              {
+                "@type": "Place",
+                "name": "Georgetown"
+              },
+              {
+                "@type": "Place",
+                "name": "Round Rock"
+              },
+              {
+                "@type": "Place",
+                "name": "Cedar Park"
+              },
+              {
+                "@type": "Place",
+                "name": "North Austin"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Travis County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Williamson County"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Hays County"
+              }
+            ],
             "geo": {
               "@type": "GeoCoordinates",
               "latitude": 30.3337,

@@ -1,6 +1,6 @@
 # Hill Country Painting SEO Closure Tracker
 
-Last updated: 2026-06-04
+Last updated: 2026-06-05
 
 ## Goal
 Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitemap leakage, internal-link gaps, and thin/duplicate page issues.
@@ -36,6 +36,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - entity-facts.json and citation-facts.json now expose canonical Austin-area geo coordinates, and citation-facts.json lists homepage, contact, sitemap, AI fact files, and the priority Austin service URLs as verification sources.
 - Organization, LocalBusiness, entity-facts.json, and citation-facts.json now carry the canonical logo and primary Austin homepage image identity signals.
 - Detailed Service schema providers now carry the canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals across Austin priority and service-location pages.
+- Canonical LocalBusiness providers now carry the full Greater Austin served-area list plus Travis, Williamson, and Hays county service-area signals across Service, Offer, Gallery, QuoteAction, middleware fallback, and AI fact schemas.
 - Services and service-area hub ItemList Service entries now carry the same canonical LocalBusiness, HousePainter, logo/image, Google Business Profile, and kgmid identity signals.
 - Gallery, free-estimate, pricing/cost, and AI fact offer schemas now reuse the same canonical LocalBusiness, HomeAndConstructionBusiness, HousePainter provider identity.
 - Reused Service, Offer, ImageGallery, and QuoteAction provider objects now include richer local-business trust fields: legal name, alternate names, disambiguation, NAICS/industry, contact point, email, hours, payment/currency, language, aggregate rating, Google Business Profile, and kgmid.
@@ -161,6 +162,7 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Local generated SEO validation now enforces `ai.txt` coverage for the canonical trust and conversion pages used by answer engines and citation systems.
 - Local and live SEO verification now require About and FAQ in the canonical citation verification URL set.
 - Local generated SEO validation and live SEO verification now enforce `/about` AboutPage schema tied to the canonical LocalBusiness, Organization, priority proof pages, and Austin painting topics.
+- Local and live SEO verification now enforce the full Greater Austin served-area list on reusable canonical LocalBusiness provider schema, strengthening local entity consistency for Maps and AI citation surfaces.
 - Cloudflare Pages deployment `https://b8bb45e4.hillcosite.pages.dev` deployed successfully on 2026-06-04 after adding enforced `/about` AboutPage entity schema.
 - Full live SEO verifier run on 2026-06-04 passed after that deployment, including DNS/custom-domain active, 183/183 sitemap pages, 32/32 Google crawler access checks, 183/183 Googlebot sitemap access checks, current Supabase project validation, no banned before/after-style hero images, and the new live AboutPage schema identity check.
 - Canonical provider schema now exposes priority Greater Austin painting topics through `knowsAbout` across app schema, AI/entity facts, and Cloudflare service-schema fallback, with local and live verification enforcing those provider topic signals.

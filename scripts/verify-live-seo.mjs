@@ -66,6 +66,30 @@ const greaterAustinServiceCounties = [
   'Williamson County',
   'Hays County',
 ];
+const greaterAustinServiceAreas = [
+  'Austin',
+  'West Lake Hills',
+  'Rollingwood',
+  'Tarrytown',
+  'Northwest Hills',
+  'West Lake Highlands',
+  'Lakeway',
+  'Bee Cave',
+  'Lake Travis',
+  'Steiner Ranch',
+  'Barton Creek',
+  'Circle C Ranch',
+  'Pemberton Heights',
+  'Old West Austin',
+  'Clarksville',
+  'Allandale',
+  'Crestview',
+  'Leander',
+  'Georgetown',
+  'Round Rock',
+  'Cedar Park',
+  'North Austin',
+];
 const priorityLocalSearchTopics = [
   'Austin house painters',
   'Austin exterior house painters',
@@ -1314,6 +1338,8 @@ function hasCanonicalServiceProvider(schema) {
   const alternateNames = asArray(provider?.alternateName);
   const availableLanguages = asArray(provider?.availableLanguage);
   const knowsAbout = asArray(provider?.knowsAbout);
+  const areaServedNames = asArray(provider?.areaServed).map(area => area?.name).filter(Boolean);
+  const serviceAreaNames = asArray(provider?.serviceArea).map(area => area?.name).filter(Boolean);
   const contactPoint = provider?.contactPoint || {};
   const openingHoursSpecification = provider?.openingHoursSpecification || {};
   const identifier = provider?.identifier || {};
@@ -1342,6 +1368,8 @@ function hasCanonicalServiceProvider(schema) {
     provider?.paymentAccepted === businessPaymentAccepted &&
     provider?.currenciesAccepted === businessCurrenciesAccepted &&
     availableLanguages.includes('English') &&
+    hasAllValues(areaServedNames, [...greaterAustinServiceAreas, ...greaterAustinServiceCounties]) &&
+    hasAllValues(serviceAreaNames, ['Greater Austin Area', ...greaterAustinServiceCounties]) &&
     provider?.hasMap === googleBusinessProfileUrl &&
     provider?.openingHours === businessOpeningHours &&
     schemaTypeIncludes(openingHoursSpecification, 'OpeningHoursSpecification') &&
