@@ -53,7 +53,7 @@ const config: ServiceLocationConfig = {
     faqs: [
     {
         "question": "How much does exterior painting cost in Leander?",
-        "answer": "Full-scope exterior painting in Leander typically starts around $6,000 and often ranges from $6,000 to $12,000+ depending on home size, number of stories, surface condition, repairs, and complexity. We provide detailed written estimates after an in-person assessment."
+        "answer": "Full-scope exterior painting in Leander typically begins around $6,750 and often ranges from $6,750 to $12,500+ depending on home size, number of stories, surface condition, repairs, and complexity. We provide detailed written estimates after an in-person assessment."
     },
     {
         "question": "How long does exterior paint last in Leander's climate?",

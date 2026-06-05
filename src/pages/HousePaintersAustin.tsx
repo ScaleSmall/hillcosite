@@ -14,29 +14,29 @@ const serviceLinks = [
     title: 'Austin Exterior House Painters',
     href: '/exterior-painting-austin',
     icon: Home,
-    description: 'Exterior repaint scopes for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
-    scope: 'Full-scope exterior painting commonly starts at $6,000 and is priced after prep, access, repairs, and coating needs are reviewed.'
+    description: 'Exterior repaint planning for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
+    scope: 'Most full exterior repaint projects land in the $7,000-$16,000+ range once prep, access, repairs, and coating needs are reviewed.'
   },
   {
     title: 'Austin Interior Painters',
     href: '/interior-painting-austin',
     icon: PaintBucket,
     description: 'Interior painting for walls, trim, ceilings, rooms, and whole-home repaints with careful protection and daily cleanup.',
-    scope: 'Full-scope interior projects start at $6,000 so the estimate can include prep, masking, protection, materials, and cleanup.'
+    scope: 'Whole-home and multi-room interior projects commonly begin around $6,500, with prep, masking, protection, materials, and cleanup built into the estimate.'
   },
   {
     title: 'Austin Cabinet Painting',
     href: '/cabinet-refinishing-austin',
     icon: ShieldCheck,
     description: 'Kitchen, bath, island, and built-in cabinet painting with durable finish planning for daily use.',
-    scope: 'Cabinet painting projects start at $6,000 and are measured by doors, drawers, boxes, finish complexity, and prep expectations.'
+    scope: 'Cabinet painting projects often begin around $6,250 and are measured by doors, drawers, boxes, finish complexity, and prep expectations.'
   },
   {
     title: 'Austin Commercial Painters',
     href: '/commercial-painting-austin',
     icon: Building2,
     description: 'Interior and exterior commercial painting for Austin offices, retail spaces, property managers, and tenant improvements.',
-    scope: 'Commercial painting starts at $6,000 and is scoped around square footage, access, scheduling, surfaces, and business disruption planning.'
+    scope: 'Commercial painting is typically planned from $7,500+ around square footage, access, scheduling, surfaces, and business disruption planning.'
   }
 ] as const;
 
@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     question: 'How much do professional Austin house painters cost?',
-    answer: 'Full-scope professional painting projects start at $6,000. Final pricing depends on surface condition, prep, access, repairs, coatings, room count, cabinet count, scheduling needs, and finish expectations.'
+    answer: 'Full-scope professional painting projects have a $6,000 minimum, and most Austin estimates vary above that based on surface condition, prep, access, repairs, coatings, room count, cabinet count, scheduling needs, and finish expectations.'
   },
   {
     question: 'What makes a good Austin house-painting estimate?',
@@ -316,7 +316,7 @@ const HousePaintersAustin = () => {
                 {[
                   'Written estimates that explain prep, coatings, protection, cleanup, and warranty expectations.',
                   'Project planning for Austin weather, HOA requirements, access, occupied homes, and business schedules.',
-                  'Full-scope project pricing from $6,000 so the crew can do the work correctly instead of rushing the prep.',
+                  'Pricing is built around the real prep and protection the job needs, with professional projects starting at a $6,000 minimum.',
                   'Internal paths to the Austin service page that matches your project type.'
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-brand-gray-700 leading-relaxed">

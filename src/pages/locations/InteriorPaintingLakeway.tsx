@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Walkthrough', description: 'Comprehensive review ensuring your complete satisfaction.' }
     ],
     faqs: [
-      { question: 'How much does interior painting cost in Lakeway?', answer: 'Full-scope Lakeway interior painting typically starts around $6,000 and often ranges from $6,000-$16,000 depending on home size, detail work, ceiling height, prep needs, and finish requirements.' },
+      { question: 'How much does interior painting cost in Lakeway?', answer: 'Full-scope Lakeway interior painting typically begins around $7,000 and often ranges from $7,000-$16,000 depending on home size, detail work, ceiling height, prep needs, and finish requirements.' },
       { question: 'Can you work around our vacation home schedule?', answer: 'Yes! Many Lakeway homes are vacation properties. We offer flexible scheduling to accommodate your needs.' },
       { question: 'Do you use low-VOC paints?', answer: 'Yes. We offer zero-VOC and low-VOC options for healthier indoor air quality, especially important for lakefront living.' },
       { question: 'How do you handle lake humidity?', answer: 'We understand Lake Travis climate. We use appropriate materials and techniques for moisture management.' },

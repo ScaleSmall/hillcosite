@@ -24,8 +24,8 @@ const PaintingCostsTable = () => {
     return null;
   };
 
-  const interiorHomeSize = getCostFactor('cost_factor_home_size_interior', '$6,000 - $10,000');
-  const exteriorHomeSize = getCostFactor('cost_factor_home_size_exterior', '$6,000 - $14,000');
+  const interiorHomeSize = getCostFactor('cost_factor_home_size_interior', '$6,500 - $10,000');
+  const exteriorHomeSize = getCostFactor('cost_factor_home_size_exterior', '$7,000 - $14,000');
 
   const interiorPrice = extractPrice(interiorHomeSize);
   const exteriorPrice = extractPrice(exteriorHomeSize);
@@ -96,26 +96,26 @@ const PaintingCostsTable = () => {
   const costFactors = [
     {
       factor: 'Home Size',
-      interior: getCostFactor('cost_factor_home_size_interior', '$6,000 - $10,000'),
-      exterior: getCostFactor('cost_factor_home_size_exterior', '$6,000 - $14,000'),
+      interior: getCostFactor('cost_factor_home_size_interior', '$6,500 - $10,000'),
+      exterior: getCostFactor('cost_factor_home_size_exterior', '$7,000 - $14,000'),
       details: 'Full professional project pricing based on square footage, room count, and site conditions'
     },
     {
       factor: 'Paint Quality',
-      interior: 'Included in $6,000+ scopes',
-      exterior: 'Included in $6,000+ scopes',
+      interior: 'Included in quoted projects',
+      exterior: 'Included in quoted projects',
       details: 'Premium coatings are specified as part of a complete written scope, not as a surprise add-on'
     },
     {
       factor: 'Preparation Work',
-      interior: 'Scoped from $6,000+',
-      exterior: 'Scoped from $6,000+',
+      interior: 'Priced after walkthrough',
+      exterior: 'Priced after walkthrough',
       details: 'Repairs, priming, masking, sanding, and surface prep are reviewed before pricing is finalized'
     },
     {
       factor: 'Color Changes',
-      interior: 'Scoped from $6,000+',
-      exterior: 'Scoped from $6,000+',
+      interior: 'Priced in written estimate',
+      exterior: 'Priced in written estimate',
       details: 'Major color changes may require extra coats and are built into the written estimate'
     }
   ];
@@ -134,7 +134,7 @@ const PaintingCostsTable = () => {
             Austin Painting Costs by Full Project Scope
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Professional repaint scopes begin at $6,000 and include preparation, premium materials, protection, cleanup, and a written estimate
+            Professional repaint pricing is built around preparation, premium materials, protection, cleanup, and a written estimate
           </p>
         </div>
 

@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Business-Ready Completion', description: 'Your Austin business looking its best.' }
     ],
     faqs: [
-      { question: 'How much does commercial painting cost in Austin?', answer: 'Austin commercial painting varies widely by location and scope. Full professional projects typically start around $6,000, with larger tenant spaces, offices, and specialty finishes priced after a walkthrough. Downtown and specialty projects may vary. We provide detailed quotes.' },
+      { question: 'How much does commercial painting cost in Austin?', answer: 'Austin commercial painting varies widely by location and scope. Full professional projects typically begin around $7,500, with larger tenant spaces, offices, and specialty finishes priced after a walkthrough. Downtown and specialty projects may vary. We provide detailed quotes.' },
       { question: 'Do you work in downtown Austin buildings?', answer: 'Yes! We have experience with downtown Austin office buildings including coordination with building management and tenant requirements.' },
       { question: 'What about Austin\'s creative and tech spaces?', answer: 'We understand Austin\'s unique business culture. We paint creative offices, tech campuses, and innovative workspaces throughout Austin.' },
       { question: 'Can you paint South Congress and boutique retail?', answer: 'Absolutely. We paint retail throughout Austin including SoCo, the Domain, and neighborhood shopping areas.' },

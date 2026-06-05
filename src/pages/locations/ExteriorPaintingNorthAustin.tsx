@@ -53,7 +53,7 @@ const config: ServiceLocationConfig = {
     faqs: [
     {
         "question": "How much does exterior painting cost in North Austin?",
-        "answer": "Full-scope exterior painting in North Austin typically starts around $6,000 and often ranges from $6,000 to $12,000+ depending on home size, number of stories, surface condition, repairs, and complexity. We provide detailed written estimates after an in-person assessment."
+        "answer": "Full-scope exterior painting in North Austin typically begins around $6,250 and often ranges from $6,250 to $12,000+ depending on home size, number of stories, surface condition, repairs, and complexity. We provide detailed written estimates after an in-person assessment."
     },
     {
         "question": "How long does exterior paint last in North Austin's climate?",

@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Walkthrough', description: 'Comprehensive review ensuring your complete satisfaction.' }
     ],
     faqs: [
-      { question: 'How much does interior painting cost in Tarrytown?', answer: 'Full-scope Tarrytown interior painting typically starts around $6,000 and often ranges from $6,000-$22,000+ depending on home size, detail work, ceiling height, prep needs, and finish requirements. Historic homes may require additional care.' },
+      { question: 'How much does interior painting cost in Tarrytown?', answer: 'Full-scope Tarrytown interior painting typically begins around $7,000 and often ranges from $7,000-$22,000+ depending on home size, detail work, ceiling height, prep needs, and finish requirements. Historic homes may require additional care.' },
       { question: 'Can you work around our schedule?', answer: 'Yes! We understand Tarrytown homeowners\' busy schedules. We offer flexible timing and work efficiently to minimize disruption.' },
       { question: 'Do you handle intricate millwork and trim?', answer: 'Absolutely. Tarrytown homes often feature beautiful millwork. We specialize in painting detailed trim, crown molding, and architectural elements.' },
       { question: 'What about lead paint in older homes?', answer: 'We follow EPA lead-safe practices for pre-1978 homes. Safety is our priority when working with historic properties.' },

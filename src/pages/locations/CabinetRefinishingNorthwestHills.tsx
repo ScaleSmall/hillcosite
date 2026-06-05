@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Inspection', description: 'Comprehensive review ensuring exceptional results.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in Northwest Hills?', answer: 'Full-scope cabinet refinishing in Northwest Hills typically starts around $6,000 and often ranges from $6,000-$12,500 depending on kitchen size, finish complexity, prep needs, and detail level.' },
+      { question: 'How much does cabinet refinishing cost in Northwest Hills?', answer: 'Full-scope cabinet refinishing in Northwest Hills typically begins around $6,750 and often ranges from $6,750-$12,500 depending on kitchen size, finish complexity, prep needs, and detail level.' },
       { question: 'How long does the process take?', answer: 'Most Northwest Hills kitchens take 5-7 days from start to finish. We work efficiently while maintaining quality.' },
       { question: 'Can you update our mid-century kitchen?', answer: 'Yes! We love working with mid-century kitchens. We can modernize while respecting the original character.' },
       { question: 'Will we need to move out?', answer: 'No. While we recommend staying out of the kitchen during application, you can remain in your home.' },

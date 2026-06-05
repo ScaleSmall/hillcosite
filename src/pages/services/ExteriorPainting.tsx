@@ -91,7 +91,7 @@ const ExteriorPainting = () => {
     },
     {
       question: 'How much does exterior painting cost?',
-      answer: 'Full-scope exterior painting in Austin typically starts around $6,000 and often ranges from $6,000-$14,000 depending on home size, paint quality, access, repairs, and prep work needed. We provide detailed estimates with transparent pricing.'
+      answer: 'Full-scope exterior painting in Austin typically begins around $7,000 and often ranges from $7,000-$14,000 depending on home size, paint quality, access, repairs, and prep work needed. We provide detailed estimates with transparent pricing.'
     },
     {
       question: 'When is the best time to paint exteriors in Austin?',

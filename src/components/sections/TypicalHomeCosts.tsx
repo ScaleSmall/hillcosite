@@ -25,8 +25,8 @@ const TypicalHomeCosts = () => {
     return null;
   };
 
-  const house1500Interior = getCostFactor('house_1500_interior', '$6,000 - $8,500');
-  const house1500Exterior = getCostFactor('house_1500_exterior', '$6,000 - $10,500');
+  const house1500Interior = getCostFactor('house_1500_interior', '$6,250 - $8,500');
+  const house1500Exterior = getCostFactor('house_1500_exterior', '$6,750 - $10,500');
   const house2200Interior = getCostFactor('house_2200_interior', '$6,500 - $10,500');
   const house2200Exterior = getCostFactor('house_2200_exterior', '$8,500 - $14,000');
   const house3000Interior = getCostFactor('house_3000_interior', '$9,000 - $15,000');
@@ -204,7 +204,7 @@ const TypicalHomeCosts = () => {
             Typical Full-Scope Austin Home Painting Costs
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Full-scope professional projects start at $6,000 and include prep, premium coatings, masking, cleanup, and a written scope
+            Full professional projects are priced by prep, protection, access, coatings, cleanup, and a written scope, with $6,000 as the minimum floor
           </p>
         </div>
 
@@ -216,11 +216,11 @@ const TypicalHomeCosts = () => {
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>
-                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_1500_interior', '$6,000 - $8,500')}</span>
+                <span className="font-semibold text-brand-azureDark">{getCostFactor('house_1500_interior', '$6,250 - $8,500')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Exterior:</span>
-                <span className="font-semibold text-brand-azure">{getCostFactor('house_1500_exterior', '$6,000 - $10,500')}</span>
+                <span className="font-semibold text-brand-azure">{getCostFactor('house_1500_exterior', '$6,750 - $10,500')}</span>
               </div>
             </div>
           </div>

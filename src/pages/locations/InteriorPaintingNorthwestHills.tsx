@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Walkthrough', description: 'Comprehensive review ensuring your complete satisfaction.' }
     ],
     faqs: [
-      { question: 'How much does interior painting cost in Northwest Hills?', answer: 'Full-scope Northwest Hills interior painting typically starts around $6,000 and often ranges from $6,000-$13,500 depending on home size, detail work, ceiling height, prep needs, and finish requirements.' },
+      { question: 'How much does interior painting cost in Northwest Hills?', answer: 'Full-scope Northwest Hills interior painting typically begins around $6,750 and often ranges from $6,750-$13,500 depending on home size, detail work, ceiling height, prep needs, and finish requirements.' },
       { question: 'Can you work around our family schedule?', answer: 'Yes! We understand Northwest Hills families are busy. We offer flexible scheduling and work efficiently.' },
       { question: 'Do you use low-VOC paints?', answer: 'Yes. We offer zero-VOC and low-VOC options, perfect for families and those sensitive to paint odors.' },
       { question: 'How do you protect our furniture and floors?', answer: 'We use drop cloths, plastic protection, and careful techniques to protect your belongings throughout the project.' },

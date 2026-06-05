@@ -41,7 +41,7 @@ const costProjectLinks = [
   {
     label: 'Request a written estimate',
     href: '/free-estimate',
-    description: 'Use the $6,000+ ranges as planning guidance, then confirm the final scope with an on-site review.'
+    description: 'Use the planning ranges as guidance, then confirm the final scope with an on-site review.'
   }
 ] as const;
 
@@ -77,7 +77,7 @@ const PaintingCosts = () => {
   };
 
   const getFAQAnswer = () => {
-    const interiorPrice = getCostFactor('faq_2000sqft_interior', '$6,000-$10,500');
+    const interiorPrice = getCostFactor('faq_2000sqft_interior', '$6,500-$10,500');
     const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$8,500-$14,000');
     return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Hill Country Painting prices professional repaint projects from a $6,000 minimum so the estimate can include proper prep, protection, coatings, cleanup, and a clear written scope.`;
   };
@@ -101,7 +101,7 @@ const PaintingCosts = () => {
     },
     {
       question: 'What\'s included in a professional painting estimate?',
-      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. At Hill Country Painting, pricing starts at $6,000 for full professional scopes and every estimate explains exactly what is included.'
+      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. At Hill Country Painting, full professional projects have a $6,000 minimum, and every estimate explains exactly what is included.'
     }
   ];
 
@@ -133,7 +133,7 @@ const PaintingCosts = () => {
               Cost to Paint a House in Austin (2026)
             </h1>
             <p className="text-xl text-brand-gray-600 leading-body">
-              Complete pricing guide for Austin homeowners comparing full-scope professional projects starting at $6,000, with prep, protection, materials, cleanup, and written scope included.
+              Complete pricing guide for Austin homeowners comparing full-scope professional projects, with prep, protection, materials, cleanup, and written scope included.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
@@ -160,7 +160,7 @@ const PaintingCosts = () => {
               Match the Price Range to the Right Austin Painting Scope
             </h2>
             <p className="text-xl text-brand-gray-600 leading-body">
-              The $6,000+ floor is for complete professional projects, not quick touch-ups. Use these Austin project paths to compare what changes the estimate: prep, surface condition, access, protection, coatings, scheduling, and finish expectations.
+              The $6,000 minimum is for complete professional projects, not quick touch-ups. Use these Austin project paths to compare what changes the estimate: prep, surface condition, access, protection, coatings, scheduling, and finish expectations.
             </p>
           </div>
 
@@ -187,7 +187,7 @@ const PaintingCosts = () => {
       {/* Split Section - Value Explanation */}
       <SplitSection
         title="Why Professional Painting Costs What It Does"
-        description="Understanding painting costs helps you make informed decisions. A $6,000+ professional scope is built around specialized materials, skilled labor, proper preparation, protection, project management, and comprehensive cleanup that DIY simply cannot match."
+        description="Understanding painting costs helps you make informed decisions. A professional painting estimate is built around specialized materials, skilled labor, proper preparation, protection, project management, and comprehensive cleanup that DIY simply cannot match."
         benefits={[
           { text: 'Professional-grade materials that last 2-3x longer' },
           { text: 'Comprehensive surface preparation and priming' },
@@ -221,7 +221,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Bundle Interior & Exterior</h3>
-                  <p className="text-brand-gray-600">Combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> can reduce duplicate setup while keeping the project in a complete $6,000+ professional scope.</p>
+                  <p className="text-brand-gray-600">Combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> can reduce duplicate setup while keeping the estimate tied to one complete professional project.</p>
                 </div>
               </div>
               

@@ -53,7 +53,7 @@ const config: ServiceLocationConfig = {
     faqs: [
     {
         "question": "How much does interior painting cost in Round Rock?",
-        "answer": "Full-scope interior painting in Round Rock typically starts around $6,000 and often ranges from $6,000 to $10,000+ depending on home size, number of rooms, ceiling height, prep needs, and scope. We provide detailed written estimates after an in-home visit."
+        "answer": "Full-scope interior painting in Round Rock typically begins around $6,500 and often ranges from $6,500 to $10,500+ depending on home size, number of rooms, ceiling height, prep needs, and finish expectations. We provide detailed written estimates after an in-home visit."
     },
     {
         "question": "Do you paint ceilings and trim in Round Rock?",

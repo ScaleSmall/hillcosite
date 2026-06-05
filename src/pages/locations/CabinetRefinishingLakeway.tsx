@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Final Inspection', description: 'Comprehensive review ensuring exceptional results.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in Lakeway?', answer: 'Full-scope cabinet refinishing in Lakeway typically starts around $6,000 and often ranges from $6,000-$14,000 depending on kitchen size, finish complexity, prep needs, and hardware coordination.' },
+      { question: 'How much does cabinet refinishing cost in Lakeway?', answer: 'Full-scope cabinet refinishing in Lakeway typically begins around $7,000 and often ranges from $7,000-$14,000 depending on kitchen size, finish complexity, prep needs, and hardware coordination.' },
       { question: 'How long does the process take?', answer: 'Most Lakeway kitchens take 5-7 days from start to finish. We work efficiently while maintaining quality standards.' },
       { question: 'Can you handle lake climate challenges?', answer: 'Yes! We use finishes specifically designed to withstand Lake Travis humidity and climate conditions.' },
       { question: 'Will we need to leave our home?', answer: 'No. While we recommend staying out of the kitchen during application, you can remain in your home.' },

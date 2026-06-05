@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Detailed Inspection', description: 'Comprehensive review ensuring every surface exceeds expectations.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in West Lake Hills?', answer: 'West Lake Hills cabinet refinishing typically ranges from $6,000-$18,000+ depending on kitchen size, complexity, and finish selections. Large estates may exceed this range.' },
+      { question: 'How much does cabinet refinishing cost in West Lake Hills?', answer: 'West Lake Hills cabinet refinishing typically ranges from $7,500-$18,000+ depending on kitchen size, complexity, and finish selections. Large estates may exceed this range.' },
       { question: 'What premium products do you use?', answer: 'We use the finest cabinet coatings available including high-performance lacquers and conversion varnishes for maximum durability and beauty.' },
       { question: 'Can you match existing finishes?', answer: 'Yes, we offer custom color matching to coordinate with other cabinetry or millwork throughout your estate.' },
       { question: 'What about kitchen islands and specialty cabinetry?', answer: 'We refinish all cabinetry including islands, butler\'s pantries, wet bars, and custom built-ins throughout your home.' },

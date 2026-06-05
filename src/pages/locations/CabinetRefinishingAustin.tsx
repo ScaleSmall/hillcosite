@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Quality Review', description: 'Comprehensive inspection ensuring every detail is right.' }
     ],
     faqs: [
-      { question: 'How much does cabinet refinishing cost in Austin?', answer: 'Full-scope Austin cabinet refinishing typically starts around $6,000 and often ranges from $6,000-$12,000 depending on kitchen size, cabinet style, prep needs, and finish expectations. Historic homes and complex designs may vary.' },
+      { question: 'How much does cabinet refinishing cost in Austin?', answer: 'Full-scope Austin cabinet refinishing typically begins around $6,250 and often ranges from $6,250-$12,000 depending on kitchen size, cabinet style, prep needs, and finish expectations. Historic homes and complex designs may vary.' },
       { question: 'Do you work with Austin\'s historic cabinets?', answer: 'Yes! We specialize in preserving character while providing modern function. We discuss options to honor your home\'s heritage.' },
       { question: 'What about downtown Austin condos?', answer: 'We\'re experienced with condo requirements including building access, parking, and HOA coordination. Condo kitchens transform beautifully.' },
       { question: 'Can you match Austin\'s eclectic style?', answer: 'Absolutely! From vintage charm to bold modern, we help select finishes that express your Austin personality.' },

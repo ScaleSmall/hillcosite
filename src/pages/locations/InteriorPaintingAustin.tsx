@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Clean Completion', description: 'Your Austin home beautifully transformed and spotlessly clean.' }
     ],
     faqs: [
-      { question: 'How much does interior painting cost in Austin?', answer: 'Full-scope Austin interior painting typically starts around $6,000 and often ranges from $6,000-$10,500+ depending on home size, location, ceiling height, surface prep, and complexity. Downtown condos and historic homes may vary. We provide detailed quotes.' },
+      { question: 'How much does interior painting cost in Austin?', answer: 'Full-scope Austin interior painting typically begins around $6,500 and often ranges from $6,500-$10,500+ depending on home size, location, ceiling height, surface prep, and complexity. Downtown condos and historic homes may vary. We provide detailed quotes.' },
       { question: 'Do you work in downtown Austin condos?', answer: 'Yes! We have extensive experience with downtown Austin high-rises and condos, including coordinating with building management and working within HOA guidelines.' },
       { question: 'What about Austin\'s historic homes?', answer: 'We specialize in historic Austin neighborhoods like Clarksville, Travis Heights, and Tarrytown. We respect original details while providing modern protection.' },
       { question: 'Can you match Austin\'s eclectic style?', answer: 'Absolutely. We embrace Austin\'s creative spirit and help clients choose colors that express their personality while complementing their home\'s architecture.' },

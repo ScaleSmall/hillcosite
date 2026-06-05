@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Quality Inspection', description: 'Comprehensive review ensuring exceptional results.' }
     ],
     faqs: [
-      { question: 'How much does exterior painting cost in West Lake Highlands?', answer: 'West Lake Highlands exterior painting typically ranges from $6,000-$18,000+ depending on home size, terrain complexity, and architectural features.' },
+      { question: 'How much does exterior painting cost in West Lake Highlands?', answer: 'West Lake Highlands exterior painting typically ranges from $7,500-$18,000+ depending on home size, terrain complexity, and architectural features.' },
       { question: 'Do you handle steep terrain and elevation changes?', answer: 'Yes! Hill Country homes often have challenging terrain. We have equipment and expertise for elevated properties.' },
       { question: 'How does Lake Travis proximity affect painting?', answer: 'Lake climate creates increased humidity and weather exposure. We use appropriate materials and techniques for these conditions.' },
       { question: 'Can you work with our HOA requirements?', answer: 'Absolutely. We understand West Lake area HOA standards and can help with color selection and approval processes.' },

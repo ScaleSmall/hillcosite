@@ -33,7 +33,7 @@ const config: ServiceLocationConfig = {
       { title: 'Immaculate Completion', description: 'Your estate returned to perfect order, beautifully transformed.' }
     ],
     faqs: [
-      { question: 'How much does interior painting cost in West Lake Hills?', answer: 'Full-scope West Lake Hills interior painting typically starts around $6,000 and often ranges from $6,000-$16,500+ depending on home size, ceiling height, prep needs, and complexity. Large estates with custom features may exceed this range. We provide detailed quotes.' },
+      { question: 'How much does interior painting cost in West Lake Hills?', answer: 'Full-scope West Lake Hills interior painting typically begins around $7,500 and often ranges from $7,500-$16,500+ depending on home size, ceiling height, prep needs, and complexity. Large estates with custom features may exceed this range. We provide detailed quotes.' },
       { question: 'Do you use premium paints?', answer: 'Exclusively. We use the finest paints from Sherwin-Williams, Benjamin Moore, and specialty lines like Farrow & Ball when specified. Your home deserves the best.' },
       { question: 'How do you handle high ceilings?', answer: 'We\'re fully equipped for the dramatic ceiling heights common in West Lake Hills estates. Our team uses professional equipment for safe, pristine results at any height.' },
       { question: 'What about custom millwork and trim?', answer: 'Our painters are skilled in fine trim work, including detailed moldings, built-ins, and custom millwork. We take extra care with these architectural features.' },

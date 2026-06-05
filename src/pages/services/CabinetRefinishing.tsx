@@ -68,16 +68,16 @@ const CabinetRefinishing = () => {
 
   const relatedServices = [
     {
-      title: 'Interior Painting',
-      description: 'Complete your kitchen transformation with professional interior wall painting.',
-      image: 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800',
-      link: '/services/interior-painting'
+      title: 'Cabinet Door & Drawer Finishing',
+      description: 'Labeled removal, off-site spraying, controlled cure time, and careful reinstallation for a smooth kitchen cabinet finish.',
+      image: 'https://images.pexels.com/photos/6207949/pexels-photo-6207949.jpeg?auto=compress&cs=tinysrgb&w=800',
+      link: '/services/cabinet-refinishing'
     },
     {
-      title: 'Exterior Painting',
-      description: 'Enhance your home\'s curb appeal with professional exterior painting.',
-      image: 'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800',
-      link: '/services/exterior-painting'
+      title: 'Island & Built-In Painting',
+      description: 'Coordinated finish work for kitchen islands, built-ins, pantry cabinets, and storage pieces that need to match the room.',
+      image: 'https://images.pexels.com/photos/6207947/pexels-photo-6207947.jpeg?auto=compress&cs=tinysrgb&w=800',
+      link: '/services/cabinet-refinishing'
     },
     {
       title: 'Trim & Millwork',
@@ -127,7 +127,7 @@ const CabinetRefinishing = () => {
     },
     {
       question: 'How much does cabinet painting cost in Austin?',
-      answer: 'Full cabinet painting projects typically start around $6,000 and often range from $6,000-$12,000 depending on kitchen size, number of doors and drawers, prep needs, and finish selected. That is still far less than many $15,000+ replacement projects.'
+      answer: 'Full cabinet painting projects typically begin around $6,250 and often range from $6,250-$12,000 depending on kitchen size, number of doors and drawers, prep needs, and finish selected. That is still far less than many $15,000+ replacement projects.'
     }
   ];
 
@@ -299,7 +299,7 @@ const CabinetRefinishing = () => {
         subtitle="Smart homeowners choose cabinet painting"
         option1Title="Cabinet Painting"
         option2Title="Cabinet Replacement"
-        option1Price="$6,000 – $12,000"
+        option1Price="$6,250 – $12,000"
         option2Price="$15,000 – $40,000+"
         option1Description="Transform with custom paint colors"
         option2Description="Expensive and time-consuming process"

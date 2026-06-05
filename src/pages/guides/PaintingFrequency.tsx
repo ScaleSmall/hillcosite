@@ -81,7 +81,7 @@ const PaintingFrequency = () => {
     {
       season: 'Winter',
       icon: '❄️',
-      painting: 'Limited',
+      painting: 'Excellent Indoors',
       exterior: 'Cold weather affects paint curing',
       interior: 'Good for interior projects, dry air helps',
       roundRockTip: 'Focus on interior projects, avoid freezing days'
@@ -171,8 +171,8 @@ const PaintingFrequency = () => {
             <table className="w-full bg-white rounded-lg shadow-lg">
               <thead className="bg-brand-azureDark text-white">
                 <tr>
-                  <th className="px-6 py-4 text-left">Surface Type</th>
-                  <th className="px-6 py-4 text-center">Frequency</th>
+                  <th className="px-6 py-4 text-left whitespace-nowrap min-w-[190px]">Surface Type</th>
+                  <th className="px-6 py-4 text-center whitespace-nowrap min-w-[130px]">Frequency</th>
                   <th className="px-6 py-4 text-left">Key Factors</th>
                   <th className="px-6 py-4 text-left">Warning Signs</th>
                   <th className="px-6 py-4 text-left">Central Texas Notes</th>
@@ -181,9 +181,9 @@ const PaintingFrequency = () => {
               <tbody>
                 {paintingSchedule.map((item, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-brand-gray-50' : 'bg-white'}>
-                    <td className="px-6 py-4 font-semibold text-brand-gray-900">{item.surface}</td>
-                    <td className="px-6 py-4 text-center">
-                      <span className="px-3 py-1 bg-brand-azure10 text-brand-azure rounded-full font-medium">
+                    <td className="px-6 py-4 font-semibold text-brand-gray-900 whitespace-nowrap">{item.surface}</td>
+                    <td className="px-6 py-4 text-center whitespace-nowrap">
+                      <span className="inline-flex whitespace-nowrap px-3 py-1 bg-brand-azure10 text-brand-azure rounded-full font-medium">
                         {item.frequency}
                       </span>
                     </td>
@@ -218,6 +218,7 @@ const PaintingFrequency = () => {
                 <div className={`px-3 py-1 rounded-full text-sm font-medium mb-4 ${
                   season.painting === 'Excellent' ? 'bg-brand-azure10 text-brand-azure' :
                   season.painting === 'Good' ? 'bg-brand-azure10 text-brand-azure' :
+                  season.painting === 'Excellent Indoors' ? 'bg-brand-azure10 text-brand-azure' :
                   season.painting === 'Pro Recommended' ? 'bg-brand-coral text-brand-azureDark' :
                   'bg-brand-regentGray10 text-brand-regentGray'
                 }`}>
