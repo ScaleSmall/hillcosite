@@ -77,6 +77,8 @@ const REDIRECTS: Record<string, string> = {
   '/service/custom-home-painting-round-rock':             '/services',
   '/service/residential-foyer-painting-round-rock':       '/services/interior-painting',
   '/service/residential-hallway-painting-round-rock':     '/services/interior-painting',
+  '/residential-painting':                                '/services',
+  '/residential-painting-round-rock':                     '/service-areas/round-rock',
 
   // -- Old gallery/project URLs --
   '/project':                                             '/gallery',
@@ -96,8 +98,6 @@ const REDIRECTS: Record<string, string> = {
   '/residential-exterior-painting-round-rock':   '/services/exterior-painting',
   '/residential-concrete-painting-round-rock':   '/services/exterior-painting',
   '/residential-concrete-painting':              '/services/exterior-painting',
-  '/residential-painting':                       '/services',
-  '/residential-painting-round-rock':            '/services',
   '/residential-building-painting':              '/services',
   '/residential-building-painting-round-rock':   '/services',
   '/commercial-building-painting':               '/services/commercial',

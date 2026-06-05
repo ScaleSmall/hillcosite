@@ -191,6 +191,8 @@ const requiredLegacyRedirects = new Map([
   ['/service/residential-foyer-painting-round-rock', '/services/interior-painting'],
   ['/service/residential-hallway-painting-round-rock', '/services/interior-painting'],
   ['/service/custom-home-painting-round-rock', '/services'],
+  ['/residential-painting', '/services'],
+  ['/residential-painting-round-rock', '/service-areas/round-rock'],
   [typoBlogPath, correctedBlogPath],
   ['/blog/house-painting-services-austin-hill-country-painting', '/house-painters-austin'],
   ['/blog/austin-exterior-painting-guide-hill-country-painting', '/exterior-painting-austin'],
