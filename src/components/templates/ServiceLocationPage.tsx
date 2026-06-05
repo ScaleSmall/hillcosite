@@ -117,7 +117,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
     exterior: {
       heading: 'Austin Exterior House Painters for Central Texas Homes',
       phrase: 'Austin exterior house painters',
-      copy: 'Austin exterior house painters need to plan around UV exposure, shaded elevations, older siding, stucco movement, and neighborhood color expectations. Hill Country Painting builds exterior scopes for Austin homes with prep-first protection, product guidance, and clear scheduling.'
+      copy: 'Austin exterior house painters need to plan around UV exposure, shaded elevations, older siding, stucco movement, and neighborhood color expectations. Hill Country Painting builds exterior repaint plans for Austin homes with prep-first protection, product guidance, and clear scheduling.'
     },
     interior: {
       heading: 'Austin Interior Painters for Occupied Homes',
@@ -421,7 +421,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 {austinServiceIntent.copy}
               </p>
               <p className="mt-4 text-base text-brand-gray-600 leading-body">
-                Homeowners and property managers comparing painting contractors Austin wide can use this page alongside the related Austin service pages below to match the right crew, prep scope, and finish plan to the project.
+                Homeowners and property managers comparing painting contractors Austin wide can use this page alongside the related Austin service pages below to match the right crew, prep plan, and finish system to the project.
               </p>
             </div>
 
@@ -432,7 +432,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
               >
                 <span className="block text-base font-semibold">Compare all Austin house painters services</span>
                 <span className="mt-2 block text-sm text-brand-gray-500">
-                  Use the Austin house painters hub to compare exterior, interior, cabinet, and commercial painting scopes before requesting a written estimate.
+                  Use the Austin house painters hub to compare exterior, interior, cabinet, and commercial painting options before requesting a written estimate.
                 </span>
               </Link>
               {austinServiceLinks.map(link => (
@@ -447,7 +447,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
                 >
                   <span className="block text-base font-semibold">{link.label}</span>
                   <span className="mt-2 block text-sm text-brand-gray-500">
-                    View local scope, prep notes, FAQs, and estimate options.
+                    View local prep notes, FAQs, project planning details, and estimate options.
                   </span>
                 </Link>
               ))}

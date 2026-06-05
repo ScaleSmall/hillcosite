@@ -293,7 +293,7 @@ const Gallery = () => {
       title: 'Austin exterior repaint planning',
       service: 'Exterior painting',
       area: 'Austin',
-      summary: 'Exterior repaint scopes are reviewed for siding condition, sun exposure, caulking, primer needs, trim detail, and weather windows before production starts.',
+      summary: 'Exterior repaint plans are built around siding condition, sun exposure, caulking, primer needs, trim detail, and weather windows before production starts.',
       servicePath: '/exterior-painting-austin',
       areaPath: '/service-areas/austin'
     },
@@ -309,7 +309,7 @@ const Gallery = () => {
       title: 'West Lake Hills cabinet finish work',
       service: 'Cabinet painting',
       area: 'West Lake Hills',
-      summary: 'Cabinet painting scopes focus on degreasing, sanding, bonding primer, controlled application, hardware handling, cure time, and durable finish expectations.',
+      summary: 'Cabinet painting work is planned around degreasing, sanding, bonding primer, controlled application, hardware handling, cure time, and durable finish expectations.',
       servicePath: '/cabinet-refinishing-west-lake-hills',
       areaPath: '/service-areas/west-lake-hills'
     },
@@ -317,7 +317,7 @@ const Gallery = () => {
       title: 'North Austin commercial painting scheduling',
       service: 'Commercial painting',
       area: 'North Austin',
-      summary: 'Commercial painting scopes account for access, business hours, tenant communication, surface protection, phased production, and minimal disruption to operations.',
+      summary: 'Commercial painting plans account for access, business hours, tenant communication, surface protection, phased production, and minimal disruption to operations.',
       servicePath: '/commercial-painting-north-austin',
       areaPath: '/service-areas/north-austin'
     }
@@ -351,7 +351,7 @@ const Gallery = () => {
     '@type': 'ItemList',
     '@id': `${siteBaseUrl}/gallery#project-proof`,
     name: 'Austin painting project proof by service area',
-    description: 'Representative Hill Country Painting project scopes connecting Austin-area painting services with neighborhoods and service-area pages.',
+    description: 'Representative Hill Country Painting project planning examples connecting Austin-area painting services with neighborhoods and service-area pages.',
     provider: canonicalBusinessProvider,
     itemListElement: projectProofItems.map((project, index) => ({
       '@type': 'ListItem',

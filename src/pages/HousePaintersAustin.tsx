@@ -278,7 +278,7 @@ const HousePaintersAustin = () => {
               Choose the Right Austin Painting Path
             </h2>
             <p className="text-xl text-brand-gray-600 leading-body">
-              A good painting estimate depends on the type of project. Use these Austin service pages to compare scope, prep, timing, and finish expectations before requesting a consultation.
+              A good painting estimate depends on the type of project. Use these Austin service pages to compare prep, timing, access, protection, and finish expectations before requesting a consultation.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
@@ -310,13 +310,13 @@ const HousePaintersAustin = () => {
                 What Austin Homeowners Should Expect
               </h2>
               <p className="text-lg text-brand-gray-600 leading-body mb-6">
-                The cheapest painter is rarely the best value when the home needs real prep, protection, reliable scheduling, and a finish that survives Central Texas sun and daily use. Hill Country Painting positions each project around the finished result and the scope required to get there.
+                The cheapest painter is rarely the best value when the home needs real prep, protection, reliable scheduling, and a finish that survives Central Texas sun and daily use. Hill Country Painting positions each project around the finished result and the work required to get there.
               </p>
               <ul className="space-y-4">
                 {[
                   'Written estimates that explain prep, coatings, protection, cleanup, and warranty expectations.',
                   'Project planning for Austin weather, HOA requirements, access, occupied homes, and business schedules.',
-                  'Pricing is built around the real prep and protection the job needs, with professional projects starting at a $6,000 minimum.',
+                  'Pricing is built around the real prep and protection the job needs, with a $6,000 minimum for complete professional projects.',
                   'Internal paths to the Austin service page that matches your project type.'
                 ].map((item) => (
                   <li key={item} className="flex gap-3 text-brand-gray-700 leading-relaxed">
