@@ -1888,9 +1888,22 @@ async function checkAustinSchema() {
       schema?.mainEntityOfPage?.['@id'] === `${baseUrl}${route}#webpage`
     );
     const hasServiceProviderIdentity = serviceSchemas.some(schema => hasCanonicalServiceProvider(schema));
+    const hubReferenceSchema = scripts.find(item =>
+      schemaTypeIncludes(item, 'ItemList') &&
+      item?.['@id'] === `${baseUrl}${route}#austin-house-painter-comparison`
+    );
+    const hubReferenceText = JSON.stringify(hubReferenceSchema || {});
+    const hasAustinHousePaintersHubLink =
+      html.includes('href="/house-painters-austin"') ||
+      html.includes("href='/house-painters-austin'");
+    const hasAustinHousePaintersHubSchema =
+      hubReferenceSchema &&
+      hasCanonicalProviderObject(hubReferenceSchema.provider) &&
+      hubReferenceText.includes(`${baseUrl}/house-painters-austin`) &&
+      hubReferenceText.includes(`${baseUrl}/house-painters-austin#webpage`);
 
-    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection || !hasServiceProviderIdentity) {
-      fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, WebPage connection, or canonical provider identity signal.`);
+    if (response.status !== 200 || !hasSignal || !hasServiceAreaCounties || !hasServiceEstimateAction || !hasServicePageConnection || !hasServiceProviderIdentity || !hasAustinHousePaintersHubLink || !hasAustinHousePaintersHubSchema) {
+      fail(`${route}: live Service schema is missing the ${phrase} alternateName, keywords, serviceOutput, county serviceArea, estimate QuoteAction, WebPage connection, canonical provider identity, or Austin house-painters hub reference signal.`);
     } else {
       passed += 1;
     }

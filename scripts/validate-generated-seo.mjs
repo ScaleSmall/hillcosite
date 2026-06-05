@@ -3207,6 +3207,25 @@ function run() {
             fail(`${routePath}: Service schema serviceOutput should include ${expectedAustinServiceAlias}`);
           }
 
+          if (!pageLinksToRoute(page, routePath, '/house-painters-austin')) {
+            fail(`${routePath}: Austin service page should visibly link back to the Austin house-painters comparison hub`);
+          }
+
+          const hubReferenceSchema = schemaItems.find(item =>
+            schemaTypeIncludes(item, 'ItemList') &&
+            item?.['@id'] === `${expectedCanonical(routePath)}#austin-house-painter-comparison`
+          );
+          const hubReferenceText = JSON.stringify(hubReferenceSchema || {});
+
+          if (
+            !hubReferenceSchema ||
+            !hasCanonicalProviderObject(hubReferenceSchema.provider) ||
+            !hubReferenceText.includes(`${baseUrl}/house-painters-austin`) ||
+            !hubReferenceText.includes(`${baseUrl}/house-painters-austin#webpage`)
+          ) {
+            fail(`${routePath}: Austin service page should include canonical schema that references the Austin house-painters comparison hub`);
+          }
+
           if (serviceSchema?.mainEntityOfPage?.['@id'] !== expectedWebPageId) {
             fail(`${routePath}: Service schema mainEntityOfPage should be ${expectedWebPageId}`);
           }

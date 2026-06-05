@@ -29,6 +29,7 @@ import NAPMapSection from '../NAPMapSection';
 import LocalSignals from '../LocalSignals';
 import RelatedServices from '../RelatedServices';
 import { geoAreas } from '../../data/geoAreas';
+import { canonicalBusinessProvider, siteBaseUrl } from '../../lib/businessSchema';
 
 export interface ServiceLocationConfig {
   service: {
@@ -211,6 +212,33 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
       }
     ]
   };
+  const austinHubReferenceSchema = location.slug === 'austin'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        '@id': `${canonicalUrl}#austin-house-painter-comparison`,
+        name: `${service.name} Austin house-painter comparison path`,
+        provider: canonicalBusinessProvider,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Austin house painters comparison hub',
+            url: `${siteBaseUrl}/house-painters-austin`,
+            item: {
+              '@type': 'WebPage',
+              '@id': `${siteBaseUrl}/house-painters-austin#webpage`,
+              name: 'Austin House Painters',
+              url: `${siteBaseUrl}/house-painters-austin`,
+              about: canonicalBusinessProvider
+            }
+          }
+        ]
+      }
+    : null;
+  const additionalSchema = austinHubReferenceSchema
+    ? [localPlaceSchema, austinHubReferenceSchema]
+    : localPlaceSchema;
 
   return (
     <>
@@ -235,7 +263,7 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         }}
         faq={content.faqs}
         includeLocalBusiness={true}
-        additionalSchema={localPlaceSchema}
+        additionalSchema={additionalSchema}
       />
 
       <section className="relative py-24 md:py-32 lg:py-40 overflow-hidden">
@@ -398,6 +426,15 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Link
+                to="/house-painters-austin"
+                className="rounded-lg border border-brand-azure bg-brand-gray-50 p-5 text-brand-gray-900 transition-colors hover:bg-white focus:outline-none focus:ring-2 focus:ring-brand-azure focus:ring-offset-2 sm:col-span-2 lg:col-span-4"
+              >
+                <span className="block text-base font-semibold">Compare all Austin house painters services</span>
+                <span className="mt-2 block text-sm text-brand-gray-500">
+                  Use the Austin house painters hub to compare exterior, interior, cabinet, and commercial painting scopes before requesting a written estimate.
+                </span>
+              </Link>
               {austinServiceLinks.map(link => (
                 <Link
                   key={link.href}
