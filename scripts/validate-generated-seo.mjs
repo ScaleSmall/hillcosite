@@ -1627,6 +1627,19 @@ function run() {
     fail('/service-areas: service-area hub should include the visible NAP/map/Google Business Profile trust section');
   }
 
+  for (const coreServiceRoute of coreServiceLocationGridRoutes.keys()) {
+    const page = pages.get(coreServiceRoute);
+
+    if (!page) {
+      fail(`${coreServiceRoute}: missing generated HTML for visible local trust validation`);
+      continue;
+    }
+
+    if (!pageHasVisibleLocalTrustSection(page)) {
+      fail(`${coreServiceRoute}: core service page should include the visible NAP/map/Google Business Profile trust section`);
+    }
+  }
+
   for (const serviceAreaRoute of requiredServiceAreaFaqSchemaRoutes) {
     const page = pages.get(serviceAreaRoute);
 

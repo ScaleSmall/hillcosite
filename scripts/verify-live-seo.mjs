@@ -250,7 +250,11 @@ const primaryServiceAreaHubRoutes = [
   '/service-areas/cedar-park',
   '/service-areas/north-austin',
 ];
-const visibleLocalTrustRoutes = ['/service-areas', ...serviceAreaFaqSchemaRoutes];
+const visibleLocalTrustRoutes = [
+  '/service-areas',
+  ...coreServiceLocationGridRoutes.keys(),
+  ...serviceAreaFaqSchemaRoutes,
+];
 const guideFaqSchemaRoutes = [
   '/guides/best-paint-texas-heat',
   '/guides/hoa-color-tips-austin',
