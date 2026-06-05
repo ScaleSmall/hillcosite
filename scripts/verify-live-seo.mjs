@@ -85,6 +85,17 @@ const bannedVisibleValuePositioningSignals = [
   'on budget',
   'stay within budget',
 ];
+const staleVisibleTrustProofSignals = [
+  '100+ homes painted',
+  '100+ projects',
+  '100+ local projects',
+  '100+ projects complete',
+  '100+ projects completed',
+  '350+ projects',
+  '500+ homes painted',
+  'family-owned painting company serving austin since 2019',
+  'family-owned austin painting contractors',
+];
 const greaterAustinServiceCounties = [
   'Travis County',
   'Williamson County',
@@ -1115,6 +1126,7 @@ async function checkSitemapPages() {
   const lowVisibleCostProblems = [];
   const lowStructuredPriceProblems = [];
   const valuePositioningProblems = [];
+  const staleTrustProofProblems = [];
 
   async function worker() {
     while (nextIndex < urls.length) {
@@ -1168,6 +1180,9 @@ async function checkSitemapPages() {
       const valuePositioningSignals = bannedVisibleValuePositioningSignals.filter(signal =>
         visibleText.toLowerCase().includes(signal)
       );
+      const staleTrustProofSignals = staleVisibleTrustProofSignals.filter(signal =>
+        visibleText.toLowerCase().includes(signal)
+      );
 
       if (title) {
         sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), route]);
@@ -1199,6 +1214,10 @@ async function checkSitemapPages() {
 
       if (valuePositioningSignals.length > 0) {
         valuePositioningProblems.push({ url, signals: valuePositioningSignals });
+      }
+
+      if (staleTrustProofSignals.length > 0) {
+        staleTrustProofProblems.push({ url, signals: staleTrustProofSignals });
       }
 
       for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
@@ -1314,6 +1333,18 @@ async function checkSitemapPages() {
 
   if (valuePositioningProblems.length === 0) {
     console.log('Live value-positioning guard: no bargain framing found on sitemap pages');
+  }
+
+  for (const problem of staleTrustProofProblems.slice(0, 10)) {
+    fail(`${problem.url}: live local trust proof should use the canonical 3000+ project metric, not stale proof copy (${problem.signals.join(', ')})`);
+  }
+
+  if (staleTrustProofProblems.length > 10) {
+    fail(`${staleTrustProofProblems.length - 10} additional live stale trust proof problems not shown.`);
+  }
+
+  if (staleTrustProofProblems.length === 0) {
+    console.log('Live trust proof guard: no stale 100+/350+/500+ project proof found on sitemap pages');
   }
 
   const duplicateMetadataProblems = [

@@ -165,9 +165,9 @@ const routeMetadata = {
   },
   '/about': {
     title: 'About Us — Hill Country Painting',
-    description: 'Meet the Hill Country Painting team. 15+ years painting experience. Family-owned Austin painting contractors. Insured, professional crew.',
+    description: 'Meet Hill Country Painting. 15+ years painting experience, 3000+ completed projects, insured Austin-area crew, and a 2-year workmanship warranty.',
     h1: 'About Hill Country Painting',
-    content: 'Family-owned painting company serving Austin since 2019. Professional interior painting, exterior painting, and cabinet refinishing services.'
+    content: 'Austin service-area painting company with 15+ years of experience. Professional interior painting, exterior painting, cabinet refinishing, and commercial painting services.'
   },
   '/services': {
     title: 'Painting Services — Hill Country Painting',

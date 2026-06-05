@@ -187,8 +187,8 @@ const Austin = () => {
       <StatsAndTrust
         stats={[
           {
-            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">100+</div>,
-            value: "100+",
+            icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">3k</div>,
+            value: "3000+",
             label: "Local Projects"
           },
           {

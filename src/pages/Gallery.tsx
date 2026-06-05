@@ -878,7 +878,7 @@ const Gallery = () => {
           {
             icon: <CheckCircle className="w-8 h-8 text-brand-azureDark" />,
             value: "3000+",
-            label: "Projects Complete"
+            label: "Projects Completed"
           },
           {
             icon: <div className="w-8 h-8 bg-brand-azureDark rounded-full flex items-center justify-center text-white font-bold">★</div>,

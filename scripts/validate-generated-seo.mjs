@@ -164,6 +164,17 @@ const bannedVisibleValuePositioningSignals = [
   'on budget',
   'stay within budget',
 ];
+const staleVisibleTrustProofSignals = [
+  '100+ homes painted',
+  '100+ projects',
+  '100+ local projects',
+  '100+ projects complete',
+  '100+ projects completed',
+  '350+ projects',
+  '500+ homes painted',
+  'family-owned painting company serving austin since 2019',
+  'family-owned austin painting contractors',
+];
 const intentionallyNoindexUtilityPaths = ['/privacy', '/terms', '/do-not-sell', '/eula', '/sitemap'];
 const allowedInternalNoindexPaths = new Set(['/404', '/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
 const allowedNonSitemapLinks = new Set(['/pre-approval', '/search', '/thank-you', ...intentionallyNoindexUtilityPaths]);
@@ -2612,9 +2623,14 @@ function run() {
 
       const visibleTextLower = visibleText.toLowerCase();
       const bannedValueSignals = bannedVisibleValuePositioningSignals.filter(signal => visibleTextLower.includes(signal));
+      const staleTrustSignals = staleVisibleTrustProofSignals.filter(signal => visibleTextLower.includes(signal));
 
       if (bannedValueSignals.length > 0) {
         fail(`${routePath}: visible value-positioning copy should support full-scope $6,000+ projects, not bargain framing (${bannedValueSignals.join(', ')})`);
+      }
+
+      if (staleTrustSignals.length > 0) {
+        fail(`${routePath}: visible local trust proof should use the canonical 3000+ project metric, not stale proof copy (${staleTrustSignals.join(', ')})`);
       }
 
       const lowStructuredPrices = findSubMinimumStructuredPrices(schemaItems);
