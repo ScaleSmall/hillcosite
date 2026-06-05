@@ -133,6 +133,10 @@
     "priorityServicePages": [
       {
         "name": "Austin house painters",
+        "url": "https://www.hillcopaint.com/house-painters-austin"
+      },
+      {
+        "name": "Austin painting service area",
         "url": "https://www.hillcopaint.com/service-areas/austin"
       },
       {
@@ -418,6 +422,7 @@
     "https://www.hillcopaint.com/faq",
     "https://www.hillcopaint.com/guides/painting-costs-austin",
     "https://www.hillcopaint.com/service-areas",
+    "https://www.hillcopaint.com/house-painters-austin",
     "https://www.hillcopaint.com/service-areas/austin",
     "https://www.hillcopaint.com/exterior-painting-austin",
     "https://www.hillcopaint.com/interior-painting-austin",

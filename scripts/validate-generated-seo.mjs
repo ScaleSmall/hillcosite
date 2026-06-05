@@ -234,6 +234,7 @@ const coreLocalBusinessRoutes = new Set([
   '/gallery',
   '/testimonials',
   '/faq',
+  '/house-painters-austin',
   '/color-consultation',
   '/contact',
   '/free-estimate',
@@ -325,6 +326,12 @@ const requiredCoreServiceFaqSchemaRoutes = [
   }
 ];
 const requiredAustinServiceFaqSchemaRoutes = [
+  {
+    route: '/house-painters-austin',
+    label: 'Austin house painters',
+    localTerm: 'Austin',
+    serviceTerm: 'house'
+  },
   {
     route: '/exterior-painting-austin',
     label: 'Austin exterior painting',
@@ -1840,8 +1847,8 @@ function run() {
   }
 
   [
-    ['/', 'Austin house painters', '/service-areas/austin'],
-    ['/', 'house painters Austin', '/service-areas/austin'],
+    ['/', 'Austin house painters', '/house-painters-austin'],
+    ['/', 'house painters Austin', '/house-painters-austin'],
     ['/', 'painting contractors Austin', '/services'],
     ['/', 'Exterior painting service overview', '/services/exterior-painting'],
     ['/', 'Interior painting service overview', '/services/interior-painting'],
@@ -1855,7 +1862,7 @@ function run() {
     ['/services', 'Interior painting service overview', '/services/interior-painting'],
     ['/services', 'Cabinet refinishing service overview', '/services/cabinet-refinishing'],
     ['/services', 'Commercial painting service overview', '/services/commercial'],
-    ['/services', 'house painters Austin', '/service-areas/austin'],
+    ['/services', 'house painters Austin', '/house-painters-austin'],
     ['/services', 'painting contractors Austin', '/services'],
     ['/services', 'Austin exterior house painters', '/exterior-painting-austin'],
     ['/services', 'Austin interior painters', '/interior-painting-austin'],
@@ -1919,8 +1926,8 @@ function run() {
     ['Austin interior painters', '/interior-painting-austin'],
     ['Austin cabinet painting', '/cabinet-refinishing-austin'],
     ['Austin commercial painters', '/commercial-painting-austin'],
-    ['Austin house painters', '/service-areas/austin'],
-    ['house painters Austin', '/service-areas/austin'],
+    ['Austin house painters', '/house-painters-austin'],
+    ['house painters Austin', '/house-painters-austin'],
     ['painting contractors Austin', '/services']
   ].forEach(([expectedText, expectedRoute]) => {
     assertExactAnchorTargets(pages, expectedText, expectedRoute);
@@ -2171,7 +2178,11 @@ function run() {
         fail(`entity-facts.json is missing county service signal ${requiredCounty}`);
       }
     }
-    if (!Array.isArray(entityFacts.priorityServicePages) || !entityFacts.priorityServicePages.some(page => page?.name === 'Austin exterior house painters' && page?.url === `${baseUrl}/exterior-painting-austin`)) {
+    if (
+      !Array.isArray(entityFacts.priorityServicePages) ||
+      !entityFacts.priorityServicePages.some(page => page?.name === 'Austin house painters' && page?.url === `${baseUrl}/house-painters-austin`) ||
+      !entityFacts.priorityServicePages.some(page => page?.name === 'Austin exterior house painters' && page?.url === `${baseUrl}/exterior-painting-austin`)
+    ) {
       fail('entity-facts.json must include Austin priority service pages');
     }
     if (
@@ -2321,7 +2332,11 @@ function run() {
         fail(`citation-facts.json must include priority local search topic ${requiredTopic}`);
       }
     }
-    if (!Array.isArray(identity.priorityServicePages) || !identity.priorityServicePages.some(page => page?.name === 'Austin commercial painters' && page?.url === `${baseUrl}/commercial-painting-austin`)) {
+    if (
+      !Array.isArray(identity.priorityServicePages) ||
+      !identity.priorityServicePages.some(page => page?.name === 'Austin house painters' && page?.url === `${baseUrl}/house-painters-austin`) ||
+      !identity.priorityServicePages.some(page => page?.name === 'Austin commercial painters' && page?.url === `${baseUrl}/commercial-painting-austin`)
+    ) {
       fail('citation-facts.json must include Austin priority service pages');
     }
     const requiredCitationVerificationUrls = [
@@ -2334,6 +2349,7 @@ function run() {
       `${baseUrl}/faq`,
       `${baseUrl}/guides/painting-costs-austin`,
       `${baseUrl}/service-areas`,
+      `${baseUrl}/house-painters-austin`,
       `${baseUrl}/service-areas/austin`,
       `${baseUrl}/exterior-painting-austin`,
       `${baseUrl}/interior-painting-austin`,
@@ -3059,6 +3075,7 @@ function run() {
       }
 
       const isDetailedServiceRoute = routePath.startsWith('/services/')
+        || routePath === '/house-painters-austin'
         || /^\/(interior-painting|exterior-painting|cabinet-refinishing|commercial-painting)-/.test(routePath);
 
       if (isDetailedServiceRoute) {
@@ -3114,7 +3131,7 @@ function run() {
           ['/cabinet-refinishing-austin', 'Austin cabinet painting'],
           ['/commercial-painting-austin', 'Austin commercial painters']
         ]);
-        const austinServiceAreaSignals = routePath === '/service-areas/austin'
+        const austinServiceAreaSignals = routePath === '/service-areas/austin' || routePath === '/house-painters-austin'
           ? ['Austin house painters', 'house painters Austin', 'painting contractors Austin', 'Austin painting contractors']
           : [];
         const expectedAustinServiceAlias = austinServiceSchemaSignals.get(routePath);
@@ -3127,16 +3144,16 @@ function run() {
 
           for (const signal of austinServiceAreaSignals) {
             if (!alternateNames.includes(signal)) {
-              fail(`${routePath}: Austin service-area Service schema alternateName is missing ${signal}`);
+            fail(`${routePath}: Austin house-painter Service schema alternateName is missing ${signal}`);
             }
 
             if (!keywords.includes(signal)) {
-              fail(`${routePath}: Austin service-area Service schema keywords are missing ${signal}`);
+              fail(`${routePath}: Austin house-painter Service schema keywords are missing ${signal}`);
             }
           }
 
           if (!serviceOutput.includes('Austin house painters') || !serviceOutput.includes('exterior painting') || !serviceOutput.includes('cabinet painting') || !serviceOutput.includes('commercial painting')) {
-            fail(`${routePath}: Austin service-area Service schema serviceOutput should include the Austin house painters and priority service-category signals`);
+            fail(`${routePath}: Austin house-painter Service schema serviceOutput should include the Austin house painters and priority service-category signals`);
           }
         }
 

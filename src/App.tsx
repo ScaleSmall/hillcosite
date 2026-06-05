@@ -27,6 +27,7 @@ const Gallery = safeLazy(() => import('./pages/Gallery'), "Gallery");
 const Testimonials = safeLazy(() => import('./pages/Testimonials'), "Testimonials");
 const FAQ = safeLazy(() => import('./pages/FAQ'), "FAQ");
 const ServiceAreas = safeLazy(() => import('./pages/ServiceAreas'), "ServiceAreas");
+const HousePaintersAustin = safeLazy(() => import('./pages/HousePaintersAustin'), "HousePaintersAustin");
 const Austin = safeLazy(() => import('./pages/service-areas/Austin'), "Austin");
 const WestLakeHills = safeLazy(() => import('./pages/service-areas/WestLakeHills'), "WestLakeHills");
 const Tarrytown = safeLazy(() => import('./pages/service-areas/Tarrytown'), "Tarrytown");
@@ -244,6 +245,7 @@ function App() {
               <Route path="/testimonials" element={<Trace name="/testimonials"><Testimonials /></Trace>} />
               <Route path="/faq" element={<Trace name="/faq"><FAQ /></Trace>} />
               <Route path="/service-areas" element={<Trace name="/service-areas"><ServiceAreas /></Trace>} />
+              <Route path="/house-painters-austin" element={<Trace name="/house-painters-austin"><HousePaintersAustin /></Trace>} />
               <Route path="/service-areas/austin" element={<Trace name="/service-areas/austin"><Austin /></Trace>} />
               <Route path="/service-areas/west-lake-hills" element={<Trace name="/service-areas/west-lake-hills"><WestLakeHills /></Trace>} />
               <Route path="/service-areas/tarrytown" element={<Trace name="/service-areas/tarrytown"><Tarrytown /></Trace>} />

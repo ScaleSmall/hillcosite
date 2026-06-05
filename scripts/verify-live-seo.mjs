@@ -151,6 +151,7 @@ const coreLocalBusinessRoutes = [
   '/gallery',
   '/testimonials',
   '/faq',
+  '/house-painters-austin',
   '/color-consultation',
   '/contact',
 ];
@@ -213,6 +214,12 @@ const coreServiceFaqSchemaRoutes = [
 ];
 const austinServiceFaqSchemaRoutes = [
   {
+    route: '/house-painters-austin',
+    label: 'Austin house painters',
+    localTerm: 'Austin',
+    serviceTerm: 'house',
+  },
+  {
     route: '/exterior-painting-austin',
     label: 'Austin exterior painting',
     localTerm: 'Austin',
@@ -252,6 +259,7 @@ const primaryServiceAreaHubRoutes = [
 ];
 const visibleLocalTrustRoutes = [
   '/service-areas',
+  '/house-painters-austin',
   ...coreServiceLocationGridRoutes.keys(),
   ...serviceAreaFaqSchemaRoutes,
 ];
@@ -267,6 +275,7 @@ const breadcrumbRoutes = [
   '/services/exterior-painting',
   '/services/cabinet-refinishing',
   '/services/commercial',
+  '/house-painters-austin',
   '/interior-painting-austin',
   '/exterior-painting-austin',
   '/cabinet-refinishing-austin',
@@ -1584,6 +1593,7 @@ async function checkCrawlerEntityAssets() {
     const knowsAbout = asArray(entityFacts.knowsAbout);
     const sameAs = asArray(entityFacts.sameAs);
     const alternateNames = asArray(entityFacts.alternateName);
+    const priorityServicePages = asArray(entityFacts.priorityServicePages);
     const staleWarnings = JSON.stringify(entityFacts.staleCitationWarnings || []);
     const hasCanonicalOfferProviders =
       schemaTreeServicesHaveCanonicalProviders(entityFacts.makesOffer) &&
@@ -1614,6 +1624,8 @@ async function checkCrawlerEntityAssets() {
       !hasAllValues(areaServed, greaterAustinServiceCounties) ||
       !hasAllValues(serviceArea, greaterAustinServiceCounties) ||
       !hasAllValues(knowsAbout, priorityLocalSearchTopics) ||
+      !priorityServicePages.some(page => page?.name === 'Austin house painters' && page?.url === `${baseUrl}/house-painters-austin`) ||
+      !priorityServicePages.some(page => page?.name === 'Austin exterior house painters' && page?.url === `${baseUrl}/exterior-painting-austin`) ||
       !sameAs.includes(googleBusinessProfileUrl) ||
       !hasCanonicalSocialProfiles(sameAs) ||
       !hasCanonicalGeo ||
@@ -1632,7 +1644,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
       !staleWarnings.includes(`${baseUrl}/contact`)
     ) {
-      fail('/entity-facts.json: live entity facts are missing canonical identity, logo/image signals, geo coordinates, offer provider identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/entity-facts.json: live entity facts are missing canonical identity, logo/image signals, geo coordinates, offer provider identity, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, Austin service counties, priority topics, priority Austin service pages, aggregate rating, sitemap count, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/entity-facts.json: live entity facts are not valid JSON.');
@@ -1642,6 +1654,7 @@ async function checkCrawlerEntityAssets() {
     const citationFacts = JSON.parse(assetText.get('/citation-facts.json') || '{}');
     const citationIdentity = citationFacts.canonicalIdentity || {};
     const citationTopics = asArray(citationIdentity.priorityLocalSearchTopics);
+    const citationPriorityServicePages = asArray(citationIdentity.priorityServicePages);
     const citationCounties = asArray(citationIdentity.serviceCounties);
     const sameAs = asArray(citationFacts.sameAs);
     const alternateNames = asArray(citationIdentity.alternateName);
@@ -1668,6 +1681,7 @@ async function checkCrawlerEntityAssets() {
       `${baseUrl}/faq`,
       `${baseUrl}/guides/painting-costs-austin`,
       `${baseUrl}/service-areas`,
+      `${baseUrl}/house-painters-austin`,
       `${baseUrl}/service-areas/austin`,
       `${baseUrl}/exterior-painting-austin`,
       `${baseUrl}/interior-painting-austin`,
@@ -1705,6 +1719,8 @@ async function checkCrawlerEntityAssets() {
       !hasCanonicalImageIdentity ||
       !hasValidAggregateRating(citationIdentity) ||
       !hasAllValues(citationTopics, priorityLocalSearchTopics) ||
+      !citationPriorityServicePages.some(page => page?.name === 'Austin house painters' && page?.url === `${baseUrl}/house-painters-austin`) ||
+      !citationPriorityServicePages.some(page => page?.name === 'Austin commercial painters' && page?.url === `${baseUrl}/commercial-painting-austin`) ||
       !hasAllValues(citationCounties, greaterAustinServiceCounties) ||
       !hasAllValues(verificationUrls, requiredCitationVerificationUrls) ||
       !staleWarnings.includes(`${baseUrl}/austin/`) ||
@@ -1722,7 +1738,7 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes(`${baseUrl}/contact`) ||
       !requiredCitationSourceUrls.every(url => knownCitationSources.includes(url))
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, logo/image signals, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale citation source URLs, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, logo/image signals, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, priority Austin service pages, stale citation source URLs, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');
@@ -1922,6 +1938,92 @@ async function checkAustinServiceAreaSchema() {
   }
 
   console.log('Live Austin service-area schema includes house-painter and priority-service intent signals');
+}
+
+async function checkAustinHousePaintersHubSchema() {
+  const route = '/house-painters-austin';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const scripts = parseJsonLd(html, route);
+  const serviceId = `${baseUrl}${route}#service`;
+  const webpageId = `${baseUrl}${route}#webpage`;
+  const serviceSchemas = scripts.filter(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === serviceId);
+  const requiredSignals = [
+    'Austin house painters',
+    'house painters Austin',
+    'painting contractors Austin',
+    'Austin painting contractors',
+  ];
+  const requiredVisibleRoutes = [
+    '/exterior-painting-austin',
+    '/interior-painting-austin',
+    '/cabinet-refinishing-austin',
+    '/commercial-painting-austin',
+    '/service-areas/austin',
+  ];
+  const hasLocalIntentSignals = serviceSchemas.some(schema => {
+    const alternateNames = asArray(schema.alternateName);
+    const keywords = asArray(schema.keywords);
+
+    return requiredSignals.every(signal => alternateNames.includes(signal) && keywords.includes(signal));
+  });
+  const hasPriorityServiceOutput = serviceSchemas.some(schema => {
+    const serviceOutput = String(schema.serviceOutput || '');
+
+    return (
+      serviceOutput.includes('Austin house painters') &&
+      serviceOutput.includes('exterior painting') &&
+      serviceOutput.includes('interior painting') &&
+      serviceOutput.includes('cabinet painting') &&
+      serviceOutput.includes('commercial painting')
+    );
+  });
+  const hasServiceProviderIdentity = serviceSchemas.some(schema => hasCanonicalServiceProvider(schema));
+  const hasServicePageConnection = serviceSchemas.some(schema =>
+    schema?.mainEntityOfPage?.['@id'] === webpageId
+  );
+  const faqSchema = scripts.find(item => schemaTypeIncludes(item, 'FAQPage'));
+  const questions = Array.isArray(faqSchema?.mainEntity) ? faqSchema.mainEntity : [];
+  const validQuestions = questions.filter(item =>
+    schemaTypeIncludes(item, 'Question') &&
+    item.name &&
+    schemaTypeIncludes(item.acceptedAnswer, 'Answer') &&
+    item.acceptedAnswer?.text
+  );
+  const faqText = validQuestions
+    .map(item => `${item.name} ${item.acceptedAnswer?.text || ''}`)
+    .join(' ')
+    .toLowerCase();
+  const hasFaq = validQuestions.length >= 5 && faqText.includes('austin') && faqText.includes('house');
+  const hasVisibleRoutes = requiredVisibleRoutes.every(expectedRoute =>
+    html.includes(`href="${expectedRoute}"`) || html.includes(`href='${expectedRoute}'`)
+  );
+  const hasGoogleProfileLink =
+    html.includes(`href="${googleBusinessProfileUrl}"`) ||
+    html.includes(`href="${googleBusinessProfileUrl.replace(/&/g, '&amp;')}"`);
+  const hasVisibleTrust =
+    hasGoogleProfileLink &&
+    html.includes(`href="${canonicalPhoneHref}"`) &&
+    html.includes('Hill Country Painting - Service Area Map') &&
+    html.includes('Google Business Profile') &&
+    html.includes('Google reviews') &&
+    html.includes('Directions on Google Maps') &&
+    html.includes('Serving Austin, TX and the Greater Austin area');
+
+  if (
+    response.status !== 200 ||
+    !hasLocalIntentSignals ||
+    !hasPriorityServiceOutput ||
+    !hasServiceProviderIdentity ||
+    !hasServicePageConnection ||
+    !hasFaq ||
+    !hasVisibleRoutes ||
+    !hasVisibleTrust
+  ) {
+    fail(`${route}: live Austin house-painters hub is missing exact-intent Service schema, provider identity, FAQ schema, trust section, or priority Austin service links.`);
+    return;
+  }
+
+  console.log('Live Austin house-painters hub includes exact-intent schema, FAQ, trust section, and priority service links');
 }
 
 async function checkServiceLocationServiceSchema() {
@@ -2742,6 +2844,7 @@ await checkLegacyRedirects();
 await checkSupabaseFeed();
 await checkAustinSchema();
 await checkAustinServiceAreaSchema();
+await checkAustinHousePaintersHubSchema();
 await checkServiceLocationServiceSchema();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();

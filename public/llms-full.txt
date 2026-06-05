@@ -23,6 +23,7 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/testimonials
 - https://www.hillcopaint.com/faq
 - https://www.hillcopaint.com/service-areas
+- https://www.hillcopaint.com/house-painters-austin
 - https://www.hillcopaint.com/service-areas/austin
 - https://www.hillcopaint.com/service-areas/west-lake-hills
 - https://www.hillcopaint.com/service-areas/tarrytown
@@ -218,6 +219,7 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/testimonials
 - https://www.hillcopaint.com/faq
 - https://www.hillcopaint.com/service-areas
+- https://www.hillcopaint.com/house-painters-austin
 - https://www.hillcopaint.com/service-areas/austin
 - https://www.hillcopaint.com/service-areas/west-lake-hills
 - https://www.hillcopaint.com/service-areas/tarrytown

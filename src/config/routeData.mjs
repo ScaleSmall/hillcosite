@@ -112,6 +112,7 @@ export const coreStaticRoutes = [
   { path: '/testimonials', changefreq: 'weekly', priority: '0.7' },
   { path: '/faq', changefreq: 'monthly', priority: '0.7' },
   { path: '/service-areas', changefreq: 'monthly', priority: '0.9' },
+  { path: '/house-painters-austin', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/austin', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/west-lake-hills', changefreq: 'monthly', priority: '0.9' },
   { path: '/service-areas/tarrytown', changefreq: 'monthly', priority: '0.9' },

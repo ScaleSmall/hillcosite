@@ -353,7 +353,8 @@ const knownExternalCitationSources = staleCitationWarnings
   }));
 
 const priorityServicePages = [
-  { name: 'Austin house painters', url: `${BASE_URL}/service-areas/austin` },
+  { name: 'Austin house painters', url: `${BASE_URL}/house-painters-austin` },
+  { name: 'Austin painting service area', url: `${BASE_URL}/service-areas/austin` },
   { name: 'Austin exterior house painters', url: `${BASE_URL}/exterior-painting-austin` },
   { name: 'Austin interior painters', url: `${BASE_URL}/interior-painting-austin` },
   { name: 'Austin cabinet painting', url: `${BASE_URL}/cabinet-refinishing-austin` },
@@ -477,6 +478,7 @@ const priorityAiCitationPagePaths = [
   '/faq',
   '/service-areas',
   '/service-areas/austin',
+  '/house-painters-austin',
   '/exterior-painting-austin',
   '/interior-painting-austin',
   '/cabinet-refinishing-austin',
@@ -794,6 +796,7 @@ const citationFacts = {
     `${BASE_URL}/faq`,
     `${BASE_URL}/guides/painting-costs-austin`,
     `${BASE_URL}/service-areas`,
+    `${BASE_URL}/house-painters-austin`,
     `${BASE_URL}/service-areas/austin`,
     `${BASE_URL}/exterior-painting-austin`,
     `${BASE_URL}/interior-painting-austin`,

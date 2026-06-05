@@ -223,6 +223,13 @@ const Austin = () => {
             <p className="text-xl text-brand-gray-600 leading-body">
               Choose the Austin painting service that fits the project, from exterior repainting and interior updates to cabinet finishes and commercial spaces.
             </p>
+            <Link
+              to="/house-painters-austin"
+              className="mt-5 inline-flex items-center font-semibold text-brand-azureDark hover:text-brand-azure"
+            >
+              Compare Austin house painters by project type
+              <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {austinServiceLinks.map((service) => (

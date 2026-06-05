@@ -293,6 +293,10 @@
   "priorityServicePages": [
     {
       "name": "Austin house painters",
+      "url": "https://www.hillcopaint.com/house-painters-austin"
+    },
+    {
+      "name": "Austin painting service area",
       "url": "https://www.hillcopaint.com/service-areas/austin"
     },
     {
@@ -315,10 +319,376 @@
   "makesOffer": [
     {
       "@type": "Offer",
-      "url": "https://www.hillcopaint.com/service-areas/austin",
+      "url": "https://www.hillcopaint.com/house-painters-austin",
       "itemOffered": {
         "@type": "Service",
         "name": "Austin house painters",
+        "url": "https://www.hillcopaint.com/house-painters-austin",
+        "provider": {
+          "@type": [
+            "LocalBusiness",
+            "HomeAndConstructionBusiness",
+            "HousePainter"
+          ],
+          "@id": "https://www.hillcopaint.com/#localbusiness",
+          "name": "Hill Country Painting",
+          "legalName": "Hill Country Painting LLC",
+          "alternateName": [
+            "Hill Country Painting LLC",
+            "Hill Country Painting Austin",
+            "Hill Country Painting of Austin"
+          ],
+          "disambiguatingDescription": "Austin, Texas service-area painting contractor serving Greater Austin homeowners, property managers, and commercial properties.",
+          "description": "Professional painting contractors serving Austin, TX. Interior painting, exterior painting, cabinet painting. 15+ years experience. Insured, 2-year warranty.",
+          "slogan": "Clean prep. Crisp lines. Reliable schedules.",
+          "naics": "238320",
+          "industry": "Painting and Wall Covering Contractors",
+          "url": "https://www.hillcopaint.com",
+          "telephone": "(512) 240-2246",
+          "email": "info@hillcopaint.com",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "(512) 240-2246",
+            "contactType": "customer service",
+            "areaServed": "US-TX",
+            "availableLanguage": [
+              "English"
+            ]
+          },
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.hillcopaint.com/#logo",
+            "url": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "contentUrl": "https://www.hillcopaint.com/brand/hill-country-painting-logo-primary.png",
+            "width": 512,
+            "height": 512,
+            "caption": "Hill Country Painting Logo"
+          },
+          "image": [
+            "https://www.hillcopaint.com/hill-country-painting-austin-homepage-hero.jpg",
+            {
+              "@id": "https://www.hillcopaint.com/#logo"
+            }
+          ],
+          "priceRange": "$$",
+          "paymentAccepted": "Cash, Check, Credit Card",
+          "currenciesAccepted": "USD",
+          "availableLanguage": [
+            "English"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Austin",
+            "addressRegion": "TX",
+            "addressCountry": "US"
+          },
+          "serviceArea": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "Greater Austin Area"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "areaServed": [
+            {
+              "@type": "Place",
+              "name": "Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "Rollingwood"
+            },
+            {
+              "@type": "Place",
+              "name": "Tarrytown"
+            },
+            {
+              "@type": "Place",
+              "name": "Northwest Hills"
+            },
+            {
+              "@type": "Place",
+              "name": "West Lake Highlands"
+            },
+            {
+              "@type": "Place",
+              "name": "Lakeway"
+            },
+            {
+              "@type": "Place",
+              "name": "Bee Cave"
+            },
+            {
+              "@type": "Place",
+              "name": "Lake Travis"
+            },
+            {
+              "@type": "Place",
+              "name": "Steiner Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Barton Creek"
+            },
+            {
+              "@type": "Place",
+              "name": "Circle C Ranch"
+            },
+            {
+              "@type": "Place",
+              "name": "Pemberton Heights"
+            },
+            {
+              "@type": "Place",
+              "name": "Old West Austin"
+            },
+            {
+              "@type": "Place",
+              "name": "Clarksville"
+            },
+            {
+              "@type": "Place",
+              "name": "Allandale"
+            },
+            {
+              "@type": "Place",
+              "name": "Crestview"
+            },
+            {
+              "@type": "Place",
+              "name": "Leander"
+            },
+            {
+              "@type": "Place",
+              "name": "Georgetown"
+            },
+            {
+              "@type": "Place",
+              "name": "Round Rock"
+            },
+            {
+              "@type": "Place",
+              "name": "Cedar Park"
+            },
+            {
+              "@type": "Place",
+              "name": "North Austin"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Travis County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Williamson County"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "Hays County"
+            }
+          ],
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3337,
+            "longitude": -97.8166
+          },
+          "knowsAbout": [
+            "Austin house painters",
+            "Austin exterior house painters",
+            "Austin exterior painting",
+            "Austin interior painters",
+            "Austin interior painting",
+            "Austin cabinet painting",
+            "Austin cabinet refinishing",
+            "Austin cabinet painters",
+            "Austin commercial painters",
+            "Austin commercial painting",
+            "house painters Austin",
+            "painting contractors Austin",
+            "Austin painting contractors",
+            "house painters near me Austin",
+            "exterior painters near me Austin",
+            "interior painters near me Austin",
+            "cabinet painters near me Austin",
+            "commercial painters near me Austin",
+            "Greater Austin painting contractor",
+            "West Lake Hills painters",
+            "Tarrytown painters",
+            "Lakeway painters",
+            "Bee Cave painters",
+            "Round Rock painters",
+            "Cedar Park painters",
+            "Georgetown painters",
+            "Leander painters",
+            "Austin house painting",
+            "Austin painting contractors",
+            "Central Texas exterior paint maintenance",
+            "HOA paint color approvals",
+            "Cabinet refinishing",
+            "Interior repainting",
+            "Commercial repaint scheduling"
+          ],
+          "hasMap": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p",
+          "openingHours": "Mo-Fr 08:00-18:00",
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "08:00",
+            "closes": "18:00"
+          },
+          "sameAs": [
+            "https://www.facebook.com/Hillcopaint",
+            "https://www.instagram.com/hill_country_painting_austin/",
+            "https://x.com/Hill_Co_Paint",
+            "https://www.youtube.com/@HillCountryPaintingAustin",
+            "https://www.tiktok.com/@hillco_painting_austin",
+            "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": 4.9,
+            "reviewCount": 127,
+            "bestRating": 5,
+            "worstRating": 1
+          },
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "kgmid",
+            "value": "/g/11frssbq6p",
+            "url": "https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p"
+          }
+        },
+        "areaServed": [
+          {
+            "@type": "Place",
+            "name": "Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "Rollingwood"
+          },
+          {
+            "@type": "Place",
+            "name": "Tarrytown"
+          },
+          {
+            "@type": "Place",
+            "name": "Northwest Hills"
+          },
+          {
+            "@type": "Place",
+            "name": "West Lake Highlands"
+          },
+          {
+            "@type": "Place",
+            "name": "Lakeway"
+          },
+          {
+            "@type": "Place",
+            "name": "Bee Cave"
+          },
+          {
+            "@type": "Place",
+            "name": "Lake Travis"
+          },
+          {
+            "@type": "Place",
+            "name": "Steiner Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Barton Creek"
+          },
+          {
+            "@type": "Place",
+            "name": "Circle C Ranch"
+          },
+          {
+            "@type": "Place",
+            "name": "Pemberton Heights"
+          },
+          {
+            "@type": "Place",
+            "name": "Old West Austin"
+          },
+          {
+            "@type": "Place",
+            "name": "Clarksville"
+          },
+          {
+            "@type": "Place",
+            "name": "Allandale"
+          },
+          {
+            "@type": "Place",
+            "name": "Crestview"
+          },
+          {
+            "@type": "Place",
+            "name": "Leander"
+          },
+          {
+            "@type": "Place",
+            "name": "Georgetown"
+          },
+          {
+            "@type": "Place",
+            "name": "Round Rock"
+          },
+          {
+            "@type": "Place",
+            "name": "Cedar Park"
+          },
+          {
+            "@type": "Place",
+            "name": "North Austin"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Travis County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Williamson County"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Hays County"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Offer",
+      "url": "https://www.hillcopaint.com/service-areas/austin",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Austin painting service area",
         "url": "https://www.hillcopaint.com/service-areas/austin",
         "provider": {
           "@type": [
@@ -4196,6 +4566,6 @@
       "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
     }
   ],
-  "sitemapUrlCount": 183,
+  "sitemapUrlCount": 184,
   "dateModified": "2026-06-05"
 }

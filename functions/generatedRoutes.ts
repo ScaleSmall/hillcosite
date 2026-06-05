@@ -1,4 +1,4 @@
-export const generatedSpaRouteCount = 191;
+export const generatedSpaRouteCount = 192;
 
 export const generatedSpaRoutes = [
   "/",
@@ -152,6 +152,7 @@ export const generatedSpaRoutes = [
   "/guides/hoa-color-tips-austin",
   "/guides/how-often-paint-central-texas",
   "/guides/painting-costs-austin",
+  "/house-painters-austin",
   "/interior-painting-austin",
   "/interior-painting-barton-creek",
   "/interior-painting-bee-cave",

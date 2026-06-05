@@ -262,7 +262,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     'Color consultation'
   ];
   const localBusinessServiceOffers = [
-    { name: 'Austin house painters', path: '/service-areas/austin' },
+    { name: 'Austin house painters', path: '/house-painters-austin' },
+    { name: 'Austin painting service area', path: '/service-areas/austin' },
     { name: 'Austin exterior house painters', path: '/exterior-painting-austin' },
     { name: 'Austin interior painters', path: '/interior-painting-austin' },
     { name: 'Austin cabinet painting', path: '/cabinet-refinishing-austin' },
