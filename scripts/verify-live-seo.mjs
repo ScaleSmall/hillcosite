@@ -2200,6 +2200,20 @@ async function checkSupabaseFeed() {
     fail(`/gallery hero image(s) must not be reused elsewhere on the gallery page (${reusedGalleryHeroImages.join(', ')})`);
   }
 
+  const reusedSitewideGalleryImages = [
+    'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+    'https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg',
+    'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg',
+    'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg',
+    'https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg',
+    'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg',
+    'https://images.pexels.com/photos/7031706/pexels-photo-7031706.jpeg',
+  ].filter(src => html.includes(src));
+
+  if (reusedSitewideGalleryImages.length > 0) {
+    fail(`/gallery must not render images already reused across core site pages (${reusedSitewideGalleryImages.join(', ')})`);
+  }
+
   if (
     response.status === 200 &&
     html.includes(currentSupabaseUrl) &&
@@ -2208,10 +2222,52 @@ async function checkSupabaseFeed() {
     hasCanonicalProviderObject(imageGallerySchema.provider) &&
     projectProofSchema &&
     hasCanonicalProviderObject(projectProofSchema.provider) &&
-    reusedGalleryHeroImages.length === 0
+    reusedGalleryHeroImages.length === 0 &&
+    reusedSitewideGalleryImages.length === 0
   ) {
     console.log('Live Supabase gallery feed: current project present, retired project absent; ImageGallery provider identity, project proof schema, and gallery hero image uniqueness are canonical');
   }
+}
+
+async function checkRequestedContentFixes() {
+  const [
+    { text: housePaintersHtml },
+    { text: cabinetHtml },
+    { text: frequencyHtml },
+  ] = await Promise.all([
+    fetchText(`${baseUrl}/house-painters-austin?v=${Date.now()}`),
+    fetchText(`${baseUrl}/services/cabinet-refinishing?v=${Date.now()}`),
+    fetchText(`${baseUrl}/guides/how-often-paint-central-texas?v=${Date.now()}`),
+  ]);
+
+  if (/scopes?\s+for/i.test(housePaintersHtml) || housePaintersHtml.includes('written scopes')) {
+    fail('/house-painters-austin must use natural estimate/project wording, not "scopes for" phrasing');
+  }
+
+  const completeKitchenHtml = sectionContainingText(cabinetHtml, 'Complete Kitchen Solutions');
+
+  if (
+    !completeKitchenHtml.includes('Cabinet Door &amp; Drawer Finishing') ||
+    !completeKitchenHtml.includes('Kitchen Island &amp; Built-In Painting') ||
+    !completeKitchenHtml.includes('Trim &amp; Millwork') ||
+    completeKitchenHtml.includes('Exterior Painting') ||
+    completeKitchenHtml.includes('Interior Painting')
+  ) {
+    fail('/services/cabinet-refinishing Complete Kitchen Solutions must show cabinet/kitchen-specific cards, not generic interior/exterior painting cards');
+  }
+
+  const scheduleHtml = sectionContainingText(frequencyHtml, 'Austin Painting Maintenance Schedule');
+
+  if (
+    !frequencyHtml.includes('Excellent Indoors') ||
+    frequencyHtml.includes('>Limited<') ||
+    !scheduleHtml.includes('w-[250px] min-w-[250px]') ||
+    !scheduleHtml.includes('w-[150px] min-w-[150px]')
+  ) {
+    fail('/guides/how-often-paint-central-texas Surface Type and Frequency columns must stay no-wrap and winter must say Excellent Indoors');
+  }
+
+  console.log('Live requested content fixes checked: pricing phrasing, cabinet kitchen cards, and frequency table labels are current');
 }
 
 async function checkLegacyRedirects() {
@@ -2525,7 +2581,7 @@ async function checkAustinHousePaintersHubSchema() {
     faqText.includes('house') &&
     faqText.includes('house painters near me in austin') &&
     faqText.includes('google business profile') &&
-    faqText.includes('written scopes');
+    faqText.includes('written estimates');
   const hasVisibleRoutes = requiredVisibleRoutes.every(expectedRoute =>
     html.includes(`href="${expectedRoute}"`) || html.includes(`href='${expectedRoute}'`)
   );
@@ -3775,6 +3831,7 @@ await checkCrawlerEntityAssets();
 await checkLegacyRedirects();
 await checkStalePublicSearchResultSamples();
 await checkSupabaseFeed();
+await checkRequestedContentFixes();
 await checkAustinSchema();
 await checkAustinServiceAreaSchema();
 await checkLocalServiceAreaIntentSchema();

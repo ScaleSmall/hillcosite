@@ -94,7 +94,7 @@ const FreeEstimate = () => {
     <>
       <SEO
         title="Free Painting Estimate in Austin | Hill Country Painting"
-        description="Request a free Austin painting estimate for exterior, interior, cabinet, and commercial painting. Clear written scopes, responsive scheduling, insured crew."
+        description="Request a free Austin painting estimate for exterior, interior, cabinet, and commercial painting. Clear written estimates, responsive scheduling, insured crew."
         canonical="/free-estimate"
         includeLocalBusiness={true}
         breadcrumbs={[

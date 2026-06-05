@@ -30,6 +30,9 @@ const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manife
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
 const galleryPagePath = resolve(projectRoot, 'src/pages/Gallery.tsx');
+const housePaintersAustinPath = resolve(projectRoot, 'src/pages/HousePaintersAustin.tsx');
+const cabinetRefinishingPath = resolve(projectRoot, 'src/pages/services/CabinetRefinishing.tsx');
+const paintingFrequencyPath = resolve(projectRoot, 'src/pages/guides/PaintingFrequency.tsx');
 const robotsPath = resolve(projectRoot, 'public/robots.txt');
 const llmsPath = resolve(projectRoot, 'public/llms.txt');
 const llmsFullPath = resolve(projectRoot, 'public/llms-full.txt');
@@ -1594,6 +1597,9 @@ function run() {
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
   const galleryPageSource = readRequired(galleryPagePath, 'src/pages/Gallery.tsx');
+  const housePaintersAustinSource = readRequired(housePaintersAustinPath, 'src/pages/HousePaintersAustin.tsx');
+  const cabinetRefinishingSource = readRequired(cabinetRefinishingPath, 'src/pages/services/CabinetRefinishing.tsx');
+  const paintingFrequencySource = readRequired(paintingFrequencyPath, 'src/pages/guides/PaintingFrequency.tsx');
   const robotsText = readRequired(robotsPath, 'robots.txt');
   const llmsText = readRequired(llmsPath, 'llms.txt');
   const llmsFullText = readRequired(llmsFullPath, 'llms-full.txt');
@@ -2205,9 +2211,41 @@ function run() {
   if (
     !galleryPageSource.includes('hasSupabaseGalleryPhotos') ||
     !galleryPageSource.includes('displayedRegularExcludedUrls') ||
+    !galleryPageSource.includes('SITEWIDE_REUSED_IMAGE_SOURCES') ||
     !galleryPageSource.includes('[loading, hasSupabaseGalleryPhotos]')
   ) {
-    fail('src/pages/Gallery.tsx must de-duplicate direct gallery images and only inject the Supabase widget when the main feed is not already rendering');
+    fail('src/pages/Gallery.tsx must de-duplicate direct gallery images, filter reused sitewide images, and only inject the Supabase widget when the main feed is not already rendering');
+  }
+
+  if (galleryPageSource.includes('ml-[2cm]')) {
+    fail('src/pages/Gallery.tsx must not offset the gallery hero image grid with hard-coded centimeter spacing');
+  }
+
+  if (/scopes?\s+for/i.test(housePaintersAustinSource) || housePaintersAustinSource.includes('written scopes that explain')) {
+    fail('src/pages/HousePaintersAustin.tsx must use natural estimate/project wording, not "scopes for" phrasing');
+  }
+
+  if (
+    !cabinetRefinishingSource.includes("title: 'Cabinet Door & Drawer Finishing'") ||
+    !cabinetRefinishingSource.includes("title: 'Kitchen Island & Built-In Painting'") ||
+    !cabinetRefinishingSource.includes("title: 'Trim & Millwork'") ||
+    cabinetRefinishingSource.includes("title: 'Interior Painting'") ||
+    cabinetRefinishingSource.includes("title: 'Exterior Painting'")
+  ) {
+    fail('src/pages/services/CabinetRefinishing.tsx Complete Kitchen Solutions cards must stay kitchen/cabinet focused and must not include generic interior/exterior painting cards');
+  }
+
+  if (
+    !paintingFrequencySource.includes("painting: 'Excellent Indoors'") ||
+    paintingFrequencySource.includes("painting: 'Limited'") ||
+    !paintingFrequencySource.includes('w-[250px] min-w-[250px]') ||
+    !paintingFrequencySource.includes('w-[150px] min-w-[150px]')
+  ) {
+    fail('src/pages/guides/PaintingFrequency.tsx must keep the Surface Type and Frequency table columns on one line and label winter as Excellent Indoors');
+  }
+
+  if (middlewareSource.includes('$6,000 minimum') || middlewareSource.includes('have a $6,000 minimum')) {
+    fail('functions/_middleware.ts guide FAQ fallbacks must not repeat the exact $6,000 minimum wording in visible cost copy');
   }
 
   if (!aiManifestGeneratorSource.includes('extractBusinessSocialProfiles(businessConfigSource)')) {
@@ -3332,6 +3370,51 @@ function run() {
         if (reusedGalleryHeroImages.length > 0) {
           fail(`${routePath}: gallery hero image(s) must not be reused elsewhere on the gallery page (${reusedGalleryHeroImages.join(', ')})`);
         }
+
+        const reusedSitewideGalleryImages = [
+          'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+          'https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg',
+          'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg',
+          'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg',
+          'https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg',
+          'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg',
+          'https://images.pexels.com/photos/7031706/pexels-photo-7031706.jpeg'
+        ].filter(src => html.includes(src));
+
+        if (reusedSitewideGalleryImages.length > 0) {
+          fail(`${routePath}: gallery must not render images already reused across core site pages (${reusedSitewideGalleryImages.join(', ')})`);
+        }
+      }
+
+      if (routePath === '/house-painters-austin' && (/scopes?\s+for/i.test(visibleText) || visibleText.includes('written scopes'))) {
+        fail(`${routePath}: visible copy must use natural estimate/project wording, not "scopes for" phrasing`);
+      }
+
+      if (routePath === '/services/cabinet-refinishing') {
+        const completeKitchenHtml = sectionContainingText(html, 'Complete Kitchen Solutions');
+
+        if (
+          !completeKitchenHtml.includes('Cabinet Door &amp; Drawer Finishing') ||
+          !completeKitchenHtml.includes('Kitchen Island &amp; Built-In Painting') ||
+          !completeKitchenHtml.includes('Trim &amp; Millwork') ||
+          completeKitchenHtml.includes('Exterior Painting') ||
+          completeKitchenHtml.includes('Interior Painting')
+        ) {
+          fail(`${routePath}: Complete Kitchen Solutions must show cabinet/kitchen-specific cards, not generic interior/exterior painting cards`);
+        }
+      }
+
+      if (routePath === '/guides/how-often-paint-central-texas') {
+        const scheduleHtml = sectionContainingText(html, 'Austin Painting Maintenance Schedule');
+
+        if (
+          !html.includes('Excellent Indoors') ||
+          html.includes('>Limited<') ||
+          !scheduleHtml.includes('w-[250px] min-w-[250px]') ||
+          !scheduleHtml.includes('w-[150px] min-w-[150px]')
+        ) {
+          fail(`${routePath}: Surface Type and Frequency columns must stay no-wrap and winter must say Excellent Indoors`);
+        }
       }
 
       if (routePath === '/' || routePath === '/guides/painting-costs-austin') {
@@ -3789,7 +3872,7 @@ function run() {
             if (
               !faqText.includes('house painters near me in austin') ||
               !faqText.includes('google business profile') ||
-              !faqText.includes('written scopes')
+              !faqText.includes('written estimates')
             ) {
               fail(`${routePath}: Austin house-painters FAQ schema should answer the natural house-painters-near-me comparison intent`);
             }

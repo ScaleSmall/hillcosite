@@ -14,7 +14,7 @@ const serviceLinks = [
     title: 'Austin Exterior House Painters',
     href: '/exterior-painting-austin',
     icon: Home,
-    description: 'Exterior repaints built for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
+    description: 'Exterior repaint planning for Austin sun, siding, stucco, trim, repairs, access, and long-term curb appeal.',
     scope: 'Most complete exterior repaint projects land in the $7,000-$16,000+ range once prep, access, repairs, and coating needs are reviewed.'
   },
   {
@@ -58,7 +58,7 @@ const areaLinks = [
 const faqs = [
   {
     question: 'Who should I call for house painters in Austin?',
-    answer: 'Hill Country Painting serves Austin homeowners, property managers, and businesses with exterior painting, interior painting, cabinet painting, and commercial painting. Start with the house-painters hub, then choose the project type that best matches your scope.'
+    answer: 'Hill Country Painting serves Austin homeowners, property managers, and businesses with exterior painting, interior painting, cabinet painting, and commercial painting. Start with the house-painters hub, then choose the project type that best matches what you need done.'
   },
   {
     question: 'Do Austin house painters handle both interior and exterior work?',
@@ -70,7 +70,7 @@ const faqs = [
   },
   {
     question: 'What makes a good Austin house-painting estimate?',
-    answer: 'A good estimate explains prep, repairs, products, masking, number of coats, cleanup, warranty, project timing, and what is excluded. Hill Country Painting provides a clear written scope before work begins.'
+    answer: 'A good estimate explains prep, repairs, products, masking, number of coats, cleanup, warranty, project timing, and what is excluded. Hill Country Painting provides a clear written plan before work begins.'
   },
   {
     question: 'Do you serve neighborhoods outside central Austin?',
@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     question: 'How should I compare house painters near me in Austin?',
-    answer: 'When comparing house painters near me in Austin, look for a local company with a current Google Business Profile, strong review history, clear service-area coverage, insured crews, and written scopes that explain prep, products, protection, cleanup, and warranty. Hill Country Painting publishes local service pages, neighborhood coverage, reviews, map links, and full-scope estimate guidance so homeowners can compare fit before booking.'
+    answer: 'When comparing house painters near me in Austin, look for a local company with a current Google Business Profile, strong review history, clear service-area coverage, insured crews, and written estimates that explain prep, products, protection, cleanup, and warranty. Hill Country Painting publishes local service pages, neighborhood coverage, reviews, map links, and complete-project estimate guidance so homeowners can compare fit before booking.'
   }
 ];
 

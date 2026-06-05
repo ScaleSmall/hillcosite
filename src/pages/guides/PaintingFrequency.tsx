@@ -178,11 +178,11 @@ const PaintingFrequency = () => {
           </div>
           
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[1080px] bg-white rounded-lg shadow-lg">
+            <table className="w-full min-w-[1180px] bg-white rounded-lg shadow-lg">
               <thead className="bg-brand-azureDark text-white">
                 <tr>
-                  <th className="px-6 py-4 text-left whitespace-nowrap min-w-[190px]"><span className="inline-block whitespace-nowrap">Surface Type</span></th>
-                  <th className="px-6 py-4 text-center whitespace-nowrap min-w-[130px]"><span className="inline-block whitespace-nowrap">Frequency</span></th>
+                  <th className="w-[250px] min-w-[250px] px-6 py-4 text-left whitespace-nowrap"><span className="inline-block whitespace-nowrap">Surface Type</span></th>
+                  <th className="w-[150px] min-w-[150px] px-6 py-4 text-center whitespace-nowrap"><span className="inline-block whitespace-nowrap">Frequency</span></th>
                   <th className="px-6 py-4 text-left">Key Factors</th>
                   <th className="px-6 py-4 text-left">Warning Signs</th>
                   <th className="px-6 py-4 text-left">Central Texas Notes</th>
@@ -191,8 +191,8 @@ const PaintingFrequency = () => {
               <tbody>
                 {paintingSchedule.map((item, index) => (
                   <tr key={index} className={index % 2 === 0 ? 'bg-brand-gray-50' : 'bg-white'}>
-                    <td className="px-6 py-4 font-semibold text-brand-gray-900 whitespace-nowrap">{item.surface}</td>
-                    <td className="px-6 py-4 text-center whitespace-nowrap">
+                    <td className="w-[250px] min-w-[250px] px-6 py-4 font-semibold text-brand-gray-900 whitespace-nowrap">{item.surface}</td>
+                    <td className="w-[150px] min-w-[150px] px-6 py-4 text-center whitespace-nowrap">
                       <span className="inline-flex whitespace-nowrap px-3 py-1 bg-brand-azure10 text-brand-azure rounded-full font-medium">
                         {item.frequency}
                       </span>

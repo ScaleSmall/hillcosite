@@ -40,11 +40,23 @@ const RESERVED_SITE_IMAGE_FILENAMES = [
   'traditional-home-exterior.jpg',
 ];
 
+const SITEWIDE_REUSED_IMAGE_SOURCES = [
+  'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg',
+  'https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg',
+  'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg',
+  'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg',
+  'https://images.pexels.com/photos/416320/pexels-photo-416320.jpeg',
+  'https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg',
+  'https://images.pexels.com/photos/7031706/pexels-photo-7031706.jpeg',
+];
+
 const isBannedHeroImage = (imageUrl: string) =>
-  RESERVED_SITE_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
+  RESERVED_SITE_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename)) ||
+  SITEWIDE_REUSED_IMAGE_SOURCES.some(source => imageUrl.includes(source));
 
 const isReservedSiteImage = (imageUrl: string) =>
-  RESERVED_SITE_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename));
+  RESERVED_SITE_IMAGE_FILENAMES.some(filename => imageUrl.includes(filename)) ||
+  SITEWIDE_REUSED_IMAGE_SOURCES.some(source => imageUrl.includes(source));
 
 const imageDedupeKey = (imageUrl: string) => {
   try {
@@ -461,7 +473,7 @@ const Gallery = () => {
             </div>
 
             {/* Right Featured Projects Grid */}
-            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-4 ml-[2cm]">
+            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-4">
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-56 lg:h-64"></div>
