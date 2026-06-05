@@ -2921,6 +2921,34 @@ function run() {
         }
       }
 
+      if (routePath === '/') {
+        const homepageServiceItemList = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ItemList') &&
+          item?.['@id'] === `${baseUrl}/#austin-house-painter-services`
+        );
+        const homepageServiceListUrls = itemListUrls(homepageServiceItemList);
+
+        if (!homepageServiceItemList) {
+          fail(`${routePath}: homepage is missing Austin house-painter service ItemList structured data`);
+        }
+
+        if (!itemListHasCanonicalServiceProvider(homepageServiceItemList)) {
+          fail(`${routePath}: homepage Austin house-painter service ItemList entries must carry canonical LocalBusiness provider identity`);
+        }
+
+        for (const requiredHomepageServiceUrl of [
+          `${baseUrl}/house-painters-austin`,
+          `${baseUrl}/exterior-painting-austin`,
+          `${baseUrl}/interior-painting-austin`,
+          `${baseUrl}/cabinet-refinishing-austin`,
+          `${baseUrl}/commercial-painting-austin`
+        ]) {
+          if (!homepageServiceListUrls.includes(requiredHomepageServiceUrl)) {
+            fail(`${routePath}: homepage Austin house-painter service ItemList is missing ${requiredHomepageServiceUrl}`);
+          }
+        }
+      }
+
       if (routePath === '/services') {
         const servicesItemList = schemaItems.find(item =>
           schemaTypeIncludes(item, 'ItemList') &&
@@ -2937,6 +2965,7 @@ function run() {
         }
 
         for (const requiredServiceUrl of [
+          `${baseUrl}/house-painters-austin`,
           `${baseUrl}/services/interior-painting`,
           `${baseUrl}/services/exterior-painting`,
           `${baseUrl}/services/cabinet-refinishing`,

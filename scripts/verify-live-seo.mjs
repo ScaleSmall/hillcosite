@@ -113,6 +113,7 @@ const austinServiceSignals = new Map([
   ['/commercial-painting-austin', 'Austin commercial painters'],
 ]);
 const servicesHubItemListRoutes = [
+  '/house-painters-austin',
   '/services/interior-painting',
   '/services/exterior-painting',
   '/services/cabinet-refinishing',
@@ -2087,6 +2088,19 @@ async function checkServiceLocationServiceSchema() {
 
 async function checkHubItemListSchema() {
   const hubs = [
+    {
+      route: '/',
+      itemListId: `${baseUrl}/#austin-house-painter-services`,
+      requiredRoutes: [
+        '/house-painters-austin',
+        '/exterior-painting-austin',
+        '/interior-painting-austin',
+        '/cabinet-refinishing-austin',
+        '/commercial-painting-austin',
+      ],
+      label: 'homepage Austin house-painter services',
+      requiredVisibleRoutes: ['/house-painters-austin'],
+    },
     {
       route: '/services',
       itemListId: `${baseUrl}/services#servicelist`,

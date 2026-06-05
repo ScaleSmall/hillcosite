@@ -19,8 +19,10 @@ import NAPMapSection from '../components/NAPMapSection';
 import LocalSearchLinks from '../components/LocalSearchLinks';
 import PaintingGuideLinks from '../components/PaintingGuideLinks';
 import { businessConfig } from '../config/business';
+import { canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
 
 const Home = () => {
+  const baseUrl = siteBaseUrl;
   const serviceAreas = [
     { name: 'Austin', href: '/service-areas/austin' },
     { name: 'Tarrytown', href: '/service-areas/tarrytown' },
@@ -77,6 +79,35 @@ const Home = () => {
       answer: 'We stand behind our work with a 2-year warranty on all painting services.'
     }
   ];
+  const homepageServiceItemList = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${baseUrl}/#austin-house-painter-services`,
+    name: 'Austin house painters and priority painting services',
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    itemListElement: [
+      ['Austin house painters', '/house-painters-austin'],
+      ['Austin exterior house painters', '/exterior-painting-austin'],
+      ['Austin interior painters', '/interior-painting-austin'],
+      ['Austin cabinet painting', '/cabinet-refinishing-austin'],
+      ['Austin commercial painters', '/commercial-painting-austin']
+    ].map(([name, href], index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name,
+      url: `${baseUrl}${href}`,
+      item: {
+        '@type': 'Service',
+        '@id': `${baseUrl}${href}#service`,
+        name,
+        provider: canonicalBusinessProvider,
+        areaServed: {
+          '@type': 'City',
+          name: 'Austin'
+        }
+      }
+    }))
+  };
 
   return (
     <>
@@ -90,6 +121,7 @@ const Home = () => {
         ]}
         faq={faqs}
         includeLocalBusiness={true}
+        additionalSchema={homepageServiceItemList}
         aggregateRating={{
           ratingValue: businessConfig.aggregateRating.ratingValue,
           reviewCount: businessConfig.aggregateRating.reviewCount
@@ -286,7 +318,21 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6">
+            <Link to="/house-painters-austin" className="group">
+              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full">
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azure transition-colors">
+                  Austin House Painters
+                </h3>
+                <p className="text-brand-gray-600 mb-4">
+                  Compare exterior, interior, cabinet, and commercial painting paths from one Austin-focused hub before requesting a written estimate.
+                </p>
+                <span className="text-brand-azure font-semibold group-hover:underline">
+                  Compare services →
+                </span>
+              </div>
+            </Link>
+
             {/* Interior Painting */}
             <Link to="/services/interior-painting" className="group">
               <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow h-full">
