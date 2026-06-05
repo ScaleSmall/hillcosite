@@ -49,7 +49,7 @@ const LocalSignals: React.FC<LocalSignalsProps> = ({
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-brand-gray-900 mb-6">{heading}</h2>
           <p className="text-lg text-brand-gray-700 mb-6">
-            Hill Country Painting serves {areaName} within the Greater Austin painting service area, helping homeowners and property managers compare local crews, service availability, nearby neighborhoods, and common project scopes.
+            Hill Country Painting serves {areaName} within the Greater Austin painting service area, helping homeowners and property managers compare local crews, service availability, nearby neighborhoods, and common project types.
           </p>
 
           <div className="space-y-6">

@@ -2513,6 +2513,39 @@ async function checkServiceLocationServiceSchema() {
   console.log(`Live service-location Service schema pages checked: ${passed}/${routes.length}`);
 }
 
+async function checkServiceLocationLocalSignalDetails() {
+  const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
+
+  if (sitemapResponse.status !== 200) {
+    fail('live sitemap could not be fetched for service-location local detail validation.');
+    return;
+  }
+
+  const routes = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)]
+    .map(match => routePathFromUrl(match[1]))
+    .filter(routeIsServiceLocation);
+  let passed = 0;
+
+  for (const route of routes) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const hasLocalDetailSignals =
+      html.includes('Painting Service Area Details') &&
+      html.includes('ZIP Codes We Serve') &&
+      html.includes('Nearby Areas') &&
+      html.includes('Services Commonly Requested Here') &&
+      !html.includes('common project scopes');
+
+    if (response.status !== 200 || !hasLocalDetailSignals) {
+      fail(`${route}: live service-location page is missing expanded local details for ZIP codes, nearby areas, service keywords, or still uses "common project scopes" wording.`);
+      continue;
+    }
+
+    passed++;
+  }
+
+  console.log(`Live service-location local detail sections checked: ${passed}/${routes.length}`);
+}
+
 async function checkHubItemListSchema() {
   const hubs = [
     {
@@ -3338,6 +3371,7 @@ await checkAustinHousePaintersHubSchema();
 await checkSitewidePriorityServiceNavigation();
 await checkSitewideServiceLocationFooterAnchors();
 await checkServiceLocationServiceSchema();
+await checkServiceLocationLocalSignalDetails();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
 await checkPrimaryServiceAreaHubLinks();

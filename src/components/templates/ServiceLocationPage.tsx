@@ -174,6 +174,21 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
         : [])
       ])
   ];
+  const localSignalServiceKeywords = [
+    ...new Set([
+      `${service.name} ${location.name}`,
+      localServiceIntentPhrase,
+      `painting contractors ${location.name}`,
+      `house painters ${location.name}`,
+      ...(austinServiceIntent
+        ? [
+            austinServiceIntent.phrase,
+            'painting contractors Austin',
+            'house painters Austin'
+          ]
+        : [])
+    ])
+  ];
   const localPlaceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Place',
@@ -502,7 +517,13 @@ const ServiceLocationPage: React.FC<Props> = ({ config }) => {
 
       <NAPMapSection />
 
-      <LocalSignals areaName={location.name} pageType="service" />
+      <LocalSignals
+        areaName={location.name}
+        pageType="service"
+        zipCodes={location.zipCodes}
+        nearbyAreas={location.neighborhoods}
+        serviceKeywords={localSignalServiceKeywords}
+      />
 
       <MiniFAQ
         title={`${service.name} FAQ - ${location.name}`}

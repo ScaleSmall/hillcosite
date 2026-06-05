@@ -24,6 +24,8 @@ const headerPath = resolve(projectRoot, 'src/components/Header.tsx');
 const footerPath = resolve(projectRoot, 'src/components/Footer.tsx');
 const seoComponentPath = resolve(projectRoot, 'src/components/SEO.tsx');
 const serviceLocationLinksPath = resolve(projectRoot, 'src/components/ServiceLocationLinks.tsx');
+const serviceLocationPageTemplatePath = resolve(projectRoot, 'src/components/templates/ServiceLocationPage.tsx');
+const localSignalsPath = resolve(projectRoot, 'src/components/LocalSignals.tsx');
 const aiManifestGeneratorPath = resolve(projectRoot, 'scripts/generate-ai-manifests.mjs');
 const publicEnvPath = resolve(projectRoot, 'public/env.js');
 const sitemapPhpPath = resolve(projectRoot, 'public/sitemap.php');
@@ -1489,6 +1491,8 @@ function run() {
   const footerSource = readRequired(footerPath, 'src/components/Footer.tsx');
   const seoComponentSource = readRequired(seoComponentPath, 'src/components/SEO.tsx');
   const serviceLocationLinksSource = readRequired(serviceLocationLinksPath, 'src/components/ServiceLocationLinks.tsx');
+  const serviceLocationPageTemplateSource = readRequired(serviceLocationPageTemplatePath, 'src/components/templates/ServiceLocationPage.tsx');
+  const localSignalsSource = readRequired(localSignalsPath, 'src/components/LocalSignals.tsx');
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
@@ -1998,6 +2002,19 @@ function run() {
 
   if (!serviceLocationLinksSource.includes("import { locations } from '../config/locations'") || !serviceLocationLinksSource.includes('Object.values(locations)')) {
     fail('src/components/ServiceLocationLinks.tsx must derive service-location grid links from the canonical src/config/locations.ts list');
+  }
+
+  if (
+    !serviceLocationPageTemplateSource.includes('const localSignalServiceKeywords') ||
+    !serviceLocationPageTemplateSource.includes('zipCodes={location.zipCodes}') ||
+    !serviceLocationPageTemplateSource.includes('nearbyAreas={location.neighborhoods}') ||
+    !serviceLocationPageTemplateSource.includes('serviceKeywords={localSignalServiceKeywords}')
+  ) {
+    fail('src/components/templates/ServiceLocationPage.tsx must pass ZIP codes, nearby neighborhoods, and service-intent keywords into LocalSignals');
+  }
+
+  if (localSignalsSource.includes('common project scopes')) {
+    fail('src/components/LocalSignals.tsx should use customer-friendly wording such as "common project types", not "common project scopes"');
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {
