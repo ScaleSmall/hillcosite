@@ -66,6 +66,33 @@ export const businessServiceArea = [
   }))
 ] as const;
 
+const businessReference = {
+  '@id': `${siteBaseUrl}/#localbusiness`
+} as const;
+
+const priorityBusinessServiceOffers = [
+  { name: 'Austin house painters', path: '/house-painters-austin' },
+  { name: 'Austin painting service area', path: '/service-areas/austin' },
+  { name: 'Austin exterior house painters', path: '/exterior-painting-austin' },
+  { name: 'Austin interior painters', path: '/interior-painting-austin' },
+  { name: 'Austin cabinet painting', path: '/cabinet-refinishing-austin' },
+  { name: 'Austin commercial painters', path: '/commercial-painting-austin' },
+  { name: 'Interior painting', path: '/services/interior-painting' },
+  { name: 'Exterior painting', path: '/services/exterior-painting' },
+  { name: 'Cabinet painting and refinishing', path: '/services/cabinet-refinishing' },
+  { name: 'Commercial painting', path: '/services/commercial' },
+  { name: 'Color consultation', path: '/color-consultation' }
+] as const;
+
+const businessServiceCatalogItems = [
+  'Interior painting',
+  'Exterior painting',
+  'Cabinet painting',
+  'Cabinet refinishing',
+  'Commercial painting',
+  'Color consultation'
+] as const;
+
 export const canonicalBusinessProvider = {
   '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
   '@id': `${siteBaseUrl}/#localbusiness`,
@@ -121,6 +148,29 @@ export const canonicalBusinessProvider = {
     ...Object.values(businessConfig.socialProfiles)
   ],
   aggregateRating: businessAggregateRating,
+  makesOffer: priorityBusinessServiceOffers.map(offer => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      '@id': `${siteBaseUrl}${offer.path}#service`,
+      name: offer.name,
+      provider: businessReference,
+      areaServed: businessAreaServed
+    }
+  })),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Austin Painting Services',
+    itemListElement: businessServiceCatalogItems.map(serviceName => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: serviceName,
+        provider: businessReference,
+        areaServed: businessAreaServed
+      }
+    }))
+  },
   identifier: {
     '@type': 'PropertyValue',
     propertyID: 'kgmid',

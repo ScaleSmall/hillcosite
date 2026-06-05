@@ -245,6 +245,30 @@ const CANONICAL_BUSINESS_SERVICE_AREA = [
   })),
 ];
 const GOOGLE_BUSINESS_PROFILE_URL = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
+const CANONICAL_BUSINESS_REFERENCE = {
+  '@id': 'https://www.hillcopaint.com/#localbusiness',
+};
+const PRIORITY_BUSINESS_SERVICE_OFFERS = [
+  { name: 'Austin house painters', path: '/house-painters-austin' },
+  { name: 'Austin painting service area', path: '/service-areas/austin' },
+  { name: 'Austin exterior house painters', path: '/exterior-painting-austin' },
+  { name: 'Austin interior painters', path: '/interior-painting-austin' },
+  { name: 'Austin cabinet painting', path: '/cabinet-refinishing-austin' },
+  { name: 'Austin commercial painters', path: '/commercial-painting-austin' },
+  { name: 'Interior painting', path: '/services/interior-painting' },
+  { name: 'Exterior painting', path: '/services/exterior-painting' },
+  { name: 'Cabinet painting and refinishing', path: '/services/cabinet-refinishing' },
+  { name: 'Commercial painting', path: '/services/commercial' },
+  { name: 'Color consultation', path: '/color-consultation' },
+];
+const BUSINESS_SERVICE_CATALOG_ITEMS = [
+  'Interior painting',
+  'Exterior painting',
+  'Cabinet painting',
+  'Cabinet refinishing',
+  'Commercial painting',
+  'Color consultation',
+];
 const CANONICAL_BUSINESS_PROVIDER = {
   '@type': ['LocalBusiness', 'HomeAndConstructionBusiness', 'HousePainter'],
   '@id': 'https://www.hillcopaint.com/#localbusiness',
@@ -359,6 +383,29 @@ const CANONICAL_BUSINESS_PROVIDER = {
     reviewCount: 127,
     bestRating: 5,
     worstRating: 1,
+  },
+  makesOffer: PRIORITY_BUSINESS_SERVICE_OFFERS.map(offer => ({
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      '@id': `https://www.hillcopaint.com${offer.path}#service`,
+      name: offer.name,
+      provider: CANONICAL_BUSINESS_REFERENCE,
+      areaServed: CANONICAL_BUSINESS_AREA_SERVED,
+    },
+  })),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Austin Painting Services',
+    itemListElement: BUSINESS_SERVICE_CATALOG_ITEMS.map(serviceName => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: serviceName,
+        provider: CANONICAL_BUSINESS_REFERENCE,
+        areaServed: CANONICAL_BUSINESS_AREA_SERVED,
+      },
+    })),
   },
   identifier: {
     '@type': 'PropertyValue',

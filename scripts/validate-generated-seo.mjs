@@ -612,6 +612,43 @@ function hasValidAggregateRating(schema) {
   );
 }
 
+function hasCanonicalProviderServiceCatalog(provider) {
+  const offerText = JSON.stringify(provider?.makesOffer || []);
+  const catalog = provider?.hasOfferCatalog || {};
+  const catalogText = JSON.stringify(catalog);
+  const requiredOfferPaths = [
+    '/house-painters-austin#service',
+    '/service-areas/austin#service',
+    '/exterior-painting-austin#service',
+    '/interior-painting-austin#service',
+    '/cabinet-refinishing-austin#service',
+    '/commercial-painting-austin#service',
+    '/services/interior-painting#service',
+    '/services/exterior-painting#service',
+    '/services/cabinet-refinishing#service',
+    '/services/commercial#service',
+    '/color-consultation#service'
+  ];
+  const requiredCatalogServices = [
+    'Interior painting',
+    'Exterior painting',
+    'Cabinet painting',
+    'Cabinet refinishing',
+    'Commercial painting',
+    'Color consultation'
+  ];
+
+  return (
+    Array.isArray(provider?.makesOffer) &&
+    provider.makesOffer.length >= requiredOfferPaths.length &&
+    schemaTypeIncludes(catalog, 'OfferCatalog') &&
+    catalog?.name === 'Austin Painting Services' &&
+    requiredOfferPaths.every(path => offerText.includes(`${baseUrl}${path}`)) &&
+    requiredCatalogServices.every(service => catalogText.includes(service)) &&
+    catalogText.includes(`${baseUrl}/#localbusiness`)
+  );
+}
+
 function extractStringProperty(source, name) {
   const match = source.match(new RegExp(`${name}:\\s*'([^']*)'`));
 
@@ -727,6 +764,7 @@ function hasCanonicalServiceProvider(schema) {
     hasAllValues(knowsAbout, requiredCanonicalProviderKnowsAboutTopics) &&
     providerSameAs.includes(googleBusinessProfileUrl) &&
     hasValidAggregateRating(provider) &&
+    hasCanonicalProviderServiceCatalog(provider) &&
     schemaTypeIncludes(identifier, 'PropertyValue') &&
     identifier?.propertyID === 'kgmid' &&
     identifier?.value === googleKnowledgeGraphId &&
@@ -765,7 +803,10 @@ function collectSchemaNodes(value, predicate, result = [], seen = new Set()) {
 function schemaTreeServicesHaveCanonicalProviders(schema) {
   const services = collectSchemaNodes(schema, item => schemaTypeIncludes(item, 'Service'));
 
-  return services.length > 0 && services.every(service => hasCanonicalServiceProvider(service));
+  return services.length > 0 && services.every(service =>
+    hasCanonicalServiceProvider(service) ||
+    service?.provider?.['@id'] === `${baseUrl}/#localbusiness`
+  );
 }
 
 function itemListUrls(schema) {
@@ -784,7 +825,10 @@ function itemListServiceItems(schema) {
 function itemListHasCanonicalServiceProvider(schema) {
   const serviceItems = itemListServiceItems(schema);
 
-  return serviceItems.length > 0 && serviceItems.every(service => hasCanonicalServiceProvider(service));
+  return serviceItems.length > 0 && serviceItems.every(service =>
+    hasCanonicalServiceProvider(service) ||
+    service?.provider?.['@id'] === `${baseUrl}/#localbusiness`
+  );
 }
 
 function stripQueryAndHash(value) {
