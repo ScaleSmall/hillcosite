@@ -164,6 +164,8 @@ const PATTERN_REDIRECTS: Array<{ pattern: RegExp; target: string }> = [
   { pattern: /^\/residential-interior-/i, target: '/services/interior-painting' },
   { pattern: /^\/residential-exterior-/i, target: '/services/exterior-painting' },
   { pattern: /^\/residential-cabinet-/i, target: '/services/cabinet-refinishing' },
+  { pattern: /^\/residential-.*(living-room|bedroom|nursery|kitchen|foyer|hallway|dining-room|bathroom|ceiling|trim|door).*painting/i, target: '/services/interior-painting' },
+  { pattern: /^\/residential-.*(deck|fence|porch|stucco|garage-door).*painting/i, target: '/services/exterior-painting' },
   { pattern: /^\/commercial-.*painting/i, target: '/services/commercial' },
   { pattern: /^\/commercial-interior-/i, target: '/services/commercial' },
   { pattern: /^\/commercial-exterior-/i, target: '/services/commercial' },
