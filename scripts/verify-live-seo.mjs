@@ -298,8 +298,13 @@ const stalePublicIdentitySignals = [
   '2808 Townes Lane',
   '111 Craft Street',
   '1101 Satellite View',
+  '18815 Obed River',
   '(512) 499-8450',
   '512-499-8450',
+  '(512) 537-2078',
+  '512-537-2078',
+  '(512) 761-8283',
+  '512-761-8283',
 ];
 function extractMiddlewareRedirects(source) {
   const blockMatch = source.match(/const REDIRECTS[\s\S]*?=\s*{([\s\S]*?)\n};/);
@@ -1641,7 +1646,18 @@ async function checkCrawlerEntityAssets() {
     const sameAs = asArray(citationFacts.sameAs);
     const alternateNames = asArray(citationIdentity.alternateName);
     const staleWarnings = JSON.stringify(citationFacts.staleCitationWarnings || []);
+    const knownCitationSources = JSON.stringify(citationFacts.knownExternalCitationSources || []);
     const verificationUrls = asArray(citationFacts.verificationUrls);
+    const requiredCitationSourceUrls = [
+      'https://www.chamberofcommerce.com/united-states/texas/hutto/painter/2012266792-hill-country-painting',
+      'https://www.whereorg.com/hill-country-painting-42268739',
+      'https://www.startus.cc/company/254309',
+      'https://www.mapquest.com/us/texas/hill-country-painting-428908114',
+      'https://www.yellowpages.com/pflugerville-tx/bpp/hill-country-painting-559089428',
+      'https://www.startus.cc/company/454965',
+      'https://www.startus.cc/company/hill-country-painting-round-rock',
+      'https://www.storeboard.com/hillcountrypaintingofroundrock',
+    ];
     const requiredCitationVerificationUrls = [
       `${baseUrl}/`,
       `${baseUrl}/about`,
@@ -1699,10 +1715,14 @@ async function checkCrawlerEntityAssets() {
       !staleWarnings.includes(`${baseUrl}/services/cabinet-refinishing`) ||
       !staleWarnings.includes(`${baseUrl}/commercial-painting/`) ||
       !staleWarnings.includes(`${baseUrl}/services/commercial`) ||
+      !staleWarnings.includes('18815 Obed River') ||
+      !staleWarnings.includes('(512) 537-2078') ||
+      !staleWarnings.includes('(512) 761-8283') ||
       !staleWarnings.includes('https://request.hillcopaint.com/') ||
-      !staleWarnings.includes(`${baseUrl}/contact`)
+      !staleWarnings.includes(`${baseUrl}/contact`) ||
+      !requiredCitationSourceUrls.every(url => knownCitationSources.includes(url))
     ) {
-      fail('/citation-facts.json: live citation facts are missing canonical identity, logo/image signals, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale slash URL warnings, or request-subdomain citation warning.');
+      fail('/citation-facts.json: live citation facts are missing canonical identity, logo/image signals, geo coordinates, verification URLs, alternate names, disambiguating description, NAICS classification, GBP/kgmid, social profile sameAs links, aggregate rating, service counties, priority topics, stale citation source URLs, stale slash URL warnings, or request-subdomain citation warning.');
     }
   } catch {
     fail('/citation-facts.json: live citation facts are not valid JSON.');

@@ -81,8 +81,13 @@ const stalePublicIdentitySignals = [
   '2808 Townes Lane',
   '111 Craft Street',
   '1101 Satellite View',
+  '18815 Obed River',
   '(512) 499-8450',
   '512-499-8450',
+  '(512) 537-2078',
+  '512-537-2078',
+  '(512) 761-8283',
+  '512-761-8283',
 ];
 const canonicalSocialProfileSignals = [
   'facebook',
@@ -2266,6 +2271,29 @@ function run() {
     }
     if (!warnings.includes('111 Craft Street') || !warnings.includes('1101 Satellite View') || !warnings.includes('/round-rock/') || !warnings.includes('8:00 AM-8:00 AM')) {
       fail('citation-facts.json must warn against known stale directory address, URL, and hours variants');
+    }
+    if (
+      !warnings.includes('18815 Obed River') ||
+      !warnings.includes('(512) 537-2078') ||
+      !warnings.includes('(512) 761-8283')
+    ) {
+      fail('citation-facts.json must warn against known stale Pflugerville and Round Rock phone/address variants');
+    }
+    const knownCitationSources = JSON.stringify(citationFacts.knownExternalCitationSources || []);
+    const requiredCitationSourceUrls = [
+      'https://www.chamberofcommerce.com/united-states/texas/hutto/painter/2012266792-hill-country-painting',
+      'https://www.whereorg.com/hill-country-painting-42268739',
+      'https://www.startus.cc/company/254309',
+      'https://www.mapquest.com/us/texas/hill-country-painting-428908114',
+      'https://www.yellowpages.com/pflugerville-tx/bpp/hill-country-painting-559089428',
+      'https://www.startus.cc/company/454965',
+      'https://www.startus.cc/company/hill-country-painting-round-rock',
+      'https://www.storeboard.com/hillcountrypaintingofroundrock'
+    ];
+    for (const sourceUrl of requiredCitationSourceUrls) {
+      if (!knownCitationSources.includes(sourceUrl)) {
+        fail(`citation-facts.json must list stale external citation cleanup source ${sourceUrl}`);
+      }
     }
     if (
       !warnings.includes(`${baseUrl}/austin/`) ||

@@ -201,31 +201,79 @@
       "field": "phone",
       "staleValue": "(512) 499-8450",
       "canonicalValue": "(512) 240-2246",
-      "note": "Do not use stale third-party directory phone data. Use the canonical phone listed on hillcopaint.com."
+      "note": "Do not use stale third-party directory phone data. Use the canonical phone listed on hillcopaint.com.",
+      "sourceUrls": [
+        "https://www.whereorg.com/hill-country-painting-42268739"
+      ]
     },
     {
       "field": "address",
       "staleValue": "2808 Townes Lane, Austin, TX 78703",
       "canonicalValue": "Service-area business serving the Greater Austin Area",
-      "note": "Do not use stale third-party street address data unless it matches the current Google Business Profile and public website."
+      "note": "Do not use stale third-party street address data unless it matches the current Google Business Profile and public website.",
+      "sourceUrls": [
+        "https://www.whereorg.com/hill-country-painting-42268739"
+      ]
     },
     {
       "field": "address",
       "staleValue": "111 Craft Street, Hutto, TX 78634",
       "canonicalValue": "Service-area business serving the Greater Austin Area",
-      "note": "Directory listings may still show a historic Hutto address. Confirm and update external citations to match the current GBP/public website identity."
+      "note": "Directory listings may still show a historic Hutto address. Confirm and update external citations to match the current GBP/public website identity.",
+      "sourceUrls": [
+        "https://www.chamberofcommerce.com/united-states/texas/hutto/painter/2012266792-hill-country-painting",
+        "https://www.startus.cc/company/hill-country-painting",
+        "https://www.yellowpages.com/hutto-tx/mip/hill-country-painting-559060501",
+        "https://www.storeboard.com/hillcountrypainting"
+      ]
     },
     {
       "field": "address",
       "staleValue": "1101 Satellite View #202, Round Rock, TX 78665",
       "canonicalValue": "Service-area business serving the Greater Austin Area",
-      "note": "Directory listings may still show a Round Rock office address and old service URL. Confirm and update external citations to match the current GBP/public website identity."
+      "note": "Directory listings may still show a Round Rock office address and old service URL. Confirm and update external citations to match the current GBP/public website identity.",
+      "sourceUrls": [
+        "https://www.startus.cc/company/454965",
+        "https://www.startus.cc/company/hill-country-painting-round-rock",
+        "https://www.storeboard.com/hillcountrypaintingofroundrock",
+        "https://www.localpainting.net/Texas/Hill-Country-Painting-Of-Round-Rock-76343739120/"
+      ]
+    },
+    {
+      "field": "address",
+      "staleValue": "18815 Obed River Dr, Pflugerville, TX 78660",
+      "canonicalValue": "Service-area business serving the Greater Austin Area",
+      "note": "Directory listings may still show a Pflugerville street address and city-specific URL. Confirm and update external citations to match the current GBP/public website identity.",
+      "sourceUrls": [
+        "https://www.startus.cc/company/254309",
+        "https://www.mapquest.com/us/texas/hill-country-painting-428908114",
+        "https://www.buildzoom.com/contractor/hill-country-painting-pflugerville",
+        "https://www.yellowpages.com/pflugerville-tx/bpp/hill-country-painting-559089428",
+        "https://pro.porch.com/pflugerville-tx/painters/hill-country-painting-pflugerville/pp"
+      ]
+    },
+    {
+      "field": "phone",
+      "staleValue": "(512) 537-2078 or (512) 761-8283",
+      "canonicalValue": "(512) 240-2246",
+      "note": "Do not use stale Pflugerville or Round Rock directory phone data. Use the canonical phone listed on hillcopaint.com and the current Google Business Profile.",
+      "sourceUrls": [
+        "https://www.startus.cc/company/254309",
+        "https://www.mapquest.com/us/texas/hill-country-painting-428908114",
+        "https://www.yellowpages.com/pflugerville-tx/bpp/hill-country-painting-559089428",
+        "https://www.startus.cc/company/454965",
+        "https://www.storeboard.com/hillcountrypaintingofroundrock"
+      ]
     },
     {
       "field": "url",
       "staleValue": "https://hillcopaint.com/round-rock/",
       "canonicalValue": "https://www.hillcopaint.com/service-areas/round-rock",
-      "note": "Use the current canonical Round Rock service-area page for citations instead of old city landing page URLs."
+      "note": "Use the current canonical Round Rock service-area page for citations instead of old city landing page URLs.",
+      "sourceUrls": [
+        "https://www.storeboard.com/hillcountrypaintingofroundrock",
+        "https://www.localpainting.net/Texas/Hill-Country-Painting-Of-Round-Rock-76343739120/"
+      ]
     },
     {
       "field": "url",
@@ -261,13 +309,103 @@
       "field": "hours",
       "staleValue": "Monday-Friday 8:00 AM-5:00 PM or malformed Wednesday-Friday 8:00 AM-8:00 AM",
       "canonicalValue": "Monday-Friday 08:00-18:00",
-      "note": "Directory hours should be reconciled against the current public website and Google Business Profile."
+      "note": "Directory hours should be reconciled against the current public website and Google Business Profile.",
+      "sourceUrls": [
+        "https://www.chamberofcommerce.com/united-states/texas/hutto/painter/2012266792-hill-country-painting",
+        "https://www.storeboard.com/hillcountrypaintingofroundrock"
+      ]
     },
     {
       "field": "name",
       "staleValue": "HillCo Paint",
       "canonicalValue": "Hill Country Painting",
       "note": "Use the current public business name for citations and search snippets."
+    }
+  ],
+  "knownExternalCitationSources": [
+    {
+      "@type": "WebPage",
+      "url": "https://www.whereorg.com/hill-country-painting-42268739",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.chamberofcommerce.com/united-states/texas/hutto/painter/2012266792-hill-country-painting",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.startus.cc/company/hill-country-painting",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.yellowpages.com/hutto-tx/mip/hill-country-painting-559060501",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.storeboard.com/hillcountrypainting",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.startus.cc/company/454965",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.startus.cc/company/hill-country-painting-round-rock",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.storeboard.com/hillcountrypaintingofroundrock",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.localpainting.net/Texas/Hill-Country-Painting-Of-Round-Rock-76343739120/",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.startus.cc/company/254309",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.mapquest.com/us/texas/hill-country-painting-428908114",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.buildzoom.com/contractor/hill-country-painting-pflugerville",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://www.yellowpages.com/pflugerville-tx/bpp/hill-country-painting-559089428",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://pro.porch.com/pflugerville-tx/painters/hill-country-painting-pflugerville/pp",
+      "correctionStatus": "external listing requires manual citation cleanup or suppression request",
+      "correctionReference": "https://www.hillcopaint.com/citation-facts.json"
     }
   ],
   "verificationUrls": [
