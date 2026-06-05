@@ -134,6 +134,8 @@ const REDIRECTS: Record<string, string> = {
   // -- GSC 404 fixes: old blog slugs that no longer exist --
   '/blog/when-to-repaint-a-home-in-austin-hill-country-painting':            '/blog',
   '/blog/how-to-deterimine-the-best-austin-exterior-house-painters':         '/blog/how-to-determine-the-best-austin-exterior-house-painters',
+  '/blog/house-painting-services-austin-hill-country-painting':              '/house-painters-austin',
+  '/blog/austin-exterior-painting-guide-hill-country-painting':              '/exterior-painting-austin',
 
   // -- GSC 404 fixes: old service-location URLs that don't match current pattern --
   '/exterior-painting-taylor':            '/services/exterior-painting',
