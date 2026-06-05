@@ -131,10 +131,10 @@ const PaintingCostsTable = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-            Austin Painting Costs by Project Type
+            Austin Painting Costs by Full Project Scope
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Based on local Austin projects
+            Ranges reflect professional repaint scopes with preparation, premium materials, protection, cleanup, and a written estimate
           </p>
         </div>
 

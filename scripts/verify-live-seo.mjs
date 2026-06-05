@@ -740,6 +740,37 @@ function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
   return matches;
 }
 
+function findSubMinimumStructuredPrices(value, minimum = 6000, path = 'schema', matches = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => findSubMinimumStructuredPrices(item, minimum, `${path}[${index}]`, matches));
+    return matches;
+  }
+
+  if (!value || typeof value !== 'object') {
+    return matches;
+  }
+
+  for (const [key, nestedValue] of Object.entries(value)) {
+    if (/^(price|lowPrice|highPrice)$/i.test(key) && (typeof nestedValue === 'string' || typeof nestedValue === 'number')) {
+      const amount = Number(String(nestedValue).replace(/[^0-9.]/g, ''));
+
+      if (Number.isFinite(amount) && amount > 0 && amount < minimum) {
+        matches.push(`${path}.${key}=${nestedValue}`);
+      }
+    }
+
+    if (/^priceRange$/i.test(key) && typeof nestedValue === 'string' && /\$[0-9]/.test(nestedValue)) {
+      for (const range of findSubMinimumVisibleCostRanges(nestedValue, minimum)) {
+        matches.push(`${path}.${key}=${range}`);
+      }
+    }
+
+    findSubMinimumStructuredPrices(nestedValue, minimum, `${path}.${key}`, matches);
+  }
+
+  return matches;
+}
+
 async function checkDns() {
   const nsRecords = await resolveNs('hillcopaint.com');
   console.log(`DNS authority: ${nsRecords.join(', ')}`);
@@ -1006,6 +1037,7 @@ async function checkSitemapPages() {
   const heroImageProblems = [];
   const staleIdentityProblems = [];
   const lowVisibleCostProblems = [];
+  const lowStructuredPriceProblems = [];
 
   async function worker() {
     while (nextIndex < urls.length) {
@@ -1054,6 +1086,7 @@ async function checkSitemapPages() {
       const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
       const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
       const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleTextFromHtml(html));
+      const lowStructuredPrices = findSubMinimumStructuredPrices(parseJsonLd(html, route));
 
       if (title) {
         sitemapTitles.set(title, [...(sitemapTitles.get(title) || []), route]);
@@ -1077,6 +1110,10 @@ async function checkSitemapPages() {
 
       if (lowVisibleCostRanges.length > 0) {
         lowVisibleCostProblems.push({ url, ranges: [...new Set(lowVisibleCostRanges)] });
+      }
+
+      if (lowStructuredPrices.length > 0) {
+        lowStructuredPriceProblems.push({ url, prices: [...new Set(lowStructuredPrices)] });
       }
 
       for (const match of html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>/gi)) {
@@ -1168,6 +1205,18 @@ async function checkSitemapPages() {
 
   if (lowVisibleCostProblems.length === 0) {
     console.log('Live visible pricing guard: no project cost ranges below $6,000 found on sitemap pages');
+  }
+
+  for (const problem of lowStructuredPriceProblems.slice(0, 10)) {
+    fail(`${problem.url}: live structured pricing must not show project values below $6,000 (${problem.prices.join(', ')})`);
+  }
+
+  if (lowStructuredPriceProblems.length > 10) {
+    fail(`${lowStructuredPriceProblems.length - 10} additional live structured pricing problems not shown.`);
+  }
+
+  if (lowStructuredPriceProblems.length === 0) {
+    console.log('Live structured pricing guard: no project schema values below $6,000 found on sitemap pages');
   }
 
   const duplicateMetadataProblems = [

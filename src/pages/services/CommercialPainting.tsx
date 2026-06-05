@@ -94,7 +94,7 @@ const CommercialPainting = () => {
     },
     {
       question: 'How much does commercial painting cost?',
-      answer: 'Commercial painting costs in Austin vary based on square footage, surface type, and project scope. We provide detailed estimates with transparent pricing.'
+      answer: 'Full professional commercial painting projects in Austin typically start around $6,000 and are priced by square footage, surface type, access, scheduling needs, business-disruption planning, and finish requirements. We provide a detailed written scope so the number makes sense before work begins.'
     }
   ];
 

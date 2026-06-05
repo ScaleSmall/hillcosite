@@ -66,7 +66,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price1500Int?.min || 3200),
+            "price": String(price1500Int?.min || 6000),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -89,7 +89,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price1500Ext?.min || 5200),
+            "price": String(price1500Ext?.min || 6000),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -112,7 +112,7 @@ const TypicalHomeCosts = () => {
           "offers": {
             "@type": "Offer",
             "priceCurrency": "USD",
-            "price": String(price2200Int?.min || 4400),
+            "price": String(price2200Int?.min || 6000),
             "priceValidUntil": priceValidDate,
             "availability": "https://schema.org/InStock"
           }
@@ -201,10 +201,10 @@ const TypicalHomeCosts = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
-            Typical Austin Home Painting Costs
+            Typical Full-Scope Austin Home Painting Costs
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Real examples from Austin neighborhoods
+            Professional project ranges include prep, premium coatings, masking, cleanup, and a written scope
           </p>
         </div>
 
@@ -212,7 +212,7 @@ const TypicalHomeCosts = () => {
           <div className="card p-8 text-center">
             <Home className="w-12 h-12 text-brand-azureDark mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">1,500 sq ft</h3>
-            <p className="text-brand-gray-600 mb-4">Typical Austin Ranch</p>
+            <p className="text-brand-gray-600 mb-4">Full-scope Austin ranch repaint</p>
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>
@@ -228,7 +228,7 @@ const TypicalHomeCosts = () => {
           <div className="card p-8 text-center border-2 border-brand-azureDark">
             <Home className="w-12 h-12 text-brand-azureDark mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">2,200 sq ft</h3>
-            <p className="text-brand-gray-600 mb-4">Average Austin Home</p>
+            <p className="text-brand-gray-600 mb-4">Full-scope average Austin home</p>
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>
@@ -247,7 +247,7 @@ const TypicalHomeCosts = () => {
           <div className="card p-8 text-center">
             <Home className="w-12 h-12 text-brand-azureDark mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-brand-gray-900 mb-2">3,000+ sq ft</h3>
-            <p className="text-brand-gray-600 mb-4">Larger Austin Homes</p>
+            <p className="text-brand-gray-600 mb-4">Full-scope larger Austin home</p>
             <div className="space-y-2">
               <div className="flex justify-between">
                 <span>Interior:</span>

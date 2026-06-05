@@ -73,7 +73,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
     brand: 'Hill Country Painting',
     category: 'Commercial Painting Service',
     sku: 'HCP-COM-001',
-    priceRange: 'Contact for quote',
+    priceRange: '$6,000 - $25,000',
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     warranty: '2-year warranty on materials and workmanship',

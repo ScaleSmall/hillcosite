@@ -56,6 +56,8 @@ interface SEOProps {
 type JsonLdSchema = Record<string, unknown>;
 type SchemaInput = JsonLdSchema | JsonLdSchema[] | null | undefined;
 
+const MINIMUM_SCHEMA_PROJECT_PRICE = 6000;
+
 const truncateAtWordBoundary = (value: string, maxLength: number) => {
   const normalized = String(value).replace(/\s+/g, ' ').trim();
 
@@ -541,8 +543,8 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
       const priceMatch = product.priceRange.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
 
       if (priceMatch) {
-        const lowPrice = priceMatch[1].replace(/,/g, '');
-        const highPrice = priceMatch[2].replace(/,/g, '');
+        const lowPrice = String(Math.max(Number(priceMatch[1].replace(/,/g, '')), MINIMUM_SCHEMA_PROJECT_PRICE));
+        const highPrice = String(Math.max(Number(priceMatch[2].replace(/,/g, '')), MINIMUM_SCHEMA_PROJECT_PRICE));
 
         baseSchema.offers = {
           '@type': 'AggregateOffer',

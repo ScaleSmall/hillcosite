@@ -780,6 +780,37 @@ function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
   return matches;
 }
 
+function findSubMinimumStructuredPrices(value, minimum = 6000, path = 'schema', matches = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => findSubMinimumStructuredPrices(item, minimum, `${path}[${index}]`, matches));
+    return matches;
+  }
+
+  if (!value || typeof value !== 'object') {
+    return matches;
+  }
+
+  for (const [key, nestedValue] of Object.entries(value)) {
+    if (/^(price|lowPrice|highPrice)$/i.test(key) && (typeof nestedValue === 'string' || typeof nestedValue === 'number')) {
+      const amount = Number(String(nestedValue).replace(/[^0-9.]/g, ''));
+
+      if (Number.isFinite(amount) && amount > 0 && amount < minimum) {
+        matches.push(`${path}.${key}=${nestedValue}`);
+      }
+    }
+
+    if (/^priceRange$/i.test(key) && typeof nestedValue === 'string' && /\$[0-9]/.test(nestedValue)) {
+      for (const range of findSubMinimumVisibleCostRanges(nestedValue, minimum)) {
+        matches.push(`${path}.${key}=${range}`);
+      }
+    }
+
+    findSubMinimumStructuredPrices(nestedValue, minimum, `${path}.${key}`, matches);
+  }
+
+  return matches;
+}
+
 function assertPriorityAnchor(pages, sourceRoute, expectedText, expectedRoute) {
   const page = pages.get(sourceRoute);
 
@@ -2474,6 +2505,12 @@ function run() {
 
       if (lowVisibleCostRanges.length > 0) {
         fail(`${routePath}: visible cost copy must not show project ranges below $6,000 (${[...new Set(lowVisibleCostRanges)].join(', ')})`);
+      }
+
+      const lowStructuredPrices = findSubMinimumStructuredPrices(schemaItems);
+
+      if (lowStructuredPrices.length > 0) {
+        fail(`${routePath}: structured pricing must not show project values below $6,000 (${[...new Set(lowStructuredPrices)].join(', ')})`);
       }
 
       const visibleWordCount = visibleText
