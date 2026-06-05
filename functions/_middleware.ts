@@ -537,7 +537,7 @@ const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answe
   '/guides/painting-costs-austin': [
     {
       question: 'How much does it cost to paint a 2,000 sq ft house in Austin?',
-    answer: 'For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from $6,000-$10,500, while full-scope exterior painting often ranges from $8,500-$14,000. Hill Country Painting prices professional repaint projects from a $6,000 minimum so the estimate can include proper prep, protection, coatings, cleanup, and a clear written scope.',
+    answer: 'For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from $6,500-$10,500, while full-scope exterior painting often ranges from $8,500-$14,000. Hill Country Painting uses a $6,000 minimum for complete professional projects so the estimate can include proper prep, protection, coatings, cleanup, and a clear written scope.',
     },
     {
       question: 'What factors affect painting costs in Austin?',
@@ -553,7 +553,7 @@ const GUIDE_FAQ_SCHEMA_FALLBACKS: Record<string, Array<{ question: string; answe
     },
     {
       question: "What's included in a professional painting estimate?",
-      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. At Hill Country Painting, pricing starts at $6,000 for full professional scopes and every estimate explains exactly what is included.',
+      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. At Hill Country Painting, complete professional projects have a $6,000 minimum, and every estimate explains exactly what is included.',
     },
   ],
 };
