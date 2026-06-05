@@ -92,7 +92,7 @@ const CabinetRefinishing = () => {
       name: 'Kara Steenhoek',
       location: 'Austin',
       rating: 5,
-      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Great price and quality workmanship.'
+      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Excellent workmanship and a professional crew.'
     },
     {
       name: 'Patricia Perez',

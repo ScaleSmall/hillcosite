@@ -310,7 +310,7 @@ const HousePaintersAustin = () => {
                 What Austin Homeowners Should Expect
               </h2>
               <p className="text-lg text-brand-gray-600 leading-body mb-6">
-                The cheapest painter is rarely the best value when the home needs real prep, protection, reliable scheduling, and a finish that survives Central Texas sun and daily use. Hill Country Painting positions each project around the finished result and the work required to get there.
+                The lowest estimate is rarely the strongest choice when the home needs real prep, protection, reliable scheduling, and a finish that survives Central Texas sun and daily use. Hill Country Painting positions each project around the finished result and the work required to get there.
               </p>
               <ul className="space-y-4">
                 {[

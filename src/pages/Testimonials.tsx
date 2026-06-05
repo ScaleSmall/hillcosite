@@ -27,14 +27,14 @@ const Testimonials = () => {
       name: 'leslie lyon-house',
       location: 'Austin',
       rating: 5,
-      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Everyone who we worked with at Hill Country Painting was great. Fantastic value - the scope felt clear and fair.',
+      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Everyone who we worked with at Hill Country Painting was great. The project felt clear, organized, and fair.',
       initials: 'LL'
     },
     {
       name: 'Kara Steenhoek',
       location: 'Austin',
       rating: 5,
-      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Great price and quality workmanship. Mel and Justin were the leads who were very professional and kind.',
+      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Excellent workmanship and a professional crew. Mel and Justin were the leads who were very professional and kind.',
       initials: 'KS'
     },
     {
@@ -69,7 +69,7 @@ const Testimonials = () => {
       name: 'paul budreau',
       location: 'Austin',
       rating: 5,
-      text: 'Hill Country Painting made my whole house beautiful, first I had them paint the outside house, they did such a excellent job at a good price that I had them also paint inside the house, which wasn\'t planed but I wanted to take advantage of their quality work, they are artist, I love the results. The whole team where a delight to work with, Forrest, Justin, Rob, Low and the quality painters, Fernando, Jesus and Hidalgo.',
+      text: 'Hill Country Painting made my whole house beautiful. First I had them paint the outside, and they did such an excellent job that I had them paint inside the house as well. I wanted to take advantage of their quality work. They are artists, and I love the results. The whole team was a delight to work with, Forrest, Justin, Rob, Low, and the quality painters, Fernando, Jesus, and Hidalgo.',
       initials: 'PB'
     },
     {

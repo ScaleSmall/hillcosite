@@ -40,9 +40,9 @@ const config: ServiceLocationConfig = {
       { question: 'How do you handle Austin traffic for appointments?', answer: 'We\'re Austin locals who understand the traffic. We schedule appointments and deliveries to avoid peak times and arrive when promised.' }
     ],
     testimonials: [
-      { name: 'leslie lyon-house', location: 'Austin', rating: 5, text: 'So happy with the beautiful paint job. Their service went above and beyond our expectations. Fantastic value - the scope felt clear and fair.', initials: 'LL' },
+      { name: 'leslie lyon-house', location: 'Austin', rating: 5, text: 'So happy with the beautiful paint job. Their service went above and beyond our expectations. The project felt clear, organized, and fair.', initials: 'LL' },
       { name: 'Richard Miller', location: 'Austin', rating: 5, text: 'Just moved to Austin and needed to paint our new home. The lead painter was very helpful and his team did a fantastic job! 100% satisfied.', initials: 'RM' },
-      { name: 'Kara Steenhoek', location: 'Austin', rating: 5, text: 'Fantastic folks to work with! They made the process so easy. Would recommend to anybody. Great price and quality workmanship.', initials: 'KS' }
+      { name: 'Kara Steenhoek', location: 'Austin', rating: 5, text: 'Fantastic folks to work with! They made the process so easy. Would recommend to anybody. Excellent workmanship and a professional crew.', initials: 'KS' }
     ]
   },
   images: {

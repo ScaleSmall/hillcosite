@@ -276,7 +276,7 @@ const Gallery = () => {
       name: 'paul budreau',
       location: 'Austin',
       rating: 5,
-      text: 'Hill Country Painting made my whole house beautiful, first I had them paint the outside house, they did such a excellent job at a good price that I had them also paint inside the house, which wasn\'t planed but I wanted to take advantage of their quality work, they are artist, I love the results.',
+      text: 'Hill Country Painting made my whole house beautiful. First I had them paint the outside, and they did such an excellent job that I had them paint inside the house as well. I wanted to take advantage of their quality work. They are artists, and I love the results.',
       initials: 'PB'
     },
     {

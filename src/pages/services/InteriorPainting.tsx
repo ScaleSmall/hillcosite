@@ -64,7 +64,7 @@ const InteriorPainting = () => {
       name: 'leslie lyon-house',
       location: 'Austin',
       rating: 5,
-      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. Fantastic value - the scope felt clear and fair.',
+      text: 'So happy with the beautiful paint job Netty, Edgar, and Chuy did for the entire interior of our home. Their service went above and beyond our expectations. The project felt clear, organized, and fair.',
       initials: 'LL'
     },
     {
@@ -78,7 +78,7 @@ const InteriorPainting = () => {
       name: 'Kara Steenhoek',
       location: 'Austin',
       rating: 5,
-      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Great price and quality workmanship.',
+      text: 'Fantastic folks to work with! They made the process so easy. I would recommend them to anybody. Excellent workmanship and a professional crew.',
       initials: 'KS'
     }
   ];
