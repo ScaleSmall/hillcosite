@@ -210,6 +210,12 @@ const coreServiceLocationGridRoutes = new Map([
   ['/services/cabinet-refinishing', '/cabinet-refinishing-'],
   ['/services/commercial', '/commercial-painting-'],
 ]);
+const coreServiceLocalDetailSignals = new Map([
+  ['/services/interior-painting', 'Austin interior painters'],
+  ['/services/exterior-painting', 'Austin exterior house painters'],
+  ['/services/cabinet-refinishing', 'Austin cabinet painting'],
+  ['/services/commercial', 'Austin commercial painters'],
+]);
 const serviceAreaFaqSchemaRoutes = [
   '/service-areas/austin',
   '/service-areas/cedar-park',
@@ -2676,6 +2682,31 @@ async function checkCoreServiceLocationGrids() {
   console.log(`Live core service-location grids checked: ${passed}/${coreServiceLocationGridRoutes.size}`);
 }
 
+async function checkCoreServiceLocalSignalDetails() {
+  let passed = 0;
+
+  for (const [route, expectedSignal] of coreServiceLocalDetailSignals) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const hasLocalDetailSignals =
+      html.includes('Austin Painting Service Area Details') &&
+      html.includes('ZIP Codes We Serve') &&
+      html.includes('Nearby Areas') &&
+      html.includes('Services Commonly Requested Here') &&
+      html.includes('78746') &&
+      html.includes('West Lake Hills') &&
+      html.includes(expectedSignal);
+
+    if (response.status !== 200 || !hasLocalDetailSignals) {
+      fail(`${route}: live core service page is missing expanded Austin ZIP, nearby-area, or service-specific local intent details.`);
+      continue;
+    }
+
+    passed++;
+  }
+
+  console.log(`Live core service local detail sections checked: ${passed}/${coreServiceLocalDetailSignals.size}`);
+}
+
 async function checkPrimaryServiceAreaHubLinks() {
   const sourceRoutes = ['/', '/services', '/service-areas'];
   let passed = 0;
@@ -3374,6 +3405,7 @@ await checkServiceLocationServiceSchema();
 await checkServiceLocationLocalSignalDetails();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
+await checkCoreServiceLocalSignalDetails();
 await checkPrimaryServiceAreaHubLinks();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();

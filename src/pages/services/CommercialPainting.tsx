@@ -13,7 +13,12 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
-import { greaterAustinServiceAreas } from '../../config/localSeo';
+import {
+  coreAustinNearbyAreas,
+  coreAustinZipCodes,
+  coreServiceLocalSignalKeywords,
+  greaterAustinServiceAreas
+} from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const CommercialPainting = () => {
@@ -339,6 +344,9 @@ const CommercialPainting = () => {
       <LocalSignals
         areaName="Austin"
         pageType="service"
+        zipCodes={coreAustinZipCodes}
+        nearbyAreas={coreAustinNearbyAreas}
+        serviceKeywords={coreServiceLocalSignalKeywords.commercial}
       />
 
       <MiniFAQ

@@ -58,3 +58,66 @@ export const priorityLocalSearchTopics = [
   'Georgetown painters',
   'Leander painters'
 ] as const;
+
+export const coreAustinZipCodes = [
+  '78701',
+  '78703',
+  '78704',
+  '78731',
+  '78732',
+  '78733',
+  '78734',
+  '78735',
+  '78746',
+  '78750',
+  '78759'
+] as const;
+
+export const coreAustinNearbyAreas = [
+  'Tarrytown',
+  'West Lake Hills',
+  'Rollingwood',
+  'Northwest Hills',
+  'West Lake Highlands',
+  'Lakeway',
+  'Bee Cave',
+  'Barton Creek',
+  'Steiner Ranch',
+  'Circle C Ranch',
+  'North Austin',
+  'Cedar Park',
+  'Round Rock',
+  'Georgetown',
+  'Leander'
+] as const;
+
+export const coreServiceLocalSignalKeywords = {
+  interior: [
+    'Austin interior painting',
+    'Austin interior painters',
+    'interior painting Austin',
+    'house painters Austin',
+    'painting contractors Austin'
+  ],
+  exterior: [
+    'Austin exterior painting',
+    'Austin exterior house painters',
+    'exterior painting Austin',
+    'house painters Austin',
+    'painting contractors Austin'
+  ],
+  cabinet: [
+    'Austin cabinet painting',
+    'Austin cabinet refinishing',
+    'Austin cabinet painters',
+    'cabinet painting Austin',
+    'painting contractors Austin'
+  ],
+  commercial: [
+    'Austin commercial painting',
+    'Austin commercial painters',
+    'commercial painting Austin',
+    'commercial painting contractors Austin',
+    'painting contractors Austin'
+  ]
+} as const;

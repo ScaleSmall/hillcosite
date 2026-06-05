@@ -264,6 +264,12 @@ const coreServiceLocationGridRoutes = new Map([
   ['/services/cabinet-refinishing', '/cabinet-refinishing-'],
   ['/services/commercial', '/commercial-painting-']
 ]);
+const coreServiceLocalDetailSignals = new Map([
+  ['/services/interior-painting', 'Austin interior painters'],
+  ['/services/exterior-painting', 'Austin exterior house painters'],
+  ['/services/cabinet-refinishing', 'Austin cabinet painting'],
+  ['/services/commercial', 'Austin commercial painters']
+]);
 const coreLocalBusinessRoutes = new Set([
   '/',
   '/about',
@@ -1623,6 +1629,17 @@ function run() {
   const configuredGreaterAustinAreas = extractStringArrayConst(localSeoSource, 'greaterAustinServiceAreas');
   const configuredGreaterAustinCounties = extractStringArrayConst(localSeoSource, 'greaterAustinServiceCounties');
   const configuredPriorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
+  const configuredCoreAustinZipCodes = extractStringArrayConst(localSeoSource, 'coreAustinZipCodes');
+  const configuredCoreAustinNearbyAreas = extractStringArrayConst(localSeoSource, 'coreAustinNearbyAreas');
+  if (
+    !configuredCoreAustinZipCodes.includes('78746') ||
+    !configuredCoreAustinNearbyAreas.includes('West Lake Hills') ||
+    !localSeoSource.includes('coreServiceLocalSignalKeywords') ||
+    !localSeoSource.includes('Austin exterior house painters') ||
+    !localSeoSource.includes('Austin commercial painters')
+  ) {
+    fail('src/config/localSeo.ts must include shared Austin ZIP, nearby-area, and core-service local signal data');
+  }
   requiredCanonicalProviderAreaNames = [
     ...configuredGreaterAustinAreas,
     ...configuredGreaterAustinCounties
@@ -1797,6 +1814,20 @@ function run() {
 
     if (!pageHasVisibleLocalTrustSection(page)) {
       fail(`${coreServiceRoute}: core service page should include the visible NAP/map/Google Business Profile trust section`);
+    }
+
+    const expectedServiceSignal = coreServiceLocalDetailSignals.get(coreServiceRoute);
+    const hasExpandedLocalSignals =
+      page.html.includes('Austin Painting Service Area Details') &&
+      page.html.includes('ZIP Codes We Serve') &&
+      page.html.includes('Nearby Areas') &&
+      page.html.includes('Services Commonly Requested Here') &&
+      page.html.includes('78746') &&
+      page.html.includes('West Lake Hills') &&
+      (!expectedServiceSignal || page.html.includes(expectedServiceSignal));
+
+    if (!hasExpandedLocalSignals) {
+      fail(`${coreServiceRoute}: core service page should include expanded Austin local details with ZIP codes, nearby areas, and service-specific local intent`);
     }
   }
 

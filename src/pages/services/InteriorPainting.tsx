@@ -14,7 +14,12 @@ import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
-import { greaterAustinServiceAreas } from '../../config/localSeo';
+import {
+  coreAustinNearbyAreas,
+  coreAustinZipCodes,
+  coreServiceLocalSignalKeywords,
+  greaterAustinServiceAreas
+} from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const InteriorPainting = () => {
@@ -431,6 +436,9 @@ const InteriorPainting = () => {
       <LocalSignals
         areaName="Austin"
         pageType="service"
+        zipCodes={coreAustinZipCodes}
+        nearbyAreas={coreAustinNearbyAreas}
+        serviceKeywords={coreServiceLocalSignalKeywords.interior}
       />
 
       {/* Pattern F: Mini-FAQ */}

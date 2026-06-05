@@ -15,7 +15,12 @@ import NAPMapSection from '../../components/NAPMapSection';
 import LocalSignals from '../../components/LocalSignals';
 import ServiceLocationLinks from '../../components/ServiceLocationLinks';
 import PaintingGuideLinks from '../../components/PaintingGuideLinks';
-import { greaterAustinServiceAreas } from '../../config/localSeo';
+import {
+  coreAustinNearbyAreas,
+  coreAustinZipCodes,
+  coreServiceLocalSignalKeywords,
+  greaterAustinServiceAreas
+} from '../../config/localSeo';
 import { getServiceProduct } from '../../config/serviceProducts';
 
 const ExteriorPainting = () => {
@@ -327,6 +332,9 @@ const ExteriorPainting = () => {
       <LocalSignals
         areaName="Austin"
         pageType="service"
+        zipCodes={coreAustinZipCodes}
+        nearbyAreas={coreAustinNearbyAreas}
+        serviceKeywords={coreServiceLocalSignalKeywords.exterior}
       />
 
       <MiniFAQ
