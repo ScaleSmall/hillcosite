@@ -282,6 +282,41 @@ const Gallery = () => {
     }
   ];
 
+  const projectProofItems = [
+    {
+      title: 'Austin exterior repaint planning',
+      service: 'Exterior painting',
+      area: 'Austin',
+      summary: 'Exterior repaint scopes are reviewed for siding condition, sun exposure, caulking, primer needs, trim detail, and weather windows before production starts.',
+      servicePath: '/exterior-painting-austin',
+      areaPath: '/service-areas/austin'
+    },
+    {
+      title: 'Tarrytown interior repaint preparation',
+      service: 'Interior painting',
+      area: 'Tarrytown',
+      summary: 'Interior projects in older Central Austin homes are planned around wall repair, trim transitions, furniture protection, occupied-home sequencing, and clean daily resets.',
+      servicePath: '/interior-painting-tarrytown',
+      areaPath: '/service-areas/tarrytown'
+    },
+    {
+      title: 'West Lake Hills cabinet finish work',
+      service: 'Cabinet painting',
+      area: 'West Lake Hills',
+      summary: 'Cabinet painting scopes focus on degreasing, sanding, bonding primer, controlled application, hardware handling, cure time, and durable finish expectations.',
+      servicePath: '/cabinet-refinishing-west-lake-hills',
+      areaPath: '/service-areas/west-lake-hills'
+    },
+    {
+      title: 'North Austin commercial painting scheduling',
+      service: 'Commercial painting',
+      area: 'North Austin',
+      summary: 'Commercial painting scopes account for access, business hours, tenant communication, surface protection, phased production, and minimal disruption to operations.',
+      servicePath: '/commercial-painting-north-austin',
+      areaPath: '/service-areas/north-austin'
+    }
+  ];
+
   // Generate ImageGallery schema markup
   const allPhotos = [...featuredPhotos, ...beforeAfterPhotos, ...regularPhotos];
   const imageGallerySchema = {
@@ -305,6 +340,40 @@ const Gallery = () => {
       datePublished: photo.created_at
     })) : []
   };
+  const projectProofSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${siteBaseUrl}/gallery#project-proof`,
+    name: 'Austin painting project proof by service area',
+    description: 'Representative Hill Country Painting project scopes connecting Austin-area painting services with neighborhoods and service-area pages.',
+    provider: canonicalBusinessProvider,
+    itemListElement: projectProofItems.map((project, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `${siteBaseUrl}${project.servicePath}`,
+      item: {
+        '@type': 'CreativeWork',
+        name: project.title,
+        description: project.summary,
+        about: {
+          '@type': 'Service',
+          name: project.service,
+          url: `${siteBaseUrl}${project.servicePath}`,
+          provider: canonicalBusinessProvider,
+          areaServed: {
+            '@type': 'Place',
+            name: project.area
+          }
+        },
+        spatialCoverage: {
+          '@type': 'Place',
+          name: project.area,
+          url: `${siteBaseUrl}${project.areaPath}`
+        },
+        provider: canonicalBusinessProvider
+      }
+    }))
+  };
 
   return (
     <>
@@ -323,6 +392,9 @@ const Gallery = () => {
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(imageGallerySchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(projectProofSchema)}
         </script>
       </Helmet>
 
@@ -390,6 +462,45 @@ const Gallery = () => {
                 ))
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Project Proof */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-gray-900 mb-4">
+              Project Proof by Service and Area
+            </h2>
+            <p className="text-xl text-brand-gray-600 leading-body">
+              Austin-area painting projects are scoped around the property, surface condition, access, neighborhood expectations, and the finish system each job needs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {projectProofItems.map(project => (
+              <article key={project.title} className="card p-6 border-t-4 border-brand-azure">
+                <div className="text-sm font-semibold text-brand-azureDark mb-2">
+                  {project.area}
+                </div>
+                <h3 className="text-xl font-bold text-brand-gray-900 mb-3">
+                  {project.title}
+                </h3>
+                <p className="text-brand-gray-600 leading-body mb-5">
+                  {project.summary}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Link to={project.servicePath} className="text-brand-azureDark font-semibold hover:text-brand-azure">
+                    {project.service}
+                  </Link>
+                  <span className="text-brand-gray-400">/</span>
+                  <Link to={project.areaPath} className="text-brand-azureDark font-semibold hover:text-brand-azure">
+                    {project.area}
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

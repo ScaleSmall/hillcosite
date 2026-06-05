@@ -2728,6 +2728,52 @@ function run() {
         if (!imageGallerySchema || !hasCanonicalProviderObject(imageGallerySchema.provider)) {
           fail(`${routePath}: ImageGallery schema must carry canonical LocalBusiness provider identity`);
         }
+
+        const projectProofSchema = schemaItems.find(item =>
+          schemaTypeIncludes(item, 'ItemList') &&
+          item?.['@id'] === `${baseUrl}/gallery#project-proof`
+        );
+        const projectProofText = JSON.stringify(projectProofSchema || {});
+        const requiredProjectProofLinks = [
+          '/exterior-painting-austin',
+          '/service-areas/austin',
+          '/interior-painting-tarrytown',
+          '/service-areas/tarrytown',
+          '/cabinet-refinishing-west-lake-hills',
+          '/service-areas/west-lake-hills',
+          '/commercial-painting-north-austin',
+          '/service-areas/north-austin'
+        ];
+        const projectProofItems = asArray(projectProofSchema?.itemListElement);
+        const hasCanonicalProjectProviders = projectProofItems.every(listItem =>
+          hasCanonicalProviderObject(listItem?.item?.provider) &&
+          hasCanonicalProviderObject(listItem?.item?.about?.provider)
+        );
+
+        if (!projectProofSchema || projectProofItems.length < 4 || !hasCanonicalProviderObject(projectProofSchema.provider) || !hasCanonicalProjectProviders) {
+          fail(`${routePath}: gallery project proof ItemList must carry canonical LocalBusiness provider identity on the list and each project service`);
+        }
+
+        if (!html.includes('Project Proof by Service and Area')) {
+          fail(`${routePath}: gallery project proof visible section heading is missing`);
+        }
+
+        for (const expectedSignal of [
+          'Austin exterior repaint planning',
+          'Tarrytown interior repaint preparation',
+          'West Lake Hills cabinet finish work',
+          'North Austin commercial painting scheduling'
+        ]) {
+          if (!html.includes(expectedSignal) || !projectProofText.includes(expectedSignal)) {
+            fail(`${routePath}: gallery project proof is missing ${expectedSignal}`);
+          }
+        }
+
+        for (const expectedRoute of requiredProjectProofLinks) {
+          if (!pageLinksToRoute(page, routePath, expectedRoute) || !projectProofText.includes(`${baseUrl}${expectedRoute}`)) {
+            fail(`${routePath}: gallery project proof must visibly and structurally link to ${expectedRoute}`);
+          }
+        }
       }
 
       if (routePath === '/' || routePath === '/guides/painting-costs-austin') {

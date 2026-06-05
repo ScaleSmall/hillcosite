@@ -41,6 +41,8 @@ Eliminate Ahrefs/GSC SEO noise by cleaning redirects, canonical exposure, sitema
 - Gallery, free-estimate, pricing/cost, and AI fact offer schemas now reuse the same canonical LocalBusiness, HomeAndConstructionBusiness, HousePainter provider identity.
 - Reused Service, Offer, ImageGallery, and QuoteAction provider objects now include richer local-business trust fields: legal name, alternate names, disambiguation, NAICS/industry, contact point, email, hours, payment/currency, language, aggregate rating, Google Business Profile, and kgmid.
 - Testimonials review markup now ties each reviewed LocalBusiness back to the canonical website, Google Business Profile, and Google Knowledge Graph ID.
+- `/gallery` now includes visible project-proof content that connects exterior, interior, cabinet, and commercial painting scopes to Austin, Tarrytown, West Lake Hills, and North Austin service pages.
+- `/gallery` now publishes project-proof ItemList schema with canonical LocalBusiness provider identity and service-area links, with local/live verification enforcing those visible and structured links.
 - Legacy West Lake Hills and cabinet-refinishing variants now resolve through direct, crawlable routing instead of leaking as sitemap or internal-link targets.
 - Austin service-area Service schema includes house-painter and priority-service intent signals.
 - The four priority Austin service pages now have enforced local FAQPage schema coverage in both local and live SEO verification.

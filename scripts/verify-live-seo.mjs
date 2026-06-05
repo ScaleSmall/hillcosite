@@ -1665,6 +1665,26 @@ async function checkSupabaseFeed() {
     schemaTypeIncludes(item, 'ImageGallery') &&
     item?.url === `${baseUrl}/gallery`
   );
+  const projectProofSchema = scripts.find(item =>
+    schemaTypeIncludes(item, 'ItemList') &&
+    item?.['@id'] === `${baseUrl}/gallery#project-proof`
+  );
+  const projectProofText = JSON.stringify(projectProofSchema || {});
+  const requiredProjectProofRoutes = [
+    '/exterior-painting-austin',
+    '/service-areas/austin',
+    '/interior-painting-tarrytown',
+    '/service-areas/tarrytown',
+    '/cabinet-refinishing-west-lake-hills',
+    '/service-areas/west-lake-hills',
+    '/commercial-painting-north-austin',
+    '/service-areas/north-austin',
+  ];
+  const projectProofItems = asArray(projectProofSchema?.itemListElement);
+  const hasCanonicalProjectProviders = projectProofItems.every(listItem =>
+    hasCanonicalProviderObject(listItem?.item?.provider) &&
+    hasCanonicalProviderObject(listItem?.item?.about?.provider)
+  );
 
   if (response.status !== 200) {
     fail(`/gallery returned ${response.status}`);
@@ -1682,8 +1702,47 @@ async function checkSupabaseFeed() {
     fail('/gallery ImageGallery schema is missing canonical LocalBusiness provider identity');
   }
 
-  if (response.status === 200 && html.includes(currentSupabaseUrl) && !html.includes(retiredSupabaseUrl) && imageGallerySchema && hasCanonicalProviderObject(imageGallerySchema.provider)) {
-    console.log('Live Supabase gallery feed: current project present, retired project absent; ImageGallery provider identity is canonical');
+  if (
+    !projectProofSchema ||
+    projectProofItems.length < 4 ||
+    !hasCanonicalProviderObject(projectProofSchema.provider) ||
+    !hasCanonicalProjectProviders
+  ) {
+    fail('/gallery project proof ItemList is missing canonical LocalBusiness provider identity on the list or project services');
+  }
+
+  if (!html.includes('Project Proof by Service and Area')) {
+    fail('/gallery project proof visible section heading is missing');
+  }
+
+  for (const expectedSignal of [
+    'Austin exterior repaint planning',
+    'Tarrytown interior repaint preparation',
+    'West Lake Hills cabinet finish work',
+    'North Austin commercial painting scheduling',
+  ]) {
+    if (!html.includes(expectedSignal) || !projectProofText.includes(expectedSignal)) {
+      fail(`/gallery project proof is missing ${expectedSignal}`);
+    }
+  }
+
+  for (const expectedRoute of requiredProjectProofRoutes) {
+    const expectedHref = `href="${expectedRoute}"`;
+    if (!html.includes(expectedHref) || !projectProofText.includes(`${baseUrl}${expectedRoute}`)) {
+      fail(`/gallery project proof must visibly and structurally link to ${expectedRoute}`);
+    }
+  }
+
+  if (
+    response.status === 200 &&
+    html.includes(currentSupabaseUrl) &&
+    !html.includes(retiredSupabaseUrl) &&
+    imageGallerySchema &&
+    hasCanonicalProviderObject(imageGallerySchema.provider) &&
+    projectProofSchema &&
+    hasCanonicalProviderObject(projectProofSchema.provider)
+  ) {
+    console.log('Live Supabase gallery feed: current project present, retired project absent; ImageGallery provider identity and project proof schema are canonical');
   }
 }
 
