@@ -10,7 +10,8 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const Georgetown = () => {
   const georgetownFAQs = [
@@ -184,6 +185,14 @@ const Georgetown = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <LocalSignals
+        areaName="Georgetown"
+        city="Georgetown"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals.georgetown.zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals.georgetown.nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals.georgetown.serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

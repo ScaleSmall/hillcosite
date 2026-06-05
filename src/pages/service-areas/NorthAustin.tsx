@@ -10,7 +10,8 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const NorthAustin = () => {
   const northAustinFAQs = [
@@ -184,6 +185,13 @@ const NorthAustin = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <LocalSignals
+        areaName="North Austin"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals['north-austin'].zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals['north-austin'].nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals['north-austin'].serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     question: 'How much do professional Austin house painters cost?',
-    answer: 'Complete professional painting projects start at $6,000, but most Austin estimates sit above that once the service type is clear: interior projects often begin in the mid-$6,000s, exteriors around $7,000+, cabinets around $6,250+, and commercial projects around $7,500+.'
+    answer: 'Complete professional painting projects are quoted from the minimum project floor upward, with most Austin estimates landing above that once the service type is clear: interior projects often begin around $6,500+, exteriors around $7,000+, cabinets around $6,250+, and commercial projects around $7,500+.'
   },
   {
     question: 'What makes a good Austin house-painting estimate?',

@@ -171,15 +171,22 @@ const Gallery = () => {
 
   const uniqueBeforeAfterPhotos = uniqueByImageUrl(beforeAfterPhotos);
   const uniqueRegularPhotos = uniqueByImageUrl(regularPhotos);
-  const recentBeforeAfter = uniqueBeforeAfterPhotos.slice(0, 6);
-  const olderBeforeAfter = uniqueBeforeAfterPhotos.slice(6);
   const safeHeroFeaturedPhotos = uniqueByImageUrl(featuredPhotos).filter(photo => !isBannedHeroImage(photo.image_url));
   const heroFeaturedPhotos = uniqueByImageUrl([...safeHeroFeaturedPhotos, ...FALLBACK_FEATURED])
     .slice(0, 6);
   const heroFeaturedPhotoUrls = new Set(heroFeaturedPhotos.map(photo => photo.image_url));
-  const nonHeroRegularPhotos = excludeImageUrls(uniqueRegularPhotos, heroFeaturedPhotoUrls);
+  const displayedBeforeAfterPhotos = excludeImageUrls(uniqueBeforeAfterPhotos, heroFeaturedPhotoUrls);
+  const displayedBeforeAfterPhotoUrls = new Set(displayedBeforeAfterPhotos.map(photo => photo.image_url));
+  const displayedRegularExcludedUrls = new Set([...heroFeaturedPhotoUrls, ...displayedBeforeAfterPhotoUrls]);
+  const recentBeforeAfter = displayedBeforeAfterPhotos.slice(0, 6);
+  const olderBeforeAfter = displayedBeforeAfterPhotos.slice(6);
+  const nonHeroRegularPhotos = excludeImageUrls(uniqueRegularPhotos, displayedRegularExcludedUrls);
   const recentRegularPhotos = nonHeroRegularPhotos.slice(0, 12);
   const olderRegularPhotos = nonHeroRegularPhotos.slice(12);
+  const hasSupabaseGalleryPhotos =
+    featuredPhotos.some(photo => !photo.id.startsWith('fb-')) ||
+    beforeAfterPhotos.length > 0 ||
+    regularPhotos.length > 0;
 
   const openLightbox = (images: LightboxImage[], index: number) => {
     setLightboxImages(images);
@@ -196,6 +203,10 @@ const Gallery = () => {
   const [widgetError, setWidgetError] = useState(false);
 
   useEffect(() => {
+    if (loading || hasSupabaseGalleryPhotos) {
+      return;
+    }
+
     const container = widgetContainerRef.current;
     if (!container) return;
     const { url } = getSupabaseConfig();
@@ -216,7 +227,7 @@ const Gallery = () => {
       clearTimeout(timeout);
       if (container.contains(script)) container.removeChild(script);
     };
-  }, []);
+  }, [loading, hasSupabaseGalleryPhotos]);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -517,7 +528,7 @@ const Gallery = () => {
       </section>
 
       {/* Before & After Transformations Section */}
-      {uniqueBeforeAfterPhotos.length > 0 && (
+      {displayedBeforeAfterPhotos.length > 0 && (
         <section className="section-padding bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -538,7 +549,7 @@ const Gallery = () => {
                 >
                   <div
                     onClick={() => {
-                      const images: LightboxImage[] = uniqueBeforeAfterPhotos.map(p => ({
+                      const images: LightboxImage[] = displayedBeforeAfterPhotos.map(p => ({
                         src: p.image_url,
                         alt: p.alt_text,
                         title: p.title,
@@ -603,7 +614,7 @@ const Gallery = () => {
                       >
                         <div
                           onClick={() => {
-                            const images: LightboxImage[] = uniqueBeforeAfterPhotos.map(p => ({
+                            const images: LightboxImage[] = displayedBeforeAfterPhotos.map(p => ({
                               src: p.image_url,
                               alt: p.alt_text,
                               title: p.title,
@@ -654,7 +665,7 @@ const Gallery = () => {
       )}
 
       {/* Latest Projects from Zapier */}
-      {uniqueRegularPhotos.length > 0 && (
+      {nonHeroRegularPhotos.length > 0 && (
         <section className="section-padding bg-brand-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -675,7 +686,7 @@ const Gallery = () => {
                 >
                   <div
                     onClick={() => {
-                      const images: LightboxImage[] = uniqueRegularPhotos.map(p => ({
+                      const images: LightboxImage[] = nonHeroRegularPhotos.map(p => ({
                         src: p.image_url,
                         alt: p.alt_text,
                         title: p.title,
@@ -727,7 +738,7 @@ const Gallery = () => {
                       >
                         <div
                           onClick={() => {
-                            const images: LightboxImage[] = uniqueRegularPhotos.map(p => ({
+                            const images: LightboxImage[] = nonHeroRegularPhotos.map(p => ({
                               src: p.image_url,
                               alt: p.alt_text,
                               title: p.title,

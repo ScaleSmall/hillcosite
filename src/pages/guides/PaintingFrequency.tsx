@@ -171,8 +171,8 @@ const PaintingFrequency = () => {
             <table className="w-full min-w-[1080px] bg-white rounded-lg shadow-lg">
               <thead className="bg-brand-azureDark text-white">
                 <tr>
-                  <th className="px-6 py-4 text-left whitespace-nowrap min-w-[190px]">Surface Type</th>
-                  <th className="px-6 py-4 text-center whitespace-nowrap min-w-[130px]">Frequency</th>
+                  <th className="px-6 py-4 text-left whitespace-nowrap min-w-[190px]"><span className="inline-block whitespace-nowrap">Surface Type</span></th>
+                  <th className="px-6 py-4 text-center whitespace-nowrap min-w-[130px]"><span className="inline-block whitespace-nowrap">Frequency</span></th>
                   <th className="px-6 py-4 text-left">Key Factors</th>
                   <th className="px-6 py-4 text-left">Warning Signs</th>
                   <th className="px-6 py-4 text-left">Central Texas Notes</th>

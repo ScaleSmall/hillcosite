@@ -8,7 +8,8 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const Lakeway = () => {
   const localFAQs = [
@@ -258,6 +259,14 @@ const Lakeway = () => {
       <StatsAndTrust />
       <ServicesGrid />
       <LocalServiceLinks locationName="Lakeway" locationSlug="lakeway" />
+      <LocalSignals
+        areaName="Lakeway"
+        city="Lakeway"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals.lakeway.zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals.lakeway.nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals.lakeway.serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

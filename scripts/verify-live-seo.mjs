@@ -241,6 +241,19 @@ const serviceAreaLocalIntentSignals = new Map([
   ['/service-areas/cedar-park', 'Cedar Park'],
   ['/service-areas/north-austin', 'North Austin'],
 ]);
+const serviceAreaLocalSignalDetails = new Map([
+  ['/service-areas/austin', { zip: '78746', nearby: 'Tarrytown', service: 'Austin exterior house painters' }],
+  ['/service-areas/tarrytown', { zip: '78703', nearby: 'Old Enfield', service: 'Tarrytown house painters' }],
+  ['/service-areas/northwest-hills', { zip: '78731', nearby: 'Allandale', service: 'Northwest Hills house painters' }],
+  ['/service-areas/west-lake-hills', { zip: '78746', nearby: 'Rollingwood', service: 'West Lake Hills house painters' }],
+  ['/service-areas/west-lake-highlands', { zip: '78738', nearby: 'Lake Pointe', service: 'West Lake Highlands house painters' }],
+  ['/service-areas/lakeway', { zip: '78734', nearby: 'Rough Hollow', service: 'Lakeway house painters' }],
+  ['/service-areas/leander', { zip: '78641', nearby: 'Crystal Falls', service: 'Leander house painters' }],
+  ['/service-areas/georgetown', { zip: '78633', nearby: 'Sun City Georgetown', service: 'Georgetown house painters' }],
+  ['/service-areas/round-rock', { zip: '78681', nearby: 'Forest Creek', service: 'Round Rock house painters' }],
+  ['/service-areas/cedar-park', { zip: '78613', nearby: 'Avery Ranch', service: 'Cedar Park house painters' }],
+  ['/service-areas/north-austin', { zip: '78758', nearby: 'The Domain', service: 'North Austin house painters' }],
+]);
 const coreServiceFaqSchemaRoutes = [
   {
     route: '/services/interior-painting',
@@ -2805,6 +2818,31 @@ async function checkCoreServiceLocalSignalDetails() {
   console.log(`Live core service local detail sections checked: ${passed}/${coreServiceLocalDetailSignals.size}`);
 }
 
+async function checkServiceAreaLocalSignalDetails() {
+  let passed = 0;
+
+  for (const [route, expected] of serviceAreaLocalSignalDetails) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const hasLocalDetailSignals =
+      html.includes('Local Service Area Details') &&
+      html.includes('ZIP Codes We Serve') &&
+      html.includes('Nearby Areas') &&
+      html.includes('Services Commonly Requested Here') &&
+      html.includes(expected.zip) &&
+      html.includes(expected.nearby) &&
+      html.includes(expected.service);
+
+    if (response.status !== 200 || !hasLocalDetailSignals) {
+      fail(`${route}: live service-area page is missing expanded ZIP, nearby-area, or service-specific local intent details.`);
+      continue;
+    }
+
+    passed++;
+  }
+
+  console.log(`Live service-area local detail sections checked: ${passed}/${serviceAreaLocalSignalDetails.size}`);
+}
+
 async function checkCoreServiceSchemaIntentSignals() {
   let passed = 0;
 
@@ -3541,6 +3579,7 @@ await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
 await checkCoreServiceSchemaIntentSignals();
 await checkCoreServiceLocalSignalDetails();
+await checkServiceAreaLocalSignalDetails();
 await checkPrimaryServiceAreaHubLinks();
 await checkPriorityLocalBusinessSchema();
 await checkServiceAreaFaqSchema();

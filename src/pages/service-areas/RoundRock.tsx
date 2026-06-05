@@ -10,7 +10,8 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const RoundRock = () => {
   const roundRockFAQs = [
@@ -184,6 +185,14 @@ const RoundRock = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <LocalSignals
+        areaName="Round Rock"
+        city="Round Rock"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals['round-rock'].zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals['round-rock'].nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals['round-rock'].serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

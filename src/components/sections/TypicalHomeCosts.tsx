@@ -213,7 +213,7 @@ const TypicalHomeCosts = () => {
             Typical Full-Scope Austin Home Painting Costs
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Example ranges start above the $6,000 professional floor and move with prep, protection, access, coatings, cleanup, and the written project plan
+            Example ranges start at service-specific entry points and move with prep, protection, access, coatings, cleanup, and the written project plan
           </p>
         </div>
 

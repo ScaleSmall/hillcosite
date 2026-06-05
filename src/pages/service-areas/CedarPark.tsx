@@ -10,7 +10,8 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const CedarPark = () => {
   const cedarParkFAQs = [
@@ -184,6 +185,14 @@ const CedarPark = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <LocalSignals
+        areaName="Cedar Park"
+        city="Cedar Park"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals['cedar-park'].zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals['cedar-park'].nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals['cedar-park'].serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

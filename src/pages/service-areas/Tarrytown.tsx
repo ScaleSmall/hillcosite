@@ -8,7 +8,8 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const Tarrytown = () => {
   const localFAQs = [
@@ -264,6 +265,13 @@ const Tarrytown = () => {
       <StatsAndTrust />
       <ServicesGrid />
       <LocalServiceLinks locationName="Tarrytown" locationSlug="tarrytown" />
+      <LocalSignals
+        areaName="Tarrytown"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals.tarrytown.zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals.tarrytown.nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals.tarrytown.serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

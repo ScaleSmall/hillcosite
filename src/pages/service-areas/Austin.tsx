@@ -11,7 +11,9 @@ import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
+import LocalSignals from '../../components/LocalSignals';
 import { geoAreas } from '../../data/geoAreas';
+import { serviceAreaLocalSignals } from '../../config/localSeo';
 
 const Austin = () => {
   const serviceAreas = [
@@ -349,6 +351,14 @@ const Austin = () => {
         title="Serving Greater Austin & Greater Austin Area"
         subtitle="Professional painting throughout the metro area"
         areas={serviceAreas}
+      />
+
+      <LocalSignals
+        areaName="Austin"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals.austin.zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals.austin.nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals.austin.serviceKeywords]}
       />
 
       <TestimonialsSection

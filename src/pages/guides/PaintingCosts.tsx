@@ -79,7 +79,7 @@ const PaintingCosts = () => {
   const getFAQAnswer = () => {
     const interiorPrice = getCostFactor('faq_2000sqft_interior', '$6,500-$10,500');
     const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$8,500-$14,000');
-    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Hill Country Painting keeps $6,000 as the professional project floor, then prices upward based on prep, protection, coatings, cleanup, and the written project plan.`;
+    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Hill Country Painting keeps a professional project minimum, then prices upward based on prep, protection, coatings, cleanup, and the written project plan.`;
   };
 
   const faqs = [
@@ -160,7 +160,7 @@ const PaintingCosts = () => {
               Match the Price Range to the Right Austin Painting Scope
             </h2>
             <p className="text-xl text-brand-gray-600 leading-body">
-              The $6,000 professional floor is only the starting point for complete projects, not a flat price or quick touch-up rate. Use these Austin project paths to compare how prep, surface condition, access, protection, coatings, scheduling, and finish expectations move each service into its own range.
+              The professional project floor is only the starting point for complete projects, not a flat price or quick touch-up rate. Use these Austin project paths to compare how prep, surface condition, access, protection, coatings, scheduling, and finish expectations move each service into its own range.
             </p>
           </div>
 

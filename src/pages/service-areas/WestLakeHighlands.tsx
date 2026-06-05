@@ -8,7 +8,8 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const WestLakeHighlands = () => {
   const localFAQs = [
@@ -258,6 +259,13 @@ const WestLakeHighlands = () => {
       <StatsAndTrust />
       <ServicesGrid />
       <LocalServiceLinks locationName="West Lake Highlands" locationSlug="west-lake-highlands" />
+      <LocalSignals
+        areaName="West Lake Highlands"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals['west-lake-highlands'].zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals['west-lake-highlands'].nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals['west-lake-highlands'].serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

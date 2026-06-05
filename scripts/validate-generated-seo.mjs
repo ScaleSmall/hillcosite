@@ -368,6 +368,19 @@ const serviceAreaLocalIntentSignals = new Map([
   ['/service-areas/cedar-park', 'Cedar Park'],
   ['/service-areas/north-austin', 'North Austin']
 ]);
+const serviceAreaLocalSignalDetails = new Map([
+  ['/service-areas/austin', { zip: '78746', nearby: 'Tarrytown', service: 'Austin exterior house painters' }],
+  ['/service-areas/tarrytown', { zip: '78703', nearby: 'Old Enfield', service: 'Tarrytown house painters' }],
+  ['/service-areas/northwest-hills', { zip: '78731', nearby: 'Allandale', service: 'Northwest Hills house painters' }],
+  ['/service-areas/west-lake-hills', { zip: '78746', nearby: 'Rollingwood', service: 'West Lake Hills house painters' }],
+  ['/service-areas/west-lake-highlands', { zip: '78738', nearby: 'Lake Pointe', service: 'West Lake Highlands house painters' }],
+  ['/service-areas/lakeway', { zip: '78734', nearby: 'Rough Hollow', service: 'Lakeway house painters' }],
+  ['/service-areas/leander', { zip: '78641', nearby: 'Crystal Falls', service: 'Leander house painters' }],
+  ['/service-areas/georgetown', { zip: '78633', nearby: 'Sun City Georgetown', service: 'Georgetown house painters' }],
+  ['/service-areas/round-rock', { zip: '78681', nearby: 'Forest Creek', service: 'Round Rock house painters' }],
+  ['/service-areas/cedar-park', { zip: '78613', nearby: 'Avery Ranch', service: 'Cedar Park house painters' }],
+  ['/service-areas/north-austin', { zip: '78758', nearby: 'The Domain', service: 'North Austin house painters' }]
+]);
 const requiredCoreServiceFaqSchemaRoutes = [
   {
     route: '/services/interior-painting',
@@ -1691,8 +1704,11 @@ function run() {
     !configuredCoreAustinZipCodes.includes('78746') ||
     !configuredCoreAustinNearbyAreas.includes('West Lake Hills') ||
     !localSeoSource.includes('coreServiceLocalSignalKeywords') ||
+    !localSeoSource.includes('serviceAreaLocalSignals') ||
     !localSeoSource.includes('Austin exterior house painters') ||
-    !localSeoSource.includes('Austin commercial painters')
+    !localSeoSource.includes('Austin commercial painters') ||
+    !localSeoSource.includes('Cedar Park house painters') ||
+    !localSeoSource.includes('Round Rock house painters')
   ) {
     fail('src/config/localSeo.ts must include shared Austin ZIP, nearby-area, and core-service local signal data');
   }
@@ -1850,6 +1866,21 @@ function run() {
 
     if (!pageHasVisibleLocalTrustSection(page)) {
       fail(`${serviceAreaRoute}: service-area page should include the visible NAP/map/Google Business Profile trust section`);
+    }
+
+    const expectedLocalSignals = serviceAreaLocalSignalDetails.get(serviceAreaRoute);
+    const hasExpandedServiceAreaSignals =
+      expectedLocalSignals &&
+      page.html.includes('Local Service Area Details') &&
+      page.html.includes('ZIP Codes We Serve') &&
+      page.html.includes('Nearby Areas') &&
+      page.html.includes('Services Commonly Requested Here') &&
+      page.html.includes(expectedLocalSignals.zip) &&
+      page.html.includes(expectedLocalSignals.nearby) &&
+      page.html.includes(expectedLocalSignals.service);
+
+    if (!hasExpandedServiceAreaSignals) {
+      fail(`${serviceAreaRoute}: service-area page should include expanded local details with ZIP codes, nearby areas, and service-specific local intent`);
     }
   }
 
@@ -2081,6 +2112,14 @@ function run() {
 
   if (!seoComponentSource.includes("from '../lib/businessSchema'") || !seoComponentSource.includes('canonicalBusinessProvider')) {
     fail('src/components/SEO.tsx must reuse the shared canonicalBusinessProvider for crawler-facing provider schema');
+  }
+
+  if (
+    !galleryPageSource.includes('hasSupabaseGalleryPhotos') ||
+    !galleryPageSource.includes('displayedRegularExcludedUrls') ||
+    !galleryPageSource.includes('[loading, hasSupabaseGalleryPhotos]')
+  ) {
+    fail('src/pages/Gallery.tsx must de-duplicate direct gallery images and only inject the Supabase widget when the main feed is not already rendering');
   }
 
   if (!aiManifestGeneratorSource.includes('extractBusinessSocialProfiles(businessConfigSource)')) {

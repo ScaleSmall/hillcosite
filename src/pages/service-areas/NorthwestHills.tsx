@@ -8,7 +8,8 @@ import ServicesGrid from '../../components/sections/ServicesGrid';
 import LocalServiceLinks from '../../components/LocalServiceLinks';
 import CTABanner from '../../components/sections/CTABanner';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const NorthwestHills = () => {
   const localFAQs = [
@@ -258,6 +259,13 @@ const NorthwestHills = () => {
       <StatsAndTrust />
       <ServicesGrid />
       <LocalServiceLinks locationName="Northwest Hills" locationSlug="northwest-hills" />
+      <LocalSignals
+        areaName="Northwest Hills"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals['northwest-hills'].zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals['northwest-hills'].nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals['northwest-hills'].serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

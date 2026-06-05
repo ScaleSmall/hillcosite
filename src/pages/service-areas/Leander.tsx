@@ -10,7 +10,8 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const Leander = () => {
   const leanderFAQs = [
@@ -184,6 +185,14 @@ const Leander = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <LocalSignals
+        areaName="Leander"
+        city="Leander"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals.leander.zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals.leander.nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals.leander.serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>

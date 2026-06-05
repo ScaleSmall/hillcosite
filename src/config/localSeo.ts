@@ -352,3 +352,61 @@ export const serviceAreaLocalIntent = {
     serviceOutput: 'North Austin house painters service for exterior painting, interior painting, cabinet painting, cabinet refinishing, and commercial painting projects in North Austin and the Domain-area corridor'
   }
 } as const;
+
+export const serviceAreaLocalSignals = {
+  'austin': {
+    zipCodes: ['78701', '78703', '78704', '78731', '78746', '78750', '78759'],
+    nearbyAreas: ['Downtown Austin', 'Tarrytown', 'West Lake Hills', 'Northwest Hills', 'Zilker', 'Allandale', 'Circle C Ranch'],
+    serviceKeywords: ['Austin house painters', 'Austin exterior house painters', 'Austin interior painters', 'Austin cabinet painting', 'Austin commercial painters']
+  },
+  'tarrytown': {
+    zipCodes: ['78703'],
+    nearbyAreas: ['Old Enfield', 'Pemberton Heights', 'Bryker Woods', 'Clarksville', 'West Austin'],
+    serviceKeywords: ['Tarrytown house painters', 'Tarrytown exterior painting', 'Tarrytown interior painting', 'Tarrytown cabinet painting', 'historic home painting']
+  },
+  'northwest-hills': {
+    zipCodes: ['78731', '78759'],
+    nearbyAreas: ['Allandale', 'Crestview', 'Quail Creek', 'Balcones', 'North Austin'],
+    serviceKeywords: ['Northwest Hills house painters', 'Northwest Hills exterior painting', 'Northwest Hills interior painting', 'Northwest Hills cabinet painting', 'mid-century home painting']
+  },
+  'west-lake-hills': {
+    zipCodes: ['78746'],
+    nearbyAreas: ['Rollingwood', 'Rob Roy', 'Lost Creek', 'Davenport Ranch', 'Barton Creek'],
+    serviceKeywords: ['West Lake Hills house painters', 'West Lake Hills exterior painting', 'West Lake Hills interior painting', 'West Lake Hills cabinet painting', 'luxury home painting']
+  },
+  'west-lake-highlands': {
+    zipCodes: ['78738', '78746'],
+    nearbyAreas: ['Lake Pointe', 'Bee Cave', 'Spanish Oaks', 'Barton Creek', 'West Lake Hills'],
+    serviceKeywords: ['West Lake Highlands house painters', 'West Lake Highlands exterior painting', 'West Lake Highlands interior painting', 'West Lake Highlands cabinet painting', 'Hill Country home painting']
+  },
+  'lakeway': {
+    zipCodes: ['78734', '78738'],
+    nearbyAreas: ['Rough Hollow', 'The Hills', 'Serene Hills', 'Bee Cave', 'Lake Travis'],
+    serviceKeywords: ['Lakeway house painters', 'Lakeway exterior painting', 'Lakeway interior painting', 'Lakeway cabinet painting', 'Lake Travis home painting']
+  },
+  'leander': {
+    zipCodes: ['78641', '78646'],
+    nearbyAreas: ['Crystal Falls', 'Travisso', 'Mason Hills', 'Devine Lake', 'Bryson'],
+    serviceKeywords: ['Leander house painters', 'Leander exterior painting', 'Leander interior painting', 'Leander cabinet painting', 'HOA color approval painting']
+  },
+  'georgetown': {
+    zipCodes: ['78626', '78628', '78633'],
+    nearbyAreas: ['Sun City Georgetown', 'Berry Creek', 'Teravista', 'Wolf Ranch', 'Georgetown Square'],
+    serviceKeywords: ['Georgetown house painters', 'Georgetown exterior painting', 'Georgetown interior painting', 'Georgetown cabinet painting', 'historic Georgetown painting']
+  },
+  'round-rock': {
+    zipCodes: ['78664', '78665', '78681'],
+    nearbyAreas: ['Forest Creek', 'Mayfield Ranch', 'Brushy Creek', 'Round Rock Ranch', 'Vista Oaks'],
+    serviceKeywords: ['Round Rock house painters', 'Round Rock exterior painting', 'Round Rock interior painting', 'Round Rock cabinet painting', 'Round Rock HOA painting']
+  },
+  'cedar-park': {
+    zipCodes: ['78613'],
+    nearbyAreas: ['Avery Ranch', 'Ranch at Brushy Creek', 'Buttercup Creek', 'Lakeline', 'Twin Creeks'],
+    serviceKeywords: ['Cedar Park house painters', 'Cedar Park exterior painting', 'Cedar Park interior painting', 'Cedar Park cabinet painting', 'Cedar Park HOA painting']
+  },
+  'north-austin': {
+    zipCodes: ['78727', '78729', '78750', '78758'],
+    nearbyAreas: ['The Domain', 'Balcones', 'Milwood', 'Jollyville', 'Anderson Mill'],
+    serviceKeywords: ['North Austin house painters', 'North Austin exterior painting', 'North Austin interior painting', 'North Austin cabinet painting', 'Domain area commercial painting']
+  }
+} as const;

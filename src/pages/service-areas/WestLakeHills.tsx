@@ -10,7 +10,8 @@ import CTABanner from '../../components/sections/CTABanner';
 import MiniFAQ from '../../components/sections/MiniFAQ';
 import TestimonialsSection from '../../components/sections/TestimonialsSection';
 import NAPMapSection from '../../components/NAPMapSection';
-import { serviceAreaLocalIntent } from '../../config/localSeo';
+import LocalSignals from '../../components/LocalSignals';
+import { serviceAreaLocalIntent, serviceAreaLocalSignals } from '../../config/localSeo';
 
 const WestLakeHills = () => {
   const westLakeHillsFAQs = [
@@ -209,6 +210,14 @@ const WestLakeHills = () => {
       </section>
 
       <TestimonialsSection testimonials={testimonials} />
+      <LocalSignals
+        areaName="West Lake Hills"
+        city="West Lake Hills"
+        pageType="area"
+        zipCodes={[...serviceAreaLocalSignals['west-lake-hills'].zipCodes]}
+        nearbyAreas={[...serviceAreaLocalSignals['west-lake-hills'].nearbyAreas]}
+        serviceKeywords={[...serviceAreaLocalSignals['west-lake-hills'].serviceKeywords]}
+      />
       <NAPMapSection />
       <CTABanner />
     </>
