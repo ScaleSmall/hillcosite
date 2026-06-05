@@ -120,7 +120,10 @@ const CommercialPainting = () => {
         service={{
           name: 'Austin Commercial Painting',
           description: 'Professional commercial painting services for businesses across Austin and the Greater Austin area.',
-          areaServed: greaterAustinServiceAreas
+          areaServed: greaterAustinServiceAreas,
+          alternateName: coreServiceLocalSignalKeywords.commercial,
+          keywords: coreServiceLocalSignalKeywords.commercial,
+          serviceOutput: 'Austin commercial painters service for offices, retail spaces, restaurants, medical suites, property managers, and commercial repaint projects across Greater Austin'
         }}
         faq={faqs}
         product={productData}

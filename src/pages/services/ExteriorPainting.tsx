@@ -125,7 +125,10 @@ const ExteriorPainting = () => {
         service={{
           name: 'Austin Exterior Painting',
           description: 'Professional exterior painting services for homes and businesses across Austin and the Greater Austin area.',
-          areaServed: greaterAustinServiceAreas
+          areaServed: greaterAustinServiceAreas,
+          alternateName: coreServiceLocalSignalKeywords.exterior,
+          keywords: coreServiceLocalSignalKeywords.exterior,
+          serviceOutput: 'Austin exterior house painters service for siding, stucco, trim, doors, fascia, and full exterior repaint projects across Greater Austin'
         }}
         faq={faqs}
         product={productData}

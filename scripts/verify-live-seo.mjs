@@ -2707,6 +2707,41 @@ async function checkCoreServiceLocalSignalDetails() {
   console.log(`Live core service local detail sections checked: ${passed}/${coreServiceLocalDetailSignals.size}`);
 }
 
+async function checkCoreServiceSchemaIntentSignals() {
+  let passed = 0;
+
+  for (const [route, expectedSignal] of coreServiceLocalDetailSignals) {
+    const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+    const scripts = parseJsonLd(html, route);
+    const serviceId = `${baseUrl}${route}#service`;
+    const serviceSchemas = scripts.filter(item => schemaTypeIncludes(item, 'Service') && item?.['@id'] === serviceId);
+    const hasLocalIntentSignals = serviceSchemas.some(schema => {
+      const alternateNames = asArray(schema.alternateName);
+      const keywords = asArray(schema.keywords);
+      const serviceOutput = String(schema.serviceOutput || '');
+
+      return (
+        [expectedSignal, 'Austin house painters', 'painting contractors Austin'].every(signal =>
+          alternateNames.includes(signal) && keywords.includes(signal)
+        ) &&
+        serviceOutput.includes(expectedSignal) &&
+        serviceOutput.includes('Greater Austin') &&
+        hasPaintingEstimateAction(schema) &&
+        hasCanonicalServiceProvider(schema)
+      );
+    });
+
+    if (response.status !== 200 || !hasLocalIntentSignals) {
+      fail(`${route}: live core service Service schema is missing local alternateName, keywords, serviceOutput, estimate action, or canonical provider signals.`);
+      continue;
+    }
+
+    passed++;
+  }
+
+  console.log(`Live core service schema intent signals checked: ${passed}/${coreServiceLocalDetailSignals.size}`);
+}
+
 async function checkPrimaryServiceAreaHubLinks() {
   const sourceRoutes = ['/', '/services', '/service-areas'];
   let passed = 0;
@@ -3405,6 +3440,7 @@ await checkServiceLocationServiceSchema();
 await checkServiceLocationLocalSignalDetails();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();
+await checkCoreServiceSchemaIntentSignals();
 await checkCoreServiceLocalSignalDetails();
 await checkPrimaryServiceAreaHubLinks();
 await checkPriorityLocalBusinessSchema();

@@ -96,6 +96,8 @@ export const coreServiceLocalSignalKeywords = {
     'Austin interior painting',
     'Austin interior painters',
     'interior painting Austin',
+    'interior painters near me Austin',
+    'Austin house painters',
     'house painters Austin',
     'painting contractors Austin'
   ],
@@ -103,6 +105,8 @@ export const coreServiceLocalSignalKeywords = {
     'Austin exterior painting',
     'Austin exterior house painters',
     'exterior painting Austin',
+    'exterior painters near me Austin',
+    'Austin house painters',
     'house painters Austin',
     'painting contractors Austin'
   ],
@@ -111,6 +115,8 @@ export const coreServiceLocalSignalKeywords = {
     'Austin cabinet refinishing',
     'Austin cabinet painters',
     'cabinet painting Austin',
+    'cabinet painters near me Austin',
+    'Austin house painters',
     'painting contractors Austin'
   ],
   commercial: [
@@ -118,6 +124,8 @@ export const coreServiceLocalSignalKeywords = {
     'Austin commercial painters',
     'commercial painting Austin',
     'commercial painting contractors Austin',
+    'commercial painters near me Austin',
+    'Austin house painters',
     'painting contractors Austin'
   ]
 } as const;

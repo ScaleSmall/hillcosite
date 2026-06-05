@@ -153,7 +153,10 @@ const CabinetRefinishing = () => {
         service={{
           name: 'Austin Cabinet Painting',
           description: 'Professional cabinet painting and refinishing services for kitchens and bathrooms across Austin and the Greater Austin area.',
-          areaServed: greaterAustinServiceAreas
+          areaServed: greaterAustinServiceAreas,
+          alternateName: coreServiceLocalSignalKeywords.cabinet,
+          keywords: coreServiceLocalSignalKeywords.cabinet,
+          serviceOutput: 'Austin cabinet painting service for kitchen cabinets, bathroom vanities, built-ins, islands, doors, drawers, and cabinet refinishing projects across Greater Austin'
         }}
         faq={faqs}
         product={productData}

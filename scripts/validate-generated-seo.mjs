@@ -3428,11 +3428,29 @@ function run() {
           const areaNames = (serviceSchema?.areaServed || [])
             .map(area => area?.name)
             .filter(Boolean);
+          const expectedCoreServiceSignal = coreServiceLocalDetailSignals.get(routePath);
+          const alternateNames = Array.isArray(serviceSchema?.alternateName) ? serviceSchema.alternateName : [];
+          const keywords = Array.isArray(serviceSchema?.keywords) ? serviceSchema.keywords : [];
+          const serviceOutput = String(serviceSchema?.serviceOutput || '');
 
           for (const requiredArea of ['Austin', 'Leander', 'Georgetown', 'Round Rock', 'Cedar Park', 'North Austin']) {
             if (!areaNames.includes(requiredArea)) {
               fail(`${routePath}: core service schema areaServed is missing ${requiredArea}`);
             }
+          }
+
+          for (const signal of [expectedCoreServiceSignal, 'Austin house painters', 'painting contractors Austin'].filter(Boolean)) {
+            if (!alternateNames.includes(signal)) {
+              fail(`${routePath}: core service schema alternateName is missing ${signal}`);
+            }
+
+            if (!keywords.includes(signal)) {
+              fail(`${routePath}: core service schema keywords are missing ${signal}`);
+            }
+          }
+
+          if (expectedCoreServiceSignal && (!serviceOutput.includes(expectedCoreServiceSignal) || !serviceOutput.includes('Greater Austin'))) {
+            fail(`${routePath}: core service schema serviceOutput should include ${expectedCoreServiceSignal} and Greater Austin`);
           }
         }
 

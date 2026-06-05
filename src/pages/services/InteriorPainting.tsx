@@ -132,7 +132,10 @@ const InteriorPainting = () => {
         service={{
           name: 'Austin Interior Painting',
           description: 'Professional interior painting services for homes and businesses across Austin and the Greater Austin area.',
-          areaServed: greaterAustinServiceAreas
+          areaServed: greaterAustinServiceAreas,
+          alternateName: coreServiceLocalSignalKeywords.interior,
+          keywords: coreServiceLocalSignalKeywords.interior,
+          serviceOutput: 'Austin interior painters service for occupied homes, room repaints, trim, walls, ceilings, and full interior painting projects across Greater Austin'
         }}
         faq={faqs}
         product={productData}
