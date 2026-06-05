@@ -24,7 +24,7 @@ const PaintingCosts = () => {
   const getFAQAnswer = () => {
     const interiorPrice = getCostFactor('faq_2000sqft_interior', '$6,000-$10,500');
     const exteriorPrice = getCostFactor('faq_2000sqft_exterior', '$8,500-$14,000');
-    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Final cost depends on prep, access, coatings, repairs, number of stories, and finish expectations.`;
+    return `For a typical 2,000 sq ft Austin home, full-scope interior painting commonly ranges from ${interiorPrice}, while full-scope exterior painting often ranges from ${exteriorPrice}. Hill Country Painting prices professional repaint projects from a $6,000 minimum so the estimate can include proper prep, protection, coatings, cleanup, and a clear written scope.`;
   };
 
   const faqs = [
@@ -46,7 +46,7 @@ const PaintingCosts = () => {
     },
     {
       question: 'What\'s included in a professional painting estimate?',
-      answer: 'Quality estimates include materials, labor, surface prep, priming, cleanup, and warranty. At Hill Country Painting, we provide clear written estimates with no hidden fees.'
+      answer: 'Quality estimates include materials, labor, surface prep, priming, masking, cleanup, and warranty. At Hill Country Painting, pricing starts at $6,000 for full professional scopes and every estimate explains exactly what is included.'
     }
   ];
 
@@ -77,7 +77,7 @@ const PaintingCosts = () => {
               Cost to Paint a House in Austin (2026)
             </h1>
             <p className="text-xl text-brand-gray-600 leading-body">
-              Complete pricing guide for Austin homeowners. Get accurate estimates for interior painting, exterior painting, and cabinet painting from local professionals.
+              Complete pricing guide for Austin homeowners comparing full-scope professional projects starting at $6,000, with prep, protection, materials, cleanup, and written scope included.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn-primary">
@@ -100,7 +100,7 @@ const PaintingCosts = () => {
       {/* Split Section - Value Explanation */}
       <SplitSection
         title="Why Professional Painting Costs What It Does"
-        description="Understanding painting costs helps you make informed decisions. Professional painting involves specialized materials, skilled labor, proper preparation, and comprehensive cleanup that DIY simply cannot match."
+        description="Understanding painting costs helps you make informed decisions. A $6,000+ professional scope is built around specialized materials, skilled labor, proper preparation, protection, project management, and comprehensive cleanup that DIY simply cannot match."
         benefits={[
           { text: 'Professional-grade materials that last 2-3x longer' },
           { text: 'Comprehensive surface preparation and priming' },
@@ -134,7 +134,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Bundle Interior & Exterior</h3>
-                  <p className="text-brand-gray-600">Save 10-15% when combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> services in one project.</p>
+                  <p className="text-brand-gray-600">Combining <Link to="/services/interior-painting" className="text-brand-azure hover:underline">interior painting</Link> and <Link to="/services/exterior-painting" className="text-brand-azure hover:underline">exterior painting</Link> can reduce duplicate setup while keeping the project in a complete $6,000+ professional scope.</p>
                 </div>
               </div>
               
@@ -154,7 +154,7 @@ const PaintingCosts = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-brand-gray-900 mb-2">Schedule Off-Season</h3>
-                  <p className="text-brand-gray-600">Interior painting in summer may offer slight discounts.</p>
+                  <p className="text-brand-gray-600">Interior painting in summer can create more scheduling flexibility, which helps keep a full-scope estimate efficient.</p>
                 </div>
               </div>
             </div>

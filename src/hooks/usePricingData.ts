@@ -24,7 +24,7 @@ function formatCurrency(value: number): string {
 }
 
 function normalizePriceData(price: PriceData): PriceData {
-  const formatted = price.formatted.replace(
+  const normalizePriceText = (value: string) => value.replace(
     /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g,
     (match, lowValue: string, highValue?: string) => {
       const low = Number(lowValue.replace(/,/g, ''));
@@ -46,7 +46,8 @@ function normalizePriceData(price: PriceData): PriceData {
     ...price,
     min: Math.max(price.min, MINIMUM_VISIBLE_PROJECT_PRICE),
     max: price.max ? Math.max(price.max, MINIMUM_VISIBLE_PROJECT_PRICE) : price.max,
-    formatted
+    formatted: normalizePriceText(price.formatted),
+    description: normalizePriceText(price.description)
   };
 }
 

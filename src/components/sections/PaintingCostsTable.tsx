@@ -134,7 +134,7 @@ const PaintingCostsTable = () => {
             Austin Painting Costs by Full Project Scope
           </h2>
           <p className="text-xl text-brand-gray-600">
-            Ranges reflect professional repaint scopes with preparation, premium materials, protection, cleanup, and a written estimate
+            Professional repaint scopes begin at $6,000 and include preparation, premium materials, protection, cleanup, and a written estimate
           </p>
         </div>
 
@@ -143,8 +143,8 @@ const PaintingCostsTable = () => {
             <thead className="bg-brand-azureDark text-white">
               <tr>
                 <th className="px-6 py-4 text-left">Cost Factor</th>
-                <th className="px-6 py-4 text-center">Interior Range</th>
-                <th className="px-6 py-4 text-center">Exterior Range</th>
+                <th className="px-6 py-4 text-center">Interior Full-Scope Range</th>
+                <th className="px-6 py-4 text-center">Exterior Full-Scope Range</th>
                 <th className="px-6 py-4 text-left">Details</th>
               </tr>
             </thead>

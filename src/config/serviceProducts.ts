@@ -27,7 +27,7 @@ export interface ServiceProduct {
 export const serviceProducts: Record<string, ServiceProduct> = {
   'interior-painting': {
     name: 'Interior House Painting',
-    description: 'Professional interior painting services for homes in Austin, TX. Complete surface preparation, premium paint application, and clean finish. Includes consultation, furniture protection, and 2-year warranty.',
+    description: 'Full-scope professional interior painting services for homes in Austin, TX. Complete surface preparation, premium paint application, protection, cleanup, written scope, and 2-year warranty.',
     brand: 'Hill Country Painting',
     category: 'Interior Painting Service',
     sku: 'HCP-INT-001',
@@ -41,7 +41,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
 
   'exterior-painting': {
     name: 'Exterior House Painting',
-    description: 'Professional exterior painting services for homes in Austin, TX. Weather-resistant finishes designed for Texas climate. Includes power washing, surface prep, premium paint application, and 2-year warranty.',
+    description: 'Full-scope professional exterior painting services for homes in Austin, TX. Weather-resistant finishes designed for Texas climate with washing, repairs, prep, premium coatings, cleanup, written scope, and 2-year warranty.',
     brand: 'Hill Country Painting',
     category: 'Exterior Painting Service',
     sku: 'HCP-EXT-001',
@@ -55,7 +55,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
 
   'cabinet-refinishing': {
     name: 'Cabinet Painting & Refinishing',
-    description: 'Professional cabinet painting services for kitchens and bathrooms in Austin, TX. Custom colors, professional finish, significantly less than replacement cost. Includes prep, painting, and 2-year warranty.',
+    description: 'Full-scope professional cabinet painting services for kitchens and bathrooms in Austin, TX. Includes cleaning, sanding, masking, premium finish application, cleanup, written scope, and 2-year warranty.',
     brand: 'Hill Country Painting',
     category: 'Cabinet Painting Service',
     sku: 'HCP-CAB-001',
@@ -69,7 +69,7 @@ export const serviceProducts: Record<string, ServiceProduct> = {
 
   'commercial-painting': {
     name: 'Commercial Painting',
-    description: 'Professional commercial painting services for businesses in Austin, TX. Minimal disruption, flexible scheduling, quality finish. Interior and exterior painting for offices, retail, and commercial properties.',
+    description: 'Full-scope professional commercial painting services for Austin businesses. Includes scheduling coordination, site protection, prep, premium coatings, cleanup, written scope, and a 2-year warranty where applicable.',
     brand: 'Hill Country Painting',
     category: 'Commercial Painting Service',
     sku: 'HCP-COM-001',
