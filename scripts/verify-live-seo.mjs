@@ -2394,6 +2394,28 @@ async function checkAustinHousePaintersHubSchema() {
   console.log('Live Austin house-painters hub includes exact-intent schema, FAQ, trust section, sitewide navigation link, and priority service links');
 }
 
+async function checkSitewidePriorityServiceNavigation() {
+  const route = '/';
+  const { response, text: html } = await fetchText(`${baseUrl}${route}?v=${Date.now()}`);
+  const requiredSitewidePriorityServiceLinks = [
+    ['Austin House Painters', '/house-painters-austin'],
+    ['Austin Exterior House Painters', '/exterior-painting-austin'],
+    ['Austin Interior Painters', '/interior-painting-austin'],
+    ['Austin Cabinet Painting', '/cabinet-refinishing-austin'],
+    ['Austin Commercial Painters', '/commercial-painting-austin'],
+  ];
+  const missingLinks = requiredSitewidePriorityServiceLinks.filter(([anchorText, expectedRoute]) =>
+    !htmlHasVisibleAnchor(html, anchorText, expectedRoute)
+  );
+
+  if (response.status !== 200 || missingLinks.length > 0) {
+    fail(`${route}: live sitewide navigation is missing priority Austin service links: ${missingLinks.map(([text, path]) => `${text} -> ${path}`).join(', ') || 'none'}.`);
+    return;
+  }
+
+  console.log(`Live sitewide priority service navigation checked: ${requiredSitewidePriorityServiceLinks.length}/${requiredSitewidePriorityServiceLinks.length}`);
+}
+
 async function checkServiceLocationServiceSchema() {
   const { response: sitemapResponse, text: sitemapXml } = await fetchText(`${baseUrl}/sitemap.xml?v=${Date.now()}`);
 
@@ -3271,6 +3293,7 @@ await checkSupabaseFeed();
 await checkAustinSchema();
 await checkAustinServiceAreaSchema();
 await checkAustinHousePaintersHubSchema();
+await checkSitewidePriorityServiceNavigation();
 await checkServiceLocationServiceSchema();
 await checkHubItemListSchema();
 await checkCoreServiceLocationGrids();

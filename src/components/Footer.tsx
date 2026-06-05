@@ -32,6 +32,10 @@ const Footer = () => {
 
   const services = [
     { name: 'Austin House Painters', href: '/house-painters-austin' },
+    { name: 'Austin Exterior House Painters', href: '/exterior-painting-austin' },
+    { name: 'Austin Interior Painters', href: '/interior-painting-austin' },
+    { name: 'Austin Cabinet Painting', href: '/cabinet-refinishing-austin' },
+    { name: 'Austin Commercial Painters', href: '/commercial-painting-austin' },
     { name: 'Interior Painting', href: '/services/interior-painting' },
     { name: 'Exterior Painting', href: '/services/exterior-painting' },
     { name: 'Cabinet Painting', href: '/services/cabinet-refinishing' },

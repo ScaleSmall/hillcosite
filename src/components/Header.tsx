@@ -25,6 +25,10 @@ const Header = () => {
 
   const services = [
     { name: 'Austin House Painters', href: '/house-painters-austin' },
+    { name: 'Austin Exterior House Painters', href: '/exterior-painting-austin' },
+    { name: 'Austin Interior Painters', href: '/interior-painting-austin' },
+    { name: 'Austin Cabinet Painting', href: '/cabinet-refinishing-austin' },
+    { name: 'Austin Commercial Painters', href: '/commercial-painting-austin' },
     { name: 'Interior Painting', href: '/services/interior-painting' },
     { name: 'Exterior Painting', href: '/services/exterior-painting' },
     { name: 'Cabinet Painting', href: '/services/cabinet-refinishing' },
@@ -148,10 +152,10 @@ const Header = () => {
                     </button>
 
                     {/* Services Dropdown */}
-                    {item.name === 'Services' && isServicesOpen && (
+                    {item.name === 'Services' && (
                       <div
                         id="services-dropdown"
-                        className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50"
+                        className={`absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50 ${isServicesOpen ? 'block' : 'hidden'}`}
                       >
                         {services.map((service) => (
                           <Link
@@ -167,10 +171,10 @@ const Header = () => {
                     )}
 
                     {/* Guides Dropdown */}
-                    {item.name === 'Guides' && isGuidesOpen && (
+                    {item.name === 'Guides' && (
                       <div
                         id="guides-dropdown"
-                        className="absolute top-full left-0 mt-0 w-72 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50"
+                        className={`absolute top-full left-0 mt-0 w-72 bg-white rounded-lg shadow-xl border border-brand-gray-200 py-2 z-50 ${isGuidesOpen ? 'block' : 'hidden'}`}
                       >
                         {guides.map((guide) => (
                           <Link

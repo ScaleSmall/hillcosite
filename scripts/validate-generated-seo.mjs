@@ -1953,6 +1953,29 @@ function run() {
     }
   }
 
+  const requiredSitewidePriorityServiceLinks = [
+    ['Austin House Painters', '/house-painters-austin'],
+    ['Austin Exterior House Painters', '/exterior-painting-austin'],
+    ['Austin Interior Painters', '/interior-painting-austin'],
+    ['Austin Cabinet Painting', '/cabinet-refinishing-austin'],
+    ['Austin Commercial Painters', '/commercial-painting-austin']
+  ];
+
+  for (const [label, source] of [
+    ['src/components/Header.tsx', headerSource],
+    ['src/components/Footer.tsx', footerSource]
+  ]) {
+    for (const [anchorText, route] of requiredSitewidePriorityServiceLinks) {
+      if (!source.includes(`name: '${anchorText}'`) || !source.includes(`href: '${route}'`)) {
+        fail(`${label} must include sitewide priority-service navigation link "${anchorText}" -> ${route}`);
+      }
+    }
+  }
+
+  if (headerSource.includes("item.name === 'Services' && isServicesOpen &&") || headerSource.includes("item.name === 'Guides' && isGuidesOpen &&")) {
+    fail('src/components/Header.tsx should keep desktop dropdown links in the prerendered HTML and hide them with CSS state, not omit them until hover/click');
+  }
+
   if (!seoComponentSource.includes('Object.values(businessConfig.socialProfiles)')) {
     fail('src/components/SEO.tsx sameAs schema must use businessConfig.socialProfiles for canonical entity profile links');
   }
