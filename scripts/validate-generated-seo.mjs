@@ -2194,14 +2194,28 @@ function run() {
     ['Austin Commercial Painters', '/commercial-painting-austin']
   ];
 
-  for (const [label, source] of [
-    ['src/components/Header.tsx', headerSource],
-    ['src/components/Footer.tsx', footerSource]
-  ]) {
-    for (const [anchorText, route] of requiredSitewidePriorityServiceLinks) {
-      if (!source.includes(`name: '${anchorText}'`) || !source.includes(`href: '${route}'`)) {
-        fail(`${label} must include sitewide priority-service navigation link "${anchorText}" -> ${route}`);
-      }
+  const requiredHeaderServiceLinks = [
+    ['Interior Painting', '/services/interior-painting'],
+    ['Exterior Painting', '/services/exterior-painting'],
+    ['Cabinet Painting', '/services/cabinet-refinishing'],
+    ['Commercial Painting', '/services/commercial']
+  ];
+
+  for (const [anchorText, route] of requiredHeaderServiceLinks) {
+    if (!headerSource.includes(`name: '${anchorText}'`) || !headerSource.includes(`href: '${route}'`)) {
+      fail(`src/components/Header.tsx Services dropdown must include the core service link "${anchorText}" -> ${route}`);
+    }
+  }
+
+  for (const [anchorText] of requiredSitewidePriorityServiceLinks) {
+    if (headerSource.includes(`name: '${anchorText}'`)) {
+      fail(`src/components/Header.tsx Services dropdown should not include SEO-heavy priority link "${anchorText}"`);
+    }
+  }
+
+  for (const [anchorText, route] of requiredSitewidePriorityServiceLinks) {
+    if (!footerSource.includes(`name: '${anchorText}'`) || !footerSource.includes(`href: '${route}'`)) {
+      fail(`src/components/Footer.tsx must include sitewide priority-service navigation link "${anchorText}" -> ${route}`);
     }
   }
 
