@@ -52,6 +52,8 @@ const businessWeekdayOpens = '08:00';
 const businessWeekdayCloses = '18:00';
 const businessNaicsCode = '238320';
 const businessNaicsDescription = 'Painting and Wall Covering Contractors';
+const SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+const CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE = 4000;
 const canonicalSocialProfileUrls = [
   'https://www.facebook.com/Hillcopaint',
   'https://www.instagram.com/hill_country_painting_austin/',
@@ -61,6 +63,21 @@ const canonicalSocialProfileUrls = [
 ];
 const minimumAggregateRatingValue = 4.5;
 const minimumAggregateReviewCount = 100;
+
+function formatCurrencyForGuard(value) {
+  return `$${value.toLocaleString('en-US')}`;
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function minimumVisibleProjectPriceForRoute(routePath) {
+  return /cabinet-(?:painting|refinishing)/i.test(routePath || '')
+    ? CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE
+    : SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE;
+}
+
 const bannedVisibleValuePositioningSignals = [
   'fraction of replacement cost',
   'all budgets',
@@ -1011,7 +1028,7 @@ function visibleTextFromHtml(html) {
     .trim();
 }
 
-function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
+function findSubMinimumVisibleCostRanges(text, minimum = SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE) {
   const matches = [];
   const pricePattern = /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g;
 
@@ -1027,11 +1044,12 @@ function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
   return matches;
 }
 
-function findExactMinimumVisibleCostMentions(text) {
-  return [...String(text || '').matchAll(/\$6,000\+?/g)].map(match => match[0]);
+function findExactMinimumVisibleCostMentions(text, minimum = SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE) {
+  const minimumPattern = new RegExp(`${escapeRegExp(formatCurrencyForGuard(minimum))}\\+?`, 'g');
+  return [...String(text || '').matchAll(minimumPattern)].map(match => match[0]);
 }
 
-function findSubMinimumStructuredPrices(value, minimum = 6000, path = 'schema', matches = []) {
+function findSubMinimumStructuredPrices(value, minimum = SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE, path = 'schema', matches = []) {
   if (Array.isArray(value)) {
     value.forEach((item, index) => findSubMinimumStructuredPrices(item, minimum, `${path}[${index}]`, matches));
     return matches;
@@ -1380,9 +1398,11 @@ async function checkSitemapPages() {
       const bannedHeroImage = bannedHeroBackgroundImages.find(image => heroHtml.includes(image));
       const staleIdentitySignal = stalePublicIdentitySignals.find(signal => html.includes(signal));
       const visibleText = visibleTextFromHtml(html);
-      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
-      const exactMinimumCostMentions = findExactMinimumVisibleCostMentions(visibleText);
-      const lowStructuredPrices = findSubMinimumStructuredPrices(parseJsonLd(html, route));
+      const minimumVisibleProjectPrice = minimumVisibleProjectPriceForRoute(route);
+      const formattedMinimumVisibleProjectPrice = formatCurrencyForGuard(minimumVisibleProjectPrice);
+      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText, minimumVisibleProjectPrice);
+      const exactMinimumCostMentions = findExactMinimumVisibleCostMentions(visibleText, minimumVisibleProjectPrice);
+      const lowStructuredPrices = findSubMinimumStructuredPrices(parseJsonLd(html, route), minimumVisibleProjectPrice);
       const valuePositioningSignals = bannedVisibleValuePositioningSignals.filter(signal =>
         visibleText.toLowerCase().includes(signal)
       );
@@ -1411,19 +1431,19 @@ async function checkSitemapPages() {
       }
 
       if (lowVisibleCostRanges.length > 0) {
-        lowVisibleCostProblems.push({ url, ranges: [...new Set(lowVisibleCostRanges)] });
+        lowVisibleCostProblems.push({ url, ranges: [...new Set(lowVisibleCostRanges)], minimum: formattedMinimumVisibleProjectPrice });
       }
 
       if (exactMinimumCostMentions.length > 1) {
-        repeatedMinimumCostProblems.push({ url, count: exactMinimumCostMentions.length });
+        repeatedMinimumCostProblems.push({ url, count: exactMinimumCostMentions.length, minimum: formattedMinimumVisibleProjectPrice });
       }
 
       if (lowStructuredPrices.length > 0) {
-        lowStructuredPriceProblems.push({ url, prices: [...new Set(lowStructuredPrices)] });
+        lowStructuredPriceProblems.push({ url, prices: [...new Set(lowStructuredPrices)], minimum: formattedMinimumVisibleProjectPrice });
       }
 
       if (valuePositioningSignals.length > 0) {
-        valuePositioningProblems.push({ url, signals: valuePositioningSignals });
+        valuePositioningProblems.push({ url, signals: valuePositioningSignals, minimum: formattedMinimumVisibleProjectPrice });
       }
 
       if (staleTrustProofSignals.length > 0) {
@@ -1510,7 +1530,7 @@ async function checkSitemapPages() {
   }
 
   for (const problem of lowVisibleCostProblems.slice(0, 10)) {
-    fail(`${problem.url}: live visible cost copy must not show project ranges below $6,000 (${problem.ranges.join(', ')})`);
+    fail(`${problem.url}: live visible cost copy must not show project ranges below ${problem.minimum} (${problem.ranges.join(', ')})`);
   }
 
   if (lowVisibleCostProblems.length > 10) {
@@ -1518,11 +1538,11 @@ async function checkSitemapPages() {
   }
 
   if (lowVisibleCostProblems.length === 0) {
-    console.log('Live visible pricing guard: no project cost ranges below $6,000 found on sitemap pages');
+    console.log('Live visible pricing guard: no project cost ranges below configured service floors found on sitemap pages');
   }
 
   for (const problem of repeatedMinimumCostProblems.slice(0, 10)) {
-    fail(`${problem.url}: live visible cost copy repeats the $6,000 project floor too often (${problem.count} mentions); use varied, context-specific ranges above the floor instead`);
+    fail(`${problem.url}: live visible cost copy repeats the ${problem.minimum} project floor too often (${problem.count} mentions); use varied, context-specific ranges above the floor instead`);
   }
 
   if (repeatedMinimumCostProblems.length > 10) {
@@ -1530,11 +1550,11 @@ async function checkSitemapPages() {
   }
 
   if (repeatedMinimumCostProblems.length === 0) {
-    console.log('Live minimum-price variance guard: no page repeats the exact $6,000 floor in visible copy');
+    console.log('Live minimum-price variance guard: no page repeats its exact configured price floor in visible copy');
   }
 
   for (const problem of lowStructuredPriceProblems.slice(0, 10)) {
-    fail(`${problem.url}: live structured pricing must not show project values below $6,000 (${problem.prices.join(', ')})`);
+    fail(`${problem.url}: live structured pricing must not show project values below ${problem.minimum} (${problem.prices.join(', ')})`);
   }
 
   if (lowStructuredPriceProblems.length > 10) {
@@ -1542,11 +1562,11 @@ async function checkSitemapPages() {
   }
 
   if (lowStructuredPriceProblems.length === 0) {
-    console.log('Live structured pricing guard: no project schema values below $6,000 found on sitemap pages');
+    console.log('Live structured pricing guard: no project schema values below configured service floors found on sitemap pages');
   }
 
   for (const problem of valuePositioningProblems.slice(0, 10)) {
-    fail(`${problem.url}: live visible value-positioning copy should support full-scope $6,000+ projects, not bargain framing (${problem.signals.join(', ')})`);
+    fail(`${problem.url}: live visible value-positioning copy should support full-scope ${problem.minimum}+ projects, not bargain framing (${problem.signals.join(', ')})`);
   }
 
   if (valuePositioningProblems.length > 10) {

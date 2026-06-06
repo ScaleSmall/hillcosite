@@ -42,6 +42,22 @@ const citationFactsPath = resolve(projectRoot, 'public/citation-facts.json');
 const headersPath = resolve(projectRoot, 'public/_headers');
 const redirectsPath = resolve(projectRoot, 'public/_redirects');
 const routesConfigPath = resolve(projectRoot, 'public/_routes.json');
+const SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+const CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE = 4000;
+
+function formatCurrencyForGuard(value) {
+  return `$${value.toLocaleString('en-US')}`;
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function minimumVisibleProjectPriceForRoute(routePath) {
+  return /cabinet-(?:painting|refinishing)/i.test(routePath || '')
+    ? CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE
+    : SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE;
+}
 
 function waitSync(ms) {
   Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
@@ -991,7 +1007,7 @@ function galleryHeroImageReuseProblems(html) {
   return heroImages.filter(src => outsideImageSet.has(src));
 }
 
-function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
+function findSubMinimumVisibleCostRanges(text, minimum = SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE) {
   const matches = [];
   const pricePattern = /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g;
 
@@ -1007,11 +1023,12 @@ function findSubMinimumVisibleCostRanges(text, minimum = 6000) {
   return matches;
 }
 
-function findExactMinimumVisibleCostMentions(text) {
-  return [...String(text || '').matchAll(/\$6,000\+?/g)].map(match => match[0]);
+function findExactMinimumVisibleCostMentions(text, minimum = SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE) {
+  const minimumPattern = new RegExp(`${escapeRegExp(formatCurrencyForGuard(minimum))}\\+?`, 'g');
+  return [...String(text || '').matchAll(minimumPattern)].map(match => match[0]);
 }
 
-function findSubMinimumStructuredPrices(value, minimum = 6000, path = 'schema', matches = []) {
+function findSubMinimumStructuredPrices(value, minimum = SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE, path = 'schema', matches = []) {
   if (Array.isArray(value)) {
     value.forEach((item, index) => findSubMinimumStructuredPrices(item, minimum, `${path}[${index}]`, matches));
     return matches;
@@ -3014,15 +3031,17 @@ function run() {
       }
 
       const visibleText = visibleTextFromHtml(html);
-      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText);
-      const exactMinimumCostMentions = findExactMinimumVisibleCostMentions(visibleText);
+      const minimumVisibleProjectPrice = minimumVisibleProjectPriceForRoute(routePath);
+      const formattedMinimumVisibleProjectPrice = formatCurrencyForGuard(minimumVisibleProjectPrice);
+      const lowVisibleCostRanges = findSubMinimumVisibleCostRanges(visibleText, minimumVisibleProjectPrice);
+      const exactMinimumCostMentions = findExactMinimumVisibleCostMentions(visibleText, minimumVisibleProjectPrice);
 
       if (lowVisibleCostRanges.length > 0) {
-        fail(`${routePath}: visible cost copy must not show project ranges below $6,000 (${[...new Set(lowVisibleCostRanges)].join(', ')})`);
+        fail(`${routePath}: visible cost copy must not show project ranges below ${formattedMinimumVisibleProjectPrice} (${[...new Set(lowVisibleCostRanges)].join(', ')})`);
       }
 
       if (exactMinimumCostMentions.length > 1) {
-        fail(`${routePath}: visible cost copy repeats the $6,000 project floor too often; use varied, context-specific ranges above the floor instead`);
+        fail(`${routePath}: visible cost copy repeats the ${formattedMinimumVisibleProjectPrice} project floor too often; use varied, context-specific ranges above the floor instead`);
       }
 
       const visibleTextLower = visibleText.toLowerCase();
@@ -3030,17 +3049,17 @@ function run() {
       const staleTrustSignals = staleVisibleTrustProofSignals.filter(signal => visibleTextLower.includes(signal));
 
       if (bannedValueSignals.length > 0) {
-        fail(`${routePath}: visible value-positioning copy should support full-scope $6,000+ projects, not bargain framing (${bannedValueSignals.join(', ')})`);
+        fail(`${routePath}: visible value-positioning copy should support full-scope ${formattedMinimumVisibleProjectPrice}+ projects, not bargain framing (${bannedValueSignals.join(', ')})`);
       }
 
       if (staleTrustSignals.length > 0) {
         fail(`${routePath}: visible local trust proof should use the canonical 3000+ project metric, not stale proof copy (${staleTrustSignals.join(', ')})`);
       }
 
-      const lowStructuredPrices = findSubMinimumStructuredPrices(schemaItems);
+      const lowStructuredPrices = findSubMinimumStructuredPrices(schemaItems, minimumVisibleProjectPrice);
 
       if (lowStructuredPrices.length > 0) {
-        fail(`${routePath}: structured pricing must not show project values below $6,000 (${[...new Set(lowStructuredPrices)].join(', ')})`);
+        fail(`${routePath}: structured pricing must not show project values below ${formattedMinimumVisibleProjectPrice} (${[...new Set(lowStructuredPrices)].join(', ')})`);
       }
 
       const visibleWordCount = visibleText

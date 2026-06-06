@@ -78,7 +78,7 @@ const excludeImageUrls = (photos: GalleryPhoto[], excludedUrls: Set<string>) =>
 const FALLBACK_FEATURED: GalleryPhoto[] = [
   {
     id: 'fb-1',
-    image_url: 'https://images.pexels.com/photos/8134847/pexels-photo-8134847.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: '/work-gallery-exterior-ladder.jpg',
     title: 'Austin Exterior Painting',
     description: 'Full exterior repaint with premium weather-resistant finish.',
     alt_text: 'Exterior house painting Tarrytown Austin by Hill Country Painting',
@@ -90,7 +90,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-2',
-    image_url: 'https://images.pexels.com/photos/6585755/pexels-photo-6585755.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: '/work-gallery-interior-roller.jpg',
     title: 'Austin Interior Painting',
     description: 'Complete interior refresh with custom accent wall.',
     alt_text: 'Interior painting living room Central Austin by Hill Country Painting',
@@ -102,7 +102,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-3',
-    image_url: 'https://images.pexels.com/photos/7195569/pexels-photo-7195569.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: '/work-gallery-cabinet-kitchen.jpg',
     title: 'Cabinet Painting Finish',
     description: 'Cabinet painting with custom color matching for a fresh modern look.',
     alt_text: 'Kitchen cabinet painting West Lake Hills Austin by Hill Country Painting',
@@ -114,7 +114,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-4',
-    image_url: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: '/work-gallery-exterior-crew.jpg',
     title: 'Hill Country Exterior Finish',
     description: 'Professional exterior with weather-resistant finishes and detailed trim work.',
     alt_text: 'Classic home exterior painting Austin by Hill Country Painting',
@@ -126,7 +126,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-5',
-    image_url: 'https://images.pexels.com/photos/6434606/pexels-photo-6434606.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: '/work-gallery-interior-prep.jpg',
     title: 'Modern Interior Painting',
     description: 'Complete interior painting with custom accent walls.',
     alt_text: 'Modern interior painting Austin by Hill Country Painting',
@@ -138,7 +138,7 @@ const FALLBACK_FEATURED: GalleryPhoto[] = [
   },
   {
     id: 'fb-6',
-    image_url: 'https://images.pexels.com/photos/6434608/pexels-photo-6434608.jpeg?auto=compress&cs=tinysrgb&w=900',
+    image_url: '/work-gallery-exterior-detail.jpg',
     title: 'Traditional Exterior Painting',
     description: 'Complete exterior painting with premium weather-resistant finishes for Texas climate.',
     alt_text: 'Traditional home exterior painting Austin by Hill Country Painting',
@@ -197,9 +197,7 @@ const Gallery = () => {
     .filter(photo => !isReservedSiteImage(photo.image_url));
   const uniqueRegularPhotos = uniqueByImageUrl(regularPhotos)
     .filter(photo => !isReservedSiteImage(photo.image_url));
-  const safeHeroFeaturedPhotos = uniqueByImageUrl(featuredPhotos).filter(photo => !isBannedHeroImage(photo.image_url));
-  const heroFeaturedPhotos = uniqueByImageUrl([...safeHeroFeaturedPhotos, ...FALLBACK_FEATURED])
-    .slice(0, 6);
+  const heroFeaturedPhotos = FALLBACK_FEATURED;
   const heroFeaturedPhotoUrls = new Set(heroFeaturedPhotos.map(photo => imageDedupeKey(photo.image_url)));
   const displayedBeforeAfterPhotos = excludeImageUrls(uniqueBeforeAfterPhotos, heroFeaturedPhotoUrls);
   const displayedBeforeAfterPhotoUrls = new Set(displayedBeforeAfterPhotos.map(photo => imageDedupeKey(photo.image_url)));
@@ -265,19 +263,19 @@ const Gallery = () => {
     {
       title: 'Custom Kitchen Painting',
       description: 'Complete cabinet painting with custom color matching for a fresh modern look.',
-      image: 'https://images.pexels.com/photos/6207940/pexels-photo-6207940.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/custom-kitchen-painting.jpg',
       link: '/contact'
     },
     {
       title: 'Classic Home Exterior',
       description: 'Professional exterior painting with weather-resistant finishes and detailed trim work for lasting protection.',
-      image: 'https://images.pexels.com/photos/6474338/pexels-photo-6474338.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/classic-home-exterior.jpg',
       link: '/contact'
     },
     {
       title: 'Modern Interior Design',
       description: 'Complete interior painting with custom accent walls and professional color consultation throughout.',
-      image: 'https://images.pexels.com/photos/6474373/pexels-photo-6474373.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/modern-interior-design.jpg',
       link: '/contact'
     },
     {
@@ -287,15 +285,15 @@ const Gallery = () => {
       link: '/contact'
     },
     {
-      title: 'Living Room Color Refresh',
-      description: 'Complete interior refresh with clean wall lines, smooth finish work, and a brighter color plan for everyday living.',
-      image: 'https://images.pexels.com/photos/6474374/pexels-photo-6474374.jpeg?auto=compress&cs=tinysrgb&w=800',
+      title: 'Dramatic Before & After Transformation',
+      description: 'Complete interior transformation showcasing the dramatic difference professional painting makes in refreshing your space.',
+      image: '/living-room-update-central-austin.jpg',
       link: '/contact'
     },
     {
       title: 'Traditional Home Exterior',
       description: 'Complete exterior painting with premium weather-resistant finishes designed for Texas climate conditions.',
-      image: 'https://images.pexels.com/photos/6474396/pexels-photo-6474396.jpeg?auto=compress&cs=tinysrgb&w=800',
+      image: '/traditional-home-exterior.jpg',
       link: '/contact'
     },
     {
@@ -449,10 +447,10 @@ const Gallery = () => {
       {/* Unique Hero Section */}
       <section className="section-padding bg-gradient-to-br from-brand-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
             {/* Left Content */}
-            <div className="lg:col-span-4 space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading whitespace-nowrap">
+            <div className="relative z-10 max-w-xl lg:col-span-5 xl:col-span-4 space-y-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-brand-gray-900 leading-heading">
                 Our Work Gallery
               </h1>
               <p className="text-xl text-brand-gray-600 leading-body">
@@ -461,7 +459,7 @@ const Gallery = () => {
               <div className="text-brand-azureDark font-medium">
                 Clean prep. Crisp lines. Reliable schedules.
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col gap-4">
                 <Link to="/contact" className="btn-primary whitespace-nowrap">
                   Start Your Project
                 </Link>
@@ -473,10 +471,10 @@ const Gallery = () => {
             </div>
 
             {/* Right Featured Projects Grid */}
-            <div className="lg:col-span-8 grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="relative z-0 lg:col-span-7 xl:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
-                  <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-56 lg:h-64"></div>
+                  <div key={index} className="bg-brand-gray-200 animate-pulse rounded-xl h-52 sm:h-56 lg:h-52 xl:h-56"></div>
                 ))
               ) : (
                 heroFeaturedPhotos.map((photo, index) => (
@@ -491,19 +489,19 @@ const Gallery = () => {
                       }));
                       openLightbox(images, index);
                     }}
-                    className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                    className="group relative h-52 sm:h-56 lg:h-52 xl:h-56 overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
                   >
                     <img
                       src={photo.image_url}
                       alt={photo.alt_text}
-                      className="w-full max-h-[320px] object-contain bg-brand-gray-50 transition-transform duration-300 group-hover:opacity-95"
+                      className="h-full w-full object-cover bg-brand-gray-50 transition-opacity duration-300 group-hover:opacity-95"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
                     <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                      <h3 className="font-semibold text-sm mb-1">{photo.title}</h3>
+                      <h3 className="text-sm font-semibold leading-tight">{photo.title}</h3>
                       {photo.category && (
-                        <p className="text-xs text-white capitalize">{photo.category}</p>
+                        <p className="mt-1 text-xs text-white capitalize leading-none">{photo.category}</p>
                       )}
                     </div>
                   </div>
@@ -818,7 +816,7 @@ const Gallery = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="aspect-w-16 aspect-h-10 lg:aspect-none">
                   <ImageWithGeo
-                    src="https://images.pexels.com/photos/6207950/pexels-photo-6207950.jpeg?auto=compress&cs=tinysrgb&w=900"
+                    src="/custom-kitchen-painting.jpg"
                     alt="Kitchen cabinet painting West Lake Hills - Hill Country Painting Austin featured project"
                     width="600"
                     height="400"

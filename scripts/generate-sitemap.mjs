@@ -260,7 +260,7 @@ const generateSitemap = async () => {
     ...blogRoutes.map(route => route.path),
   ];
 
-  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+  let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
@@ -272,6 +272,7 @@ ${allRoutes.map(route => `  <url>
     <priority>${route.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
+  sitemapXml = sitemapXml.replace(/\r\n/g, '\n');
 
   const outputPath = resolve(__dirname, '../public/sitemap.xml');
   writeFileSync(outputPath, sitemapXml, 'utf-8');

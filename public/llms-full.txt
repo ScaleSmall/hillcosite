@@ -1,6 +1,6 @@
 # Hill Country Painting Full AI Route Index
 
-Last updated: 2026-06-05
+Last updated: 2026-06-06
 
 This file lists every canonical indexable URL currently published in the XML sitemap for Hill Country Painting. Use these URLs for citation, retrieval, and answer grounding.
 

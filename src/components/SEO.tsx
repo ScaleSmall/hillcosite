@@ -684,13 +684,21 @@ const SEO = ({ title, description, canonical, robots, pageType, breadcrumbs, ser
     document.title = optimizedTitle;
     upsertNamedMetaTag('description', optimizedDescription);
     upsertNamedMetaTag('robots', robotsContent);
+    upsertNamedMetaTag('googlebot', searchBotRobotsContent);
+    upsertNamedMetaTag('bingbot', searchBotRobotsContent);
+    upsertNamedMetaTag('GPTBot', aiCrawlerRobotsContent);
+    upsertNamedMetaTag('ChatGPT-User', aiCrawlerRobotsContent);
+    upsertNamedMetaTag('PerplexityBot', aiCrawlerRobotsContent);
+    upsertNamedMetaTag('ClaudeBot', aiCrawlerRobotsContent);
+    upsertNamedMetaTag('anthropic-ai', aiCrawlerRobotsContent);
+    upsertNamedMetaTag('cohere-ai', aiCrawlerRobotsContent);
 
     if (canonicalStr) {
       upsertCanonicalTag(canonicalStr);
     }
 
     upsertJsonLdTags(schemaPayload);
-  }, [canonicalStr, optimizedDescription, optimizedTitle, robotsContent, schemaPayload]);
+  }, [aiCrawlerRobotsContent, canonicalStr, optimizedDescription, optimizedTitle, robotsContent, schemaPayload, searchBotRobotsContent]);
 
   return (
     <Helmet>
