@@ -50,7 +50,7 @@ const serviceCounties = extractStringArrayConst(localSeoSource, 'greaterAustinSe
 const priorityLocalSearchTopics = extractStringArrayConst(localSeoSource, 'priorityLocalSearchTopics');
 
 function extractBusinessSocialProfiles(source) {
-  const match = source.match(/socialProfiles:\s*\{([\s\S]*?)\n\s*\},\n\s*googleKnowledgeGraphId:/);
+  const match = source.match(/socialProfiles:\s*\{([\s\S]*?)\r?\n\s*\},\r?\n\s*googleKnowledgeGraphId:/);
 
   if (!match) {
     throw new Error('Could not find socialProfiles in src/config/business.ts');

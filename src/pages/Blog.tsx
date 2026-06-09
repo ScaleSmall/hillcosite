@@ -198,7 +198,7 @@ const Blog = () => {
                         <img
                           src={post.featured_image}
                           alt={cleanBlogDisplayText(post.title)}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="w-full h-full object-cover"
                           loading="lazy"
                         />
                       </div>
