@@ -21,8 +21,6 @@ interface BlogPost {
   author: string;
 }
 
-const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
-
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);
   const [loading, setLoading] = useState(generatedBlogPosts.length === 0);
@@ -47,12 +45,8 @@ const Blog = () => {
 
         if (error) {
           console.error('Error fetching blog posts:', error);
-        } else {
-          const routablePosts = (data || []).filter(post => generatedBlogSlugs.has(post.slug));
-
-          if (routablePosts.length > 0) {
-            setBlogPosts(routablePosts);
-          }
+        } else if (data && data.length > 0) {
+          setBlogPosts(data);
         }
       } catch (err) {
         console.error('Error:', err);
