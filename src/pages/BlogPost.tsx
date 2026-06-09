@@ -419,6 +419,21 @@ const BlogPost = () => {
         </div>
       </article>
 
+      {/* Call CTA */}
+      <section className="py-10 bg-white border-t border-brand-gray-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <a
+            href="tel:+15122402246"
+            className="inline-flex items-center justify-center gap-3 bg-brand-azureDark hover:bg-brand-gray-800 text-white font-bold text-xl px-10 py-5 rounded-xl shadow-lg transition-colors duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z" />
+            </svg>
+            Call Now: (512) 240-2246
+          </a>
+        </div>
+      </section>
+
       {(relatedPosts.length > 0 || serviceLinks.length > 0) && (
         <section className="section-padding bg-brand-gray-50" aria-labelledby="related-painting-resources">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
