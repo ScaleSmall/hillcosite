@@ -193,6 +193,16 @@ const Blog = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {recentPosts.map((post) => (
                   <article key={post.id} className="card overflow-hidden group">
+                    {post.featured_image && (
+                      <div className="aspect-video overflow-hidden bg-brand-gray-100">
+                        <img
+                          src={post.featured_image}
+                          alt={cleanBlogDisplayText(post.title)}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
                     <div className="p-6">
                       <div className="flex items-center space-x-4 text-sm text-brand-gray-500 mb-3">
                         <div className="flex items-center space-x-1">
