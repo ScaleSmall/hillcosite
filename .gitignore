@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# n8n workflow JSONs contain hardcoded credentials — keep out of git
+n8n-workflow-*.json
