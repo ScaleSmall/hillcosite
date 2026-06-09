@@ -45,7 +45,8 @@ const Blog = () => {
 
         if (error) {
           console.error('Error fetching blog posts:', error);
-        } else if (data && data.length > 0) {
+        } else if (data !== null) {
+          // Always trust Supabase result — empty table = no posts shown
           setBlogPosts(data);
         }
       } catch (err) {
