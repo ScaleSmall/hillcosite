@@ -285,8 +285,8 @@ Deno.serve(async (req: Request) => {
             supabase,
           );
         } catch (imageError) {
-          console.error('Image upload failed:', imageError);
-          permanentImageUrl = null;
+          console.error('Image upload failed, using original URL:', imageError);
+          permanentImageUrl = body.featured_image;
         }
       }
 
