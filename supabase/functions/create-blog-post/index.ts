@@ -14,9 +14,10 @@ interface BlogPostInput {
   category?: string;
   tags?: string[];
   featured_image?: string;
-  published?: boolean;
+  published?: boolean | string;
   meta_description?: string;
   meta_keywords?: string;
+  tldr?: string;
 }
 
 function generateSlug(title: string): string {
@@ -180,7 +181,7 @@ Deno.serve(async (req: Request) => {
 
       const category = body.category || 'Industry Insights';
 
-      const { tldr, cleanedContent } = extractTLDR(body.content);
+      const { tldr: extractedTldr, cleanedContent } = extractTLDR(body.content);
       const plainTextContent = stripHtmlTags(cleanedContent);
       const autoExcerpt = plainTextContent.substring(0, 200).trim() + '...';
 
@@ -188,7 +189,7 @@ Deno.serve(async (req: Request) => {
         title: cleanedTitle,
         slug: slug,
         contentLength: body.content.length,
-        hasTLDR: !!tldr,
+        hasTLDR: !!(body.tldr || extractedTldr),
         hasImage: !!body.featured_image
       });
 
@@ -216,7 +217,7 @@ Deno.serve(async (req: Request) => {
         slug: slug,
         content: cleanedContent,
         excerpt: body.excerpt || autoExcerpt,
-        tldr: tldr,
+        tldr: body.tldr || extractedTldr,
         author: body.author || 'Hill Country Painting',
         category: category,
         tags: body.tags || [],
@@ -224,7 +225,7 @@ Deno.serve(async (req: Request) => {
         featured_image_alt: imageMetadata.alt,
         featured_image_title: imageMetadata.title,
         featured_image_caption: imageMetadata.caption,
-        published: body.published !== undefined ? body.published : true,
+        published: body.published === 'true' || body.published === true ? true : body.published === undefined ? true : false,
         published_at: new Date().toISOString(),
         meta_description: body.meta_description || body.excerpt || plainTextContent.substring(0, 160),
         meta_keywords: body.meta_keywords || '',
