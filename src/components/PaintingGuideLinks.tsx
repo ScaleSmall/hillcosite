@@ -29,26 +29,6 @@ const guides = [
     href: '/guides/how-often-paint-central-texas',
     description: 'Maintenance timing for exterior, interior, trim, and cabinet finishes in Central Texas conditions.'
   },
-  {
-    title: 'Best Austin Exterior House Painters',
-    href: '/blog/how-to-determine-the-best-austin-exterior-house-painters',
-    description: 'How Austin homeowners can compare exterior painters by prep, reviews, warranty, and local project management.'
-  },
-  {
-    title: 'Recommended Home Exterior Painters',
-    href: '/blog/recommendations-on-home-exterior-painters',
-    description: 'What to look for in an exterior painting estimate before choosing a contractor for a Central Texas home.'
-  },
-  {
-    title: 'Four Types of Paint',
-    href: '/blog/what-are-the-4-types-of-paint',
-    description: 'A practical guide to acrylic, oil-based, enamel, and specialty coatings for Austin painting projects.'
-  },
-  {
-    title: 'October Exterior Painting',
-    href: '/blog/is-october-too-late-to-paint-outside',
-    description: 'When fall exterior painting works in Austin and what crews check before applying coatings.'
-  }
 ];
 
 const PaintingGuideLinks: React.FC<PaintingGuideLinksProps> = ({ surface = 'gray' }) => {
