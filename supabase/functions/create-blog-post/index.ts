@@ -137,6 +137,22 @@ const STALE_TRUST_PHRASES = [
   'family-owned austin painting contractors',
 ];
 
+// Material/supply unit prices (a gallon of paint, a quart of stain) are
+// legitimately far below the project floors. A price is exempt when a material
+// unit appears immediately after it ("$45 per gallon") or just before it
+// ("a gallon of paint costs $45"). Per-square-foot, per-room, and per-door
+// rates stay subject to the floor — they are project totals in disguise.
+const MATERIAL_UNIT_TRAILING = /^\s*(?:(?:per|a|an|each)\s+|\/\s*)?(?:gallon|gal\b|quart|can)\b/i;
+const MATERIAL_UNIT_LEADING = /(?:gallon|gal|quart|can)s?\b[^$]{0,28}$/i;
+
+function isMaterialUnitPrice(text: string, start: number, end: number): boolean {
+  if (MATERIAL_UNIT_TRAILING.test(text.slice(end, end + 24))) {
+    return true;
+  }
+
+  return MATERIAL_UNIT_LEADING.test(text.slice(Math.max(0, start - 32), start));
+}
+
 function findSubMinimumPrices(text: string, minimum = MINIMUM_VISIBLE_PROJECT_PRICE): string[] {
   const matches: string[] = [];
   const pricePattern = /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g;
@@ -146,7 +162,11 @@ function findSubMinimumPrices(text: string, minimum = MINIMUM_VISIBLE_PROJECT_PR
     const high = match[2] ? Number(match[2].replace(/,/g, '')) : null;
 
     if (low < minimum || (high !== null && high < minimum)) {
-      matches.push(match[0]);
+      const start = match.index ?? 0;
+
+      if (!isMaterialUnitPrice(text, start, start + match[0].length)) {
+        matches.push(match[0]);
+      }
     }
   }
 
