@@ -24,11 +24,17 @@ interface BlogPost {
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [retryToken, setRetryToken] = useState(0);
 
   const recentPosts = blogPosts.slice(0, 6);
   const pastPosts = blogPosts.slice(6);
 
   useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
+
     const fetchPosts = async () => {
       if (!supabaseConfigured || !supabase) {
         console.warn('Supabase not configured, skipping blog post fetch');
@@ -41,23 +47,42 @@ const Blog = () => {
           .from('blog_posts')
           .select('id, title, slug, excerpt, featured_image, published_at, category, author')
           .eq('published', true)
-          .order('published_at', { ascending: false });
+          .order('published_at', { ascending: false })
+          .abortSignal(controller.signal);
+
+        if (cancelled) return;
 
         if (error) {
           console.error('Error fetching blog posts:', error);
+          setLoadError(true);
         } else if (data !== null) {
           // Always trust Supabase result — empty table = no posts shown
           setBlogPosts(data);
+          setLoadError(false);
         }
       } catch (err) {
-        console.error('Error:', err);
+        if (!cancelled) {
+          console.error('Error:', err);
+          setLoadError(true);
+        }
       } finally {
-        setLoading(false);
+        clearTimeout(timeout);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     };
 
+    setLoading(true);
+    setLoadError(false);
     fetchPosts();
-  }, []);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+      controller.abort();
+    };
+  }, [retryToken]);
 
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -175,6 +200,18 @@ const Blog = () => {
             <div className="text-center py-12">
               <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-brand-azureDark"></div>
               <p className="mt-4 text-brand-gray-600">Loading posts...</p>
+            </div>
+          ) : loadError && blogPosts.length === 0 ? (
+            <div className="text-center py-12">
+              <h2 className="text-2xl font-bold text-brand-gray-900 mb-4">We couldn't load posts right now</h2>
+              <p className="text-brand-gray-600 mb-6">The connection was interrupted. Please try again.</p>
+              <button
+                type="button"
+                onClick={() => setRetryToken(token => token + 1)}
+                className="btn-primary"
+              >
+                Try Again
+              </button>
             </div>
           ) : blogPosts.length === 0 ? (
             <div className="text-center py-12">
