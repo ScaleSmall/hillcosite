@@ -22,8 +22,8 @@ interface BlogPost {
 }
 
 const Blog = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>(generatedBlogPosts);
-  const [loading, setLoading] = useState(generatedBlogPosts.length === 0);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const recentPosts = blogPosts.slice(0, 6);
   const pastPosts = blogPosts.slice(6);
