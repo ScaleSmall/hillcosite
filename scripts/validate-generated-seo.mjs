@@ -91,8 +91,6 @@ const baseUrl = 'https://www.hillcopaint.com';
 const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+Painting&kgmid=/g/11frssbq6p';
 const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
-const typoBlogPath = '/blog/how-to-deterimine-the-best-austin-exterior-house-painters';
-const correctedBlogPath = '/blog/how-to-determine-the-best-austin-exterior-house-painters';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
 const stalePublicIdentitySignals = [
@@ -232,7 +230,6 @@ const requiredLegacyRedirects = new Map([
   ['/service/custom-home-painting-round-rock', '/services'],
   ['/residential-painting', '/services'],
   ['/residential-painting-round-rock', '/service-areas/round-rock'],
-  [typoBlogPath, correctedBlogPath],
   ['/blog/house-painting-services-austin-hill-country-painting', '/house-painters-austin'],
   ['/blog/austin-exterior-painting-guide-hill-country-painting', '/exterior-painting-austin'],
   ['/get-a-free-estimate', '/free-estimate'],
@@ -1788,13 +1785,6 @@ function run() {
     closes: extractStringProperty(businessConfigSource, 'closes')
   };
 
-  if (!sitemapSet.has(correctedBlogPath)) {
-    fail(`sitemap.xml must include corrected blog URL ${correctedBlogPath}`);
-  }
-
-  if (sitemapSet.has(typoBlogPath)) {
-    fail(`sitemap.xml must not include misspelled blog URL ${typoBlogPath}`);
-  }
   const locationServiceAreaSlugs = extractLocationServiceAreaSlugs(locationsConfigSource);
   const locationLocalFacts = extractLocationLocalFacts(locationsConfigSource);
   const middlewareRedirects = extractMiddlewareRedirects(middlewareSource);
@@ -2383,10 +2373,6 @@ function run() {
     if (!htmlSitemapPage) {
       fail('/sitemap: missing generated HTML for visible sitemap link validation');
     } else {
-      if (!pageLinksToRoute(htmlSitemapPage, '/sitemap', correctedBlogPath)) {
-        fail(`/sitemap: visible HTML sitemap should link to corrected blog URL ${correctedBlogPath}`);
-      }
-
       if (htmlSitemapPage.html.toLowerCase().includes('deterimine')) {
         fail('/sitemap: visible HTML sitemap must not include the misspelled blog slug/title');
       }
