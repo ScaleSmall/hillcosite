@@ -26,4 +26,7 @@ jobs:
         run: |
           git clone --mirror "$SOURCE_REPO" repo.git
           cd repo.git
-          git push --mirror "$TARGET_REPO"
+          # Mirror branches and tags only. `git push --mirror` also tries to push
+          # GitHub's hidden refs/pull/* refs, which the target always rejects
+          # ("deny updating a hidden ref") and fails the job once any PR exists.
+          git push --prune "$TARGET_REPO" "+refs/heads/*:refs/heads/*" "+refs/tags/*:refs/tags/*"
