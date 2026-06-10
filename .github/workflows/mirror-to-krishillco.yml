@@ -6,7 +6,12 @@ on:
 
 jobs:
   mirror:
-    if: github.actor != 'KrisHillCo'
+    # Run only in the ScaleSmall source repo, no matter which actor pushed.
+    # The old actor-based guard both skipped legitimate mirrors and let this
+    # workflow run inside KrisHillCo/HillCoSite, where it pushed the repo onto
+    # itself (the failed "Mirror to KrisHillCo" runs). Loop protection comes from
+    # convergence: an identical --mirror push is a no-op and fires no push event.
+    if: github.repository == 'ScaleSmall/hillcosite'
     runs-on: ubuntu-latest
     permissions:
       contents: write

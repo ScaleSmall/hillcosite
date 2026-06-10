@@ -6,7 +6,14 @@ on:
 
 jobs:
   mirror:
-    if: github.actor != 'ScaleSmall'
+    # Run only in the KrisHillCo source repo, no matter which actor pushed.
+    # The old `github.actor != 'ScaleSmall'` guard silently skipped mirroring for
+    # every commit pushed or merged by the ScaleSmall account, stranding production
+    # deploys (Cloudflare Pages builds from ScaleSmall/hillcosite).
+    # Loop protection comes from convergence: the mirror push lands identical refs
+    # on the target, so the target's mirror-back finds nothing to push and no
+    # further push event fires.
+    if: github.repository == 'KrisHillCo/HillCoSite'
     runs-on: ubuntu-latest
     permissions:
       contents: read

@@ -81,6 +81,94 @@ function normalizeTags(tags: string[] | string | undefined, category: string): s
   return Array.from(new Set(baseTags));
 }
 
+// Brand-compliance gate. These rules are a faithful port of the build-time
+// validator in scripts/validate-generated-seo.mjs (KrisHillCo/HillCoSite):
+// bannedVisibleValuePositioningSignals, staleVisibleTrustProofSignals, and
+// findSubMinimumVisibleCostRanges. The site build prerenders published posts
+// and FAILS the entire Cloudflare Pages deploy if any post violates them, so
+// non-compliant posts must never reach the database. Keep both lists in sync.
+const MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+
+const BANNED_VALUE_PHRASES = [
+  'fraction of replacement cost',
+  'all budgets',
+  'budget options',
+  'budget requirements',
+  'budget requires',
+  'cheaper',
+  'minor savings',
+  'cost-effective',
+  'price point',
+  'fantastic value',
+  'great price',
+  'good price',
+  'best price',
+  'fair price',
+  'great value',
+  'good value',
+  'lowest bid',
+  'cheapest bid',
+  'low-bid',
+  'saved the homeowners',
+  'on budget',
+  'stay within budget',
+];
+
+const STALE_TRUST_PHRASES = [
+  '100+ homes painted',
+  '100+ projects',
+  '100+ local projects',
+  '100+ projects complete',
+  '100+ projects completed',
+  '350+ projects',
+  '500+ homes painted',
+  'family-owned painting company serving austin since 2019',
+  'family-owned austin painting contractors',
+];
+
+function findSubMinimumPrices(text: string, minimum = MINIMUM_VISIBLE_PROJECT_PRICE): string[] {
+  const matches: string[] = [];
+  const pricePattern = /\$([0-9][0-9,]*)(?:\s*(?:-|–|to)\s*\$?([0-9][0-9,]*))?/g;
+
+  for (const match of text.matchAll(pricePattern)) {
+    const low = Number(match[1].replace(/,/g, ''));
+    const high = match[2] ? Number(match[2].replace(/,/g, '')) : null;
+
+    if (low < minimum || (high !== null && high < minimum)) {
+      matches.push(match[0]);
+    }
+  }
+
+  return matches;
+}
+
+interface ComplianceViolations {
+  banned_phrases: string[];
+  stale_trust_phrases: string[];
+  sub_minimum_prices: string[];
+}
+
+function findComplianceViolations(fields: Array<string | null | undefined>): ComplianceViolations | null {
+  const visibleText = fields
+    .filter(Boolean)
+    .map((field) => stripHtmlTags(String(field)))
+    .join(' ');
+  const visibleTextLower = visibleText.toLowerCase();
+
+  const violations: ComplianceViolations = {
+    banned_phrases: BANNED_VALUE_PHRASES.filter((phrase) => visibleTextLower.includes(phrase)),
+    stale_trust_phrases: STALE_TRUST_PHRASES.filter((phrase) => visibleTextLower.includes(phrase)),
+    sub_minimum_prices: [...new Set(findSubMinimumPrices(visibleText))],
+  };
+
+  const hasViolations =
+    violations.banned_phrases.length > 0 ||
+    violations.stale_trust_phrases.length > 0 ||
+    violations.sub_minimum_prices.length > 0;
+
+  return hasViolations ? violations : null;
+}
+
 function extractTLDR(content: string): { tldr: string | null; cleanedContent: string } {
   const tldrRegex = /<p>\s*<strong>\s*TL;DR:?\s*<\/strong>\s*(.*?)<\/p>\s*/is;
   const match = content.match(tldrRegex);
@@ -313,6 +401,33 @@ Deno.serve(async (req: Request) => {
         meta_keywords: body.meta_keywords || '',
       };
 
+      const violations = findComplianceViolations([
+        postData.title,
+        postData.content,
+        postData.excerpt,
+        postData.tldr,
+        postData.meta_description,
+      ]);
+
+      if (violations) {
+        console.error(
+          `[create-blog-post] content_rejected slug=${slug} banned=${JSON.stringify(violations.banned_phrases)} stale_trust=${JSON.stringify(violations.stale_trust_phrases)} low_prices=${JSON.stringify(violations.sub_minimum_prices)}`,
+        );
+
+        return new Response(
+          JSON.stringify({
+            error: 'Post violates brand positioning rules and would break the site build',
+            violations,
+            hint: 'Reword to support full-scope $6,000+ project positioning. Avoid bargain language, outdated trust claims, and any visible price figures below $6,000.',
+            rule_source: 'scripts/validate-generated-seo.mjs in the website repo',
+          }),
+          {
+            status: 422,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          },
+        );
+      }
+
       const { data, error } = await supabase
         .from('blog_posts')
         .insert([postData])
@@ -320,6 +435,7 @@ Deno.serve(async (req: Request) => {
         .single();
 
       if (error) {
+        console.error(`[create-blog-post] insert_failed slug=${slug} error=${error.message}`);
         return new Response(
           JSON.stringify({ error: 'Failed to create blog post', details: error.message }),
           {
@@ -328,6 +444,8 @@ Deno.serve(async (req: Request) => {
           },
         );
       }
+
+      console.log(`[create-blog-post] published slug=${slug} id=${data.id} published=${published}`);
 
       return new Response(
         JSON.stringify({ success: true, post: data }),
