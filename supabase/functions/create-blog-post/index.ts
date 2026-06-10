@@ -87,7 +87,18 @@ function normalizeTags(tags: string[] | string | undefined, category: string): s
 // findSubMinimumVisibleCostRanges. The site build prerenders published posts
 // and FAILS the entire Cloudflare Pages deploy if any post violates them, so
 // non-compliant posts must never reach the database. Keep both lists in sync.
+// Price floors mirror the validator: $6,000 sitewide, $4,000 for cabinet
+// painting/refinishing topics. The floor is keyed off the SLUG because that is
+// the same signal the build validator sees in the route path — keeping the two
+// layers in perfect parity.
 const MINIMUM_VISIBLE_PROJECT_PRICE = 6000;
+const CABINET_MINIMUM_VISIBLE_PROJECT_PRICE = 4000;
+
+function minimumVisiblePriceForSlug(slug: string): number {
+  return /cabinet/i.test(slug)
+    ? CABINET_MINIMUM_VISIBLE_PROJECT_PRICE
+    : MINIMUM_VISIBLE_PROJECT_PRICE;
+}
 
 const BANNED_VALUE_PHRASES = [
   'fraction of replacement cost',
@@ -148,7 +159,10 @@ interface ComplianceViolations {
   sub_minimum_prices: string[];
 }
 
-function findComplianceViolations(fields: Array<string | null | undefined>): ComplianceViolations | null {
+function findComplianceViolations(
+  fields: Array<string | null | undefined>,
+  minimumVisiblePrice: number,
+): ComplianceViolations | null {
   const visibleText = fields
     .filter(Boolean)
     .map((field) => stripHtmlTags(String(field)))
@@ -158,7 +172,7 @@ function findComplianceViolations(fields: Array<string | null | undefined>): Com
   const violations: ComplianceViolations = {
     banned_phrases: BANNED_VALUE_PHRASES.filter((phrase) => visibleTextLower.includes(phrase)),
     stale_trust_phrases: STALE_TRUST_PHRASES.filter((phrase) => visibleTextLower.includes(phrase)),
-    sub_minimum_prices: [...new Set(findSubMinimumPrices(visibleText))],
+    sub_minimum_prices: [...new Set(findSubMinimumPrices(visibleText, minimumVisiblePrice))],
   };
 
   const hasViolations =
@@ -401,24 +415,30 @@ Deno.serve(async (req: Request) => {
         meta_keywords: body.meta_keywords || '',
       };
 
-      const violations = findComplianceViolations([
-        postData.title,
-        postData.content,
-        postData.excerpt,
-        postData.tldr,
-        postData.meta_description,
-      ]);
+      const minimumVisiblePrice = minimumVisiblePriceForSlug(slug);
+      const violations = findComplianceViolations(
+        [
+          postData.title,
+          postData.content,
+          postData.excerpt,
+          postData.tldr,
+          postData.meta_description,
+        ],
+        minimumVisiblePrice,
+      );
 
       if (violations) {
+        const formattedFloor = `$${minimumVisiblePrice.toLocaleString('en-US')}`;
         console.error(
-          `[create-blog-post] content_rejected slug=${slug} banned=${JSON.stringify(violations.banned_phrases)} stale_trust=${JSON.stringify(violations.stale_trust_phrases)} low_prices=${JSON.stringify(violations.sub_minimum_prices)}`,
+          `[create-blog-post] content_rejected slug=${slug} floor=${formattedFloor} banned=${JSON.stringify(violations.banned_phrases)} stale_trust=${JSON.stringify(violations.stale_trust_phrases)} low_prices=${JSON.stringify(violations.sub_minimum_prices)}`,
         );
 
         return new Response(
           JSON.stringify({
             error: 'Post violates brand positioning rules and would break the site build',
             violations,
-            hint: 'Reword to support full-scope $6,000+ project positioning. Avoid bargain language, outdated trust claims, and any visible price figures below $6,000.',
+            minimum_visible_price: minimumVisiblePrice,
+            hint: `Reword to support full-scope project positioning. Avoid bargain language, outdated trust claims, and any visible price figures below ${formattedFloor} (the floor for this topic).`,
             rule_source: 'scripts/validate-generated-seo.mjs in the website repo',
           }),
           {

@@ -54,9 +54,22 @@ function escapeRegExp(value) {
 }
 
 function minimumVisibleProjectPriceForRoute(routePath) {
-  return /cabinet-(?:painting|refinishing)/i.test(routePath || '')
-    ? CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE
-    : SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE;
+  const path = routePath || '';
+
+  if (/cabinet-(?:painting|refinishing)/i.test(path)) {
+    return CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE;
+  }
+
+  // Cabinet-topic blog posts share the cabinet floor. Their slugs contain
+  // "cabinet" but rarely the exact hyphenated service names (e.g.
+  // /blog/can-i-just-paint-over-already-painted-cabinets). The create-blog-post
+  // edge function applies the same slug-based floor before insert — keep the
+  // two in sync.
+  if (/^\/blog\//i.test(path) && /cabinet/i.test(path)) {
+    return CABINET_PAINTING_MINIMUM_VISIBLE_PROJECT_PRICE;
+  }
+
+  return SITEWIDE_MINIMUM_VISIBLE_PROJECT_PRICE;
 }
 
 function waitSync(ms) {
