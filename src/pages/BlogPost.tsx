@@ -6,7 +6,7 @@ import CTABanner from '../components/sections/CTABanner';
 import { Calendar, ArrowLeft, ArrowRight, Tag } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 import { generatedBlogPosts, type GeneratedBlogPost } from '../generated/blogPosts';
-import { cleanBlogDisplayText } from '../lib/blogText';
+import { blogDisplayTitle, normalizeBlogCostCopy } from '../lib/blogText';
 import { blogPathSlug, blogPostPath } from '../lib/blogRoutes';
 import { siteBaseUrl } from '../lib/businessSchema';
 import { priorityAustinServiceLinks, priorityAustinServiceSchema } from '../lib/priorityAustinServices';
@@ -50,10 +50,28 @@ const normalizeArticleContent = (value: string) =>
     .replace(/<h1(\s[^>]*)?>/gi, '<h2$1>')
     .replace(/<\/h1>/gi, '</h2>');
 
+const normalizeBlogPostData = (post: BlogPostData): BlogPostData => {
+  const displayTitle = blogDisplayTitle(post.title, post.slug);
+  const normalizeImageText = (value: string | null) =>
+    value ? normalizeBlogCostCopy(value).replace(post.title, displayTitle) : value;
+
+  return {
+    ...post,
+    title: displayTitle,
+    content: normalizeBlogCostCopy(post.content || ''),
+    excerpt: normalizeBlogCostCopy(post.excerpt || ''),
+    tldr: post.tldr ? normalizeBlogCostCopy(post.tldr) : null,
+    meta_description: post.meta_description ? normalizeBlogCostCopy(post.meta_description) : null,
+    featured_image_alt: normalizeImageText(post.featured_image_alt),
+    featured_image_title: normalizeImageText(post.featured_image_title),
+    featured_image_caption: normalizeImageText(post.featured_image_caption)
+  };
+};
+
 const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
   const excerpt = stripMarkdown(post.excerpt || post.title);
 
-  return {
+  return normalizeBlogPostData({
     id: post.id,
     title: post.title,
     slug: post.slug,
@@ -70,7 +88,7 @@ const generatedToBlogPost = (post: GeneratedBlogPost): BlogPostData => {
     tags: [post.category, 'Austin painting', 'Hill Country Painting'],
     meta_description: post.meta_description || excerpt.slice(0, 155),
     meta_keywords: post.meta_keywords || null
-  };
+  });
 };
 
 const BlogPost = () => {
@@ -125,7 +143,7 @@ const BlogPost = () => {
           }
           setNotFound(true);
         } else {
-          setPost(data);
+          setPost(normalizeBlogPostData(data as BlogPostData));
         }
       } catch {
         clearTimeout(timeout);
@@ -191,8 +209,8 @@ const BlogPost = () => {
     const postPath = blogPostPath(post.slug);
     const plainText = normalizeArticleContent(post.content).replace(/<[^>]*>/g, '').trim();
     const wordCount = plainText.split(/\s+/).length;
-    const displayTitle = cleanBlogDisplayText(post.title);
-    const displayDescription = cleanBlogDisplayText(post.meta_description || post.excerpt);
+    const displayTitle = blogDisplayTitle(post.title, post.slug);
+    const displayDescription = normalizeBlogCostCopy(post.meta_description || post.excerpt);
 
     return {
       '@context': 'https://schema.org',
@@ -202,13 +220,13 @@ const BlogPost = () => {
           '@id': `${baseUrl}${postPath}#article`,
           headline: displayTitle,
           description: displayDescription,
-          abstract: cleanBlogDisplayText(post.tldr || post.excerpt),
+          abstract: normalizeBlogCostCopy(post.tldr || post.excerpt),
           articleBody: plainText.substring(0, 500) + '...',
           wordCount: wordCount,
           image: post.featured_image ? {
             '@type': 'ImageObject',
             url: post.featured_image,
-            caption: cleanBlogDisplayText(post.featured_image_caption || post.title),
+            caption: blogDisplayTitle(post.featured_image_caption || post.title, post.slug),
             width: 1200,
             height: 630
           } : undefined,
@@ -306,8 +324,8 @@ const BlogPost = () => {
 
   const serviceLinks = priorityAustinServiceLinks;
   const articleContent = normalizeArticleContent(post.content);
-  const displayTitle = cleanBlogDisplayText(post.title);
-  const displayDescription = cleanBlogDisplayText(post.meta_description || post.excerpt);
+  const displayTitle = blogDisplayTitle(post.title, post.slug);
+  const displayDescription = normalizeBlogCostCopy(post.meta_description || post.excerpt);
 
   return (
     <>
@@ -397,7 +415,7 @@ const BlogPost = () => {
               itemProp="abstract"
             >
               <h2 className="text-xl font-bold text-brand-gray-900 mb-3">TL;DR</h2>
-              <p className="text-brand-gray-700 text-lg leading-relaxed">{cleanBlogDisplayText(post.tldr)}</p>
+              <p className="text-brand-gray-700 text-lg leading-relaxed">{normalizeBlogCostCopy(post.tldr)}</p>
             </section>
           )}
           <div
@@ -458,7 +476,7 @@ const BlogPost = () => {
                     >
                       <p className="text-sm text-brand-gray-500 mb-2">{related.category}</p>
                       <h4 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-3">
-                        {cleanBlogDisplayText(related.title)}
+                        {blogDisplayTitle(related.title, related.slug)}
                       </h4>
                       <span className="inline-flex items-center text-brand-azureDark font-medium">
                         Read article

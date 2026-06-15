@@ -61,6 +61,12 @@ const EXCLUDED_BLOG_SLUGS = new Set([
 ]);
 const BLOG_POST_CORRECTIONS = new Map([
   [
+    'what-should-i-know-before-hiring-an-interior-painter-in-austin-2',
+    {
+      title: 'Questions to Ask Before Hiring an Interior Painter in Austin'
+    }
+  ],
+  [
     'how-to-deterimine-the-best-austin-exterior-house-painters',
     {
       title: 'How to Determine the Best Austin Exterior House Painters',
@@ -96,28 +102,47 @@ function readGeneratedBlogPostsFallback() {
 function sanitizeBlogPost(post) {
   const correctedSlug = blogPathSlug(post.slug || '');
   const correction = BLOG_POST_CORRECTIONS.get(correctedSlug);
+  const title = correction?.title || post.title || post.slug;
   const normalizePremiumPositioning = value => String(value || '')
     .replace(/lowest\s+bid/g, 'thinnest scope')
     .replace(/Low[-\s]+bid/g, 'Thin-scope')
     .replace(/low[-\s]+bid/g, 'thin-scope')
     .replace(/cheapest\s+bid/g, 'thinnest estimate')
     .replace(/chea[p]er\s+estimate/g, 'thin estimate');
+  const normalizeCostCopy = value => normalizePremiumPositioning(value)
+    .replace(
+      /interior painting costs range from \$6,000 to \$16,000, with an average cost of \$8,000/g,
+      'full-scope interior painting often ranges from $6,500 to $16,000 once preparation, room count, ceiling height, and finish expectations are reviewed'
+    )
+    .replace(
+      /the cost typically ranges from \$6,000 to \$12,000, with an average cost of \$9,000/g,
+      'full-scope interior projects often range from $6,500 to $12,500 after room count, preparation, finish level, and schedule are reviewed'
+    )
+    .replace(
+      /ranges from \$6,000 to \$12,000 for a 2,500 square foot home, with an average cost of around \$9,000/g,
+      'often starts above the professional project floor for a 2,500 square foot home, with the final range shaped by preparation, room count, finish level, and schedule'
+    );
+  const normalizeImageText = value => {
+    if (!value) return null;
+    const text = normalizeCostCopy(value);
+    return post.title ? text.replace(post.title, title) : text;
+  };
 
   return {
     id: post.id || post.slug,
-    title: correction?.title || post.title || post.slug,
+    title,
     slug: correction?.slug || post.slug,
-    excerpt: normalizePremiumPositioning(post.excerpt),
-    content: normalizePremiumPositioning(post.content),
-    tldr: post.tldr ? normalizePremiumPositioning(post.tldr) : null,
+    excerpt: normalizeCostCopy(post.excerpt),
+    content: normalizeCostCopy(post.content),
+    tldr: post.tldr ? normalizeCostCopy(post.tldr) : null,
     featured_image: post.featured_image || null,
-    featured_image_alt: post.featured_image_alt || null,
-    featured_image_title: post.featured_image_title || null,
-    featured_image_caption: post.featured_image_caption || null,
+    featured_image_alt: normalizeImageText(post.featured_image_alt),
+    featured_image_title: normalizeImageText(post.featured_image_title),
+    featured_image_caption: normalizeImageText(post.featured_image_caption),
     published_at: post.published_at || post.created_at || new Date().toISOString(),
     category: post.category || 'Painting Tips',
     author: post.author || 'Hill Country Painting',
-    meta_description: post.meta_description ? normalizePremiumPositioning(post.meta_description) : null,
+    meta_description: post.meta_description ? normalizeCostCopy(post.meta_description) : null,
     meta_keywords: post.meta_keywords || null,
     updated_at: post.updated_at || null
   };

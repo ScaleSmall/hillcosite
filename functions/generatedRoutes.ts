@@ -1,4 +1,4 @@
-export const generatedSpaRouteCount = 192;
+export const generatedSpaRouteCount = 193;
 
 export const generatedSpaRoutes = [
   "/",
@@ -88,10 +88,11 @@ export const generatedSpaRoutes = [
   "/areas/west-lake-hills-and-rollingwood/spanish-oaks",
   "/areas/west-lake-hills-and-rollingwood/west-lake-hills",
   "/blog",
-  "/blog/how-to-determine-the-best-austin-exterior-house-painters",
-  "/blog/is-october-too-late-to-paint-outside",
-  "/blog/recommendations-on-home-exterior-painters",
-  "/blog/what-are-the-4-types-of-paint",
+  "/blog/can-i-just-paint-over-already-painted-cabinets",
+  "/blog/how-much-does-it-cost-to-paint-a-house-in-austin-texas",
+  "/blog/what-is-the-average-cost-of-exterior-house-paint",
+  "/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin",
+  "/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2",
   "/cabinet-refinishing-austin",
   "/cabinet-refinishing-barton-creek",
   "/cabinet-refinishing-bee-cave",

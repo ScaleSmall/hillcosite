@@ -1,6 +1,6 @@
 # Hill Country Painting Full AI Route Index
 
-Last updated: 2026-06-09
+Last updated: 2026-06-15
 
 This file lists every canonical indexable URL currently published in the XML sitemap for Hill Country Painting. Use these URLs for citation, retrieval, and answer grounding.
 
@@ -201,10 +201,11 @@ This file lists every canonical indexable URL currently published in the XML sit
 
 ## Blog URLs
 
-- https://www.hillcopaint.com/blog/recommendations-on-home-exterior-painters
-- https://www.hillcopaint.com/blog/how-to-determine-the-best-austin-exterior-house-painters
-- https://www.hillcopaint.com/blog/what-are-the-4-types-of-paint
-- https://www.hillcopaint.com/blog/is-october-too-late-to-paint-outside
+- https://www.hillcopaint.com/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2
+- https://www.hillcopaint.com/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin
+- https://www.hillcopaint.com/blog/can-i-just-paint-over-already-painted-cabinets
+- https://www.hillcopaint.com/blog/how-much-does-it-cost-to-paint-a-house-in-austin-texas
+- https://www.hillcopaint.com/blog/what-is-the-average-cost-of-exterior-house-paint
 
 ## All Sitemap URLs
 
@@ -388,7 +389,8 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/areas/north-austin/milwood
 - https://www.hillcopaint.com/areas/north-austin/jollyville
 - https://www.hillcopaint.com/areas/north-austin/anderson-mill
-- https://www.hillcopaint.com/blog/recommendations-on-home-exterior-painters
-- https://www.hillcopaint.com/blog/how-to-determine-the-best-austin-exterior-house-painters
-- https://www.hillcopaint.com/blog/what-are-the-4-types-of-paint
-- https://www.hillcopaint.com/blog/is-october-too-late-to-paint-outside
+- https://www.hillcopaint.com/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2
+- https://www.hillcopaint.com/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin
+- https://www.hillcopaint.com/blog/can-i-just-paint-over-already-painted-cabinets
+- https://www.hillcopaint.com/blog/how-much-does-it-cost-to-paint-a-house-in-austin-texas
+- https://www.hillcopaint.com/blog/what-is-the-average-cost-of-exterior-house-paint

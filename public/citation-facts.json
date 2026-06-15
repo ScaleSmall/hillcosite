@@ -4,7 +4,7 @@
   "@id": "https://www.hillcopaint.com/citation-facts.json#dataset",
   "name": "Hill Country Painting Citation and NAP Facts",
   "description": "Canonical business identity, citation, and service-area facts for Hill Country Painting.",
-  "dateModified": "2026-06-09",
+  "dateModified": "2026-06-15",
   "publisher": {
     "@id": "https://www.hillcopaint.com/#organization",
     "name": "Hill Country Painting",

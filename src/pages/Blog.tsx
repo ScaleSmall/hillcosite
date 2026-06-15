@@ -7,7 +7,7 @@ import SplitSection from '../components/sections/SplitSection';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
 import { generatedBlogPosts } from '../generated/blogPosts';
-import { cleanBlogDisplayText } from '../lib/blogText';
+import { blogDisplayTitle, normalizeBlogCostCopy } from '../lib/blogText';
 import { blogPostPath } from '../lib/blogRoutes';
 
 interface BlogPost {
@@ -125,8 +125,8 @@ const Blog = () => {
           blogPost: blogPosts.map(post => ({
             '@type': 'BlogPosting',
             '@id': `${baseUrl}${blogPostPath(post.slug)}#article`,
-            headline: cleanBlogDisplayText(post.title),
-            description: cleanBlogDisplayText(post.excerpt),
+            headline: blogDisplayTitle(post.title, post.slug),
+            description: normalizeBlogCostCopy(post.excerpt),
             url: `${baseUrl}${blogPostPath(post.slug)}`,
             datePublished: post.published_at,
             author: {
@@ -235,7 +235,7 @@ const Blog = () => {
                       <div className="aspect-video overflow-hidden bg-brand-gray-100">
                         <img
                           src={post.featured_image}
-                          alt={cleanBlogDisplayText(post.title)}
+                          alt={blogDisplayTitle(post.title, post.slug)}
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -252,10 +252,10 @@ const Blog = () => {
                         </span>
                       </div>
                       <h3 className="text-xl font-bold text-brand-gray-900 mb-3 group-hover:text-brand-azureDark transition-colors">
-                        {cleanBlogDisplayText(post.title)}
+                        {blogDisplayTitle(post.title, post.slug)}
                       </h3>
                       <p className="text-brand-gray-600 mb-4 leading-body">
-                        {cleanBlogDisplayText(post.excerpt)}
+                        {normalizeBlogCostCopy(post.excerpt)}
                       </p>
                       <Link
                         to={blogPostPath(post.slug)}
@@ -284,7 +284,7 @@ const Blog = () => {
                         <div className="flex items-start justify-between gap-4">
                           <div className="flex-1">
                             <h3 className="text-lg font-semibold text-brand-gray-900 group-hover:text-brand-azureDark transition-colors mb-1">
-                              {cleanBlogDisplayText(post.title)}
+                              {blogDisplayTitle(post.title, post.slug)}
                             </h3>
                             <div className="flex items-center space-x-4 text-sm text-brand-gray-500">
                               <div className="flex items-center space-x-1">
