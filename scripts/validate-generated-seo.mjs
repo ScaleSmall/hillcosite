@@ -105,6 +105,7 @@ const googleBusinessProfileUrl = 'https://www.google.com/search?q=Hill+Country+P
 const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
+const galleryWidgetScriptUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js';
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
 const stalePublicIdentitySignals = [
   'HillCo Paint',
@@ -2262,12 +2263,12 @@ function run() {
   }
 
   if (
-    !galleryPageSource.includes('hasSupabaseGalleryPhotos') ||
     !galleryPageSource.includes('displayedRegularExcludedUrls') ||
     !galleryPageSource.includes('SITEWIDE_REUSED_IMAGE_SOURCES') ||
-    !galleryPageSource.includes('[loading, hasSupabaseGalleryPhotos]')
+    !galleryPageSource.includes('GALLERY_WIDGET_SCRIPT_URL') ||
+    !galleryPageSource.includes(galleryWidgetScriptUrl)
   ) {
-    fail('src/pages/Gallery.tsx must de-duplicate direct gallery images, filter reused sitewide images, and only inject the Supabase widget when the main feed is not already rendering');
+    fail('src/pages/Gallery.tsx must de-duplicate direct gallery images, filter reused sitewide images, and load the approved gallery widget script in the gallery widget slot');
   }
 
   if (galleryPageSource.includes('ml-[2cm]')) {
@@ -2323,7 +2324,9 @@ function run() {
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {
-    if (galleryPageSource.includes(retiredSupabaseUrl)) {
+    const gallerySourceWithoutAllowedWidget = galleryPageSource.replaceAll(galleryWidgetScriptUrl, '');
+
+    if (gallerySourceWithoutAllowedWidget.includes(retiredSupabaseUrl)) {
       fail(`src/pages/Gallery.tsx must not load retired Supabase project ${retiredSupabaseUrl}`);
     }
 
@@ -2337,7 +2340,9 @@ function run() {
 
     for (const filePath of [...htmlFiles, ...jsFiles]) {
       const source = readFileSync(filePath, 'utf8');
-      if (source.includes(retiredSupabaseUrl)) {
+      const sourceWithoutAllowedWidget = source.replaceAll(galleryWidgetScriptUrl, '');
+
+      if (sourceWithoutAllowedWidget.includes(retiredSupabaseUrl)) {
         fail(`${relative(projectRoot, filePath)} contains retired Supabase project ${retiredSupabaseUrl}`);
       }
     }
