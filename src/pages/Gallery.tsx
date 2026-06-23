@@ -11,8 +11,10 @@ import CTABanner from '../components/sections/CTABanner';
 import BeforeAfterSlider from '../components/BeforeAfterSlider';
 import ImageLightbox, { LightboxImage } from '../components/ImageLightbox';
 import { supabase } from '../lib/supabase';
-import { getSupabaseConfig } from '../lib/env';
 import { canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
+
+const GALLERY_WIDGET_SCRIPT_URL = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js';
+const GALLERY_WIDGET_CLIENT_ID = 'mhw1q2k4-l9c3zpvji3';
 
 interface GalleryPhoto {
   id: string;
@@ -207,10 +209,6 @@ const Gallery = () => {
   const nonHeroRegularPhotos = excludeImageUrls(uniqueRegularPhotos, displayedRegularExcludedUrls);
   const recentRegularPhotos = nonHeroRegularPhotos.slice(0, 12);
   const olderRegularPhotos = nonHeroRegularPhotos.slice(12);
-  const hasSupabaseGalleryPhotos =
-    featuredPhotos.some(photo => !photo.id.startsWith('fb-')) ||
-    beforeAfterPhotos.length > 0 ||
-    regularPhotos.length > 0;
 
   const openLightbox = (images: LightboxImage[], index: number) => {
     setLightboxImages(images);
@@ -223,35 +221,38 @@ const Gallery = () => {
   };
 
   const widgetContainerRef = useRef<HTMLDivElement>(null);
-  const [widgetLoaded, setWidgetLoaded] = useState(false);
   const [widgetError, setWidgetError] = useState(false);
 
   useEffect(() => {
-    if (loading || hasSupabaseGalleryPhotos) {
+    if (loading) {
       return;
     }
 
     const container = widgetContainerRef.current;
     if (!container) return;
-    const { url } = getSupabaseConfig();
-    const widgetBaseUrl = url || 'https://ndggkorglcaznukkhapz.supabase.co';
+
+    setWidgetError(false);
+    container.replaceChildren();
+
     const script = document.createElement('script');
-    script.src = `${widgetBaseUrl}/functions/v1/widget-gallery?format=js`;
-    script.setAttribute('data-client', 'mhw1q2k4-l9c3zpvji3');
+    script.src = GALLERY_WIDGET_SCRIPT_URL;
+    script.setAttribute('data-client', GALLERY_WIDGET_CLIENT_ID);
     script.async = true;
-    script.onload = () => setWidgetLoaded(true);
+    script.onload = () => setWidgetError(false);
     script.onerror = () => setWidgetError(true);
     container.appendChild(script);
-    const timeout = setTimeout(() => {
-      if (container.children.length <= 1) {
+
+    const timeout = window.setTimeout(() => {
+      if (container.childElementCount <= 1) {
         setWidgetError(true);
       }
     }, 5000);
+
     return () => {
-      clearTimeout(timeout);
-      if (container.contains(script)) container.removeChild(script);
+      window.clearTimeout(timeout);
+      container.replaceChildren();
     };
-  }, [loading, hasSupabaseGalleryPhotos]);
+  }, [loading]);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -895,7 +896,8 @@ const Gallery = () => {
           </div>
 
           {/* Widget: injected after Modern Condo Interior */}
-          <div ref={widgetContainerRef} className="mt-12">
+          <div className="mt-12">
+            <div ref={widgetContainerRef} />
             {widgetError && (
               <div className="text-center py-8 text-brand-gray-500">
                 <p>Additional gallery content is temporarily unavailable.</p>
