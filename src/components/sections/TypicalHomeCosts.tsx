@@ -2,7 +2,7 @@ import React from 'react';
 import { Home } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { usePricingData } from '../../hooks/usePricingData';
-import { canonicalBusinessProvider } from '../../lib/businessSchema';
+import { createTypicalHomeCostSchema } from '../../lib/paintingCostSchemas';
 
 const TypicalHomeCosts = () => {
   const { data: pricingData } = usePricingData('painting-costs');
@@ -14,26 +14,6 @@ const TypicalHomeCosts = () => {
     return fallback;
   };
 
-  const extractPrice = (priceString: string): { min: number; max: number } | null => {
-    const match = priceString.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
-    if (match) {
-      return {
-        min: parseInt(match[1].replace(/,/g, '')),
-        max: parseInt(match[2].replace(/,/g, ''))
-      };
-    }
-    return null;
-  };
-
-  const fallbackSchemaPrices = {
-    house1500Interior: 6250,
-    house1500Exterior: 6750,
-    house2200Interior: 6500,
-    house2200Exterior: 8500,
-    house3000Interior: 9000,
-    house3000Exterior: 12000
-  };
-
   const house1500Interior = getCostFactor('house_1500_interior', '$6,250 - $8,500');
   const house1500Exterior = getCostFactor('house_1500_exterior', '$6,750 - $10,500');
   const house2200Interior = getCostFactor('house_2200_interior', '$6,500 - $10,500');
@@ -41,163 +21,7 @@ const TypicalHomeCosts = () => {
   const house3000Interior = getCostFactor('house_3000_interior', '$9,000 - $15,000');
   const house3000Exterior = getCostFactor('house_3000_exterior', '$12,000 - $20,000');
 
-  const price1500Int = extractPrice(house1500Interior);
-  const price1500Ext = extractPrice(house1500Exterior);
-  const price2200Int = extractPrice(house2200Interior);
-  const price2200Ext = extractPrice(house2200Exterior);
-  const price3000Int = extractPrice(house3000Interior);
-  const price3000Ext = extractPrice(house3000Exterior);
-
-  const priceValidUntil = new Date();
-  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
-  const priceValidDate = priceValidUntil.toISOString().split('T')[0];
-
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Austin House Painting Costs by Size",
-    "description": "Professional house painting costs for different home sizes in Austin, TX",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "Service",
-          "serviceType": "Interior Painting",
-          "name": "Interior Painting - 1,500 sq ft Home Austin",
-          "description": "Professional interior painting service for 1,500 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-          "provider": canonicalBusinessProvider,
-          "areaServed": {
-            "@type": "City",
-            "name": "Austin, Texas"
-          },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": String(price1500Int?.min || fallbackSchemaPrices.house1500Interior),
-            "priceValidUntil": priceValidDate,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "Service",
-          "serviceType": "Exterior Painting",
-          "name": "Exterior Painting - 1,500 sq ft Home Austin",
-          "description": "Professional exterior painting service for 1,500 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-          "provider": canonicalBusinessProvider,
-          "areaServed": {
-            "@type": "City",
-            "name": "Austin, Texas"
-          },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": String(price1500Ext?.min || fallbackSchemaPrices.house1500Exterior),
-            "priceValidUntil": priceValidDate,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Service",
-          "serviceType": "Interior Painting",
-          "name": "Interior Painting - 2,200 sq ft Home Austin",
-          "description": "Professional interior painting service for 2,200 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-          "provider": canonicalBusinessProvider,
-          "areaServed": {
-            "@type": "City",
-            "name": "Austin, Texas"
-          },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": String(price2200Int?.min || fallbackSchemaPrices.house2200Interior),
-            "priceValidUntil": priceValidDate,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "Service",
-          "serviceType": "Exterior Painting",
-          "name": "Exterior Painting - 2,200 sq ft Home Austin",
-          "description": "Professional exterior painting service for 2,200 sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-          "provider": canonicalBusinessProvider,
-          "areaServed": {
-            "@type": "City",
-            "name": "Austin, Texas"
-          },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": String(price2200Ext?.min || fallbackSchemaPrices.house2200Exterior),
-            "priceValidUntil": priceValidDate,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "Service",
-          "serviceType": "Interior Painting",
-          "name": "Interior Painting - 3,000+ sq ft Home Austin",
-          "description": "Professional interior painting service for 3,000+ sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-          "provider": canonicalBusinessProvider,
-          "areaServed": {
-            "@type": "City",
-            "name": "Austin, Texas"
-          },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": String(price3000Int?.min || fallbackSchemaPrices.house3000Interior),
-            "priceValidUntil": priceValidDate,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "Service",
-          "serviceType": "Exterior Painting",
-          "name": "Exterior Painting - 3,000+ sq ft Home Austin",
-          "description": "Professional exterior painting service for 3,000+ sq ft homes in Austin",
-          "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-          "provider": canonicalBusinessProvider,
-          "areaServed": {
-            "@type": "City",
-            "name": "Austin, Texas"
-          },
-          "offers": {
-            "@type": "Offer",
-            "priceCurrency": "USD",
-            "price": String(price3000Ext?.min || fallbackSchemaPrices.house3000Exterior),
-            "priceValidUntil": priceValidDate,
-            "availability": "https://schema.org/InStock"
-          }
-        }
-      }
-    ]
-  };
+  const productSchema = createTypicalHomeCostSchema(pricingData);
 
   return (
     <>

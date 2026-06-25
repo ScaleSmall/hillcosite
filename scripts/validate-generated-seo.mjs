@@ -7,6 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const projectRoot = resolve(__dirname, '..');
 const distPath = resolve(projectRoot, 'dist');
+const indexHtmlPath = resolve(projectRoot, 'index.html');
 const sitemapPath = resolve(projectRoot, 'public/sitemap.xml');
 const distSitemapPath = resolve(projectRoot, 'dist/sitemap.xml');
 const functionSitemapPath = resolve(projectRoot, 'functions/generatedSitemap.ts');
@@ -106,6 +107,8 @@ const googleKnowledgeGraphId = '/g/11frssbq6p';
 const canonicalPhoneHref = 'tel:+15122402246';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const galleryWidgetScriptUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js';
+const sitewideWidgetScriptUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=site-js';
+const approvedLegacySupabaseWidgetUrls = [galleryWidgetScriptUrl, sitewideWidgetScriptUrl];
 const retiredSupabaseUrls = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
 const stalePublicIdentitySignals = [
   'HillCo Paint',
@@ -1643,6 +1646,7 @@ function run() {
   const aiManifestGeneratorSource = readRequired(aiManifestGeneratorPath, 'scripts/generate-ai-manifests.mjs');
   const publicEnvSource = readRequired(publicEnvPath, 'public/env.js');
   const sitemapPhpSource = readRequired(sitemapPhpPath, 'public/sitemap.php');
+  const indexHtmlSource = readRequired(indexHtmlPath, 'index.html');
   const galleryPageSource = readRequired(galleryPagePath, 'src/pages/Gallery.tsx');
   const housePaintersAustinSource = readRequired(housePaintersAustinPath, 'src/pages/HousePaintersAustin.tsx');
   const cabinetRefinishingSource = readRequired(cabinetRefinishingPath, 'src/pages/services/CabinetRefinishing.tsx');
@@ -2271,6 +2275,22 @@ function run() {
     fail('src/pages/Gallery.tsx must de-duplicate direct gallery images, filter reused sitewide images, and load the approved gallery widget script in the gallery widget slot');
   }
 
+  if (
+    !indexHtmlSource.includes(sitewideWidgetScriptUrl) ||
+    !indexHtmlSource.includes('data-client="mhw1q2k4-l9c3zpvji3"') ||
+    !indexHtmlSource.includes('data-modules="beacon,gallery,articles"') ||
+    !indexHtmlSource.includes('data-render="auto"')
+  ) {
+    fail('index.html must install the approved sitewide widget script once before </body>');
+  }
+
+  if (
+    !middlewareSource.includes('APPROVED_LEGACY_SUPABASE_WIDGET_URLS') ||
+    !middlewareSource.includes('withCurrentSupabaseUrls(html)')
+  ) {
+    fail('functions/_middleware.ts must preserve approved widget URLs before rewriting retired Supabase URLs');
+  }
+
   if (galleryPageSource.includes('ml-[2cm]')) {
     fail('src/pages/Gallery.tsx must not offset the gallery hero image grid with hard-coded centimeter spacing');
   }
@@ -2324,7 +2344,9 @@ function run() {
   }
 
   for (const retiredSupabaseUrl of retiredSupabaseUrls) {
-    const gallerySourceWithoutAllowedWidget = galleryPageSource.replaceAll(galleryWidgetScriptUrl, '');
+    const removeApprovedWidgetUrls = source =>
+      approvedLegacySupabaseWidgetUrls.reduce((updatedSource, approvedUrl) => updatedSource.replaceAll(approvedUrl, ''), source);
+    const gallerySourceWithoutAllowedWidget = removeApprovedWidgetUrls(galleryPageSource);
 
     if (gallerySourceWithoutAllowedWidget.includes(retiredSupabaseUrl)) {
       fail(`src/pages/Gallery.tsx must not load retired Supabase project ${retiredSupabaseUrl}`);
@@ -2340,7 +2362,7 @@ function run() {
 
     for (const filePath of [...htmlFiles, ...jsFiles]) {
       const source = readFileSync(filePath, 'utf8');
-      const sourceWithoutAllowedWidget = source.replaceAll(galleryWidgetScriptUrl, '');
+      const sourceWithoutAllowedWidget = removeApprovedWidgetUrls(source);
 
       if (sourceWithoutAllowedWidget.includes(retiredSupabaseUrl)) {
         fail(`${relative(projectRoot, filePath)} contains retired Supabase project ${retiredSupabaseUrl}`);

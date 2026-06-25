@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { usePricingData } from '../../hooks/usePricingData';
-import { canonicalBusinessProvider } from '../../lib/businessSchema';
+import { createPaintingCostServiceSchema } from '../../lib/paintingCostSchemas';
 
 const PaintingCostsTable = () => {
   const { data: pricingData } = usePricingData('painting-costs');
@@ -13,87 +13,7 @@ const PaintingCostsTable = () => {
     return fallback;
   };
 
-  const extractPrice = (priceString: string): { min: number; max: number } | null => {
-    const match = priceString.match(/\$?([\d,]+)\s*-\s*\$?([\d,]+)/);
-    if (match) {
-      return {
-        min: parseInt(match[1].replace(/,/g, '')),
-        max: parseInt(match[2].replace(/,/g, ''))
-      };
-    }
-    return null;
-  };
-
-  const interiorHomeSize = getCostFactor('cost_factor_home_size_interior', '$6,500 - $10,000');
-  const exteriorHomeSize = getCostFactor('cost_factor_home_size_exterior', '$7,000 - $14,000');
-
-  const interiorPrice = extractPrice(interiorHomeSize);
-  const exteriorPrice = extractPrice(exteriorHomeSize);
-  const fallbackInteriorSchemaPrice = 6500;
-  const fallbackExteriorSchemaPrice = 7000;
-
-  const priceValidUntil = new Date();
-  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
-  const priceValidDate = priceValidUntil.toISOString().split('T')[0];
-
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "House Painting Services",
-    "provider": canonicalBusinessProvider,
-    "areaServed": {
-      "@type": "City",
-      "name": "Austin, Texas"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Painting Services",
-      "itemListElement": [
-        {
-          "@type": "OfferCatalog",
-          "name": "Interior Painting",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Interior House Painting - Austin TX",
-                "description": "Professional interior painting services for Austin homes",
-                "image": "https://www.hillcopaint.com/hill-country-painting-austin-interior-hero.jpg",
-                "provider": canonicalBusinessProvider
-              },
-              "seller": canonicalBusinessProvider,
-              "price": String(interiorPrice?.min || fallbackInteriorSchemaPrice),
-              "priceCurrency": "USD",
-              "priceValidUntil": priceValidDate,
-              "availability": "https://schema.org/InStock"
-            }
-          ]
-        },
-        {
-          "@type": "OfferCatalog",
-          "name": "Exterior Painting",
-          "itemListElement": [
-            {
-              "@type": "Offer",
-              "itemOffered": {
-                "@type": "Service",
-                "name": "Exterior House Painting - Austin TX",
-                "description": "Professional exterior painting services for Austin homes",
-                "image": "https://www.hillcopaint.com/classic-home-exterior.jpg",
-                "provider": canonicalBusinessProvider
-              },
-              "seller": canonicalBusinessProvider,
-              "price": String(exteriorPrice?.min || fallbackExteriorSchemaPrice),
-              "priceCurrency": "USD",
-              "priceValidUntil": priceValidDate,
-              "availability": "https://schema.org/InStock"
-            }
-          ]
-        }
-      ]
-    }
-  };
+  const productSchema = createPaintingCostServiceSchema(pricingData);
 
   const costFactors = [
     {

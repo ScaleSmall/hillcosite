@@ -20,6 +20,7 @@ import LocalSearchLinks from '../components/LocalSearchLinks';
 import PaintingGuideLinks from '../components/PaintingGuideLinks';
 import { businessConfig } from '../config/business';
 import { canonicalBusinessProvider, siteBaseUrl } from '../lib/businessSchema';
+import { createPaintingCostServiceSchema, createTypicalHomeCostSchema } from '../lib/paintingCostSchemas';
 
 const Home = () => {
   const baseUrl = siteBaseUrl;
@@ -109,6 +110,11 @@ const Home = () => {
       }
     }))
   };
+  const homepageStructuredData = [
+    homepageServiceItemList,
+    createPaintingCostServiceSchema(),
+    createTypicalHomeCostSchema()
+  ];
 
   return (
     <>
@@ -122,7 +128,7 @@ const Home = () => {
         ]}
         faq={faqs}
         includeLocalBusiness={true}
-        additionalSchema={homepageServiceItemList}
+        additionalSchema={homepageStructuredData}
         aggregateRating={{
           ratingValue: businessConfig.aggregateRating.ratingValue,
           reviewCount: businessConfig.aggregateRating.reviewCount

@@ -190,6 +190,10 @@ function redirect(location: string, origin: string): Response {
 const SPA_ROUTES: Set<string> = new Set(generatedSpaRoutes);
 const CURRENT_SUPABASE_URL = 'https://ndggkorglcaznukkhapz.supabase.co';
 const RETIRED_SUPABASE_URLS = ['https://oyyfpkpzalhxztpcdjgq.supabase.co'];
+const APPROVED_LEGACY_SUPABASE_WIDGET_URLS = [
+  'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js',
+  'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=site-js',
+];
 const AUSTIN_SERVICE_SCHEMA_SIGNALS: Record<string, string> = {
   '/exterior-painting-austin': 'Austin exterior house painters',
   '/interior-painting-austin': 'Austin interior painters',
@@ -874,12 +878,31 @@ function withSafeHeroImages(html: string): string {
   return `${beforeHero}${heroHtml}${afterHero}`;
 }
 
-async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
-  let html = await response.text();
+function withCurrentSupabaseUrls(html: string): string {
+  const approvedWidgetPlaceholders = APPROVED_LEGACY_SUPABASE_WIDGET_URLS.map((url, index) => ({
+    url,
+    placeholder: `__HILLCO_APPROVED_SUPABASE_WIDGET_${index}__`,
+  }));
+
+  for (const { url, placeholder } of approvedWidgetPlaceholders) {
+    html = html.replaceAll(url, placeholder);
+  }
 
   for (const retiredUrl of RETIRED_SUPABASE_URLS) {
     html = html.replaceAll(retiredUrl, CURRENT_SUPABASE_URL);
   }
+
+  for (const { url, placeholder } of approvedWidgetPlaceholders) {
+    html = html.replaceAll(placeholder, url);
+  }
+
+  return html;
+}
+
+async function htmlResponseForRoute(response: Response, path: string): Promise<Response> {
+  let html = await response.text();
+
+  html = withCurrentSupabaseUrls(html);
 
   html = withAustinServiceSchemaSignals(html, path);
   html = withGuideFaqSchemaFallback(html, path);

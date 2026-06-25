@@ -17,6 +17,10 @@ const pagesTarget = 'hillcosite.pages.dev';
 const accountId = '7b68f149b6054718ad2c6ff0634ae145';
 const currentSupabaseUrl = 'https://ndggkorglcaznukkhapz.supabase.co';
 const retiredSupabaseUrl = 'https://oyyfpkpzalhxztpcdjgq.supabase.co';
+const approvedLegacySupabaseWidgetUrls = [
+  'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=js',
+  'https://oyyfpkpzalhxztpcdjgq.supabase.co/functions/v1/widget-gallery?format=site-js',
+];
 const canonicalPhoneHref = 'tel:+15122402246';
 const typoBlogPath = '/blog/how-to-deterimine-the-best-austin-exterior-house-painters';
 const correctedBlogPath = '/blog/how-to-determine-the-best-austin-exterior-house-painters';
@@ -2176,7 +2180,12 @@ async function checkSupabaseFeed() {
     fail(`/gallery does not include current Supabase project ${currentSupabaseUrl}`);
   }
 
-  if (html.includes(retiredSupabaseUrl)) {
+  const htmlWithoutApprovedLegacyWidgets = approvedLegacySupabaseWidgetUrls.reduce(
+    (updatedHtml, approvedUrl) => updatedHtml.replaceAll(approvedUrl, ''),
+    html
+  );
+
+  if (htmlWithoutApprovedLegacyWidgets.includes(retiredSupabaseUrl)) {
     fail(`/gallery still includes retired Supabase project ${retiredSupabaseUrl}`);
   }
 
@@ -2237,7 +2246,7 @@ async function checkSupabaseFeed() {
   if (
     response.status === 200 &&
     html.includes(currentSupabaseUrl) &&
-    !html.includes(retiredSupabaseUrl) &&
+    !htmlWithoutApprovedLegacyWidgets.includes(retiredSupabaseUrl) &&
     imageGallerySchema &&
     hasCanonicalProviderObject(imageGallerySchema.provider) &&
     projectProofSchema &&
