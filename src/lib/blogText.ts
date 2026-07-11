@@ -11,6 +11,39 @@ export const cleanBlogDisplayText = (value: string) =>
     .replace(/\bDeterimine\b/g, 'Determine')
     .replace(/\bdeterimine\b/g, 'determine');
 
+const replaceSubMinimumCostRanges = (value: string) =>
+  value
+    .replace(
+      /ranges?\s+from\s+\$([0-9][0-9,]*)(?:\s*(?:-|to|\u2013|\u2014)\s*\$?([0-9][0-9,]*))\s+per\s+gallon/gi,
+      (match, lowText, highText) => {
+        const low = Number(String(lowText).replace(/,/g, ''));
+        const high = Number(String(highText).replace(/,/g, ''));
+
+        if (Number.isFinite(low) && Number.isFinite(high) && (low < 6000 || high < 6000)) {
+          return 'varies by product line, substrate, color, and warranty requirements';
+        }
+
+        return match;
+      }
+    )
+    .replace(
+      /\$([0-9][0-9,]*)(?:\s*(?:-|to|\u2013|\u2014)\s*\$?([0-9][0-9,]*))/gi,
+      (match, lowText, highText) => {
+        const low = Number(String(lowText).replace(/,/g, ''));
+        const high = Number(String(highText).replace(/,/g, ''));
+
+        if (Number.isFinite(low) && Number.isFinite(high) && (low < 6000 || high < 6000)) {
+          return 'a written, scope-based professional project range';
+        }
+
+        return match;
+      }
+    )
+    .replace(
+      /\$([0-9][0-9,]*)(?=\s*(?:per\s*(?:hour|hr)|\/\s*(?:hour|hr)|an\s*hour|hourly))/gi,
+      'scope-based professional pricing'
+    );
+
 export const blogDisplayTitle = (title: string, slug = '') => {
   const normalizedSlug = normalizeBlogSlug(slug);
 
@@ -22,7 +55,7 @@ export const blogDisplayTitle = (title: string, slug = '') => {
 };
 
 export const normalizeBlogCostCopy = (value: string) =>
-  cleanBlogDisplayText(value)
+  replaceSubMinimumCostRanges(cleanBlogDisplayText(value))
     .replace(
       /interior painting costs range from \$6,000 to \$16,000, with an average cost of \$8,000/g,
       'full-scope interior painting often ranges from $6,500 to $16,000 once preparation, room count, ceiling height, and finish expectations are reviewed'

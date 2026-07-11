@@ -1,4 +1,9 @@
-const canonicalBlogSlugCorrections = new Map<string, string>();
+const canonicalBlogSlugCorrections = new Map<string, string>([
+  [
+    'how-to-deterimine-the-best-austin-exterior-house-painters',
+    'how-to-determine-the-best-austin-exterior-house-painters'
+  ]
+]);
 
 export const blogPathSlug = (slug: string) => {
   const normalized = slug

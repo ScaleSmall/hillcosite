@@ -4,7 +4,8 @@ import { Search as SearchIcon, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import { supabase } from '../lib/supabase';
 import { generatedBlogPosts } from '../generated/blogPosts';
-import { cleanBlogDisplayText } from '../lib/blogText';
+import { cleanBlogDisplayText, normalizeBlogCostCopy } from '../lib/blogText';
+import { blogPostPath } from '../lib/blogRoutes';
 
 interface SearchResult {
   type: 'service' | 'blog' | 'guide';
@@ -14,15 +15,8 @@ interface SearchResult {
   category?: string;
 }
 
-const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => post.slug));
-const blogPathSlug = (slug: string) =>
-  slug
-    .trim()
-    .toLowerCase()
-    .replace(/&/g, 'and')
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-const blogPostPath = (slug: string) => `/blog/${blogPathSlug(slug)}`;
+const blogSlugFromPath = (slug: string) => blogPostPath(slug).replace('/blog/', '');
+const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => blogSlugFromPath(post.slug)));
 
 const staticContent = [
   {
@@ -116,11 +110,11 @@ const Search = () => {
             .limit(10);
 
           const blogResults: SearchResult[] = (blogPosts || [])
-            .filter(post => generatedBlogSlugs.has(post.slug))
+            .filter(post => generatedBlogSlugs.has(blogSlugFromPath(post.slug)))
             .map(post => ({
               type: 'blog' as const,
               title: cleanBlogDisplayText(post.title),
-              description: cleanBlogDisplayText(post.excerpt),
+              description: normalizeBlogCostCopy(post.excerpt),
               url: blogPostPath(post.slug),
               category: post.category
             }));

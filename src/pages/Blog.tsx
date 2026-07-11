@@ -21,6 +21,9 @@ interface BlogPost {
   author: string;
 }
 
+const blogSlugFromPath = (slug: string) => blogPostPath(slug).replace('/blog/', '');
+const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => blogSlugFromPath(post.slug)));
+
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -56,8 +59,7 @@ const Blog = () => {
           console.error('Error fetching blog posts:', error);
           setLoadError(true);
         } else if (data !== null) {
-          // Always trust Supabase result — empty table = no posts shown
-          setBlogPosts(data);
+          setBlogPosts(data.filter(post => generatedBlogSlugs.has(blogSlugFromPath(post.slug))));
           setLoadError(false);
         }
       } catch (err) {

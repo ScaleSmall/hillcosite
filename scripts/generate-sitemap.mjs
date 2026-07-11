@@ -74,6 +74,46 @@ const BLOG_POST_CORRECTIONS = new Map([
     }
   ]
 ]);
+const REQUIRED_BLOG_POSTS = [
+  {
+    id: 'required-how-to-determine-the-best-austin-exterior-house-painters',
+    title: 'How to Determine the Best Austin Exterior House Painters',
+    slug: 'how-to-determine-the-best-austin-exterior-house-painters',
+    excerpt: 'Use prep standards, coating system, proof of insurance, warranty terms, and a written scope to compare Austin exterior house painters.',
+    content: `<section class="intro-section">
+  <h2 id="choosing-exterior-painters">Choosing Exterior Painters in Austin</h2>
+  <p>The best Austin exterior house painters are the ones who explain surface preparation, product selection, access planning, warranty coverage, and schedule expectations before work begins. A useful estimate should describe the full scope of work rather than leaning on hourly ranges or vague square-foot shortcuts.</p>
+</section>
+<section class="selection-criteria">
+  <h2 id="selection-criteria">What to Compare</h2>
+  <ul>
+    <li><strong>Prep standards:</strong> washing, scraping, sanding, caulking, spot priming, and repairs should be spelled out clearly.</li>
+    <li><strong>Coating system:</strong> primer, finish product, sheen, and number of coats should match the siding, trim, and exposure.</li>
+    <li><strong>Local experience:</strong> Austin heat, sun exposure, masonry, stucco, and HOA requirements all affect exterior paint planning.</li>
+    <li><strong>Proof and protection:</strong> insurance, warranty terms, jobsite cleanup, and communication expectations should be included in writing.</li>
+  </ul>
+</section>
+<section class="pricing">
+  <h2 id="pricing">How Pricing Should Be Framed</h2>
+  <p>Professional exterior painting should be priced from a written project scope. The final range depends on surface condition, height, access, repairs, coating system, color changes, and scheduling requirements. That scope-first approach helps homeowners compare value, not just a thin estimate.</p>
+</section>
+<section class="next-steps">
+  <h2 id="next-steps">Next Steps</h2>
+  <p>Before hiring an exterior painter, ask for a clear walkthrough of prep, products, warranty, and project sequence. Hill Country Painting can review your Austin-area exterior and provide a written recommendation for the right scope.</p>
+</section>`,
+    tldr: 'Compare Austin exterior painters by written scope, prep standards, coating system, insurance, warranty, and local exterior experience.',
+    featured_image: null,
+    featured_image_alt: 'Austin exterior house painting preparation checklist',
+    featured_image_title: 'How to Determine the Best Austin Exterior House Painters',
+    featured_image_caption: 'Compare exterior painters by scope, prep, coating system, and warranty.',
+    published_at: '2026-02-19T00:00:00.000Z',
+    category: 'Painting Tips',
+    author: 'Hill Country Painting',
+    meta_description: 'Learn how to choose Austin exterior house painters by comparing prep standards, coating systems, warranty terms, and written project scope.',
+    meta_keywords: 'Austin exterior house painters, exterior painting Austin, house painters Austin',
+    updated_at: '2026-07-10T00:00:00.000Z'
+  }
+];
 
 function localIsoDate(date = new Date()) {
   const localTime = date.getTime() - date.getTimezoneOffset() * 60_000;
@@ -109,7 +149,38 @@ function sanitizeBlogPost(post) {
     .replace(/low[-\s]+bid/g, 'thin-scope')
     .replace(/cheapest\s+bid/g, 'thinnest estimate')
     .replace(/chea[p]er\s+estimate/g, 'thin estimate');
-  const normalizeCostCopy = value => normalizePremiumPositioning(value)
+  const replaceSubMinimumCostRanges = value => value
+    .replace(
+      /ranges?\s+from\s+\$([0-9][0-9,]*)(?:\s*(?:-|to|\u2013|\u2014)\s*\$?([0-9][0-9,]*))\s+per\s+gallon/gi,
+      (match, lowText, highText) => {
+        const low = Number(String(lowText).replace(/,/g, ''));
+        const high = Number(String(highText).replace(/,/g, ''));
+
+        if (Number.isFinite(low) && Number.isFinite(high) && (low < 6000 || high < 6000)) {
+          return 'varies by product line, substrate, color, and warranty requirements';
+        }
+
+        return match;
+      }
+    )
+    .replace(
+      /\$([0-9][0-9,]*)(?:\s*(?:-|to|\u2013|\u2014)\s*\$?([0-9][0-9,]*))/gi,
+      (match, lowText, highText) => {
+        const low = Number(String(lowText).replace(/,/g, ''));
+        const high = Number(String(highText).replace(/,/g, ''));
+
+        if (Number.isFinite(low) && Number.isFinite(high) && (low < 6000 || high < 6000)) {
+          return 'a written, scope-based professional project range';
+        }
+
+        return match;
+      }
+    )
+    .replace(
+      /\$([0-9][0-9,]*)(?=\s*(?:per\s*(?:hour|hr)|\/\s*(?:hour|hr)|an\s*hour|hourly))/gi,
+      'scope-based professional pricing'
+    );
+  const normalizeCostCopy = value => replaceSubMinimumCostRanges(normalizePremiumPositioning(value))
     .replace(
       /interior painting costs range from \$6,000 to \$16,000, with an average cost of \$8,000/g,
       'full-scope interior painting often ranges from $6,500 to $16,000 once preparation, room count, ceiling height, and finish expectations are reviewed'
@@ -146,6 +217,28 @@ function sanitizeBlogPost(post) {
     meta_keywords: post.meta_keywords || null,
     updated_at: post.updated_at || null
   };
+}
+
+function withRequiredBlogPosts(posts) {
+  const postsBySlug = new Map();
+
+  for (const post of [...posts, ...REQUIRED_BLOG_POSTS]) {
+    const sanitizedPost = sanitizeBlogPost(post);
+    const slug = blogPathSlug(sanitizedPost.slug);
+
+    if (!slug || EXCLUDED_BLOG_SLUGS.has(slug) || postsBySlug.has(slug)) {
+      continue;
+    }
+
+    postsBySlug.set(slug, {
+      ...sanitizedPost,
+      slug
+    });
+  }
+
+  return [...postsBySlug.values()].sort((a, b) =>
+    new Date(b.published_at).getTime() - new Date(a.published_at).getTime()
+  );
 }
 
 function blogPathSlug(slug) {
@@ -222,7 +315,7 @@ async function fetchBlogPosts() {
   if (!supabaseUrl || !supabaseKey) {
     const fallbackPosts = readGeneratedBlogPostsFallback();
     console.log(`  Supabase credentials not found - using ${fallbackPosts.length} generated blog post fallback(s)`);
-    return fallbackPosts;
+    return withRequiredBlogPosts(fallbackPosts);
   }
 
   try {
@@ -230,7 +323,7 @@ async function fetchBlogPosts() {
     if (!createClient) {
       const fallbackPosts = readGeneratedBlogPostsFallback();
       console.log(`  @supabase/supabase-js not available - using ${fallbackPosts.length} generated blog post fallback(s)`);
-      return fallbackPosts;
+      return withRequiredBlogPosts(fallbackPosts);
     }
     const supabase = createClient(supabaseUrl, supabaseKey);
     const { data, error } = await supabase
@@ -243,17 +336,19 @@ async function fetchBlogPosts() {
       const fallbackPosts = readGeneratedBlogPostsFallback();
       console.log(`  Warning: Could not fetch blog posts: ${error.message}`);
       console.log(`  Using ${fallbackPosts.length} generated blog post fallback(s)`);
-      return fallbackPosts;
+      return withRequiredBlogPosts(fallbackPosts);
     }
 
-    return (data || [])
-      .filter(post => post.slug && !EXCLUDED_BLOG_SLUGS.has(post.slug))
-      .map(sanitizeBlogPost);
+    return withRequiredBlogPosts(
+      (data || [])
+        .filter(post => post.slug && !EXCLUDED_BLOG_SLUGS.has(blogPathSlug(post.slug)))
+        .map(sanitizeBlogPost)
+    );
   } catch (err) {
     const fallbackPosts = readGeneratedBlogPostsFallback();
     console.log(`  Warning: Error fetching blog posts: ${err.message}`);
     console.log(`  Using ${fallbackPosts.length} generated blog post fallback(s)`);
-    return fallbackPosts;
+    return withRequiredBlogPosts(fallbackPosts);
   }
 }
 
