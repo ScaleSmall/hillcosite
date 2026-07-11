@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from 'lucide-react';
 import SEO from '../../components/SEO';
@@ -49,7 +49,7 @@ const InteriorPainting = () => {
     {
       number: 4,
       title: 'Paint Application',
-      description: 'We apply finish coats systematically—cutting in edges first, then rolling walls and ceilings for consistent coverage.'
+      description: 'We apply finish coats systematically?cutting in edges first, then rolling walls and ceilings for consistent coverage.'
     },
     {
       number: 5,
@@ -96,7 +96,7 @@ const InteriorPainting = () => {
     },
     {
       question: 'How is furniture protected?',
-      answer: 'Customers should move furniture and ensure the painting area is clear of obstacles before we begin. We protect remaining furniture and surfaces with drop cloths and plastic sheeting.'
+      answer: 'Customers should move furniture and make sure the painting area is clear of obstacles before we begin. We protect remaining furniture and surfaces with drop cloths and plastic sheeting.'
     },
     {
       question: 'What paint do you use?',
@@ -121,7 +121,7 @@ const InteriorPainting = () => {
   return (
     <>
       <SEO
-        title="Interior Painting — Hill Country Painting"
+        title="Interior Painting ? Hill Country Painting"
         description="Expert interior painting in Austin TX. Transform your home with professional painters. Clean prep, premium paints, 2-year warranty. Consultations available."
         canonical="/services/interior-painting"
         pageType="service"
@@ -186,7 +186,7 @@ const InteriorPainting = () => {
                 Interior Painting, Handled with Care and Precision
               </h1>
               <p className="text-xl md:text-2xl text-white font-medium leading-body drop-shadow-md">
-                From detailed preparation to spotless daily cleanup, every step is managed with discipline and respect for your home—so the process feels calm, organized, and predictable.
+                From detailed preparation to spotless daily cleanup, every step is managed with discipline and respect for your home?so the process feels calm, organized, and predictable.
               </p>
               <div className="text-base text-white font-semibold drop-shadow">
                 For Austin homeowners who value craftsmanship, clear communication, and peace of mind.
@@ -227,19 +227,19 @@ const InteriorPainting = () => {
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
-                    <span><strong>Paint splatters and spills</strong> — Drop cloths and careful masking protect floors, trim, and fixtures</span>
+                    <span><strong>Paint splatters and spills</strong> ? Drop cloths and careful masking protect floors, trim, and fixtures</span>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
-                    <span><strong>Wondering when we'll show up</strong> — We confirm arrival times and communicate any changes immediately</span>
+                    <span><strong>Wondering when we'll show up</strong> ? We confirm arrival times and communicate any changes immediately</span>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
-                    <span><strong>Daily mess</strong> — We clean up completely at the end of each day, not when the project ends</span>
+                    <span><strong>Daily mess</strong> ? We clean up completely at the end of each day, not when the project ends</span>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
-                    <span><strong>Rushed prep work</strong> — We don't cut corners on surface preparation, even when it takes longer</span>
+                    <span><strong>Rushed prep work</strong> ? We don't cut corners on surface preparation, even when it takes longer</span>
                   </div>
                 </div>
               </div>
@@ -262,7 +262,7 @@ const InteriorPainting = () => {
               Paint isn't just about color. When applied correctly, it protects walls from moisture, wear, and fading. When rushed or poorly prepped, it peels, cracks, and needs redoing within a few years.
             </p>
             <p>
-              Proper surface preparation—cleaning, patching, sanding, priming—determines how long your paint lasts. We don't skip these steps because they prevent callbacks and ensure you won't need touch-ups next year.
+              Proper surface preparation?cleaning, patching, sanding, priming?determines how long your paint lasts. We don't skip these steps because they prevent callbacks and ensure you won't need touch-ups next year.
             </p>
             <p>
               Clear communication prevents stress. You'll know exactly what's happening each day, when we'll arrive, and what to expect. No guessing, no surprises.
@@ -403,7 +403,7 @@ const InteriorPainting = () => {
             <div className="space-y-3">
               <h3 className="text-xl font-bold text-brand-gray-900">Written Project Plans</h3>
               <p className="text-brand-gray-600">
-                You receive a written timeline before we start. No vague estimates—you'll know exactly what happens each day.
+                You receive a written timeline before we start. No vague estimates?you'll know exactly what happens each day.
               </p>
             </div>
             <div className="space-y-3">
@@ -505,3 +505,4 @@ const InteriorPainting = () => {
 };
 
 export default InteriorPainting;
+
