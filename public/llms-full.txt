@@ -201,6 +201,8 @@ This file lists every canonical indexable URL currently published in the XML sit
 
 ## Blog URLs
 
+- https://www.hillcopaint.com/blog/how-can-i-prepare-my-home-for-professional-interior-painting
+- https://www.hillcopaint.com/blog/should-drywall-repairs-be-done-before-interior-painting
 - https://www.hillcopaint.com/blog/how-do-i-choose-the-right-paint-finish-for-interior-walls
 - https://www.hillcopaint.com/blog/what-should-i-look-for-when-hiring-an-exterior-painter-in-austin
 - https://www.hillcopaint.com/blog/what-should-businesses-know-before-hiring-a-commercial-painter-in-austin
@@ -392,6 +394,8 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/areas/north-austin/milwood
 - https://www.hillcopaint.com/areas/north-austin/jollyville
 - https://www.hillcopaint.com/areas/north-austin/anderson-mill
+- https://www.hillcopaint.com/blog/how-can-i-prepare-my-home-for-professional-interior-painting
+- https://www.hillcopaint.com/blog/should-drywall-repairs-be-done-before-interior-painting
 - https://www.hillcopaint.com/blog/how-do-i-choose-the-right-paint-finish-for-interior-walls
 - https://www.hillcopaint.com/blog/what-should-i-look-for-when-hiring-an-exterior-painter-in-austin
 - https://www.hillcopaint.com/blog/what-should-businesses-know-before-hiring-a-commercial-painter-in-austin

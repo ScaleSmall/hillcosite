@@ -1,4 +1,4 @@
-export const generatedSpaRouteCount = 196;
+export const generatedSpaRouteCount = 198;
 
 export const generatedSpaRoutes = [
   "/",
@@ -89,9 +89,11 @@ export const generatedSpaRoutes = [
   "/areas/west-lake-hills-and-rollingwood/west-lake-hills",
   "/blog",
   "/blog/can-i-just-paint-over-already-painted-cabinets",
+  "/blog/how-can-i-prepare-my-home-for-professional-interior-painting",
   "/blog/how-do-i-choose-the-right-paint-finish-for-interior-walls",
   "/blog/how-much-does-it-cost-to-paint-a-house-in-austin-texas",
   "/blog/how-to-determine-the-best-austin-exterior-house-painters",
+  "/blog/should-drywall-repairs-be-done-before-interior-painting",
   "/blog/what-is-the-average-cost-of-exterior-house-paint",
   "/blog/what-should-businesses-know-before-hiring-a-commercial-painter-in-austin",
   "/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2",

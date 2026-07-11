@@ -632,6 +632,12 @@ function isSpaRoute(path: string): boolean {
   return SPA_ROUTES.has(path);
 }
 
+const DYNAMIC_BLOG_ROUTE_RE = /^\/blog\/[^/]+$/;
+
+function isDynamicBlogRoute(path: string): boolean {
+  return DYNAMIC_BLOG_ROUTE_RE.test(path);
+}
+
 function assetPathForPrerenderedRoute(path: string): string {
   if (path === '/') {
     return '/index.html';
@@ -1022,7 +1028,7 @@ export async function onRequest(context: {
   if (destination) return redirect(destination, url.origin);
 
   const cleanBlogRoute = cleanBlogPath(cleanPath);
-  if (cleanBlogRoute !== cleanPath && isSpaRoute(cleanBlogRoute)) {
+  if (cleanBlogRoute !== cleanPath && (isSpaRoute(cleanBlogRoute) || isDynamicBlogRoute(cleanBlogRoute))) {
     return redirect(cleanBlogRoute, url.origin);
   }
 
@@ -1079,8 +1085,14 @@ export async function onRequest(context: {
   // ── F. Try any remaining non-HTML static file fallback ───────────────
   const response = await next();
   const contentType = response.headers.get('content-type') || '';
-  if (response.status >= 200 && response.status < 300 && contentType && !contentType.includes('text/html')) {
-    return response;
+  if (response.status >= 200 && response.status < 300 && contentType) {
+    if (isDynamicBlogRoute(path) && contentType.includes('text/html')) {
+      return htmlResponseForRoute(response, path);
+    }
+
+    if (!contentType.includes('text/html')) {
+      return response;
+    }
   }
 
   // ── G. 404 fallback ──────────────────────────────────────────────────

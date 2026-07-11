@@ -6,7 +6,6 @@ import CTABanner from '../components/sections/CTABanner';
 import SplitSection from '../components/sections/SplitSection';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { supabase, supabaseConfigured } from '../lib/supabase';
-import { generatedBlogPosts } from '../generated/blogPosts';
 import { blogDisplayTitle, normalizeBlogCostCopy } from '../lib/blogText';
 import { blogPostPath } from '../lib/blogRoutes';
 
@@ -20,9 +19,6 @@ interface BlogPost {
   category: string;
   author: string;
 }
-
-const blogSlugFromPath = (slug: string) => blogPostPath(slug).replace('/blog/', '');
-const generatedBlogSlugs = new Set(generatedBlogPosts.map(post => blogSlugFromPath(post.slug)));
 
 const Blog = () => {
   const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
@@ -59,7 +55,7 @@ const Blog = () => {
           console.error('Error fetching blog posts:', error);
           setLoadError(true);
         } else if (data !== null) {
-          setBlogPosts(data.filter(post => generatedBlogSlugs.has(blogSlugFromPath(post.slug))));
+          setBlogPosts(data);
           setLoadError(false);
         }
       } catch (err) {
