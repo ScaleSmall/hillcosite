@@ -95,8 +95,8 @@ const InteriorPainting = () => {
       answer: 'Most interior projects take 2-5 days depending on room count, ceiling height, and surface conditions. We provide a specific timeline after assessing your space.'
     },
     {
-      question: 'Do we need to move furniture ourselves?',
-      answer: 'If you want to move your furniture in advance, you can. If you would prefer for us to do it, we will. We move what needs to be moved and protect everything else with drop cloths and plastic sheeting.'
+      question: 'How is furniture protected?',
+      answer: 'Customers should move furniture and ensure the painting area is clear of obstacles before we begin. We protect remaining furniture and surfaces with drop cloths and plastic sheeting.'
     },
     {
       question: 'What paint do you use?',
@@ -223,7 +223,7 @@ const InteriorPainting = () => {
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
-                    <span><strong>Moving furniture</strong> — We shift what needs to move and protect everything else in place</span>
+                    <span><strong>Protect furniture</strong> - Customer ensures painting area is clear of obstacles</span>
                   </div>
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-brand-azureDark rounded-full mt-2"></div>
