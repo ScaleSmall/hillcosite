@@ -29,6 +29,7 @@
     "verify:seo": "node scripts/verify-seo.mjs",
     "verify:live": "node scripts/verify-live-seo.mjs",
     "verify:live:pages": "node scripts/verify-live-seo.mjs --page-indexing",
+    "verify:manual-canonical": "node scripts/verify-manual-canonical-uat.mjs",
     "deploy:pages": "npm run build && npx wrangler pages deploy dist --project-name hillcosite --branch main --skip-caching",
     "deploy:pages:dist": "npx wrangler pages deploy dist --project-name hillcosite --branch main --skip-caching"
   },

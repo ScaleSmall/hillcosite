@@ -1,5 +1,13 @@
 # Manual Verification Steps
 
+Automated verifier:
+
+```bash
+npm run verify:manual-canonical
+```
+
+The manual console checks below are retained for spot-checking, but the command above is the canonical UAT gate for these cases.
+
 Open DevTools (F12) on the deployed site. Paste each snippet into the **Console** tab.
 
 ---

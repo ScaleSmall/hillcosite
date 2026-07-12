@@ -92,6 +92,16 @@ function run() {
     } else {
       failures.push('Middleware missing canonical https://www.hillcopaint.com redirect handling');
     }
+
+    if (
+      content.includes("function redirect(location: string, origin: string, search = '')") &&
+      content.includes('target.search = search') &&
+      content.includes('redirect(destination, url.origin, url.search)')
+    ) {
+      passes.push('Middleware redirect helper preserves query strings for canonical redirects');
+    } else {
+      failures.push('Middleware canonical redirects must preserve query strings such as UTM parameters');
+    }
   }
 
   if (!existsSync(routesConfigPath)) {

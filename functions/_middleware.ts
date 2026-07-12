@@ -177,8 +177,12 @@ const PATTERN_REDIRECTS: Array<{ pattern: RegExp; target: string }> = [
   { pattern: /^\/service\/.*commercial/i, target: '/services/commercial' },
 ];
 
-function redirect(location: string, origin: string): Response {
-  return Response.redirect(new URL(location, origin).toString(), 301);
+function redirect(location: string, origin: string, search = ''): Response {
+  const target = new URL(location, origin);
+  if (search && !target.search) {
+    target.search = search;
+  }
+  return Response.redirect(target.toString(), 301);
 }
 
 // ---------------------------------------------------------------------------
@@ -1025,23 +1029,23 @@ export async function onRequest(context: {
 
   // ── C. Legacy 301 redirects ──────────────────────────────────────────
   const destination = REDIRECTS[cleanPath] || REDIRECTS[pathname];
-  if (destination) return redirect(destination, url.origin);
+  if (destination) return redirect(destination, url.origin, url.search);
 
   const cleanBlogRoute = cleanBlogPath(cleanPath);
   if (cleanBlogRoute !== cleanPath && (isSpaRoute(cleanBlogRoute) || isDynamicBlogRoute(cleanBlogRoute))) {
-    return redirect(cleanBlogRoute, url.origin);
+    return redirect(cleanBlogRoute, url.origin, url.search);
   }
 
   if (!isSpaRoute(cleanPath)) {
     for (const rule of PATTERN_REDIRECTS) {
-      if (rule.pattern.test(cleanPath)) return redirect(rule.target, url.origin);
+      if (rule.pattern.test(cleanPath)) return redirect(rule.target, url.origin, url.search);
     }
   }
 
   // /service/* catch-all — any unmatched legacy /service/ path should resolve
   // directly in one hop, including trailing-slash variants.
   if (cleanPath.startsWith('/service/')) {
-    return redirect('/services', url.origin);
+    return redirect('/services', url.origin, url.search);
   }
 
   // ── D. Trailing-slash canonicalization ────────────────────────────────
@@ -1057,7 +1061,7 @@ export async function onRequest(context: {
 
   // /service/* catch-all — any unmatched /service/ path → /services
   if (path.startsWith('/service/')) {
-    return redirect('/services', url.origin);
+    return redirect('/services', url.origin, url.search);
   }
 
   // ── E. Known app routes → prefer exact prerendered HTML ──────────────
