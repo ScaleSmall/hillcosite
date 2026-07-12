@@ -1,4 +1,4 @@
-export const generatedSpaRouteCount = 198;
+export const generatedSpaRouteCount = 197;
 
 export const generatedSpaRoutes = [
   "/",
@@ -97,7 +97,6 @@ export const generatedSpaRoutes = [
   "/blog/what-is-the-average-cost-of-exterior-house-paint",
   "/blog/what-should-businesses-know-before-hiring-a-commercial-painter-in-austin",
   "/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2",
-  "/blog/what-should-i-look-for-when-hiring-an-exterior-painter-in-austin",
   "/cabinet-refinishing-austin",
   "/cabinet-refinishing-barton-creek",
   "/cabinet-refinishing-bee-cave",

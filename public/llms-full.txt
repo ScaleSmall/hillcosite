@@ -1,6 +1,6 @@
 # Hill Country Painting Full AI Route Index
 
-Last updated: 2026-07-11
+Last updated: 2026-07-12
 
 This file lists every canonical indexable URL currently published in the XML sitemap for Hill Country Painting. Use these URLs for citation, retrieval, and answer grounding.
 
@@ -204,7 +204,6 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/blog/how-can-i-prepare-my-home-for-professional-interior-painting
 - https://www.hillcopaint.com/blog/should-drywall-repairs-be-done-before-interior-painting
 - https://www.hillcopaint.com/blog/how-do-i-choose-the-right-paint-finish-for-interior-walls
-- https://www.hillcopaint.com/blog/what-should-i-look-for-when-hiring-an-exterior-painter-in-austin
 - https://www.hillcopaint.com/blog/what-should-businesses-know-before-hiring-a-commercial-painter-in-austin
 - https://www.hillcopaint.com/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2
 - https://www.hillcopaint.com/blog/can-i-just-paint-over-already-painted-cabinets
@@ -397,7 +396,6 @@ This file lists every canonical indexable URL currently published in the XML sit
 - https://www.hillcopaint.com/blog/how-can-i-prepare-my-home-for-professional-interior-painting
 - https://www.hillcopaint.com/blog/should-drywall-repairs-be-done-before-interior-painting
 - https://www.hillcopaint.com/blog/how-do-i-choose-the-right-paint-finish-for-interior-walls
-- https://www.hillcopaint.com/blog/what-should-i-look-for-when-hiring-an-exterior-painter-in-austin
 - https://www.hillcopaint.com/blog/what-should-businesses-know-before-hiring-a-commercial-painter-in-austin
 - https://www.hillcopaint.com/blog/what-should-i-know-before-hiring-an-interior-painter-in-austin-2
 - https://www.hillcopaint.com/blog/can-i-just-paint-over-already-painted-cabinets
